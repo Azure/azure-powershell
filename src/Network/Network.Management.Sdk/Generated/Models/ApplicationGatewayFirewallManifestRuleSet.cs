@@ -33,17 +33,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="status">The rule set status
         /// Possible values include: &#39;Preview&#39;, &#39;GA&#39;, &#39;Supported&#39;, &#39;Deprecated&#39;</param>
 
+        /// <param name="displayName">Human-readable display name for the managed rule set version (e.g.,
+        /// &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </param>
+
         /// <param name="tiers">Tier of an application gateway that support the rule set.
         /// </param>
 
         /// <param name="ruleGroups">The rule groups of the web application firewall rule set.
         /// </param>
-        public ApplicationGatewayFirewallManifestRuleSet(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string status = default(string), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayFirewallManifestRuleSet(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string status = default(string), string displayName = default(string), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
 
         {
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
             this.Status = status;
+            this.DisplayName = displayName;
             this.Tiers = tiers;
             this.RuleGroups = ruleGroups;
             CustomInit();
@@ -72,6 +77,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }
+
+        /// <summary>
+        /// Gets or sets human-readable display name for the managed rule set version
+        /// (e.g., &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
+        public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets tier of an application gateway that support the rule set.
@@ -104,6 +116,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RuleGroups");
             }
+
 
 
 

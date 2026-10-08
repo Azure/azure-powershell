@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
+        /// <param name="approvalReference">A reference to an existing approved private endpoint whose connection
+        /// approval state should be inherited by this connection at creation time.
+        /// </param>
+
         /// <param name="privateLinkServiceId">The resource id of private link service.
         /// </param>
 
@@ -56,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateLinkServiceConnectionState">A collection of read-only information about the state of the connection to
         /// the remote resource.
         /// </param>
-        public PrivateLinkServiceConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string privateLinkServiceId = default(string), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), string requestMessage = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateLinkServiceConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), ApprovalReference approvalReference = default(ApprovalReference), string privateLinkServiceId = default(string), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), string requestMessage = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
         : base(id)
         {
@@ -64,6 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Type = type;
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
+            this.ApprovalReference = approvalReference;
             this.PrivateLinkServiceId = privateLinkServiceId;
             this.GroupIds = groupIds;
             this.RequestMessage = requestMessage;
@@ -103,6 +108,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets a reference to an existing approved private endpoint whose
+        /// connection approval state should be inherited by this connection at
+        /// creation time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.approvalReference")]
+        public ApprovalReference ApprovalReference {get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of private link service.

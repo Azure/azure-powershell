@@ -34,6 +34,8 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup [-ResourceId] <String> [-For
 
 ## DESCRIPTION
 The **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet deletes the backup specified.
+Backups protected by time-based immutability or a legal hold cannot be deleted.
+A locked immutable backup cannot be manually deleted and is retained until expiration.
 
 ## EXAMPLES
 

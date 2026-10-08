@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Maintenance.Models;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,6 +45,27 @@ namespace Microsoft.Azure.Commands.Maintenance
             }
 
             return normalizedValue;
+        }
+
+        protected void ThrowScheduledEventError(Exception exception, System.Net.HttpStatusCode? statusCode,
+            object body, string serviceCode, string target)
+        {
+            string status = statusCode?.ToString();
+            string message = exception.Message;
+            if (body != null)
+            {
+                message = JsonConvert.SerializeObject(body, Formatting.Indented,
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            }
+
+            var error = new ErrorRecord(exception,
+                string.IsNullOrWhiteSpace(serviceCode) ? status ?? exception.GetType().Name : serviceCode,
+                ErrorCategory.InvalidOperation, target)
+            {
+                ErrorDetails = new System.Management.Automation.ErrorDetails(
+                    string.IsNullOrEmpty(status) ? message : status + Environment.NewLine + message)
+            };
+            ThrowTerminatingError(error);
         }
 
         protected static string NormalizeScheduledEventId(string value, string parameterName, int? index = null)

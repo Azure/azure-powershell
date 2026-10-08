@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/eastus2euap/publishers/Microsoft.Compute/artifacttypes/vmextension/types/VMAccessAgent/versions?api-version=2026-04-01&$filter=startswith%28name%2C%272.4.16%27%29&$expand=properties",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvcHVibGlzaGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9hcnRpZmFjdHR5cGVzL3ZtZXh0ZW5zaW9uL3R5cGVzL1ZNQWNjZXNzQWdlbnQvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAyNi0wNC0wMSYkZmlsdGVyPXN0YXJ0c3dpdGglMjhuYW1lJTJDJTI3Mi40LjE2JTI3JTI5JiRleHBhbmQ9cHJvcGVydGllcw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "ac300d4f-7010-4032-88a4-a9580ef2199e"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3126.42015",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/ListVMExtensions3Min;9999,Microsoft.Compute/ListVMExtensions30Min;21997"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "3f817cff-73a0-4f4f-ade7-b40f057a65f9_134336053466187725"
+        ],
+        "x-ms-request-id": [
+          "f968e5ae-ec6b-4694-8c76-f58117f1e59f"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d4cf561b-5aae-49e9-a42f-faef2354e23e/westindia/a1e37265-20b5-419c-82ad-fd0abb5454bf"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "6612c9da-a8d0-4881-9bdf-ecc011651976"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20260921T103844Z:6612c9da-a8d0-4881-9bdf-ecc011651976"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 2EE3FF429E2F4B989DE24FAFAF14D7A0 Ref B: PNQ231110909054 Ref C: 2026-09-21T10:38:43Z"
+        ],
+        "Date": [
+          "Mon, 21 Sep 2026 10:38:43 GMT"
+        ],
+        "Content-Length": [
+          "1138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"properties\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"computeRole\": \"IaaS\",\r\n      \"architecture\": [\r\n        \"x64\",\r\n        \"arm64\"\r\n      ],\r\n      \"handlerSchema\": null,\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportsMultipleExtensions\": false,\r\n      \"supportsMigration\": false,\r\n      \"rollbackSupported\": false,\r\n      \"encodedSignature\": null,\r\n      \"isSoftDeleted\": false,\r\n      \"runAsStartupTask\": null,\r\n      \"isInternalExtension\": false,\r\n      \"isJsonExtension\": true,\r\n      \"disallowMajorVersionUpgrade\": null,\r\n      \"publicConfigurationSchema\": null,\r\n      \"privateConfigurationSchema\": null,\r\n      \"certificateSchema\": null,\r\n      \"localResources\": null,\r\n      \"openEndpoints\": null,\r\n      \"releaseNotes\": null,\r\n      \"releaseCategory\": \"BugFix\",\r\n      \"urgencyLevel\": \"Regular\",\r\n      \"runProfile\": \"RunOnce\"\r\n    },\r\n    \"location\": \"EastUS2EUAP\",\r\n    \"name\": \"2.4.16\",\r\n    \"id\": \"/Subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/Providers/Microsoft.Compute/Locations/EastUS2EUAP/Publishers/Microsoft.Compute/ArtifactTypes/VMExtension/Types/VMAccessAgent/Versions/2.4.16\"\r\n  }\r\n]",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "87c158ca-3873-4850-9567-50a5b0a3c2ef"
+  }
+}

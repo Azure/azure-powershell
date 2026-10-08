@@ -136,6 +136,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
         /// </param>
 
+        /// <param name="advancedRoutingMaps">Advanced routing maps of the application gateway resource. For default
+        /// limits, see [Application Gateway
+        /// limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+        /// </param>
+
         /// <param name="requestRoutingRules">Request routing rules of the application gateway resource.
         /// </param>
 
@@ -143,6 +148,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="rewriteRuleSets">Rewrite rules for the application gateway resource.
+        /// </param>
+
+        /// <param name="advancedRoutingConditionSets">Advanced routing condition sets of the application gateway resource. For
+        /// default limits, see [Application Gateway
+        /// limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
         /// </param>
 
         /// <param name="redirectConfigurations">Redirect configurations of the application gateway resource. For default
@@ -163,6 +173,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="autoscaleConfiguration">Autoscale Configuration.
+        /// </param>
+
+        /// <param name="reservedCapacity">The reserved capacity of the application gateway resource. Applicable to
+        /// the Basic_v2 and Basic_WAF_v2 SKU tiers.
         /// </param>
 
         /// <param name="privateLinkConfigurations">PrivateLink configurations on application gateway.
@@ -197,7 +211,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;AppGwSslPolicy20150501&#39;,
         /// &#39;AppGwSslPolicy20170401&#39;, &#39;AppGwSslPolicy20170401S&#39;,
         /// &#39;AppGwSslPolicy20220101&#39;, &#39;AppGwSslPolicy20220101S&#39;</param>
-        public ApplicationGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), ApplicationGatewaySku sku = default(ApplicationGatewaySku), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), string operationalState = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> gatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), System.Collections.Generic.IList<ApplicationGatewayAuthenticationCertificate> authenticationCertificates = default(System.Collections.Generic.IList<ApplicationGatewayAuthenticationCertificate>), System.Collections.Generic.IList<ApplicationGatewayTrustedRootCertificate> trustedRootCertificates = default(System.Collections.Generic.IList<ApplicationGatewayTrustedRootCertificate>), System.Collections.Generic.IList<ApplicationGatewayTrustedClientCertificate> trustedClientCertificates = default(System.Collections.Generic.IList<ApplicationGatewayTrustedClientCertificate>), System.Collections.Generic.IList<ApplicationGatewaySslCertificate> sslCertificates = default(System.Collections.Generic.IList<ApplicationGatewaySslCertificate>), System.Collections.Generic.IList<ApplicationGatewayFrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayFrontendIPConfiguration>), System.Collections.Generic.IList<ApplicationGatewayFrontendPort> frontendPorts = default(System.Collections.Generic.IList<ApplicationGatewayFrontendPort>), System.Collections.Generic.IList<ApplicationGatewayProbe> probes = default(System.Collections.Generic.IList<ApplicationGatewayProbe>), System.Collections.Generic.IList<ApplicationGatewayBackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<ApplicationGatewayBackendAddressPool>), System.Collections.Generic.IList<ApplicationGatewayBackendHttpSettings> backendHttpSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendHttpSettings>), System.Collections.Generic.IList<ApplicationGatewayBackendSettings> backendSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendSettings>), System.Collections.Generic.IList<ApplicationGatewayHttpListener> httpListeners = default(System.Collections.Generic.IList<ApplicationGatewayHttpListener>), System.Collections.Generic.IList<ApplicationGatewayListener> listeners = default(System.Collections.Generic.IList<ApplicationGatewayListener>), System.Collections.Generic.IList<ApplicationGatewaySslProfile> sslProfiles = default(System.Collections.Generic.IList<ApplicationGatewaySslProfile>), System.Collections.Generic.IList<ApplicationGatewayUrlPathMap> urlPathMaps = default(System.Collections.Generic.IList<ApplicationGatewayUrlPathMap>), System.Collections.Generic.IList<ApplicationGatewayRequestRoutingRule> requestRoutingRules = default(System.Collections.Generic.IList<ApplicationGatewayRequestRoutingRule>), System.Collections.Generic.IList<ApplicationGatewayRoutingRule> routingRules = default(System.Collections.Generic.IList<ApplicationGatewayRoutingRule>), System.Collections.Generic.IList<ApplicationGatewayRewriteRuleSet> rewriteRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayRewriteRuleSet>), System.Collections.Generic.IList<ApplicationGatewayRedirectConfiguration> redirectConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayRedirectConfiguration>), ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration = default(ApplicationGatewayWebApplicationFirewallConfiguration), SubResource firewallPolicy = default(SubResource), bool? enableHttp2 = default(bool?), bool? enableFips = default(bool?), ApplicationGatewayAutoscaleConfiguration autoscaleConfiguration = default(ApplicationGatewayAutoscaleConfiguration), System.Collections.Generic.IList<ApplicationGatewayPrivateLinkConfiguration> privateLinkConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayPrivateLinkConfiguration>), System.Collections.Generic.IList<ApplicationGatewayPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ApplicationGatewayPrivateEndpointConnection>), string resourceGuid = default(string), System.Collections.Generic.IList<ApplicationGatewayCustomError> customErrorConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayCustomError>), bool? forceFirewallPolicyAssociation = default(bool?), System.Collections.Generic.IList<ApplicationGatewayLoadDistributionPolicy> loadDistributionPolicies = default(System.Collections.Generic.IList<ApplicationGatewayLoadDistributionPolicy>), System.Collections.Generic.IList<ApplicationGatewayEntraJWTValidationConfig> entraJwtValidationConfigs = default(System.Collections.Generic.IList<ApplicationGatewayEntraJWTValidationConfig>), ApplicationGatewayGlobalConfiguration globalConfiguration = default(ApplicationGatewayGlobalConfiguration), string defaultPredefinedSslPolicy = default(string))
+        public ApplicationGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), ApplicationGatewaySku sku = default(ApplicationGatewaySku), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), string operationalState = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> gatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), System.Collections.Generic.IList<ApplicationGatewayAuthenticationCertificate> authenticationCertificates = default(System.Collections.Generic.IList<ApplicationGatewayAuthenticationCertificate>), System.Collections.Generic.IList<ApplicationGatewayTrustedRootCertificate> trustedRootCertificates = default(System.Collections.Generic.IList<ApplicationGatewayTrustedRootCertificate>), System.Collections.Generic.IList<ApplicationGatewayTrustedClientCertificate> trustedClientCertificates = default(System.Collections.Generic.IList<ApplicationGatewayTrustedClientCertificate>), System.Collections.Generic.IList<ApplicationGatewaySslCertificate> sslCertificates = default(System.Collections.Generic.IList<ApplicationGatewaySslCertificate>), System.Collections.Generic.IList<ApplicationGatewayFrontendIPConfiguration> frontendIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayFrontendIPConfiguration>), System.Collections.Generic.IList<ApplicationGatewayFrontendPort> frontendPorts = default(System.Collections.Generic.IList<ApplicationGatewayFrontendPort>), System.Collections.Generic.IList<ApplicationGatewayProbe> probes = default(System.Collections.Generic.IList<ApplicationGatewayProbe>), System.Collections.Generic.IList<ApplicationGatewayBackendAddressPool> backendAddressPools = default(System.Collections.Generic.IList<ApplicationGatewayBackendAddressPool>), System.Collections.Generic.IList<ApplicationGatewayBackendHttpSettings> backendHttpSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendHttpSettings>), System.Collections.Generic.IList<ApplicationGatewayBackendSettings> backendSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendSettings>), System.Collections.Generic.IList<ApplicationGatewayHttpListener> httpListeners = default(System.Collections.Generic.IList<ApplicationGatewayHttpListener>), System.Collections.Generic.IList<ApplicationGatewayListener> listeners = default(System.Collections.Generic.IList<ApplicationGatewayListener>), System.Collections.Generic.IList<ApplicationGatewaySslProfile> sslProfiles = default(System.Collections.Generic.IList<ApplicationGatewaySslProfile>), System.Collections.Generic.IList<ApplicationGatewayUrlPathMap> urlPathMaps = default(System.Collections.Generic.IList<ApplicationGatewayUrlPathMap>), System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingMap> advancedRoutingMaps = default(System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingMap>), System.Collections.Generic.IList<ApplicationGatewayRequestRoutingRule> requestRoutingRules = default(System.Collections.Generic.IList<ApplicationGatewayRequestRoutingRule>), System.Collections.Generic.IList<ApplicationGatewayRoutingRule> routingRules = default(System.Collections.Generic.IList<ApplicationGatewayRoutingRule>), System.Collections.Generic.IList<ApplicationGatewayRewriteRuleSet> rewriteRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayRewriteRuleSet>), System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingConditionSet> advancedRoutingConditionSets = default(System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingConditionSet>), System.Collections.Generic.IList<ApplicationGatewayRedirectConfiguration> redirectConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayRedirectConfiguration>), ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration = default(ApplicationGatewayWebApplicationFirewallConfiguration), SubResource firewallPolicy = default(SubResource), bool? enableHttp2 = default(bool?), bool? enableFips = default(bool?), ApplicationGatewayAutoscaleConfiguration autoscaleConfiguration = default(ApplicationGatewayAutoscaleConfiguration), int? reservedCapacity = default(int?), System.Collections.Generic.IList<ApplicationGatewayPrivateLinkConfiguration> privateLinkConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayPrivateLinkConfiguration>), System.Collections.Generic.IList<ApplicationGatewayPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ApplicationGatewayPrivateEndpointConnection>), string resourceGuid = default(string), System.Collections.Generic.IList<ApplicationGatewayCustomError> customErrorConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayCustomError>), bool? forceFirewallPolicyAssociation = default(bool?), System.Collections.Generic.IList<ApplicationGatewayLoadDistributionPolicy> loadDistributionPolicies = default(System.Collections.Generic.IList<ApplicationGatewayLoadDistributionPolicy>), System.Collections.Generic.IList<ApplicationGatewayEntraJWTValidationConfig> entraJwtValidationConfigs = default(System.Collections.Generic.IList<ApplicationGatewayEntraJWTValidationConfig>), ApplicationGatewayGlobalConfiguration globalConfiguration = default(ApplicationGatewayGlobalConfiguration), string defaultPredefinedSslPolicy = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -223,15 +237,18 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Listeners = listeners;
             this.SslProfiles = sslProfiles;
             this.UrlPathMaps = urlPathMaps;
+            this.AdvancedRoutingMaps = advancedRoutingMaps;
             this.RequestRoutingRules = requestRoutingRules;
             this.RoutingRules = routingRules;
             this.RewriteRuleSets = rewriteRuleSets;
+            this.AdvancedRoutingConditionSets = advancedRoutingConditionSets;
             this.RedirectConfigurations = redirectConfigurations;
             this.WebApplicationFirewallConfiguration = webApplicationFirewallConfiguration;
             this.FirewallPolicy = firewallPolicy;
             this.EnableHttp2 = enableHttp2;
             this.EnableFips = enableFips;
             this.AutoscaleConfiguration = autoscaleConfiguration;
+            this.ReservedCapacity = reservedCapacity;
             this.PrivateLinkConfigurations = privateLinkConfigurations;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.ResourceGuid = resourceGuid;
@@ -413,6 +430,14 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<ApplicationGatewayUrlPathMap> UrlPathMaps {get; set; }
 
         /// <summary>
+        /// Gets or sets advanced routing maps of the application gateway resource. For
+        /// default limits, see [Application Gateway
+        /// limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.advancedRoutingMaps")]
+        public System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingMap> AdvancedRoutingMaps {get; set; }
+
+        /// <summary>
         /// Gets or sets request routing rules of the application gateway resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requestRoutingRules")]
@@ -429,6 +454,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rewriteRuleSets")]
         public System.Collections.Generic.IList<ApplicationGatewayRewriteRuleSet> RewriteRuleSets {get; set; }
+
+        /// <summary>
+        /// Gets or sets advanced routing condition sets of the application gateway
+        /// resource. For default limits, see [Application Gateway
+        /// limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.advancedRoutingConditionSets")]
+        public System.Collections.Generic.IList<ApplicationGatewayAdvancedRoutingConditionSet> AdvancedRoutingConditionSets {get; set; }
 
         /// <summary>
         /// Gets or sets redirect configurations of the application gateway resource.
@@ -467,6 +500,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoscaleConfiguration")]
         public ApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reserved capacity of the application gateway resource.
+        /// Applicable to the Basic_v2 and Basic_WAF_v2 SKU tiers.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.reservedCapacity")]
+        public int? ReservedCapacity {get; set; }
 
         /// <summary>
         /// Gets or sets privateLink configurations on application gateway.
@@ -575,6 +615,16 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+            if (this.AdvancedRoutingMaps != null)
+            {
+                foreach (var element in this.AdvancedRoutingMaps)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
             if (this.RequestRoutingRules != null)
             {
                 foreach (var element in this.RequestRoutingRules)
@@ -596,6 +646,16 @@ namespace Microsoft.Azure.Management.Network.Models
                 }
             }
 
+            if (this.AdvancedRoutingConditionSets != null)
+            {
+                foreach (var element in this.AdvancedRoutingConditionSets)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
 
             if (this.WebApplicationFirewallConfiguration != null)
             {
