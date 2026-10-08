@@ -73,7 +73,7 @@ function Assert-EdgeActionContext {
 }
 
 function Initialize-EdgeActionTestModules {
-    param([hashtable]$Config, [string]$Mode)
+    param([hashtable]$Config, [string]$Mode, [string]$ModuleDirectory)
     $accounts = Join-Path $script:RepoRoot 'artifacts' 'Debug' 'Az.Accounts' 'Az.Accounts.psd1'
     foreach ($path in @($accounts, (Join-Path $script:Artifact 'test-module.ps1'))) {
         if (-not (Test-Path $path)) { throw "Build first using the repository helpers described in '$script:HowTo'; missing artifact: $path." }
@@ -88,11 +88,12 @@ function Initialize-EdgeActionTestModules {
     }
     $pester = Test-ModuleManifest -Path $pesterPath
     if ($pester.Name -ne 'Pester' -or $pester.Version -ne [version]'4.10.1') { throw 'PesterPath must identify Pester 4.10.1.' }
-    # The generated harness selects the highest discoverable Accounts version.
-    # Isolate discovery and preload exact modules before it runs.
-    $pesterRoot = $pester.ModuleBase
-    if ((Split-Path $pester.ModuleBase -Leaf) -eq '4.10.1') { $pesterRoot = Split-Path $pesterRoot }
-    $env:PSModulePath = @($pesterRoot,
+    # The harness imports Pester by name. Its search root must contain Pester/,
+    # without exposing newer versions or sibling installed Accounts modules.
+    $null = New-Item -Path $ModuleDirectory -ItemType Directory -Force
+    Copy-Item -LiteralPath $pester.ModuleBase -Destination (Join-Path $ModuleDirectory 'Pester') -Recurse
+    $pesterPath = Join-Path $ModuleDirectory 'Pester' 'Pester.psd1'
+    $env:PSModulePath = @($ModuleDirectory,
         (Join-Path $script:RepoRoot 'artifacts' 'Debug'), (Join-Path $PSHOME 'Modules')) -join [IO.Path]::PathSeparator
     $nested = Join-Path $script:Artifact 'generated' 'modules'
     foreach ($name in @('Pester', 'Az.Accounts')) {
@@ -101,7 +102,7 @@ function Initialize-EdgeActionTestModules {
         }
     }
     if (-not (Get-Module -ListAvailable Pester | Where-Object Version -EQ '4.10.1')) {
-        throw 'Pester 4.10.1 is not discoverable from its module directory. Use a standard Pester/4.10.1 installation layout.'
+        throw 'Pester 4.10.1 is not discoverable from the isolated module directory.'
     }
     $selectedAccounts = Get-Module -ListAvailable Az.Accounts | Sort-Object Version -Descending | Select-Object -First 1
     if (-not $selectedAccounts -or $selectedAccounts.ModuleBase -ne (Split-Path $accounts)) {
@@ -129,14 +130,15 @@ function Invoke-EdgeActionHarness {
 
 function Invoke-EdgeActionScenario {
     param([hashtable]$Config, [string]$Mode = 'Playback',
-        [string[]]$TestName, [switch]$AllowResourceChanges, [switch]$Login)
+        [string[]]$TestName, [switch]$AllowResourceChanges, [switch]$Login,
+        [Parameter(DontShow)][string]$ModuleDirectory)
     $ErrorActionPreference = 'Stop'
     $PSNativeCommandUseErrorActionPreference = $true
     Assert-EdgeActionMutation $Config $Mode -AllowResourceChanges:$AllowResourceChanges
     Assert-EdgeActionEnvironmentConfig $Config
     if ($Mode -eq 'Playback' -and $Login) { throw '-Login is only supported for explicit Record/Live runs.' }
     Write-Host 'Starting test dependency validation and loading.'
-    Initialize-EdgeActionTestModules $Config $Mode
+    Initialize-EdgeActionTestModules $Config $Mode $ModuleDirectory
     Write-Host 'Completed test dependency validation and loading.'
     if ($Mode -ne 'Playback') {
         Write-Host 'Starting live context and resource-group validation.'
@@ -164,6 +166,7 @@ function Invoke-EdgeActionScenario {
 function Assert-EdgeActionResults {
     param([string]$Path, [datetime]$Started, [int]$ExitCode)
     if (-not (Test-Path $Path) -or (Get-Item $Path).LastWriteTimeUtc -lt $Started) {
+        if ($ExitCode -ne 0) { throw "Scenario harness failed before producing fresh results (child exit $ExitCode). See the child error above. Results: $Path." }
         throw "Missing or stale test results: $Path (child exit $ExitCode)."
     }
     [xml]$xml = Get-Content $Path -Raw
@@ -180,7 +183,10 @@ function Assert-EdgeActionResults {
 
 function Invoke-EdgeActionTestChild {
     param([hashtable]$Options)
-    $data = @{ Module = $PSCommandPath; Options = $Options }
+    $moduleDirectory = Join-Path ([IO.Path]::GetTempPath()) ('edgeaction-test-modules-' + [guid]::NewGuid())
+    $childOptions = $Options.Clone()
+    $childOptions.ModuleDirectory = $moduleDirectory
+    $data = @{ Module = $PSCommandPath; Options = $childOptions }
     $serialized = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes([Management.Automation.PSSerializer]::Serialize($data)))
     $command = @'
 $ErrorActionPreference = 'Stop'
@@ -192,8 +198,12 @@ Invoke-EdgeActionScenario @options
 '@
     $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command.Replace('__DATA__', $serialized)))
     $PSNativeCommandUseErrorActionPreference = $false
-    & (Join-Path $PSHOME $(if ($IsWindows) { 'pwsh.exe' } else { 'pwsh' })) -NoLogo -NoProfile -OutputFormat Text -EncodedCommand $encoded | Out-Host
-    $LASTEXITCODE
+    try {
+        & (Join-Path $PSHOME $(if ($IsWindows) { 'pwsh.exe' } else { 'pwsh' })) -NoLogo -NoProfile -OutputFormat Text -EncodedCommand $encoded | Out-Host
+        $LASTEXITCODE
+    } finally {
+        if (Test-Path -LiteralPath $moduleDirectory) { Remove-Item -LiteralPath $moduleDirectory -Recurse -Force }
+    }
 }
 
 function Invoke-EdgeActionTests {
