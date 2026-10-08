@@ -28,6 +28,7 @@
     - Fixed Pester discovery for the artifact test harness by isolating the selected 4.10.1 installation in a temporary module search root.
     - Fixed test startup assembly conflicts by running the artifact harness from its own directory instead of resolving assemblies from the caller's source directory.
     - Record and Live test runs now prepare missing or incomplete Resources test support automatically before authentication; playback and complete installations do not trigger setup.
+    - Clarified pre-login environment registration and post-login context failures with property-specific diagnostics that redact subscription IDs and sensitive URL components.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
