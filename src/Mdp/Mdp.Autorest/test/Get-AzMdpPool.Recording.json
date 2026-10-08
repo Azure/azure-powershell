@@ -1,8 +1,8 @@
 {
-  "Get-AzMdpPool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2024-10-19+1": {
+  "Get-AzMdpPool+[NoContext]+List+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2026-07-03-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2024-10-19",
+      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2026-07-03-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMdpPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools/azmdp-pows3j?api-version=2024-10-19+1": {
+  "Get-AzMdpPool+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools/azmdp-pows3j?api-version=2026-07-03-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools/azmdp-pows3j?api-version=2024-10-19",
+      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools/azmdp-pows3j?api-version=2026-07-03-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzMdpPool+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2024-10-19+1": {
+  "Get-AzMdpPool+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2026-07-03-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2024-10-19",
+      "RequestUri": "https://management.azure.com/subscriptions/21af6cf1-77ad-42cd-ad19-e193de033071/resourceGroups/azmdppwsh9t2j7n/providers/Microsoft.DevOpsInfrastructure/pools?api-version=2026-07-03-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
