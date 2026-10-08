@@ -29,7 +29,7 @@ For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 0f8c562ea012f15798c44473e0ecc825f6f52495
+commit: 674249eaa51c99b24eaec7c6f83d533f0ca64c5e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

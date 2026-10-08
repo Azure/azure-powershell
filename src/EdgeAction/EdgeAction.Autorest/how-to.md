@@ -108,9 +108,11 @@ If artifacts are missing or source files changed, follow the separate [Check inp
 
 ### Install test prerequisites
 
-#### Install and verify Pester 4.10.1
+#### Install Pester 4.10.1 only if missing
 
-Install this exact version once for the current user, then verify discovery in the same PowerShell shell that will launch the runner. Skip the installation line if 4.10.1 is already discoverable. Pester 3 or 5 does not satisfy this requirement; installing 4.10.1 alongside them is sufficient.
+The runner automatically discovers Pester 4.10.1, validates its manifest/version, and imports an isolated temporary copy before running tests. **No manual discovery or verification step is required.** It does not install Pester or change your installed versions or global settings.
+
+If Pester 4.10.1 is not installed, install it once for the current user. Other Pester versions can remain installed alongside it:
 
 ```powershell
 Install-Module -Name Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Repository PSGallery -Force
@@ -124,43 +126,31 @@ Install-Module -Name Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Reposito
 
 [`-SkipPublisherCheck`](https://learn.microsoft.com/powershell/module/powershellget/install-module?view=powershellget-2.x#-skippublishercheck) bypasses the publisher-continuity check for this installation; it does **not** establish package trust or change global trust, TLS, or execution policy. Do not use it for arbitrary installation errors. Keep Pester 5 installed; the runner selects 4.10.1 explicitly. An existing trusted 4.10.1 installation selected through `PesterPath` below avoids installation altogether.
 
-After either installation command succeeds, verify discovery and the manifest:
-
-```powershell
-$pester = Get-Module -ListAvailable -Name Pester |
-    Where-Object Version -EQ '4.10.1' |
-    Select-Object -First 1
-if (-not $pester) {
-    throw 'Pester 4.10.1 is not discoverable. Reopen native PowerShell and recheck discovery, or configure PesterPath for an existing installation.'
-}
-$pesterManifest = Join-Path $pester.ModuleBase 'Pester.psd1'
-Test-ModuleManifest -Path $pesterManifest | Select-Object Name, Version, ModuleBase
-$pesterManifest
-```
-
-Leave `PesterPath = ''` in settings for normal discovery. If 4.10.1 is already installed in a nonstandard location, no reinstall is required: set `PesterPath` in your ignored settings file to the **absolute manifest filename**, for example `C:\tools\modules\Pester\4.10.1\Pester.psd1`, not the containing directory or `Pester.psm1`. Verify that file with `Test-ModuleManifest -Path '<absolute-manifest-path>'` and confirm name `Pester`, version `4.10.1`. Keep the `Pester\4.10.1\Pester.psd1` layout so the isolated child can discover it. `PesterPath` is a configuration key, not a `-PesterPath` runner parameter.
+Leave `PesterPath = ''` for automatic discovery. If the runner cannot find an existing 4.10.1 installation, reopen native PowerShell or set `PesterPath` in the optional local settings file below to its **absolute manifest filename**, for example `C:\tools\modules\Pester\4.10.1\Pester.psd1`, not a directory or `Pester.psm1`. The runner validates that file too; no reinstall or separate verification is needed. `PesterPath` is a settings key, not a runner parameter.
 
 ### Test Settings
 
-Configuration files are beside the runner in `..\tools\TestScripts`, relative to the module working directory:
+**No local settings file is required.** The runner always loads `..\tools\TestScripts\TestSettings.psd1`. Without a local file or `-ConfigPath`, these shared defaults are used unchanged: Azure public cloud (`AzureCloud`), automatic Pester discovery, and no subscription.
+
+Create `TestSettings.local.psd1` beside it only when you need personal overrides, such as Brazilus, a test subscription, or a nonstandard Pester path. The runner loads this optional file automatically **over the shared defaults**; settings omitted from it still use `TestSettings.psd1`.
 
 | File | Role |
 | --- | --- |
-| `TestSettings.psd1` | Tracked shared defaults: Azure public cloud (`AzureCloud`), no subscription. |
-| `TestSettings.local.example.psd1` | Tracked, safe **Brazilus override** template; never loaded automatically. |
-| `TestSettings.local.psd1` | Git-ignored personal override, discovered automatically when present. Edit this file, not the tracked files, for your subscription and local paths. |
+| `TestSettings.psd1` | Required, tracked shared defaults; used alone when no override is selected. |
+| `TestSettings.local.psd1` | Optional, Git-ignored personal overrides; loaded automatically when present. |
+| `TestSettings.local.example.psd1` | Optional Brazilus starter template; never loaded automatically. |
 
-The runner loads shared defaults, then the discovered sibling override **or** the file selected by `-ConfigPath`; an explicit path replaces sibling discovery, not the defaults. A nonempty `-SubscriptionId` argument overrides the merged subscription. `-Mode` (default `Playback`), `-TestName`, `-AllowResourceChanges`, and `-Login` are command-line options, not settings-file keys.
-
-A relative explicit `-ConfigPath` is resolved from this module working directory, not the script's directory. Automatic sibling discovery and artifact paths are anchored to the invoked script. Explicit absolute paths in settings, such as `PesterPath`, are used as supplied; correct those in your local settings if they point to another checkout.
-
-For public-cloud defaults, no override is needed; if you already have a local override, select `-ConfigPath ..\tools\TestScripts\TestSettings.psd1` to bypass it. To use Brazilus, copy the example without overwriting an existing local file, then edit the local copy:
+For Brazilus, copy the example once, then edit the local copy with your authorized test subscription. This command preserves an existing local file:
 
 ```powershell
 if (-not (Test-Path ..\tools\TestScripts\TestSettings.local.psd1)) {
     Copy-Item ..\tools\TestScripts\TestSettings.local.example.psd1 ..\tools\TestScripts\TestSettings.local.psd1
 }
 ```
+
+To choose a different override file, pass `-ConfigPath '<path>'`; it replaces the automatic local override, not the shared defaults. Relative paths are resolved from your current working directory. To ignore an existing local file and use only shared defaults, pass `-ConfigPath ..\tools\TestScripts\TestSettings.psd1`.
+
+A nonempty `-SubscriptionId` argument takes precedence over either settings file. `-Mode` (default `Playback`), `-TestName`, `-AllowResourceChanges`, and `-Login` are command-line options, not settings keys.
 
 These are the only supported settings keys; values must be strings. Omitted keys inherit the shared defaults.
 

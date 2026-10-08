@@ -27,7 +27,7 @@ Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String>
 
 ## DESCRIPTION
 A long-running resource action that retrieves the version code for an Edge Action version.
-When the -OutputPath parameter is specified, the base64-encoded content is decoded and saved
+When the -OutputPath parameter is specified, the base64-encoded content is decoded and saved 
 as a zip file to the specified directory.
 Otherwise, returns the raw response with base64 content.
 
@@ -199,3 +199,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
