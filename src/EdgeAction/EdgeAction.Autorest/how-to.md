@@ -98,6 +98,8 @@ Set-Location .\src\EdgeAction\EdgeAction.Autorest
 
 If your shell is elsewhere, navigate directly to that folder in the intended checkout using its full path. Stay there for the remaining test instructions, including offline runner tests. No previously assigned path variables or user-set environment variables are required. The runner derives repository and artifact paths from its own script location.
 
+The runner switches its child process to the artifact harness directory before invoking tests, so relative assembly paths use the built artifact DLLs rather than source-folder copies. Your shell stays in the source module directory.
+
 Confirm built artifacts and install any missing test prerequisites below before configuring the runner. It does not install native tools or build EdgeAction; authorized Record/Live runs automatically generate/build missing Resources test support as described below.
 
 ### Confirm built artifacts
