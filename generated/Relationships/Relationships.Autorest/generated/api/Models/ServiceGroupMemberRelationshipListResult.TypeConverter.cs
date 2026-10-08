@@ -6,10 +6,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ServiceGroupMemberRelationshipProperties"
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ServiceGroupMemberRelationshipListResult"
     /// />
     /// </summary>
-    public partial class ServiceGroupMemberRelationshipPropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class ServiceGroupMemberRelationshipListResultTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -25,13 +25,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ServiceGroupMemberRelationshipProperties"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ServiceGroupMemberRelationshipListResult"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ServiceGroupMemberRelationshipProperties"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ServiceGroupMemberRelationshipListResult"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ServiceGroupMemberRelationshipProperties" /> type, otherwise
+        /// <c>true</c> if the instance could be converted to a <see cref="ServiceGroupMemberRelationshipListResult" /> type, otherwise
         /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
@@ -95,33 +95,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ServiceGroupMemberRelationshipProperties" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ServiceGroupMemberRelationshipListResult" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ServiceGroupMemberRelationshipProperties"
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ServiceGroupMemberRelationshipListResult"
         /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ServiceGroupMemberRelationshipProperties"
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="ServiceGroupMemberRelationshipListResult"
         /// />.</param>
         /// <returns>
-        /// an instance of <see cref="ServiceGroupMemberRelationshipProperties" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ServiceGroupMemberRelationshipListResult" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipListResult ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipListResult).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ServiceGroupMemberRelationshipProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return ServiceGroupMemberRelationshipListResult.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ServiceGroupMemberRelationshipProperties.DeserializeFromPSObject(sourceValue);
+                return ServiceGroupMemberRelationshipListResult.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ServiceGroupMemberRelationshipProperties.DeserializeFromDictionary(sourceValue);
+                return ServiceGroupMemberRelationshipListResult.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }
