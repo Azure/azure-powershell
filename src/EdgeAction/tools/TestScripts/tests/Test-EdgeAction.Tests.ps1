@@ -124,6 +124,7 @@ InModuleScope EdgeAction.TestRunner {
         # Placeholders ensure that a missing mock cannot accidentally call Azure.
         function Disable-AzContextAutosave { throw 'Unexpected real call' }
         function Get-AzEnvironment { throw 'Unexpected real call' }
+        function Add-AzEnvironment { param($Name, $ARMEndpoint, $Scope) throw 'Unexpected real call' }
         function Connect-AzAccount { param($Environment, $Subscription, $Scope) throw 'Unexpected real call' }
         function Get-AzContext { throw 'Unexpected real call' }
         function Invoke-AzRestMethod { param($Method, $Path) throw 'Unexpected real call' }
@@ -138,6 +139,9 @@ InModuleScope EdgeAction.TestRunner {
                 ApiVersion = '2026-10-01'
             }
             Mock Initialize-EdgeActionTestModules {}
+            Mock Initialize-EdgeActionResources {}
+            Mock Confirm-EdgeActionEnvironmentRegistration { throw 'fixture registration not approved' }
+            Mock Add-AzEnvironment {}
             Mock Invoke-EdgeActionHarness {}
             Mock Disable-AzContextAutosave {}
             Mock Connect-AzAccount {}
@@ -168,6 +172,11 @@ InModuleScope EdgeAction.TestRunner {
             Assert-MockCalled Get-AzContext -Scope It -Times 0 -Exactly
             Assert-MockCalled Invoke-AzRestMethod -Scope It -Times 0 -Exactly
             Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Get-AzEnvironment -Scope It -Times 0 -Exactly
+            Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 0 -Exactly
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 0 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+            Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
         }
         It 'rejects playback login' {
             { Invoke-EdgeActionScenario $config -Login } | Should -Throw 'only supported for explicit'
@@ -187,6 +196,8 @@ InModuleScope EdgeAction.TestRunner {
             ($script:stepMessages -join '|') | Should -Be (@(
                 'Starting test dependency validation and loading.'
                 'Completed test dependency validation and loading.'
+                'Starting registered-environment verification.'
+                'Completed registered-environment verification.'
                 'Starting live context and resource-group validation.'
                 'Starting process-scoped login.'
             ) -join '|')
@@ -202,6 +213,8 @@ InModuleScope EdgeAction.TestRunner {
                 { Invoke-EdgeActionScenario $config -Mode $mode -AllowResourceChanges } | Should -Throw 'explicit SubscriptionId'
             }
             Assert-MockCalled Initialize-EdgeActionTestModules -Scope It -Times 0 -Exactly
+            Assert-MockCalled Get-AzEnvironment -Scope It -Times 0 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
             Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
         }
         It 'rejects an unexpected registered environment for <Name> before login' -TestCases $environments {
@@ -212,14 +225,20 @@ InModuleScope EdgeAction.TestRunner {
             { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } |
                 Should -Throw 'does not match'
             Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+            Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
             Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
         }
-        It 'identifies a missing registered environment before login or context lookup' {
+        It 'stops on declined missing Brazilus registration before support or login' {
             Mock Get-AzEnvironment { $null }
             { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } |
-                Should -Throw "Registered Azure environment does not match: environment 'Brazilus' is missing"
+                Should -Throw 'fixture registration not approved'
+            Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 1 -Exactly
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 0 -Exactly
             Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
             Assert-MockCalled Get-AzContext -Scope It -Times 0 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+            Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
             Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
             ($script:stepMessages -join '|') | Should -Not -Match 'Starting process-scoped login|Completed live context'
         }
@@ -263,6 +282,8 @@ InModuleScope EdgeAction.TestRunner {
             (@($script:stepMessages | Where-Object { $_ -match '^(Starting|Completed) ' }) -join '|') | Should -Be (@(
                 'Starting test dependency validation and loading.'
                 'Completed test dependency validation and loading.'
+                'Starting registered-environment verification.'
+                'Completed registered-environment verification.'
                 'Starting live context and resource-group validation.'
                 'Starting process-scoped login.'
                 'Completed process-scoped login.'
@@ -276,6 +297,134 @@ InModuleScope EdgeAction.TestRunner {
                 $Method -eq 'GET' -and $Path -like '*/resourcegroups/powershelltests?api-version=2021-04-01'
             }
             Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 1 -Exactly -ParameterFilter { $Mode -eq 'Record' }
+            Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 0 -Exactly
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 0 -Exactly
+        }
+        It 'registers missing Brazilus only after confirmation and validates before setup in <Mode>' -TestCases @(
+            @{ Mode = 'Record' }
+            @{ Mode = 'Live' }
+        ) {
+            param($Mode)
+            $script:registered = $false
+            Mock Get-AzEnvironment {
+                if ($script:registered) {
+                    @{
+                        Name = 'Brazilus'; ResourceManagerUrl = $config.ResourceManagerUrl
+                        ActiveDirectoryServiceEndpointResourceId = $config.Audience
+                    }
+                }
+            }
+            Mock Confirm-EdgeActionEnvironmentRegistration {
+                Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+                Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            }
+            Mock Add-AzEnvironment {
+                Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 1 -Exactly
+                $script:registered = $true
+            }
+            Mock Initialize-EdgeActionResources {
+                Assert-MockCalled Get-AzEnvironment -Scope It -Times 2 -Exactly
+                ($script:stepMessages -join '|') | Should -Match 'Completed registered-environment verification'
+            }
+            Invoke-EdgeActionScenario $config -Mode $Mode -AllowResourceChanges -Login
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 1 -Exactly -ParameterFilter {
+                $Name -eq 'Brazilus' -and $ARMEndpoint -eq 'https://brazilus.management.azure.com/' -and $Scope -eq 'CurrentUser'
+            }
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 1 -Exactly
+        }
+        It 'does not offer registration for a missing AzureCloud environment' {
+            $config.EnvironmentName = 'AzureCloud'
+            $config.ResourceManagerUrl = 'https://management.azure.com/'
+            Mock Get-AzEnvironment { $null }
+            { Invoke-EdgeActionScenario $config -Mode Live -AllowResourceChanges } |
+                Should -Throw "environment 'AzureCloud' is missing"
+            Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 0 -Exactly
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 0 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+        }
+        It 'stops before support when approved registration <Outcome>' -TestCases @(
+            @{ Outcome = 'fails'; Message = 'fixture metadata failure' }
+            @{ Outcome = 'returns mismatched metadata'; Message = 'ActiveDirectoryServiceEndpointResourceId expected' }
+            @{ Outcome = 'remains missing'; Message = "environment 'Brazilus' is missing" }
+        ) {
+            param($Outcome, $Message)
+            $script:registered = $false
+            Mock Confirm-EdgeActionEnvironmentRegistration {}
+            Mock Get-AzEnvironment {
+                if ($script:registered -and $Outcome -ne 'remains missing') {
+                    @{
+                        Name = 'Brazilus'; ResourceManagerUrl = $config.ResourceManagerUrl
+                        ActiveDirectoryServiceEndpointResourceId = 'https://unexpected.invalid/'
+                    }
+                }
+            }
+            Mock Add-AzEnvironment {
+                if ($Outcome -eq 'fails') { throw 'fixture metadata failure' }
+                $script:registered = $true
+            }
+            { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } | Should -Throw $Message
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 1 -Exactly
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+            Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
+        }
+        It 'verifies registration before Resources setup and authentication for <Mode>' -TestCases @(
+            @{ Mode = 'Record' }
+            @{ Mode = 'Live' }
+        ) {
+            param($Mode)
+            Mock Get-AzEnvironment {
+                Assert-MockCalled Initialize-EdgeActionTestModules -Scope It -Times 1 -Exactly
+                @{
+                    Name = $config.EnvironmentName; ResourceManagerUrl = $config.ResourceManagerUrl
+                    ActiveDirectoryServiceEndpointResourceId = $config.Audience
+                }
+            }
+            Mock Initialize-EdgeActionResources {
+                Assert-MockCalled Get-AzEnvironment -Scope It -Times 1 -Exactly
+                Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
+                Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+                ($script:stepMessages -join '|') | Should -Match 'Completed registered-environment verification'
+            }
+            Mock Connect-AzAccount {
+                Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 1 -Exactly
+            }
+            Invoke-EdgeActionScenario $config -Mode $Mode -AllowResourceChanges -Login
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 1 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 1 -Exactly
+        }
+        It 'stops on a <Property> preflight mismatch before support or profile changes in <Mode>' -TestCases @(
+            @{ Property = 'Name'; Mode = 'Record' }
+            @{ Property = 'ResourceManagerUrl'; Mode = 'Live' }
+            @{ Property = 'ActiveDirectoryServiceEndpointResourceId'; Mode = 'Record' }
+        ) {
+            param($Property, $Mode)
+            Mock Get-AzEnvironment {
+                $environment = @{
+                    Name = $config.EnvironmentName; ResourceManagerUrl = $config.ResourceManagerUrl
+                    ActiveDirectoryServiceEndpointResourceId = $config.Audience
+                }
+                $environment[$Property] = 'https://unexpected.invalid/'
+                $environment
+            }
+            { Invoke-EdgeActionScenario $config -Mode $Mode -AllowResourceChanges -Login } |
+                Should -Throw "Registered Azure environment does not match: $Property"
+            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 0 -Exactly
+            Assert-MockCalled Confirm-EdgeActionEnvironmentRegistration -Scope It -Times 0 -Exactly
+            Assert-MockCalled Add-AzEnvironment -Scope It -Times 0 -Exactly
+            Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
+            Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-AzRestMethod -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
+        }
+        It 'stops before authentication when support setup fails after successful verification' {
+            Mock Initialize-EdgeActionResources { throw 'fixture support setup failed' }
+            { Invoke-EdgeActionScenario $config -Mode Record -AllowResourceChanges -Login } | Should -Throw 'fixture support setup failed'
+            ($script:stepMessages -join '|') | Should -Match 'Completed registered-environment verification'
+            ($script:stepMessages -join '|') | Should -Not -Match 'Starting live context|Starting Record scenario'
+            Assert-MockCalled Connect-AzAccount -Scope It -Times 0 -Exactly
+            Assert-MockCalled Disable-AzContextAutosave -Scope It -Times 0 -Exactly
+            Assert-MockCalled Invoke-EdgeActionHarness -Scope It -Times 0 -Exactly
         }
         It 'rejects unvalidated direct scenario configurations before module loading' {
             foreach ($key in 'EnvironmentName', 'ResourceManagerUrl', 'Audience') {
@@ -324,7 +473,7 @@ InModuleScope EdgeAction.TestRunner {
         }
         AfterEach { $env:PSModulePath = $savedModulePath }
         It 'stages only the selected Pester version under a module search root' {
-            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive
+            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } $TestDrive
             ($env:PSModulePath -split [IO.Path]::PathSeparator)[0] | Should -Be ([string]$TestDrive)
             Assert-MockCalled Copy-Item -Scope It -Times 1 -Exactly -ParameterFilter {
                 $LiteralPath -eq (Join-Path $TestDrive 'shared' 'Pester' '4.10.1') -and
@@ -335,8 +484,8 @@ InModuleScope EdgeAction.TestRunner {
         }
         It 'rejects missing built artifacts' {
             Mock Test-Path { $false }
-            { Initialize-EdgeActionTestModules @{} Playback } | Should -Throw 'Build first'
-            { Initialize-EdgeActionTestModules @{} Playback } |
+            { Initialize-EdgeActionTestModules @{} } | Should -Throw 'Build first'
+            { Initialize-EdgeActionTestModules @{} } |
                 Should -Throw (Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'how-to.md')
             Assert-MockCalled Import-Module -Scope It -Times 0 -Exactly
         }
@@ -349,7 +498,7 @@ InModuleScope EdgeAction.TestRunner {
             $howTo = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'how-to.md'
             Push-Location (Join-Path $script:RepoRoot $WorkingFolder)
             try {
-                { Initialize-EdgeActionTestModules @{} Playback } |
+                { Initialize-EdgeActionTestModules @{} } |
                     Should -Throw "Install Pester 4.10.1 as described in '$howTo'"
             } finally {
                 Pop-Location
@@ -358,24 +507,13 @@ InModuleScope EdgeAction.TestRunner {
         }
         It 'rejects the wrong Pester version' {
             Mock Test-ModuleManifest { @{ Name = 'Pester'; Version = [version]'5.7.0' } }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } $TestDrive } |
                 Should -Throw 'must identify Pester 4.10.1'
         }
         It 'rejects shadowing Accounts modules instead of using them' {
             Mock Get-Module { @{ Version = [version]'99.0'; ModuleBase = 'wrong' } } -ParameterFilter { $Name -eq 'Az.Accounts' }
-            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } Playback $TestDrive } |
+            { Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } $TestDrive } |
                 Should -Throw 'different Az.Accounts'
-        }
-        It 'prepares Resources only after loading Accounts and Pester for <Mode>' -TestCases @(
-            @{ Mode = 'Record' }
-            @{ Mode = 'Live' }
-        ) {
-            param($Mode)
-            Mock Initialize-EdgeActionResources {
-                Assert-MockCalled Import-Module -Scope It -Times 2 -Exactly
-            }
-            Initialize-EdgeActionTestModules @{ PesterPath = 'fixture.psd1' } $Mode $TestDrive
-            Assert-MockCalled Initialize-EdgeActionResources -Scope It -Times 1 -Exactly
         }
     }
 
@@ -499,6 +637,39 @@ if ($behavior -eq 'invalid import') { "throw 'Fixture import failure'" | Set-Con
             } finally { $env:PATH = $savedEnvironment.PATH }
             Test-Path (Join-Path $script:Artifact 'tools') | Should -Be $false
             ($script:resourceMessages -join '|') | Should -Be 'Starting Resources test-support setup.'
+        }
+    }
+
+    Describe 'Brazilus registration confirmation' {
+        It 'accepts explicit <Answer> approval with persistent-change disclosure' -TestCases @(
+            @{ Answer = 'y' }
+            @{ Answer = 'YES' }
+        ) {
+            param($Answer)
+            Mock Read-Host { $Answer }
+            { Confirm-EdgeActionEnvironmentRegistration -Interactive $true } | Should -Not -Throw
+            Assert-MockCalled Read-Host -Scope It -Times 1 -Exactly -ParameterFilter {
+                $Prompt -like '*metadata over the network*persistently*CurrentUser*'
+            }
+        }
+        It 'declines <Label> without default consent' -TestCases @(
+            @{ Label = 'blank'; Answer = '' }
+            @{ Label = 'no'; Answer = 'n' }
+            @{ Label = 'unrecognized input'; Answer = 'maybe' }
+        ) {
+            param($Answer)
+            Mock Read-Host { $Answer }
+            { Confirm-EdgeActionEnvironmentRegistration -Interactive $true } | Should -Throw 'not approved'
+        }
+        It 'fails without reading input when noninteractive' {
+            Mock Read-Host { throw 'must not prompt' }
+            { Confirm-EdgeActionEnvironmentRegistration -Interactive $false } | Should -Throw 'interactive confirmation is unavailable'
+            Assert-MockCalled Read-Host -Scope It -Times 0 -Exactly
+        }
+        It 'reports an unavailable host prompt without approving registration' {
+            Mock Read-Host { throw 'fixture host unavailable' }
+            { Confirm-EdgeActionEnvironmentRegistration -Interactive $true } |
+                Should -Throw 'confirmation failed; no registration was attempted'
         }
     }
 
@@ -656,6 +827,40 @@ Describe 'Isolated runner integration with a local fixture harness' {
         $harness = Join-Path $artifact 'test-module.ps1'
         $resultPath = Join-Path $artifact 'test' 'Az.EdgeAction-TestResults.xml'
         $pwsh = [Environment]::ProcessPath
+    }
+    It 'propagates noninteractive hosting and refuses missing Brazilus before support setup in <Mode>' -TestCases @(
+        @{ Mode = 'Record' }
+        @{ Mode = 'Live' }
+    ) {
+        param($Mode)
+        "@{ ModuleVersion = '1.0.0'; RootModule = 'Az.Accounts.psm1' }" |
+            Set-Content (Join-Path $accounts 'Az.Accounts.psd1')
+        @'
+function Get-AzEnvironment {
+    param($Name)
+    if (-not ([Environment]::GetCommandLineArgs() -match '^-NonI')) { throw 'Noninteractive flag was not propagated' }
+    'verified' | Set-Content (Join-Path $PSScriptRoot 'preflight.txt')
+}
+function Add-AzEnvironment { throw 'Unexpected registration' }
+function Connect-AzAccount { throw 'Unexpected login' }
+Export-ModuleMember -Function Get-AzEnvironment, Add-AzEnvironment, Connect-AzAccount
+'@ | Set-Content (Join-Path $accounts 'Az.Accounts.psm1')
+        @"
+@{
+    PesterPath = '$pester'
+    EnvironmentName = 'Brazilus'
+    ResourceManagerUrl = 'https://brazilus.management.azure.com/'
+    SubscriptionId = '00000000-0000-0000-0000-000000000001'
+}
+"@ | Set-Content (Join-Path $scripts 'TestSettings.local.psd1')
+        "throw 'Unexpected harness invocation'" | Set-Content $harness
+        "throw 'Unexpected support setup'" | Set-Content (Join-Path $artifact 'check-dependencies.ps1')
+        $output = & $pwsh -NonInteractive -NoProfile -File $runner -Mode $Mode -AllowResourceChanges -Login 2>&1
+        $LASTEXITCODE | Should -Not -Be 0
+        Get-Content (Join-Path $accounts 'preflight.txt') | Should -Be 'verified'
+        ($output -join "`n") | Should -Match 'interactive confirmation is unavailable'
+        ($output -join "`n") | Should -Not -Match 'Unexpected |Starting Resources|Starting process-scoped login'
+        Test-Path $resultPath | Should -Be $false
     }
     It 'resolves fixture settings and artifacts from <Location> with <Configuration> config' -TestCases @(
         @{ Location = 'root'; Configuration = 'discovered' }

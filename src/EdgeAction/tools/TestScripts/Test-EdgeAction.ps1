@@ -8,6 +8,10 @@ Record/Live require -AllowResourceChanges and an explicit expected subscription.
 Shared settings select AzureCloud; the local example selects Brazilus. Only their
 documented ARM endpoints and the public ARM audience are accepted.
 Use -Login to authenticate inside the same isolated process as the harness.
+Before support setup, Record/Live verify the configured registered environment.
+If Brazilus is missing, an interactive console prompts before requesting endpoint
+metadata and persisting its registration in the CurrentUser Az profile. Default is No.
+Noninteractive runs must have the environment registered already.
 Record/Live automatically generate/build missing or incomplete Resources test support
 using the existing artifact dependency helper. Native build tools must be installed.
 Playback never prepares Resources support; complete installations are reused.

@@ -65,7 +65,7 @@ function Assert-EdgeActionMutation {
 function Assert-EdgeActionEnvironmentMatch {
     param([hashtable]$Config, $Environment, [string]$Stage)
     if (-not $Environment) {
-        throw "$Stage does not match: environment '$($Config.EnvironmentName)' is missing. Ensure Get-AzEnvironment -Name '$($Config.EnvironmentName)' returns the expected registration in a fresh pwsh -NoProfile process; another shell's process-only registration is not inherited."
+        throw "$Stage does not match: environment '$($Config.EnvironmentName)' is missing. Follow the manual registration guidance in '$script:HowTo'. Ensure Get-AzEnvironment -Name '$($Config.EnvironmentName)' returns the expected registration in a fresh pwsh -NoProfile process; another shell's process-only registration is not inherited."
     }
     $expected = [ordered]@{
         Name = $Config.EnvironmentName
@@ -92,6 +92,26 @@ function Assert-EdgeActionEnvironmentMatch {
     }
 }
 
+function Confirm-EdgeActionEnvironmentRegistration {
+    param([bool]$Interactive = (
+        [Environment]::UserInteractive -and -not [Console]::IsInputRedirected -and
+        $Host.Name -eq 'ConsoleHost' -and
+        -not ([Environment]::GetCommandLineArgs() -match '^-NonI')
+    ))
+    $guidance = "Register Brazilus manually as described in '$script:HowTo', then retry in a fresh process."
+    if (-not $Interactive) {
+        throw "Brazilus is not registered and interactive confirmation is unavailable. $guidance"
+    }
+    try {
+        [string]$answer = Read-Host 'Brazilus is missing. Register it using Add-AzEnvironment -Name Brazilus -ARMEndpoint https://brazilus.management.azure.com/ -Scope CurrentUser? This requests endpoint metadata over the network and persistently changes your CurrentUser Az profile for future processes. [y/N]'
+    } catch {
+        throw "Brazilus registration confirmation failed; no registration was attempted. $guidance"
+    }
+    if ($answer.Trim() -notmatch '^(y|yes)$') {
+        throw "Brazilus registration was not approved; no registration was attempted. $guidance"
+    }
+}
+
 function Assert-EdgeActionContext {
     param([hashtable]$Config, $Context)
     if (-not $Context) { throw 'Azure context is missing. Use -Login for an explicit Record/Live run.' }
@@ -103,7 +123,7 @@ function Assert-EdgeActionContext {
 }
 
 function Initialize-EdgeActionTestModules {
-    param([hashtable]$Config, [string]$Mode, [string]$ModuleDirectory)
+    param([hashtable]$Config, [string]$ModuleDirectory)
     $accounts = Join-Path $script:RepoRoot 'artifacts' 'Debug' 'Az.Accounts' 'Az.Accounts.psd1'
     foreach ($path in @($accounts, (Join-Path $script:Artifact 'test-module.ps1'))) {
         if (-not (Test-Path $path)) { throw "Build first using the repository helpers described in '$script:HowTo'; missing artifact: $path." }
@@ -140,7 +160,6 @@ function Initialize-EdgeActionTestModules {
     }
     Import-Module $accounts -Force -Global
     Import-Module $pesterPath -Force -Global
-    if ($Mode -ne 'Playback') { Initialize-EdgeActionResources }
     Write-Host "Using built Az.Accounts, Pester 4.10.1, and artifact harness: $script:Artifact"
 }
 
@@ -247,13 +266,21 @@ function Invoke-EdgeActionScenario {
     Assert-EdgeActionEnvironmentConfig $Config
     if ($Mode -eq 'Playback' -and $Login) { throw '-Login is only supported for explicit Record/Live runs.' }
     Write-Host 'Starting test dependency validation and loading.'
-    Initialize-EdgeActionTestModules $Config $Mode $ModuleDirectory
+    Initialize-EdgeActionTestModules $Config $ModuleDirectory
     Write-Host 'Completed test dependency validation and loading.'
     if ($Mode -ne 'Playback') {
+        Write-Host 'Starting registered-environment verification.'
+        $environment = Get-AzEnvironment -Name $Config.EnvironmentName
+        if (-not $environment -and $Config.EnvironmentName -eq 'Brazilus') {
+            Confirm-EdgeActionEnvironmentRegistration
+            Add-AzEnvironment -Name Brazilus -ARMEndpoint 'https://brazilus.management.azure.com/' -Scope CurrentUser | Out-Null
+            $environment = Get-AzEnvironment -Name $Config.EnvironmentName
+        }
+        Assert-EdgeActionEnvironmentMatch $Config $environment 'Registered Azure environment'
+        Write-Host 'Completed registered-environment verification.'
+        Initialize-EdgeActionResources
         Write-Host 'Starting live context and resource-group validation.'
         Disable-AzContextAutosave -Scope Process | Out-Null
-        $environment = Get-AzEnvironment -Name $Config.EnvironmentName
-        Assert-EdgeActionEnvironmentMatch $Config $environment 'Registered Azure environment'
         if ($Login) {
             Write-Host 'Starting process-scoped login.'
             Connect-AzAccount -Environment $Config.EnvironmentName -Subscription $Config.SubscriptionId -Scope Process | Out-Null
@@ -304,9 +331,11 @@ $options = $data.Options
 Invoke-EdgeActionScenario @options
 '@
     $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command.Replace('__DATA__', $serialized)))
+    $hostArguments = @()
+    if ([Environment]::GetCommandLineArgs() -match '^-NonI') { $hostArguments += '-NonInteractive' }
     $PSNativeCommandUseErrorActionPreference = $false
     try {
-        & (Join-Path $PSHOME $(if ($IsWindows) { 'pwsh.exe' } else { 'pwsh' })) -NoLogo -NoProfile -OutputFormat Text -EncodedCommand $encoded | Out-Host
+        & (Join-Path $PSHOME $(if ($IsWindows) { 'pwsh.exe' } else { 'pwsh' })) @hostArguments -NoLogo -NoProfile -OutputFormat Text -EncodedCommand $encoded | Out-Host
         $LASTEXITCODE
     } finally {
         if (Test-Path -LiteralPath $moduleDirectory) { Remove-Item -LiteralPath $moduleDirectory -Recurse -Force }

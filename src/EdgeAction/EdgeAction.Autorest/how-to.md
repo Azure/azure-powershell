@@ -196,7 +196,7 @@ Edit source tests and assertions, then rebuild to refresh artifact tests. There 
 
 #### Automatic Resources test support (Record/Live only)
 
-After configuration and `-AllowResourceChanges` checks, the runner prepares missing or incomplete `Az.Resources.TestSupport` under `$HOME\.PSSharedModules\Resources`, before login or scenarios. **Playback never prepares Resources support.** A complete installed module is validated/imported and reused without downloads or generation.
+After configuration and `-AllowResourceChanges` checks, the runner loads built Accounts and Pester, then verifies the registered environment before preparing missing or incomplete `Az.Resources.TestSupport` under `$HOME\.PSSharedModules\Resources`. A missing Brazilus registration requires separate confirmation as described below; an unapproved or mismatched registration stops before support setup, login, or scenarios. **Playback skips environment verification and never prepares Resources support.** A complete installed module is validated/imported and reused without downloads or generation.
 
 Missing support requires the native build tools from the build prerequisites above (Node.js 20+, native .NET SDK 8+, installed AutoRest CLI). The runner supplies approved npm/NuGet feeds and native dotnet resolution inside its child process, restores those settings after setup, and does not install native tools or change global configuration. Pester 4.10.1 and built Accounts must already be available.
 
@@ -206,9 +206,11 @@ If source support inputs are missing, run the repository generation/build steps 
 
 #### Run with explicit consent
 
-Before `-Login`, the runner checks that the configured environment is registered in its fresh `pwsh -NoProfile` child. A registration made only in another shell is not inherited. An error starting with **Registered Azure environment** identifies this pre-login check; **Azure context** identifies the post-login context check. Errors name the mismatched property without printing subscription IDs or credential-bearing URLs.
+Before Resources setup or `-Login`, the runner uses `Get-AzEnvironment` in its fresh `pwsh -NoProfile` child to verify the configured name, ARM endpoint, and audience. Existing registrations are checked read-only and are never overwritten. A registration made only in another shell is not inherited. An error starting with **Registered Azure environment** identifies this preflight check; **Azure context** identifies the later context check. Errors name the mismatched property without printing subscription IDs or credential-bearing URLs.
 
-For an approved but missing Brazilus registration, import the built Accounts module in a separate setup shell and run `Add-AzEnvironment -Name Brazilus -ARMEndpoint 'https://brazilus.management.azure.com/' -Scope CurrentUser`. This retrieves authentication metadata and persists the registration for new processes; it does not sign in. Do not overwrite an existing registration or change its audience merely to bypass validation. Verify `Get-AzEnvironment -Name Brazilus` in a fresh shell using the same Accounts module before retrying. The runner never creates registrations automatically, and `-Login` cannot repair a missing registration.
+If the configured Brazilus environment is missing, an interactive console prompts **[y/N]** before running `Add-AzEnvironment -Name Brazilus -ARMEndpoint 'https://brazilus.management.azure.com/' -Scope CurrentUser`. Only `y` or `yes` approves this separate action: it requests authentication metadata over the network and persistently adds the named environment to the CurrentUser Az profile for future processes; it does not sign in or switch the active context. A blank answer, decline, unavailable console input, or noninteractive execution stops without registration. `-AllowResourceChanges` does not approve registration, and Playback never prompts.
+
+After approval, the runner re-reads and validates the registered endpoints before support setup. A failed registration or unexpected metadata stops the run; any registration already persisted remains, with no rollback. Do not change the discovered audience merely to bypass validation. For unattended runs, use the same command manually in a setup shell with built Accounts imported, then verify `Get-AzEnvironment -Name Brazilus` in a fresh shell using that module before retrying.
 
 ```powershell
 & ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login -TestName 'Get-AzEdgeAction'
@@ -216,7 +218,7 @@ For an approved but missing Brazilus registration, import the built Accounts mod
 
 That command uses the subscription in local configuration; alternatively add `-SubscriptionId '<authorized-test-subscription-id>'`. Use `-Mode Live` with the same consent flags for live execution without recording. These flags authorize resource mutations, not just HTTP capture.
 
-The runner authenticates with `-Login` inside a child PowerShell process and invokes the artifact harness with `-NotIsolated` in that **same child**, preserving its process-local context. Without `-Login`, an already-saved matching Az context must be available to the child; a process-only login in the caller is not inherited. Before any scenario, the runner verifies subscription, environment name, ARM endpoint, audience, and read access to the existing resource group. Endpoint selection does not prove that the stable API is deployed or the identity can perform every operation.
+The runner authenticates with `-Login` inside a child PowerShell process and invokes the artifact harness with `-NotIsolated` in that **same child**, preserving its process-local context. Context autosave is disabled for that child: its login does not switch the calling shell's context, so no production-context reset is needed afterward. The separately approved environment registration persists and is not removed on exit. Without `-Login`, an already-saved matching Az context must be available to the child; a process-only login in the caller is not inherited. Before any scenario, the runner verifies subscription, environment name, ARM endpoint, audience, and read access to the existing resource group. Endpoint selection does not prove that the stable API is deployed or the identity can perform every operation.
 
 ### Results and recording ownership
 
