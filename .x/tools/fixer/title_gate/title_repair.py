@@ -198,3 +198,23 @@ def _repaired_cli_history_notes(body, component=None):
             lines[index] = replacement
             updated_count += 1
     return "".join(lines), updated_count
+
+
+def _failed_metadata_plan(pr, pr_files, component=None, issue_number=None, issue_title=None):
+    """Plan metadata changes without writing a PR or rerunning CI."""
+    title = repaired_pr_title(
+        "Azure/azure-powershell", pr.get("title") or "", component=component,
+        issue_number=issue_number, issue_title=issue_title,
+    )
+    body = pr.get("body") or ""
+    history_notes_updated = 0
+    metadata = {}
+    if title != (pr.get("title") or ""):
+        metadata["title"] = title
+    if body != (pr.get("body") or ""):
+        metadata["body"] = body
+    return {
+        "title": title, "body": body, "metadata": metadata,
+        "title_updated": "title" in metadata,
+        "history_notes_updated": history_notes_updated,
+    }
