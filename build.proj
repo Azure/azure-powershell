@@ -145,7 +145,7 @@
     <!-- Copy appropriate targets -->
     <Copy SourceFiles="$(RepoTools)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
     <!-- Build and create package content -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration)&quot;" />
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />

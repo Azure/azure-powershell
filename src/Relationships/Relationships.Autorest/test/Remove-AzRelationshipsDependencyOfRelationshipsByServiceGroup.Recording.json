@@ -1,0 +1,94 @@
+{
+  "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "bd505b49-8a40-4bb3-bef3-2874cb2e129c" ],
+        "CommandName": [ "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup" ],
+        "FullCommandName": [ "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Id": [ "a8a0554d-9e7d-4f28-85fd-e3e75283271d" ],
+        "x-ba-restapi": [ "3.2026.0915.9" ],
+        "x-ms-request-id": [ "westcentralus:a8a0554d-9e7d-4f28-85fd-e3e75283271d" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "dd4fadeb-413a-48aa-b0c1-b54a225c0820" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T014202Z:dd4fadeb-413a-48aa-b0c1-b54a225c0820" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8E0624CC175945A18F16B5A0BCFDB79B Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:42:00Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:42:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n?api-version=2026-08-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "79af9346-cd4c-4040-b50b-9b30ac1b4ec6" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "393222e5-434d-4f0b-b2ec-b98fa148427a" ],
+        "x-ms-correlation-request-id": [ "e201e635-9def-439b-83d9-09ec8e840aed" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T014202Z:e201e635-9def-439b-83d9-09ec8e840aed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5C2CB74455E646549C6A33B538B3E48A Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:42:02Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:42:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "202" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
