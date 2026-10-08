@@ -200,21 +200,45 @@ Edit source tests and assertions, then rebuild to refresh artifact tests. There 
 
 The generated harness imports `Az.Resources.TestSupport` for Record/Live, even when selecting a single test; playback does not require it. The runner checks for its `.psd1` and `.psm1` under `$HOME\.PSSharedModules\Resources` and stops if either is missing. It does not provision this dependency.
 
-**Only when support is missing**, invoke the existing helper from this module directory; skip this step when support is already installed. This separate dependency-generation step needs the native build tools described above and can download missing Pester, so ensure Pester 4.10.1 is discoverable first. If dependency downloads need proxy/feed configuration, follow the build setup guidance separately; ordinary test runs do not require those assignments. The scoped block below computes the artifact path afresh, temporarily enters it for the upstream helper, and returns to this module directory even on errors:
+**Only when support is missing**, copy the generated support specification/customizations from this source module's `.\tools\Resources` into the artifact module before calling its existing dependency helper. Repository builds copy `check-dependencies.ps1` without that folder, so changing the working directory alone does not fix the missing-path error. Do not create an empty folder or patch the generated helper.
+
+In a fresh native PowerShell shell with the build prerequisites and Pester 4.10.1 installed, start in `src\EdgeAction\EdgeAction.Autorest` and run the following. The unchanged helper generates/builds support under `$HOME\.PSSharedModules\Resources`; it downloads generator/NuGet packages but does not sign in or deploy Azure resources. The feed assignments affect this shell only.
 
 ```powershell
 & {
-    $artifactDirectory = (Resolve-Path ..\..\..\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest).Path
-    Push-Location $artifactDirectory
+    $ErrorActionPreference = 'Stop'
+    $PSNativeCommandUseErrorActionPreference = $true
+    $root = (Resolve-Path ..\..\..).Path
+    $supportSource = (Resolve-Path .\tools\Resources).Path
+    $artifact = (Resolve-Path ..\..\..\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest).Path
+    $destination = Join-Path $HOME '.PSSharedModules\Resources'
+    if (Test-Path $destination) { throw "Review the existing or incomplete support folder before replacing it: $destination" }
+    if (-not (Test-Path (Join-Path $artifact 'tools\Resources'))) {
+        $null = New-Item (Join-Path $artifact 'tools') -ItemType Directory -Force
+        Copy-Item -LiteralPath $supportSource -Destination (Join-Path $artifact 'tools\Resources') -Recurse
+    }
+    if ($IsWindows) { $env:PATH = "$env:ProgramFiles\dotnet;$env:PATH" }
+    $env:autorest_registry = 'https://packagefeedproxy.microsoft.io/npm/'
+    $env:RestoreSources = @(
+        (Join-Path $root 'tools\LocalFeed')
+        'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
+        'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
+    ) -join ';'
+    Push-Location $artifact
     try {
         & .\check-dependencies.ps1 -NotIsolated -Pester -Resources
+        foreach ($file in @('Az.Resources.TestSupport.psd1', 'Az.Resources.TestSupport.psm1', 'bin\Az.Resources.TestSupport.private.dll')) {
+            if (-not (Test-Path (Join-Path $destination $file))) { throw "Missing support output: $file" }
+        }
+        $null = Test-ModuleManifest (Join-Path $destination 'Az.Resources.TestSupport.psd1')
+        Get-Item (Join-Path $destination 'Az.Resources.TestSupport.psd1'), (Join-Path $destination 'Az.Resources.TestSupport.psm1')
     } finally {
         Pop-Location
     }
 }
 ```
 
-If the support `.psm1` exists but its `.psd1` is missing, the helper skips regeneration; finish the incomplete support-module build before retrying.
+If `.\tools\Resources\README.md` is missing, return to the repository generation step to create this ignored support source. If the support destination contains only partial output, review and move that specific folder aside before retrying; the commands deliberately refuse to overwrite it. Artifact regeneration may remove the copied `tools\Resources`; repeat the copy when needed. Return to the test setup after installation; existing Pester and Accounts prerequisites still apply.
 
 #### Run with explicit consent
 
