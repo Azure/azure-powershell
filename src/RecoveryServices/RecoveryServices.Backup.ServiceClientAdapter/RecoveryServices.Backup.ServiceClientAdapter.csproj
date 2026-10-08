@@ -11,10 +11,6 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Backup.ServiceClientAdapter</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>  
-	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
-  </ItemGroup>
-
   <ItemGroup>
 	<ProjectReference Include="..\RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj" />
 	<ProjectReference Include="..\RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj" />
