@@ -98,7 +98,7 @@ Set-Location .\src\EdgeAction\EdgeAction.Autorest
 
 If your shell is elsewhere, navigate directly to that folder in the intended checkout using its full path. Stay there for the remaining test instructions, including offline runner tests. No previously assigned path variables or user-set environment variables are required. The runner derives repository and artifact paths from its own script location.
 
-Confirm built artifacts and install any missing test prerequisites below before configuring the runner; it does not install tools, generate code, or build modules.
+Confirm built artifacts and install any missing test prerequisites below before configuring the runner. It does not install native tools or build EdgeAction; authorized Record/Live runs automatically generate/build missing Resources test support as described below.
 
 ### Confirm built artifacts
 
@@ -138,7 +138,7 @@ $pesterManifest
 
 Leave `PesterPath = ''` in settings for normal discovery. If 4.10.1 is already installed in a nonstandard location, no reinstall is required: set `PesterPath` in your ignored settings file to the **absolute manifest filename**, for example `C:\tools\modules\Pester\4.10.1\Pester.psd1`, not the containing directory or `Pester.psm1`. Verify that file with `Test-ModuleManifest -Path '<absolute-manifest-path>'` and confirm name `Pester`, version `4.10.1`. Keep the `Pester\4.10.1\Pester.psd1` layout so the isolated child can discover it. `PesterPath` is a configuration key, not a `-PesterPath` runner parameter.
 
-### Settings
+### Test Settings
 
 Configuration files are beside the runner in `..\tools\TestScripts`, relative to the module working directory:
 
@@ -146,7 +146,7 @@ Configuration files are beside the runner in `..\tools\TestScripts`, relative to
 | --- | --- |
 | `TestSettings.psd1` | Tracked shared defaults: Azure public cloud (`AzureCloud`), no subscription. |
 | `TestSettings.local.example.psd1` | Tracked, safe **Brazilus override** template; never loaded automatically. |
-| `TestSettings.local.psd1` | Ignored personal override, discovered automatically when present. Edit this file, not the tracked files, for your subscription and local paths. |
+| `TestSettings.local.psd1` | Git-ignored personal override, discovered automatically when present. Edit this file, not the tracked files, for your subscription and local paths. |
 
 The runner loads shared defaults, then the discovered sibling override **or** the file selected by `-ConfigPath`; an explicit path replaces sibling discovery, not the defaults. A nonempty `-SubscriptionId` argument overrides the merged subscription. `-Mode` (default `Playback`), `-TestName`, `-AllowResourceChanges`, and `-Login` are command-line options, not settings-file keys.
 
@@ -181,11 +181,17 @@ Results and recordings remain in the existing artifact harness directory. The ru
 Playback is the default and requires no login:
 
 ```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1
-# Optionally select one Describe group:
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -TestName 'Get-AzEdgeAction'
-# Use shared AzureCloud settings explicitly, bypassing any local override:
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -ConfigPath ..\tools\TestScripts\TestSettings.psd1
+& ..\tools\testscripts\test-edgeaction.ps1
+```
+
+Optionally select one describe group:
+```powershell
+& ..\tools\testscripts\test-edgeaction.ps1 -testname 'get-azedgeaction'
+```
+
+Or use shared azurecloud settings explicitly, bypassing any local override:
+```powershell
+& ..\tools\testscripts\test-edgeaction.ps1 -configpath ..\tools\testscripts\testsettings.psd1
 ```
 
 Existing preview recordings cannot satisfy stable `2026-10-01` requests. Playback failures are reported, not repaired by rewriting request keys. Skipped tests remain skipped; a run with no executed tests fails.
@@ -196,49 +202,15 @@ Review `.\test\*.Tests.ps1` first. The scenarios hardcode resource names and `po
 
 Edit source tests and assertions, then rebuild to refresh artifact tests. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
 
-#### One-time Resources test support (Record/Live only)
+#### Automatic Resources test support (Record/Live only)
 
-The generated harness imports `Az.Resources.TestSupport` for Record/Live, even when selecting a single test; playback does not require it. The runner checks for its `.psd1` and `.psm1` under `$HOME\.PSSharedModules\Resources` and stops if either is missing. It does not provision this dependency.
+After configuration and `-AllowResourceChanges` checks, the runner prepares missing or incomplete `Az.Resources.TestSupport` under `$HOME\.PSSharedModules\Resources`, before login or scenarios. **Playback never prepares Resources support.** A complete installed module is validated/imported and reused without downloads or generation.
 
-**Only when support is missing**, copy the generated support specification/customizations from this source module's `.\tools\Resources` into the artifact module before calling its existing dependency helper. Repository builds copy `check-dependencies.ps1` without that folder, so changing the working directory alone does not fix the missing-path error. Do not create an empty folder or patch the generated helper.
+Missing support requires the native build tools from the build prerequisites above (Node.js 20+, native .NET SDK 8+, installed AutoRest CLI). The runner supplies approved npm/NuGet feeds and native dotnet resolution inside its child process, restores those settings after setup, and does not install native tools or change global configuration. Pester 4.10.1 and built Accounts must already be available.
 
-In a fresh native PowerShell shell with the build prerequisites and Pester 4.10.1 installed, start in `src\EdgeAction\EdgeAction.Autorest` and run the following. The unchanged helper generates/builds support under `$HOME\.PSSharedModules\Resources`; it downloads generator/NuGet packages but does not sign in or deploy Azure resources. The feed assignments affect this shell only.
+The runner fills missing artifact `tools\Resources` files from the source module's generated `.\tools\Resources` README/customizations, then invokes the unchanged artifact `check-dependencies.ps1 -NotIsolated -Pester -Resources`. The helper downloads generator/NuGet packages and generates/builds local support, not Azure resources. An incomplete installation is regenerated in place by that helper; complete installations and existing artifact support inputs are not overwritten. Setup reports completion only after successful helper exit, required manifest/script/assembly checks, and module import.
 
-```powershell
-& {
-    $ErrorActionPreference = 'Stop'
-    $PSNativeCommandUseErrorActionPreference = $true
-    $root = (Resolve-Path ..\..\..).Path
-    $supportSource = (Resolve-Path .\tools\Resources).Path
-    $artifact = (Resolve-Path ..\..\..\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest).Path
-    $destination = Join-Path $HOME '.PSSharedModules\Resources'
-    if (Test-Path $destination) { throw "Review the existing or incomplete support folder before replacing it: $destination" }
-    if (-not (Test-Path (Join-Path $artifact 'tools\Resources'))) {
-        $null = New-Item (Join-Path $artifact 'tools') -ItemType Directory -Force
-        Copy-Item -LiteralPath $supportSource -Destination (Join-Path $artifact 'tools\Resources') -Recurse
-    }
-    if ($IsWindows) { $env:PATH = "$env:ProgramFiles\dotnet;$env:PATH" }
-    $env:autorest_registry = 'https://packagefeedproxy.microsoft.io/npm/'
-    $env:RestoreSources = @(
-        (Join-Path $root 'tools\LocalFeed')
-        'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
-        'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
-    ) -join ';'
-    Push-Location $artifact
-    try {
-        & .\check-dependencies.ps1 -NotIsolated -Pester -Resources
-        foreach ($file in @('Az.Resources.TestSupport.psd1', 'Az.Resources.TestSupport.psm1', 'bin\Az.Resources.TestSupport.private.dll')) {
-            if (-not (Test-Path (Join-Path $destination $file))) { throw "Missing support output: $file" }
-        }
-        $null = Test-ModuleManifest (Join-Path $destination 'Az.Resources.TestSupport.psd1')
-        Get-Item (Join-Path $destination 'Az.Resources.TestSupport.psd1'), (Join-Path $destination 'Az.Resources.TestSupport.psm1')
-    } finally {
-        Pop-Location
-    }
-}
-```
-
-If `.\tools\Resources\README.md` is missing, return to the repository generation step to create this ignored support source. If the support destination contains only partial output, review and move that specific folder aside before retrying; the commands deliberately refuse to overwrite it. Artifact regeneration may remove the copied `tools\Resources`; repeat the copy when needed. Return to the test setup after installation; existing Pester and Accounts prerequisites still apply.
+If source support inputs are missing, run the repository generation/build steps first; an empty artifact directory is not a substitute. Setup failures stop before authentication/scenarios and may leave partial local support output; recovery is not transactional. If all required files exist but the module cannot import, inspect that installation rather than replacing it automatically. The original direct `test-module.ps1` does not use this runner's automatic setup.
 
 #### Run with explicit consent
 
@@ -254,7 +226,7 @@ The runner authenticates with `-Login` inside a child PowerShell process and inv
 
 The child contains Pester's `-EnableExit` so it cannot close the caller. The parent rejects a nonzero child exit and missing, stale, failing, malformed, or all-skipped NUnit results, even if the generated harness reports success. Review the summary and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test\Az.EdgeAction-TestResults.xml`.
 
-The wrapper only loads settings/dependencies, checks the selected live context when required, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result, but does not back up recordings, restore failed runs, or copy outputs elsewhere. **Review and copy any recordings you need before rebuilding or rerunning scenarios**, because the upstream workflow can replace them. Existing snapshot directories from earlier runs are left untouched. Do not run multiple harnesses/builds concurrently against the same artifact directory.
+The wrapper loads settings/dependencies (preparing Resources support when required), checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result, but does not back up recordings, restore failed runs, or copy outputs elsewhere. **Review and copy any recordings you need before rebuilding or rerunning scenarios**, because the upstream workflow can replace them. Existing snapshot directories from earlier runs are left untouched. Do not run multiple harnesses/builds concurrently against the same artifact directory or shared Resources installation.
 
 The harness writes recordings and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`, **not to source** (`localEnv.json` is used for Live). The developer owns cleanup after interrupted/failed cloud runs and review/sanitization of recordings. Copy only reviewed recordings and required environment metadata back to `src\EdgeAction\EdgeAction.Autorest\test`, never results XML or unsanitized credentials. Rebuild, then rerun playback from those source inputs. The runner never copies recordings to source, commits them, or claims skipped tests as coverage.
 
