@@ -119,24 +119,6 @@ param(
     ${MigrateAsArcVM},
 
     [Parameter()]
-    [ArgumentCompleter({ "Standard", "TrustedLaunch" })]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the security type of the target VM.
-    # 'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'.
-    # Only supported for Generation 2 target VMs.
-    ${TargetVMSecurityOption},
-
-    [Parameter()]
-    [ArgumentCompleter({ "true" , "false" })]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies whether Secure Boot is enabled on the target VM.
-    # Only supported for Generation 2 target VMs.
-    # When omitted, the target VM inherits the Secure Boot setting of the source server.
-    ${EnableSecureBoot},
-
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the target RAM size in MB.
