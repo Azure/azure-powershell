@@ -16,3 +16,24 @@ profile:
   needs_info_label: agent-assist-needs-info
   title_style: powershell
   pr_doc_url: https://github.com/Azure/azure-powershell/blob/main/CONTRIBUTING.md
+
+# How the engine publishes changes: from its fork (fork), from its fork with a verified
+# head (verified-fork) or from a branch in this repository (upstream-branch).
+publication:
+  mode: verified-fork
+
+# Files a generated change may touch and the bounds of its execution job.
+job:
+  allowed_paths:
+  - src/*
+  - generated/*
+  - tools/*
+  - documentation/*
+  - ChangeLog.md
+  - README.md
+  checkout_excludes:
+  - '**/SessionRecords/*'
+  - '**/recordings/*'
+  max_checkout_files: 220000
+  max_checkout_bytes: 4000000000
+  execution_slice_seconds: 900

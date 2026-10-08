@@ -6,6 +6,8 @@ Agents and tools are discovered from their directories; no file or function inve
 
 `x.yml` is the only configuration file and uses the same engine-validated schema in every repository. It contains repository identity, a `profile` mapping for workflow/target/routing settings and optional Python pins. Optional feature fields are omitted when unused, not replaced with repository-specific keys or dummy values.
 
+`x.yml` also declares how the engine publishes this repository's changes (`publication`), which repositories and organization data its tools may reach (`access`) and the paths and bounds of its fix jobs (`job`). The engine enforces central caps on all three. The repository is served automatically while the X Engineering Agent GitHub App is installed on it and this `.x/x.yml` exists on its default branch.
+
 A round and its durable jobs retain the original verified commit and source digest. Candidate edits cannot replace their agents or repository checks. A later upstream commit applies only to a later round. An unavailable enabled package blocks explicitly; it never selects a sibling repository or central implementation as a fallback.
 
 Azure CLI and Extensions started from the same preservation baseline but own independent copies and versions. A shared fix needs separate reviewed commits in both repositories; there is no sibling import, shared mutable cache, or automatic synchronisation.
