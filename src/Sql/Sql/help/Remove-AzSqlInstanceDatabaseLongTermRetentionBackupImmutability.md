@@ -15,7 +15,7 @@ Removes an unlocked time-based immutability policy from a Managed Instance LTR b
 ### Default (Default)
 ```
 Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability [-Location] <String>
- [-InstanceName] <String> [-DatabaseName] <String> [-BackupName] <String> -ResourceGroupName <String> [-Force]
+ [-InstanceName] <String> [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -175,7 +175,7 @@ Type: System.String
 Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
