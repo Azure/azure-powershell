@@ -38,6 +38,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Dns
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs

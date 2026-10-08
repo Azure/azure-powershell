@@ -136,6 +136,18 @@ function New-AzCloudService {
         ${KeyVaultName}
     )
 
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.CloudService.private\New-AzCloudService_CreateExpanded' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                $dynamicParameters.Add($entry.Key, $entry.Value)
+            }
+        }
+        return $dynamicParameters
+    }
+
     process {
         Import-Module Az.Network
         Import-Module Az.KeyVault

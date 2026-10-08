@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 11.10.0
 * Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output.
