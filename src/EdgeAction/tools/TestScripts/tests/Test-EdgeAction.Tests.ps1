@@ -491,26 +491,53 @@ if ((Get-Location).Path -ne $before -or $repoRoot -ne '__WRONG__') { exit 9 }
         Test-Path (Join-Path $wrongRoot 'artifacts') | Should -Be $false
         Test-Path (Join-Path $fixture 'artifacts' 'edgeaction-test-runs') | Should -Be $false
     }
-    It 'restores module cwd after the documented dependency block encounters an error' {
+    It 'preserves cwd and support files when documented setup encounters <Failure>' -TestCases @(
+        @{ Failure = 'helper failure'; ExistingSupport = $false; Message = 'Fixture dependency failure' }
+        @{ Failure = 'existing support'; ExistingSupport = $true; Message = 'Review the existing or incomplete support folder' }
+    ) {
+        param($Failure, $ExistingSupport, $Message)
         $docPath = Join-Path $PSScriptRoot '..' '..' '..' 'EdgeAction.Autorest' 'how-to.md'
         $doc = Get-Content $docPath -Raw
         $block = @([regex]::Matches($doc, '(?ms)^```powershell\r?\n(.*?)^```') |
             Where-Object { $_.Groups[1].Value -match '& \.\\check-dependencies\.ps1' })
         $block.Count | Should -Be 1
+        $supportSource = Join-Path $source 'tools' 'Resources'
+        $null = New-Item (Join-Path $supportSource 'custom') -ItemType Directory -Force
+        'fixture specification' | Set-Content (Join-Path $supportSource 'README.md')
+        'fixture customization' | Set-Content (Join-Path $supportSource 'custom' 'New-AzDeployment.ps1')
+        $fixtureHome = Join-Path $fixture 'home'
+        $null = New-Item $fixtureHome -ItemType Directory
+        if ($ExistingSupport) {
+            $null = New-Item (Join-Path $fixtureHome '.PSSharedModules' 'Resources') -ItemType Directory -Force
+        }
         @'
 param([switch]$NotIsolated, [switch]$Pester, [switch]$Resources)
 if (-not $NotIsolated -or -not $Pester -or -not $Resources) { throw 'Wrong dependency arguments' }
+if ((Get-Content (Join-Path $PSScriptRoot 'tools' 'Resources' 'README.md')) -ne 'fixture specification') { throw 'Missing specification' }
+if ((Get-Content (Join-Path $PSScriptRoot 'tools' 'Resources' 'custom' 'New-AzDeployment.ps1')) -ne 'fixture customization') { throw 'Missing customization' }
 Set-Location $HOME
 throw 'Fixture dependency failure'
 '@ | Set-Content (Join-Path $artifact 'check-dependencies.ps1')
+        $oldEnvironment = @{}
+        foreach ($name in @('PATH', 'autorest_registry', 'RestoreSources')) {
+            $oldEnvironment[$name] = [Environment]::GetEnvironmentVariable($name)
+        }
         $artifactDirectory = 'stale-directory'
         Push-Location $source
         try {
-            { & ([scriptblock]::Create($block[0].Groups[1].Value)) } | Should -Throw 'Fixture dependency failure'
+            {
+                & {
+                    Set-Variable HOME -Value $fixtureHome -Force
+                    & ([scriptblock]::Create($block[0].Groups[1].Value))
+                }
+            } | Should -Throw $Message
             (Get-Location).Path | Should -Be $source
             $artifactDirectory | Should -Be 'stale-directory'
+            Test-Path (Join-Path $artifact 'tools' 'Resources') | Should -Be (-not $ExistingSupport)
+            Get-Content (Join-Path $supportSource 'README.md') | Should -Be 'fixture specification'
         } finally {
             Pop-Location
+            foreach ($name in $oldEnvironment.Keys) { [Environment]::SetEnvironmentVariable($name, $oldEnvironment[$name]) }
         }
     }
     It 'contains Pester EnableExit and leaves recordings in the harness directory without backups' {
