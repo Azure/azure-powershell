@@ -52,7 +52,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="artifactTags">The artifact tags of a shared gallery resource.
         /// </param>
-        public SharedGalleryImageVersion(string name = default(string), string location = default(string), string uniqueId = default(string), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), bool? excludeFromLatest = default(bool?), SharedGalleryImageVersionStorageProfile storageProfile = default(SharedGalleryImageVersionStorageProfile), System.Collections.Generic.IDictionary<string, string> artifactTags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="consumptionEndTime">The timestamp after which a soft-deleted gallery image version is no longer
+        /// consumable for VM/VMSS creation or VMSS scale out. It is calculated from
+        /// the soft-deleted time plus the retention period, and is not present for
+        /// active gallery image versions. In dateTime offset format.
+        /// </param>
+
+        /// <param name="imageState">The state of the gallery image version, derived from its soft-delete
+        /// status.
+        /// Possible values include: &#39;Active&#39;, &#39;SoftDeleted&#39;</param>
+        public SharedGalleryImageVersion(string name = default(string), string location = default(string), string uniqueId = default(string), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), bool? excludeFromLatest = default(bool?), SharedGalleryImageVersionStorageProfile storageProfile = default(SharedGalleryImageVersionStorageProfile), System.Collections.Generic.IDictionary<string, string> artifactTags = default(System.Collections.Generic.IDictionary<string, string>), System.DateTime? consumptionEndTime = default(System.DateTime?), string imageState = default(string))
 
         : base(name, location, uniqueId)
         {
@@ -61,6 +71,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ExcludeFromLatest = excludeFromLatest;
             this.StorageProfile = storageProfile;
             this.ArtifactTags = artifactTags;
+            this.ConsumptionEndTime = consumptionEndTime;
+            this.ImageState = imageState;
             CustomInit();
         }
 
@@ -104,5 +116,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.artifactTags")]
         public System.Collections.Generic.IDictionary<string, string> ArtifactTags {get; set; }
+
+        /// <summary>
+        /// Gets the timestamp after which a soft-deleted gallery image version is no
+        /// longer consumable for VM/VMSS creation or VMSS scale out. It is calculated
+        /// from the soft-deleted time plus the retention period, and is not present
+        /// for active gallery image versions. In dateTime offset format.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consumptionEndTime")]
+        public System.DateTime? ConsumptionEndTime {get; private set; }
+
+        /// <summary>
+        /// Gets the state of the gallery image version, derived from its soft-delete
+        /// status. Possible values include: &#39;Active&#39;, &#39;SoftDeleted&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.imageState")]
+        public string ImageState {get; private set; }
     }
 }

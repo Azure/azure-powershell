@@ -215,7 +215,38 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CapacityReservationGroupsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The operation to delete a capacity reservation group. This operation is
+        /// allowed only if all the associated resources are disassociated from the
+        /// reservation group and all capacity reservations under the reservation group
+        /// have also been deleted. Please refer to https://aka.ms/CapacityReservation
+        /// for more details.
+        /// </summary>
+        /// <remarks>
+        /// The operation to delete a capacity reservation group. This operation is
+        /// allowed only if all the associated resources are disassociated from the
+        /// reservation group and all capacity reservations under the reservation group
+        /// have also been deleted. Please refer to https://aka.ms/CapacityReservation
+        /// for more details.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='capacityReservationGroupName'>
+        /// The name of the capacity reservation group.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CapacityReservationGroupsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all of the capacity reservation groups in the subscription. Use the
