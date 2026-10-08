@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed operational-store collection initialization in `Initialize-AzDataProtectionBackupInstance` on Windows PowerShell.
 
 ## Version 3.1.0
 * Upgraded the DataProtection API version to `2026-06-01` (general availability), which natively models the Azure Elastic SAN (Storage Area Network) backup and restore types
