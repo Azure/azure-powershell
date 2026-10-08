@@ -220,6 +220,22 @@ That command uses the subscription in local configuration; alternatively add `-S
 
 The runner authenticates with `-Login` inside a child PowerShell process and invokes the artifact harness with `-NotIsolated` in that **same child**, preserving its process-local context. Context autosave is disabled for that child: its login does not switch the calling shell's context, so no production-context reset is needed afterward. The separately approved environment registration persists and is not removed on exit. Without `-Login`, an already-saved matching Az context must be available to the child; a process-only login in the caller is not inherited. Before any scenario, the runner verifies subscription, environment name, ARM endpoint, audience, and read access to the existing resource group. Endpoint selection does not prove that the stable API is deployed or the identity can perform every operation.
 
+#### Record and replay all EdgeAction scenarios
+
+From `src\EdgeAction\EdgeAction.Autorest`, omit `-TestName` to select all EdgeAction scenario groups, **not the entire repository's tests**. Recording creates/deletes real resources in the configured authorized subscription and `powershelltests` resource group:
+
+```powershell
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login
+```
+
+After recording succeeds, run playback against those artifacts **without rebuilding between these commands**:
+
+```powershell
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
+```
+
+Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; review, sanitize, and copy the required recordings/metadata to source before rebuilding, as described below. Skipped scenarios are not recorded or covered.
+
 ### Results and recording ownership
 
 The child contains Pester's `-EnableExit` so it cannot close the caller. The parent rejects a nonzero child exit and missing, stale, failing, malformed, or all-skipped NUnit results, even if the generated harness reports success. Review the summary and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test\Az.EdgeAction-TestResults.xml`.
