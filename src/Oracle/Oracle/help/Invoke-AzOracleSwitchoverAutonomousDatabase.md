@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/invoke-azoracleswitchoverautonomousdatabase
 schema: 2.0.0
@@ -16,29 +16,28 @@ Perform switchover action on Autonomous Database
 ```
 Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-PeerDbId <String>] [-PeerDbLocation <String>] [-PeerDbOcid <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SwitchoverViaJsonString
-```
-Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SwitchoverViaJsonFilePath
-```
-Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwitchoverViaIdentityExpanded
 ```
 Invoke-AzOracleSwitchoverAutonomousDatabase -InputObject <IOracleIdentity> [-PeerDbId <String>]
- [-PeerDbLocation <String>] [-PeerDbOcid <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PeerDbLocation <String>] [-PeerDbOcid <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### SwitchoverViaJsonFilePath
+```
+Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### SwitchoverViaJsonString
+```
+Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +75,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonString, SwitchoverViaJsonFilePath
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: True
@@ -213,7 +212,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonString, SwitchoverViaJsonFilePath
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: True
@@ -229,7 +228,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonString, SwitchoverViaJsonFilePath
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: False
@@ -284,3 +283,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

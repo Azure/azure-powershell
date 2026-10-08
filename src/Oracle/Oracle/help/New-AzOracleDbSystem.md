@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoracledbsystem
 schema: 2.0.0
@@ -14,28 +14,29 @@ Create a DbSystem
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-AdminPassword <SecureString>] [-ClusterName <String>] [-ComputeCount <Int32>] [-ComputeModel <String>]
- [-DatabaseEdition <String>] [-DbSystemOptionStorageManagement <String>] [-DbVersion <String>]
- [-DiskRedundancy <String>] [-DisplayName <String>] [-DomainV2 <String>] [-Hostname <String>]
- [-InitialDataStorageSizeInGb <Int32>] [-LicenseModelV2 <String>] [-NetworkAnchorId <String>]
- [-NodeCount <Int32>] [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>]
- [-SshPublicKey <String[]>] [-StorageVolumePerformanceMode <String>] [-Tag <Hashtable>] [-TimeZone <String>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-AdminPassword <SecureString>] [-CharacterSet <String>] [-ClusterName <String>] [-ComputeCount <Int32>]
+ [-ComputeModel <String>] [-DatabaseEdition <String>] [-DataCollectionOptionIsDiagnosticsEventsEnabled]
+ [-DataCollectionOptionIsHealthMonitoringEnabled] [-DataCollectionOptionIsIncidentLogsEnabled]
+ [-DbSystemOptionStorageManagement <String>] [-DbVersion <String>] [-DiskRedundancy <String>]
+ [-DisplayName <String>] [-DomainV2 <String>] [-Hostname <String>] [-InitialDataStorageSizeInGb <Int32>]
+ [-LicenseModelV2 <String>] [-NcharacterSet <String>] [-NetworkAnchorId <String>] [-NodeCount <Int32>]
+ [-PdbName <String>] [-ResourceAnchorId <String>] [-Shape <String>] [-SshPublicKey <String[]>]
+ [-StorageVolumePerformanceMode <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzOracleDbSystem -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -161,6 +162,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CharacterSet
+The character set for the DB system.
+The default is AL32UTF8
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The cluster name for Exadata and 2-node RAC virtual machine DB systems.
 The cluster name must begin with an alphabetic character, and may contain hyphens (-).
@@ -218,6 +235,51 @@ Exadata DB systems and 2-node RAC DB systems require EnterpriseEditionExtremePer
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsDiagnosticsEventsEnabled
+Indicates whether diagnostic collection is enabled for the VM cluster/Cloud VM cluster/VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsHealthMonitoringEnabled
+Indicates whether health monitoring is enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionOptionIsIncidentLogsEnabled
+Indicates whether incident logs and trace collection are enabled for the VM cluster / Cloud VM cluster / VMBM DBCS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -426,6 +488,22 @@ Parameter Sets: (All)
 Aliases: DbSystemName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NcharacterSet
+The national character set for the DB system.
+The default is AL16UTF16
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -681,3 +759,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

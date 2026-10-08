@@ -21,9 +21,11 @@ New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String
  [-MaintenanceWindowIsCustomActionTimeoutEnabled] [-MaintenanceWindowIsMonthlyPatchingEnabled]
  [-MaintenanceWindowLeadTimeInWeek <Int32>] [-MaintenanceWindowMonth <IMonth[]>]
  [-MaintenanceWindowPatchingMode <String>] [-MaintenanceWindowPreference <String>]
- [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>]
- [-StorageServerType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-ProximityPlacementGroupEntityTypeIntendedToUse <String>]
+ [-ProximityPlacementGroupProximityAnchorId <String>]
+ [-ProximityPlacementGroupProximityPlacementGroupId <String>] [-ResourceAnchorId <String>] [-Shape <String>]
+ [-StorageCount <Int32>] [-StorageServerType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -400,6 +402,66 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupEntityTypeIntendedToUse
+Entity type intended to use the proximity placement group
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityAnchorId
+Proximity Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroupProximityPlacementGroupId
+Proximity placement group ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

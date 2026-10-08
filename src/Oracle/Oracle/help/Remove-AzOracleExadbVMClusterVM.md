@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/remove-azoracleexadbvmclustervm
 schema: 2.0.0
@@ -16,41 +16,40 @@ Remove VMs from the VM Cluster
 ```
 Remove-AzOracleExadbVMClusterVM -InputObject <IOracleIdentity>
  -Body <IRemoveVirtualMachineFromExadbVMClusterDetails> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveViaJsonString
-```
-Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveViaJsonFilePath
-```
-Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveExpanded
-```
-Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -DbNode <IDbNodeDetails[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Remove
 ```
 Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IRemoveVirtualMachineFromExadbVMClusterDetails> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Body <IRemoveVirtualMachineFromExadbVMClusterDetails> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveExpanded
+```
+Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
+ -DbNode <IDbNodeDetails[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RemoveViaIdentityExpanded
 ```
 Remove-AzOracleExadbVMClusterVM -InputObject <IOracleIdentity> -DbNode <IDbNodeDetails[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaJsonFilePath
+```
+Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RemoveViaJsonString
+```
+Remove-AzOracleExadbVMClusterVM -ExadbVMClusterName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -96,7 +95,7 @@ Applies to Exadata Database Service on Exascale Infrastructure only.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IRemoveVirtualMachineFromExadbVMClusterDetails
-Parameter Sets: RemoveViaIdentity, Remove
+Parameter Sets: Remove, RemoveViaIdentity
 Aliases:
 
 Required: True
@@ -142,7 +141,7 @@ The name of the ExadbVmCluster
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveViaJsonString, RemoveViaJsonFilePath, RemoveExpanded, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -218,7 +217,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveViaJsonString, RemoveViaJsonFilePath, RemoveExpanded, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: True
@@ -234,7 +233,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveViaJsonString, RemoveViaJsonFilePath, RemoveExpanded, Remove
+Parameter Sets: Remove, RemoveExpanded, RemoveViaJsonFilePath, RemoveViaJsonString
 Aliases:
 
 Required: False
@@ -291,3 +290,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
