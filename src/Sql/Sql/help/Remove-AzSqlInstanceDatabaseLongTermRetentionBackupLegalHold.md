@@ -1,50 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabaselongtermretentionbackup
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabaselongtermretentionbackuplegalhold
 schema: 2.0.0
 ---
 
-# Remove-AzSqlInstanceDatabaseLongTermRetentionBackup
+# Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold
 
 ## SYNOPSIS
-Deletes a long term retention backup.
+Removes legal hold immutability from a Managed Instance LTR backup. (Public Preview)
 
 ## SYNTAX
 
-### RemoveBackupDefault (Default)
+### Default (Default)
 ```
-Remove-AzSqlInstanceDatabaseLongTermRetentionBackup [-Location] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
+Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-InstanceName] <String>
+ [-DatabaseName] <String> [-BackupName] <String> -ResourceGroupName <String> [-Force] [-ForceDropExpired]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold
+ [-InputObject] <AzureSqlManagedDatabaseLongTermRetentionBackupModel> [-Force] [-ForceDropExpired] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveBackupByInputObject
+### ResourceId
 ```
-Remove-AzSqlInstanceDatabaseLongTermRetentionBackup
- [-InputObject] <AzureSqlManagedDatabaseLongTermRetentionBackupModel> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RemoveBackupByResourceId
-```
-Remove-AzSqlInstanceDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Force]
+ [-ForceDropExpired] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet deletes the backup specified.
-Backups protected by time-based immutability or a legal hold cannot be deleted.
-A locked immutable backup cannot be manually deleted and is retained until expiration.
+Removes a legal hold from a Managed Instance long-term retention backup.
+After the hold is removed, the backup can be manually deleted. If the backup is expired, it is dropped immediately.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a legal hold
 ```powershell
-Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -Location southeastasia -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -BackupName 15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000
+Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold -Location southeastasia -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName testDatabase -BackupName "15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000" -PassThru
 ```
 
-Deletes the backup with name 15be823c-7e2c-49d8-819f-a3fdcad92215;132268250550000000
+Removes the legal hold from the specified backup and returns the updated backup.
 
 ## PARAMETERS
 
@@ -53,7 +53,7 @@ The name of the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveBackupDefault
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -68,7 +68,7 @@ The name of the Managed Database the backup is from.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveBackupDefault
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -94,7 +94,22 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Skip confirmation message for performing the action
+Skips the standard confirmation prompt.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDropExpired
+Skips the warning that removing the legal hold from an expired backup causes the backup to be dropped immediately.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -109,11 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Database Long Term Retention Backup object to remove.
+The Managed Instance long-term retention backup to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model.AzureSqlManagedDatabaseLongTermRetentionBackupModel
-Parameter Sets: RemoveBackupByInputObject
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -128,7 +143,7 @@ The name of the Managed Instance the backup is under.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveBackupDefault
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -139,11 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the backups' source Managed Instance.
+The location of the backup's source Managed Instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveBackupDefault
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -153,12 +168,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -PassThru
+Returns the updated backup.
 
 ```yaml
-Type: System.String
-Parameter Sets: RemoveBackupDefault
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,12 +183,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The Resource ID of the Database Long Term Retention Backup to remove.
+### -ResourceGroupName
+The name of the resource group that contains the Managed Instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveBackupByResourceId
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource ID of the Managed Instance long-term retention backup to update.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
 Aliases:
 
 Required: True
@@ -199,8 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -233,8 +262,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzSqlInstanceDatabaseLongTermRetentionBackup](./Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
 
-[Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
-
-[Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy.md)
-
-[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
+[Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold](./Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold.md)
