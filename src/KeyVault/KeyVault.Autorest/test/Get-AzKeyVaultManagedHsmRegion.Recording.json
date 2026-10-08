@@ -1,8 +1,8 @@
 {
-  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2026-02-01+1": {
+  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
