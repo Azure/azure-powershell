@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: b8522b0ea77d6fc7fbdc8f987ec749d06309b846
+commit: 773177d408a37dd4a9757e85372b570eb0885190
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/authenticationPolicy.json
@@ -48,11 +48,13 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/virtualNetwork.json
   # This file now also defines the Virtual Network Appliance capability resource
   # (Microsoft.Network/virtualNetworkAppliances/capabilities), added in
-  # https://github.com/Azure/azure-rest-api-specs/pull/46629. The 2026-03-01 version of this
-  # file is additive over 2026-01-01 (same pre-existing paths plus the new capability paths).
-  # $(commit) was bumped (from e6556d8af59d346de05e19d4e6dd7d0d6b67c128) to the merge commit of
-  # that PR so this file resolves from the same commit as every other input; all other files
-  # above are unchanged between the two commits. The 2026-03-01 common.json and virtualNetwork.json
+  # https://github.com/Azure/azure-rest-api-specs/pull/46629, and the capacityProvider property
+  # on VirtualNetworkAppliance, added in https://github.com/Azure/azure-rest-api-specs/pull/46783.
+  # The 2026-03-01 version of this file is additive over 2026-01-01 (same pre-existing paths plus
+  # the new capability paths/properties). $(commit) was bumped again (from
+  # b8522b0ea77d6fc7fbdc8f987ec749d06309b846) to the merge commit of the capacityProvider PR so
+  # this file resolves from the same commit as every other input; all other files above are
+  # unchanged between the two commits. The 2026-03-01 common.json and virtualNetwork.json
   # documents that this file's relative $refs resolve against are otherwise identical to their
   # 2026-01-01 counterparts (except two new capability enums added to common.json), so the
   # redirect-cross-version-refs directive below rewrites those refs back to the 2026-01-01
