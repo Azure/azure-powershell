@@ -21,8 +21,7 @@ Preview modules are not included in this list. Read more about [module version t
   - `New-AzFrontDoorCdnSecret` and `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters.
   - `New-AzFrontDoorCdnRule` and `Update-AzFrontDoorCdnRule` will no longer accept the `AfdUrlSigning` action.
 - Change description : URL signing is being removed without a replacement. Key Group resource cmdlets are not public and are not affected.
-- This change will take effect on '11/15/2026'
-- This change is expected to take effect from Az version : '17.0.0'
+- This change will take effect on '11/15/2026'- The change is expected to take effect from Az version : '17.0.0'
 - The change is expected to take effect in 'Az.Cdn' from version : '7.0.0'
 
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
