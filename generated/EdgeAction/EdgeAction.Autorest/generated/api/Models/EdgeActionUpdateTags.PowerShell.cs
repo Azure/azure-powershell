@@ -7,9 +7,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PowerShell;
 
-    /// <summary>Properties for edge action execution filter</summary>
-    [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterPropertiesUpdateTypeConverter))]
-    public partial class EdgeActionExecutionFilterPropertiesUpdate
+    /// <summary>
+    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+    /// replace the entire tag collection. Null tags are rejected.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(EdgeActionUpdateTagsTypeConverter))]
+    public partial class EdgeActionUpdateTags
     {
 
         /// <summary>
@@ -63,39 +66,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate"
-        /// />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new EdgeActionExecutionFilterPropertiesUpdate(content);
+            return new EdgeActionUpdateTags(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate"
-        /// />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new EdgeActionExecutionFilterPropertiesUpdate(content);
+            return new EdgeActionUpdateTags(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesUpdate"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal EdgeActionExecutionFilterPropertiesUpdate(global::System.Collections.IDictionary content)
+        internal EdgeActionUpdateTags(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -104,27 +105,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("VersionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).VersionId = (string) content.GetValueForProperty("VersionId",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).VersionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionFilterIdentifierHeaderName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderName = (string) content.GetValueForProperty("ExecutionFilterIdentifierHeaderName",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionFilterIdentifierHeaderValue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderValue = (string) content.GetValueForProperty("ExecutionFilterIdentifierHeaderValue",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderValue, global::System.Convert.ToString);
-            }
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterPropertiesUpdate"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal EdgeActionExecutionFilterPropertiesUpdate(global::System.Management.Automation.PSObject content)
+        internal EdgeActionUpdateTags(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -133,30 +124,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("VersionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).VersionId = (string) content.GetValueForProperty("VersionId",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).VersionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionFilterIdentifierHeaderName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderName = (string) content.GetValueForProperty("ExecutionFilterIdentifierHeaderName",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionFilterIdentifierHeaderValue"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderValue = (string) content.GetValueForProperty("ExecutionFilterIdentifierHeaderValue",((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal)this).ExecutionFilterIdentifierHeaderValue, global::System.Convert.ToString);
-            }
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate" />, deserializing the content from a json
-        /// string.
+        /// Creates a new instance of <see cref="EdgeActionUpdateTags" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>
-        /// an instance of the <see cref="EdgeActionExecutionFilterPropertiesUpdate" /> model class.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="EdgeActionUpdateTags" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -175,9 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             return ToJsonString();
         }
     }
-    /// Properties for edge action execution filter
-    [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterPropertiesUpdateTypeConverter))]
-    public partial interface IEdgeActionExecutionFilterPropertiesUpdate
+    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+    /// replace the entire tag collection. Null tags are rejected.
+    [System.ComponentModel.TypeConverter(typeof(EdgeActionUpdateTagsTypeConverter))]
+    public partial interface IEdgeActionUpdateTags
 
     {
 

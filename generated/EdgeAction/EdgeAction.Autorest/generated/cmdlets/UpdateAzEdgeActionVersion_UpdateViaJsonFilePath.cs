@@ -10,15 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a EdgeActionVersion</summary>
+    /// <summary>
+    /// update the tags of an Edge Action version. Omitted tags are preserved, an empty tags object clears all tags, and supplied
+    /// tags replace the entire tag collection. Null tags are rejected. Version properties are not changed. If deploymentType
+    /// or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEdgeActionVersion_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeActionVersion")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update the tags of an Edge Action version. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected. Version properties are not changed. If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.NotSuggestDefaultParameterSet]
     public partial class UpdateAzEdgeActionVersion_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,

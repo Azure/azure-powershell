@@ -10,15 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a EdgeActionVersion</summary>
+    /// <summary>
+    /// update the tags of an Edge Action version. Omitted tags are preserved, an empty tags object clears all tags, and supplied
+    /// tags replace the entire tag collection. Null tags are rejected. Version properties are not changed. If deploymentType
+    /// or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEdgeActionVersion_UpdateViaIdentityEdgeActionExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersion))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeActionVersion")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update the tags of an Edge Action version. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected. Version properties are not changed. If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzEdgeActionVersion_UpdateViaIdentityEdgeActionExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -40,9 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>
-        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
-        /// </summary>
+        /// <summary>The type used for update operations of the EdgeActionVersion.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionVersionUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
@@ -71,6 +73,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>
+        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
+        /// Version PATCH updates tags only.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.",
+        SerializedName = @"deploymentType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
+        public string DeploymentType { get => _propertiesBody.DeploymentType ?? null; set => _propertiesBody.DeploymentType = value; }
+
         /// <summary>Backing field for <see cref="EdgeActionInputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity _edgeActionInputObject;
 
@@ -96,6 +113,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>
+        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
+        /// Use swapDefault to change the default version.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.",
+        SerializedName = @"isDefaultVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
+        public string IsDefaultVersion { get => _propertiesBody.IsDefaultVersion ?? null; set => _propertiesBody.IsDefaultVersion = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -143,8 +175,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;

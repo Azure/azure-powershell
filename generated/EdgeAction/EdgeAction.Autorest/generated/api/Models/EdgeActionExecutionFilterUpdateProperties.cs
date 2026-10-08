@@ -7,10 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>Properties for edge action execution filter</summary>
-    public partial class EdgeActionExecutionFilterPropertiesUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdateInternal
+    /// <summary>The updatable properties of the EdgeActionExecutionFilter.</summary>
+    public partial class EdgeActionExecutionFilterUpdateProperties :
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateProperties,
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdatePropertiesInternal
     {
 
         /// <summary>Backing field for <see cref="ExecutionFilterIdentifierHeaderName" /> property.</summary>
@@ -35,15 +35,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         public string VersionId { get => this._versionId; set => this._versionId = value; }
 
         /// <summary>
-        /// Creates an new <see cref="EdgeActionExecutionFilterPropertiesUpdate" /> instance.
+        /// Creates an new <see cref="EdgeActionExecutionFilterUpdateProperties" /> instance.
         /// </summary>
-        public EdgeActionExecutionFilterPropertiesUpdate()
+        public EdgeActionExecutionFilterUpdateProperties()
         {
 
         }
     }
-    /// Properties for edge action execution filter
-    public partial interface IEdgeActionExecutionFilterPropertiesUpdate :
+    /// The updatable properties of the EdgeActionExecutionFilter.
+    public partial interface IEdgeActionExecutionFilterUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable
     {
         /// <summary>Custom Header Key associated with the execution filter</summary>
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         string VersionId { get; set; }
 
     }
-    /// Properties for edge action execution filter
-    internal partial interface IEdgeActionExecutionFilterPropertiesUpdateInternal
+    /// The updatable properties of the EdgeActionExecutionFilter.
+    internal partial interface IEdgeActionExecutionFilterUpdatePropertiesInternal
 
     {
         /// <summary>Custom Header Key associated with the execution filter</summary>

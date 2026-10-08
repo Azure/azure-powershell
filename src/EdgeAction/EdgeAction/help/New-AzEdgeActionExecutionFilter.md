@@ -76,7 +76,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: False
@@ -92,7 +92,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -137,7 +137,7 @@ The name of the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -227,7 +227,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: False
@@ -319,7 +319,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: cf
 
 Required: False
@@ -335,7 +335,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: wi
 
 Required: False

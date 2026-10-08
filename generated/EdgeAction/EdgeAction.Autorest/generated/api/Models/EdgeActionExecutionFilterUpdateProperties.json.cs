@@ -7,10 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>
-    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-    /// </summary>
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdate
+    /// <summary>The updatable properties of the EdgeActionExecutionFilter.</summary>
+    public partial class EdgeActionExecutionFilterUpdateProperties
     {
 
         /// <summary>
@@ -56,11 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject into a new instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdate"
-        /// />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject into a new instance of <see cref="EdgeActionExecutionFilterUpdateProperties" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdate(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
+        internal EdgeActionExecutionFilterUpdateProperties(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -68,32 +65,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.Resource(json);
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags.FromJson(__jsonTags) : _tag;}
+            {_versionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("versionId"), out var __jsonVersionId) ? (string)__jsonVersionId : (string)_versionId;}
+            {_executionFilterIdentifierHeaderName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("executionFilterIdentifierHeaderName"), out var __jsonExecutionFilterIdentifierHeaderName) ? (string)__jsonExecutionFilterIdentifierHeaderName : (string)_executionFilterIdentifierHeaderName;}
+            {_executionFilterIdentifierHeaderValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString>("executionFilterIdentifierHeaderValue"), out var __jsonExecutionFilterIdentifierHeaderValue) ? (string)__jsonExecutionFilterIdentifierHeaderValue : (string)_executionFilterIdentifierHeaderValue;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateProperties.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateProperties.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json ? new AzureResourceManagerCommonTypesTrackedResourceUpdate(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject json ? new EdgeActionExecutionFilterUpdateProperties(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdate" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"
+        /// Serializes this instance of <see cref="EdgeActionExecutionFilterUpdateProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"
         /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdate" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"
+        /// a serialized instance of <see cref="EdgeActionExecutionFilterUpdateProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode"
         /// />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.SerializationMode serializationMode)
@@ -106,8 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
-            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
+            AddIf( null != (((object)this._versionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString(this._versionId.ToString()) : null, "versionId" ,container.Add );
+            AddIf( null != (((object)this._executionFilterIdentifierHeaderName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString(this._executionFilterIdentifierHeaderName.ToString()) : null, "executionFilterIdentifierHeaderName" ,container.Add );
+            AddIf( null != (((object)this._executionFilterIdentifierHeaderValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonString(this._executionFilterIdentifierHeaderValue.ToString()) : null, "executionFilterIdentifierHeaderValue" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
