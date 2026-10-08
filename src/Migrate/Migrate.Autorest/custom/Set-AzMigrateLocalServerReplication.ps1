@@ -73,22 +73,6 @@ function Set-AzMigrateLocalServerReplication {
         ${OsType},
 
         [Parameter()]
-        [ValidateSet("Standard", "TrustedLaunch")]
-        [ArgumentCompleter( { "Standard", "TrustedLaunch" })]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the security type of the target VM. 'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'. Only supported for Generation 2 target VMs.
-        ${TargetVMSecurityOption},
-
-        [Parameter()]
-        [ValidateSet("true" , "false")]
-        [ArgumentCompleter( { "true" , "false" })]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies whether Secure Boot is enabled on the target VM. Only supported for Generation 2 target VMs.
-        ${EnableSecureBoot},
-
-        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -149,18 +133,6 @@ function Set-AzMigrateLocalServerReplication {
         $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
         Import-Module $helperPath
 
-        $HasTargetVMSecurityOption = $PSBoundParameters.ContainsKey('TargetVMSecurityOption')
-        $HasEnableSecureBoot = $PSBoundParameters.ContainsKey('EnableSecureBoot')
-        if ($HasEnableSecureBoot) {
-            $secureBootEnabled = [System.Convert]::ToBoolean($EnableSecureBoot)
-        }
-
-        # Purely a contradiction between parameters, so reject it before the module and service checks.
-        if ($HasTargetVMSecurityOption -and $TargetVMSecurityOption -eq $TargetVMSecurityTypes.TrustedLaunch -and
-            $HasEnableSecureBoot -and -not $secureBootEnabled) {
-            throw "-EnableSecureBoot 'false' cannot be used with -TargetVMSecurityOption 'TrustedLaunch'."
-        }
-
         CheckResourcesModuleDependency
         
         $HasTargetObjectId = $PSBoundParameters.ContainsKey('TargetObjectID')
@@ -181,8 +153,6 @@ function Set-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('NicToInclude')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('OsType')
-        $null = $PSBoundParameters.Remove('TargetVMSecurityOption')
-        $null = $PSBoundParameters.Remove('EnableSecureBoot')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
 
@@ -237,31 +207,6 @@ function Set-AzMigrateLocalServerReplication {
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customPropertiesUpdate = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomPropertiesUpdate]::new()
             $customPropertiesUpdate.InstanceType = $AzLocalInstanceTypes.VMwareToAzLocal
-        }
-
-        # Gen 1 target VMs do not support Secure Boot or vTPM; fail before the service round-trip.
-        if ($HasTargetVMSecurityOption -or $HasEnableSecureBoot) {
-            $securityDecision = Resolve-AzMigrateTargetSecurityOption `
-                -Mode 'Update' `
-                -HyperVGeneration $customProperties.HyperVGeneration `
-                -HasTargetVMSecurityOption $HasTargetVMSecurityOption `
-                -TargetVMSecurityOption $TargetVMSecurityOption `
-                -HasEnableSecureBoot $HasEnableSecureBoot `
-                -SecureBootEnabled ([bool]$secureBootEnabled)
-
-            if ($securityDecision.Gen2Required) {
-                throw "Secure Boot and Trusted Launch require a Generation 2 (EFI) target VM. Protected item '$TargetObjectID' has a Generation 1 (BIOS) target VM."
-            }
-
-            # The service rejects turning Secure Boot off for a Gen 2 source that has it on.
-            if ($securityDecision.VerifySourceSecureBoot -and
-                $true -eq (Get-AzMigrateSourceSecureBootState -MachineId $customProperties.FabricDiscoveryMachineId)) {
-                # For VMware sources $MachineName is an opaque id, so report the discovered name.
-                $sourceName = if ([string]::IsNullOrEmpty($customProperties.SourceVMName)) { $MachineName } else { $customProperties.SourceVMName }
-                throw "Source server '$sourceName' has Secure Boot enabled, so it cannot be migrated with -EnableSecureBoot 'false'. Omit -EnableSecureBoot to keep Secure Boot enabled on the target VM, or disable Secure Boot on the source server first."
-            }
-
-            $customPropertiesUpdate.SecurityOption = $securityDecision.SecurityOption
         }
 
         # Update target CPU core

@@ -96,16 +96,5 @@
   "hciTgtVirtualSwitchId": "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/EDGECI-REGISTRATION-rr1s46r1706-LtmqC7DF/providers/Microsoft.AzureStackHCI/logicalnetworks/lnet-s46r1706-cl",
   "hciMigResourceGroup": "aszmige2etestCIRG01",
   "hciTgtVMName2": "hciVm2",
-"hciProtectedItem2": "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationVaults/aszmigtest1c100b4replicationvault/protectedItems/0fa67f11-3c1e-491b-a459-372141fb3b7f",
-    "hciTvmSubscriptionId": "265ca7e5-909a-455d-9459-7c7041c1c37d",
-    "hciTvmMachineId": "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.OffAzure/HyperVSites/src5185site/machines/dac5820e-571c-435e-8940-5c3299a19f2e",
-    "hciTvmOSDiskId": "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\\E8731E55-F448-4FB8-B5FD-D3B9B244DCE2\\0\\0\\L",
-    "hciTvmNicId": "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\\C6CEC83F-A2D9-4E06-855A-AB3451F951B3",
-    "hciTvmStoragePathId": "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourcegroups/edgeci-registration-s46r1405-zqcgn3th/providers/microsoft.azurestackhci/storagecontainers/userstorage4-f65c130de71d434eaeab111d3ea02f2a",
-    "hciTvmTargetRgId": "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/2503Uninstall",
-    "hciTvmVirtualSwitchId": "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-s46r1405-ZqcGn3TH/providers/microsoft.azurestackhci/logicalnetworks/s46r1405-lnet",
-    "hciTvmSourceApplianceName": "src",
-    "hciTvmTargetApplianceName": "tgt",
-    "hciTvmTargetVMName": "tvm-secopt-ws19",
-    "hciTvmProtectedItemId": "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.DataReplication/replicationVaults/bpuram-tvme2eh4130replicationvault/protectedItems/160b78de-05c5-49aa-beda-562bfa00b210"
+  "hciProtectedItem2": "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationVaults/aszmigtest1c100b4replicationvault/protectedItems/0fa67f11-3c1e-491b-a459-372141fb3b7f"
 }
