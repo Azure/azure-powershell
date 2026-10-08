@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 1.1.1
-* Upgraded nuget package to signed package.
+* Upgraded nuget package to signed packages.
 
 ## Version 1.1.0
 * Updated preview version api of HybridCompute to 2024-07-31
