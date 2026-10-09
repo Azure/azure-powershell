@@ -166,7 +166,7 @@ These are the only supported settings keys; values must be strings. Omitted keys
 
 Copying the Brazilus example changes settings only; it does not register an Az environment or sign in. An existing Brazilus local override continues to take precedence over public defaults. Neither configuration proves stable-API availability or permissions. Do not put real subscription IDs, tenants, credentials, or tokens in the tracked defaults or example.
 
-Results and recordings remain in the existing artifact harness directory. The runner does not back them up.
+Results and recordings remain in the artifact harness directory. Successful Record runs also copy eligible outputs to source for unstaged review, as described below. The runner does not back them up.
 
 ### Playback
 
@@ -234,15 +234,19 @@ After recording succeeds, run playback against those artifacts **without rebuild
 & ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
 ```
 
-Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; review, sanitize, and copy the required recordings/metadata to source before rebuilding, as described below. Skipped scenarios are not recorded or covered.
+Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; their groups may still record setup/teardown.
 
 ### Results and recording ownership
 
 The child contains Pester's `-EnableExit` so it cannot close the caller. The parent rejects a nonzero child exit and missing, stale, failing, malformed, or all-skipped NUnit results, even if the generated harness reports success. Review the summary and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test\Az.EdgeAction-TestResults.xml`.
 
-The wrapper loads settings/dependencies (preparing Resources support when required), checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result, but does not back up recordings, restore failed runs, or copy outputs elsewhere. **Review and copy any recordings you need before rebuilding or rerunning scenarios**, because the upstream workflow can replace them. Existing snapshot directories from earlier runs are left untouched. Do not run multiple harnesses/builds concurrently against the same artifact directory or shared Resources installation.
+The wrapper loads settings/dependencies, checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result. **Only after a successful Record run passes fresh-result validation**, it copies recordings written by that run's selected groups to `src\EdgeAction\EdgeAction.Autorest\test`, overwriting those source recordings as **unstaged Git diff changes**. File hashes and modification times distinguish newly written recordings (including deterministic same-content rewrites) from stale artifacts. Playback, Live, failed runs, and unchanged unrelated artifacts never trigger copy-back. The runner never stages or commits files.
 
-The harness writes recordings and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`, **not to source** (`localEnv.json` is used for Live). The developer owns cleanup after interrupted/failed cloud runs and review/sanitization of recordings. Copy only reviewed recordings and required environment metadata back to `src\EdgeAction\EdgeAction.Autorest\test`, never results XML or unsanitized credentials. Rebuild, then rerun playback from those source inputs. The runner never copies recordings to source, commits them, or claims skipped tests as coverage.
+The harness writes originals and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`. Copy-back includes `env.json` only when needed and compatible with the recording set; a filtered run cannot replace metadata required by untouched source recordings. Subscription/tenant identifiers remain consistent for playback, rather than being rewritten independently. Source files edited during the run stop handoff. Results XML, source test scripts, `localEnv.json`, and other files are never copied.
+
+**Copied for review does not mean sanitized or ready to publish.** The upstream recorder filters `Authorization` headers only. Handoff rejects detected credential-bearing headers, common secret fields, signed URLs, and private keys before any source writes; it does not decode or certify embedded code/archives or comprehensively scan arbitrary payloads. Review and sanitize the Git diff, including identifiers and payloads, before staging or committing. A blocked handoff leaves originals in artifacts and reports the file/reason without printing its contents. After addressing incompatible metadata or sensitive content, manually preserve a reviewed, playback-compatible set; do not bypass the check by staging raw artifacts.
+
+The runner does not back up recordings or roll back partial copy failures. Copy errors fail explicitly and may leave some source changes for inspection. **Preserve any uncopied outputs before rebuilding or rerunning**, because the upstream workflow can replace them. Existing snapshot directories are untouched. Do not run multiple harnesses/builds concurrently against the same artifacts or source test directory. After reviewing the copied files, rebuild and rerun playback to verify the source inputs. The developer still owns cleanup after interrupted/failed cloud runs, and skipped tests are not coverage.
 
 ## Offline tests for the wrappers
 
