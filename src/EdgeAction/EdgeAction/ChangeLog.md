@@ -32,7 +32,7 @@
     - Record and Live runs now verify the environment before Resources support setup and request explicit confirmation before persistently registering a missing Brazilus environment. Existing registrations and playback are unchanged.
     - Successful Record runs now copy selected recordings and compatible metadata to source as unstaged review changes, with credential checks and no automatic staging or commit.
     - Generation now checks the known Accounts output DLL for Windows locks before preparation, reporting verified PowerShell process IDs and manual recovery commands without terminating processes.
-    - Fixed scenario cleanup to delete child resources before their parent, reset only selected dedicated test fixtures, and report cleanup failures instead of hiding them.
+    - Fixed scenario cleanup to delete child resources before their parent, delete the current default version last using service-reported state, reset only selected dedicated test fixtures, and report cleanup failures instead of hiding them.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified

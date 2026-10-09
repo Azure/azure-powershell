@@ -162,13 +162,27 @@ function Remove-EdgeActionTestResource {
     $parent = Invoke-EdgeActionTestCommand 'Get-AzEdgeAction' $parentParameters "parent '$Name'" -AllowNotFound
     if ($parent.NotFound) { return }
 
-    Write-Host "Cleaning EdgeAction fixture '$Name': execution filters, versions, then parent."
+    Write-Host "Cleaning EdgeAction fixture '$Name': execution filters, non-default versions, current default version, then parent."
     foreach ($childType in 'ExecutionFilter', 'Version') {
         $parameters = @{ ResourceGroupName = $ResourceGroupName; EdgeActionName = $Name }
         $get = "Get-AzEdgeAction$childType"
         $remove = "Remove-AzEdgeAction$childType"
         $children = Invoke-EdgeActionTestCommand $get $parameters "$childType collection of '$Name'" -AllowNotFound
-        foreach ($child in @($children.Value | Where-Object { $null -ne $_ })) {
+        $orderedChildren = @($children.Value | Where-Object { $null -ne $_ })
+        if ($childType -eq 'Version') {
+            foreach ($version in $orderedChildren) {
+                if ([string]$version.IsDefaultVersion -notin @('True', 'False')) {
+                    throw "Cleanup of '$Name' cannot determine default status for version '$($version.Name)'; no versions were deleted."
+                }
+            }
+            if (@($orderedChildren | Where-Object { [string]$_.IsDefaultVersion -eq 'True' }).Count -gt 1) {
+                throw "Cleanup of '$Name' received multiple default versions; no versions were deleted."
+            }
+            # The generated property is a string; casting 'False' to bool would produce true.
+            # Use the current service state, not creation order or the expected outcome of a swap.
+            $orderedChildren = @($orderedChildren | Sort-Object { [string]$_.IsDefaultVersion -eq 'True' })
+        }
+        foreach ($child in $orderedChildren) {
             if (-not $child.Name) { throw "Cleanup of '$Name' received a $childType without a name." }
             $childParameters = $parameters.Clone()
             $childParameters[$childType] = $child.Name

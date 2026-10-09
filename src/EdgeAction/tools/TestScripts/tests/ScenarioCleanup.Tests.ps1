@@ -39,7 +39,7 @@ Describe 'Dedicated EdgeAction fixture cleanup' {
                 }
                 { $_ -in 'Get-AzEdgeActionExecutionFilter', 'Get-AzEdgeActionVersion' } {
                     $kind = $Command -replace '^Get-AzEdgeAction', ''
-                    if ($script:state[$kind]) { $value = [pscustomobject]@{ Name = 'child' } }
+                    if ($script:state[$kind]) { $value = [pscustomobject]@{ Name = 'child'; IsDefaultVersion = 'True' } }
                     elseif ($Parameters.ContainsKey($kind)) { $notFound = $true }
                 }
                 { $_ -in 'Remove-AzEdgeActionExecutionFilter', 'Remove-AzEdgeActionVersion' } {
@@ -124,6 +124,110 @@ Describe 'Dedicated EdgeAction fixture cleanup' {
         { Remove-EdgeActionTestResource $Group $Name } | Should -Throw 'restricted'
         { New-EdgeActionTestResource $Group $Name } | Should -Throw 'restricted'
         $script:calls.Count | Should -Be 0
+    }
+}
+
+Describe 'Current default version cleanup order' {
+    BeforeEach {
+        $script:versions = @()
+        $script:deletedVersions = [System.Collections.Generic.List[string]]::new()
+        $script:parentExists = $true
+        $script:failedVersion = ''
+        Mock Invoke-EdgeActionTestCommand {
+            $value = $null
+            $notFound = $false
+            switch ($Command) {
+                'Get-AzEdgeAction' { $notFound = -not $script:parentExists }
+                'Get-AzEdgeActionExecutionFilter' { $value = @() }
+                'Get-AzEdgeActionVersion' {
+                    if ($Parameters.Version) {
+                        $value = @($script:versions | Where-Object Name -EQ $Parameters.Version)
+                        $notFound = $value.Count -eq 0
+                    } else { $value = $script:versions }
+                }
+                'Remove-AzEdgeActionVersion' {
+                    if ($Parameters.Version -eq $script:failedVersion) { throw 'fixture version deletion failed' }
+                    $version = $script:versions | Where-Object Name -EQ $Parameters.Version
+                    if ($version.IsDefaultVersion -eq 'True' -and $script:versions.Count -gt 1) {
+                        throw 'Cannot delete the default while other versions remain'
+                    }
+                    $script:deletedVersions.Add($Parameters.Version)
+                    $script:versions = @($script:versions | Where-Object Name -NE $Parameters.Version)
+                }
+                'Remove-AzEdgeAction' {
+                    $script:versions.Count | Should -Be 0
+                    $script:parentExists = $false
+                }
+                'New-AzEdgeAction' {
+                    $script:parentExists | Should -Be $false
+                    $script:parentExists = $true
+                    $value = [pscustomobject]@{ Name = 'eagetdec01' }
+                }
+                default { throw "Unexpected fixture command $Command" }
+            }
+            @{ NotFound = $notFound; Value = $value }
+        }
+    }
+
+    It 'uses the reported default <Default> during <Phase>, regardless of intended swap outcome' -TestCases @(
+        @{ Default = 'v1'; Phase = 'preclean' }
+        @{ Default = 'v2'; Phase = 'preclean' }
+        @{ Default = 'v1'; Phase = 'teardown' }
+        @{ Default = 'v2'; Phase = 'teardown' }
+    ) {
+        param($Default, $Phase)
+        # Return the default first to catch reliance on list order or a hardcoded version name.
+        $script:versions = @([pscustomobject]@{ Name = $Default; IsDefaultVersion = 'True' })
+        foreach ($name in 'v1', 'v2', 'v3') {
+            if ($name -ne $Default) {
+                $script:versions += [pscustomobject]@{ Name = $name; IsDefaultVersion = 'False' }
+            }
+        }
+        if ($Phase -eq 'preclean') {
+            $null = New-EdgeActionTestResource powershelltests eagetdec01
+        } else {
+            Initialize-EdgeActionTestScenario {}
+            Complete-EdgeActionTestScenario powershelltests eagetdec01
+        }
+        $script:deletedVersions.Count | Should -Be 3
+        $script:deletedVersions[-1] | Should -Be $Default
+        (($script:deletedVersions | Sort-Object) -join ',') | Should -Be 'v1,v2,v3'
+    }
+
+    It 'does not delete any version when default status is <Label>' -TestCases @(
+        @{ Label = 'missing'; Status = $null }
+        @{ Label = 'empty'; Status = '' }
+        @{ Label = 'unrecognized'; Status = 'Unknown' }
+    ) {
+        param($Label, $Status)
+        $script:versions = @(
+            [pscustomobject]@{ Name = 'v1'; IsDefaultVersion = 'False' }
+            [pscustomobject]@{ Name = 'v2'; IsDefaultVersion = $Status }
+        )
+        { Remove-EdgeActionTestResource powershelltests eagetdec01 } | Should -Throw 'cannot determine default status'
+        $script:deletedVersions.Count | Should -Be 0
+        $script:parentExists | Should -Be $true
+    }
+
+    It 'rejects multiple reported defaults instead of guessing their order' {
+        $script:versions = @(
+            [pscustomobject]@{ Name = 'v1'; IsDefaultVersion = 'True' }
+            [pscustomobject]@{ Name = 'v2'; IsDefaultVersion = 'True' }
+        )
+        { Remove-EdgeActionTestResource powershelltests eagetdec01 } | Should -Throw 'multiple default versions'
+        $script:deletedVersions.Count | Should -Be 0
+        $script:parentExists | Should -Be $true
+    }
+
+    It 'retains the default and parent if deleting a non-default fails' {
+        $script:versions = @(
+            [pscustomobject]@{ Name = 'v2'; IsDefaultVersion = 'True' }
+            [pscustomobject]@{ Name = 'v1'; IsDefaultVersion = 'False' }
+        )
+        $script:failedVersion = 'v1'
+        { Remove-EdgeActionTestResource powershelltests eagetdec01 } | Should -Throw 'fixture version deletion failed'
+        $script:deletedVersions.Count | Should -Be 0
+        $script:parentExists | Should -Be $true
     }
 }
 
