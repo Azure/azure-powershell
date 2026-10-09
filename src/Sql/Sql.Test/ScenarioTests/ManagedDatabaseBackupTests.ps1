@@ -169,7 +169,7 @@ function Test-ManagedDeletedDatabaseShortTermRetentionPolicy
 	Test long term retention for managed databases.
 #>
 
-# This scenario only update only the LTR policy and do not require a backup.
+# This scenario only updates the LTR policy and does not require a backup.
 # This test could be made re-recordable; however, it is not currently
 # because it doesn't create MI from scratch. 
 function Test-ManagedInstanceLongTermRetentionPolicy()
