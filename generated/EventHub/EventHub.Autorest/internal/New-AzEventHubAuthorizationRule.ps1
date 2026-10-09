@@ -44,6 +44,7 @@ EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -59,6 +60,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -74,6 +76,7 @@ NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the Event Hubs Cluster.
   [ConsumerGroupName <String>]: The consumer group name
   [EventHubName <String>]: The Event Hub name
+  [FabricShortcutName <String>]: The Microsoft Fabric shortcut name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The Namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name

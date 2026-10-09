@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Update-AzPolicyAssignment` to carry over the existing `EnforcementMode` itself when `-EnforcementMode` is not specified, instead of relying on the service to keep it. No behavior change.
 * Improved deployment stack What-If output to show configuration details for resource creates and deletes, including potential changes.
     - Displays top-level fields such as location, kind, SKU, and tags followed by properties, while omitting redundant resource header fields.
     - Aligns with [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).

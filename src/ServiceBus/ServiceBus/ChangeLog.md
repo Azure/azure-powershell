@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the default API version to '2026-07-01-preview'
+
+## Version 4.4.0
 * Added Change Safety support for additional cmdlets.
 * Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.
 

@@ -19,46 +19,25 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.3.0
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
-* Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
-    - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
-    - Added `New-AzExpressRouteCrossConnectionPortMapping` to construct source-to-target port mappings. Migration actions support confirmation, WhatIf, and background jobs.
-    - Implements [Azure/azure-rest-api-specs#45905](https://github.com/Azure/azure-rest-api-specs/pull/45905).
+* Added provider-led ExpressRoute cross-connection migration commands.
 * Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
 * Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
-    - Added `-ExpressRouteLag` to `New-AzExpressRouteCircuit` to reference the target `ExpressRouteLag` resource when creating the circuit.
-    - Added the read-only `Circuits` property to the `PSExpressRouteLag` output, listing the ExpressRoute circuit(s) provisioned on the ExpressRouteLag.
 * Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
-* Added support for Application Gateway advanced routing, which routes requests based on conditions evaluated against request headers, query string arguments, path, client IP address, or HTTP method.
-    - Added `New-AzApplicationGatewayAdvancedRoutingCondition` to define a single match condition.
-    - Added `New/Add/Get/Set/Remove-AzApplicationGatewayAdvancedRoutingConditionSet` to manage the condition sets referenced by advanced routing rules.
-    - Added `New-AzApplicationGatewayAdvancedRoutingRuleConfig` to define an advanced routing rule.
-    - Added `New/Add/Get/Set/Remove-AzApplicationGatewayAdvancedRoutingMap` to manage advanced routing maps.
-    - Added `-AdvancedRoutingMaps` and `-AdvancedRoutingConditionSets` to `New-AzApplicationGateway`.
+* Added Application Gateway advanced routing support.
 * Added `AdvancedRouting` as a supported value for `-RuleType` on `New-AzApplicationGatewayRequestRoutingRule`, `Add-AzApplicationGatewayRequestRoutingRule`, and `Set-AzApplicationGatewayRequestRoutingRule`.
-    - Added `-AdvancedRoutingMap` and `-AdvancedRoutingMapId` to those cmdlets to associate the rule with an advanced routing map.
-* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the client certificate verification mode (`Strict` or `Passthrough`) for Application Gateway frontend mutual TLS (mTLS). In `Passthrough` mode the client certificate is forwarded to the backend without being verified by the application gateway.
+* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the frontend mutual TLS (mTLS) client certificate verification mode.
 * Upgraded Network SDK to API version `2026-01-01`.
 * Fixed `-EnableOnlyIpv6Peering` on `New-AzVirtualHubVnetConnection` so that the `Enabled` and `Disabled` values are correctly translated to the boolean `enableOnlyIPv6Peering` property expected by the service.
 * Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
-    - Use `-MinAllocationSize` and `-MaxAllocationSize` with `New-AzNetworkManagerIpamPool` or `Set-AzNetworkManagerIpamPool`.
-    - Specify an empty string with either `Set-AzNetworkManagerIpamPool` parameter to clear that bound.
 * Added `Get-AzExpressRouteCircuitAuthorizationKey` and `Get-AzExpressRoutePortAuthorizationKey` to retrieve the authorization key for an ExpressRoute circuit or port authorization (Microsoft.Network 2026-01-01 API).
-    - The authorization key is now a secret that is masked by the standard get cmdlets, so these cmdlets retrieve it through a live `listKeys` action.
 * Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
-    - Added the `ParanoiaLevel` property to the rules returned by `Get-AzApplicationGatewayAvailableWafRuleSet` and `Get-AzApplicationGatewayWafDynamicManifest`.
-    - Added the `DisplayName` property to the rule sets returned by the same cmdlets.
-    - Both properties are read-only and are populated from API version 2026-01-01 and later.
-* Added `SourceGeoLocation` and `DestinationGeoLocation` parameters to `New-AzFirewallPolicyNetworkRule` to support geographic location (ISO 3166-1 alpha-2 country code) filters in Firewall Policy network rules.
-    - Source types (`SourceAddress`, `SourceIpGroup`, `SourceGeoLocation`) are mutually exclusive.
-    - Destination types (`DestinationAddress`, `DestinationIpGroup`, `DestinationFqdn`, `DestinationGeoLocation`) are mutually exclusive.
+* Added `SourceGeoLocation` and `DestinationGeoLocation` filters to `New-AzFirewallPolicyNetworkRule`.
 * Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
-    - Flow log format versions are now validated by the service, so newly supported versions can be used without a module update.
-    - Corrected the error message shown for an invalid `-FormatType` value, which previously reported an invalid format version.
 * Added Change Safety support for additional cmdlets.
-* Added support for the `CAPTCHA` action in Application Gateway WAF (Web Application Firewall) policies.
-    - Added `CAPTCHA` as an allowed value for the `-Action` parameter of custom rules (`New-AzApplicationGatewayFirewallCustomRule`) and managed rule overrides (`New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`).
-    - Added the `-CaptchaExpirationInMins` parameter to `New-AzApplicationGatewayFirewallPolicySetting`.
+* Added the `CAPTCHA` action to Application Gateway WAF policies.
 
 ## Version 8.2.0
 * Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
