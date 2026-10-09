@@ -122,7 +122,7 @@ Set-Location $HOME
             foreach ($name in $environment.Keys) { [Environment]::SetEnvironmentVariable($name, $environment[$name]) }
         }
         $markers = @(Get-Content $log | Where-Object { $_ -match '^(Starting|Completed) ' })
-        $expected = foreach ($step in @('prerequisite version checks', 'process-local build feed setup', 'AutoRest preparation',
+        $expected = foreach ($step in @('build output lock preflight', 'prerequisite version checks', 'process-local build feed setup', 'AutoRest preparation',
             'targeted EdgeAction build', 'parent Markdown help refresh', 'XML help generation and artifact publication')) {
             "Starting $step."
             "Completed $step."
@@ -174,6 +174,26 @@ Set-Location $HOME
         (Get-Content (Join-Path $root 'ambiguous.log') -Raw) | Should -Match 'cannot report configured input unambiguously'
         Test-Path (Join-Path $root 'sequence.txt') | Should -Be $false
     }
+    It 'stops the real child before prerequisites or preparation when the Accounts output is held' -Skip:(-not $IsWindows) {
+        $dll = Join-Path $accounts 'Microsoft.Azure.PowerShell.AssemblyLoading.dll'
+        [IO.File]::WriteAllBytes($dll, [byte[]](1, 2, 3, 4))
+        $hash = (Get-FileHash $dll).Hash
+        $held = [IO.File]::Open($dll, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
+        $log = Join-Path $root 'locked.log'
+        try {
+            { & $runner *> $log } | Should -Throw 'EdgeAction generation failed'
+            $messages = Get-Content $log -Raw
+            $messages | Should -Match 'Build output preflight failed'
+            $messages | Should -Match ([regex]::Escape($dll))
+            $messages | Should -Not -Match 'Completed build output lock preflight|Starting prerequisite|Starting AutoRest'
+            Test-Path (Join-Path $root 'sequence.txt') | Should -Be $false
+            (Get-FileHash (Join-Path $source 'how-to.md')).Hash | Should -Be $guideHash
+            (Get-Content (Join-Path $parentHelp 'Az.EdgeAction.md') -Raw) | Should -Be $originalPage
+        } finally {
+            $held.Dispose()
+        }
+        (Get-FileHash $dll).Hash | Should -Be $hash
+    }
     It 'propagates <Failure> from prepare and restores the maintained guide' -TestCases @(
         @{ Failure = 'PowerShell error'; Command = "Write-Error 'fixture failure'" }
         @{ Failure = 'native exit'; Command = '& (Join-Path $PSHOME $(if ($IsWindows) { "pwsh.exe" } else { "pwsh" })) -NoProfile -Command "exit 7"' }
@@ -214,6 +234,58 @@ Set-Location $HOME
         Test-Path (Join-Path $root 'sequence.txt') | Should -Be $false
         (Get-FileHash (Join-Path $source 'how-to.md')).Hash | Should -Be $guideHash
         (Get-Content (Join-Path $parentHelp 'Az.EdgeAction.md') -Raw) | Should -Be $originalPage
+    }
+}
+
+Describe 'Generation output lock probe' {
+    BeforeAll {
+        $runner = Join-Path $PSScriptRoot '..' 'Update-EdgeActionGeneratedFiles.ps1'
+        $tokens = $null
+        $errors = $null
+        $ast = [Management.Automation.Language.Parser]::ParseFile($runner, [ref]$tokens, [ref]$errors)
+        $function = $ast.Find({ param($node)
+            $node -is [Management.Automation.Language.FunctionDefinitionAst] -and
+            $node.Name -eq 'Assert-EdgeActionBuildOutputAvailable'
+        }, $false)
+        . ([scriptblock]::Create($function.Extent.Text))
+    }
+    It 'accepts absent artifacts without creating files or directories' {
+        $missing = Join-Path $TestDrive 'not-built' 'output.dll'
+        { Assert-EdgeActionBuildOutputAvailable $missing } | Should -Not -Throw
+        Test-Path (Split-Path $missing) | Should -Be $false
+    }
+    It 'leaves an unlocked file unchanged and releases the probe handle' {
+        $file = Join-Path $TestDrive 'unlocked.dll'
+        [IO.File]::WriteAllBytes($file, [byte[]](1, 2, 3, 4))
+        $hash = (Get-FileHash $file).Hash
+        $modified = (Get-Item $file).LastWriteTimeUtc
+        Assert-EdgeActionBuildOutputAvailable $file
+        (Get-FileHash $file).Hash | Should -Be $hash
+        (Get-Item $file).LastWriteTimeUtc | Should -Be $modified
+        $exclusive = [IO.File]::Open($file, [IO.FileMode]::Open, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+        $exclusive.Dispose()
+    }
+    It 'fails on a held Windows file and succeeds once the owner releases it' -Skip:(-not $IsWindows) {
+        $file = Join-Path $TestDrive 'held.dll'
+        [IO.File]::WriteAllBytes($file, [byte[]](1, 2, 3, 4))
+        $held = [IO.File]::Open($file, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
+        try {
+            { Assert-EdgeActionBuildOutputAvailable $file } | Should -Throw 'locked or inaccessible'
+            $held.CanRead | Should -Be $true
+        } finally {
+            $held.Dispose()
+        }
+        { Assert-EdgeActionBuildOutputAvailable $file } | Should -Not -Throw
+    }
+    It 'does not treat an inaccessible output as an absent artifact' -Skip:(-not $IsWindows) {
+        $file = Join-Path $TestDrive 'readonly.dll'
+        [IO.File]::WriteAllBytes($file, [byte[]](1, 2, 3, 4))
+        [IO.File]::SetAttributes($file, [IO.FileAttributes]::ReadOnly)
+        try {
+            { Assert-EdgeActionBuildOutputAvailable $file } | Should -Throw 'Build output preflight failed'
+        } finally {
+            [IO.File]::SetAttributes($file, [IO.FileAttributes]::Normal)
+        }
     }
 }
 

@@ -31,6 +31,7 @@
     - Clarified pre-login environment registration and post-login context failures with property-specific diagnostics that redact subscription IDs and sensitive URL components.
     - Record and Live runs now verify the environment before Resources support setup and request explicit confirmation before persistently registering a missing Brazilus environment. Existing registrations and playback are unchanged.
     - Successful Record runs now copy selected recordings and compatible metadata to source as unstaged review changes, with credential checks and no automatic staging or commit.
+    - Generation now checks the known Accounts output DLL for Windows locks before preparation, with actionable guidance instead of changing outputs before a predictable build failure.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
