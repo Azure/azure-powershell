@@ -25,11 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
 
         /// <summary>The type of the relationship source resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string MetadataSourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataSourceType; }
+        public string MetadataSourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataSourceType; }
 
         /// <summary>The type of the relationship target resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string MetadataTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataTargetType; }
+        public string MetadataTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataTargetType; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)__extensionResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)__extensionResource).Id = value ?? null; }
@@ -62,31 +62,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)__extensionResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)__extensionResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Metadata</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipMetadata Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MetadataSourceType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.MetadataSourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataSourceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataSourceType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.MetadataSourceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataSourceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataSourceType = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataTargetType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.MetadataTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataTargetType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).MetadataTargetType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.MetadataTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataTargetType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).MetadataTargetType = value ?? null; }
 
         /// <summary>Internal Acessors for OriginInformation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipOriginInformation Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformation = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IRelationshipOriginInformation Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OriginInformationDiscoveryEngine</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformationDiscoveryEngine { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationDiscoveryEngine; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationDiscoveryEngine = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformationDiscoveryEngine { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationDiscoveryEngine; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationDiscoveryEngine = value ?? null; }
 
         /// <summary>Internal Acessors for OriginInformationRelationshipOriginType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformationRelationshipOriginType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationRelationshipOriginType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationRelationshipOriginType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.OriginInformationRelationshipOriginType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationRelationshipOriginType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationRelationshipOriginType = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipProperties()); set { {_property = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2 Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesV2()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).ProvisioningState = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).ProvisioningState = value ?? null; }
 
-        /// <summary>Internal Acessors for SourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.SourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).SourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).SourceId = value ?? null; }
+        /// <summary>Internal Acessors for TargetId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipInternal.TargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).TargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).TargetId = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inherited)]
@@ -94,30 +94,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
 
         /// <summary>The name of the discovery engine that created the relationship.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string OriginInformationDiscoveryEngine { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationDiscoveryEngine; }
+        public string OriginInformationDiscoveryEngine { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationDiscoveryEngine; }
 
         /// <summary>Identifies the origin type of the relationship.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string OriginInformationRelationshipOriginType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).OriginInformationRelationshipOriginType; }
+        public string OriginInformationRelationshipOriginType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).OriginInformationRelationshipOriginType; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2 _property;
 
         /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2 Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesV2()); set => this._property = value; }
 
         /// <summary>The provisioning state of the relationship.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).ProvisioningState; }
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).ProvisioningState; }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>The relationship source resource id.</summary>
+        /// <summary>The relationship source resource id. Must be a service group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string SourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).SourceId; }
+        public string SourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).SourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).SourceId = value ?? null; }
+
+        /// <summary>The relationship source tenant id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
+        public string SourceTenant { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).SourceTenant; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).SourceTenant = value ?? null; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -149,13 +153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inherited)]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IResourceInternal)__extensionResource).SystemDataLastModifiedByType; }
 
-        /// <summary>The relationship target resource id.</summary>
+        /// <summary>The relationship target resource id. Server-derived from the scoped resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string TargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).TargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).TargetId = value ?? null; }
-
-        /// <summary>The relationship target tenant id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relationships.PropertyOrigin.Inlined)]
-        public string TargetTenant { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).TargetTenant; set => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesInternal)Property).TargetTenant = value ?? null; }
+        public string TargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2Internal)Property).TargetId; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -243,39 +243,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
-        /// <summary>The relationship source resource id.</summary>
+        /// <summary>The relationship source resource id. Must be a service group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The relationship source resource id. Must be a service group.",
+        SerializedName = @"sourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SourceId { get; set; }
+        /// <summary>The relationship source tenant id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The relationship source tenant id.",
+        SerializedName = @"sourceTenant",
+        PossibleTypes = new [] { typeof(string) })]
+        string SourceTenant { get; set; }
+        /// <summary>The relationship target resource id. Server-derived from the scoped resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The relationship source resource id.",
-        SerializedName = @"sourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string SourceId { get;  }
-        /// <summary>The relationship target resource id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The relationship target resource id.",
+        Description = @"The relationship target resource id. Server-derived from the scoped resource.",
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
-        string TargetId { get; set; }
-        /// <summary>The relationship target tenant id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The relationship target tenant id.",
-        SerializedName = @"targetTenant",
-        PossibleTypes = new [] { typeof(string) })]
-        string TargetTenant { get; set; }
+        string TargetId { get;  }
 
     }
     /// Defines a ServiceGroupMember relationship resource.
@@ -296,16 +296,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.PSArgumentCompleterAttribute("ServiceExplicitlyCreated", "SystemDiscoveredByRule", "UserExplicitlyCreated", "UserDiscoveredByRule")]
         string OriginInformationRelationshipOriginType { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipProperties Property { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationshipPropertiesV2 Property { get; set; }
         /// <summary>The provisioning state of the relationship.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relationships.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
-        /// <summary>The relationship source resource id.</summary>
+        /// <summary>The relationship source resource id. Must be a service group.</summary>
         string SourceId { get; set; }
-        /// <summary>The relationship target resource id.</summary>
+        /// <summary>The relationship source tenant id.</summary>
+        string SourceTenant { get; set; }
+        /// <summary>The relationship target resource id. Server-derived from the scoped resource.</summary>
         string TargetId { get; set; }
-        /// <summary>The relationship target tenant id.</summary>
-        string TargetTenant { get; set; }
 
     }
 }

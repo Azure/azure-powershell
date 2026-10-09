@@ -34,7 +34,10 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IRelationshipsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Name <String>]: Name of dependencyOf relationship.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [ServiceGroupName <String>]: The name of the service group.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsservicegroupmemberrelationship
 #>
