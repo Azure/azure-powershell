@@ -33,6 +33,7 @@
     - Successful Record runs now copy selected recordings and compatible metadata to source as unstaged review changes, with credential checks and no automatic staging or commit.
     - Generation now checks the known Accounts output DLL for Windows locks before preparation, reporting verified PowerShell process IDs and manual recovery commands without terminating processes.
     - Fixed scenario cleanup to delete child resources before their parent, delete the current default version last using service-reported state, reset only selected dedicated test fixtures, and report cleanup failures instead of hiding them.
+    - Scenario runs now refresh maintained test scripts automatically without replacing recordings or rebuilding binaries, and stop if stale artifact scenarios have no matching source.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified

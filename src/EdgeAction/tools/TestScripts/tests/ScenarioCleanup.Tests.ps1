@@ -427,6 +427,7 @@ Invoke-Pester -Script @{ Path=$Fixture; Parameters=@{ Failure=$Failure } } -Outp
         InModuleScope EdgeAction.TestRunner {
             Mock Get-EdgeActionTestConfig { @{} }
             Mock Assert-EdgeActionMutation {}
+            Mock Update-EdgeActionArtifactTests { @{} }
             Mock Get-EdgeActionRecordingState { @{} }
             Mock Invoke-EdgeActionTestChild {
                 $destination = Join-Path $script:Artifact 'test' 'Az.EdgeAction-TestResults.xml'

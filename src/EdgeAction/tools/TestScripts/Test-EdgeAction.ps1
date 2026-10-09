@@ -4,6 +4,12 @@
 .SYNOPSIS
 Runs the built EdgeAction scenario harness; playback is the default.
 .DESCRIPTION
+After configuration and mutation-consent validation, every mode refreshes maintained
+test/*.Tests.ps1 and test/utils.ps1 into the existing artifact test directory.
+Only changed scripts are copied and verified. Recordings, metadata, results, binaries,
+and unrelated files are not changed by refresh. Orphan artifact scenario scripts stop
+the run for manual review; missing artifacts require a build, not an implicit rebuild.
+Cmdlet/runtime and other fixture changes still require the normal build workflow.
 Record/Live require -AllowResourceChanges and an explicit expected subscription.
 Shared settings select AzureCloud; the local example selects Brazilus. Only their
 documented ARM endpoints and the public ARM audience are accepted.
@@ -20,10 +26,13 @@ to source as unstaged changes for Git diff review, with compatible env.json when
 Playback, Live, and failed runs never copy back. No staging or commit is performed.
 Known credential fields block handoff; other payloads, including embedded code/archives,
 still require human review. This is not comprehensive sanitization.
-No EdgeAction build or automatic cleanup of cloud resources is performed.
+No EdgeAction build or resource-group-wide cleanup is performed. Selected scenarios
+reset their dedicated fixture resources before setup and clean them after execution.
 Artifact recordings remain available without automatic backups.
 Review source changes and preserve any uncopied outputs before rebuilding or rerunning.
 Fresh NUnit results are checked independently of the generated runner's exit code.
+Source scenario/helper edits during Record block recording handoff. Refreshed tests
+can require fresh recordings before Playback; existing recordings are not rewritten.
 Repository, default settings, and artifact paths are resolved from this script,
 independently of the caller's working directory.
 The documented test working directory is src/EdgeAction/EdgeAction.Autorest:

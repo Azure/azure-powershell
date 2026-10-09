@@ -766,6 +766,149 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
         }
     }
 
+    Describe 'Automatic artifact test-script refresh' {
+        BeforeEach {
+            $savedRoot = $script:RepoRoot
+            $savedArtifact = $script:Artifact
+            $script:RepoRoot = Join-Path $TestDrive ([guid]::NewGuid().ToString())
+            $script:Artifact = Join-Path $script:RepoRoot 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest'
+            $sourceTest = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+            $artifactTest = Join-Path $script:Artifact 'test'
+            $null = New-Item -ItemType Directory -Path $sourceTest, $artifactTest -Force
+            foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1') {
+                Set-Content (Join-Path $sourceTest $name) "# current $name"
+                Set-Content (Join-Path $artifactTest $name) "# stale $name"
+            }
+            $script:refreshMessages = [System.Collections.Generic.List[string]]::new()
+            Mock Write-Host { $script:refreshMessages.Add([string]$Object) }
+            Mock Get-EdgeActionTestConfig { @{ SubscriptionId = '00000000-0000-0000-0000-000000000001' } }
+            Mock Invoke-EdgeActionTestChild {
+                foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1') {
+                    (Get-FileHash (Join-Path $artifactTest $name)).Hash |
+                        Should -Be (Get-FileHash (Join-Path $sourceTest $name)).Hash
+                }
+                Set-Content (Join-Path $artifactTest 'Az.EdgeAction-TestResults.xml') '<test-results failures="0" errors="0"><test-case name="Get-AzEdgeAction.Get" executed="True" success="True" /></test-results>'
+                return 0
+            }
+        }
+        AfterEach {
+            $script:RepoRoot = $savedRoot
+            $script:Artifact = $savedArtifact
+        }
+        It 'refreshes scripts before the harness in <Mode> mode' -TestCases @(
+            @{ Mode = 'Playback' }, @{ Mode = 'Record' }, @{ Mode = 'Live' }
+        ) {
+            param($Mode)
+            Invoke-EdgeActionTests @{
+                Mode = $Mode; AllowResourceChanges = $true
+                ConfigPath = (Join-Path $TestDrive 'nonexistent-fixture-settings.psd1')
+            }
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 1 -Exactly -Scope It
+            ($script:refreshMessages -join '|') | Should -Match 'Starting artifact test-script refresh.*Completed artifact test-script refresh: 3 updated, 0 unchanged'
+        }
+        It 'does not rewrite matching files on a subsequent refresh' {
+            $first = Update-EdgeActionArtifactTests
+            $timestamps = @{}
+            foreach ($name in $first.Keys) {
+                $file = Get-Item (Join-Path $artifactTest $name)
+                $file.LastWriteTimeUtc = [datetime]'2020-01-01Z'
+                $timestamps[$name] = $file.LastWriteTimeUtc
+            }
+            $second = Update-EdgeActionArtifactTests
+            foreach ($name in $first.Keys) {
+                $second[$name] | Should -Be $first[$name]
+                (Get-Item (Join-Path $artifactTest $name)).LastWriteTimeUtc | Should -Be $timestamps[$name]
+            }
+            $script:refreshMessages[-1] | Should -Match '0 updated, 3 unchanged'
+        }
+        It 'preserves recordings, metadata, results, binaries, and unrelated artifact files during refresh' {
+            $excluded = @('Get-AzEdgeAction.Recording.json', 'env.json', 'localEnv.json',
+                'Az.EdgeAction-TestResults.xml', 'fixture.dll', 'helper.ps1', 'test_handler.js')
+            $hashes = @{}
+            foreach ($name in $excluded) {
+                Set-Content (Join-Path $sourceTest $name) 'different source fixture'
+                Set-Content (Join-Path $artifactTest $name) 'preserved artifact fixture'
+                $hashes[$name] = (Get-FileHash (Join-Path $artifactTest $name)).Hash
+            }
+            $null = Update-EdgeActionArtifactTests
+            foreach ($name in $excluded) {
+                (Get-FileHash (Join-Path $artifactTest $name)).Hash | Should -Be $hashes[$name]
+            }
+        }
+        It 'copies newly added maintained scenario scripts' {
+            Set-Content (Join-Path $sourceTest 'Added.Tests.ps1') '# new fixture'
+            $state = Update-EdgeActionArtifactTests
+            $state.Count | Should -Be 4
+            (Get-FileHash (Join-Path $artifactTest 'Added.Tests.ps1')).Hash | Should -Be $state['Added.Tests.ps1']
+        }
+        It 'restores a missing artifact helper from maintained source' {
+            Remove-Item (Join-Path $artifactTest 'utils.ps1')
+            $state = Update-EdgeActionArtifactTests
+            (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash | Should -Be $state['utils.ps1']
+        }
+        It 'rejects orphan artifact scenarios including a nested same-name file: <RelativePath>' -TestCases @(
+            @{ RelativePath = 'Removed.Tests.ps1' }
+            @{ RelativePath = (Join-Path 'nested' 'Get-AzEdgeAction.Tests.ps1') }
+        ) {
+            param($RelativePath)
+            $orphan = Join-Path $artifactTest $RelativePath
+            $null = New-Item -ItemType Directory (Split-Path $orphan) -Force
+            Set-Content $orphan '# orphan fixture'
+            $original = (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash
+            { Invoke-EdgeActionTests @{ Mode = 'Playback' } } | Should -Throw 'no matching maintained source'
+            (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash | Should -Be $original
+            Test-Path $orphan | Should -Be $true
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 0 -Exactly -Scope It
+        }
+        It 'stops before refreshing or running when a prerequisite is missing: <Missing>' -TestCases @(
+            @{ Missing = 'artifact' }
+            @{ Missing = 'source' }
+            @{ Missing = 'utils' }
+            @{ Missing = 'scenarios' }
+        ) {
+            param($Missing)
+            switch ($Missing) {
+                'artifact' { Rename-Item $artifactTest 'saved-test' }
+                'source' { Rename-Item $sourceTest 'saved-test' }
+                'utils' { Remove-Item (Join-Path $sourceTest 'utils.ps1') }
+                'scenarios' {
+                    Remove-Item (Join-Path $sourceTest 'Get-AzEdgeAction.Tests.ps1')
+                    Remove-Item (Join-Path $sourceTest 'New-AzEdgeAction.Tests.ps1')
+                }
+            }
+            { Invoke-EdgeActionTests @{ Mode = 'Playback' } } | Should -Throw
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 0 -Exactly -Scope It
+            if ($Missing -eq 'artifact') { Test-Path $artifactTest | Should -Be $false }
+        }
+        It 'does not refresh or discard previous results before mutation consent' {
+            $results = Join-Path $artifactTest 'Az.EdgeAction-TestResults.xml'
+            Set-Content $results 'previous fixture result'
+            $original = (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash
+            { Invoke-EdgeActionTests @{ Mode = 'Record' } } | Should -Throw 'AllowResourceChanges'
+            (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash | Should -Be $original
+            (Get-Content $results -Raw).Trim() | Should -Be 'previous fixture result'
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 0 -Exactly -Scope It
+        }
+        It 'does not refresh when configuration validation fails' {
+            Mock Get-EdgeActionTestConfig { throw 'fixture invalid configuration' }
+            { Invoke-EdgeActionTests @{ Mode = 'Playback' } } | Should -Throw 'fixture invalid configuration'
+            $script:refreshMessages | Should -Not -Contain 'Starting artifact test-script refresh.'
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 0 -Exactly -Scope It
+        }
+        It 'stops before the harness and preserves results on <Failure>' -TestCases @(
+            @{ Failure = 'copy error'; Expected = 'fixture access denied' }
+            @{ Failure = 'verification mismatch'; Expected = 'Test-script verification failed' }
+        ) {
+            param($Failure, $Expected)
+            $results = Join-Path $artifactTest 'Az.EdgeAction-TestResults.xml'
+            Set-Content $results 'previous fixture result'
+            Mock Copy-Item { if ($Failure -eq 'copy error') { throw 'fixture access denied' } }
+            { Invoke-EdgeActionTests @{ Mode = 'Playback' } } | Should -Throw $Expected
+            (Get-Content $results -Raw).Trim() | Should -Be 'previous fixture result'
+            Assert-MockCalled Invoke-EdgeActionTestChild -Times 0 -Exactly -Scope It
+        }
+    }
+
     Describe 'Successful Record handoff for source review' {
         BeforeEach {
             $savedRoot = $script:RepoRoot
@@ -779,6 +922,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             $metadata = '{"SubscriptionId":"00000000-0000-0000-0000-000000000001","Tenant":"00000000-0000-0000-0000-000000000002","ResourceGroupName":"powershelltests"}'
             foreach ($folder in $artifactTest, $sourceTest) {
                 Set-Content (Join-Path $folder 'env.json') $metadata
+                Set-Content (Join-Path $folder 'utils.ps1') '# fixture helper'
                 foreach ($group in 'Get-AzEdgeAction', 'New-AzEdgeAction') {
                     Set-Content (Join-Path $folder "$group.Recording.json") '{}'
                     Set-Content (Join-Path $folder "$group.Tests.ps1") '# fixture test'
@@ -846,6 +990,16 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             Set-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') '{"user":"edit"}'
             { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'changed during the run'
             (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{"user":"edit"}'
+        }
+        It 'blocks recording handoff when maintained <File> changes during the run' -TestCases @(
+            @{ File = 'Get-AzEdgeAction.Tests.ps1' }
+            @{ File = 'utils.ps1' }
+            @{ File = 'Added.Tests.ps1' }
+        ) {
+            param($File)
+            Set-Content (Join-Path $sourceTest $File) '# source edit during run'
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'Source test scripts changed during the run'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
         }
         It 'rejects unsupported env metadata rather than copying credentials' {
             Set-Content (Join-Path $artifactTest 'env.json') '{"credential":"fixture-secret"}'
@@ -916,6 +1070,32 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
                 (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
             }
         }
+        It 'binds Record handoff to refreshed script hashes when source changes <Phase>' -TestCases @(
+            @{ Phase = 'after refresh before snapshot' }
+            @{ Phase = 'during the harness' }
+        ) {
+            param($Phase)
+            Mock Get-EdgeActionTestConfig { @{ SubscriptionId = '00000000-0000-0000-0000-000000000001' } }
+            Mock Update-EdgeActionArtifactTests {
+                $verified = Get-EdgeActionTestScriptState
+                if ($Phase -eq 'after refresh before snapshot') {
+                    Set-Content (Join-Path $sourceTest 'utils.ps1') '# concurrent source edit'
+                }
+                $verified
+            }
+            Mock Invoke-EdgeActionTestChild {
+                if ($Phase -eq 'during the harness') {
+                    Set-Content (Join-Path $sourceTest 'utils.ps1') '# concurrent source edit'
+                }
+                Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') $safeRecording
+                Set-Content $resultsPath '<test-results failures="0" errors="0"><test-case name="Get-AzEdgeAction.Get" executed="True" success="True" /></test-results>'
+                return 0
+            }
+            { Invoke-EdgeActionTests @{ Mode = 'Record'; AllowResourceChanges = $true } } |
+                Should -Throw 'Source test scripts changed during the run'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+            (Get-Content (Join-Path $sourceTest 'utils.ps1') -Raw).Trim() | Should -Be '# concurrent source edit'
+        }
     }
 
     Describe 'Fresh NUnit results' {
@@ -968,6 +1148,8 @@ Describe 'Isolated runner integration with a local fixture harness' {
         $artifact = Join-Path $fixture 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest'
         $accounts = Join-Path $fixture 'artifacts' 'Debug' 'Az.Accounts'
         $null = New-Item -ItemType Directory -Path $scripts, (Join-Path $source 'test'), (Join-Path $artifact 'test'), $accounts -Force
+        '# maintained fixture scenario' | Set-Content (Join-Path $source 'test' 'fixture.Tests.ps1')
+        '# maintained fixture helper' | Set-Content (Join-Path $source 'test' 'utils.ps1')
         foreach ($file in @('Test-EdgeAction.ps1', 'EdgeAction.TestRunner.psm1', 'TestSettings.psd1')) {
             Copy-Item (Join-Path $PSScriptRoot '..' $file) (Join-Path $scripts $file)
         }
@@ -1130,7 +1312,7 @@ if ((Get-Command Invoke-Pester).Module.Version -ne [version]'4.10.1') { throw 'W
 Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -EnableExit -OutputFile (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
 '@ | Set-Content $harness
         "Describe 'fixture' { It 'passes' { 1 | Should -Be 1 } }" |
-            Set-Content (Join-Path $artifact 'test' 'fixture.Tests.ps1')
+            Set-Content (Join-Path $source 'test' 'fixture.Tests.ps1')
         # Use a command to pass an actual array through the public wrapper.
         $command = "& '$($runner.Replace("'", "''"))' -TestName 'one','two'"
         $messages = @(& $pwsh -NoProfile -Command $command)
@@ -1139,6 +1321,8 @@ Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -Enab
         ($markers -join '|') | Should -Be (@(
             'Starting test configuration validation.'
             'Completed test configuration validation.'
+            'Starting artifact test-script refresh.'
+            'Completed artifact test-script refresh: 2 updated, 0 unchanged.'
             'Starting test dependency validation and loading.'
             'Completed test dependency validation and loading.'
             'Starting Playback scenario harness.'
