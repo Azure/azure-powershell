@@ -766,6 +766,158 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
         }
     }
 
+    Describe 'Successful Record handoff for source review' {
+        BeforeEach {
+            $savedRoot = $script:RepoRoot
+            $savedArtifact = $script:Artifact
+            $script:RepoRoot = Join-Path $TestDrive ([guid]::NewGuid().ToString())
+            $script:Artifact = Join-Path $script:RepoRoot 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest'
+            $artifactTest = Join-Path $script:Artifact 'test'
+            $sourceTest = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+            $null = New-Item -ItemType Directory -Path $artifactTest, $sourceTest -Force
+            $safeRecording = '{"Get-AzEdgeAction++Get+$GET+https://example.invalid/?api-version=2026-10-01+1":{"Request":{"Headers":{"Authorization":["[Filtered]"]},"ContentHeaders":{},"Content":null},"Response":{"Headers":{},"ContentHeaders":{},"Content":"{}"}}}'
+            $metadata = '{"SubscriptionId":"00000000-0000-0000-0000-000000000001","Tenant":"00000000-0000-0000-0000-000000000002","ResourceGroupName":"powershelltests"}'
+            foreach ($folder in $artifactTest, $sourceTest) {
+                Set-Content (Join-Path $folder 'env.json') $metadata
+                foreach ($group in 'Get-AzEdgeAction', 'New-AzEdgeAction') {
+                    Set-Content (Join-Path $folder "$group.Recording.json") '{}'
+                    Set-Content (Join-Path $folder "$group.Tests.ps1") '# fixture test'
+                }
+            }
+            $resultsPath = Join-Path $artifactTest 'Az.EdgeAction-TestResults.xml'
+            Set-Content $resultsPath '<test-results failures="0" errors="0"><test-case name="Get-AzEdgeAction.Get" executed="True" success="True" /></test-results>'
+            $before = Get-EdgeActionRecordingState
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') $safeRecording
+        }
+        AfterEach {
+            $script:RepoRoot = $savedRoot
+            $script:Artifact = $savedArtifact
+        }
+        It 'copies only changed selected recordings, preserving unrelated and excluded files' {
+            Set-Content (Join-Path $artifactTest 'New-AzEdgeAction.Recording.json') $safeRecording
+            Set-Content (Join-Path $artifactTest 'localEnv.json') '{"credential":"fixture-secret"}'
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Tests.ps1') '# must not copy'
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            (Get-FileHash (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json')).Hash |
+                Should -Be (Get-FileHash (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json')).Hash
+            (Get-Content (Join-Path $sourceTest 'New-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Tests.ps1') -Raw).Trim() | Should -Be '# fixture test'
+            Test-Path (Join-Path $sourceTest 'localEnv.json') | Should -Be $false
+            Test-Path (Join-Path $sourceTest 'Az.EdgeAction-TestResults.xml') | Should -Be $false
+        }
+        It 'copies all changed selected groups and matching metadata together' {
+            Set-Content $resultsPath '<test-results><test-case name="Get-AzEdgeAction.Get" /><test-case name="New-AzEdgeAction.Create" /></test-results>'
+            Set-Content (Join-Path $artifactTest 'New-AzEdgeAction.Recording.json') $safeRecording
+            Set-Content (Join-Path $artifactTest 'env.json') ($metadata.Replace('000000000001', '000000000003'))
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            foreach ($name in 'Get-AzEdgeAction.Recording.json', 'New-AzEdgeAction.Recording.json', 'env.json') {
+                (Get-FileHash (Join-Path $sourceTest $name)).Hash | Should -Be (Get-FileHash (Join-Path $artifactTest $name)).Hash
+            }
+        }
+        It 'does not copy stale unchanged recordings even when source differs' {
+            $before = Get-EdgeActionRecordingState
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+        }
+        It 'copies a selected recording rewritten with identical content during the run' {
+            $before = Get-EdgeActionRecordingState
+            $recording = Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json'
+            [IO.File]::SetLastWriteTimeUtc($recording, $before.ArtifactWriteTime['Get-AzEdgeAction.Recording.json'].AddSeconds(1))
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            (Get-FileHash (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json')).Hash | Should -Be (Get-FileHash $recording).Hash
+        }
+        It 'allows normal embedded code and archive payloads for human review' {
+            $data = $safeRecording | ConvertFrom-Json -AsHashtable
+            $entry = @($data.Values)[0]
+            $entry.Response.Content = '{"zipFile":"fixture-encoded-data","code":"fixture code"}'
+            $entry.Request.Content = 'Zml4dHVyZQ=='
+            $entry.Request.isContentBase64 = $true
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') ($data | ConvertTo-Json -Depth 20)
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            (Get-FileHash (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json')).Hash |
+                Should -Be (Get-FileHash (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json')).Hash
+        }
+        It 'rejects incompatible metadata for a partial recording set before any copies' {
+            Set-Content (Join-Path $artifactTest 'env.json') ($metadata.Replace('000000000001', '000000000003'))
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'outside this handoff'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+        }
+        It 'preserves a source recording edited during the run' {
+            Set-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') '{"user":"edit"}'
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'changed during the run'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{"user":"edit"}'
+        }
+        It 'rejects unsupported env metadata rather than copying credentials' {
+            Set-Content (Join-Path $artifactTest 'env.json') '{"credential":"fixture-secret"}'
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'unsupported metadata'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+        }
+        It 'surfaces copy errors without reporting completion' {
+            $script:blockedCopyDestination = Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json'
+            Mock Copy-Item { throw 'fixture access denied' } -ParameterFilter { $Destination -eq $script:blockedCopyDestination }
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'Recording handoff failed'
+        }
+        It 'writes nothing when any selected recording contains a detected credential' {
+            Set-Content $resultsPath '<test-results><test-case name="Get-AzEdgeAction.Get" /><test-case name="New-AzEdgeAction.Create" /></test-results>'
+            Set-Content (Join-Path $artifactTest 'New-AzEdgeAction.Recording.json') ($safeRecording.Replace('[Filtered]', 'Bearer fixture-secret'))
+            { Copy-EdgeActionRecordingsForReview $before $resultsPath } | Should -Throw 'handoff blocked'
+            foreach ($name in 'Get-AzEdgeAction.Recording.json', 'New-AzEdgeAction.Recording.json') {
+                (Get-Content (Join-Path $sourceTest $name) -Raw).Trim() | Should -Be '{}'
+            }
+        }
+        It 'rejects <Kind> without copying or printing sensitive data' -TestCases @(
+            @{ Kind = 'unfiltered authorization'; Bad = '{"Authorization":["Bearer fixture-secret"]}' }
+            @{ Kind = 'cookie'; Bad = '{"Cookie":["fixture-secret"]}' }
+            @{ Kind = 'API key'; Bad = '{"x-api-key":["fixture-secret"]}' }
+        ) {
+            param($Bad)
+            $unsafe = $safeRecording.Replace('{"Authorization":["[Filtered]"]}', $Bad)
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') $unsafe
+            $message = try { Copy-EdgeActionRecordingsForReview $before $resultsPath } catch { $_.Exception.Message }
+            $message | Should -Match 'handoff blocked'
+            $message | Should -Not -Match 'fixture-secret'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+        }
+        It 'rejects <Kind> in recorded bodies or URLs' -TestCases @(
+            @{ Kind = 'token body'; Text = '{"access_token":"fixture-secret"}' }
+            @{ Kind = 'signed URL'; Text = '{"url":"https://example.invalid/?sig=fixture-secret"}' }
+        ) {
+            param($Text)
+            $data = $safeRecording | ConvertFrom-Json -AsHashtable
+            $entry = @($data.Values)[0]
+            $entry.Response.Content = $Text
+            { Assert-EdgeActionRecordingReviewInput ($data | ConvertTo-Json -Depth 20) 'fixture.json' } | Should -Throw 'handoff blocked'
+        }
+        It 'copies through the parent flow only after successful Record with real XML: <Outcome>' -TestCases @(
+            @{ Outcome = 'Record passed'; Mode = 'Record'; ExitCode = 0; Failed = $false }
+            @{ Outcome = 'nonzero child'; Mode = 'Record'; ExitCode = 1; Failed = $false }
+            @{ Outcome = 'failed case'; Mode = 'Record'; ExitCode = 0; Failed = $true }
+            @{ Outcome = 'Playback passed'; Mode = 'Playback'; ExitCode = 0; Failed = $false }
+            @{ Outcome = 'Live passed'; Mode = 'Live'; ExitCode = 0; Failed = $false }
+        ) {
+            param($Mode, $ExitCode, $Failed)
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') '{}'
+            Mock Get-EdgeActionTestConfig { @{ SubscriptionId = '00000000-0000-0000-0000-000000000001' } }
+            Mock Invoke-EdgeActionTestChild {
+                Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') $safeRecording
+                $success = if ($Failed) { 'False' } else { 'True' }
+                Set-Content $resultsPath "<test-results failures='0' errors='0'><test-case name='Get-AzEdgeAction.Get' executed='True' success='$success' /></test-results>"
+                $ExitCode
+            }
+            if ($Failed -or $ExitCode) {
+                { Invoke-EdgeActionTests @{ Mode = $Mode; AllowResourceChanges = $true } } | Should -Throw 'Scenario tests failed'
+            } else {
+                Invoke-EdgeActionTests @{ Mode = $Mode; AllowResourceChanges = $true }
+            }
+            if ($Mode -eq 'Record' -and -not $Failed -and -not $ExitCode) {
+                (Get-FileHash (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json')).Hash |
+                    Should -Be (Get-FileHash (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json')).Hash
+            } else {
+                (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+            }
+        }
+    }
+
     Describe 'Fresh NUnit results' {
         BeforeEach {
             $resultPath = Join-Path $TestDrive 'result.xml'
@@ -815,7 +967,7 @@ Describe 'Isolated runner integration with a local fixture harness' {
         $source = Join-Path $fixture 'src' 'EdgeAction' 'EdgeAction.Autorest'
         $artifact = Join-Path $fixture 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest'
         $accounts = Join-Path $fixture 'artifacts' 'Debug' 'Az.Accounts'
-        $null = New-Item -ItemType Directory -Path $scripts, $source, (Join-Path $artifact 'test'), $accounts -Force
+        $null = New-Item -ItemType Directory -Path $scripts, (Join-Path $source 'test'), (Join-Path $artifact 'test'), $accounts -Force
         foreach ($file in @('Test-EdgeAction.ps1', 'EdgeAction.TestRunner.psm1', 'TestSettings.psd1')) {
             Copy-Item (Join-Path $PSScriptRoot '..' $file) (Join-Path $scripts $file)
         }
@@ -857,8 +1009,8 @@ Export-ModuleMember -Function Get-AzEnvironment, Add-AzEnvironment, Connect-AzAc
         "throw 'Unexpected support setup'" | Set-Content (Join-Path $artifact 'check-dependencies.ps1')
         $output = & $pwsh -NonInteractive -NoProfile -File $runner -Mode $Mode -AllowResourceChanges -Login 2>&1
         $LASTEXITCODE | Should -Not -Be 0
-        Get-Content (Join-Path $accounts 'preflight.txt') | Should -Be 'verified'
         ($output -join "`n") | Should -Match 'interactive confirmation is unavailable'
+        Get-Content (Join-Path $accounts 'preflight.txt') | Should -Be 'verified'
         ($output -join "`n") | Should -Not -Match 'Unexpected |Starting Resources|Starting process-scoped login'
         Test-Path $resultPath | Should -Be $false
     }

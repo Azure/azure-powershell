@@ -290,7 +290,7 @@ function Invoke-EdgeActionScenario {
         $group = Invoke-AzRestMethod -Method GET -Path "/subscriptions/$($Config.SubscriptionId)/resourcegroups/$($Config.ResourceGroupName)?api-version=2021-04-01"
         if ($group.StatusCode -ne 200) { throw 'The powershelltests resource group must already exist and be readable.' }
         Write-Host 'Completed live context and resource-group validation.'
-        Write-Warning 'Scenarios create/delete hardcoded resources in powershelltests. Review collisions, skipped tests, and cleanup. Sanitize recordings before copying to source.'
+        Write-Warning 'Scenarios create/delete hardcoded resources in powershelltests. Review collisions, skipped tests, and cleanup. Review and sanitize copied recordings before staging or committing.'
     }
     Write-Host "Mode: $Mode. Expected API: $($Config.ApiVersion). Configuration does not rewrite test names or recordings."
     Write-Host "Starting $Mode scenario harness."
@@ -342,6 +342,112 @@ Invoke-EdgeActionScenario @options
     }
 }
 
+function Get-EdgeActionRecordingState {
+    $state = @{ Artifact = @{}; ArtifactWriteTime = @{}; Source = @{} }
+    $directories = @{
+        Artifact = Join-Path $script:Artifact 'test'
+        Source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+    }
+    foreach ($kind in $directories.Keys) {
+        foreach ($file in Get-ChildItem -LiteralPath $directories[$kind] -File -ErrorAction Stop |
+            Where-Object { $_.Name -like '*.Recording.json' -or $_.Name -eq 'env.json' }) {
+            $state[$kind][$file.Name] = (Get-FileHash -LiteralPath $file.FullName -ErrorAction Stop).Hash
+            if ($kind -eq 'Artifact') { $state.ArtifactWriteTime[$file.Name] = $file.LastWriteTimeUtc }
+        }
+    }
+    $state
+}
+
+function Assert-EdgeActionRecordingReviewInput {
+    param([string]$Text, [string]$FileName)
+    # Reject known credential fields; payloads still require human review before staging.
+    $blocked = "Automatic recording handoff blocked for '$FileName'; review/sanitize the artifact manually. No source files have been copied."
+    try { $recording = ConvertFrom-Json -InputObject $Text -AsHashtable -ErrorAction Stop }
+    catch { throw "Invalid recording JSON in '$FileName'; no source files have been copied." }
+    if ($recording -isnot [System.Collections.IDictionary] -or -not $recording.Count) { throw $blocked }
+    foreach ($entry in $recording.Values) {
+        foreach ($side in 'Request', 'Response') {
+            $message = $entry[$side]
+            if ($message -isnot [System.Collections.IDictionary]) { throw $blocked }
+            foreach ($headerSet in 'Headers', 'ContentHeaders') {
+                foreach ($header in $message[$headerSet].Keys) {
+                    $value = $message[$headerSet][$header] -join ''
+                    if ($header -match '(?i)authorization|cookie|token|secret|api[-_]?key' -and
+                        $value -notin @('', '[Filtered]', 'Sanitized')) { throw "$blocked Unfiltered credential-bearing header detected." }
+                }
+            }
+        }
+    }
+    $plain = $Text.Replace('\"', '"')
+    if ($plain -match '(?i)"(?:access_token|accessToken|refresh_token|refreshToken|token|client_secret|clientSecret|password|secret|secretText|connectionString|privateKey|storageAccountKey|primaryKey|secondaryKey)"\s*:\s*"(?!(?:\[Filtered\]|Sanitized)?")[^"]+' -or
+        $plain -match '(?i)[?&](?:sig|token|access_token|code|api[-_]?key)=[^&"\s]+' -or
+        $plain -match '(?i)https?://[^/"\s]+:[^/"\s]+@' -or
+        $plain -match '-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----') { throw "$blocked Credential field, signed URL, or private key detected." }
+}
+
+function Copy-EdgeActionRecordingsForReview {
+    param([hashtable]$Before, [string]$ResultsPath)
+    $ErrorActionPreference = 'Stop'
+    $source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+    $artifact = Join-Path $script:Artifact 'test'
+    [xml]$results = Get-Content -LiteralPath $ResultsPath -Raw
+    $groups = @($results.SelectNodes('//test-case') | ForEach-Object { ([string]$_.name).Split('.')[0] } | Sort-Object -Unique)
+    $after = Get-EdgeActionRecordingState
+    $copies = @{}
+    foreach ($file in Get-ChildItem -LiteralPath $artifact -Filter '*.Recording.json' -File) {
+        $group = $file.Name -replace '\.Recording\.json$', ''
+        if ($group -notin $groups -or
+            ($after.Artifact[$file.Name] -eq $Before.Artifact[$file.Name] -and
+                $after.ArtifactWriteTime[$file.Name] -eq $Before.ArtifactWriteTime[$file.Name])) { continue }
+        if (-not (Test-Path -LiteralPath (Join-Path $source "$group.Tests.ps1") -PathType Leaf)) {
+            throw "No matching source test for '$($file.Name)'; recording handoff stopped."
+        }
+        $text = Get-Content -LiteralPath $file.FullName -Raw
+        Assert-EdgeActionRecordingReviewInput $text $file.Name
+        $copies[$file.Name] = $file.FullName
+    }
+    if (-not $copies.Count) {
+        Write-Host 'No changed recordings from this successful Record run to copy.'
+        return
+    }
+    $envPath = Join-Path $artifact 'env.json'
+    try { $metadata = Get-Content -LiteralPath $envPath -Raw | ConvertFrom-Json -AsHashtable }
+    catch { throw 'Recording env.json is missing or invalid; no source files have been copied.' }
+    if ($metadata -isnot [System.Collections.IDictionary] -or $metadata.Count -ne 3 -or
+        $metadata.ResourceGroupName -cne 'powershelltests' -or
+        $metadata.SubscriptionId -notmatch '^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$' -or
+        $metadata.Tenant -notmatch '^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$') {
+        throw 'Recording env.json has unsupported metadata; no source files have been copied.'
+    }
+    $sourceEnv = Join-Path $source 'env.json'
+    try { $oldMetadata = if (Test-Path -LiteralPath $sourceEnv) { Get-Content -LiteralPath $sourceEnv -Raw | ConvertFrom-Json -AsHashtable } }
+    catch { throw 'Source env.json is invalid; no source files have been copied.' }
+    if ($null -ne $oldMetadata -and $oldMetadata -isnot [System.Collections.IDictionary]) {
+        throw 'Source env.json has unsupported metadata; no source files have been copied.'
+    }
+    $compatible = $oldMetadata -is [System.Collections.IDictionary] -and $oldMetadata.Count -eq $metadata.Count
+    foreach ($key in $metadata.Keys) { if (-not $oldMetadata -or $oldMetadata[$key] -cne $metadata[$key]) { $compatible = $false } }
+    if (-not $compatible) {
+        if (@($after.Source.Keys | Where-Object { $_ -like '*.Recording.json' -and -not $copies.ContainsKey($_) }).Count) {
+            throw 'Recording env.json differs from source metadata used by recordings outside this handoff. No source files have been copied; review a complete compatible recording set manually.'
+        }
+        $copies['env.json'] = $envPath
+    }
+    foreach ($name in @($copies.Keys) + 'env.json') {
+        if ($Before.Source[$name] -ne $after.Source[$name]) {
+            throw "Source '$name' changed during the run; no source files have been copied."
+        }
+    }
+    try {
+        foreach ($name in $copies.Keys | Sort-Object { $_ -eq 'env.json' }, { $_ }) {
+            Copy-Item -LiteralPath $copies[$name] -Destination (Join-Path $source $name) -ErrorAction Stop
+        }
+    } catch {
+        throw "Recording handoff failed: $($_.Exception.Message) Some source files may have been copied; inspect the Git diff. No staging, commit, or rollback was performed."
+    }
+    Write-Host "Copied $($copies.Count) recording/metadata files to '$source' for unstaged Git diff review. Review payloads and identifiers before staging; these checks do not certify sanitization."
+}
+
 function Invoke-EdgeActionTests {
     param([hashtable]$Options)
     $ErrorActionPreference = 'Stop'
@@ -355,12 +461,14 @@ function Invoke-EdgeActionTests {
         AllowResourceChanges = [bool]$Options.AllowResourceChanges; Login = [bool]$Options.Login
     }
     $path = Join-Path $script:Artifact 'test' 'Az.EdgeAction-TestResults.xml'
+    $recordingsBefore = if ($mode -eq 'Record') { Get-EdgeActionRecordingState }
     if (Test-Path $path) { Remove-Item -LiteralPath $path }
     $started = [datetime]::UtcNow
     $code = Invoke-EdgeActionTestChild $childOptions
     Write-Host 'Starting fresh test-result validation.'
     Assert-EdgeActionResults $path $started $code
     Write-Host 'Completed fresh test-result validation.'
+    if ($mode -eq 'Record') { Copy-EdgeActionRecordingsForReview $recordingsBefore $path }
     Write-Host "Completed $mode scenario harness; tests passed."
 }
 

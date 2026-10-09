@@ -15,9 +15,14 @@ Noninteractive runs must have the environment registered already.
 Record/Live automatically generate/build missing or incomplete Resources test support
 using the existing artifact dependency helper. Native build tools must be installed.
 Playback never prepares Resources support; complete installations are reused.
-No EdgeAction build, recording copy-back, or automatic cleanup of cloud resources is performed.
-Recordings remain in the artifact test directory without automatic backups.
-Review and copy recordings you need before rebuilding or rerunning scenarios.
+After validated successful Record runs, recordings written by selected groups are copied
+to source as unstaged changes for Git diff review, with compatible env.json when needed.
+Playback, Live, and failed runs never copy back. No staging or commit is performed.
+Known credential fields block handoff; other payloads, including embedded code/archives,
+still require human review. This is not comprehensive sanitization.
+No EdgeAction build or automatic cleanup of cloud resources is performed.
+Artifact recordings remain available without automatic backups.
+Review source changes and preserve any uncopied outputs before rebuilding or rerunning.
 Fresh NUnit results are checked independently of the generated runner's exit code.
 Repository, default settings, and artifact paths are resolved from this script,
 independently of the caller's working directory.
