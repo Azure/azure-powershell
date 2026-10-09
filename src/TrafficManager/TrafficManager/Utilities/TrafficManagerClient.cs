@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Rest.Azure;
     using Models;
     using System;
     using System.Collections;
@@ -64,8 +63,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             long? maxReturn,
             Hashtable tag,
             List<TrafficManagerCustomHeader> customHeaders,
-            List<TrafficManagerExpectedStatusCodeRange> expectedStatusCodeRanges,
-            string recordType)
+            List<TrafficManagerExpectedStatusCodeRange> expectedStatusCodeRanges)
         {
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,
@@ -94,7 +92,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     },
                     MaxReturn = maxReturn,
                     Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
-                    RecordType = recordType
                 });
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response);
@@ -168,36 +165,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile[] ListTrafficManagerProfiles(string resourceGroupName = null)
         {
-            IList<Profile> response =
-                resourceGroupName == null
-                    ? ListPaged(
-                        () => this.TrafficManagerManagementClient.Profiles.ListBySubscription(),
-                        nextPageLink => this.TrafficManagerManagementClient.Profiles.ListBySubscriptionNext(nextPageLink))
-                    : ListPaged(
-                        () => this.TrafficManagerManagementClient.Profiles.ListByResourceGroup(resourceGroupName),
-                        nextPageLink => this.TrafficManagerManagementClient.Profiles.ListByResourceGroupNext(nextPageLink));
+            IEnumerable<Profile> response =
+                resourceGroupName == null ?
+                this.TrafficManagerManagementClient.Profiles.ListBySubscription() :
+                this.TrafficManagerManagementClient.Profiles.ListByResourceGroup(resourceGroupName);
 
             return response.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
                 resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id),
                 profile.Name,
                 profile)).ToArray();
-        }
-
-        internal static IList<T> ListPaged<T>(
-            Func<IPage<T>> listFirstPage,
-            Func<string, IPage<T>> listNextPage)
-        {
-            var results = new List<T>();
-            IPage<T> page = listFirstPage();
-            results.AddRange(page);
-
-            while (!string.IsNullOrEmpty(page.NextPageLink))
-            {
-                page = listNextPage(page.NextPageLink);
-                results.AddRange(page);
-            }
-
-            return results;
         }
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
@@ -334,7 +310,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 MonitorTimeoutInSeconds = (int?)sdkProfile.MonitorConfig.TimeoutInSeconds,
                 MonitorToleratedNumberOfFailures = (int?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
                 MaxReturn = sdkProfile.MaxReturn,
-                RecordType = sdkProfile.RecordType,
                 CustomHeaders = sdkProfile.MonitorConfig.CustomHeaders?.Select(
                     customHeader => TrafficManagerCustomHeader.FromSDKMonitorConfigCustomHeadersItem(customHeader)).ToList(),
                 ExpectedStatusCodeRanges = sdkProfile.MonitorConfig.ExpectedStatusCodeRanges?.Select(

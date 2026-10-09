@@ -259,7 +259,7 @@
     <value>Multiple tokens were found for this user. Please clear your token cache using, Clear-AzureProfile and try this command again.</value>
   </data>
   <data name="AdalUserInteractionRequired" xml:space="preserve">
-    <value>User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzAccount.</value>
+    <value>User Interaction is required to authenticate this user. Please authenticate using the login dialog. In PowerShell, execute Connect-AzAccount.</value>
   </data>
   <data name="TenantNotFound" xml:space="preserve">
     <value>No tenant was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount.</value>
@@ -283,7 +283,7 @@
     <value>[Common.Authentication]: Authenticating for account {0} with single tenant {1}</value>
   </data>
   <data name="ArmAccountNotFound" xml:space="preserve">
-    <value>No account found in the context. Please login using Connect-AzAccount.</value>
+    <value>No account found in the context. Please log in using Connect-AzAccount.</value>
   </data>
   <data name="ArmUserInteractionRequired" xml:space="preserve">
     <value>User Interaction is required to authenticate this user. Please execute Connect-AzAccount without parameters and enter your credentials.</value>
@@ -292,10 +292,10 @@
     <value>Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in.</value>
   </data>
   <data name="NoTenantInContext" xml:space="preserve">
-    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in.</value>
   </data>
   <data name="UnsupportedCredentialType" xml:space="preserve">
     <value>Certificate authentication is not supported for account type {0}.</value>
@@ -377,7 +377,7 @@
     <value>AzKeyStore is locked. Please try again after a while.</value>
   </data>
   <data name="SwitchLoginMethodWarning" xml:space="preserve">
-    <value>You may need to login again after updating "{0}".</value>
+    <value>You may need to log in again after updating "{0}".</value>
     <comment>0 = key of the config</comment>
   </data>
   <data name="HelpMessageOfEnableWamLogin" xml:space="preserve">
