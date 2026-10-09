@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ### -EnableSecureBoot
 Specifies whether Secure Boot is enabled on the target VM.
 Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation.
-When omitted, the target VM inherits the Secure Boot setting of the source server.
+When omitted and -TargetVMSecurityOption is not 'TrustedLaunch', the target VM inherits the Secure Boot setting of the source server.
 
 ```yaml
 Type: System.String
