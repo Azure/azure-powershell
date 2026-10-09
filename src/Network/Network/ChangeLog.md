@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded Network SDK to API version `2026-03-01`.
 * Added cmdlets to manage Virtual Network Appliance capabilities.
     - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.

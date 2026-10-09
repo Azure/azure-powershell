@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="bandwidthInGbps">Bandwidth of the VirtualNetworkAppliance resource in Gbps.
         /// </param>
 
+        /// <param name="capacityProvider">The reference to the capacity provider resource.
+        /// </param>
+
         /// <param name="ipConfigurations">A list of IPConfigurations of the virtual network appliance.
         /// </param>
 
@@ -43,10 +46,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="subnet">The reference to the subnet resource.
         /// </param>
-        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet))
+        public VirtualNetworkAppliancePropertiesFormat(double? bandwidthInGbps = default(double?), SubResource capacityProvider = default(SubResource), System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkApplianceIpConfiguration>), string privateIPAddressVersion = default(string), string provisioningState = default(string), string resourceGuid = default(string), Subnet subnet = default(Subnet))
 
         {
             this.BandwidthInGbps = bandwidthInGbps;
+            this.CapacityProvider = capacityProvider;
             this.IPConfigurations = ipConfigurations;
             this.PrivateIPAddressVersion = privateIPAddressVersion;
             this.ProvisioningState = provisioningState;
@@ -66,6 +70,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "bandwidthInGbps")]
         public double? BandwidthInGbps {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the capacity provider resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityProvider")]
+        public SubResource CapacityProvider {get; set; }
 
         /// <summary>
         /// Gets a list of IPConfigurations of the virtual network appliance.
