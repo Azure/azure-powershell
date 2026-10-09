@@ -146,6 +146,7 @@ Describe 'Set-AzMigrateLocalServerReplicationSecurityOptionLive' -Tag 'LiveOnly'
         }
 
         $job = Set-AzMigrateLocalServerReplication `
+            -SubscriptionId $env.hciTvmSubscriptionId `
             -TargetObjectID $env.hciTvmProtectedItemId `
             -TargetVMSecurityOption 'TrustedLaunch' `
             -HttpPipelinePrepend $capture
@@ -167,6 +168,7 @@ Describe 'Set-AzMigrateLocalServerReplicationSecurityOptionLive' -Tag 'LiveOnly'
         }
 
         $job = Set-AzMigrateLocalServerReplication `
+            -SubscriptionId $env.hciTvmSubscriptionId `
             -TargetObjectID $env.hciTvmProtectedItemId `
             -EnableSecureBoot 'false' `
             -HttpPipelinePrepend $capture

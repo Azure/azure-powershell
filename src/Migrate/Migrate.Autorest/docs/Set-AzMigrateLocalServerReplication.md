@@ -101,7 +101,7 @@ Accept wildcard characters: False
 
 ### -EnableSecureBoot
 Specifies whether Secure Boot is enabled on the target VM.
-Only supported for Generation 2 target VMs.
+Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation.
 
 ```yaml
 Type: System.String
@@ -223,8 +223,8 @@ Accept wildcard characters: False
 
 ### -TargetVMSecurityOption
 Specifies the security type of the target VM.
-'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'.
-Only supported for Generation 2 target VMs.
+'TrustedLaunch' enables Secure Boot and vTPM, implies -EnableSecureBoot 'true', and requires a Generation 2 target VM.
+'Standard' is accepted for either generation and keeps Secure Boot on a Generation 2 target.
 
 ```yaml
 Type: System.String

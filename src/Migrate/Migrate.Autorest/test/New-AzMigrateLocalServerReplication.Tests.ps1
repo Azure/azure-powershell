@@ -180,6 +180,7 @@ Describe 'New-AzMigrateLocalServerReplicationSecurityOption' -Tag 'LiveOnly' {
         }
 
         $job = New-AzMigrateLocalServerReplication `
+            -SubscriptionId $env.hciTvmSubscriptionId `
             -MachineId $env.hciTvmMachineId `
             -TargetStoragePathId $env.hciTvmStoragePathId `
             -TargetResourceGroupId $env.hciTvmTargetRgId `

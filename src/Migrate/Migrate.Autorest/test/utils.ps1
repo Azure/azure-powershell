@@ -129,6 +129,20 @@ function setupEnv() {
     $env.hciNicId2 = "Microsoft:0FA67F11-3C1E-491B-A459-372141FB3B7F\\C284C44D-B38B-4C7A-9B95-69AB6E275F4F"
     $env.hciJobName = "5348d490-92d0-424b-9fe1-6d126cbcee0e"
     $env.hciJobId = "/subscriptions/0daa57b3-f823-4921-a09a-33c048e64022/resourceGroups/aszmige2etestCIRG01/providers/Microsoft.DataReplication/replicationVaults/aszmigtest1c100b4replicationvault/jobs/5348d490-92d0-424b-9fe1-6d126cbcee0e"
+
+    # Trusted Launch / Secure Boot live tests. hciTvmProtectedItemId must point at a Generation 2
+    # item whose source has Secure Boot disabled, otherwise the None case is rejected client-side.
+    $env.hciTvmSubscriptionId = "265ca7e5-909a-455d-9459-7c7041c1c37d"
+    $env.hciTvmMachineId = "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.OffAzure/HyperVSites/src5185site/machines/dac5820e-571c-435e-8940-5c3299a19f2e"
+    $env.hciTvmOSDiskId = "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\E8731E55-F448-4FB8-B5FD-D3B9B244DCE2\0\0\L"
+    $env.hciTvmNicId = "Microsoft:DAC5820E-571C-435E-8940-5C3299A19F2E\C6CEC83F-A2D9-4E06-855A-AB3451F951B3"
+    $env.hciTvmStoragePathId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourcegroups/edgeci-registration-s46r1405-zqcgn3th/providers/microsoft.azurestackhci/storagecontainers/userstorage4-f65c130de71d434eaeab111d3ea02f2a"
+    $env.hciTvmTargetRgId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/2503Uninstall"
+    $env.hciTvmVirtualSwitchId = "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-s46r1405-ZqcGn3TH/providers/microsoft.azurestackhci/logicalnetworks/s46r1405-lnet"
+    $env.hciTvmSourceApplianceName = "src"
+    $env.hciTvmTargetApplianceName = "tgt"
+    $env.hciTvmTargetVMName = "tvm-secopt-ws19"
+    $env.hciTvmProtectedItemId = "/subscriptions/265ca7e5-909a-455d-9459-7c7041c1c37d/resourceGroups/bpuram-tvme2ehv-ecy-rg/providers/Microsoft.DataReplication/replicationVaults/bpuram-tvme2eh4130replicationvault/protectedItems/160b78de-05c5-49aa-beda-562bfa00b210"
     
     $envFile = 'localEnv.json'
     $env.srsMachineId5 = "/Subscriptions/6b72781d-4550-419b-a56e-44055341a88e/resourceGroups/cbtgqlsrcrg/providers/Microsoft.RecoveryServices/vaults/ecygqlapp4055vault/replicationFabrics/ecygqlapp2fd6replicationfabric/replicationProtectionContainers/ecygqlapp2fd6replicationcontainer/replicationMigrationItems/idclab-vcen8-fareast-corp-micro-d2408603-48eb-434f-8cd5-f34828328495_50375aa1-275f-5306-3ded-6214508d3d6a"

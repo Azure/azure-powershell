@@ -77,7 +77,7 @@ function Set-AzMigrateLocalServerReplication {
         [ArgumentCompleter( { "Standard", "TrustedLaunch" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the security type of the target VM. 'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'. Only supported for Generation 2 target VMs.
+        # Specifies the security type of the target VM. 'TrustedLaunch' enables Secure Boot and vTPM, implies -EnableSecureBoot 'true', and requires a Generation 2 target VM. 'Standard' is accepted for either generation and keeps Secure Boot on a Generation 2 target.
         ${TargetVMSecurityOption},
 
         [Parameter()]
@@ -85,7 +85,7 @@ function Set-AzMigrateLocalServerReplication {
         [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies whether Secure Boot is enabled on the target VM. Only supported for Generation 2 target VMs.
+        # Specifies whether Secure Boot is enabled on the target VM. Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation.
         ${EnableSecureBoot},
 
         [Parameter()]
