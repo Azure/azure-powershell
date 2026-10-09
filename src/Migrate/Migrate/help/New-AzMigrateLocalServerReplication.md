@@ -18,8 +18,9 @@ New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <St
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> -TargetVirtualSwitchId <String> -OSDiskID <String> [-TargetVMCPUCore <Int32>]
  [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>]
- [-TargetVMRam <Int64>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetVMSecurityOption <String>] [-EnableSecureBoot <String>] [-TargetVMRam <Int64>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -27,9 +28,10 @@ New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <St
 New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> [-TargetVMCPUCore <Int32>] [-IsDynamicMemoryEnabled <String>]
- [-MigrateAsArcVM <String>] [-TargetVMRam <Int64>] [-SubscriptionId <String>]
- -DiskToInclude <AzLocalDiskInput[]> -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MigrateAsArcVM <String>] [-TargetVMSecurityOption <String>] [-EnableSecureBoot <String>]
+ [-TargetVMRam <Int64>] [-SubscriptionId <String>] -DiskToInclude <AzLocalDiskInput[]>
+ -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +147,23 @@ Parameter Sets: ByIdPowerUser
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSecureBoot
+Specifies whether Secure Boot is enabled on the target VM.
+Only supported for Generation 2 target VMs.
+When omitted, the target VM inherits the Secure Boot setting of the source server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -367,6 +386,23 @@ Specifies the target RAM size in MB.
 
 ```yaml
 Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSecurityOption
+Specifies the security type of the target VM.
+'TrustedLaunch' enables Secure Boot and vTPM, and implies -EnableSecureBoot 'true'.
+Only supported for Generation 2 target VMs.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
