@@ -20,4 +20,23 @@ python -m x_engineering_agent.repository_packages --root .x --repository Azure/a
 
 Local validation checks the source-only contract; it does not authorize a new runtime ref. Maintain these implementations here rather than regenerating them from central specialist copies.
 
+The Reviewer consumes one `get_pr_review_tool_summary` snapshot. Its repository
+entrypoint, `analyze_review_tools`, combines the existing seven review tools with
+PowerShell-specific targets, findings, revision context, handoffs and changed
+regression artifacts. The private helpers under `tools/reviewer/azure_powershell/`
+use the supplied PR and file changes; they do not fetch another snapshot or add
+write capabilities. Results use `tool` and `tool_title`, not legacy skill keys.
+TestFx dispatch still uses `changed_ps_test_files`, not the review coverage list.
+
+Run the offline regression and integration tests from the repository root:
+
+```sh
+python -B -m unittest discover -s tools/XAgent.Tests -p "test_*.py"
+```
+
+These tests import the real review modules through the `repository_tools`
+namespace and call `analyze_review_tools`. They cover the package-facing result
+contract but do not replace validation with the approved engine or activate a
+runtime revision.
+
 Onboarding: keep identity, workflow/routing settings under `profile`, and optional Python pins in the single `x.yml`. Put agent definitions in `definitions/` and Python tools under `tools/<role>/`. Do not create a separate `profile.yml`. Do not maintain duplicate agent, tool or file lists. Validation checks under `tools/validation/` are private Coordinator tools.
