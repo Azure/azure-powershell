@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/providers/Microsoft.ServiceBus/operations", ApiVersion = "2026-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/providers/Microsoft.ServiceBus/operations", ApiVersion = "2026-07-01-preview")]
     public partial class GetAzServiceBusOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IContext
