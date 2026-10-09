@@ -7,6 +7,8 @@ Runs repository preparation, build, and platyPS help refresh for EdgeAction.
 From src/EdgeAction/EdgeAction.Autorest:
   ../tools/GenerationScripts/Update-EdgeActionGeneratedFiles.ps1
 Install the prerequisites from how-to.md first. Approved build feeds are set in the child only.
+On Windows, checks the known Accounts output DLL for locks before preparation.
+Close shells holding built assemblies; the script never terminates processes.
 Generated outputs and parent cmdlet help are replaced, without backups or Git changes.
 #>
 [CmdletBinding()]
@@ -27,8 +29,31 @@ $source = Join-Path $root 'src' 'EdgeAction' 'EdgeAction.Autorest'
 $parentHelp = Join-Path $root 'src' 'EdgeAction' 'EdgeAction' 'help'
 $artifact = Join-Path $root 'artifacts' 'Debug' 'Az.EdgeAction'
 
+function Assert-EdgeActionBuildOutputAvailable {
+    param([string]$Path)
+    $stream = $null
+    try {
+        # Opening an existing file for exclusive write access detects Windows image locks without writing bytes.
+        $stream = [IO.File]::Open($Path, [IO.FileMode]::Open, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+    } catch [IO.FileNotFoundException], [IO.DirectoryNotFoundException] {
+        Write-Host 'Accounts output DLL is absent; no existing file to check.'
+    } catch {
+        $failure = $_.Exception.GetBaseException()
+        throw "Build output preflight failed for '$Path' ($($failure.GetType().Name), HRESULT $($failure.HResult)). The file is locked or inaccessible; preparation has not started. Close the PowerShell process that imported this checkout's built Az.Accounts, including older terminal tabs. A new terminal or Remove-Module does not unload its DLLs. Use Process Explorer's Find Handle or DLL search to identify an owner; if none is found, check file permissions. No process was terminated."
+    } finally {
+        if ($null -ne $stream) { $stream.Dispose() }
+    }
+}
+
 Push-Location $root
 try {
+    Write-Host 'Starting build output lock preflight.'
+    if ($IsWindows) {
+        Assert-EdgeActionBuildOutputAvailable (Join-Path $root 'artifacts' 'Debug' 'Az.Accounts' 'Microsoft.Azure.PowerShell.AssemblyLoading.dll')
+    } else {
+        Write-Host 'Windows Accounts DLL lock check is not applicable on this platform.'
+    }
+    Write-Host 'Completed build output lock preflight.'
     Write-Host 'Starting prerequisite version checks.'
     try {
         $node = Get-Command node -CommandType Application
