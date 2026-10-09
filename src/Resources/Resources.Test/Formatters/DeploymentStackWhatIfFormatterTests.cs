@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Format_AlignsResourceStatusesAndPropertiesAndIndentsMultilineValues()
+        public void Format_IndentsResourceStatusesAndPropertiesAndMultilineValues()
         {
             var result = new PSDeploymentStackWhatIfResult
             {
@@ -137,6 +137,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             };
 
             string output = DeploymentStackWhatIfFormatter.Format(result, includeResultInfo: false);
+            output = Regex.Replace(output, @"\x1B\[[0-9;]*m", string.Empty);
             string[] lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
             string resourceLine = Assert.Single(lines, line => line.Contains("Microsoft.Storage/storageAccounts/test"));
             string managementLine = Assert.Single(lines, line => line.Contains("Management Status:"));
@@ -146,11 +147,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             string nestedValueLine = Assert.Single(lines, line => line.Contains("\"type\": \"object\""));
 
             int resourceIndent = resourceLine.TakeWhile(char.IsWhiteSpace).Count();
-            Assert.Equal(resourceIndent, managementLine.TakeWhile(char.IsWhiteSpace).Count());
-            Assert.Equal(resourceIndent, denyLine.TakeWhile(char.IsWhiteSpace).Count());
-            Assert.Equal(resourceIndent, propertyLine.TakeWhile(char.IsWhiteSpace).Count());
-            Assert.Equal(resourceIndent, nestedPathLine.TakeWhile(char.IsWhiteSpace).Count());
-            Assert.Equal(resourceIndent + 2, nestedValueLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.Equal(resourceIndent + 2, managementLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.Equal(resourceIndent + 2, denyLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.Equal(resourceIndent + 2, propertyLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.Equal(resourceIndent + 2, nestedPathLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.Equal(resourceIndent + 6, nestedValueLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.EndsWith("properties.nested: {", nestedPathLine);
             Assert.DoesNotContain("Deny Status:", managementLine);
             Assert.DoesNotContain("condition:", output);
             Assert.DoesNotContain("utcNow", output);
@@ -200,13 +202,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             };
 
             string output = DeploymentStackWhatIfFormatter.Format(result, includeResultInfo: false);
+            output = Regex.Replace(output, @"\x1B\[[0-9;]*m", string.Empty);
             string[] lines = output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
             string propertiesLine = Assert.Single(lines, line => line.Contains("properties:"));
             string displayNameLine = Assert.Single(lines, line => line.Contains("\"displayName\": \"Created template spec\""));
 
             Assert.Equal(
-                propertiesLine.TakeWhile(char.IsWhiteSpace).Count() + 2,
+                propertiesLine.TakeWhile(char.IsWhiteSpace).Count() + 4,
                 displayNameLine.TakeWhile(char.IsWhiteSpace).Count());
+            Assert.EndsWith("properties: {", propertiesLine);
             Assert.Contains("\"description\": \"Created by WhatIf\"", output);
             Assert.DoesNotContain("apiVersion:", output);
         }
@@ -398,7 +402,76 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             Assert.DoesNotContain("ignoredDelta", output);
         }
 
-        private static string FormatResourceForTest(PSDeploymentStackWhatIfResourceChange resourceChange)
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("Create", "Definite", "+")]
+        [InlineData("Delete", "Definite", "-")]
+        [InlineData("Create", "Potential", "+")]
+        [InlineData("Delete", "Potential", "-")]
+        public void Format_UsesCliIndentationForConfigurationAndSubsequentResources(string changeType, string certainty, string symbol)
+        {
+            var configuration = new JObject
+            {
+                ["location"] = "centralus",
+                ["sku"] = new JObject { ["name"] = "Standard_LRS" },
+                ["zones"] = new JArray("1"),
+                ["properties"] = new JObject
+                {
+                    ["enabled"] = false,
+                    ["nested"] = new JObject { ["type"] = "example" }
+                }
+            };
+            var first = new PSDeploymentStackWhatIfResourceChange
+            {
+                Id = "/subscriptions/test/resourceGroups/a",
+                ChangeType = changeType,
+                ChangeCertainty = certainty,
+                ManagementStatusChange = new PSDeploymentStackWhatIfChangeBase
+                {
+                    ChangeType = "Modify",
+                    Before = changeType == "Create" ? "notManaged" : "managed",
+                    After = changeType == "Create" ? "managed" : "notManaged"
+                },
+                DenyStatusChange = new PSDeploymentStackWhatIfChangeBase { ChangeType = "NoChange", Before = "none", After = "none" },
+                ResourceConfigurationChanges = new PSDeploymentStackWhatIfResourceConfigurationChanges
+                {
+                    Before = changeType == "Delete" ? configuration : null,
+                    After = changeType == "Create" ? configuration : null
+                }
+            };
+            var second = new PSDeploymentStackWhatIfResourceChange
+            {
+                Id = "/subscriptions/test/resourceGroups/z",
+                ChangeType = changeType,
+                ChangeCertainty = certainty
+            };
+            string output = FormatResourceForTest(first, second);
+            string headingSymbol = certainty == "Potential" ? $"?{symbol} [Potential]" : symbol;
+            string expected = string.Join(Environment.NewLine, new[]
+            {
+                $"  {headingSymbol} {first.Id}",
+                $"    ~ Management Status: \"{first.ManagementStatusChange.Before}\" => \"{first.ManagementStatusChange.After}\"",
+                "    = Deny Status: \"none\"",
+                $"    {symbol} location: \"centralus\"",
+                $"    {symbol} sku: {{",
+                "        \"name\": \"Standard_LRS\"",
+                "      }",
+                $"    {symbol} zones: [",
+                "        \"1\"",
+                "      ]",
+                $"    {symbol} properties: {{",
+                "        \"enabled\": false,",
+                "        \"nested\": {",
+                "          \"type\": \"example\"",
+                "        }",
+                "      }",
+                $"  {headingSymbol} {second.Id}"
+            });
+
+            Assert.Contains(expected, output);
+        }
+
+        private static string FormatResourceForTest(params PSDeploymentStackWhatIfResourceChange[] resourceChanges)
         {
             string output = DeploymentStackWhatIfFormatter.Format(new PSDeploymentStackWhatIfResult
             {
@@ -406,7 +479,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
                 {
                     Changes = new PSDeploymentStackWhatIfChanges
                     {
-                        ResourceChanges = new List<PSDeploymentStackWhatIfResourceChange> { resourceChange }
+                        ResourceChanges = resourceChanges.ToList()
                     }
                 }
             }, includeResultInfo: false);

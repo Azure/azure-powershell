@@ -2,6 +2,7 @@
 #### Az.Resources
 * Improved deployment stack What-If output to show configuration details for resource creates and deletes, including potential changes.
     - Displays top-level fields such as location, kind, SKU, and tags followed by properties, while omitting redundant resource header fields.
+    - Indented resource details beneath their headings and aligned inline JSON formatting with Azure CLI output.
     - Aligns with [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
 
 ## 16.4.0 - October 2026

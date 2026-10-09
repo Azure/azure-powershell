@@ -551,6 +551,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         private void FormatResourceChange(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
             FormatResourceHeadingLine(resourceChange);
+            this.builder.PushIndent(new string(' ', IndentSize));
 
             if (resourceChange.ManagementStatusChange != null)
             {
@@ -583,6 +584,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     }
                 }
             }
+
+            this.builder.PopIndent();
         }
 
         private static bool ShouldSuppressResourcePropertyDelta(PSDeploymentStackWhatIfPropertyChange delta)
@@ -859,10 +862,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             if (formattedValue.IndexOfAny(new[] { '\r', '\n' }) >= 0)
             {
-                this.builder.AppendLine();
+                string[] lines = formattedValue.Replace("\r\n", "\n").Split('\n');
+                this.builder.Append(" ").Append(lines[0], color).AppendLine();
                 this.builder.PushIndent(new string(' ', IndentSize));
 
-                foreach (string line in formattedValue.Replace("\r\n", "\n").Split('\n'))
+                foreach (string line in lines.Skip(1))
                 {
                     this.builder.Append(line, color).AppendLine();
                 }
