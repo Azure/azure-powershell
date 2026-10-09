@@ -646,6 +646,118 @@ function Test-ShortTermRetentionPolicy
 	}
 }
 
+function Test-ShortTermRetentionLockImmutability
+{
+	# This test requires a pre-existing resource group, server and database in a region
+	# where short term retention lock immutability is available.
+	# To have the test create its own server and database, use the commented-out steps below instead.
+	$location = "centraluseuap"
+	$rgName = "dev-anehe-rg"
+	$serverName = "anehetestsvr"
+	$databaseName = "anehetestdb3"
+	$rg = Get-AzResourceGroup -ResourceGroupName $rgName
+	$server = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
+	$db = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	# $server = Create-ServerForTest $rg $location
+	# $databaseName = Get-DatabaseName
+	# $db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force:$true
+
+	try
+	{
+		# Test default values
+		$defaultRetention = 7
+		$defaultDiffbackupinterval = 12
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Enabled"
+		Assert-AreEqual $policy[0].RetentionDays $defaultRetention
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $defaultDiffbackupinterval
+
+		# Test retention days can be increased before locking immutability
+		$updatedRetention = 14
+		$diffbackupinterval = 24
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention -DiffBackupIntervalInHours $diffbackupinterval
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $diffbackupinterval
+
+		# Test retention days can be decreased before locking immutability
+		$decreasedRetention = 5
+		$diffbackupinterval = $defaultDiffbackupinterval
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $decreasedRetention -DiffBackupIntervalInHours $diffbackupinterval
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $decreasedRetention
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $defaultDiffbackupinterval
+
+		# Test Get returns the correct retention days before locking immutability
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		$currentRetention = $policy[0].RetentionDays
+		Assert-AreEqual $currentRetention $decreasedRetention
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Enabled"
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $defaultDiffbackupinterval
+
+		# Test locking without -Force requires confirmation. The test host cannot confirm, so the prompt surfaces as an exception.
+		Assert-ThrowsContains { Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $currentRetention -LockImmutability $true } "cannot be reverted"
+
+		# Test -WhatIf does not lock immutability
+		$null = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $currentRetention -LockImmutability $true -WhatIf
+
+		# Test neither of the above attempts locked immutability
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Enabled"
+		Assert-AreEqual $policy[0].RetentionDays $currentRetention
+
+		# Test ImmutabilityStatus is Locked after setting the LockImmutability flag to true
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $currentRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+
+		# Test ImmutabilityStatus is Locked in GET response
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+		Assert-AreEqual $policy[0].RetentionDays $currentRetention
+
+		# Test retention days can be increased after locking immutability
+		$updatedRetention = 7
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention -LockImmutability $true -Force
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+
+		# Test retention days cannot be decreased after locking immutability
+		$lockedDecreasedRetention = $updatedRetention - 1
+		Assert-ThrowsContains { Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $lockedDecreasedRetention -LockImmutability $true -Force } "Backup retention cannot be reduced"
+
+		# Test the policy is unchanged after the rejected decrease
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+
+		# Test diffBackupInterval can be changed after locking immutability without need to specify the LockImmutability flag
+		$diffBackupInterval = 24
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -DiffBackupIntervalInHours $diffBackupInterval
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $diffBackupInterval
+
+		# Test the diffBackupInterval in GET
+		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $policy[0].ImmutabilityStatus "Locked"
+		Assert-AreEqual $policy[0].RetentionDays $updatedRetention
+		Assert-AreEqual $policy[0].DiffBackupIntervalInHours $diffBackupInterval
+	}
+	finally
+	{
+		# drop the test db and server
+		Remove-AzSqlDatabase -DatabaseName $databaseName -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+		# When server can be created as part of test, uncomment the dropping of the server below.
+		# Remove-AzSqlServer -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -Force:$true
+	}
+}
+
 function Test-CopyLongTermRetentionBackup
 {
 	# MANUAL INSTRUCTIONS
