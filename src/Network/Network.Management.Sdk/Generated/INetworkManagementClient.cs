@@ -183,6 +183,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; }
 
         /// <summary>
+        /// Gets the IExpressRouteLagAuthorizationsOperations
+        /// </summary>
+        IExpressRouteLagAuthorizationsOperations ExpressRouteLagAuthorizations { get; }
+
+        /// <summary>
         /// Gets the IExpressRoutePortAuthorizationsOperations
         /// </summary>
         IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; }

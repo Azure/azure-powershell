@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1535,7 +1535,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1774,7 +1774,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2009,7 +2009,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2253,7 +2253,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "devicePath");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2494,7 +2494,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "devicePath");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2735,7 +2735,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "devicePath");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2967,7 +2967,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3203,7 +3203,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3438,7 +3438,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3675,7 +3675,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3913,7 +3913,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "crossConnectionName");
             }
 
-            string apiVersion = "2026-01-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
