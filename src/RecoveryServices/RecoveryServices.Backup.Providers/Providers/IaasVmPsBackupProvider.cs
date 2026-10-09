@@ -834,46 +834,74 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            IEnumerable<string> ie =
-                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
-            string asyncHeader = string.Empty;
-            foreach (string s in ie)
-            {
-                asyncHeader = s;
-            }
+            string operationId = ilRResponse.Response.Headers.GetAzureAsyncOperationId();
 
             AzureVmRPMountScriptDetails result = null;
-            var response = TrackingHelpers.GetOperationStatus(
+
+            // Wait for the provision LRO to reach a terminal state before fetching scripts.
+            var provisionOperationStatus = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
-                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
-                    operationId,
+                opId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                    opId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
 
-            if (response != null && response.Status != null &&
-                   response.Properties != null && ((OperationStatusProvisionILRExtendedInfo)
-                   response.Properties).RecoveryTarget != null)
+            // Fail fast unless the provision operation succeeded. GetOperationStatus blocks until a
+            // terminal state, so any non-Succeeded status (e.g. Failed or Canceled) is a failure; surface
+            // the service error when present, otherwise a generic message, instead of continuing to the
+            // list action and masking it with a downstream null or secondary error.
+            if (provisionOperationStatus != null &&
+                !string.Equals(
+                    provisionOperationStatus.Status,
+                    ServiceClientModel.OperationStatusValues.Succeeded,
+                    StringComparison.OrdinalIgnoreCase))
             {
-                InstantItemRecoveryTarget recoveryTarget =
-                    ((OperationStatusProvisionILRExtendedInfo)
-                    response.Properties).RecoveryTarget;
+                var provisionError = provisionOperationStatus.Error;
+                throw new Exception(string.Format(
+                    Resources.OperationFailed,
+                    "Provision Item Level Recovery Access",
+                    provisionError != null ? provisionError.Code : provisionOperationStatus.Status,
+                    provisionError != null
+                        ? provisionError.Message
+                        : string.Format(
+                            "The provision operation ended in a non-successful terminal state '{0}'.",
+                            provisionOperationStatus.Status)));
+            }
 
-                if (recoveryTarget.ClientScripts.Count != 0)
-                {
-                    if (recoveryTarget.ClientScripts.Count == 2)
-                    {
-                        // clientScriptForConnection.OsType == "Windows"
-                        result = this.GenerateILRResponseForWindowsVMs(
-                                recoveryTarget.ClientScripts[1], out content);
-                    }
-                    else
-                    {
-                        // clientScriptForConnection.OsType == "Linux"
-                        result = this.GenerateILRResponseForLinuxVMs(
-                                recoveryTarget.ClientScripts[0],
-                                protectedItemName, rp.RecoveryPointTime.ToString(), out content);
-                    }
-                }
+            // Always source the mount scripts from the dedicated listInstantItemRecoveryOperationResult
+            // action using the provision operationId (MSRC 114273). Scripts are no longer read from the
+            // operationsStatus response regardless of whether the service currently redacts them; once all
+            // clients migrate off operationsStatus the service will begin redacting scriptContent there.
+            InstantItemRecoveryTarget recoveryTarget =
+                ServiceClientAdapter.GetInstantItemRecoveryOperationResult(
+                    containerUri,
+                    protectedItemName,
+                    rp.RecoveryPointId,
+                    operationId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+
+            if (recoveryTarget == null || recoveryTarget.ClientScripts == null ||
+                recoveryTarget.ClientScripts.Count == 0)
+            {
+                throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
+            }
+
+            // Preserve the original PowerShell client-script selection semantics: when the
+            // service returns two scripts, index 1 is the Windows iSCSI mount tool that carries
+            // the download URL; a single script is the Linux inline script. Selecting by OSType
+            // is unsafe because both returned scripts report OSType "Windows" and the first one
+            // has no URL, which crashed the Windows download path.
+            if (recoveryTarget.ClientScripts.Count == 2)
+            {
+                result = this.GenerateILRResponseForWindowsVMs(
+                    recoveryTarget.ClientScripts[1], out content);
+            }
+            else
+            {
+                result = this.GenerateILRResponseForLinuxVMs(
+                    recoveryTarget.ClientScripts[0],
+                    protectedItemName, rp.RecoveryPointTime.ToString(), out content);
             }
 
             string scriptDownloadLocation =
@@ -886,7 +914,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureSession.Instance.DataStore.WriteFile(result.FilePath, Convert.FromBase64String(content));
 
             Logger.Instance.WriteVerbose(string.Format(
-                Resources.MountRecoveryPointInfoMessage, result.FilePath, result.Password));
+                Resources.MountRecoveryPointInfoMessage, result.FilePath, "REDACTED"));
             return result;
         }
 

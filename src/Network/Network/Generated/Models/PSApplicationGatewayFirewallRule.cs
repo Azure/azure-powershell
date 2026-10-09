@@ -38,5 +38,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RuleIdString { get; set; }
         public string State { get; set; }
         public string Action { get; set; }
+        public string ParanoiaLevel { get; set; }
     }
 }

@@ -1,25 +1,34 @@
-"""Offline contract and regression tests for repository-owned review skills."""
+"""Offline contract and regression tests for repository-owned review tools."""
 
 import ast
 import copy
+import importlib
 import json
 from pathlib import Path
-import runpy
+import sys
+import types
 import unittest
-from unittest.mock import Mock
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SKILLS = ROOT / ".x" / "skills"
-REVIEW_SKILL = "get_pr_powershell_review_summary"
-COVERAGE_SKILL = "get_pr_regression_coverage_summary"
-
-
-def load_skill(name, **primitives):
-    namespace = runpy.run_path(
-        str(SKILLS / (name + ".py")), init_globals=primitives,
+TOOLS = ROOT / ".x" / "tools"
+DEFINITIONS = ROOT / ".x" / "definitions"
+package = types.ModuleType("repository_tools")
+package.__path__ = [str(TOOLS)]
+with patch.dict(sys.modules, {"repository_tools": package}):
+    policy = importlib.import_module(
+        "repository_tools.reviewer.azure_powershell.policy",
     )
-    return namespace[name]
+    coverage = importlib.import_module(
+        "repository_tools.reviewer.azure_powershell.coverage",
+    )
+    analysis = importlib.import_module(
+        "repository_tools.reviewer.policy.analysis",
+    )
+    live_tests = importlib.import_module(
+        "repository_tools.tester.azure_powershell.live_tests",
+    )
 
 
 def change(filename, status="modified", patch=None, previous_filename=None):
@@ -44,13 +53,9 @@ def pull_request(changes, title="[Compute] Fix VM updates", branch="main"):
 
 class ReviewSummaryTests(unittest.TestCase):
     def review(self, changes, pr=None):
-        self.pr_read = Mock(return_value=pr or pull_request(changes))
-        self.changes_read = Mock(return_value=changes)
-        return load_skill(
-            REVIEW_SKILL,
-            get_pr=self.pr_read,
-            get_pr_file_changes=self.changes_read,
-        )(123)
+        return policy._summarize_powershell_review(
+            pr if pr is not None else pull_request(changes), changes,
+        )
 
     def selected(self, summary):
         return {
@@ -58,11 +63,8 @@ class ReviewSummaryTests(unittest.TestCase):
             for target in summary["review_targets"]
         }
 
-    def test_reads_are_scope_bound_and_revision_is_returned(self):
-        summary = self.review([change(".x/reviewer.md")])
-        expected = {"owner": "Azure", "repo": "azure-powershell", "pr_number": 123}
-        self.pr_read.assert_called_once_with(**expected)
-        self.changes_read.assert_called_once_with(**expected)
+    def test_supplied_snapshot_is_revision_bound(self):
+        summary = self.review([change(".x/definitions/reviewer.md")])
         self.assertEqual("Azure/azure-powershell", summary["repository"])
         self.assertEqual("a" * 40, summary["base_sha"])
         self.assertEqual("b" * 40, summary["head_sha"])
@@ -70,7 +72,7 @@ class ReviewSummaryTests(unittest.TestCase):
 
     def test_repository_tooling_does_not_require_module_artifacts(self):
         summary = self.review([
-            change(".x/skills/review.py"),
+            change(".x/tools/reviewer/azure_powershell/review.py"),
             change("tools/XAgent.Tests/test_review.py"),
         ])
         self.assertEqual({"ps-review-process"}, set(self.selected(summary)))
@@ -277,7 +279,7 @@ class ReviewSummaryTests(unittest.TestCase):
         for finding in summary["findings"]:
             self.assertEqual("deterministic", finding["mode"])
             self.assertEqual("blocking", finding["severity"])
-            for key in ("skill_title", "summary", "remediation", "verification"):
+            for key in ("tool_title", "summary", "remediation", "verification"):
                 self.assertTrue(finding[key])
 
     def test_placeholder_requires_an_added_help_placeholder(self):
@@ -480,21 +482,20 @@ class ReviewSummaryTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "filename"):
                     self.review([invalid])
 
-    def test_primitive_errors_propagate(self):
-        read = Mock(side_effect=RuntimeError("read unavailable"))
-        skill = load_skill(REVIEW_SKILL, get_pr=read, get_pr_file_changes=Mock())
-        with self.assertRaisesRegex(RuntimeError, "read unavailable"):
-            skill(123)
+    def test_change_iteration_errors_propagate(self):
+        def unavailable_changes():
+            raise RuntimeError("file changes unavailable")
+            yield
+
+        with self.assertRaisesRegex(RuntimeError, "file changes unavailable"):
+            policy._summarize_powershell_review(
+                pull_request([]), unavailable_changes(),
+            )
 
 
 class CoverageTests(unittest.TestCase):
     def coverage(self, changes):
-        read = Mock(return_value=changes)
-        summary = load_skill(COVERAGE_SKILL, get_pr_file_changes=read)(123)
-        read.assert_called_once_with(
-            owner="Azure", repo="azure-powershell", pr_number=123,
-        )
-        return summary
+        return coverage._summarize_powershell_coverage(changes)
 
     def test_existing_testfx_and_recording_coverage_remains_supported(self):
         for artifact in (
@@ -557,7 +558,7 @@ class CoverageTests(unittest.TestCase):
             "src/Quota/Quota.Autorest/examples/Get-Quota.ps1",
             "src/Quota/Quota/help/Get-AzQuota.md",
             "generated/Quota/Quota.Autorest/generated/Quota.cs",
-            ".x/skills/review.py",
+            ".x/tools/reviewer/azure_powershell/review.py",
         ):
             with self.subTest(artifact=artifact):
                 summary = self.coverage([change(artifact)])
@@ -641,65 +642,223 @@ class CoverageTests(unittest.TestCase):
 
 
 class IntegrationContractTests(unittest.TestCase):
-    def test_new_skill_is_mapped_and_has_one_public_entrypoint(self):
+    def test_tools_use_directory_discovery_without_legacy_skills(self):
         config = (ROOT / ".x" / "x.yml").read_text(encoding="utf-8")
-        self.assertIn(
-            "  " + REVIEW_SKILL + ": " + REVIEW_SKILL + "\n", config,
-        )
-        for name in (REVIEW_SKILL, COVERAGE_SKILL):
-            with self.subTest(skill=name):
-                tree = ast.parse((SKILLS / (name + ".py")).read_text("utf-8"))
+        self.assertIn("schema_version: 1\n", config)
+        self.assertIn("repository: Azure/azure-powershell\n", config)
+        for field in ("agents:", "skills:", "custom_skills:"):
+            self.assertNotIn(field, config.splitlines())
+        self.assertEqual([], list((ROOT / ".x" / "skills").glob("*.py")))
+        for role in ("reviewer", "fixer", "tester"):
+            self.assertTrue((DEFINITIONS / (role + ".md")).is_file())
+            self.assertFalse((ROOT / ".x" / (role + ".md")).exists())
+        for name in ("policy", "coverage"):
+            with self.subTest(module=name):
+                path = TOOLS / "reviewer" / "azure_powershell" / (name + ".py")
+                tree = ast.parse(path.read_text("utf-8"))
                 functions = [
                     node.name for node in tree.body
                     if isinstance(node, ast.FunctionDef)
                     and not node.name.startswith("_")
                 ]
-                self.assertEqual([name], functions)
-                self.assertFalse(any(
-                    isinstance(node, (ast.Import, ast.ImportFrom))
-                    for node in ast.walk(tree)
-                ))
+                self.assertEqual([], functions)
 
-    def test_skill_only_uses_existing_read_primitives(self):
-        pr = Mock(return_value=pull_request([]))
-        changes = Mock(return_value=[])
-        summary = load_skill(
-            REVIEW_SKILL, get_pr=pr, get_pr_file_changes=changes,
-        )(123)
+    def test_private_policy_uses_the_supplied_snapshot_without_io(self):
+        summary = policy._summarize_powershell_review(pull_request([]), [])
         self.assertEqual([], summary["findings"])
         json.dumps(summary)
-        tree = ast.parse((SKILLS / (REVIEW_SKILL + ".py")).read_text("utf-8"))
+        path = TOOLS / "reviewer" / "azure_powershell" / "policy.py"
+        tree = ast.parse(path.read_text("utf-8"))
         calls = {
             node.func.id for node in ast.walk(tree)
             if isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
         }
         self.assertLessEqual(calls, {
-            "get_pr", "get_pr_file_changes", "ValueError", "isinstance",
-            "str", "int", "len", "any", "sorted", "set", "added_lines", "target",
+            "ValueError", "isinstance", "str", "int", "len", "any", "sorted",
+            "set", "added_lines", "target",
         })
 
     def test_reviewer_declares_consumption_and_existing_action_boundaries(self):
-        reviewer = (ROOT / ".x" / "reviewer.md").read_text("utf-8")
+        reviewer = (DEFINITIONS / "reviewer.md").read_text("utf-8")
         for requirement in (
-            REVIEW_SKILL, "review_targets", "context_gaps", "head_sha",
-            "format_review_skill_findings", "format_pr_risk_assessment",
+            "analyze_review_tools", "review_targets", "context_gaps", "head_sha",
+            "regression_coverage", "format_review_tool_findings",
+            "format_pr_risk_assessment",
             "Never approve or merge", "COMMENT", "request_copilot_changes",
-            "iteration cap", "existing equivalent",
+            "iteration cap", "existing\nequivalent",
         ):
             self.assertIn(requirement, reviewer)
+        self.assertEqual(1, reviewer.count("get_pr_review_tool_summary("))
+        self.assertNotIn("get_pr_review_skill_summary", reviewer)
+        self.assertNotIn("format_review_skill_findings", reviewer)
 
     def test_testfx_dispatch_does_not_expand_to_pester(self):
-        select = load_skill("changed_ps_test_files")
         files = [
             "src/Compute/Compute.Test/ScenarioTests/VMTests.ps1",
             "src/Compute/Compute.Test/SessionRecords/UpdateVM.json",
             "src/Quota/Quota.Autorest/test/Get-Quota.Tests.ps1",
             "src/Quota/Quota.Autorest/test/Get-Quota.Recording.json",
         ]
-        self.assertEqual([files[0]], select(files))
-        tester = (ROOT / ".x" / "tester.md").read_text("utf-8")
+        self.assertEqual([files[0]], live_tests.changed_ps_test_files(files))
+        tester = (DEFINITIONS / "tester.md").read_text("utf-8")
         self.assertIn("only `changed_ps_test_files`", tester)
         self.assertIn("neutral skip", tester)
+
+    def combined(self, changes, pr=None, **kwargs):
+        return analysis.analyze_review_tools(
+            "Azure/azure-powershell",
+            pr if pr is not None else pull_request(changes),
+            changes, **kwargs,
+        )
+
+    def test_public_entrypoint_combines_rules_coverage_and_risk(self):
+        changes = [
+            change("src/Compute/Compute/UpdateVM.cs",
+                   patch="@@ -1 +1 @@\n-old\n+new"),
+            change("src/Compute/Compute.Test/ScenarioTests/VMTests.ps1"),
+        ]
+        summary = self.combined(changes)
+        self.assertEqual("b" * 40, summary["head_sha"])
+        self.assertEqual("a" * 40, summary["base_sha"])
+        self.assertTrue(summary["files_complete"])
+        self.assertEqual(["Compute"], summary["triage"]["modules"])
+        self.assertTrue(summary["regression_coverage"]["applicable"])
+        self.assertFalse(summary["regression_coverage"]["gap"])
+        self.assertEqual(
+            [changes[1]["filename"]], summary["regression_coverage"]["test_files"],
+        )
+        self.assertIn(
+            "ps-cmdlet-behavior",
+            {target.get("rule_id") for target in summary["review_targets"]},
+        )
+        self.assertEqual(set(analysis.TOOL_TITLES), {
+            check["tool"] for check in summary["checks"]
+        })
+        self.assertEqual(7, len(summary["checks"]))
+        self.assertEqual(2, summary["risk_assessment"]["changed_files"])
+        json.dumps(summary)
+
+    def test_formatter_contract_and_deduplication_include_new_findings(self):
+        path = "src/Compute/Compute/help/Get-AzVM.md"
+        summary = self.combined(
+            [change(path, patch=(
+                "@@ -0,0 +1,2 @@\n"
+                "+{{ Fill in the Description }}\n"
+                "+{{ Fill in the Output Description }}"
+            ))],
+            head_repo="Azure/azure-powershell", head_sha="b" * 40,
+        )
+        self.assertEqual(1, summary["finding_count"])
+        finding = summary["findings"][0]
+        self.assertEqual("command-help", finding["tool"])
+        self.assertEqual("ps-help-placeholder", finding["rule_id"])
+        self.assertEqual(2, finding["occurrence_count"])
+        self.assertEqual([1, 2], [item["line"] for item in finding["locations"]])
+        self.assertTrue(finding["url"].endswith("/" + path + "#L1"))
+        for item in summary["findings"] + summary["review_targets"]:
+            self.assertTrue(item["tool_title"])
+            self.assertNotIn("skill", item)
+            self.assertNotIn("skill_title", item)
+        self.assertEqual("finding", next(
+            check["status"] for check in summary["checks"]
+            if check["tool"] == "command-help"
+        ))
+
+    def test_integrated_progressaction_exemption_keeps_other_placeholders(self):
+        path = "src/Compute/Compute/help/Get-AzVM.md"
+        exempt = "{{ Fill ProgressAction Description }}"
+        summary = self.combined([change(path, patch="@@ -0,0 +1 @@\n+" + exempt)])
+        self.assertEqual([], summary["findings"])
+        mixed = self.combined([change(
+            path, patch="@@ -0,0 +1 @@\n+" + exempt + " {{ Fill in the Description }}",
+        )])
+        self.assertEqual(1, mixed["finding_count"])
+        self.assertEqual("ps-help-placeholder", mixed["findings"][0]["rule_id"])
+
+    def test_integrated_autorest_help_rules_reach_public_results(self):
+        for folder in ("docs", "examples"):
+            path = "src/Quota/Quota.Autorest/" + folder + "/Get-AzQuota.md"
+            with self.subTest(folder=folder):
+                summary = self.combined([change(
+                    path, patch="@@ -0,0 +1 @@\n+{{ Fill in the Description }}",
+                )])
+                self.assertTrue(any(
+                    finding.get("rule_id") == "ps-help-placeholder"
+                    for finding in summary["findings"]
+                ))
+                self.assertTrue(any(
+                    target.get("rule_id") == "ps-help-manifest-sdk"
+                    and path in target["files"]
+                    for target in summary["review_targets"]
+                ))
+                self.assertFalse(summary["regression_coverage"]["applicable"])
+
+    def test_snapshot_gaps_and_handoffs_reach_public_results(self):
+        changes = [change("src/Quota/Quota.Autorest/custom/Get-Quota.ps1")]
+        pr = pull_request(changes, branch="Az.Quota-preview")
+        pr["changed_files"] = 2
+        summary = self.combined(changes, pr)
+        self.assertFalse(summary["files_complete"])
+        self.assertEqual({"ps-change-context", "ps-project-triage"}, {
+            gap["rule_id"] for gap in summary["context_gaps"]
+        })
+        self.assertEqual("oob_release", summary["handoff_items"][0]["kind"])
+
+    def test_main_tautological_assertion_guard_is_preserved(self):
+        summary = self.combined([change(
+            "src/Compute/Compute.Test/VMTests.cs",
+            patch="@@ -0,0 +1 @@\n+Assert.True(true);",
+        )])
+        self.assertTrue(any(
+            finding["tool"] == "test-strength"
+            and "tautological" in finding["summary"]
+            for finding in summary["findings"]
+        ))
+
+    def test_main_codegen_guard_is_preserved(self):
+        summary = self.combined([change(
+            "src/Quota/Quota.Autorest/generated/Cmdlets/Get.cs",
+            patch="@@ -1 +1 @@\n-old\n+new",
+        )])
+        self.assertTrue(any(
+            finding["tool"] == "generated-ownership"
+            and "generation ID" in finding["summary"]
+            for finding in summary["findings"]
+        ))
+
+    def test_public_entrypoint_rejects_other_repositories_and_stale_heads(self):
+        with self.assertRaisesRegex(ValueError, "different repository"):
+            analysis.analyze_review_tools("Azure/azure-cli", pull_request([]), [])
+        with self.assertRaisesRegex(ValueError, "head SHA"):
+            self.combined([], head_sha="c" * 40)
+
+    def test_public_entrypoint_requires_pr_details_and_file_changes(self):
+        with self.assertRaisesRegex(ValueError, "PR details"):
+            analysis.analyze_review_tools("Azure/azure-powershell", None, [])
+        with self.assertRaisesRegex(ValueError, "PR file changes"):
+            analysis.analyze_review_tools(
+                "Azure/azure-powershell", pull_request([]), None,
+            )
+
+    def test_public_entrypoint_does_not_discard_malformed_file_records(self):
+        for invalid in (None, {}, {"filename": None}, {"filename": 1}):
+            with self.subTest(invalid=invalid):
+                with self.assertRaisesRegex(ValueError, "filename"):
+                    self.combined([invalid])
+
+    def test_public_entrypoint_preserves_inputs_and_normalizes_paths(self):
+        changes = [change(
+            r"src\Compute\Compute\help\Get-AzVM.md",
+            patch="@@ -0,0 +1 @@\n+{{ Fill in the Description }}",
+        )]
+        pr = pull_request(changes)
+        original = copy.deepcopy((pr, changes))
+        summary = self.combined(changes, pr)
+        self.assertEqual(original, (pr, changes))
+        self.assertEqual(
+            "src/Compute/Compute/help/Get-AzVM.md",
+            summary["findings"][0]["file"],
+        )
 
 
 if __name__ == "__main__":

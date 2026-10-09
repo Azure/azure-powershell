@@ -44,7 +44,27 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="backupStorageRedundancy">The storage redundancy type of the backup
         /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
-        public ManagedInstanceLongTermRetentionBackupProperties(string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string))
+
+        /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backup
+        /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
+
+        /// <param name="isBackupImmutable">The setting whether the LTR backup is immutable
+        /// </param>
+
+        /// <param name="timeBasedImmutability">The setting for whether or not time-based immutability is enabled for the
+        /// LTR backup. When time-based immutability is enabled and locked, the backup
+        /// cannot be deleted until BackupExpirationTime.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="timeBasedImmutabilityMode">The time-based immutability mode. Only applicable if time-based
+        /// immutability is enabled.
+        /// Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;</param>
+
+        /// <param name="legalHoldImmutability">The setting for whether LegalHold is enabled or disabled on the LTR backup.
+        /// When LegalHold is enabled, the backup cannot be deleted until the LegalHold
+        /// is removed.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public ManagedInstanceLongTermRetentionBackupProperties(string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string backupStorageAccessTier = default(string), bool? isBackupImmutable = default(bool?), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string legalHoldImmutability = default(string))
 
         {
             this.ManagedInstanceName = managedInstanceName;
@@ -54,6 +74,11 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.BackupTime = backupTime;
             this.BackupExpirationTime = backupExpirationTime;
             this.BackupStorageRedundancy = backupStorageRedundancy;
+            this.BackupStorageAccessTier = backupStorageAccessTier;
+            this.IsBackupImmutable = isBackupImmutable;
+            this.TimeBasedImmutability = timeBasedImmutability;
+            this.TimeBasedImmutabilityMode = timeBasedImmutabilityMode;
+            this.LegalHoldImmutability = legalHoldImmutability;
             CustomInit();
         }
 
@@ -104,5 +129,40 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageRedundancy")]
         public string BackupStorageRedundancy {get; private set; }
+
+        /// <summary>
+        /// Gets the BackupStorageAccessTier for the LTR backup Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageAccessTier")]
+        public string BackupStorageAccessTier {get; private set; }
+
+        /// <summary>
+        /// Gets the setting whether the LTR backup is immutable
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isBackupImmutable")]
+        public bool? IsBackupImmutable {get; private set; }
+
+        /// <summary>
+        /// Gets the setting for whether or not time-based immutability is enabled for
+        /// the LTR backup. When time-based immutability is enabled and locked, the
+        /// backup cannot be deleted until BackupExpirationTime. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeBasedImmutability")]
+        public string TimeBasedImmutability {get; private set; }
+
+        /// <summary>
+        /// Gets the time-based immutability mode. Only applicable if time-based
+        /// immutability is enabled. Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "timeBasedImmutabilityMode")]
+        public string TimeBasedImmutabilityMode {get; private set; }
+
+        /// <summary>
+        /// Gets the setting for whether LegalHold is enabled or disabled on the LTR
+        /// backup. When LegalHold is enabled, the backup cannot be deleted until the
+        /// LegalHold is removed. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "legalHoldImmutability")]
+        public string LegalHoldImmutability {get; private set; }
     }
 }

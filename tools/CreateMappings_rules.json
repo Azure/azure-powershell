@@ -957,6 +957,10 @@
     "module": "CloudHsm"
   },
   {
+    "alias": "CloudHealth",
+    "module": "CloudHealth"
+  },
+  {
     "alias": "StorageDiscovery",
     "module": "StorageDiscovery"
   },
