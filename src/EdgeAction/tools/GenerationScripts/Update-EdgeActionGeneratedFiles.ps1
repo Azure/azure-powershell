@@ -8,6 +8,7 @@ From src/EdgeAction/EdgeAction.Autorest:
   ../tools/GenerationScripts/Update-EdgeActionGeneratedFiles.ps1
 Install the prerequisites from how-to.md first. Approved build feeds are set in the child only.
 On Windows, checks the known Accounts output DLL for locks before preparation.
+On failure, reports verified PowerShell holders and suggested recovery commands.
 Close shells holding built assemblies; the script never terminates processes.
 Generated outputs and parent cmdlet help are replaced, without backups or Git changes.
 #>
@@ -19,7 +20,7 @@ if (-not $NotIsolated) {
     # Keep loaded build/help assemblies and upstream directory changes out of the caller.
     $PSNativeCommandUseErrorActionPreference = $false
     & (Join-Path $PSHOME $(if ($IsWindows) { 'pwsh.exe' } else { 'pwsh' })) -NoProfile -File $PSCommandPath -NotIsolated
-    if ($LASTEXITCODE -ne 0) { throw "EdgeAction generation failed (exit $LASTEXITCODE). Output may be partial; no rollback was performed." }
+    if ($LASTEXITCODE -ne 0) { throw "EdgeAction generation failed (exit $LASTEXITCODE). See the child error above. If preparation started, output may be partial; no rollback was performed." }
     return
 }
 $PSNativeCommandUseErrorActionPreference = $true
@@ -28,6 +29,47 @@ $root = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..' '..')).Path
 $source = Join-Path $root 'src' 'EdgeAction' 'EdgeAction.Autorest'
 $parentHelp = Join-Path $root 'src' 'EdgeAction' 'EdgeAction' 'help'
 $artifact = Join-Path $root 'artifacts' 'Debug' 'Az.EdgeAction'
+
+function Get-EdgeActionBuildLockGuidance {
+    param([string]$Path)
+    $target = [IO.Path]::GetFullPath($Path)
+    $owners = @()
+    $messages = [Collections.Generic.List[string]]::new()
+    try {
+        $processes = @(Get-Process -Name 'pwsh*', 'powershell*' -ErrorAction Stop |
+            Where-Object ProcessName -In @('pwsh', 'powershell', 'powershell_ise'))
+    } catch {
+        $processes = @()
+        $messages.Add('PowerShell process enumeration failed; owner inspection is incomplete.')
+    }
+    foreach ($process in $processes) {
+        try {
+            $modules = @($process.Modules)
+            if (-not $modules.Count) { throw 'Module information unavailable.' }
+            foreach ($module in $modules) {
+                if ([string]::IsNullOrWhiteSpace($module.FileName)) { throw 'Module path unavailable.' }
+                if ([string]::Equals([IO.Path]::GetFullPath($module.FileName), $target, [StringComparison]::OrdinalIgnoreCase)) {
+                    $owners += [pscustomobject]@{ Id = $process.Id; Name = $process.ProcessName }
+                    break
+                }
+            }
+        } catch {
+            $messages.Add("Could not inspect all modules for $($process.ProcessName) (PID $($process.Id)); owner inspection is incomplete (access denied or process exited).")
+        }
+    }
+    if ($owners.Count) {
+        foreach ($owner in $owners) { $messages.Add("Verified PowerShell holder: $($owner.Name) (PID $($owner.Id)).") }
+        $messages.Add('Run $PID in your terminals to find the matching session. Finish/save its work, then close that terminal normally.')
+        $messages.Add('Optional from another terminal: recheck the PID first, then use the corresponding command below. Stopping a process interrupts all work in that shell:')
+        foreach ($owner in $owners) { $messages.Add("  Stop-Process -Id $($owner.Id) -Confirm") }
+    } else {
+        $messages.Add('No PowerShell holder could be verified; this does not rule out another owner or an access problem.')
+    }
+    $messages.Add("If the owner remains unclear, use Process Explorer's Find Handle or DLL search for '$target'; also check file permissions.")
+    $messages.Add('A new terminal or Remove-Module does not unload DLLs held by an existing process. No process was terminated.')
+    $messages.Add('After releasing the lock, retry from src\EdgeAction\EdgeAction.Autorest: & ..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1')
+    $messages -join [Environment]::NewLine
+}
 
 function Assert-EdgeActionBuildOutputAvailable {
     param([string]$Path)
@@ -39,7 +81,8 @@ function Assert-EdgeActionBuildOutputAvailable {
         Write-Host 'Accounts output DLL is absent; no existing file to check.'
     } catch {
         $failure = $_.Exception.GetBaseException()
-        throw "Build output preflight failed for '$Path' ($($failure.GetType().Name), HRESULT $($failure.HResult)). The file is locked or inaccessible; preparation has not started. Close the PowerShell process that imported this checkout's built Az.Accounts, including older terminal tabs. A new terminal or Remove-Module does not unload its DLLs. Use Process Explorer's Find Handle or DLL search to identify an owner; if none is found, check file permissions. No process was terminated."
+        $guidance = Get-EdgeActionBuildLockGuidance $Path
+        throw "Build output preflight failed for '$Path' ($($failure.GetType().Name), HRESULT $($failure.HResult)). The file is locked or inaccessible; preparation has not started.$([Environment]::NewLine)$guidance"
     } finally {
         if ($null -ne $stream) { $stream.Dispose() }
     }

@@ -243,16 +243,22 @@ Describe 'Generation output lock probe' {
         $tokens = $null
         $errors = $null
         $ast = [Management.Automation.Language.Parser]::ParseFile($runner, [ref]$tokens, [ref]$errors)
-        $function = $ast.Find({ param($node)
+        foreach ($function in $ast.FindAll({ param($node)
             $node -is [Management.Automation.Language.FunctionDefinitionAst] -and
-            $node.Name -eq 'Assert-EdgeActionBuildOutputAvailable'
-        }, $false)
-        . ([scriptblock]::Create($function.Extent.Text))
+            $node.Name -in @('Get-EdgeActionBuildLockGuidance', 'Assert-EdgeActionBuildOutputAvailable')
+        }, $false)) {
+            . ([scriptblock]::Create($function.Extent.Text))
+        }
+    }
+    BeforeEach {
+        Mock Get-Process { @() }
+        Mock Stop-Process { throw 'Process termination must never execute.' }
     }
     It 'accepts absent artifacts without creating files or directories' {
         $missing = Join-Path $TestDrive 'not-built' 'output.dll'
         { Assert-EdgeActionBuildOutputAvailable $missing } | Should -Not -Throw
         Test-Path (Split-Path $missing) | Should -Be $false
+        Assert-MockCalled Get-Process -Scope It -Times 0 -Exactly
     }
     It 'leaves an unlocked file unchanged and releases the probe handle' {
         $file = Join-Path $TestDrive 'unlocked.dll'
@@ -264,6 +270,7 @@ Describe 'Generation output lock probe' {
         (Get-Item $file).LastWriteTimeUtc | Should -Be $modified
         $exclusive = [IO.File]::Open($file, [IO.FileMode]::Open, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
         $exclusive.Dispose()
+        Assert-MockCalled Get-Process -Scope It -Times 0 -Exactly
     }
     It 'fails on a held Windows file and succeeds once the owner releases it' -Skip:(-not $IsWindows) {
         $file = Join-Path $TestDrive 'held.dll'
@@ -285,6 +292,67 @@ Describe 'Generation output lock probe' {
             { Assert-EdgeActionBuildOutputAvailable $file } | Should -Throw 'Build output preflight failed'
         } finally {
             [IO.File]::SetAttributes($file, [IO.FileAttributes]::Normal)
+        }
+    }
+    It 'reports only exact normalized DLL matches and supports multiple PowerShell holders' {
+        $target = Join-Path $TestDrive 'Accounts' 'output.dll'
+        $equivalent = Join-Path $TestDrive 'Accounts' '..' 'Accounts' 'output.dll'
+        Mock Get-Process {
+            @(
+                [pscustomobject]@{ Id = 101; ProcessName = 'pwsh'; Modules = @([pscustomobject]@{ FileName = $equivalent }) }
+                [pscustomobject]@{ Id = 102; ProcessName = 'powershell'; Modules = @([pscustomobject]@{ FileName = $target.ToUpperInvariant() }) }
+                [pscustomobject]@{ Id = 103; ProcessName = 'pwsh'; Modules = @([pscustomobject]@{ FileName = (Join-Path $TestDrive 'OtherCheckout' 'output.dll') }) }
+            )
+        }
+        $message = Get-EdgeActionBuildLockGuidance $target
+        $message | Should -Match 'pwsh \(PID 101\)'
+        $message | Should -Match 'powershell \(PID 102\)'
+        $message | Should -Not -Match 'PID 103|Stop-Process -Id 103'
+        $message | Should -Match 'Stop-Process -Id 101 -Confirm'
+        $message | Should -Match 'Stop-Process -Id 102 -Confirm'
+        $message | Should -Match '\$PID'
+        $message | Should -Match 'interrupts all work'
+        $message | Should -Match ([regex]::Escape('& ..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1'))
+        Assert-MockCalled Get-Process -Scope It -Times 1 -Exactly -ParameterFilter {
+            $Name -contains 'pwsh*' -and $Name -contains 'powershell*'
+        }
+        Assert-MockCalled Stop-Process -Scope It -Times 0 -Exactly
+    }
+    It 'reports incomplete inspection without inventing an owner when module access fails' {
+        $target = Join-Path $TestDrive 'output.dll'
+        Mock Get-Process {
+            $denied = [pscustomobject]@{ Id = 104; ProcessName = 'pwsh' }
+            $denied | Add-Member -MemberType ScriptProperty -Name Modules -Value { throw 'fixture access denied' }
+            $denied
+        }
+        $message = Get-EdgeActionBuildLockGuidance $target
+        $message | Should -Match 'PID 104.*incomplete'
+        $message | Should -Match 'No PowerShell holder could be verified'
+        $message | Should -Match ([regex]::Escape($target))
+        $message | Should -Not -Match 'Stop-Process'
+    }
+    It 'reports process enumeration failure and a fallback rather than claiming no lock' {
+        Mock Get-Process { throw 'fixture enumeration failed' }
+        $message = Get-EdgeActionBuildLockGuidance (Join-Path $TestDrive 'output.dll')
+        $message | Should -Match 'enumeration failed; owner inspection is incomplete'
+        $message | Should -Match 'Process Explorer'
+        $message | Should -Not -Match 'Stop-Process'
+    }
+    It 'includes verified holder guidance in a real lock failure without terminating it' -Skip:(-not $IsWindows) {
+        $file = Join-Path $TestDrive 'diagnostic.dll'
+        [IO.File]::WriteAllBytes($file, [byte[]](1, 2, 3, 4))
+        Mock Get-Process {
+            [pscustomobject]@{ Id = 105; ProcessName = 'pwsh'; Modules = @([pscustomobject]@{ FileName = $file }) }
+        }
+        $held = [IO.File]::Open($file, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
+        try {
+            $message = try { Assert-EdgeActionBuildOutputAvailable $file } catch { $_.Exception.Message }
+            $message | Should -Match 'preparation has not started'
+            $message | Should -Match 'Stop-Process -Id 105 -Confirm'
+            $held.CanRead | Should -Be $true
+            Assert-MockCalled Stop-Process -Scope It -Times 0 -Exactly
+        } finally {
+            $held.Dispose()
         }
     }
 }
