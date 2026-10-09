@@ -196,7 +196,11 @@ Existing preview recordings cannot satisfy stable `2026-10-01` requests. Playbac
 
 ### Explicit recording or live execution
 
-Review `.\test\*.Tests.ps1` first. The scenarios hardcode resource names and `powershelltests`; even Get scenarios create/delete resources. Configuration **does not** retarget those names. Use an authorized dedicated subscription with no conflicting resources, and create the resource group beforehand. Unsupported resource-group overrides fail rather than silently running elsewhere.
+Review `.\test\*.Tests.ps1` first. The scenarios reuse the dedicated `powershelltests` resource group; even Get scenarios create/delete resources. Configuration **does not** retarget the hardcoded fixture names. Create the resource group beforehand in an authorized test subscription. Unsupported resource-group overrides fail rather than silently running elsewhere.
+
+Each selected active group treats its maintained fixture parent and **all children under that parent as disposable**, including leftovers from earlier runs. Before creation and during teardown, shared cleanup deletes execution filters, then versions, then the parent. It never deletes the resource group or enumerates unrelated parents. Do not use those fixture names for other work or run the same fixture concurrently, even from different checkouts.
+
+Only an observed HTTP 404 counts as already absent. Cleanup waits for the delete cmdlets and verifies absence with GET; authorization, conflict, timeout, and remaining-resource failures stop the group rather than being suppressed. Cleanup failures appear in console/results and prevent Record copy-back. If setup and teardown both fail, both reasons are retained. Interrupted runs still require review; the next selected run attempts cleanup again, not a resource-group-wide reset. Entirely skipped Update groups have no provisioning or cleanup hooks.
 
 Edit source tests and assertions, then rebuild to refresh artifact tests. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
 
@@ -240,7 +244,9 @@ After recording succeeds, run playback against those artifacts **without rebuild
 & ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
 ```
 
-Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; their groups may still record setup/teardown.
+Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; mixed active/skipped groups still record setup/teardown.
+
+The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Their older recordings require a fresh authorized Record run after refreshing artifact tests, followed by Playback; API-version matching alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
 
 ### Results and recording ownership
 
@@ -260,6 +266,6 @@ Run these from the same `src\EdgeAction\EdgeAction.Autorest` directory. They exe
 
 ```powershell
 Import-Module Pester -RequiredVersion 4.10.1
-$result = Invoke-Pester -Script ..\tools\GenerationScripts\tests\Update-EdgeActionGeneratedFiles.Tests.ps1, ..\tools\TestScripts\tests\Test-EdgeAction.Tests.ps1 -PassThru
+$result = Invoke-Pester -Script ..\tools\GenerationScripts\tests\Update-EdgeActionGeneratedFiles.Tests.ps1, ..\tools\TestScripts\tests\Test-EdgeAction.Tests.ps1, ..\tools\TestScripts\tests\ScenarioCleanup.Tests.ps1 -PassThru
 if ($result.FailedCount -gt 0 -or $result.TotalCount -eq 0) { throw 'Offline wrapper tests failed or none ran.' }
 ```

@@ -15,16 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeAction'))
 }
 
 Describe 'New-AzEdgeAction' {
+    BeforeAll { Initialize-EdgeActionTestScenario {
+        $script:resourceGroupName = "powershelltests"
+        $script:edgeActionName = "eatestdec01"
+    } }
+
+    AfterAll {
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+    }
+
     It 'CreateExpanded' {
         # Test creating edge action with expanded parameters
-        $resourceGroupName = "powershelltests"
-        $edgeActionName = "eatestdec01"
-        
-        $result = New-AzEdgeAction -ResourceGroupName $resourceGroupName `
-            -Name $edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        $result = New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         $result.Name | Should -Be $edgeActionName
         $result.Location | Should -Be "global"
