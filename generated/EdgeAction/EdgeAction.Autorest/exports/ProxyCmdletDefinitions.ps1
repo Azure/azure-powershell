@@ -1019,8 +1019,8 @@ RESOURCE <IEdgeActionVersion>: Concrete tracked resource types can be created by
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DeploymentType <String>]: The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.
-  [IsDefaultVersion <String>]: Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.
+  [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
+  [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/new-azedgeactionversion
 #>
@@ -1080,9 +1080,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
-    # The deployment type for the edge action version.
-    # If supplied in a version PATCH request, it must match the existing value.
-    # Version PATCH updates tags only.
+    # The deployment type for the Edge Action version.
+    # Set this value when creating the version.
+    # When updating an existing version, any supplied value must match the existing value.
     ${DeploymentType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1091,7 +1091,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
     # Indicates whether this is the default version.
-    # If supplied in a version PATCH request, it must match the existing value.
+    # When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+    # If another default version exists, supplying true is rejected.
+    # When updating an existing version, any supplied value must match the existing value.
     # Use swapDefault to change the default version.
     ${IsDefaultVersion},
 
@@ -2589,8 +2591,8 @@ INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
   [Version <String>]: The name of the Edge Action version
 
 PROPERTY <IEdgeActionVersionUpdate>: The type used for update operations of the EdgeActionVersion.
-  [DeploymentType <String>]: The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.
-  [IsDefaultVersion <String>]: Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.
+  [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
+  [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
   [Tag <IEdgeActionVersionUpdateTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
@@ -2656,9 +2658,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
-    # The deployment type for the edge action version.
-    # If supplied in a version PATCH request, it must match the existing value.
-    # Version PATCH updates tags only.
+    # The deployment type for the Edge Action version.
+    # Set this value when creating the version.
+    # When updating an existing version, any supplied value must match the existing value.
     ${DeploymentType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -2668,7 +2670,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
     # Indicates whether this is the default version.
-    # If supplied in a version PATCH request, it must match the existing value.
+    # When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+    # If another default version exists, supplying true is rejected.
+    # When updating an existing version, any supplied value must match the existing value.
     # Use swapDefault to change the default version.
     ${IsDefaultVersion},
 
