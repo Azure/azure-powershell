@@ -9,7 +9,7 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
-### AFD URL signing
+### Azure Front Door (AFD) URL signing
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The following cmdlet will be removed from the stable Az.Cdn module:
