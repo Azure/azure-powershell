@@ -12,7 +12,7 @@ This topic displays help topics for the Azure Key Vault Cmdlets.
 
 All Key Vault control plane API versions before 2026-02-01 retire on February 27, 2027. This retirement is separate from access-control migration. For the API-version update checklist, see [Plan for Azure RBAC as the default access control model in Key Vault](https://learn.microsoft.com/azure/key-vault/general/access-control-default).
 
-Upgrade to Azure PowerShell 16.3.0 or later, which supports API version 2026-02-01 and later. Use of API versions earlier than 2026-02-01 will be suspended after February 27, 2027.
+Upgrade to Az.KeyVault 6.6.1 or later, which supports API version 2026-02-01 and later. Use of API versions earlier than 2026-02-01 will be suspended after February 27, 2027.
 
 ## Az.KeyVault Cmdlets
 ### [Add-AzKeyVaultCertificate](Add-AzKeyVaultCertificate.md)
