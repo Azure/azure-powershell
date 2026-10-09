@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Az.StorageDiscovery to use API version 2026-10-01-preview
+    - Added parameter `-CapacityDetailStatus` to `New-AzStorageDiscoveryWorkspace` and `Update-AzStorageDiscoveryWorkspace` to enable or disable the capacity details capability
+    - Added parameter `-AzureBlobStoragePrefixConfiguration` to `New-AzStorageDiscoveryWorkspace` and `Update-AzStorageDiscoveryWorkspace` to scope capacity details to specific storage accounts, containers, and blob prefixes
 
 ## Version 1.0.0
 * General availability for module Az.StorageDiscovery

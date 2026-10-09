@@ -141,8 +141,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -236,6 +235,10 @@ Create a StorageDiscoveryWorkspace
 .Example
 $scope1 =  New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts"  -TagKeysOnly "key1" -Tag @{"tag1" = "value1"; "tag2" = "value2" }
 New-AzStorageDiscoveryWorkspace -Name $workSpaceName  -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -Description "test workSpace" 
+.Example
+$scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"}
+$prefix1 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "logs/" }
+New-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -CapacityDetailStatus Enabled -AzureBlobStoragePrefixConfiguration $prefix1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace
@@ -243,6 +246,11 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWork
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AZUREBLOBSTORAGEPREFIXCONFIGURATION <IPrefixConfiguration[]>: The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+  ContainerName <String>: The name of the blob container within the storage account.
+  StorageAccountName <String>: The name of the storage account.
+  [Prefix <String>]: The blob prefix within the container to scope capacity details to. An empty value scopes to the entire container. Must not start with a '/'.
 
 SCOPE <IStorageDiscoveryScope[]>: The scopes of the storage discovery workspace.
   DisplayName <String>: Display name of the collection
@@ -284,6 +292,20 @@ param(
     [System.String]
     # The geo-location where the resource lives
     ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration[]]
+    # The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+    ${AzureBlobStoragePrefixConfiguration},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
+    [System.String]
+    # The enablement status of the capacity details capability.
+    ${CapacityDetailStatus},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
@@ -393,8 +415,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -605,8 +626,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -698,6 +718,9 @@ Update a StorageDiscoveryWorkspace
 .Example
 $scope2 =  New-AzStorageDiscoveryScopeObject -DisplayName "scope2" -ResourceType "Microsoft.Storage/storageAccounts"  -TagKeysOnly "test2" -Tag @{"tag3" = "value3" }
 Update-AzStorageDiscoveryWorkspace -Name $workSpaceName  -ResourceGroupName $RGName -Description "test workSpace2" -Sku Free -Scope $scope2 -WorkspaceRoot $DiscoveryScopeLevel1,$DiscoveryScopeLevel2 -Tag @{"tag4" = "value4"} 
+.Example
+$prefix2 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "data/" }
+Update-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $RGName -CapacityDetailStatus Disabled -AzureBlobStoragePrefixConfiguration $prefix2
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryIdentity
@@ -707,6 +730,11 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWork
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AZUREBLOBSTORAGEPREFIXCONFIGURATION <IPrefixConfigurationUpdate[]>: The prefix configurations to update for Azure Blob Storage.
+  [ContainerName <String>]: The name of the blob container within the storage account.
+  [Prefix <String>]: The blob prefix within the container to scope capacity details to. An empty value scopes to the entire container. Must not start with a '/'.
+  [StorageAccountName <String>]: The name of the storage account.
 
 INPUTOBJECT <IStorageDiscoveryIdentity>: Identity Parameter
   [DiscoveryResourceName <String>]: The name of the ReportResource
@@ -761,6 +789,22 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate[]]
+    # The prefix configurations to update for Azure Blob Storage.
+    ${AzureBlobStoragePrefixConfiguration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
+    [System.String]
+    # The enablement status to update for the capacity details capability.
+    ${CapacityDetailStatus},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -875,8 +919,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

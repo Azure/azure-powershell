@@ -15,7 +15,8 @@ Create a StorageDiscoveryWorkspace
 ### CreateExpanded (Default)
 ```
 New-AzStorageDiscoveryWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Description <String>] [-Scope <IStorageDiscoveryScope[]>] [-Sku <String>]
+ [-SubscriptionId <String>] [-AzureBlobStoragePrefixConfiguration <IPrefixConfiguration[]>]
+ [-CapacityDetailStatus <String>] [-Description <String>] [-Scope <IStorageDiscoveryScope[]>] [-Sku <String>]
  [-Tag <Hashtable>] [-WorkspaceRoot <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -74,7 +75,61 @@ WorkspaceRoot                : {/subscriptions/00000000-0000-0000-0000-000000000
 
 The first command creates a discovery scope object, then the second command creates a workspace with the discovery scope object.
 
+### Example 2: Create a workspace with capacity details enabled for specific blob prefixes
+```powershell
+$scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"}
+$prefix1 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "logs/" }
+New-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -CapacityDetailStatus Enabled -AzureBlobStoragePrefixConfiguration $prefix1
+```
+
+```output
+AzureBlobStoragePrefixConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration}
+CapacityDetailStatus                : Enabled
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/myworkspace
+Location                            : eastus2euap
+Name                                : myworkspace
+ProvisioningState                   : Succeeded
+ResourceGroupName                   : myresourcegroup
+Sku                                 : Standard
+Type                                : microsoft.storagediscovery/storagediscoveryworkspaces
+WorkspaceRoot                       : {/subscriptions/00000000-0000-0000-0000-000000000000}
+```
+
+The first command creates a discovery scope object and the second command defines a prefix configuration.
+The third command creates a workspace with capacity details enabled, limited to the `logs/` prefix of the specified container.
+An empty `Prefix` scopes capacity details to the entire container.
+
 ## PARAMETERS
+
+### -AzureBlobStoragePrefixConfiguration
+The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityDetailStatus
+The enablement status of the capacity details capability.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

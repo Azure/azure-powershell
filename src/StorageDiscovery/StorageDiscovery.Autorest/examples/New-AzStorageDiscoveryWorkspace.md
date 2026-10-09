@@ -34,3 +34,25 @@ WorkspaceRoot                : {/subscriptions/00000000-0000-0000-0000-000000000
 ```
 
 The first command creates a discovery scope object, then the second command creates a workspace with the discovery scope object.
+
+### Example 2: Create a workspace with capacity details enabled for specific blob prefixes
+```powershell
+$scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"}
+$prefix1 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "logs/" }
+New-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -CapacityDetailStatus Enabled -AzureBlobStoragePrefixConfiguration $prefix1
+```
+
+```output
+AzureBlobStoragePrefixConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration}
+CapacityDetailStatus                : Enabled
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/myworkspace
+Location                            : eastus2euap
+Name                                : myworkspace
+ProvisioningState                   : Succeeded
+ResourceGroupName                   : myresourcegroup
+Sku                                 : Standard
+Type                                : microsoft.storagediscovery/storagediscoveryworkspaces
+WorkspaceRoot                       : {/subscriptions/00000000-0000-0000-0000-000000000000}
+```
+
+The first command creates a discovery scope object and the second command defines a prefix configuration. The third command creates a workspace with capacity details enabled, limited to the `logs/` prefix of the specified container. An empty `Prefix` scopes capacity details to the entire container.
