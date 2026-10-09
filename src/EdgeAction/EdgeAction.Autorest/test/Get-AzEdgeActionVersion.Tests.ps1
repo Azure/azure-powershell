@@ -15,17 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersion'))
 }
 
 Describe 'Get-AzEdgeActionVersion' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "eagetverdec01"
         $script:version = "v1"
         
         # Create edge action and version for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -33,12 +29,11 @@ Describe 'Get-AzEdgeActionVersion' {
             -DeploymentType "file" `
             -IsDefaultVersion $true `
             -Location "global"
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'List' {

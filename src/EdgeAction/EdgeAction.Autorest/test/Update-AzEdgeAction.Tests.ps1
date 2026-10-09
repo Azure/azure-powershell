@@ -15,24 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeAction'))
 }
 
 Describe 'Update-AzEdgeAction' {
-    BeforeAll {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdatedec01"
-        
-        # Create edge action for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
-    }
-
-    AfterAll {
-        # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
-    }
-
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

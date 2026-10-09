@@ -15,18 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionVersionCode')
 }
 
 Describe 'Get-AzEdgeActionVersionCode' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "eagetcodedec03"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action and version for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -49,12 +45,11 @@ Describe 'Get-AzEdgeActionVersionCode' {
         if ($versionStatus.ProvisioningState -ne "Succeeded" -or $versionStatus.ValidationStatus -ne "Succeeded") {
             throw "Deploy did not complete successfully. ProvisioningState: $($versionStatus.ProvisioningState), ValidationStatus: $($versionStatus.ValidationStatus)"
         }
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'Get' {

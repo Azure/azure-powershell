@@ -15,32 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeActionVersion'))
 }
 
 Describe 'Update-AzEdgeActionVersion' {
-    BeforeAll {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdateverdec01"
-        $script:version = "v1"
-        
-        # Create edge action and version for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
-        
-        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
-            -EdgeActionName $script:edgeActionName `
-            -Version $script:version `
-            -DeploymentType "file" `
-            -IsDefaultVersion $false `
-            -Location "global"
-    }
-
-    AfterAll {
-        # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
-    }
-
     It 'UpdateExpanded' -skip {
         # Test updating version to make it default
         # Skipping: Update cmdlet doesn't have -IsDefaultVersion parameter

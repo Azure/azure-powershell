@@ -15,18 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionExecutionFilt
 }
 
 Describe 'New-AzEdgeActionExecutionFilter' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "eafilterdec03"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action and version (required for execution filter)
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -52,12 +48,11 @@ Describe 'New-AzEdgeActionExecutionFilter' {
         
         # Store the version resource ID for execution filter
         $script:versionId = $versionStatus.Id
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'CreateExpanded' {

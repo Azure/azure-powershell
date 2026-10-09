@@ -15,18 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionExecutionF
 }
 
 Describe 'Remove-AzEdgeActionExecutionFilter' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "eadelfilterdec02"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action and version for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -85,12 +81,11 @@ Describe 'Remove-AzEdgeActionExecutionFilter' {
         if (-not $filterReady) {
             throw "Execution filter did not reach Succeeded state within $maxWaitMinutes minutes. Current state: $($filterStatus.ProvisioningState)"
         }
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'Delete' {
@@ -101,11 +96,11 @@ Describe 'Remove-AzEdgeActionExecutionFilter' {
             -EdgeActionName $script:edgeActionName `
             -ExecutionFilter $script:filterName
         
-        # Verify deletion by trying to get the filter (should not exist)
-        $filter = Get-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
-            -EdgeActionName $script:edgeActionName `
-            -ExecutionFilter $script:filterName -ErrorAction SilentlyContinue
-        $filter | Should -BeNullOrEmpty
+        $remaining = Invoke-EdgeActionTestCommand 'Get-AzEdgeActionExecutionFilter' @{
+            ResourceGroupName = $script:resourceGroupName
+            EdgeActionName = $script:edgeActionName; ExecutionFilter = $script:filterName
+        } "execution filter '$($script:filterName)' under '$($script:edgeActionName)'" -AllowNotFound
+        $remaining.NotFound | Should -Be $true
     }
 
     It 'DeleteViaIdentityEdgeAction' -skip {

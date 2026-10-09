@@ -15,21 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzEdgeActionVersionCod
 }
 
 Describe 'Deploy-AzEdgeActionVersionCode' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:EdgeActionName = "eaptdeploydec02"
         $script:TestResourceGroup = $env.ResourceGroupName
         $script:TestFilePath = Join-Path $PSScriptRoot 'test_handler.js'
-    }
+        New-EdgeActionTestResource -ResourceGroupName $script:TestResourceGroup -Name $script:EdgeActionName
+    } }
 
     AfterAll {
         # Clean up test resources
-        Remove-AzEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:TestResourceGroup -Name $script:EdgeActionName
     }
 
     It 'DeployFromJavaScriptFile-FileType' {
-        # Create test edge action first (required for version creation)
-        New-AzEdgeAction -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
-        
         # Test creating edge action version
         $version = "v1"
         New-AzEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version -DeploymentType "file" -IsDefaultVersion $false -Location "global"

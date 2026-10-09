@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzEdgeActionVersionDef
 }
 
 Describe 'Switch-AzEdgeActionVersionDefault' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "easwapdec01"
         $script:version1 = "v1"
@@ -23,11 +23,7 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         # Create v1 as default version
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
@@ -56,12 +52,11 @@ Describe 'Switch-AzEdgeActionVersionDefault' {
             -EdgeActionName $script:edgeActionName `
             -Version $script:version2 `
             -FilePath $script:testFilePath
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'Swap' {
