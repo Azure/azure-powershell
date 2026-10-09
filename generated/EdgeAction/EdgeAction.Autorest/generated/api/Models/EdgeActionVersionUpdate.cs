@@ -14,15 +14,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     {
 
         /// <summary>
-        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
-        /// Version PATCH updates tags only.
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inlined)]
         public string DeploymentType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdatePropertiesInternal)Property).DeploymentType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdatePropertiesInternal)Property).DeploymentType = value ?? null; }
 
         /// <summary>
-        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
-        /// Use swapDefault to change the default version.
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inlined)]
         public string IsDefaultVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdatePropertiesInternal)Property).IsDefaultVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdatePropertiesInternal)Property).IsDefaultVersion = value ?? null; }
@@ -55,8 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
-        /// Version PATCH updates tags only.
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
@@ -64,14 +66,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value. Version PATCH updates tags only.",
+        Description = @"The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.",
         SerializedName = @"deploymentType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
         /// <summary>
-        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
-        /// Use swapDefault to change the default version.
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
@@ -79,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value. Use swapDefault to change the default version.",
+        Description = @"Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.",
         SerializedName = @"isDefaultVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
@@ -102,14 +106,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 
     {
         /// <summary>
-        /// The deployment type for the edge action version. If supplied in a version PATCH request, it must match the existing value.
-        /// Version PATCH updates tags only.
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
         /// <summary>
-        /// Indicates whether this is the default version. If supplied in a version PATCH request, it must match the existing value.
-        /// Use swapDefault to change the default version.
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
         string IsDefaultVersion { get; set; }

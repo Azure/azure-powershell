@@ -100,9 +100,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentType
-The deployment type for the edge action version.
-If supplied in a version PATCH request, it must match the existing value.
-Version PATCH updates tags only.
+The deployment type for the Edge Action version.
+Set this value when creating the version.
+When updating an existing version, any supplied value must match the existing value.
 
 ```yaml
 Type: System.String
@@ -148,7 +148,9 @@ Accept wildcard characters: False
 
 ### -IsDefaultVersion
 Indicates whether this is the default version.
-If supplied in a version PATCH request, it must match the existing value.
+When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+If another default version exists, supplying true is rejected.
+When updating an existing version, any supplied value must match the existing value.
 Use swapDefault to change the default version.
 
 ```yaml
