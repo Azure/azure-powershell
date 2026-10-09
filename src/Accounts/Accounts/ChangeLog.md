@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed assembly loading for authentication dependencies that use different versions of `Microsoft.Extensions.Options`.
 * Updated the `-ResourceUrl` help text of `Get-AzAccessToken` to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
 * Updated the `-AzureKeyVaultDnsSuffix` help text of `Add-AzEnvironment` and `Set-AzEnvironment` to describe the expected format instead of a specific host name.
 * Fixed incorrect usage of "log in" and "login".
