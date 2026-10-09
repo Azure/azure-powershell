@@ -146,7 +146,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
 
             var resp = Communicator.CreateOrUpdateShortTermRetentionDroppedDatabase(resourceGroup, managedInstanceName, databaseName, newPolicy);
 
-            return CreateManagedDatabaseBackupShortTermRetentionPolicyModelFromResponse(resourceGroup, managedInstanceName, databaseName, resp);
+            // databaseName is the composite "name,deletionTime" REST identifier; keep the caller-facing identity from the input model.
+            return CreateManagedDatabaseBackupShortTermRetentionPolicyModelFromResponse(resourceGroup, managedInstanceName, model.DatabaseName, resp, model.DeletionDate);
         }
 
         /// <summary>

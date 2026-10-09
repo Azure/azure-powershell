@@ -40,11 +40,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDatabaseShortTermRetentionLockImmutability()
         {
-            // Rollout is in progress for the short term retention lock immutability feature.
-            // Hence recorded only in Canary.
+            // Runs in Playback only. Recording requires pre-existing resources in a region
+            // where short term retention lock immutability is available.
             if (TestMockSupport.RunningMocked)
             {
                 TestRunner.RunTestScript("Test-ManagedDatabaseShortTermRetentionLockImmutability");
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagedDeletedDatabaseShortTermRetentionLockImmutability()
+        {
+            // Runs in Playback only. Recording requires pre-existing resources in a region
+            // where short term retention lock immutability is available.
+            if (TestMockSupport.RunningMocked)
+            {
+                TestRunner.RunTestScript("Test-ManagedDeletedDatabaseShortTermRetentionLockImmutability");
             }
         }
 
