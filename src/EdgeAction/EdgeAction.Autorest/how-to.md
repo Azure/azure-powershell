@@ -174,6 +174,14 @@ Copying the Brazilus example changes settings only; it does not register an Az e
 
 Results and recordings remain in the artifact harness directory. Successful Record runs also copy eligible outputs to source for unstaged review, as described below. The runner does not back them up.
 
+### Automatic test-script refresh
+
+`Test-EdgeAction.ps1` refreshes maintained `test\*.Tests.ps1` and `test\utils.ps1` into the existing artifact test directory in **Playback, Record, and Live**. This happens after configuration/mutation-consent validation and before the recording snapshot, previous-result removal, or child harness startup. Only changed scripts are copied, their hashes are verified, and the runner reports updated/unchanged counts. **Do not manually copy these scripts or rebuild solely for scenario/helper edits.**
+
+Refresh leaves recordings, `env.json`, `localEnv.json`, results, binaries, and unrelated files untouched. The subsequent harness still replaces its results and, in Record mode, writes recordings. Missing source inputs or a missing artifact test directory stop the run; create missing build outputs through the normal build workflow. Cmdlet/runtime changes and other test assets still need the normal build/refresh workflow.
+
+An artifact `*.Tests.ps1` without a matching maintained source stops the run before any script copy or harness execution. Review and move the named stale files out of the artifact test directory; the runner never deletes them automatically. Copy or verification failures also stop execution, although some scripts may already have been refreshed. Do not edit source or run another harness/build concurrently. Fresh test requests can require an authorized Record run before Playback succeeds; refresh does not fabricate or repair recordings. Direct invocation of generated `test-module.ps1` bypasses this maintained-runner refresh.
+
 ### Playback
 
 Playback is the default and requires no login:
@@ -202,7 +210,7 @@ Each selected active group treats its maintained fixture parent and **all childr
 
 Only an observed HTTP 404 counts as already absent. Cleanup waits for the delete cmdlets and verifies absence with GET; authorization, conflict, timeout, and remaining-resource failures stop the group rather than being suppressed. Cleanup failures appear in console/results and prevent Record copy-back. If setup and teardown both fail, both reasons are retained. Interrupted runs still require review; the next selected run attempts cleanup again, not a resource-group-wide reset. Entirely skipped Update groups have no provisioning or cleanup hooks.
 
-Edit source tests and assertions, then rebuild to refresh artifact tests. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
+Edit source scenarios and `utils.ps1`, then invoke `Test-EdgeAction.ps1`; it refreshes those scripts automatically. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
 
 #### Automatic Resources test support (Record/Live only)
 
@@ -246,7 +254,7 @@ After recording succeeds, run playback against those artifacts **without rebuild
 
 Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; mixed active/skipped groups still record setup/teardown.
 
-The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Their older recordings require a fresh authorized Record run after refreshing artifact tests, followed by Playback; API-version matching alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
+The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Their older recordings require a fresh authorized Record run, which now refreshes the test scripts automatically, followed by Playback; API-version matching alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
 
 ### Results and recording ownership
 
@@ -254,7 +262,7 @@ The child contains Pester's `-EnableExit` so it cannot close the caller. The par
 
 The wrapper loads settings/dependencies, checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result. **Only after a successful Record run passes fresh-result validation**, it copies recordings written by that run's selected groups to `src\EdgeAction\EdgeAction.Autorest\test`, overwriting those source recordings as **unstaged Git diff changes**. File hashes and modification times distinguish newly written recordings (including deterministic same-content rewrites) from stale artifacts. Playback, Live, failed runs, and unchanged unrelated artifacts never trigger copy-back. The runner never stages or commits files.
 
-The harness writes originals and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`. Copy-back includes `env.json` only when needed and compatible with the recording set; a filtered run cannot replace metadata required by untouched source recordings. Subscription/tenant identifiers remain consistent for playback, rather than being rewritten independently. Source files edited during the run stop handoff. Results XML, source test scripts, `localEnv.json`, and other files are never copied.
+The harness writes originals and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`. Copy-back includes `env.json` only when needed and compatible with the recording set; a filtered run cannot replace metadata required by untouched source recordings. Subscription/tenant identifiers remain consistent for playback, rather than being rewritten independently. Source recording/metadata edits, or changes to the scenario/helper fingerprints verified during refresh, stop handoff. Results XML, test scripts, `localEnv.json`, and other files are never copied back to source.
 
 **Copied for review does not mean sanitized or ready to publish.** The upstream recorder filters `Authorization` headers only. Handoff rejects detected credential-bearing headers, common secret fields, signed URLs, and private keys before any source writes; it does not decode or certify embedded code/archives or comprehensively scan arbitrary payloads. Review and sanitize the Git diff, including identifiers and payloads, before staging or committing. A blocked handoff leaves originals in artifacts and reports the file/reason without printing its contents. After addressing incompatible metadata or sensitive content, manually preserve a reviewed, playback-compatible set; do not bypass the check by staging raw artifacts.
 

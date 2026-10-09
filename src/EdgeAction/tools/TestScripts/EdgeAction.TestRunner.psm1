@@ -342,8 +342,58 @@ Invoke-EdgeActionScenario @options
     }
 }
 
+function Get-EdgeActionTestScriptState {
+    $source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+    $files = @(Get-ChildItem -LiteralPath $source -Filter '*.Tests.ps1' -File -ErrorAction Stop)
+    if (-not $files.Count) { throw "No maintained scenario scripts found in '$source'." }
+    $utils = Join-Path $source 'utils.ps1'
+    if (-not (Test-Path -LiteralPath $utils -PathType Leaf)) { throw "Maintained test helper is missing: '$utils'." }
+    $files += Get-Item -LiteralPath $utils -ErrorAction Stop
+    $state = [hashtable]::new([StringComparer]::Ordinal)
+    foreach ($file in $files) {
+        $state[$file.Name] = (Get-FileHash -LiteralPath $file.FullName -ErrorAction Stop).Hash
+    }
+    $state
+}
+
+function Update-EdgeActionArtifactTests {
+    $ErrorActionPreference = 'Stop'
+    Write-Host 'Starting artifact test-script refresh.'
+    $source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
+    $target = Join-Path $script:Artifact 'test'
+    if (-not (Test-Path -LiteralPath $target -PathType Container)) {
+        throw "Artifact test directory is missing: '$target'. Build EdgeAction first as described in '$script:HowTo'."
+    }
+    $expected = Get-EdgeActionTestScriptState
+    $orphans = @(Get-ChildItem -LiteralPath $target -Filter '*.Tests.ps1' -File -Recurse |
+        Where-Object { -not $expected.ContainsKey([IO.Path]::GetRelativePath($target, $_.FullName)) })
+    if ($orphans.Count) {
+        throw "Artifact scenario scripts have no matching maintained source: $($orphans.Name -join ', '). Review and move these stale scripts out of '$target' before rerunning. No test scripts were refreshed."
+    }
+    $updated = 0
+    try {
+        foreach ($name in $expected.Keys | Sort-Object) {
+            $destination = Join-Path $target $name
+            if ((Test-Path -LiteralPath $destination -PathType Leaf) -and
+                (Get-FileHash -LiteralPath $destination).Hash -eq $expected[$name]) { continue }
+            if (Test-Path -LiteralPath $destination -PathType Container) {
+                throw "A directory occupies the test-script destination '$destination'."
+            }
+            Copy-Item -LiteralPath (Join-Path $source $name) -Destination $destination -Force
+            if ((Get-FileHash -LiteralPath $destination).Hash -ne $expected[$name]) {
+                throw "Test-script verification failed for '$name'; source may have changed during refresh."
+            }
+            $updated++
+        }
+    } catch {
+        throw "Artifact test-script refresh failed: $($_.Exception.Message) The harness was not started; some scripts may have been refreshed. Resolve the error and retry."
+    }
+    Write-Host "Completed artifact test-script refresh: $updated updated, $($expected.Count - $updated) unchanged."
+    $expected
+}
+
 function Get-EdgeActionRecordingState {
-    $state = @{ Artifact = @{}; ArtifactWriteTime = @{}; Source = @{} }
+    $state = @{ Artifact = @{}; ArtifactWriteTime = @{}; Source = @{}; TestScripts = (Get-EdgeActionTestScriptState) }
     $directories = @{
         Artifact = Join-Path $script:Artifact 'test'
         Source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
@@ -393,6 +443,10 @@ function Copy-EdgeActionRecordingsForReview {
     [xml]$results = Get-Content -LiteralPath $ResultsPath -Raw
     $groups = @($results.SelectNodes('//test-case') | ForEach-Object { ([string]$_.name).Split('.')[0] } | Sort-Object -Unique)
     $after = Get-EdgeActionRecordingState
+    if ($Before.TestScripts.Count -ne $after.TestScripts.Count -or
+        @($Before.TestScripts.Keys | Where-Object { $Before.TestScripts[$_] -ne $after.TestScripts[$_] }).Count) {
+        throw 'Source test scripts changed during the run; recordings do not match the refreshed test inputs. No source files have been copied.'
+    }
     $copies = @{}
     foreach ($file in Get-ChildItem -LiteralPath $artifact -Filter '*.Recording.json' -File) {
         $group = $file.Name -replace '\.Recording\.json$', ''
@@ -456,12 +510,18 @@ function Invoke-EdgeActionTests {
     $mode = if ($Options.Mode) { $Options.Mode } else { 'Playback' }
     Assert-EdgeActionMutation $config $mode -AllowResourceChanges:([bool]$Options.AllowResourceChanges)
     Write-Host 'Completed test configuration validation.'
+    $testScripts = Update-EdgeActionArtifactTests
     $childOptions = @{
         Config = $config; Mode = $mode; TestName = $Options.TestName
         AllowResourceChanges = [bool]$Options.AllowResourceChanges; Login = [bool]$Options.Login
     }
     $path = Join-Path $script:Artifact 'test' 'Az.EdgeAction-TestResults.xml'
-    $recordingsBefore = if ($mode -eq 'Record') { Get-EdgeActionRecordingState }
+    $recordingsBefore = if ($mode -eq 'Record') {
+        $state = Get-EdgeActionRecordingState
+        # Compare against the files verified in artifacts, not a later source edit.
+        $state.TestScripts = $testScripts
+        $state
+    }
     if (Test-Path $path) { Remove-Item -LiteralPath $path }
     $started = [datetime]::UtcNow
     $code = Invoke-EdgeActionTestChild $childOptions
