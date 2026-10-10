@@ -22,6 +22,7 @@
 * Fixed `Update-AzPolicyAssignment` removing the existing overrides and resource selectors of a policy assignment when `-Override` or `-ResourceSelector` is not specified.
 * Fixed `Update-AzPolicyExemption` removing the existing resource selectors of a policy exemption when `-ResourceSelector` is not specified.
 * Updated `Update-AzPolicyAssignment` to carry over the existing `EnforcementMode` itself when `-EnforcementMode` is not specified, instead of relying on the service to keep it. No behavior change.
+* Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.

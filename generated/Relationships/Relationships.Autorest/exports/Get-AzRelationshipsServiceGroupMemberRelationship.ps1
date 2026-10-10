@@ -37,13 +37,16 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IRelationshipsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Name <String>]: Name of dependencyOf relationship.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [ServiceGroupName <String>]: The name of the service group.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsservicegroupmemberrelationship
 #>
 function Get-AzRelationshipsServiceGroupMemberRelationship {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.IServiceGroupMemberRelationship])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Path')]
@@ -52,6 +55,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource manager identifier of the resource.
@@ -148,6 +152,7 @@ begin {
         $mapping = @{
             Get = 'Az.Relationships.private\Get-AzRelationshipsServiceGroupMemberRelationship_Get';
             GetViaIdentity = 'Az.Relationships.private\Get-AzRelationshipsServiceGroupMemberRelationship_GetViaIdentity';
+            List = 'Az.Relationships.private\Get-AzRelationshipsServiceGroupMemberRelationship_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -132,8 +132,7 @@ $resourceTestCommands = @(
     @{Name = "Az.LogicApp"; Command = { Get-AzIntegrationAccount } },
     # The request uri is invalid. The requested path '/subscriptions/$subId/providers/Microsoft.MachineLearning/webServices' is not found
     # @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
-    # Known live-service NotFound: API version 2025-10-01-preview is not yet available.
-    # @{Name = "Az.Maintenance"; Command = { Get-AzMaintenanceConfiguration } },
+    @{Name = "Az.Maintenance"; Command = { Get-AzMaintenanceConfiguration } },
     @{Name = "Az.ManagedServices"; Command = { Get-AzManagedServicesAssignment } },
     @{Name = "Az.Monitor"; Command = { Get-AzLogProfile } },
     @{Name = "Az.Network"; Command = { Get-AzNetworkInterface } },

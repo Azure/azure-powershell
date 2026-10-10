@@ -365,7 +365,7 @@ process {
         $calledParameters.Metadata = $calledParameters.Metadata | ConvertTo-Json -Depth 30
     }
 
-    if (!$calledParameters.EnforcementMode -and $existing.EnforcementMode) {
+    if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
         $calledParameters.EnforcementMode = $existing.EnforcementMode
     }
 
