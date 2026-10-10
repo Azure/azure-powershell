@@ -66,8 +66,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="tfoLbBackendAddressPoolIds">
         /// </param>
 
-        /// <param name="ipVersion">The IP version (IPv4 / IPv6) of the ip-config. Orthogonal to the allocation
-        /// type (static / dynamic); a missing value is treated as IPv4.
+        /// <param name="ipVersion">The IP version (IPv4 / IPv6) of the ip-config, as reported by the service.
+        /// Read-only - it reflects the discovered NIC configuration and cannot be set
+        /// by the caller. Orthogonal to the allocation type (static / dynamic).
+        /// Omitted when IPv6 support is not enabled.
         /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
         public IPConfigDetails(string name = default(string), bool? isPrimary = default(bool?), string subnetName = default(string), string staticIPAddress = default(string), string ipAddressType = default(string), bool? isSeletedForFailover = default(bool?), string recoverySubnetName = default(string), string recoveryStaticIPAddress = default(string), string recoveryIPAddressType = default(string), string recoveryPublicIPAddressId = default(string), System.Collections.Generic.IList<string> recoveryLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>), string tfoSubnetName = default(string), string tfoStaticIPAddress = default(string), string tfoPublicIPAddressId = default(string), System.Collections.Generic.IList<string> tfoLbBackendAddressPoolIds = default(System.Collections.Generic.IList<string>), string ipVersion = default(string))
 
@@ -188,10 +190,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public System.Collections.Generic.IList<string> TfoLbBackendAddressPoolIds {get; set; }
 
         /// <summary>
-        /// Gets or sets the IP version (IPv4 / IPv6) of the ip-config. Orthogonal to
-        /// the allocation type (static / dynamic); a missing value is treated as IPv4. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;
+        /// Gets the IP version (IPv4 / IPv6) of the ip-config, as reported by the
+        /// service. Read-only - it reflects the discovered NIC configuration and
+        /// cannot be set by the caller. Orthogonal to the allocation type (static /
+        /// dynamic). Omitted when IPv6 support is not enabled. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipVersion")]
-        public string IPVersion {get; set; }
+        public string IPVersion {get; private set; }
     }
 }

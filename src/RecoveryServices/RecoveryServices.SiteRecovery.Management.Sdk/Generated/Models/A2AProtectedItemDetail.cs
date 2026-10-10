@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="replicationProtectedItemName">The Replication Protected item name.
         /// </param>
-        public A2AProtectedItemDetail(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string replicationProtectedItemName = default(string))
+        public A2AProtectedItemDetail(System.Collections.Generic.IList<A2AClusterVmManagedDiskInputDetails> vmManagedDisks = default(System.Collections.Generic.IList<A2AClusterVmManagedDiskInputDetails>), string recoveryResourceGroupId = default(string), string recoveryAvailabilitySetId = default(string), string recoveryBootDiagStorageAccountId = default(string), string recoveryAvailabilityZone = default(string), string recoveryProximityPlacementGroupId = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string replicationProtectedItemName = default(string))
 
         {
             this.VMManagedDisks = vmManagedDisks;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// Gets or sets the list of vm managed disk details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmManagedDisks")]
-        public System.Collections.Generic.IList<A2AVmManagedDiskInputDetails> VMManagedDisks {get; set; }
+        public System.Collections.Generic.IList<A2AClusterVmManagedDiskInputDetails> VMManagedDisks {get; set; }
 
         /// <summary>
         /// Gets or sets the recovery resource group Id.

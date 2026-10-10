@@ -105,7 +105,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
         /// </param>
-        public InMageRcmEnableProtectionInput(string fabricDiscoveryMachineId, string targetResourceGroupId, string processServerId, System.Collections.Generic.IList<InMageRcmDiskInput> disksToInclude = default(System.Collections.Generic.IList<InMageRcmDiskInput>), InMageRcmDisksDefaultInput disksDefault = default(InMageRcmDisksDefaultInput), string targetNetworkId = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetVMName = default(string), string targetVMSize = default(string), string licenseType = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string runAsAccountId = default(string), string multiVMGroupName = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> seedManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), string userSelectedOSName = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties), string targetCapacityReservationGroupId = default(string))
+
+        /// <param name="targetExtendedLocation">The target extended location.
+        /// </param>
+        public InMageRcmEnableProtectionInput(string fabricDiscoveryMachineId, string targetResourceGroupId, string processServerId, System.Collections.Generic.IList<InMageRcmDiskInput> disksToInclude = default(System.Collections.Generic.IList<InMageRcmDiskInput>), InMageRcmDisksDefaultInput disksDefault = default(InMageRcmDisksDefaultInput), string targetNetworkId = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetVMName = default(string), string targetVMSize = default(string), string licenseType = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string runAsAccountId = default(string), string multiVMGroupName = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), System.Collections.Generic.IList<UserCreatedResourceTag> targetVMTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> seedManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetManagedDiskTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), System.Collections.Generic.IList<UserCreatedResourceTag> targetNicTags = default(System.Collections.Generic.IList<UserCreatedResourceTag>), string userSelectedOSName = default(string), SecurityProfileProperties targetVMSecurityProfile = default(SecurityProfileProperties), string targetCapacityReservationGroupId = default(string), ExtendedLocation targetExtendedLocation = default(ExtendedLocation))
 
         {
             this.FabricDiscoveryMachineId = fabricDiscoveryMachineId;
@@ -135,6 +138,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.UserSelectedOSName = userSelectedOSName;
             this.TargetVMSecurityProfile = targetVMSecurityProfile;
             this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
+            this.TargetExtendedLocation = targetExtendedLocation;
             CustomInit();
         }
 
@@ -305,6 +309,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
         public string TargetCapacityReservationGroupId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target extended location.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetExtendedLocation")]
+        public ExtendedLocation TargetExtendedLocation {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -400,6 +410,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
 
 
+            if (this.TargetExtendedLocation != null)
+            {
+                this.TargetExtendedLocation.Validate();
+            }
         }
     }
 }

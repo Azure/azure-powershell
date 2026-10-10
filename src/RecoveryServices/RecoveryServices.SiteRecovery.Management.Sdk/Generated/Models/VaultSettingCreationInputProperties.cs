@@ -32,7 +32,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="recoveryNetworkConfigAutoSync">The vault level policy controlling whether the A2A recovery network
         /// configuration is automatically kept in sync with the source virtual
-        /// machine. An omitted value leaves the stored policy unchanged.
+        /// machine. As with the other properties on this resource, the stored value is
+        /// updated only when the property is supplied; omitting it retains the
+        /// previously stored policy rather than resetting it.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
         public VaultSettingCreationInputProperties(string migrationSolutionId = default(string), string vmwareToAzureProviderType = default(string), string recoveryNetworkConfigAutoSync = default(string))
 
@@ -64,7 +66,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         /// Gets or sets the vault level policy controlling whether the A2A recovery
         /// network configuration is automatically kept in sync with the source virtual
-        /// machine. An omitted value leaves the stored policy unchanged. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// machine. As with the other properties on this resource, the stored value is
+        /// updated only when the property is supplied; omitting it retains the
+        /// previously stored policy rather than resetting it. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkConfigAutoSync")]
         public string RecoveryNetworkConfigAutoSync {get; set; }

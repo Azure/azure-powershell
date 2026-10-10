@@ -305,15 +305,13 @@ namespace RecoveryServices.SiteRecovery.Test
         [Fact]
         public void ProtectedDiskDetails_ExposesConfidentialDiskEncryptionSets()
         {
-            var disk = new A2AProtectedManagedDiskDetails
-            {
-                DiskName = "osdisk-1",
-                ConfidentialDiskEncryptionInfo = new ConfidentialDiskEncryptionInfo
+            var disk = new A2AProtectedManagedDiskDetails(
+                diskName: "osdisk-1",
+                confidentialDiskEncryptionInfo: new ConfidentialDiskEncryptionInfo
                 {
                     RecoveryReplicaConfidentialDiskEncryptionSetId = ReplicaDesId,
                     RecoveryTargetConfidentialDiskEncryptionSetId = TargetDesId,
-                },
-            };
+                });
 
             var psObject = new ASRAzureToAzureProtectedDiskDetails(disk);
 

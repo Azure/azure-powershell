@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             Utilities.GetValueFromArmId(
                                 protectedItem,
                             ARMResourceTypeConstants.ReplicationProtectedItems));
-                    List<A2AVmManagedDiskInputDetails> diskInput = PopulateManagedDiskDetails(
+                    List<A2AClusterVmManagedDiskInputDetails> diskInput = PopulateManagedDiskDetails(
                         replicationProtectedItemResponse);
 
                     a2aSwitchClusterInput.ProtectedItemsDetail.Add(new A2AProtectedItemDetail
@@ -318,14 +318,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     foreach (ASRAzureToAzureReplicationProtectedItemConfig rpi in this.AzureToAzureReplicationProtectedItemConfig)
                     {
-                        List<A2AVmManagedDiskInputDetails> diskInput = new List<A2AVmManagedDiskInputDetails>();
+                        List<A2AClusterVmManagedDiskInputDetails> diskInput = new List<A2AClusterVmManagedDiskInputDetails>();
                         if (rpi.AzureToAzureDiskReplicationConfiguration != null
                             && rpi.AzureToAzureDiskReplicationConfiguration.Length > 0)
                         {
                             foreach (ASRAzuretoAzureDiskReplicationConfig disk in rpi.AzureToAzureDiskReplicationConfiguration)
                             {
-                                diskInput.Add(
-                                    Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true));
+                                diskInput.Add(ToClusterDiskInput(
+                                    Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true)));
                             }
                         }
                         else
@@ -397,9 +397,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Converts an enable-protection disk input to the cluster switch disk input.
+        /// </summary>
+        private static A2AClusterVmManagedDiskInputDetails ToClusterDiskInput(A2AVmManagedDiskInputDetails disk)
+        {
+            return new A2AClusterVmManagedDiskInputDetails
+            {
+                DiskId = disk.DiskId,
+                PrimaryStagingAzureStorageAccountId = disk.PrimaryStagingAzureStorageAccountId,
+                RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
+                RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
+                RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
+                DiskEncryptionInfo = disk.DiskEncryptionInfo,
+                RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy,
+                RecoveryDiskAccessId = disk.RecoveryDiskAccessId,
+                RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess,
+            };
+        }
+
+        /// <summary>
         ///     Populate managed disk details.
         /// </summary>
-        private List<A2AVmManagedDiskInputDetails> PopulateManagedDiskDetails(ReplicationProtectedItem rpi)
+        private List<A2AClusterVmManagedDiskInputDetails> PopulateManagedDiskDetails(ReplicationProtectedItem rpi)
         {
             var a2aReplicationDetails = (A2AReplicationDetails)rpi.Properties.ProviderSpecificDetails;
             var vmName = a2aReplicationDetails.RecoveryAzureVMName;
@@ -413,10 +433,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 VirtualMachines.GetWithHttpMessagesAsync(vmRg, vmName).GetAwaiter().GetResult().Body;
             this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = tempSubscriptionId;
 
-            List<A2AVmManagedDiskInputDetails> diskInput = new List<A2AVmManagedDiskInputDetails>();
+            List<A2AClusterVmManagedDiskInputDetails> diskInput = new List<A2AClusterVmManagedDiskInputDetails>();
             // Passing all managedDisk data if no details is passed.
             var osDisk = virtualMachine.StorageProfile.OsDisk;
-            diskInput.Add(new A2AVmManagedDiskInputDetails
+            diskInput.Add(new A2AClusterVmManagedDiskInputDetails
             {
                 DiskId = osDisk.ManagedDisk.Id,
                 RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -429,7 +449,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                 {
-                    diskInput.Add(new A2AVmManagedDiskInputDetails
+                    diskInput.Add(new A2AClusterVmManagedDiskInputDetails
                     {
                         DiskId = dataDisk.ManagedDisk.Id,
                         RecoveryResourceGroupId = this.RecoveryResourceGroupId,

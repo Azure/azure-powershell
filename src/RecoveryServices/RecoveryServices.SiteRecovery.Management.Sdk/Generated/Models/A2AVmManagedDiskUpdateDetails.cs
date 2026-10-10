@@ -43,9 +43,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </param>
 
         /// <param name="confidentialDiskEncryptionInfo">The confidential disk encryption info to update for the managed disk. Only
-        /// the recovery target confidential disk encryption set can be updated after
-        /// protection is enabled; the replica confidential disk encryption set is
-        /// immutable. Applicable to CMK confidential VMs.
+        /// the recovery target confidential disk encryption set can be changed through
+        /// this update operation. Applicable to A2A CMK confidential VMs.
         /// </param>
         public A2AVmManagedDiskUpdateDetails(string diskId = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryReplicaDiskAccountType = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string failoverDiskName = default(string), string tfoDiskName = default(string), UpdateConfidentialDiskEncryptionInfo confidentialDiskEncryptionInfo = default(UpdateConfidentialDiskEncryptionInfo))
 
@@ -105,8 +104,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         /// Gets or sets the confidential disk encryption info to update for the
         /// managed disk. Only the recovery target confidential disk encryption set can
-        /// be updated after protection is enabled; the replica confidential disk
-        /// encryption set is immutable. Applicable to CMK confidential VMs.
+        /// be changed through this update operation. Applicable to A2A CMK
+        /// confidential VMs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialDiskEncryptionInfo")]
         public UpdateConfidentialDiskEncryptionInfo ConfidentialDiskEncryptionInfo {get; set; }
