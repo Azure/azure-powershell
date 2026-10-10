@@ -89,9 +89,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 AddIf( null != this._networkAcls ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._networkAcls.ToJson(null,serializationMode) : null, "networkAcls" ,container.Add );
             }
+            AddIf( null != this._deleteRetentionPolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._deleteRetentionPolicy.ToJson(null,serializationMode) : null, "deleteRetentionPolicy" ,container.Add );
             AddIf( null != (((object)this._protocolType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._protocolType.ToString()) : null, "protocolType" ,container.Add );
             AddIf( null != (((object)this._encryption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._encryption.ToString()) : null, "encryption" ,container.Add );
             AddIf( null != this._enforceDataIntegrityCheckForIscsi ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonBoolean((bool)this._enforceDataIntegrityCheckForIscsi) : null, "enforceDataIntegrityCheckForIscsi" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._reservedIop ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._reservedIop) : null, "reservedIops" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._reservedMBps ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._reservedMBps) : null, "reservedMBps" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }
@@ -109,6 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             {_encryptionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("encryptionProperties"), out var __jsonEncryptionProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties.FromJson(__jsonEncryptionProperties) : _encryptionProperty;}
+            {_deleteRetentionPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("deleteRetentionPolicy"), out var __jsonDeleteRetentionPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy.FromJson(__jsonDeleteRetentionPolicy) : _deleteRetentionPolicy;}
             {_protocolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("protocolType"), out var __jsonProtocolType) ? (string)__jsonProtocolType : (string)_protocolType;}
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)_encryption;}
             {_enforceDataIntegrityCheckForIscsi = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonBoolean>("enforceDataIntegrityCheckForIscsi"), out var __jsonEnforceDataIntegrityCheckForIscsi) ? (bool?)__jsonEnforceDataIntegrityCheckForIscsi : _enforceDataIntegrityCheckForIscsi;}

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"update a Elastic San.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2026-05-01-preview")]
     public partial class UpdateAzElasticSan_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -254,6 +254,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+
+        /// <summary>
+        /// Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalIops",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalIop { get => _parametersBody.TotalIops ?? default(long); set => _parametersBody.TotalIops = value; }
+
+        /// <summary>
+        /// Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalMBps",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalMBps { get => _parametersBody.TotalMBps ?? default(long); set => _parametersBody.TotalMBps = value; }
+
+        /// <summary>
+        /// Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalSizeTiB { get => _parametersBody.TotalSizeTiB ?? default(long); set => _parametersBody.TotalSizeTiB = value; }
 
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unused size on Elastic San appliance in TiB.")]

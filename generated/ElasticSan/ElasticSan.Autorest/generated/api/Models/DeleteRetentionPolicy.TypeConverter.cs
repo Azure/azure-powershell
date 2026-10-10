@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ManagedByInfo" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="DeleteRetentionPolicy" />
     /// </summary>
-    public partial class ManagedByInfoTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class DeleteRetentionPolicyTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ManagedByInfo"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="DeleteRetentionPolicy"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ManagedByInfo"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="DeleteRetentionPolicy"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ManagedByInfo" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="DeleteRetentionPolicy" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedByInfo" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="DeleteRetentionPolicy" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ManagedByInfo" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="DeleteRetentionPolicy" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ManagedByInfo" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="DeleteRetentionPolicy" />.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedByInfo" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="DeleteRetentionPolicy" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ManagedByInfo.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return DeleteRetentionPolicy.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ManagedByInfo.DeserializeFromPSObject(sourceValue);
+                return DeleteRetentionPolicy.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ManagedByInfo.DeserializeFromDictionary(sourceValue);
+                return DeleteRetentionPolicy.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

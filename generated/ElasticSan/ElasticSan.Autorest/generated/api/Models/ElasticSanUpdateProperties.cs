@@ -63,6 +63,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
+        /// <summary>Backing field for <see cref="TotalIops" /> property.</summary>
+        private long? _totalIops;
+
+        /// <summary>
+        /// Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public long? TotalIops { get => this._totalIops; set => this._totalIops = value; }
+
+        /// <summary>Backing field for <see cref="TotalMBps" /> property.</summary>
+        private long? _totalMBps;
+
+        /// <summary>
+        /// Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public long? TotalMBps { get => this._totalMBps; set => this._totalMBps = value; }
+
+        /// <summary>Backing field for <see cref="TotalSizeTiB" /> property.</summary>
+        private long? _totalSizeTiB;
+
+        /// <summary>
+        /// Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public long? TotalSizeTiB { get => this._totalSizeTiB; set => this._totalSizeTiB = value; }
+
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public long? UnusedSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScalePropertiesInternal)AutoScaleProperty).UnusedSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScalePropertiesInternal)AutoScaleProperty).UnusedSizeTiB = value ?? default(long); }
@@ -148,6 +175,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = false,
+        Create = false,
+        Update = true,
+        Description = @"Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalIops",
+        PossibleTypes = new [] { typeof(long) })]
+        long? TotalIops { get; set; }
+        /// <summary>
+        /// Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = false,
+        Create = false,
+        Update = true,
+        Description = @"Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalMBps",
+        PossibleTypes = new [] { typeof(long) })]
+        long? TotalMBps { get; set; }
+        /// <summary>
+        /// Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = false,
+        Create = false,
+        Update = true,
+        Description = @"Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.",
+        SerializedName = @"totalSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? TotalSizeTiB { get; set; }
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -186,6 +252,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// Total Provisioned IOPS of the Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        long? TotalIops { get; set; }
+        /// <summary>
+        /// Total Provisioned MBps Elastic San appliance. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        long? TotalMBps { get; set; }
+        /// <summary>
+        /// Total size of the Elastic San appliance in TB. Supported only for ElasticSanVersion V2.
+        /// </summary>
+        long? TotalSizeTiB { get; set; }
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         long? UnusedSizeTiB { get; set; }
 

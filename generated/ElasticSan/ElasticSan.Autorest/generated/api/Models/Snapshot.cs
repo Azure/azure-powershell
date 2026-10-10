@@ -19,6 +19,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ProxyResource();
 
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string AccessState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).SnapshotAccessState; }
+
+        /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public float? CompletionPercent { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).CompletionPercent; }
+
         /// <summary>
         /// Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
         /// </summary>
@@ -60,6 +70,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
+
+        /// <summary>Internal Acessors for AccessState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal.AccessState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).SnapshotAccessState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).SnapshotAccessState = value ?? null; }
+
+        /// <summary>Internal Acessors for CompletionPercent</summary>
+        float? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal.CompletionPercent { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).CompletionPercent; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).CompletionPercent = value ?? default(float); }
 
         /// <summary>Internal Acessors for CreationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationData Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal)Property).CreationData = value ?? null /* model class */; }
@@ -162,6 +178,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IProxyResource
     {
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The state of snapshot which determines the access availability of the snapshot.",
+        SerializedName = @"snapshotAccessState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Unknown", "Pending", "Available", "InstantAccess", "AvailableWithInstantAccess")]
+        string AccessState { get;  }
+        /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.",
+        SerializedName = @"completionPercent",
+        PossibleTypes = new [] { typeof(float) })]
+        float? CompletionPercent { get;  }
         /// <summary>
         /// Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
         /// </summary>
@@ -185,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
         /// <summary>Size of Source Volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -215,6 +256,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface ISnapshotInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IProxyResourceInternal
     {
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Unknown", "Pending", "Available", "InstantAccess", "AvailableWithInstantAccess")]
+        string AccessState { get; set; }
+        /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        float? CompletionPercent { get; set; }
         /// <summary>Data used when creating a volume snapshot.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationData CreationData { get; set; }
         /// <summary>
@@ -224,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Properties of Volume Snapshot.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotProperties Property { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
         /// <summary>Size of Source Volume</summary>
         long? SourceVolumeSizeGiB { get; set; }

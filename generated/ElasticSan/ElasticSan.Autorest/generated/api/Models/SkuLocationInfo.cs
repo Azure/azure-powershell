@@ -26,12 +26,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Internal Acessors for Zone</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal.Zone { get => this._zone; set { {_zone = value;} } }
 
+        /// <summary>Internal Acessors for ZoneDetail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails> Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal.ZoneDetail { get => this._zoneDetail; set { {_zoneDetail = value;} } }
+
         /// <summary>Backing field for <see cref="Zone" /> property.</summary>
         private System.Collections.Generic.List<string> _zone;
 
         /// <summary>The zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Zone { get => this._zone; }
+
+        /// <summary>Backing field for <see cref="ZoneDetail" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails> _zoneDetail;
+
+        /// <summary>Details of capabilities available in each zone.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails> ZoneDetail { get => this._zoneDetail; }
 
         /// <summary>Creates an new <see cref="SkuLocationInfo" /> instance.</summary>
         public SkuLocationInfo()
@@ -65,6 +75,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Zone { get;  }
+        /// <summary>Details of capabilities available in each zone.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Details of capabilities available in each zone.",
+        SerializedName = @"zoneDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails> ZoneDetail { get;  }
 
     }
     /// The location info.
@@ -75,6 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         string Location { get; set; }
         /// <summary>The zones.</summary>
         System.Collections.Generic.List<string> Zone { get; set; }
+        /// <summary>Details of capabilities available in each zone.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails> ZoneDetail { get; set; }
 
     }
 }

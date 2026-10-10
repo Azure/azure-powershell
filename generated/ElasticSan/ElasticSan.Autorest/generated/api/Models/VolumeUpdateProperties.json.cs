@@ -84,8 +84,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return container;
             }
-            AddIf( null != this._managedBy ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._managedBy.ToJson(null,serializationMode) : null, "managedBy" ,container.Add );
             AddIf( null != this._sizeGiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._sizeGiB) : null, "sizeGiB" ,container.Add );
+            if (null != this._managedBy)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.XNodeArray();
+                foreach( var __x in this._managedBy )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("managedBy",__w);
+            }
             AfterToJson(ref container);
             return container;
         }
@@ -102,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("managedBy"), out var __jsonManagedBy) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo.FromJson(__jsonManagedBy) : _managedBy;}
             {_sizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sizeGiB"), out var __jsonSizeGiB) ? (long?)__jsonSizeGiB : _sizeGiB;}
+            {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("managedBy"), out var __jsonManagedBy) ? If( __jsonManagedBy as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources.FromJson(__u) )) ))() : null : _managedBy;}
             AfterFromJson(json);
         }
     }

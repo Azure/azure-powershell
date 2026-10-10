@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 schema: 2.0.0
@@ -14,8 +14,7 @@ Get either a list of Elastic SANs from a subscription or a resource group, or ge
 
 ### List (Default)
 ```
-Get-AzElasticSan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzElasticSan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,15 +23,14 @@ Get-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzElasticSan -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzElasticSan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzElasticSan -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -300,7 +298,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -324,3 +322,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

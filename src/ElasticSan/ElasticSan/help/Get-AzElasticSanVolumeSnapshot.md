@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumesnapshot
 schema: 2.0.0
@@ -14,29 +14,14 @@ Get a Volume Snapshot.
 
 ### List (Default)
 ```
-Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -VolumeGroupName <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -VolumeGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityVolumegroup
-```
-Get-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityElasticSan
-```
-Get-AzElasticSanVolumeSnapshot -Name <String> -VolumeGroupName <String>
- -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -45,12 +30,24 @@ Get-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
+### GetViaIdentityElasticSan
+```
+Get-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityVolumegroup
+```
+Get-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a Volume Snapshot.
 
 ## EXAMPLES
 
-### Example 1: List snapshots under a volume group
+### Example 1: List snapshots under a volume group 
 ```powershell
 Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup
 ```
@@ -91,7 +88,7 @@ This command lists all snapshots under a volume group.
 
 ### Example 2: Get a specific snapshot
 ```powershell
-Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name mysnap1
+ Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name mysnap1
 ```
 
 ```output
@@ -113,7 +110,7 @@ VolumeName                   : myvolume
 
 This command gets a snapshot named "mysnap1" under the volume group "myvolumegroup"
 
-### Example 3: List snapshots of a volume with filter
+### Example 3: List snapshots of a volume with filter 
 ```powershell
 Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Filter 'volumeName eq myvolume'
 ```
@@ -190,7 +187,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -235,7 +232,7 @@ The name of the volume snapshot within the given volume group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityVolumegroup, GetViaIdentityElasticSan
+Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
 Aliases:
 
 Required: True
@@ -251,7 +248,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -266,7 +263,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -296,7 +293,7 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetViaIdentityElasticSan
+Parameter Sets: Get, GetViaIdentityElasticSan, List
 Aliases:
 
 Required: True
@@ -320,3 +317,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

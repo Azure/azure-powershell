@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell;
 
-    /// <summary>Parent resource information.</summary>
-    [System.ComponentModel.TypeConverter(typeof(ManagedByInfoTypeConverter))]
-    public partial class ManagedByInfo
+    /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+    [System.ComponentModel.TypeConverter(typeof(ManagedByResourcesTypeConverter))]
+    public partial class ManagedByResources
     {
 
         /// <summary>
@@ -63,44 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new ManagedByInfo(content);
+            return new ManagedByResources(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new ManagedByInfo(content);
+            return new ManagedByResources(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ManagedByInfo" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="ManagedByResources" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="ManagedByInfo" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="ManagedByResources" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ManagedByInfo(global::System.Collections.IDictionary content)
+        internal ManagedByResources(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -109,19 +109,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).Version = (int?) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).Version, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("ResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)this).ResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ResourceId = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ResourceId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ManagedByInfo(global::System.Management.Automation.PSObject content)
+        internal ManagedByResources(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -130,9 +138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).Version = (int?) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).Version, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("ResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)this).ResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ResourceId = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResourcesInternal)this).ResourceId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }
@@ -154,9 +170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             return ToJsonString();
         }
     }
-    /// Parent resource information.
-    [System.ComponentModel.TypeConverter(typeof(ManagedByInfoTypeConverter))]
-    public partial interface IManagedByInfo
+    /// Information about Azure services owning the ElasticSan volume resource.
+    [System.ComponentModel.TypeConverter(typeof(ManagedByResourcesTypeConverter))]
+    public partial interface IManagedByResources
 
     {
 

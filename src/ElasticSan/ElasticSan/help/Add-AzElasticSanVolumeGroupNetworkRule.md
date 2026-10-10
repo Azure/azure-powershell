@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolumegroupnetworkrule
 schema: 2.0.0
@@ -14,18 +14,16 @@ Add a list of virtual network rules to a VolumeGroup
 
 ### NetworkRuleObject (Default)
 ```
-Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -ResourceGroupName <String>
+ -VolumeGroupName <String> -NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NetworkRuleResourceId
 ```
-Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkResourceId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -ResourceGroupName <String>
+ -VolumeGroupName <String> -NetworkAclsVirtualNetworkResourceId <String[]> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +31,7 @@ Add a list of virtual network rules to a VolumeGroup
 
 ## EXAMPLES
 
-### Example 1: Add network rules to a volume group by NetworkAclsVirtualNetworkRule objects
+### Example 1: Add network rules to a volume group by NetworkAclsVirtualNetworkRule objects 
 ```powershell
 $virtualNetworkRule1 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
 $virtualNetworkRule2 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2" -Action Allow
@@ -254,3 +252,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

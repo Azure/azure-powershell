@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create a Volume Group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2026-05-01-preview")]
     public partial class NewAzElasticSanVolumeGroup_CreateViaIdentityElasticSanExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -70,6 +70,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of days to retain the resources after deletion.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of days to retain the resources after deletion.",
+        SerializedName = @"retentionPeriodDays",
+        PossibleTypes = new [] { typeof(int) })]
+        public int DeleteRetentionPolicyRetentionPeriodDay { get => _parametersBody.DeleteRetentionPolicyRetentionPeriodDay ?? default(int); set => _parametersBody.DeleteRetentionPolicyRetentionPeriodDay = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"policyState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string DeleteRetentionPolicyState { get => _parametersBody.DeleteRetentionPolicyState ?? null; set => _parametersBody.DeleteRetentionPolicyState = value; }
+
         /// <summary>Backing field for <see cref="ElasticSanInputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity _elasticSanInputObject;
 
@@ -89,6 +112,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
         public string Encryption { get => _parametersBody.Encryption ?? null; set => _parametersBody.Encryption = value; }
+
+        /// <summary>
+        /// A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.",
+        SerializedName = @"encryptionInTransit",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EncryptionInTransit { get => _parametersBody.EncryptionInTransit ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EncryptionInTransit = value; }
 
         /// <summary>
         /// Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
@@ -249,7 +285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"Type of storage target",
         SerializedName = @"protocolType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
         public string ProtocolType { get => _parametersBody.ProtocolType ?? null; set => _parametersBody.ProtocolType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
@@ -267,6 +303,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>
+        /// Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.",
+        SerializedName = @"qualityOfService",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+        public string QualityOfService { get => _parametersBody.QualityOfService ?? null; set => _parametersBody.QualityOfService = value; }
+
+        /// <summary>
+        /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
+        SerializedName = @"reservedIops",
+        PossibleTypes = new [] { typeof(int) })]
+        public int ReservedIop { get => _parametersBody.ReservedIop ?? default(int); set => _parametersBody.ReservedIop = value; }
+
+        /// <summary>
+        /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
+        SerializedName = @"reservedMBps",
+        PossibleTypes = new [] { typeof(int) })]
+        public int ReservedMBps { get => _parametersBody.ReservedMBps ?? default(int); set => _parametersBody.ReservedMBps = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
