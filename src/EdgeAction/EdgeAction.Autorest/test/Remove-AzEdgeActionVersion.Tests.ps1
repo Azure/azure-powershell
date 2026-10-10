@@ -15,22 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionVersion'))
 }
 
 Describe 'Remove-AzEdgeActionVersion' {
-    BeforeAll {
+    BeforeAll { Initialize-EdgeActionTestScenario {
         $script:resourceGroupName = "powershelltests"
         $script:edgeActionName = "eadelverdec01"
         
         # Create edge action for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
-    }
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'Delete' {
@@ -50,10 +45,11 @@ Describe 'Remove-AzEdgeActionVersion' {
             -EdgeActionName $script:edgeActionName `
             -Version $version } | Should -Not -Throw
         
-        # Verify it's deleted
-        { Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
-            -EdgeActionName $script:edgeActionName `
-            -Version $version -ErrorAction Stop } | Should -Throw
+        $remaining = Invoke-EdgeActionTestCommand 'Get-AzEdgeActionVersion' @{
+            ResourceGroupName = $script:resourceGroupName
+            EdgeActionName = $script:edgeActionName; Version = $version
+        } "version '$version' under '$($script:edgeActionName)'" -AllowNotFound
+        $remaining.NotFound | Should -Be $true
     }
 
     It 'DeleteViaIdentityEdgeAction' -skip {

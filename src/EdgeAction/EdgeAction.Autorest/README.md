@@ -29,13 +29,13 @@ For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 77a92c31e7758e299d1cfc05bccb136d7f9a201a
+commit: 431d98ec01b3f4b2af15a33efc09be47a211b50a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-12-01-preview/openapi.json 
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.1

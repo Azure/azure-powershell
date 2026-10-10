@@ -47,8 +47,8 @@ RESOURCE <IEdgeActionVersion>: Concrete tracked resource types can be created by
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DeploymentType <String>]: The deployment type
-  [IsDefaultVersion <String>]: The active state
+  [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
+  [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/new-azedgeactionversion
 #>
@@ -108,7 +108,9 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
-    # The deployment type
+    # The deployment type for the Edge Action version.
+    # Set this value when creating the version.
+    # When updating an existing version, any supplied value must match the existing value.
     ${DeploymentType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -116,7 +118,11 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
-    # The active state
+    # Indicates whether this is the default version.
+    # When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+    # If another default version exists, supplying true is rejected.
+    # When updating an existing version, any supplied value must match the existing value.
+    # Use swapDefault to change the default version.
     ${IsDefaultVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]

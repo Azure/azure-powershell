@@ -19,6 +19,21 @@
 -->
 
 ## Upcoming Release
+* Updated EdgeAction cmdlets and help to the stable 2026-10-01 API.
+    - Refreshed update parameters and documented tag replacement, clearing, and immutable-property behavior.
+* Relocated EdgeAction scenario test tooling to the module directory; cmdlet behavior is unchanged.
+    - Shared settings now default to Azure public cloud, with explicit Brazilus overrides and environment endpoint validation.
+    - Clarified test-runner setup guidance and invocation from different working directories.
+    - Generation and test tooling report major step starts and successful completions; generation also displays the configured specification input.
+    - Fixed Pester discovery for the artifact test harness by isolating the selected 4.10.1 installation in a temporary module search root.
+    - Fixed test startup assembly conflicts by running the artifact harness from its own directory instead of resolving assemblies from the caller's source directory.
+    - Record and Live test runs now prepare missing or incomplete Resources test support automatically before authentication; playback and complete installations do not trigger setup.
+    - Clarified pre-login environment registration and post-login context failures with property-specific diagnostics that redact subscription IDs and sensitive URL components.
+    - Record and Live runs now verify the environment before Resources support setup and request explicit confirmation before persistently registering a missing Brazilus environment. Existing registrations and playback are unchanged.
+    - Successful Record runs now copy selected recordings and compatible metadata to source as unstaged review changes, with credential checks and no automatic staging or commit.
+    - Generation now checks the known Accounts output DLL for Windows locks before preparation, reporting verified PowerShell process IDs and manual recovery commands without terminating processes.
+    - Fixed scenario cleanup to delete child resources before their parent, delete the current default version last using service-reported state, reset only selected dedicated test fixtures, and report cleanup failures instead of hiding them.
+    - Scenario runs now refresh maintained test scripts automatically without replacing recordings or rebuilding binaries, and stop if stale artifact scenarios have no matching source.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
@@ -31,4 +46,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.EdgeAction
-

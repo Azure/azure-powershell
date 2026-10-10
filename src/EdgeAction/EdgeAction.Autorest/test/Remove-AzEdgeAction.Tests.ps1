@@ -15,25 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeAction'))
 }
 
 Describe 'Remove-AzEdgeAction' {
+    BeforeAll { Initialize-EdgeActionTestScenario {
+        $script:resourceGroupName = "powershelltests"
+        $script:edgeActionName = "eadeletedec01"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+    } }
+
+    AfterAll {
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+    }
+
     It 'Delete' {
         # Test deleting edge action
-        $resourceGroupName = "powershelltests"
-        $edgeActionName = "eadeletedec01"
-        
-        # Create edge action to delete
-        New-AzEdgeAction -ResourceGroupName $resourceGroupName `
-            -Name $edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
-        
         # Delete the edge action
         { Remove-AzEdgeAction -ResourceGroupName $resourceGroupName `
             -Name $edgeActionName } | Should -Not -Throw
         
-        # Verify it's deleted
-        { Get-AzEdgeAction -ResourceGroupName $resourceGroupName `
-            -Name $edgeActionName -ErrorAction Stop } | Should -Throw
+        $remaining = Invoke-EdgeActionTestCommand 'Get-AzEdgeAction' @{
+            ResourceGroupName = $script:resourceGroupName; Name = $script:edgeActionName
+        } "parent '$($script:edgeActionName)'" -AllowNotFound
+        $remaining.NotFound | Should -Be $true
     }
 
     It 'DeleteViaIdentity' -skip {

@@ -74,7 +74,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: False
@@ -90,7 +90,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -101,7 +101,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentType
-The deployment type
+The deployment type for the Edge Action version.
+Set this value when creating the version.
+When updating an existing version, any supplied value must match the existing value.
 
 ```yaml
 Type: System.String
@@ -146,7 +148,11 @@ Accept wildcard characters: False
 ```
 
 ### -IsDefaultVersion
-The active state
+Indicates whether this is the default version.
+When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+If another default version exists, supplying true is rejected.
+When updating an existing version, any supplied value must match the existing value.
+Use swapDefault to change the default version.
 
 ```yaml
 Type: System.String
@@ -210,7 +216,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: False
@@ -287,7 +293,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -302,7 +308,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: cf
 
 Required: False
@@ -318,7 +324,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
 Aliases: wi
 
 Required: False

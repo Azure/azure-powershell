@@ -21,7 +21,7 @@ Deploy-AzEdgeActionVersionCode -ResourceGroupName <String> -EdgeActionName <Stri
 
 ## DESCRIPTION
 Deploy Edge Action version code from a JavaScript or zip file.
-This command handles file reading, 
+This command handles file reading,
 automatic zipping (for JavaScript files when using zip deployment), and base64 encoding.
 
 ## EXAMPLES

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"Delete a EdgeActionExecutionFilter")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     public partial class RemoveAzEdgeActionExecutionFilter_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.EdgeActionExecutionFiltersDeleteViaIdentity(InputObject.Id, onNoContent, onOk, onDefault, this, Pipeline);
+                        await this.Client.EdgeActionExecutionFiltersDeleteViaIdentity(InputObject.Id, onOk, onNoContent, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ExecutionFilter"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.EdgeActionExecutionFiltersDelete(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EdgeActionName ?? null, InputObject.ExecutionFilter ?? null, onNoContent, onOk, onDefault, this, Pipeline);
+                        await this.Client.EdgeActionExecutionFiltersDelete(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EdgeActionName ?? null, InputObject.ExecutionFilter ?? null, onOk, onNoContent, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
