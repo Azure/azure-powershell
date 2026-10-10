@@ -35,3 +35,22 @@ WorkspaceRoot                : {/subscriptions/00000000-0000-0000-0000-000000000
 
 The first command creates a discovery scope object, then the second command updates a workSpace properties.
 
+### Example 2: Update the capacity details configuration of a workspace
+```powershell
+$prefix2 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "data/" }
+Update-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $RGName -CapacityDetailStatus Disabled -AzureBlobStoragePrefixConfiguration $prefix2
+```
+
+```output
+AzureBlobStoragePrefixConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration}
+CapacityDetailStatus                : Disabled
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/myworkspace
+Location                            : eastus2euap
+Name                                : myworkspace
+ProvisioningState                   : Succeeded
+ResourceGroupName                   : myresourcegroup
+Type                                : microsoft.storagediscovery/storagediscoveryworkspaces
+```
+
+This command updates a workspace to set capacity details to `Disabled` and replaces the Azure Blob Storage prefix configuration.
+

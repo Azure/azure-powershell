@@ -1,0 +1,207 @@
+﻿TOPIC
+    about_Mocking
+
+SHORT DESCRIPTION
+    Pester provides a set of Mocking functions making it easy to fake dependencies
+    and also to verify behavior. Using these mocking functions can allow you to
+    "shim" a data layer or mock other complex functions that already have their
+    own tests.
+
+LONG DESCRIPTION
+    With the set of Mocking functions that Pester exposes, one can:
+
+        - Mock the behavior of ANY PowerShell command.
+        - Verify that specific commands were (or were not) called.
+        - Verify the number of times a command was called with a set of specified
+    parameters.
+
+  MOCKING FUNCTIONS
+  For detailed information about the functions in the Pester module, use Get-Help.
+
+  Mock
+    Mocks the behavior of an existing command with an alternate
+    implementation.
+
+  Assert-VerifiableMock
+    Checks if any Verifiable Mock has not been invoked. If so, this will
+    throw an exception.
+
+  Assert-MockCalled
+    Checks if a Mocked command has been called a certain number of times
+    and throws an exception if it has not.
+
+  EXAMPLE
+    function Build ($version) {
+        Write-Host "a build was run for version: $version"
+    }
+
+    function BuildIfChanged {
+        $thisVersion = Get-Version
+        $nextVersion = Get-NextVersion
+        if ($thisVersion -ne $nextVersion) { Build $nextVersion }
+        return $nextVersion
+    }
+
+    $here = Split-Path -Parent $MyInvocation.MyCommand.Path
+    $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".Tests.", ".")
+    . "$here\$sut"
+
+    Describe "BuildIfChanged" {
+      Context "When there are Changes" {
+        Mock Get-Version {return 1.1}
+        Mock Get-NextVersion {return 1.2}
+        Mock Build {} -Verifiable -ParameterFilter {$version -eq 1.2}
+
+        $result = BuildIfChanged
+
+        It "Builds the next version" {
+          Assert-VerifiableMock
+        }
+        It "returns the next version number" {
+          $result | Should -Be 1.2
+        }
+      }
+      Context "When there are no Changes" {
+        Mock Get-Version { return 1.1 }
+        Mock Get-NextVersion { return 1.1 }
+        Mock Build {}
+
+        $result = BuildIfChanged
+
+        It "Should not build the next version" {
+          Assert-MockCalled Build -Times 0 -ParameterFilter {$version -eq 1.1}
+        }
+      }
+    }
+
+
+  MOCKING CALLS TO COMMANDS MADE FROM INSIDE SCRIPT MODULES
+
+  Let's say you have code like this inside a script module (.psm1 file):
+
+    function BuildIfChanged {
+      $thisVersion = Get-Version
+      $nextVersion = Get-NextVersion
+      if ($thisVersion -ne $nextVersion) { Build $nextVersion }
+      return $nextVersion
+    }
+
+    function Build ($version) {
+      Write-Host "a build was run for version: $version"
+    }
+
+    # Actual definitions of Get-Version and Get-NextVersion are not shown here,
+    # since we'll just be mocking them anyway. However, the commands do need to
+    # exist in order to be mocked, so we'll stick dummy functions here
+
+    function Get-Version { return 0 }
+    function Get-NextVersion { return 0 }
+
+    Export-ModuleMember -Function BuildIfChanged
+
+  Beginning in Pester 3.0, there are two ways to write a unit test for a module that
+  mocks the calls to Get-Version and Get-NextVersion from the module's BuildIfChanged
+  command. The first is to inject mocks into a module:
+
+  In these examples, the PSM1 file, MyModule.psm1 is installed in $env:PSModulePath on
+  the local computer.
+
+    Import-Module MyModule
+
+    Describe "BuildIfChanged" {
+      Context "When there are Changes" {
+        Mock -ModuleName MyModule Get-Version { return 1.1 }
+        Mock -ModuleName MyModule Get-NextVersion { return 1.2 }
+
+        # To demonstrate that you can mock calls to commands other than functions
+        # defined in the same module, we'll mock a call to Write-Host.
+
+        Mock -ModuleName MyModule Write-Host {} -Verifiable -ParameterFilter {
+            $Object -eq 'a build was run for version: 1.2'
+        }
+
+        $result = BuildIfChanged
+
+        It "Builds the next version and calls Write-Host" {
+          Assert-VerifiableMock
+        }
+
+        It "returns the next version number" {
+          $result | Should -Be 1.2
+        }
+      }
+
+      Context "When there are no Changes" {
+        Mock -ModuleName MyModule Get-Version { return 1.1 }
+        Mock -ModuleName MyModule Get-NextVersion { return 1.1 }
+        Mock -ModuleName MyModule Build { }
+
+        $result = BuildIfChanged
+
+        It "Should not build the next version" {
+          Assert-MockCalled Build -ModuleName MyModule -Times 0 -ParameterFilter {
+            $version -eq 1.1
+          }
+        }
+      }
+    }
+
+
+  In this sample test script, all calls to Mock and Assert-MockCalled have the
+  -ModuleName MyModule parameter added. This tells Pester to inject the mock into the module scope,
+  which causes any calls to those commands from inside the module to execute the mock instead.
+
+  When you write your test script this way, you can mock commands that are called by the module's
+  internal functions. However, your test script is still limited to accessing the public, exported
+  members of the module. For example, you could not call the Build function directly.
+
+  The InModuleScope command causes entire sections of your test script to execute inside the targeted
+  script module. This gives you access to unexported members of the module. For example:
+
+    Import-Module MyModule
+
+    Describe "Unit testing the module's internal Build function:" {
+      InModuleScope MyModule {
+        $testVersion = 5.0
+        Mock Write-Host { }
+
+        Build $testVersion
+
+        It 'Outputs the correct message' {
+          Assert-MockCalled Write-Host -ParameterFilter {
+            $Object -eq "a build was run for version: $testVersion"
+          }
+        }
+      }
+    }
+
+  When using InModuleScope, you no longer need to specify a ModuleName parameter when calling
+  Mock or Assert-MockCalled for commands in the module. You can also directly call the Build
+  function that the module does not export.
+
+SEE ALSO
+  Mock
+  Assert-VerifiableMock
+  Assert-MockCalled
+  InModuleScope
+  Describe
+  Context
+  It
+
+  The following articles are useful for further understanding of Pester Mocks.
+    Pester Mock and Test Drive, by Jakub Jareš:
+      http://www.powershellmagazine.com/2014/09/30/pester-mock-and-testdrive/
+    Pester and Mocking, by Mickey Gousset:
+      http://www.systemcentercentral.com/day-53-pester-mocking/
+    Mocking Missing Cmdlets with Pester, by Iain Brighton:
+      http://virtualengine.co.uk/2015/mocking-missing-cmdlets-with-pester/
+    Testing Mocked Output with Pester, by Steven Murawski:
+      http://stevenmurawski.com/powershell/2014/02/testing-returned-objects-with-pester/
+
+  The following articles are useful for deeper understanding of Mocking in general.
+    Answer to the Question "What is the Purpose of Mock Objects" by Bert F:
+      http://stackoverflow.com/a/3623574/5514075
+    Mocks Aren't Stubs, by Martin Fowler:
+      http://martinfowler.com/articles/mocksArentStubs.html
+    The Art of Mocking, by Gil Zilberfeld:
+      http://www.methodsandtools.com/archive/archive.php?id=122

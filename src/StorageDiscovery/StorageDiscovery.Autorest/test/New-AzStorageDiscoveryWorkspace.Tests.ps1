@@ -26,6 +26,16 @@ Describe 'New-AzStorageDiscoveryWorkspace' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'CreateExpanded with capacity details and blob prefix configuration' {
+        $scope = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"}
+        $prefix = @{ StorageAccountName = "pshteststorageacct"; ContainerName = "pshtestcontainer"; Prefix = "logs/" }
+        $workspace = New-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName3 -ResourceGroupName $env.resourceGroup -Location $env.region -WorkspaceRoot $env.workspaceRoot -Sku Standard -Scope $scope -CapacityDetailStatus Enabled -AzureBlobStoragePrefixConfiguration $prefix
+        $workspace.CapacityDetailStatus | Should -Be 'Enabled'
+        $workspace.AzureBlobStoragePrefixConfiguration.Count | Should -Be 1
+        $workspace.AzureBlobStoragePrefixConfiguration[0].ContainerName | Should -Be 'pshtestcontainer'
+        $workspace.AzureBlobStoragePrefixConfiguration[0].Prefix | Should -Be 'logs/'
+    }
+
     It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

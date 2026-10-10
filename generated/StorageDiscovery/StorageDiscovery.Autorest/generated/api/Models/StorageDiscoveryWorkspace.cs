@@ -19,6 +19,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResource();
 
+        /// <summary>
+        /// The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration> AzureBlobStoragePrefixConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).AzureBlobStoragePrefixConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).AzureBlobStoragePrefixConfiguration = value ?? null /* arrayOf */; }
+
+        /// <summary>The enablement status of the capacity details capability.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Inlined)]
+        public string CapacityDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).CapacityDetailStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).CapacityDetailStatus = value ?? null; }
+
         /// <summary>The description of the storage discovery workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).Description = value ?? null; }
@@ -62,6 +72,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
+
+        /// <summary>Internal Acessors for AzureBlobStorageCapacityDetail</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ICapacityDetails Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceInternal.AzureBlobStorageCapacityDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).AzureBlobStorageCapacityDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).AzureBlobStorageCapacityDetail = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Capability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryCapabilities Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceInternal.Capability { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).Capability; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).Capability = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for CapabilityAzureBlobStorage</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IAzureBlobStorageCapability Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceInternal.CapabilityAzureBlobStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).CapabilityAzureBlobStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspacePropertiesInternal)Property).CapabilityAzureBlobStorage = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceProperties Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryWorkspaceProperties()); set { {_property = value;} } }
@@ -163,6 +182,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResource
     {
+        /// <summary>
+        /// The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.",
+        SerializedName = @"prefixConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration> AzureBlobStoragePrefixConfiguration { get; set; }
+        /// <summary>The enablement status of the capacity details capability.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The enablement status of the capacity details capability.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string CapacityDetailStatus { get; set; }
         /// <summary>The description of the storage discovery workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
         Required = false,
@@ -226,6 +270,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
     internal partial interface IStorageDiscoveryWorkspaceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceInternal
     {
+        /// <summary>The capacity details configuration for Azure Blob Storage.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ICapacityDetails AzureBlobStorageCapacityDetail { get; set; }
+        /// <summary>
+        /// The prefix configurations that scope the capacity details to specific storage accounts, containers, and prefixes.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfiguration> AzureBlobStoragePrefixConfiguration { get; set; }
+        /// <summary>The capabilities configured for the storage discovery workspace.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryCapabilities Capability { get; set; }
+        /// <summary>
+        /// The Azure Blob Storage capability configuration for the storage discovery workspace.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IAzureBlobStorageCapability CapabilityAzureBlobStorage { get; set; }
+        /// <summary>The enablement status of the capacity details capability.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string CapacityDetailStatus { get; set; }
         /// <summary>The description of the storage discovery workspace</summary>
         string Description { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
