@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ElasticSan
-Module Guid: ed90c36c-f150-4ad2-96ae-57e0ebb0a376
+Module Guid: 2779dbfe-0afa-43b6-94d3-593169ba94e6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elasticsan
 Help Version: 1.0.0.0
 Locale: en-US
@@ -58,6 +58,10 @@ Remove a list of virtual network rules from a VolumeGroup
 
 ### [Remove-AzElasticSanVolumeSnapshot](Remove-AzElasticSanVolumeSnapshot.md)
 Delete a Volume Snapshot.
+
+### [Restore-AzElasticSanVolume](Restore-AzElasticSanVolume.md)
+Restore Soft Deleted Volumes.
+The volume name is obtained by using the API to list soft deleted volumes by volume group
 
 ### [Test-AzElasticSanVolumeBackup](Test-AzElasticSanVolumeBackup.md)
 Validate whether a disk snapshot backup can be taken for list of volumes.

@@ -89,12 +89,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 AddIf( null != this._storageTarget ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._storageTarget.ToJson(null,serializationMode) : null, "storageTarget" ,container.Add );
             }
-            AddIf( null != this._managedBy ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._managedBy.ToJson(null,serializationMode) : null, "managedBy" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._volumeId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._volumeId.ToString()) : null, "volumeId" ,container.Add );
             }
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber(this._sizeGiB), "sizeGiB" ,container.Add );
+            if (null != this._managedBy)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.XNodeArray();
+                foreach( var __x in this._managedBy )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("managedBy",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
@@ -117,9 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             {_creationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("creationData"), out var __jsonCreationData) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SourceCreationData.FromJson(__jsonCreationData) : _creationData;}
             {_storageTarget = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("storageTarget"), out var __jsonStorageTarget) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IscsiTargetInfo.FromJson(__jsonStorageTarget) : _storageTarget;}
-            {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("managedBy"), out var __jsonManagedBy) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo.FromJson(__jsonManagedBy) : _managedBy;}
             {_volumeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("volumeId"), out var __jsonVolumeId) ? (string)__jsonVolumeId : (string)_volumeId;}
             {_sizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sizeGiB"), out var __jsonSizeGiB) ? (long)__jsonSizeGiB : _sizeGiB;}
+            {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("managedBy"), out var __jsonManagedBy) ? If( __jsonManagedBy as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources.FromJson(__u) )) ))() : null : _managedBy;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }

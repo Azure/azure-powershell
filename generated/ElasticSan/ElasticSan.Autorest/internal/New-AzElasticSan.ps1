@@ -78,24 +78,12 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Base size of the Elastic San appliance in TiB.
-    ${BaseSizeTiB},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Extended size of the Elastic San appliance in TiB.
-    ${ExtendedCapacitySizeTiB},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The sku name.
@@ -118,8 +106,20 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
+    # Base size of the Elastic San appliance in TiB.
+    ${BaseSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
     # Maximum scale up size on Elastic San appliance in TiB.
     ${CapacityUnitScaleUpLimitTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Extended size of the Elastic San appliance in TiB.
+    ${ExtendedCapacitySizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
@@ -152,8 +152,37 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
+    # Total Provisioned IOPS of the Elastic San appliance.
+    # Settable only for ElasticSanVersion V2, where it is required; read-only for V1.
+    ${TotalIop},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total Provisioned MBps Elastic San appliance.
+    # Settable only for ElasticSanVersion V2, where it is required; read-only for V1.
+    ${TotalMBps},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total size of the Elastic San appliance in TB.
+    # Settable only for ElasticSanVersion V2, where it is required; read-only for V1.
+    ${TotalSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
     # Unused size on Elastic San appliance in TiB.
     ${UnusedSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Elastic San appliance version.
+    # Defaults to V1 if not specified.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

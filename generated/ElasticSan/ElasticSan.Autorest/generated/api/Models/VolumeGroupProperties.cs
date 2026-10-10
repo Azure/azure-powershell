@@ -14,6 +14,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="DeleteRetentionPolicy" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy _deleteRetentionPolicy;
+
+        /// <summary>
+        /// The retention policy for the soft deleted volume group and its associated resources.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy DeleteRetentionPolicy { get => (this._deleteRetentionPolicy = this._deleteRetentionPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy()); set => this._deleteRetentionPolicy = value; }
+
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public int? DeleteRetentionPolicyRetentionPeriodDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicyInternal)DeleteRetentionPolicy).RetentionPeriodDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicyInternal)DeleteRetentionPolicy).RetentionPeriodDay = value ?? default(int); }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string DeleteRetentionPolicyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicyInternal)DeleteRetentionPolicy).PolicyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicyInternal)DeleteRetentionPolicy).PolicyState = value ?? null; }
+
         /// <summary>Backing field for <see cref="Encryption" /> property.</summary>
         private string _encryption;
 
@@ -26,6 +42,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public string EncryptionIdentityEncryptionUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentityEncryptionUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).EncryptionIdentityEncryptionUserAssignedIdentity = value ?? null; }
+
+        /// <summary>Backing field for <see cref="EncryptionInTransit" /> property.</summary>
+        private bool? _encryptionInTransit;
+
+        /// <summary>
+        /// A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public bool? EncryptionInTransit { get => this._encryptionInTransit; set => this._encryptionInTransit = value; }
 
         /// <summary>Backing field for <see cref="EncryptionProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties _encryptionProperty;
@@ -67,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Timestamp of last rotation of the Key Vault Key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public global::System.DateTime? KeyVaultPropertyLastKeyRotationTimestamp { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionPropertiesInternal)EncryptionProperty).KeyVaultPropertyLastKeyRotationTimestamp; }
+
+        /// <summary>Internal Acessors for DeleteRetentionPolicy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.DeleteRetentionPolicy { get => (this._deleteRetentionPolicy = this._deleteRetentionPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy()); set { {_deleteRetentionPolicy = value;} } }
 
         /// <summary>Internal Acessors for EncryptionProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal.EncryptionProperty { get => (this._encryptionProperty = this._encryptionProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties()); set { {_encryptionProperty = value;} } }
@@ -129,6 +157,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
 
+        /// <summary>Backing field for <see cref="QualityOfService" /> property.</summary>
+        private string _qualityOfService;
+
+        /// <summary>
+        /// Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public string QualityOfService { get => this._qualityOfService; set => this._qualityOfService = value; }
+
+        /// <summary>Backing field for <see cref="ReservedIop" /> property.</summary>
+        private int? _reservedIop;
+
+        /// <summary>
+        /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public int? ReservedIop { get => this._reservedIop; set => this._reservedIop = value; }
+
+        /// <summary>Backing field for <see cref="ReservedMBps" /> property.</summary>
+        private int? _reservedMBps;
+
+        /// <summary>
+        /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public int? ReservedMBps { get => this._reservedMBps; set => this._reservedMBps = value; }
+
         /// <summary>Creates an new <see cref="VolumeGroupProperties" /> instance.</summary>
         public VolumeGroupProperties()
         {
@@ -139,6 +194,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface IVolumeGroupProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The number of days to retain the resources after deletion.",
+        SerializedName = @"retentionPeriodDays",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DeleteRetentionPolicyRetentionPeriodDay { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"policyState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DeleteRetentionPolicyState { get; set; }
         /// <summary>Type of encryption</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -164,6 +242,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         string EncryptionIdentityEncryptionUserAssignedIdentity { get; set; }
+        /// <summary>
+        /// A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.",
+        SerializedName = @"encryptionInTransit",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EncryptionInTransit { get; set; }
         /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -276,7 +367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Type of storage target",
         SerializedName = @"protocolType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
         string ProtocolType { get; set; }
         /// <summary>State of the operation on the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -288,14 +379,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
+        /// <summary>
+        /// Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.",
+        SerializedName = @"qualityOfService",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+        string QualityOfService { get; set; }
+        /// <summary>
+        /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
+        SerializedName = @"reservedIops",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ReservedIop { get; set; }
+        /// <summary>
+        /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.",
+        SerializedName = @"reservedMBps",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ReservedMBps { get; set; }
 
     }
     /// VolumeGroup response properties.
     internal partial interface IVolumeGroupPropertiesInternal
 
     {
+        /// <summary>
+        /// The retention policy for the soft deleted volume group and its associated resources.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
+        /// <summary>The number of days to retain the resources after deletion.</summary>
+        int? DeleteRetentionPolicyRetentionPeriodDay { get; set; }
+
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string DeleteRetentionPolicyState { get; set; }
         /// <summary>Type of encryption</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
         string Encryption { get; set; }
@@ -303,6 +443,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
         /// </summary>
         string EncryptionIdentityEncryptionUserAssignedIdentity { get; set; }
+        /// <summary>
+        /// A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.
+        /// </summary>
+        bool? EncryptionInTransit { get; set; }
         /// <summary>Encryption Properties describing Key Vault and Identity information</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionProperties EncryptionProperty { get; set; }
         /// <summary>The identity to be used with service-side encryption at rest.</summary>
@@ -335,11 +479,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>The list of Private Endpoint Connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Type of storage target</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
         string ProtocolType { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
+        /// <summary>
+        /// Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+        string QualityOfService { get; set; }
+        /// <summary>
+        /// Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        int? ReservedIop { get; set; }
+        /// <summary>
+        /// Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+        /// </summary>
+        int? ReservedMBps { get; set; }
 
     }
 }

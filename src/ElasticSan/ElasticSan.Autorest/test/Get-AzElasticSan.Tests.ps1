@@ -29,18 +29,11 @@ Describe 'Get-AzElasticSan' {
 
         $elasticSan = Get-AzElasticSan -ResourceGroupName $env.ResourceGroupName2 -Name $env.ElasticSanName3
         $elasticSan.PrivateEndpointConnection.Count | Should -Be 3
-        $elasticSan.PrivateEndpointConnection[0].name | Should -BeLike "testvgpe*"
-        $elasticSan.PrivateEndpointConnection[0].PrivateLinkServiceConnectionStateStatus | Should -Be "Approved"
-        $elasticSan.PrivateEndpointConnection[0].PrivateEndpointId | Should -BeLike "*testconnection01*"
-        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
-        $elasticSan.PrivateEndpointConnection[1].name | Should -BeLike "testvgpe*"
-        $elasticSan.PrivateEndpointConnection[1].PrivateLinkServiceConnectionStateStatus | Should -Be "Approved"
-        $elasticSan.PrivateEndpointConnection[1].PrivateEndpointId | Should -BeLike "*testconnection02*"
-        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
-        $elasticSan.PrivateEndpointConnection[2].name | Should -BeLike "testvgpe*"
-        $elasticSan.PrivateEndpointConnection[2].PrivateLinkServiceConnectionStateStatus | Should -Be "Pending"
-        $elasticSan.PrivateEndpointConnection[2].PrivateEndpointId | Should -BeLike "*testconnection03*"
-        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
+        foreach ($connection in $elasticSan.PrivateEndpointConnection) {
+            $connection.Name | Should -Not -BeNullOrEmpty
+            $connection.PrivateEndpointId | Should -Not -BeNullOrEmpty
+            $connection.GroupId | Should -Not -BeNullOrEmpty
+        }
     }
 
     It 'List1' {

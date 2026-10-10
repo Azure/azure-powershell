@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"List Volumes in a VolumeGroup.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes", ApiVersion = "2026-05-01-preview")]
     public partial class GetAzElasticSanVolume_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -183,6 +183,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Path)]
         public string VolumeGroupName { get => this._volumeGroupName; set => this._volumeGroupName = value; }
+
+        /// <summary>Backing field for <see cref="XmsAccessSoftDeletedResource" /> property.</summary>
+        private string _xmsAccessSoftDeletedResource;
+
+        /// <summary>
+        /// Optional, returns only soft deleted volumes if set to true. If set to false or if not specified, returns only active volumes.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional, returns only soft deleted volumes if set to true. If set to false or if not specified, returns only active volumes.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optional, returns only soft deleted volumes if set to true. If set to false or if not specified, returns only active volumes.",
+        SerializedName = @"x-ms-access-soft-deleted-resources",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Header)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]
+        public string XmsAccessSoftDeletedResource { get => this._xmsAccessSoftDeletedResource; set => this._xmsAccessSoftDeletedResource = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -400,13 +417,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.VolumesListByVolumeGroup(SubscriptionId, ResourceGroupName, ElasticSanName, VolumeGroupName, onOk, onDefault, this, Pipeline);
+                        await this.Client.VolumesListByVolumeGroup(SubscriptionId, ResourceGroupName, ElasticSanName, VolumeGroupName, this.InvocationInformation.BoundParameters.ContainsKey("XmsAccessSoftDeletedResource") ? XmsAccessSoftDeletedResource : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ElasticSanName=ElasticSanName,VolumeGroupName=VolumeGroupName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ElasticSanName=ElasticSanName,VolumeGroupName=VolumeGroupName,XmsAccessSoftDeletedResource=this.InvocationInformation.BoundParameters.ContainsKey("XmsAccessSoftDeletedResource") ? XmsAccessSoftDeletedResource : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

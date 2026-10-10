@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
 schema: 2.0.0
@@ -15,30 +15,30 @@ Delete an Volume.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityVolumegroup
-```
-Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteType <String>] [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteType <String>] [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentityElasticSan
+```
+Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> [-DeleteType <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityVolumegroup
+```
+Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> [-DeleteType <String>]
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ Delete an Volume.
 
 ## EXAMPLES
 
-### Example 1: Remove a volume
+### Example 1: Remove a volume 
 ```powershell
 Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
 ```
@@ -90,6 +90,23 @@ Accept wildcard characters: False
 Optional, used to delete snapshots under volume.
 Allowed value are only true or false.
 Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteType
+Optional.
+Specifies that the delete operation should be a permanent delete for the soft deleted volume.
+The value of deleteType can only be 'permanent'.
 
 ```yaml
 Type: System.String
@@ -170,7 +187,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityVolumegroup, DeleteViaIdentityElasticSan
+Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
 Aliases: VolumeName
 
 Required: True
@@ -316,3 +333,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

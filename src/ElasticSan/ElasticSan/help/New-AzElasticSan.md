@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
 schema: 2.0.0
@@ -14,22 +14,22 @@ Create ElasticSan.
 
 ### CreateExpanded (Default)
 ```
-New-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> [-AutoScalePolicyEnforcement <String>] [-CapacityUnitScaleUpLimitTiB <Int64>]
- [-IncreaseCapacityUnitByTiB <Int64>] [-UnusedSizeTiB <Int64>] [-AvailabilityZone <String[]>]
- [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticSan -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ [-SubscriptionId <String>] [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>]
+ [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSan -InputObject <IElasticSanIdentity> -Location <String> -SkuName <String>
- [-AutoScalePolicyEnforcement <String>] [-CapacityUnitScaleUpLimitTiB <Int64>]
- [-IncreaseCapacityUnitByTiB <Int64>] [-UnusedSizeTiB <Int64>] [-AvailabilityZone <String[]>]
- [-BaseSizeTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AutoScalePolicyEnforcement <String>] [-AvailabilityZone <String[]>] [-BaseSizeTiB <Int64>]
+ [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -456,3 +456,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

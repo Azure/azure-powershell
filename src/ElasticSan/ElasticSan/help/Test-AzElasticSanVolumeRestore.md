@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/test-azelasticsanvolumerestore
 schema: 2.0.0
@@ -14,58 +14,56 @@ Validate whether a list of backed up disk snapshots can be restored into Elastic
 
 ### RestoreExpanded (Default)
 ```
-Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VolumeGroupName <String> -DiskSnapshotId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaJsonString
-```
-Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VolumeGroupName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaJsonFilePath
-```
-Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VolumeGroupName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ -DiskSnapshotId <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Restore
 ```
-Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VolumeGroupName <String> -Parameter <IDiskSnapshotList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaIdentityElasticSanExpanded
-```
-Test-AzElasticSanVolumeRestore -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- -DiskSnapshotId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaIdentityElasticSan
-```
-Test-AzElasticSanVolumeRestore -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- -Parameter <IDiskSnapshotList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RestoreViaIdentityExpanded
-```
-Test-AzElasticSanVolumeRestore -InputObject <IElasticSanIdentity> -DiskSnapshotId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ -Parameter <IDiskSnapshotList> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Test-AzElasticSanVolumeRestore -InputObject <IElasticSanIdentity> -Parameter <IDiskSnapshotList>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityElasticSan
+```
+Test-AzElasticSanVolumeRestore -ElasticSanInputObject <IElasticSanIdentity> -VolumeGroupName <String>
+ -Parameter <IDiskSnapshotList> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### RestoreViaIdentityElasticSanExpanded
+```
+Test-AzElasticSanVolumeRestore -ElasticSanInputObject <IElasticSanIdentity> -VolumeGroupName <String>
+ -DiskSnapshotId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpanded
+```
+Test-AzElasticSanVolumeRestore -InputObject <IElasticSanIdentity> -DiskSnapshotId <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaJsonFilePath
+```
+Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaJsonString
+```
+Test-AzElasticSanVolumeRestore -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +137,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: RestoreViaIdentityElasticSanExpanded, RestoreViaIdentityElasticSan
+Parameter Sets: RestoreViaIdentityElasticSan, RestoreViaIdentityElasticSanExpanded
 Aliases:
 
 Required: True
@@ -154,7 +152,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: True
@@ -169,7 +167,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: RestoreViaIdentityExpanded, RestoreViaIdentity
+Parameter Sets: RestoreViaIdentity, RestoreViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -229,7 +227,7 @@ object to hold array of Disk Snapshot ARM IDs
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDiskSnapshotList
-Parameter Sets: Restore, RestoreViaIdentityElasticSan, RestoreViaIdentity
+Parameter Sets: Restore, RestoreViaIdentity, RestoreViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -245,7 +243,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: True
@@ -260,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore
+Parameter Sets: Restore, RestoreExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: False
@@ -275,7 +273,7 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaJsonString, RestoreViaJsonFilePath, Restore, RestoreViaIdentityElasticSanExpanded, RestoreViaIdentityElasticSan
+Parameter Sets: Restore, RestoreExpanded, RestoreViaIdentityElasticSan, RestoreViaIdentityElasticSanExpanded, RestoreViaJsonFilePath, RestoreViaJsonString
 Aliases:
 
 Required: True
@@ -332,3 +330,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

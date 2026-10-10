@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsan
 schema: 2.0.0
@@ -15,14 +15,13 @@ Delete a Elastic San.
 ### Delete (Default)
 ```
 Remove-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzElasticSan -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +31,7 @@ Delete a Elastic San.
 
 ### Example 1: Remove a specific Elastic SAN
 ```powershell
-Remove-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan
+Remove-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan 
 ```
 
 This command removes a specific Elastic SAN.
@@ -206,3 +205,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

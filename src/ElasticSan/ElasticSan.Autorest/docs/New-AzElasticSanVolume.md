@@ -16,29 +16,30 @@ Create a Volume.
 ```
 New-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> -SizeGiB <Int64> [-SubscriptionId <String>] [-CreationDataCreateSource <String>]
- [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityElasticSanExpanded
 ```
 New-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String> -VolumeGroupName <String>
  -SizeGiB <Int64> [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagedBy <IManagedByResources[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSanVolume -InputObject <IElasticSanIdentity> -SizeGiB <Int64>
- [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityVolumegroupExpanded
 ```
 New-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> -SizeGiB <Int64>
- [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +182,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedBy
+Information about Azure services owning the ElasticSan volume resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

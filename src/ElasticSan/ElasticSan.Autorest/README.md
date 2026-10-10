@@ -28,11 +28,11 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: bcacfd106d182630f9a9d1ee4837d1b32da5bc1b
+commit: b1e7325f0722352d57f2408b35b038e9896844a8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/ElasticSan/stable/2025-09-01/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/ElasticSan/preview/2026-05-01-preview/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan

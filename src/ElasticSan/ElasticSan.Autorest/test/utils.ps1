@@ -67,9 +67,9 @@ function setupEnv() {
     $env.vnetResourceId1 = '/subscriptions/' + $env.SubscriptionId + '/resourceGroups/' + $env.ResourceGroupName + '/providers/Microsoft.Network/virtualNetworks/' + $vnetName + '/subnets/' + $subnet1Name
     $env.vnetResourceId2 = '/subscriptions/' + $env.SubscriptionId + '/resourceGroups/' + $env.ResourceGroupName + '/providers/Microsoft.Network/virtualNetworks/' + $vnetName + '/subnets/' + $subnet2Name
 
-    $env.Keyvaultname = "testelasticsanvault1"
+    $env.Keyvaultname = "testelasticsanvault2"
     $env.Keyname = "eskey1"
-    $env.KeyvaultUri = "https://testelasticsanvault1.vault.azure.net:443"
+    $env.KeyvaultUri = "https://testelasticsanvault2.vault.azure.net:443"
     $uai1 = "estestuserid1"
     $uai2 = "estestuserid2"
     $env.Useridentity = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroupName2 -Name $uai1

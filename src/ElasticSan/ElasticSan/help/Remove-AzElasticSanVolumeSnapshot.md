@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumesnapshot
 schema: 2.0.0
@@ -15,28 +15,27 @@ Delete a Volume Snapshot.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityVolumegroup
-```
-Remove-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolumeSnapshot -Name <String> -VolumeGroupName <String>
- -ElasticSanInputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityElasticSan
+```
+Remove-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentityVolumegroup
+```
+Remove-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,7 +133,7 @@ The name of the volume snapshot within the given volume group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityVolumegroup, DeleteViaIdentityElasticSan
+Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
 Aliases:
 
 Required: True
@@ -280,3 +279,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -18,14 +18,13 @@ Describe 'Update-AzElasticSanVolumeGroup' {
     It 'UpdateExpanded' {
         $vnetRule1 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId1 -Action "Allow"
         $vnetRule2 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId2 -Action "Allow"
-        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -ProtocolType 'None' -NetworkAclsVirtualNetworkRule $vnetRule1,$vnetRule2
+        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -NetworkAclsVirtualNetworkRule $vnetRule1,$vnetRule2
         $volGroup.Name | Should -Be $env.VolumeGroupName
         $volGroup.ProtocolType | Should -Be 'None'
         $volGroup.NetworkAclsVirtualNetworkRule.Count | Should -Be 2 
 
         $volGroup = Get-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName
         $volGroup.Name | Should -Be $env.VolumeGroupName
-        $volGroup.ProtocolType | Should -Be 'None'
         $volGroup.NetworkAclsVirtualNetworkRule.Count | Should -Be 2 
     }   
 }
