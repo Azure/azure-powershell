@@ -23,6 +23,7 @@
     - Use `-AddressFamily "IPv4","IPv6"` with `New-AzNetworkVirtualAppliance` to create a dual-stack appliance; omitting the parameter defaults to IPv4-only.
     - Use `-AddressFamily` with `Update-AzNetworkVirtualAppliance` to upgrade or downgrade an existing appliance; omitting the parameter leaves the address family unchanged.
     - Exposed read-only `AddressFamily`, `AddressPrefixV6`, and `PrivateIpAddressV6` on the appliance and `PublicIpAddressV6`/`PrivateIpAddressV6` on virtual appliance NICs.
+* Upgraded Network SDK to API version `2026-03-01`.
 * Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
     - Added cmdlets to create, get, add, update, and remove mitigation rules.
     - Deny and Permit source matches can be configured directly with IP prefix and geographic match parameters.
