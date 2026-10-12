@@ -51,14 +51,6 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
-  # EdgeAction PATCH supports tags only; exclude rejected SKU fields and the empty properties model.
-  # Keep create models and the response model unchanged.
-  - from: swagger-document
-    where: $.definitions.EdgeActionUpdate.properties
-    transform: |
-      delete $.sku;
-      delete $.properties;
-
   # ARM POST operations require an empty body for ASP.NET pipeline compatibility
   # The getVersionCode and swapDefault operations need {} body even though swagger doesn't define request body
   - from: source-file-csharp
