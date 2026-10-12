@@ -10,19 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// update the tags of an Edge Action. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected. Do not include sku in PATCH requests; any supplied sku, including
-    /// null or the existing value, is rejected.
-    /// </summary>
+    /// <summary>update a EdgeAction</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEdgeAction_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update the tags of an Edge Action. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected. Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"update a EdgeAction")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2026-10-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2025-12-01-preview")]
     public partial class UpdateAzEdgeAction_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext
@@ -44,7 +40,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>The type used for update operations of the EdgeAction.</summary>
+        /// <summary>
+        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+        /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
@@ -127,17 +125,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.HttpPipeline Pipeline { get; set; }
 
-        /// <summary>The resource-specific properties for this resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource-specific properties for this resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The resource-specific properties for this resource.",
-        SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAny Property { get => _propertiesBody.Property ?? null /* object */; set => _propertiesBody.Property = value; }
-
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Runtime)]
@@ -209,20 +196,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>
-        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-        /// replace the entire tag collection. Null tags are rejected.
-        /// </summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
