@@ -281,9 +281,9 @@ end {
 
 <#
 .Synopsis
-Get the version code for the edge action version.
+A long-running resource action.
 .Description
-Get the version code for the edge action version.
+A long-running resource action.
 .Example
 Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 .Example
@@ -480,9 +480,9 @@ end {
 
 <#
 .Synopsis
-Swap the default version for the edge action.
+A long-running resource action.
 .Description
-Swap the default version for the edge action.
+A long-running resource action.
 .Example
 Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
 

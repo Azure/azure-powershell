@@ -8,9 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="EdgeActionExecutionFilterUpdateTags" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate"
+    /// />
     /// </summary>
-    public partial class EdgeActionExecutionFilterUpdateTagsTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class EdgeActionExecutionFilterPropertiesUpdateTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +27,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="EdgeActionExecutionFilterUpdateTags"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="EdgeActionExecutionFilterPropertiesUpdate"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="EdgeActionExecutionFilterUpdateTags"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="EdgeActionExecutionFilterPropertiesUpdate"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="EdgeActionExecutionFilterUpdateTags" /> type, otherwise
+        /// <c>true</c> if the instance could be converted to a <see cref="EdgeActionExecutionFilterPropertiesUpdate" /> type, otherwise
         /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
@@ -96,32 +97,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="EdgeActionExecutionFilterUpdateTags" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="EdgeActionExecutionFilterUpdateTags"
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate"
         /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="EdgeActionExecutionFilterUpdateTags" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate"
+        /// />.</param>
         /// <returns>
-        /// an instance of <see cref="EdgeActionExecutionFilterUpdateTags" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="EdgeActionExecutionFilterPropertiesUpdate" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterPropertiesUpdate).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return EdgeActionExecutionFilterUpdateTags.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return EdgeActionExecutionFilterPropertiesUpdate.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -129,11 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return EdgeActionExecutionFilterUpdateTags.DeserializeFromPSObject(sourceValue);
+                return EdgeActionExecutionFilterPropertiesUpdate.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return EdgeActionExecutionFilterUpdateTags.DeserializeFromDictionary(sourceValue);
+                return EdgeActionExecutionFilterPropertiesUpdate.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

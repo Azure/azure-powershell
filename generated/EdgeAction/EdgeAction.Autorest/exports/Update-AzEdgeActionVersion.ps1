@@ -16,17 +16,9 @@
 
 <#
 .Synopsis
-Update the tags of an Edge Action version.
-Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
-Null tags are rejected.
-Version properties are not changed.
-If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+Update a EdgeActionVersion
 .Description
-Update the tags of an Edge Action version.
-Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
-Null tags are rejected.
-Version properties are not changed.
-If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+Update a EdgeActionVersion
 .Example
 Update-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -Tag @{ Environment = "Production"; Team = "Platform" }
 
@@ -57,11 +49,11 @@ INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
-PROPERTY <IEdgeActionVersionUpdate>: The type used for update operations of the EdgeActionVersion.
-  [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
-  [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
-  [Tag <IEdgeActionVersionUpdateTags>]: Resource tags.
+PROPERTY <IEdgeActionVersionUpdate>: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+  [Tag <IAzureResourceManagerCommonTypesTrackedResourceUpdateTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [DeploymentType <String>]: The deployment type
+  [IsDefaultVersion <String>]: The active state
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/update-azedgeactionversion
 #>
@@ -122,32 +114,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("zip", "file", "others")]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
-    [System.String]
-    # The deployment type for the Edge Action version.
-    # Set this value when creating the version.
-    # When updating an existing version, any supplied value must match the existing value.
-    ${DeploymentType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("True", "False")]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
-    [System.String]
-    # Indicates whether this is the default version.
-    # When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
-    # If another default version exists, supplying true is rejected.
-    # When updating an existing version, any supplied value must match the existing value.
-    # Use swapDefault to change the default version.
-    ${IsDefaultVersion},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityEdgeActionExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -155,7 +123,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionVersionUpdate]
-    # The type used for update operations of the EdgeActionVersion.
+    # Concrete tracked resource types can be created by aliasing this type using a specific property type.
     ${Property},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]

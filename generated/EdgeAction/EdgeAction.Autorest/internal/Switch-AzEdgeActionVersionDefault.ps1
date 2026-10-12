@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Swap the default version for the edge action.
+A long-running resource action.
 .Description
-Swap the default version for the edge action.
+A long-running resource action.
 .Example
 Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
 
