@@ -846,18 +846,32 @@ function Test-GetAzApplyUpdateWithoutParentResource
 
 <#
 .SYNOPSIS
-Asserts that a response contains InvalidScheduledEventId.
+Asserts that a terminating error contains InvalidScheduledEventId.
 
 .PARAMETER cmd
-Script block expected to return InvalidScheduledEventId.
+Script block expected to throw InvalidScheduledEventId.
 #>
 function Assert-InvalidScheduledEventId
 {
     param([scriptblock] $cmd)
 
-    $response = & $cmd
-    Assert-AreEqual "InvalidScheduledEventId" $response.Error.Code
-    Assert-AreEqual "Scheduled event not found" $response.Error.Message
+    $caughtError = $null
+    try
+    {
+        & $cmd
+    }
+    catch
+    {
+        $caughtError = $_
+    }
+    Assert-NotNull $caughtError
+    Assert-AreEqual "InvalidScheduledEventId" $caughtError.Exception.Body.Error.Code
+    Assert-AreEqual "Scheduled event not found" $caughtError.Exception.Body.Error.Message
+    $displayParts = $caughtError.ErrorDetails.Message -split "\r?\n", 2
+    Assert-AreEqual $caughtError.Exception.Response.StatusCode.ToString() $displayParts[0]
+    $displayBody = $displayParts[1] | ConvertFrom-Json
+    Assert-AreEqual "InvalidScheduledEventId" $displayBody.error.code
+    Assert-AreEqual "Scheduled event not found" $displayBody.error.message
 }
 
 <#
@@ -869,7 +883,7 @@ function Test-ApproveAzScheduledEvents
     $resourceGroupName = Get-RandomResourceGroupName
     $resourceType = "virtualmachinescalesets"
     $virtualMachineScaleSetName = Get-RandomVirtualMachineName
-    $location = "West Central US"
+    $location = "Eastus2euap"
     $subscriptionId = $((Get-AzContext).Subscription.Id)
 
     try
@@ -997,14 +1011,28 @@ function Test-ApproveAzScheduledEvents
             -ScheduledEventIdList $invalidScheduledEventsIds `
             -Confirm:$false
 
-        Assert-AreEqual "MultiStatusResponse" $multiStatusResponse.Response.Code
-        Assert-AreEqual $invalidScheduledEventsIds.Count $multiStatusResponse.Details.Count
-        for ($resultIndex = 0; $resultIndex -lt $multiStatusResponse.Details.Count; $resultIndex++)
+        Assert-True { $multiStatusResponse -is [Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsListAcknowledgeError] }
+        Assert-AreEqual "MultiStatusResponse" $multiStatusResponse.Error.Code
+        Assert-AreEqual "The operation returned different statuses for the Scheduled Events. Review each event's result for details." $multiStatusResponse.Error.Message
+        Assert-AreEqual $invalidScheduledEventsIds.Count $multiStatusResponse.Error.Details.Count
+        Assert-AreEqual $invalidScheduledEventsIds.Count @($multiStatusResponse.Error.Details.Target | Select-Object -Unique).Count
+        foreach ($result in $multiStatusResponse.Error.Details)
         {
-            $result = $multiStatusResponse.Details[$resultIndex]
-            Assert-AreEqual $invalidScheduledEventsIds[$resultIndex] $result.Target
+            Assert-True { $invalidScheduledEventsIds -contains $result.Target }
             Assert-AreEqual "NotFound" $result.Code
             Assert-AreEqual "Scheduled event not found" $result.Message
+        }
+
+        # Verify the console view without modifying the SDK response in the pipeline.
+        $displayedResponse = ($multiStatusResponse | Out-String) | ConvertFrom-Json
+        Assert-AreEqual $multiStatusResponse.Error.Code $displayedResponse.Error.Code
+        Assert-AreEqual $multiStatusResponse.Error.Message $displayedResponse.Error.Message
+        Assert-AreEqual $multiStatusResponse.Error.Details.Count $displayedResponse.Error.Details.Count
+        for ($detailIndex = 0; $detailIndex -lt $multiStatusResponse.Error.Details.Count; $detailIndex++)
+        {
+            Assert-AreEqual $multiStatusResponse.Error.Details[$detailIndex].Target $displayedResponse.Error.Details[$detailIndex].Target
+            Assert-AreEqual $multiStatusResponse.Error.Details[$detailIndex].Code $displayedResponse.Error.Details[$detailIndex].Code
+            Assert-AreEqual $multiStatusResponse.Error.Details[$detailIndex].Message $displayedResponse.Error.Details[$detailIndex].Message
         }
     }
     finally

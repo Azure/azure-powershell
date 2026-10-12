@@ -101,6 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             AddIf( null != this._dynamicMemoryConfig ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) this._dynamicMemoryConfig.ToJson(null,serializationMode) : null, "dynamicMemoryConfig" ,container.Add );
             AddIf( null != this._targetMemoryInMegaByte ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber((int)this._targetMemoryInMegaByte) : null, "targetMemoryInMegaBytes" ,container.Add );
             AddIf( null != (((object)this._oSType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._oSType.ToString()) : null, "osType" ,container.Add );
+            AddIf( null != (((object)this._securityOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString(this._securityOption.ToString()) : null, "securityOption" ,container.Add );
+            AddIf( null != this._convertToGen2 ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._convertToGen2) : null, "convertToGen2" ,container.Add );
+            AddIf( null != this._migrateAsArcVM ? (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean((bool)this._migrateAsArcVM) : null, "migrateAsArcVM" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -125,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {_dynamicMemoryConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("dynamicMemoryConfig"), out var __jsonDynamicMemoryConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig.FromJson(__jsonDynamicMemoryConfig) : _dynamicMemoryConfig;}
             {_targetMemoryInMegaByte = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNumber>("targetMemoryInMegaBytes"), out var __jsonTargetMemoryInMegaBytes) ? (int?)__jsonTargetMemoryInMegaBytes : _targetMemoryInMegaByte;}
             {_oSType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("osType"), out var __jsonOSType) ? (string)__jsonOSType : (string)_oSType;}
+            {_securityOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("securityOption"), out var __jsonSecurityOption) ? (string)__jsonSecurityOption : (string)_securityOption;}
+            {_convertToGen2 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("convertToGen2"), out var __jsonConvertToGen2) ? (bool?)__jsonConvertToGen2 : _convertToGen2;}
+            {_migrateAsArcVM = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonBoolean>("migrateAsArcVM"), out var __jsonMigrateAsArcVM) ? (bool?)__jsonMigrateAsArcVM : _migrateAsArcVM;}
             AfterFromJson(json);
         }
     }

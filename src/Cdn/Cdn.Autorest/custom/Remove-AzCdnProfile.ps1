@@ -175,9 +175,11 @@ function Remove-AzCdnProfile {
         $hasPassThru = $PSBoundParameters.Remove('PassThru')
 
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }

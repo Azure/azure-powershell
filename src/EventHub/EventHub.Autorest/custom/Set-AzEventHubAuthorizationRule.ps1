@@ -72,7 +72,7 @@ function Set-AzEventHubAuthorizationRule{
         [System.String[]]
         # The rights associated with the rule.
         ${Rights},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -151,11 +151,13 @@ function Set-AzEventHubAuthorizationRule{
             $null = $PSBoundParameters.Remove('Confirm')
 
             if ($PSCmdlet.ParameterSetName -eq 'SetExpandedNamespace'){
-                $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get @PSBoundParameters
+                $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get' -BoundParameters $PSBoundParameters
+                $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_Get @readParameters
             }
-            
+
             elseif($PSCmdlet.ParameterSetName -eq 'SetExpandedEntity'){
-                $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get @PSBoundParameters
+                $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get' -BoundParameters $PSBoundParameters
+                $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_Get @readParameters
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded'){
@@ -166,16 +168,18 @@ function Set-AzEventHubAuthorizationRule{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
                 if ($ResourceHashTable['EventHubName'] -ne $null){
-                    $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity @PSBoundParameters
+                    $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity' -BoundParameters $PSBoundParameters
+                    $authRule = Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity @readParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null){
-                    $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity @PSBoundParameters
+                    $readParameters = Get-AzEventHubReadParameters -CommandName 'Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity' -BoundParameters $PSBoundParameters
+                    $authRule = Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity @readParameters
                 }
                 else{
                     throw 'Invalid -InputObject. Please Check ResourceId'
                 }
             }
-            
+
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -203,9 +207,9 @@ function Set-AzEventHubAuthorizationRule{
                 }
             }
 
-            
+
             elseif ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded'){
-                
+
                 if ($ResourceHashTable['EventHubName'] -ne $null){
                     if ($PSCmdlet.ShouldProcess("EventHub Entity Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Create or update")) {
                         Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentity -InputObject $authRule -Parameter $authRule @PSBoundParameters

@@ -14,6 +14,54 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IItemLevelRecoveryConnectionsOperations
     {
         /// <summary>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </summary>
+        /// <remarks>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        /// <param name='provisionInstantItemRecoveryOperationId'>
+        /// Operation ID returned by the prior provisionInstantItemRecovery action
+        /// whose iSCSI mount scripts are to be retrieved.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InstantItemRecoveryTarget>> ListInstantItemRecoveryOperationResultWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, string provisionInstantItemRecoveryOperationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
         /// Executing this script opens a file
         /// explorer displaying all the recoverable files and folders. This is an

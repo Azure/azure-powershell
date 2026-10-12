@@ -242,9 +242,11 @@ function Update-AzFrontDoorCdnProfile {
         $hasLogScrubbingState = $PSBoundParameters.Remove('LogScrubbingState')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzFrontDoorCdnProfile' -BoundParameters $PSBoundParameters
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzFrontDoorCdnProfile' -BoundParameters $PSBoundParameters
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }

@@ -167,5 +167,65 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureFSRestoreToSecondaryRegion"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSUamiBackupAndRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSUamiBackupAndRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSSamiBackupAndRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSSamiBackupAndRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSManagedIdentityEnableProtection()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSManagedIdentityEnableProtection"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCrossSubscriptionRestoreTargetLookup()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSCrossSubscriptionRestoreTargetLookup"
+            );
+        }
+
+        [Fact(Skip = "CRR cross-region cross-subscription restore needs a GRS vault with multi-day cross-region-replicated recovery points; setup unavailable. Tracked for re-record once secondary RPs replicate (MSRC-114273 ILR CHAP re-record).")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSCrossRegionCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSCrossRegionCrossSubscriptionRestore"
+            );
+        }
     }
 }

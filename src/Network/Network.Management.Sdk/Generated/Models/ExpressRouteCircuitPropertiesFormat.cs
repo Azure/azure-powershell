@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// provisioned on an ExpressRoutePort resource.
         /// </param>
 
+        /// <param name="expressRouteLag">The reference to the ExpressRouteLag resource when the circuit is
+        /// provisioned on an ExpressRouteLag resource.
+        /// </param>
+
         /// <param name="bandwidthInGbps">The bandwidth of the circuit when the circuit is provisioned on an
         /// ExpressRoutePort resource.
         /// </param>
@@ -87,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableDirectPortRateLimit">Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
         /// </param>
-        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string resiliencyLevel = default(string), string partnerAccountId = default(string), string activationKey = default(string), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
+        public ExpressRouteCircuitPropertiesFormat(bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), string serviceProviderProvisioningState = default(string), System.Collections.Generic.IList<ExpressRouteCircuitAuthorization> authorizations = default(System.Collections.Generic.IList<ExpressRouteCircuitAuthorization>), System.Collections.Generic.IList<ExpressRouteCircuitPeering> peerings = default(System.Collections.Generic.IList<ExpressRouteCircuitPeering>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), SubResource expressRoutePort = default(SubResource), SubResource expressRouteLag = default(SubResource), double? bandwidthInGbps = default(double?), int? stag = default(int?), string resiliencyLevel = default(string), string partnerAccountId = default(string), string activationKey = default(string), string provisioningState = default(string), string gatewayManagerEtag = default(string), bool? globalReachEnabled = default(bool?), string authorizationKey = default(string), string authorizationStatus = default(string), bool? enableDirectPortRateLimit = default(bool?))
 
         {
             this.AllowClassicOperations = allowClassicOperations;
@@ -99,6 +103,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ServiceProviderNotes = serviceProviderNotes;
             this.ServiceProviderProperties = serviceProviderProperties;
             this.ExpressRoutePort = expressRoutePort;
+            this.ExpressRouteLag = expressRouteLag;
             this.BandwidthInGbps = bandwidthInGbps;
             this.Stag = stag;
             this.ResiliencyLevel = resiliencyLevel;
@@ -173,6 +178,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expressRoutePort")]
         public SubResource ExpressRoutePort {get; set; }
+
+        /// <summary>
+        /// Gets or sets the reference to the ExpressRouteLag resource when the circuit
+        /// is provisioned on an ExpressRouteLag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "expressRouteLag")]
+        public SubResource ExpressRouteLag {get; set; }
 
         /// <summary>
         /// Gets or sets the bandwidth of the circuit when the circuit is provisioned

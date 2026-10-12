@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>A map to describe the settings of an action.</summary>
+    /// <summary>A key-value pair used to describe parameters for actions or configurations.</summary>
     public partial class KeyValuePair
     {
 

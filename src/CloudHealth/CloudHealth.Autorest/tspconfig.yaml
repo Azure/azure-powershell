@@ -1,0 +1,150 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/CloudHealth/CloudHealth.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "MonitorHealthModel"
+    service-name: "CloudHealth"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    # Pin the API version. Without this the emitter falls back to the latest
+    # version declared in main.tsp.
+    api-version: "2026-09-01-preview"
+    exclude-tableview-properties:
+      - Id
+      - Type
+
+    directive:
+      # Hide the Operations endpoint from the public interface
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to the current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: '(Get-AzContext).Subscription.Id'
+
+      # Work around the generator singularizing canvas to canva in the X parameter.
+      - where:
+          parameter-name: ^CanvaPositionX$
+        set:
+          parameter-name: CanvasPositionX
+      # Apply the same spelling fix to Y; serialized model properties stay unchanged.
+      - where:
+          parameter-name: ^CanvaPositionY$
+        set:
+          parameter-name: CanvasPositionY
+
+      # AuthenticationSetting, SignalDefinition and DiscoveryRule carry discriminated
+      # (polymorphic) property bags. The Expanded variants only flatten the base type, so
+      # the subtype-required fields (authenticationKind/managedIdentityName, the
+      # signalKind subtype metric fields, and specification/entityName) are unreachable and
+      # every Expanded call fails API payload validation. Keep their unexpanded variants so
+      # the property object built by the *Object cmdlets below can be passed directly.
+      - where:
+          subject: ^(AuthenticationSetting|SignalDefinition|DiscoveryRule)$
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: false
+      - where:
+          subject: ^(?!AuthenticationSetting$|SignalDefinition$|DiscoveryRule$).*$
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      # Keep creation simple: explicit parent identifiers plus the new resource name.
+      # ViaIdentity accepts resource identity objects, not authentication identities.
+      - where:
+          variant: ^CreateViaIdentity.*$
+        remove: true
+
+      # Remove the set-* cmdlet
+      - where:
+          verb: Set
+        remove: true
+
+      # Strip ShouldProcess/ConfirmImpact from every Get-* cmdlet.
+      # Why: several health-model reads
+      #    - entity history
+      #    - signal history/recommendation
+      #    - data annotation
+      # are using POST, so the generator gives them SupportsShouldProcess + ConfirmImpact='Medium'.
+      - where:
+          verb: Get
+        set:
+          suppress-should-process: true
+
+      # Correct the extra closing parenthesis inherited by the signal-definition constructors.
+      - where:
+          model-name: SignalDefinitionProperties
+          property-name: DataUnit
+        set:
+          property-description: Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count).
+
+      # Keep emitted Markdown accurate for TypeSpec and link to the hand-maintained guide.
+      # Avoid JavaScript block braces, which the TypeSpec configuration loader interpolates.
+      - from: source-file-other
+        transform: |
+          const path = $documentPath.replace(/\\/g, "/");
+          const guide = "See the [module testing guide](../../README.md#recording-and-playback) for recording, fixture synchronization, and Azure resource cleanup.";
+          if (path.endsWith("/CloudHealth.Autorest/README.md"))
+            $ = [
+              "# Az.CloudHealth",
+              "Manage Azure Monitor health models, entities, relationships, signal definitions, discovery rules, and authentication settings.",
+              "",
+              "## Generation",
+              "The module is generated from TypeSpec with the `@azure-tools/typespec-powershell` emitter.",
+              "",
+              "- [tsp-location.yaml](tsp-location.yaml) pins the API specification repository, directory, and commit.",
+              "- [tspconfig.yaml](tspconfig.yaml) selects the API version and configures cmdlet names, parameter sets, and model constructors.",
+              "",
+              "## Requirements",
+              "The [module manifest](../CloudHealth/Az.CloudHealth.psd1) defines supported PowerShell editions and required modules, including the minimum Az.Accounts version. Use its requirements when installing or updating dependencies.",
+              "",
+              "## Authentication",
+              "Authentication is provided by Az.Accounts. Connect with `Connect-AzAccount` and select the subscription context before running CloudHealth commands.",
+              "",
+              "## Development",
+              "- [Development and testing guide](../README.md): generation inputs, recording, playback, and test resource cleanup.",
+              "- [Custom cmdlets](custom/README.md): handwritten extensions to the generated module."
+            ].join("\n") + "\n";
+          else if (path.endsWith("/CloudHealth.Autorest/custom/README.md"))
+            $ = $.replace(
+              /(## Purpose\r?\n)[\s\S]*?(\r?\n## Usage)/,
+              "$1This allows the module to have cmdlets that were not defined in the TypeSpec specification. It also allows combining logic using generated cmdlets when the [TypeSpec emitter configuration](../tspconfig.yaml) is not sufficient. These custom cmdlets are then referenced by the cmdlets created at build-time in the `../exports` folder.\n$2"
+            );
+          else if (path.endsWith("/CloudHealth.Autorest/test/README.md"))
+            $ = $.includes(guide) ? $ : $.trimEnd() + "\n\n" + guide + "\n";
+
+      # Keep the discriminated property bags as explicit models and emit constructor
+      # cmdlets for them, so the unexpanded variants above are actually usable.
+      - no-inline:
+        - AuthenticationSettingProperties
+        - ManagedIdentityAuthenticationSettingProperties
+        - SignalDefinitionProperties
+        - ResourceMetricSignalDefinitionProperties
+        - LogAnalyticsQuerySignalDefinitionProperties
+        - PrometheusMetricsSignalDefinitionProperties
+        - DiscoveryRuleSpecification
+        - ApplicationInsightsTopologySpecification
+        - ResourceGraphQuerySpecification
+        - EvaluationRule
+        - ThresholdRuleV2
+
+      - model-cmdlet:
+        - model-name: ManagedIdentityAuthenticationSettingProperties
+        - model-name: ResourceMetricSignalDefinitionProperties
+        - model-name: LogAnalyticsQuerySignalDefinitionProperties
+        - model-name: PrometheusMetricsSignalDefinitionProperties
+        - model-name: ApplicationInsightsTopologySpecification
+        - model-name: ResourceGraphQuerySpecification
+        - model-name: EvaluationRule
+        - model-name: ThresholdRuleV2
+
+# Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
+# exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

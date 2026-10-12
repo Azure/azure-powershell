@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.PowerShell;
 
-    /// <summary>A map to describe the settings of an action.</summary>
+    /// <summary>A key-value pair used to describe parameters for actions or configurations.</summary>
     [System.ComponentModel.TypeConverter(typeof(KeyValuePairTypeConverter))]
     public partial class KeyValuePair
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             return ToJsonString();
         }
     }
-    /// A map to describe the settings of an action.
+    /// A key-value pair used to describe parameters for actions or configurations.
     [System.ComponentModel.TypeConverter(typeof(KeyValuePairTypeConverter))]
     public partial interface IKeyValuePair
 

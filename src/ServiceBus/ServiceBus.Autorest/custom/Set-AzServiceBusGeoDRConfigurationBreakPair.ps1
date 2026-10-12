@@ -55,7 +55,7 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -132,8 +132,8 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $drConfig = Get-AzServiceBusGeoDRConfiguration @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusGeoDRConfiguration' -BoundParameters $PSBoundParameters
+            $drConfig = Get-AzServiceBusGeoDRConfiguration @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
 
@@ -167,6 +167,8 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
                 if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
+
+                Add-AzServiceBusBoundDynamicParameter -CommandName 'Az.ServiceBus.private\Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing_Break' -BoundParameters $PSBoundParameters -TargetParameters $EnvPSBoundParameters -ExcludedParameter InputObject, Name, NamespaceName, ResourceGroupName, SubscriptionId
 
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id

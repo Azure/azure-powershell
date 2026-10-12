@@ -134,7 +134,7 @@ function Set-AzServiceBusQueue{
         [System.String]
         ${Status},
 
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -230,8 +230,8 @@ function Set-AzServiceBusQueue{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $queue = Get-AzServiceBusQueue @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusQueue' -BoundParameters $PSBoundParameters
+            $queue = Get-AzServiceBusQueue @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

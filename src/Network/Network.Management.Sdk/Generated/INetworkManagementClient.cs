@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Management.Network
         IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; }
 
         /// <summary>
+        /// Gets the IAuthenticationPoliciesOperations
+        /// </summary>
+        IAuthenticationPoliciesOperations AuthenticationPolicies { get; }
+
+        /// <summary>
         /// Gets the IWebCategoriesOperations
         /// </summary>
         IWebCategoriesOperations WebCategories { get; }

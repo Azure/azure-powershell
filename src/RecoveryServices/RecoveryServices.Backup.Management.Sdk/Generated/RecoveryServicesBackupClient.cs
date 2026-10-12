@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.PrivateEndpointConnection = new PrivateEndpointConnectionOperations(this);
             this.PrivateEndpoint = new PrivateEndpointOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-07-01";
+            this.ApiVersion = "2026-08-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

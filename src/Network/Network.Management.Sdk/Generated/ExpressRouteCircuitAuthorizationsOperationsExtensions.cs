@@ -186,6 +186,53 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Gets the authorization key associated with the specified express route
+        /// circuit authorization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        public static ExpressRouteAuthorizationKey ListKeys(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName)
+        {
+                return ((IExpressRouteCircuitAuthorizationsOperations)operations).ListKeysAsync(resourceGroupName, circuitName, authorizationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the authorization key associated with the specified express route
+        /// circuit authorization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteAuthorizationKey> ListKeysAsync(this IExpressRouteCircuitAuthorizationsOperations operations, string resourceGroupName, string circuitName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, circuitName, authorizationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates an authorization in the specified express route circuit.
         /// </summary>
         /// <param name='operations'>

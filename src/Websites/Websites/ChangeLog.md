@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the unsupported identity and JSON parameter sets from `New-AzStaticWebApp`.
+
+## Version 4.2.0
 * Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
 
 ## Version 4.1.0

@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the default API version to '2026-07-01-preview'
+* Added new cmdlets for Fabric Shortcuts on Event Hubs: 'Get-AzEventHubFabricShortcut', 'New-AzEventHubFabricShortcut', 'Remove-AzEventHubFabricShortcut', 'Approve-AzEventHubFabricShortcut' and 'Invoke-AzEventHubRejectFabricShortcut'
+* Added new cmdlets for Cluster upgrade preferences: 'Get-AzEventHubUpgradePreferencesOperation' and 'New-AzEventHubUpgradePreferencesOperation'
+
+## Version 5.7.0
 * Added Change Safety support for additional cmdlets.
+* Fixed Change Safety parameter forwarding in custom read-before-write and GeoDR cmdlets.
 
 ## Version 5.6.0
 * Added parameter `IPAddressType` to cmdlets 'New-AzEventHubNamespace' and 'Set-AzEventHubNamespace'

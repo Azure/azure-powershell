@@ -73,7 +73,7 @@ function Set-AzEventHubApplicationGroup{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]]
         # List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
         ${Policy},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -146,7 +146,6 @@ function Set-AzEventHubApplicationGroup{
     }
     process{
 		try{
-            
             $hasIsEnabled = $PSBoundParameters.Remove('IsEnabled')
             $hasPolicy = $PSBoundParameters.Remove('Policy')
             $hasClientAppGroupIdentifier = $PSBoundParameters.Remove('ClientAppGroupIdentifier')
@@ -154,8 +153,8 @@ function Set-AzEventHubApplicationGroup{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $appGroup = Get-AzEventHubApplicationGroup @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubApplicationGroup' -BoundParameters $PSBoundParameters
+            $appGroup = Get-AzEventHubApplicationGroup @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

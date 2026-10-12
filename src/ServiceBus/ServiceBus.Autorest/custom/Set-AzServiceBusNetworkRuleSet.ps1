@@ -53,7 +53,7 @@ function Set-AzServiceBusNetworkRuleSet{
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
-        # This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
+        # This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Value that indicates whether Trusted Service Access is Enabled or not.")]
@@ -161,8 +161,8 @@ function Set-AzServiceBusNetworkRuleSet{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $networkRuleSet = Get-AzServiceBusNetworkRuleSet @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNetworkRuleSet' -BoundParameters $PSBoundParameters
+            $networkRuleSet = Get-AzServiceBusNetworkRuleSet @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

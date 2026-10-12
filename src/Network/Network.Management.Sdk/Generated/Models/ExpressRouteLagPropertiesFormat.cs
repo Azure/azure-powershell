@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="links">The set of links of the ExpressRouteLag resource.
         /// </param>
 
+        /// <param name="circuits">Reference the ExpressRoute circuit(s) that are provisioned on this
+        /// ExpressRouteLag resource.
+        /// </param>
+
         /// <param name="allocationDate">The date and time when the ExpressRouteLag was allocated.
         /// </param>
 
@@ -70,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="lacpTimer">LACP timer configuration.
         /// Possible values include: &#39;Fast&#39;, &#39;Slow&#39;</param>
-        public ExpressRouteLagPropertiesFormat(string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), System.Collections.Generic.IList<ExpressRouteLagLink> links = default(System.Collections.Generic.IList<ExpressRouteLagLink>), string allocationDate = default(string), string provisioningState = default(string), string resourceGuid = default(string), string billingType = default(string), int? numberOfPorts = default(int?), int? minimumActivePortsRequired = default(int?), string lacpTimer = default(string))
+        public ExpressRouteLagPropertiesFormat(string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), System.Collections.Generic.IList<ExpressRouteLagLink> links = default(System.Collections.Generic.IList<ExpressRouteLagLink>), System.Collections.Generic.IList<SubResource> circuits = default(System.Collections.Generic.IList<SubResource>), string allocationDate = default(string), string provisioningState = default(string), string resourceGuid = default(string), string billingType = default(string), int? numberOfPorts = default(int?), int? minimumActivePortsRequired = default(int?), string lacpTimer = default(string))
 
         {
             this.PeeringLocation = peeringLocation;
@@ -80,6 +84,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Encapsulation = encapsulation;
             this.EtherType = etherType;
             this.Links = links;
+            this.Circuits = circuits;
             this.AllocationDate = allocationDate;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
@@ -138,6 +143,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "links")]
         public System.Collections.Generic.IList<ExpressRouteLagLink> Links {get; set; }
+
+        /// <summary>
+        /// Gets reference the ExpressRoute circuit(s) that are provisioned on this
+        /// ExpressRouteLag resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "circuits")]
+        public System.Collections.Generic.IList<SubResource> Circuits {get; private set; }
 
         /// <summary>
         /// Gets the date and time when the ExpressRouteLag was allocated.
@@ -202,6 +214,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     }
                 }
             }
+
 
 
 

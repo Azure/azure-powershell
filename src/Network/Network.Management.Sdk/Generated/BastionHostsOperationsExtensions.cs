@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static BastionHost UpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters)
+        public static BastionHost Update(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHostUpdate parameters)
         {
-                return ((IBastionHostsOperations)operations).UpdateTagsAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
+                return ((IBastionHostsOperations)operations).UpdateAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -182,9 +182,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BastionHost> UpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BastionHost> UpdateAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -276,13 +276,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static BastionHost BeginUpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters)
+        public static BastionHost BeginUpdate(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHostUpdate parameters)
         {
-                return ((IBastionHostsOperations)operations).BeginUpdateTagsAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
+                return ((IBastionHostsOperations)operations).BeginUpdateAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -296,9 +296,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BastionHost> BeginUpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BastionHost> BeginUpdateAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

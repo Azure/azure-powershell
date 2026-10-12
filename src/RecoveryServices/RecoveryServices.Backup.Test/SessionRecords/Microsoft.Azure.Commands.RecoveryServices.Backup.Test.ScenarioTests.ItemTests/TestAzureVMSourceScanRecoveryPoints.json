@@ -73,8 +73,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectionContainers?api-version=2026-07-01&$filter=friendlyName%20eq%20%27Sample-VM%27%20and%20backupManagementType%20eq%20%27AzureIaasVM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAyNi0wNy0wMSYkZmlsdGVyPWZyaWVuZGx5TmFtZSUyMGVxJTIwJTI3U2FtcGxlLVZNJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3",
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectionContainers?api-version=2026-08-01&$filter=friendlyName%20eq%20%27Sample-VM%27%20and%20backupManagementType%20eq%20%27AzureIaasVM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAyNi0wOC0wMSYkZmlsdGVyPWZyaWVuZGx5TmFtZSUyMGVxJTIwJTI3U2FtcGxlLVZNJTI3JTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCUyN0F6dXJlSWFhc1ZNJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -148,8 +148,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectedItems?api-version=2026-07-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGVkSXRlbXM/YXBpLXZlcnNpb249MjAyNi0wNy0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAlMjdBenVyZUlhYXNWTSUyNyUyMGFuZCUyMGl0ZW1UeXBlJTIwZXElMjAlMjdWTSUyNw==",
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupProtectedItems?api-version=2026-08-01&$filter=backupManagementType%20eq%20%27AzureIaasVM%27%20and%20itemType%20eq%20%27VM%27",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwUHJvdGVjdGVkSXRlbXM/YXBpLXZlcnNpb249MjAyNi0wOC0wMSYkZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAlMjdBenVyZUlhYXNWTSUyNyUyMGFuZCUyMGl0ZW1UeXBlJTIwZXElMjAlMjdWTSUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -214,8 +214,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/protectedItems/VM%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/recoveryPoints/1128466362346786?api-version=2026-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9JYWFzVk1Db250YWluZXIlM0JpYWFzdm1jb250YWluZXJ2MiUzQnNhbXBsZS1yZyUzQlNhbXBsZS1WTS9wcm90ZWN0ZWRJdGVtcy9WTSUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCc2FtcGxlLXJnJTNCU2FtcGxlLVZNL3JlY292ZXJ5UG9pbnRzLzExMjg0NjYzNjIzNDY3ODY/YXBpLXZlcnNpb249MjAyNi0wNy0wMQ==",
+      "RequestUri": "/subscriptions/6d875e77-e412-4d7d-9af4-8895278b4443/resourceGroups/swbela-ransom-rg/providers/Microsoft.RecoveryServices/vaults/swbela-mdc-vault-1/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/protectedItems/VM%3Biaasvmcontainerv2%3Bsample-rg%3BSample-VM/recoveryPoints/1128466362346786?api-version=2026-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmQ4NzVlNzctZTQxMi00ZDdkLTlhZjQtODg5NTI3OGI0NDQzL3Jlc291cmNlR3JvdXBzL3N3YmVsYS1yYW5zb20tcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zd2JlbGEtbWRjLXZhdWx0LTEvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9JYWFzVk1Db250YWluZXIlM0JpYWFzdm1jb250YWluZXJ2MiUzQnNhbXBsZS1yZyUzQlNhbXBsZS1WTS9wcm90ZWN0ZWRJdGVtcy9WTSUzQmlhYXN2bWNvbnRhaW5lcnYyJTNCc2FtcGxlLXJnJTNCU2FtcGxlLVZNL3JlY292ZXJ5UG9pbnRzLzExMjg0NjYzNjIzNDY3ODY/YXBpLXZlcnNpb249MjAyNi0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [

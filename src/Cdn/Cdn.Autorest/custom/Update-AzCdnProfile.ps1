@@ -182,9 +182,11 @@ function Update-AzCdnProfile {
         $hasNoWait = $PSBoundParameters.Remove('NoWait')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }

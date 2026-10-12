@@ -128,7 +128,7 @@ function Set-AzServiceBusSubscription{
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
         ${DeadLetteringOnMessageExpiration},
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -217,8 +217,8 @@ function Set-AzServiceBusSubscription{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $subscription = Get-AzServiceBusSubscription @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusSubscription' -BoundParameters $PSBoundParameters
+            $subscription = Get-AzServiceBusSubscription @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

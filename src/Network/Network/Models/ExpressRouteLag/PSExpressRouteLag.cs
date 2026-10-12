@@ -45,12 +45,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string LacpTimer { get; set; }
         public List<PSExpressRouteLagLink> Links { get; set; }
+        public List<PSResourceId> Circuits { get; set; }
         public PSManagedServiceIdentity Identity { get; set; }
 
         [JsonIgnore]
         public string LinksText
         {
             get { return JsonConvert.SerializeObject(Links, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CircuitsText
+        {
+            get { return JsonConvert.SerializeObject(Circuits, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

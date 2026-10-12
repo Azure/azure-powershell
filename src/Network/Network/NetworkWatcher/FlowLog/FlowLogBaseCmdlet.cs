@@ -90,12 +90,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.InvalidStorageId);
             }
 
-            if (formatVersion != null && (formatVersion < 0 || formatVersion > 2))
+            if (!string.IsNullOrEmpty(formatType) && (!string.Equals(formatType, "JSON", StringComparison.OrdinalIgnoreCase) && !string.Equals(formatType, "FlowLogJSON", StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
+                throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatType);
             }
 
-            if (!string.IsNullOrEmpty(formatType) && (!string.Equals(formatType, "JSON", StringComparison.OrdinalIgnoreCase) && !string.Equals(formatType, "FlowLogJSON", StringComparison.OrdinalIgnoreCase)))
+            if (formatVersion != null && formatVersion < 0)
             {
                 throw new PSArgumentException(Properties.Resources.InvalidFlowLogFormatVersion);
             }

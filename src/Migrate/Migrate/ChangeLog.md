@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
 * Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Azure Arc-enabled VMs
 
