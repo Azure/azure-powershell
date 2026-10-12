@@ -23,6 +23,8 @@
     - Use `-AddressFamily "IPv4","IPv6"` with `New-AzNetworkVirtualAppliance` to create a dual-stack appliance; omitting the parameter defaults to IPv4-only.
     - Use `-AddressFamily` with `Update-AzNetworkVirtualAppliance` to upgrade or downgrade an existing appliance; omitting the parameter leaves the address family unchanged.
     - Exposed read-only `AddressFamily`, `AddressPrefixV6`, and `PrivateIpAddressV6` on the appliance and `PublicIpAddressV6`/`PrivateIpAddressV6` on virtual appliance NICs.
+* Added cmdlets to manage Virtual Network Appliance capabilities.
+    - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Added provider-led ExpressRoute cross-connection migration commands to validate, inspect, prepare, migrate, commit, and roll back migrations, and shut down or restore BGP (Border Gateway Protocol).
     - Added `Invoke-AzExpressRouteCrossConnectionMigration` to invoke the migration action.
