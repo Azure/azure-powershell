@@ -1,3 +1,49 @@
+## 16.5.0 - November 2026
+#### Az.Accounts 5.5.4
+* Updated the '-ResourceUrl' help text of 'Get-AzAccessToken' to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
+* Updated the '-AzureKeyVaultDnsSuffix' help text of 'Add-AzEnvironment' and 'Set-AzEnvironment' to describe the expected format instead of a specific host name.
+* Fixed incorrect usage of 'log in' and 'login'.
+
+#### Az.ApiManagement 4.2.1
+* Updated the 'Get-AzApiManagementNetworkStatus' example output to remove non-public service endpoints.
+
+#### Az.Cdn 6.2.1
+* Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
+* Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
+* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
+
+#### Az.Compute 11.10.1
+* Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
+
+#### Az.EventHub 5.8.0
+* Updated the default API version to '2026-07-01-preview'
+* Added new cmdlets for Fabric Shortcuts on Event Hubs: 'Get-AzEventHubFabricShortcut', 'New-AzEventHubFabricShortcut', 'Remove-AzEventHubFabricShortcut', 'Approve-AzEventHubFabricShortcut' and 'Invoke-AzEventHubRejectFabricShortcut'
+* Added new cmdlets for Cluster upgrade preferences: 'Get-AzEventHubUpgradePreferencesOperation' and 'New-AzEventHubUpgradePreferencesOperation'
+
+#### Az.Marketplace 1.0.0
+* General availability for module Az.Marketplace
+
+#### Az.Resources 10.2.2
+* Updated 'Microsoft.Extensions.Caching.Memory' dependency from '2.2.0' to '10.0.3'.
+
+#### Az.ServiceBus 4.4.1
+* Updated the default API version to '2026-07-01-preview'
+
+#### Az.Sql 7.3.0
+* Added immutability support for Azure SQL Managed Instance long-term retention backups.
+    - Added time-based immutability settings to 'Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy'.
+    - Exposed immutability state in managed database long-term retention policy and backup output.
+    - Added 'Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability' and 'Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability' to manage time-based immutability.
+    - Added 'Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold' and 'Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold' to manage legal holds.
+
+#### Az.StorageSync 2.7.1
+* Improved 'Set-AzStorageSyncServer' managed identity troubleshooting
+    - The cmdlet now preserves managed identity token acquisition errors and provides guidance based on the local server type
+    - Help now includes 'ServerId' in the example and explains the elevated session requirement for Azure Arc-enabled servers
+
+#### Az.Websites 4.3.0
+* Removed the unsupported identity and JSON parameter sets from 'New-AzStaticWebApp'.
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.
