@@ -422,6 +422,9 @@ function Assert-EdgeActionRecordingReviewInput {
             foreach ($headerSet in 'Headers', 'ContentHeaders') {
                 foreach ($header in $message[$headerSet].Keys) {
                     $value = $message[$headerSet][$header] -join ''
+                    if ($header -match '^(?i:Location|Azure-AsyncOperation)$' -and $value.Contains('?')) {
+                        throw "$blocked Query-bearing polling/location header detected."
+                    }
                     if ($header -match '(?i)authorization|cookie|token|secret|api[-_]?key' -and
                         $value -notin @('', '[Filtered]', 'Sanitized')) { throw "$blocked Unfiltered credential-bearing header detected." }
                 }
