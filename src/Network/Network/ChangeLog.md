@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
+    - Added cmdlets to create, get, add, update, and remove mitigation rules.
+    - Deny and Permit source matches can be configured directly with IP prefix and geographic match parameters.
+    - Added mitigation rule support to `New-AzDdosCustomPolicy`, `Get-AzDdosCustomPolicy`, and `Set-AzDdosCustomPolicy`.
+    - Implements [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
 * Added cmdlets to manage Virtual Network Appliance capabilities.
     - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
