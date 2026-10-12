@@ -256,7 +256,7 @@ After recording succeeds, run playback against those artifacts **without rebuild
 
 Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; mixed active/skipped groups still record setup/teardown.
 
-The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Their older recordings require a fresh authorized Record run, which now refreshes the test scripts automatically, followed by Playback; API-version matching alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
+The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Setup and teardown use distinct recording contexts: the upstream recorder resets request counters even for skipped tests, so sharing a context can overwrite setup responses with teardown responses. Their older recordings require a fresh authorized Record run after this context fix, which refreshes the test scripts automatically, followed by Playback; API-version matching or regeneration alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
 
 ### Results and recording ownership
 

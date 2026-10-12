@@ -138,20 +138,30 @@ function Assert-EdgeActionTestFixture {
 function Initialize-EdgeActionTestScenario {
     param([scriptblock]$Setup)
     $script:edgeActionSetupFailure = $null
+    # AutoRest resets request counters for each It, including skipped cases.
+    # Separate hook contexts prevent teardown from overwriting setup recordings.
+    $recorder = $PSDefaultParameterValues['*:HttpPipelinePrepend']
+    if ($recorder) { $recorder.PushContext('EdgeActionFixtureSetup') }
     try { & $Setup } catch {
         $script:edgeActionSetupFailure = $_
         throw
+    } finally {
+        if ($recorder) { $recorder.PopContext() }
     }
 }
 
 function Complete-EdgeActionTestScenario {
     param([string]$ResourceGroupName, [string]$Name)
+    $recorder = $PSDefaultParameterValues['*:HttpPipelinePrepend']
+    if ($recorder) { $recorder.PushContext('EdgeActionFixtureCleanup') }
     try { Remove-EdgeActionTestResource $ResourceGroupName $Name } catch {
         # Pester 4 otherwise replaces a BeforeAll failure with the AfterAll exception.
         if ($script:edgeActionSetupFailure) {
             throw "Setup failed: $($script:edgeActionSetupFailure.Exception.Message)`nCleanup also failed: $($_.Exception.Message)"
         }
         throw
+    } finally {
+        if ($recorder) { $recorder.PopContext() }
     }
 }
 
