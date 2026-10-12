@@ -398,9 +398,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Converts an enable-protection disk input to the cluster switch disk input.
+        ///     Cluster switch protection does not accept confidential disk encryption sets,
+        ///     so such input is rejected instead of being silently dropped.
         /// </summary>
         private static A2AClusterVmManagedDiskInputDetails ToClusterDiskInput(A2AVmManagedDiskInputDetails disk)
         {
+            if (disk.ConfidentialDiskEncryptionInfo != null)
+            {
+                throw new InvalidOperationException(Resources.ClusterConfidentialDiskEncryptionNotSupported);
+            }
+
             return new A2AClusterVmManagedDiskInputDetails
             {
                 DiskId = disk.DiskId,

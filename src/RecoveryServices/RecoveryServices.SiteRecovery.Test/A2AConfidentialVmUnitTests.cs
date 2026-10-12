@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Reflection;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace RecoveryServices.SiteRecovery.Test
@@ -52,6 +53,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- ASRAzuretoAzureDiskReplicationConfig (input PS object) ------------
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReplicationConfig_ConfidentialDesProperties_RoundTrip()
         {
             var cfg = new ASRAzuretoAzureDiskReplicationConfig
@@ -65,6 +67,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReplicationConfig_ConfidentialDesProperties_DefaultsAreNull()
         {
             // Backward-compat: callers that don't set the CVM properties must
@@ -79,6 +82,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- Disk-config cmdlet parameter attributes --------------------------
 
         [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(nameof(AzureRmAsrAzureToAzureDiskReplicationConfig.ReplicaConfidentialDiskEncryptionSetId))]
         [InlineData(nameof(AzureRmAsrAzureToAzureDiskReplicationConfig.TargetConfidentialDiskEncryptionSetId))]
         public void DiskConfigCmdlet_ConfidentialParameters_AreOptionalAndInManagedDiskSet(string propertyName)
@@ -100,6 +104,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- Enable / Update / Reprotect cmdlet CDDE-identity parameter -------
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableCmdlet_HasOptionalRecoveryConfidentialDataDiskEncryptionIdentityParameter()
         {
             AssertHasOptionalStringParameter(
@@ -108,6 +113,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateCmdlet_HasOptionalRecoveryConfidentialDataDiskEncryptionIdentityParameter()
         {
             AssertHasOptionalStringParameter(
@@ -116,6 +122,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReprotectCmdlet_HasOptionalRecoveryConfidentialDataDiskEncryptionIdentityParameter()
         {
             AssertHasOptionalStringParameter(
@@ -139,6 +146,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- Generated SDK model shape ----------------------------------------
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SdkModel_ConfidentialDiskEncryptionInfo_CarriesReplicaAndTarget()
         {
             var info = new ConfidentialDiskEncryptionInfo(ReplicaDesId, TargetDesId);
@@ -148,6 +156,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SdkModel_UpdateConfidentialDiskEncryptionInfo_CarriesTargetOnly()
         {
             var info = new UpdateConfidentialDiskEncryptionInfo(TargetDesId);
@@ -160,6 +169,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SdkModel_ManagedDiskInput_ExposesConfidentialDiskEncryptionInfo()
         {
             var input = new A2AVmManagedDiskInputDetails
@@ -174,6 +184,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SdkModel_ManagedDiskUpdate_ExposesUpdateConfidentialDiskEncryptionInfo()
         {
             var input = new A2AVmManagedDiskUpdateDetails
@@ -188,6 +199,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(typeof(A2AEnableProtectionInput))]
         [InlineData(typeof(A2ASwitchProtectionInput))]
         [InlineData(typeof(A2AUpdateReplicationProtectedItemInput))]
@@ -202,6 +214,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- Utilities.A2AConfidentialDiskEncryptionDetails -------------------
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Helper_ConfidentialDetails_ReturnsNullWhenBothIdsMissing()
         {
             Assert.Null(Utilities.A2AConfidentialDiskEncryptionDetails(null, null));
@@ -209,6 +222,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Helper_ConfidentialDetails_PopulatesBothIds()
         {
             var info = Utilities.A2AConfidentialDiskEncryptionDetails(ReplicaDesId, TargetDesId);
@@ -219,6 +233,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Helper_ConfidentialDetails_PopulatesWhenOnlyTargetSupplied()
         {
             var info = Utilities.A2AConfidentialDiskEncryptionDetails(null, TargetDesId);
@@ -231,6 +246,7 @@ namespace RecoveryServices.SiteRecovery.Test
         // --- Utilities.CreateA2AVmManagedDiskInputDetails ---------------------
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Helper_ManagedDiskInput_ForwardsConfidentialDiskEncryptionInfo()
         {
             var disk = new ASRAzuretoAzureDiskReplicationConfig
@@ -251,6 +267,7 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Helper_ManagedDiskInput_OmitsConfidentialInfoForNonConfidentialDisk()
         {
             // Backward-compat: a non-confidential disk (no CVM DES ids) must not
@@ -273,6 +290,7 @@ namespace RecoveryServices.SiteRecovery.Test
         /// PowerShell: callers can set it but cannot confirm the service kept it.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RpiDetails_ExposesRecoveryConfidentialDataDiskEncryptionIdentity()
         {
             var details = new A2AReplicationDetails
@@ -290,6 +308,7 @@ namespace RecoveryServices.SiteRecovery.Test
         /// must surface null rather than an empty string.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RpiDetails_ConfidentialIdentity_IsNullWhenServiceOmitsIt()
         {
             var psObject = new ASRAzureToAzureSpecificRPIDetails(new A2AReplicationDetails());
@@ -303,6 +322,7 @@ namespace RecoveryServices.SiteRecovery.Test
         /// exposes them.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProtectedDiskDetails_ExposesConfidentialDiskEncryptionSets()
         {
             var disk = new A2AProtectedManagedDiskDetails(
@@ -324,6 +344,7 @@ namespace RecoveryServices.SiteRecovery.Test
         /// throw, since the service omits the field for every non-confidential disk.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProtectedDiskDetails_ConfidentialDes_AreNullForNonConfidentialDisk()
         {
             var disk = new A2AProtectedManagedDiskDetails
@@ -335,6 +356,74 @@ namespace RecoveryServices.SiteRecovery.Test
 
             Assert.Null(psObject.ReplicaConfidentialDiskEncryptionSetId);
             Assert.Null(psObject.TargetConfidentialDiskEncryptionSetId);
+        }
+
+        /// <summary>
+        /// Cluster switch protection has no confidential disk encryption field, so a
+        /// disk configuration carrying confidential DES ids must be rejected instead
+        /// of being silently dropped from the request.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ClusterReprotect_RejectsConfidentialDiskEncryptionSets()
+        {
+            var disk = Utilities.CreateA2AVmManagedDiskInputDetails(
+                new ASRAzuretoAzureDiskReplicationConfig
+                {
+                    DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                    RecoveryResourceGroupId = "/subscriptions/sub-1/resourceGroups/target-rg",
+                    ReplicaConfidentialDiskEncryptionSetId = ReplicaDesId,
+                    TargetConfidentialDiskEncryptionSetId = TargetDesId,
+                },
+                includeDiskEncryption: true);
+
+            var ex = Assert.Throws<TargetInvocationException>(() => InvokeToClusterDiskInput(disk));
+
+            var inner = Assert.IsType<System.InvalidOperationException>(ex.InnerException);
+            Assert.Contains("ReplicaConfidentialDiskEncryptionSetId", inner.Message);
+            Assert.Contains("cluster", inner.Message);
+        }
+
+        /// <summary>
+        /// A non-confidential disk must still convert to the cluster disk input with
+        /// every supported field carried over.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ClusterReprotect_ConvertsNonConfidentialDisk()
+        {
+            const string diskId = "/subscriptions/sub-1/disks/osdisk-1";
+            const string targetRg = "/subscriptions/sub-1/resourceGroups/target-rg";
+            const string desId = "/subscriptions/sub-1/resourceGroups/cvm-rg/providers/Microsoft.Compute/diskEncryptionSets/sse-des";
+            var disk = Utilities.CreateA2AVmManagedDiskInputDetails(
+                new ASRAzuretoAzureDiskReplicationConfig
+                {
+                    DiskId = diskId,
+                    RecoveryResourceGroupId = targetRg,
+                    LogStorageAccountId = "/subscriptions/sub-1/storageAccounts/cache",
+                    RecoveryReplicaDiskAccountType = "Premium_LRS",
+                    RecoveryTargetDiskAccountType = "Premium_LRS",
+                    RecoveryDiskEncryptionSetId = desId,
+                },
+                includeDiskEncryption: true);
+
+            var cluster = Assert.IsType<A2AClusterVmManagedDiskInputDetails>(InvokeToClusterDiskInput(disk));
+
+            Assert.Equal(diskId, cluster.DiskId);
+            Assert.Equal(targetRg, cluster.RecoveryResourceGroupId);
+            Assert.Equal("/subscriptions/sub-1/storageAccounts/cache", cluster.PrimaryStagingAzureStorageAccountId);
+            Assert.Equal("Premium_LRS", cluster.RecoveryReplicaDiskAccountType);
+            Assert.Equal("Premium_LRS", cluster.RecoveryTargetDiskAccountType);
+            Assert.Equal(desId, cluster.RecoveryDiskEncryptionSetId);
+        }
+
+        private static object InvokeToClusterDiskInput(A2AVmManagedDiskInputDetails disk)
+        {
+            var method = typeof(UpdateAzureRmRecoveryServicesAsrClusterProtection).GetMethod(
+                "ToClusterDiskInput",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.NotNull(method);
+            return method.Invoke(null, new object[] { disk });
         }
     }
 }
