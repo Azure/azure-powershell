@@ -283,13 +283,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
+            HelpMessage = "Specifies the ID of the capacity reservation group to associate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. When set, the instances will not be allowed to implicitly or explicitly associate with any type of capacity reservation and will consume capacity from the publicly available capacity.")]
+            HelpMessage = "Specifies that the virtual machine scale set instances are explicitly opted out from being associated with any capacity reservation. An explicitly supplied false value can be used together with CapacityReservationGroupId.")]
         public SwitchParameter DisableCapacityReservationAssignment { get; set; }
 
         [Parameter(
@@ -485,6 +485,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            CapacityReservationAssignmentHelper.ValidateCapacityReservationAssignment(
+                this.CapacityReservationGroupId,
+                this.IsParameterBound(c => c.CapacityReservationGroupId),
+                this.DisableCapacityReservationAssignment.IsPresent);
+
             // Sku
             Sku vSku = null;
 
@@ -715,11 +720,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
-                if (this.IsParameterBound(c => c.CapacityReservationGroupId))
-                {
-                    throw new PSArgumentException(
-                        "The -CapacityReservationGroupId and -DisableCapacityReservationAssignment parameters cannot be used together.");
-                }
                 if (vVirtualMachineProfile == null)
                 {
                     vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
