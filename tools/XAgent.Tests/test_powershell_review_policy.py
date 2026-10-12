@@ -515,6 +515,121 @@ class CoverageTests(unittest.TestCase):
                     artifact, summary["test_files"] + summary["recording_files"],
                 )
 
+    def test_testfx_support_files_do_not_clear_a_production_gap(self):
+        for relative_path in (
+            "utils.ps1",
+            "setup.ps1",
+            "TestFixture.cs",
+            "TestHelpers.cs",
+            "Properties/AssemblyInfo.cs",
+            "Fixtures/GetVMTests.cs",
+            "TestData/GetVM.Tests.ps1",
+            "ScenarioTests/Common.ps1",
+            "ScenarioTests/ComputeTestCommon.ps1",
+            "ScenarioTests/ScenarioTestHelpers.cs",
+            "ScenarioTests/ComputeTestRunner.cs",
+            "ScenarioTests/ScenarioTestContext.cs",
+            "ScenarioTests/Resources/GetVMTests.ps1",
+            "ScenarioTests/Utils/Import-GeneratedTestUtils.ps1",
+            "ScenarioTests/UrlDecodingRecordMatcher.cs",
+            "ScenarioTests/ProviderListBuilder.cs",
+            "ScenarioTests/AdlMockDelegatingHandler.cs",
+            "UnitTests/KeyVaultUnitTestBase.cs",
+            "UnitTests/MockFactory.cs",
+            "UnitTests/AssertExtension.cs",
+            "UnitTests/Mocks/GetVMTests.cs",
+        ):
+            with self.subTest(path=relative_path):
+                summary = self.coverage([
+                    change("src/Compute/Compute/UpdateVM.cs"),
+                    change("src/Compute/Compute.Test/" + relative_path),
+                ])
+                self.assertTrue(summary["gap"])
+                self.assertEqual(["Compute"], summary["uncovered_modules"])
+                self.assertEqual([], summary["test_files"])
+                self.assertEqual([], summary["recording_files"])
+                self.assertEqual(
+                    ["src/Compute/Compute/UpdateVM.cs"],
+                    summary["production_files"],
+                )
+
+    def test_testfx_test_locations_and_names_remain_evidence(self):
+        for path in (
+            "src/Compute/Compute.Test/ScenarioTests/GetResource.ps1",
+            "src/Compute/Compute.Test/ScenarioTests/Nested/Resource.cs",
+            "src/Compute/Compute.Test/UnitTests/Resource.cs",
+            "src/Compute/Compute.Test/UnitTest/Resource.cs",
+            "src/Compute/Compute.Test/PesterTests/Resource.Tests.ps1",
+            "src/Compute/Compute.Test/ContextCmdletTests.cs",
+            "src/Compute/Compute.Test/AccessTokenCmdletTest.cs",
+            "src/Compute/Compute.Test/AzureRMProfileTestsForMultitenant.cs",
+            "src/Compute/Compute.Test/Other/ResourceTests.ps1",
+            "src/Compute/Compute.Test/UnitTests/Utilities/TestResourceTypeUtility.cs",
+            "src/Compute/Compute.Test/ScenarioTests/UtilityFunctionTests.cs",
+            "src/Compute/Compute.Test/CognitiveServicesUtilsTests.cs",
+            "src/Compute/Compute.Tests/UnitTests/Resource.cs",
+            "src/Compute/LiveTests/ResourceTests.ps1",
+            r"SRC\compute\Compute.TEST\SCENARIOTESTS\GetResource.PS1",
+        ):
+            with self.subTest(path=path):
+                summary = self.coverage([
+                    change("src/Compute/Compute/UpdateVM.cs"), change(path),
+                ])
+                self.assertFalse(summary["gap"])
+                self.assertEqual([path.replace("\\", "/")], summary["test_files"])
+
+    def test_arbitrary_test_project_files_are_not_test_evidence(self):
+        for path in (
+            "src/Compute/Compute.Test/Resource.cs",
+            "src/Compute/Compute.Test/Other/Resource.ps1",
+            "src/Compute/Compute.Test/ScenarioTests/template.psd1",
+            "src/Compute/Compute.Test/ScenarioTests/README.md",
+            "src/Compute/Compute.Test/EnvironmentCmdletTestsExtension.cs",
+            r"SRC\compute\Compute.TEST\SCENARIOTESTS\COMMON.PS1",
+        ):
+            with self.subTest(path=path):
+                summary = self.coverage([
+                    change("src/Compute/Compute/UpdateVM.cs"), change(path),
+                ])
+                self.assertTrue(summary["gap"])
+                self.assertEqual([], summary["test_files"])
+
+    def test_testfx_support_only_changes_are_not_production(self):
+        summary = self.coverage([
+            change("src/Compute/Compute.Test/utils.ps1"),
+            change("src/Compute/Compute.Test/ScenarioTests/Common.ps1"),
+            change("src/Compute/Compute.Test/Fixtures/ResourceTests.cs"),
+        ])
+        self.assertFalse(summary["applicable"])
+        self.assertFalse(summary["gap"])
+        self.assertEqual([], summary["production_files"])
+        self.assertEqual([], summary["test_files"])
+
+    def test_support_files_are_excluded_when_real_test_evidence_exists(self):
+        test = "src/Compute/Compute.Test/ScenarioTests/VMTests.cs"
+        recording = "src/Compute/Compute.Test/SessionRecords/VMTests/Update.json"
+        summary = self.coverage([
+            change("src/Compute/Compute/UpdateVM.cs"),
+            change("src/Compute/Compute.Test/ScenarioTests/ComputeTestRunner.cs"),
+            change("src/Compute/Compute.Test/ScenarioTests/Common.ps1"),
+            change(test), change(recording),
+        ])
+        self.assertFalse(summary["gap"])
+        self.assertEqual([test], summary["test_files"])
+        self.assertEqual([recording], summary["recording_files"])
+
+    def test_testfx_rename_between_test_and_support_uses_destination(self):
+        test = "src/Compute/Compute.Test/ScenarioTests/VMTests.ps1"
+        support = "src/Compute/Compute.Test/Fixtures/VMTests.ps1"
+        for old, new, gap in ((test, support, True), (support, test, False)):
+            with self.subTest(old=old, new=new):
+                summary = self.coverage([
+                    change("src/Compute/Compute/UpdateVM.cs"),
+                    change(new, status="renamed", previous_filename=old),
+                ])
+                self.assertEqual(gap, summary["gap"])
+                self.assertEqual([] if gap else [test], summary["test_files"])
+
     def test_autorest_tests_and_recordings_are_not_production(self):
         summary = self.coverage([
             change("src/Quota/Quota.Autorest/custom/Get-Quota.ps1"),
@@ -737,6 +852,20 @@ class IntegrationContractTests(unittest.TestCase):
         self.assertEqual(7, len(summary["checks"]))
         self.assertEqual(2, summary["risk_assessment"]["changed_files"])
         json.dumps(summary)
+
+    def test_public_entrypoint_keeps_gap_for_testfx_support_changes(self):
+        summary = self.combined([
+            change("src/Compute/Compute/UpdateVM.cs",
+                   patch="@@ -1 +1 @@\n-old\n+new"),
+            change("src/Compute/Compute.Test/utils.ps1",
+                   patch="@@ -1 +1 @@\n-old\n+new"),
+        ])
+        self.assertTrue(summary["regression_coverage"]["gap"])
+        self.assertEqual(
+            ["Compute"], summary["regression_coverage"]["uncovered_modules"],
+        )
+        self.assertEqual([], summary["regression_coverage"]["test_files"])
+        self.assertEqual("b" * 40, summary["head_sha"])
 
     def test_formatter_contract_and_deduplication_include_new_findings(self):
         path = "src/Compute/Compute/help/Get-AzVM.md"

@@ -7,6 +7,32 @@
 """Evaluate Azure PowerShell service regression coverage."""
 
 
+def _is_testfx_test_file(parts):
+    """Recognize test paths without counting the surrounding test infrastructure."""
+    name = parts[-1].casefold()
+    if not name.endswith((".cs", ".ps1")):
+        return False
+    directories = {part.casefold() for part in parts[3:-1]}
+    if directories & {
+        "common", "fixtures", "helpers", "mocks", "properties", "resources",
+        "testdata", "testresources", "utils",
+    }:
+        return False
+    stem = name.rsplit(".", 1)[0]
+    if stem.endswith((
+        "common", "helper", "helpers", "utils", "utilities", "fixture",
+        "fixtures", "setup", "teardown", "testbase", "testrunner", "testsrunner",
+        "testcontext", "initializer", "constants", "recordmatcher", "builder",
+        "orderer", "extension", "factory", "bootstrap", "mockdelegatinghandler",
+    )):
+        return False
+    return (
+        bool(directories & {"scenariotests", "unittests", "unittest", "pestertests"})
+        or stem.endswith(("test", "tests"))
+        or "testsfor" in stem
+    )
+
+
 def _summarize_powershell_coverage(changes):
     """Find modules without changed TestFx or AutoRest/Pester test artifacts."""
     def test_layout(parts):
@@ -68,7 +94,7 @@ def _summarize_powershell_coverage(changes):
             continue
         layout = test_layout(parts)
         if (
-            (layout == "testfx" and lowered.endswith((".cs", ".ps1")))
+            (layout == "testfx" and _is_testfx_test_file(parts))
             or (layout == "pester" and lowered.endswith(".tests.ps1"))
         ):
             test_files.append(path)

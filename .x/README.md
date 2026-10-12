@@ -28,6 +28,12 @@ use the supplied PR and file changes; they do not fetch another snapshot or add
 write capabilities. Results use `tool` and `tool_title`, not legacy skill keys.
 TestFx dispatch still uses `changed_ps_test_files`, not the review coverage list.
 
+TestFx review coverage recognizes scenario/unit-test locations and test filenames,
+excluding known helpers, setup scripts, runners and fixture paths. A support-only
+change does not clear a production coverage gap or become a production change.
+This is path-based evidence for review, not proof of semantic test coverage.
+Reviewers still inspect the tests and recordings before requesting corrections.
+
 Run the offline regression and integration tests from the repository root:
 
 ```sh
