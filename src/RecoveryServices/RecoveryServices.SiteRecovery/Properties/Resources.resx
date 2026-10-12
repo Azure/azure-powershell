@@ -576,6 +576,9 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="ClusterConfidentialDiskEncryptionNotSupported" xml:space="preserve">
     <value>Confidential disk encryption sets (ReplicaConfidentialDiskEncryptionSetId, TargetConfidentialDiskEncryptionSetId) are not supported when switching replication protection cluster direction. Remove them from the disk replication configuration.</value>
   </data>
+  <data name="ReplicaConfidentialDiskEncryptionSetNotUpdatable" xml:space="preserve">
+    <value>ReplicaConfidentialDiskEncryptionSetId cannot be updated on a protected item. Only TargetConfidentialDiskEncryptionSetId is supported for update; remove ReplicaConfidentialDiskEncryptionSetId from the disk replication configuration.</value>
+  </data>
   <data name="NoRecoveryPointsFound" xml:space="preserve">
 	<value>No recovery points found for {0} which is part of cluster {1}.</value>	
   </data>

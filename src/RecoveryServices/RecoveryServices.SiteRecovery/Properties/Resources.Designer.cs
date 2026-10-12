@@ -936,6 +936,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ReplicaConfidentialDiskEncryptionSetId cannot be updated on a protected item. Only TargetConfidentialDiskEncryptionSetId is supported for update; remove ReplicaConfidentialDiskEncryptionSetId from the disk replication configuration..
+        /// </summary>
+        internal static string ReplicaConfidentialDiskEncryptionSetNotUpdatable {
+            get {
+                return ResourceManager.GetString("ReplicaConfidentialDiskEncryptionSetNotUpdatable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Protected Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
         /// </summary>
         internal static string ReplicationProtectedItemNotFound {

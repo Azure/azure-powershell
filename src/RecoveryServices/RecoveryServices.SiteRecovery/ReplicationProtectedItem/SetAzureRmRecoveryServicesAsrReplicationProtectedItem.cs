@@ -750,30 +750,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
                         foreach (var managedDisk in this.AzureToAzureUpdateReplicationConfiguration)
                         {
-                            var diskUpdateDetails =
-                                new A2AVmManagedDiskUpdateDetails(
-                                    managedDisk.DiskId,
-                                    managedDisk.RecoveryTargetDiskAccountType,
-                                    managedDisk.RecoveryReplicaDiskAccountType,
-                                    failoverDiskName: managedDisk.FailoverDiskName,
-                                    tfoDiskName: managedDisk.TfoDiskName,
-                                    diskEncryptionInfo: Utilities.A2AEncryptionDetails(
-                                        managedDisk.DiskEncryptionSecretUrl,
-                                        managedDisk.DiskEncryptionVaultId,
-                                        managedDisk.KeyEncryptionKeyUrl,
-                                        managedDisk.KeyEncryptionVaultId));
-
-                            if (!string.IsNullOrEmpty(managedDisk.TargetConfidentialDiskEncryptionSetId))
-                            {
-                                diskUpdateDetails.ConfidentialDiskEncryptionInfo =
-                                    new UpdateConfidentialDiskEncryptionInfo
-                                    {
-                                        RecoveryTargetConfidentialDiskEncryptionSetId =
-                                            managedDisk.TargetConfidentialDiskEncryptionSetId
-                                    };
-                            }
-
-                            managedDiskUpdateDetails.Add(diskUpdateDetails);
+                            managedDiskUpdateDetails.Add(CreateManagedDiskUpdateDetails(managedDisk));
                         }
                     }
 
@@ -1166,6 +1143,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 throw new PSInvalidOperationException(Resources.NicNotFoundInVMForUpdateVmProperties);
             }
             return vMNicInputDetailsList;
+        }
+
+        /// <summary>
+        ///     Builds the A2A managed disk update input. The update contract accepts only the
+        ///     target confidential disk encryption set, so a replica confidential disk
+        ///     encryption set is rejected instead of being silently dropped.
+        /// </summary>
+        private static A2AVmManagedDiskUpdateDetails CreateManagedDiskUpdateDetails(
+            ASRAzuretoAzureDiskReplicationConfig managedDisk)
+        {
+            if (!string.IsNullOrEmpty(managedDisk.ReplicaConfidentialDiskEncryptionSetId))
+            {
+                throw new PSArgumentException(Resources.ReplicaConfidentialDiskEncryptionSetNotUpdatable);
+            }
+
+            var diskUpdateDetails =
+                new A2AVmManagedDiskUpdateDetails(
+                    managedDisk.DiskId,
+                    managedDisk.RecoveryTargetDiskAccountType,
+                    managedDisk.RecoveryReplicaDiskAccountType,
+                    failoverDiskName: managedDisk.FailoverDiskName,
+                    tfoDiskName: managedDisk.TfoDiskName,
+                    diskEncryptionInfo: Utilities.A2AEncryptionDetails(
+                        managedDisk.DiskEncryptionSecretUrl,
+                        managedDisk.DiskEncryptionVaultId,
+                        managedDisk.KeyEncryptionKeyUrl,
+                        managedDisk.KeyEncryptionVaultId));
+
+            if (!string.IsNullOrEmpty(managedDisk.TargetConfidentialDiskEncryptionSetId))
+            {
+                diskUpdateDetails.ConfidentialDiskEncryptionInfo =
+                    new UpdateConfidentialDiskEncryptionInfo
+                    {
+                        RecoveryTargetConfidentialDiskEncryptionSetId =
+                            managedDisk.TargetConfidentialDiskEncryptionSetId
+                    };
+            }
+
+            return diskUpdateDetails;
         }
 
         /*

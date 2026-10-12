@@ -425,5 +425,57 @@ namespace RecoveryServices.SiteRecovery.Test
             Assert.NotNull(method);
             return method.Invoke(null, new object[] { disk });
         }
+
+        /// <summary>
+        /// The update contract carries only the target confidential DES, so a replica
+        /// confidential DES on update must be rejected instead of silently dropped.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRpi_RejectsReplicaConfidentialDiskEncryptionSet()
+        {
+            var disk = new ASRAzuretoAzureDiskReplicationConfig
+            {
+                DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                IsManagedDisk = true,
+                ReplicaConfidentialDiskEncryptionSetId = ReplicaDesId,
+                TargetConfidentialDiskEncryptionSetId = TargetDesId,
+            };
+
+            var ex = Assert.Throws<TargetInvocationException>(() => InvokeCreateManagedDiskUpdateDetails(disk));
+
+            var inner = Assert.IsType<PSArgumentException>(ex.InnerException);
+            Assert.Contains("ReplicaConfidentialDiskEncryptionSetId", inner.Message);
+        }
+
+        /// <summary>
+        /// A target-only confidential DES must be forwarded on the managed disk update input.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRpi_ForwardsTargetConfidentialDiskEncryptionSet()
+        {
+            var disk = new ASRAzuretoAzureDiskReplicationConfig
+            {
+                DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                IsManagedDisk = true,
+                TargetConfidentialDiskEncryptionSetId = TargetDesId,
+            };
+
+            var update = Assert.IsType<A2AVmManagedDiskUpdateDetails>(InvokeCreateManagedDiskUpdateDetails(disk));
+
+            Assert.Equal("/subscriptions/sub-1/disks/osdisk-1", update.DiskId);
+            Assert.NotNull(update.ConfidentialDiskEncryptionInfo);
+            Assert.Equal(TargetDesId, update.ConfidentialDiskEncryptionInfo.RecoveryTargetConfidentialDiskEncryptionSetId);
+        }
+
+        private static object InvokeCreateManagedDiskUpdateDetails(ASRAzuretoAzureDiskReplicationConfig disk)
+        {
+            var method = typeof(SetAzureRmRecoveryServicesAsrReplicationProtectedItem).GetMethod(
+                "CreateManagedDiskUpdateDetails",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.NotNull(method);
+            return method.Invoke(null, new object[] { disk });
+        }
     }
 }
