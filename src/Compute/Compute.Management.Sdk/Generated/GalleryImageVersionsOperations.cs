@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "galleryImageName");
             }
 
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -619,16 +619,23 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, bypassSoftDelete, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -733,7 +740,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
 
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1048,7 +1055,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
 
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1246,6 +1253,13 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -1264,7 +1278,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1317,7 +1331,8 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "galleryImageVersionName");
             }
 
-            string apiVersion = "2025-12-03";
+
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1330,6 +1345,7 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("galleryName", galleryName);
                 tracingParameters.Add("galleryImageName", galleryImageName);
                 tracingParameters.Add("galleryImageVersionName", galleryImageVersionName);
+                tracingParameters.Add("bypassSoftDelete", bypassSoftDelete);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1349,6 +1365,10 @@ namespace Microsoft.Azure.Management.Compute
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (bypassSoftDelete != null)
+            {
+                _queryParameters.Add(string.Format("bypassSoftDelete={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(bypassSoftDelete, this.Client.SerializationSettings).Trim('"'))));
             }
             if (_queryParameters.Count > 0)
             {
