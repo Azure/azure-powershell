@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Upgraded Network SDK to API version `2026-03-01`.
 * Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
     - Added cmdlets to create, get, add, update, and remove mitigation rules.
     - Deny and Permit source matches can be configured directly with IP prefix and geographic match parameters.
