@@ -1042,6 +1042,29 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             $entry.Response.Content = $Text
             { Assert-EdgeActionRecordingReviewInput ($data | ConvertTo-Json -Depth 20) 'fixture.json' } | Should -Throw 'handoff blocked'
         }
+        It 'blocks query-bearing <Header> in <HeaderSet> without copying or disclosing values' -TestCases @(
+            @{ Header = 'Azure-AsyncOperation'; HeaderSet = 'Headers' }
+            @{ Header = 'azure-asyncoperation'; HeaderSet = 'ContentHeaders' }
+            @{ Header = 'Location'; HeaderSet = 'Headers' }
+            @{ Header = 'location'; HeaderSet = 'ContentHeaders' }
+        ) {
+            param($Header, $HeaderSet)
+            $data = $safeRecording | ConvertFrom-Json -AsHashtable
+            $entry = @($data.Values)[0]
+            $entry.Response[$HeaderSet][$Header] = @('https://example.invalid/poll?t=fixture-marker&c=x&s=y&h=z')
+            Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') ($data | ConvertTo-Json -Depth 20)
+            $message = try { Copy-EdgeActionRecordingsForReview $before $resultsPath } catch { $_.Exception.Message }
+            $message | Should -Match 'Query-bearing polling/location header'
+            $message | Should -Not -Match 'fixture-marker|https://'
+            (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
+        }
+        It 'accepts query-free polling headers and filtered headers' {
+            $data = $safeRecording | ConvertFrom-Json -AsHashtable
+            $entry = @($data.Values)[0]
+            $entry.Response.Headers.Location = @('https://example.invalid/poll')
+            $entry.Response.Headers.'Azure-AsyncOperation' = @('[Filtered]')
+            { Assert-EdgeActionRecordingReviewInput ($data | ConvertTo-Json -Depth 20) 'fixture.json' } | Should -Not -Throw
+        }
         It 'copies through the parent flow only after successful Record with real XML: <Outcome>' -TestCases @(
             @{ Outcome = 'Record passed'; Mode = 'Record'; ExitCode = 0; Failed = $false }
             @{ Outcome = 'nonzero child'; Mode = 'Record'; ExitCode = 1; Failed = $false }

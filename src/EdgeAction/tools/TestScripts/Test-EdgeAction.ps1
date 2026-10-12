@@ -26,6 +26,8 @@ to source as unstaged changes for Git diff review, with compatible env.json when
 Playback, Live, and failed runs never copy back. No staging or commit is performed.
 Known credential fields block handoff; other payloads, including embedded code/archives,
 still require human review. This is not comprehensive sanitization.
+Query-bearing Location and Azure-AsyncOperation headers also block handoff regardless
+of query-key names; originals remain in artifacts for playback-consistent review.
 No EdgeAction build or resource-group-wide cleanup is performed. Selected scenarios
 reset their dedicated fixture resources before setup and clean them after execution.
 Artifact recordings remain available without automatic backups.
