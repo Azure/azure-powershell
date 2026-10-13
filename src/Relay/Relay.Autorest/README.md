@@ -174,6 +174,12 @@ directive:
       subject: ^Cluster$
     hide: true
 
+  # Remove the duplicate Update-AzRelayCluster entirely; Set-AzRelayCluster covers the same scenario.
+  - where:
+      verb: Update
+      subject: ^Cluster$
+    remove: true
+
   - where:
       verb: Set
       subject: ^Namespace$

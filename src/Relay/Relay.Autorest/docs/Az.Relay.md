@@ -100,9 +100,6 @@ This operation is idempotent.
 ### [Test-AzRelayName](Test-AzRelayName.md)
 Check the specified namespace name availability.
 
-### [Update-AzRelayCluster](Update-AzRelayCluster.md)
-Update mutable properties of a Relay cluster.
-
 ### [Update-AzRelayNamespace](Update-AzRelayNamespace.md)
 Update a namespace.
 Once created, this namespace's resource manifest is immutable.

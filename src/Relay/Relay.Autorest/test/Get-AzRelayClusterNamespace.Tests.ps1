@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRelayClusterNamespace')
 }
 
 Describe 'Get-AzRelayClusterNamespace' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $clusterName = 'RelayClusterTestE2E2026'
+        $resourceGroupName = 'PPGTest'
+    }
+
+    It 'List' {
+        $namespaces = Get-AzRelayClusterNamespace -ResourceGroupName $resourceGroupName -ClusterName $clusterName
+        $namespaces | Should -Not -BeNullOrEmpty
+        foreach ($namespace in $namespaces) {
+            $namespace.Id | Should -Match "/resourceGroups/$resourceGroupName/providers/Microsoft.Relay/namespaces/"
+        }
     }
 }

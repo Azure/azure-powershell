@@ -82,8 +82,7 @@ FunctionsToExport = 'Get-AzRelayAuthorizationRule', 'Get-AzRelayCluster',
                'Remove-AzRelayNamespace', 'Remove-AzWcfRelay', 
                'Set-AzRelayAuthorizationRule', 'Set-AzRelayCluster', 
                'Set-AzRelayHybridConnection', 'Set-AzRelayNamespaceNetworkRuleSet', 
-               'Set-AzWcfRelay', 'Test-AzRelayName', 'Update-AzRelayCluster', 
-               'Update-AzRelayNamespace'
+               'Set-AzWcfRelay', 'Test-AzRelayName', 'Update-AzRelayNamespace'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
