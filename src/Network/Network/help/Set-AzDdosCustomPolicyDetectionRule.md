@@ -19,7 +19,7 @@ Set-AzDdosCustomPolicyDetectionRule -DdosCustomPolicy <PSDdosCustomPolicy> -Name
 ```
 
 ## DESCRIPTION
-The **Set-AzDdosCustomPolicyDetectionRule** cmdlet updates an existing detection rule selected by its case-insensitive name. Specify **TrafficType**, **PacketsPerSecond**, or both. Properties that are not specified retain their current values.
+The **Set-AzDdosCustomPolicyDetectionRule** cmdlet updates an existing detection rule selected by its case-insensitive name. You can specify **TrafficType**, **PacketsPerSecond**, or both. Properties that are not specified retain their current values. If neither property is specified, the detection rule remains unchanged and the policy object is returned.
 
 The cmdlet updates the supplied policy object. Pass the updated policy to **Set-AzDdosCustomPolicy** to persist the changes to Azure.
 
@@ -41,6 +41,14 @@ $policy = $policy |
 ```
 
 This example changes the traffic type of `tcpRule` to `TcpSyn`. A policy can contain only one detection rule for each traffic type.
+
+### Example 3: Return the policy without changing the detection rule
+```powershell
+$policy = $policy |
+    Set-AzDdosCustomPolicyDetectionRule -Name "tcpRule"
+```
+
+This example returns the policy object without changing `tcpRule` because neither `TrafficType` nor `PacketsPerSecond` is specified.
 
 ## PARAMETERS
 
