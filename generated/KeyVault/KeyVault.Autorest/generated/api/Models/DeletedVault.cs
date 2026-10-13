@@ -10,60 +10,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     /// <summary>Deleted vault information with extended details.</summary>
     public partial class DeletedVault :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ProxyResource();
 
         /// <summary>The deleted date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public global::System.DateTime? DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
-
-        /// <summary>The resource ID for the deleted key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>The location of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; }
 
         /// <summary>Internal Acessors for DeletionDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Id { get => this._id; set { {_id = value;} } }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).DeletionDate = value; }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location = value ?? null; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Name { get => this._name; set { {_name = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Location = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.DeletedVaultProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PurgeProtectionEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled = value ?? default(bool); }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).PurgeProtectionEnabled = value; }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate = value; }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Type { get => this._type; set { {_type = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag = value; }
 
         /// <summary>Internal Acessors for VaultId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.VaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultInternal.VaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).VaultId = value; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id = value; }
 
-        /// <summary>The name of the key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData = value; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type = value; }
+
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultProperties _property;
@@ -84,16 +88,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public global::System.DateTime? ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).ScheduledPurgeDate; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Tags of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesInternal)Property).Tag; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The resource type of the key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>The resource id of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
@@ -104,10 +137,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
     /// Deleted vault information with extended details.
     public partial interface IDeletedVault :
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource
     {
         /// <summary>The deleted date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
@@ -120,17 +166,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"deletionDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? DeletionDate { get;  }
-        /// <summary>The resource ID for the deleted key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The resource ID for the deleted key vault.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
         /// <summary>The location of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -142,17 +177,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get;  }
-        /// <summary>The name of the key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The name of the key vault.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
         /// <summary>Purge protection status of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -186,17 +210,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Tag { get;  }
-        /// <summary>The resource type of the key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The resource type of the key vault.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
         /// <summary>The resource id of the original vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -211,17 +224,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
     }
     /// Deleted vault information with extended details.
-    internal partial interface IDeletedVaultInternal
-
+    internal partial interface IDeletedVaultInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResourceInternal
     {
         /// <summary>The deleted date.</summary>
         global::System.DateTime? DeletionDate { get; set; }
-        /// <summary>The resource ID for the deleted key vault.</summary>
-        string Id { get; set; }
         /// <summary>The location of the original vault.</summary>
         string Location { get; set; }
-        /// <summary>The name of the key vault.</summary>
-        string Name { get; set; }
         /// <summary>Properties of the vault</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultProperties Property { get; set; }
         /// <summary>Purge protection status of the original vault.</summary>
@@ -230,8 +239,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         global::System.DateTime? ScheduledPurgeDate { get; set; }
         /// <summary>Tags of the original vault.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultPropertiesTags Tag { get; set; }
-        /// <summary>The resource type of the key vault.</summary>
-        string Type { get; set; }
         /// <summary>The resource id of the original vault.</summary>
         string VaultId { get; set; }
 

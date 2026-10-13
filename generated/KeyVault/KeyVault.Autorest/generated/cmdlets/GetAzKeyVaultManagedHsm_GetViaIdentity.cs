@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"Gets the specified managed HSM Pool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2024-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2026-02-01")]
     public partial class GetAzKeyVaultManagedHsm_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IContext
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

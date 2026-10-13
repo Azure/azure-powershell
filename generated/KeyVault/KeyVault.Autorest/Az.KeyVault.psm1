@@ -17,7 +17,7 @@
   $accountsName = 'Az.Accounts'
   $accountsModule = Get-Module -Name $accountsName
   if(-not $accountsModule) {
-    $localAccountsPath = Join-Path $PSScriptRoot 'generated\modules'
+    $localAccountsPath = Join-Path $PSScriptRoot 'generated/modules'
     if(Test-Path -Path $localAccountsPath) {
       $localAccounts = Get-ChildItem -Path $localAccountsPath -Recurse -Include 'Az.Accounts.psd1' | Select-Object -Last 1
       if($localAccounts) {

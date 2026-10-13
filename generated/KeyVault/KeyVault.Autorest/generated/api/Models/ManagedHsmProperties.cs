@@ -76,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.SecurityDomainProperty { get => (this._securityDomainProperty = this._securityDomainProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSecurityDomainProperties()); set { {_securityDomainProperty = value;} } }
 
         /// <summary>Internal Acessors for SecurityDomainPropertyActivationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.SecurityDomainPropertyActivationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatus = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.SecurityDomainPropertyActivationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatus = value; }
 
         /// <summary>Internal Acessors for SecurityDomainPropertyActivationStatusMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.SecurityDomainPropertyActivationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatusMessage = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.SecurityDomainPropertyActivationStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSecurityDomainPropertiesInternal)SecurityDomainProperty).ActivationStatusMessage = value; }
 
         /// <summary>Internal Acessors for StatusMessage</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmPropertiesInternal.StatusMessage { get => this._statusMessage; set { {_statusMessage = value;} } }
@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>The list of IP address rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> NetworkAclsIPRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)NetworkAcls).IPRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)NetworkAcls).IPRule = value ?? null /* arrayOf */; }
+
+        /// <summary>The list of service tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> NetworkAclsServiceTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)NetworkAcls).ServiceTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)NetworkAcls).ServiceTag = value ?? null /* arrayOf */; }
 
         /// <summary>The list of virtual network rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
@@ -305,6 +309,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> NetworkAclsIPRule { get; set; }
+        /// <summary>The list of service tags.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of service tags.",
+        SerializedName = @"serviceTags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> NetworkAclsServiceTag { get; set; }
         /// <summary>The list of virtual network rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -477,6 +492,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         string NetworkAclsDefaultAction { get; set; }
         /// <summary>The list of IP address rules.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> NetworkAclsIPRule { get; set; }
+        /// <summary>The list of service tags.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> NetworkAclsServiceTag { get; set; }
         /// <summary>The list of virtual network rules.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule> NetworkAclsVirtualNetworkRule { get; set; }
         /// <summary>List of private endpoint connections associated with the managed hsm pool.</summary>

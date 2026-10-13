@@ -30,16 +30,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value; }
 
         /// <summary>Internal Acessors for PrivateEndpointId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId = value; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceConnectionState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkServiceConnectionState Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkServiceConnectionState Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionProperties()); set { {_property = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionItemInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value; }
 
         /// <summary>Full identifier of the private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         /// <summary>Provisioning state of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value ?? null; }
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; }
 
         /// <summary>Creates an new <see cref="PrivateEndpointConnectionItem" /> instance.</summary>
         public PrivateEndpointConnectionItem()
@@ -159,15 +162,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Provisioning state of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Provisioning state of the private endpoint connection.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Failed", "Disconnected")]
-        string ProvisioningState { get; set; }
+        string ProvisioningState { get;  }
 
     }
     /// Private endpoint connection item.

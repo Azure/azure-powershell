@@ -15,9 +15,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IHeaderSerializable
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ProxyResource();
 
         /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
         private string _azureAsyncOperation;
@@ -34,44 +34,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Etag { get => this._etag; set => this._etag = value; }
 
-        /// <summary>Fully qualified identifier of the key vault resource.</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
 
         /// <summary>Azure location of the key vault resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Location; }
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public string Location { get => this._location; }
+
+        /// <summary>Internal Acessors for Location</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.Location { get => this._location; set { {_location = value;} } }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value; }
 
         /// <summary>Internal Acessors for PrivateEndpointId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId = value; }
 
         /// <summary>Internal Acessors for PrivateLinkServiceConnectionState</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkServiceConnectionState Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkServiceConnectionState Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.PrivateLinkServiceConnectionState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateLinkServiceConnectionState = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionProperties()); set { {_property = value;} } }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Id = value ?? null; }
-
-        /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Location = value ?? null; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Name = value ?? null; }
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value; }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal.Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags()); set { {_tag = value;} } }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id = value; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name = value; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Type = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type = value; }
 
-        /// <summary>Name of the key vault resource.</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Full identifier of the private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
@@ -102,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         /// <summary>Provisioning state of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState = value ?? null; }
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionPropertiesInternal)Property).ProvisioningState; }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
@@ -114,24 +125,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
 
-        /// <summary>Tags assigned to the key vault resource.</summary>
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Tag; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; }
 
-        /// <summary>Resource type of the key vault resource.</summary>
+        /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__resource).Type; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags _tag;
+
+        /// <summary>Tags assigned to the key vault resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags()); }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <param name="headers"></param>
         void Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
         {
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader0))
+            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader0) is string __headerRetryAfterHeader0 ? int.TryParse( __headerRetryAfterHeader0, out int __headerRetryAfterHeader0Value ) ? __headerRetryAfterHeader0Value : default(int?) : default(int?);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
             }
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader1))
+            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader1))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader1) is string __headerAzureAsyncOperationHeader1 ? __headerAzureAsyncOperationHeader1 : (string)null;
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader1) is string __headerRetryAfterHeader1 ? int.TryParse( __headerRetryAfterHeader1, out int __headerRetryAfterHeader1Value ) ? __headerRetryAfterHeader1Value : default(int?) : default(int?);
             }
         }
 
@@ -149,14 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
     /// Private endpoint connection resource.
     public partial interface IPrivateEndpointConnection :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource
     {
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -181,6 +227,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
         string Etag { get; set; }
+        /// <summary>Azure location of the key vault resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Azure location of the key vault resource.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get;  }
         /// <summary>Full identifier of the private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -234,15 +291,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Provisioning state of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"Provisioning state of the private endpoint connection.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Failed", "Disconnected")]
-        string ProvisioningState { get; set; }
+        string ProvisioningState { get;  }
 
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -254,17 +311,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"Retry-After",
         PossibleTypes = new [] { typeof(int) })]
         int? RetryAfter { get; set; }
+        /// <summary>Tags assigned to the key vault resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Tags assigned to the key vault resource.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags Tag { get;  }
 
     }
     /// Private endpoint connection resource.
     internal partial interface IPrivateEndpointConnectionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResourceInternal
     {
         string AzureAsyncOperation { get; set; }
         /// <summary>
         /// Modified whenever there is a change in the state of private endpoint connection.
         /// </summary>
         string Etag { get; set; }
+        /// <summary>Azure location of the key vault resource.</summary>
+        string Location { get; set; }
         /// <summary>Properties of the private endpoint object.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpoint PrivateEndpoint { get; set; }
         /// <summary>Full identifier of the private endpoint resource.</summary>
@@ -290,6 +360,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         string ProvisioningState { get; set; }
 
         int? RetryAfter { get; set; }
+        /// <summary>Tags assigned to the key vault resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags Tag { get; set; }
 
     }
 }
