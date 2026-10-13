@@ -26,13 +26,17 @@ to source as unstaged changes for Git diff review, with compatible env.json when
 Playback, Live, and failed runs never copy back. No staging or commit is performed.
 Known credential fields block handoff; other payloads, including embedded code/archives,
 still require human review. This is not comprehensive sanitization.
-Query-bearing Location and Azure-AsyncOperation headers also block handoff regardless
-of query-key names; originals remain in artifacts for playback-consistent review.
+Polling/location headers and query strings are preserved for replay, subject to the
+known credential checks. No query-key allowlist or automatic URL rewriting is applied.
 No EdgeAction build or resource-group-wide cleanup is performed. Selected scenarios
 reset their dedicated fixture resources before setup and clean them after execution.
 Artifact recordings remain available without automatic backups.
 Review source changes and preserve any uncopied outputs before rebuilding or rerunning.
 Fresh NUnit results are checked independently of the generated runner's exit code.
+Failures add a concise XML summary without replacing child stdout/stderr or Pester
+output. Record may add a matching fresh HTTP error's status and service code/message;
+ambiguous or stale responses are not attributed. Added text redacts common sensitive
+patterns, not arbitrary secrets. Raw artifact recordings are not rewritten.
 Source scenario/helper edits during Record block recording handoff. Refreshed tests
 can require fresh recordings before Playback; existing recordings are not rewritten.
 Repository, default settings, and artifact paths are resolved from this script,

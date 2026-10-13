@@ -1042,20 +1042,41 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             $entry.Response.Content = $Text
             { Assert-EdgeActionRecordingReviewInput ($data | ConvertTo-Json -Depth 20) 'fixture.json' } | Should -Throw 'handoff blocked'
         }
-        It 'blocks query-bearing <Header> in <HeaderSet> without copying or disclosing values' -TestCases @(
-            @{ Header = 'Azure-AsyncOperation'; HeaderSet = 'Headers' }
-            @{ Header = 'azure-asyncoperation'; HeaderSet = 'ContentHeaders' }
-            @{ Header = 'Location'; HeaderSet = 'Headers' }
-            @{ Header = 'location'; HeaderSet = 'ContentHeaders' }
+        It 'preserves query-bearing <Header> in <HeaderSet> unchanged during handoff' -TestCases @(
+            @{ Header = 'Azure-AsyncOperation'; HeaderSet = 'Headers'; Query = 'api-version=2026-10-01&t=fixture-marker&c=x&s=y&h=z' }
+            @{ Header = 'azure-asyncoperation'; HeaderSet = 'ContentHeaders'; Query = 'api-version=2026-10-01' }
+            @{ Header = 'Location'; HeaderSet = 'Headers'; Query = 'api-version=2026-10-01' }
+            @{ Header = 'location'; HeaderSet = 'ContentHeaders'; Query = 'api-version=2026-10-01&t=fixture-marker&c=x&s=y&h=z' }
         ) {
-            param($Header, $HeaderSet)
+            param($Header, $HeaderSet, $Query)
             $data = $safeRecording | ConvertFrom-Json -AsHashtable
             $entry = @($data.Values)[0]
-            $entry.Response[$HeaderSet][$Header] = @('https://example.invalid/poll?t=fixture-marker&c=x&s=y&h=z')
+            $url = "https://example.invalid/poll?$Query"
+            $entry.Response[$HeaderSet][$Header] = @($url)
+            $pollEntry = $safeRecording | ConvertFrom-Json -AsHashtable
+            $poll = @($pollEntry.Values)[0]
+            $poll.Request.RequestUri = $url
+            $data["poll+$url+1"] = $poll
+            $artifactPath = Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json'
+            $sourcePath = Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json'
+            Set-Content $artifactPath ($data | ConvertTo-Json -Depth 20)
+            $originalHash = (Get-FileHash $artifactPath).Hash
+            Copy-EdgeActionRecordingsForReview $before $resultsPath
+            (Get-FileHash $sourcePath).Hash | Should -Be $originalHash
+            (Get-FileHash $artifactPath).Hash | Should -Be $originalHash
+        }
+        It 'still rejects explicit credentials in polling header <Header>' -TestCases @(
+            @{ Header = 'Location'; Query = 'sig=fixture-secret' }
+            @{ Header = 'Azure-AsyncOperation'; Query = 'token=fixture-secret' }
+        ) {
+            param($Header, $Query)
+            $data = $safeRecording | ConvertFrom-Json -AsHashtable
+            $entry = @($data.Values)[0]
+            $entry.Response.Headers[$Header] = @("https://example.invalid/poll?$Query")
             Set-Content (Join-Path $artifactTest 'Get-AzEdgeAction.Recording.json') ($data | ConvertTo-Json -Depth 20)
             $message = try { Copy-EdgeActionRecordingsForReview $before $resultsPath } catch { $_.Exception.Message }
-            $message | Should -Match 'Query-bearing polling/location header'
-            $message | Should -Not -Match 'fixture-marker|https://'
+            $message | Should -Match 'Credential field, signed URL, or private key detected'
+            $message | Should -Not -Match 'fixture-secret|https://'
             (Get-Content (Join-Path $sourceTest 'Get-AzEdgeAction.Recording.json') -Raw).Trim() | Should -Be '{}'
         }
         It 'accepts query-free polling headers and filtered headers' {
@@ -1159,6 +1180,90 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
         It 'returns a real child failure without signing in or running a harness' {
             $options = @{ Config = @{}; Mode = 'Record' }
             Invoke-EdgeActionTestChild $options 2>$null | Should -Not -Be 0
+        }
+        It 'summarizes multiple failures, setup labels and locations without listing successes' {
+            @'
+<test-results failures="2" errors="0">
+<test-case name="Update-AzEdgeAction.UpdateExpanded" executed="True" success="False"><failure><message>Expected 1 but got 2</message><stack-trace>at fixture, C:\private\Update-AzEdgeAction.Tests.ps1: line 44</stack-trace></failure></test-case>
+<test-case name="Describe setup failed" executed="True" success="False"><failure><message>Setup failed; Cleanup also failed</message></failure></test-case>
+<test-case name="do-not-list-success" executed="True" success="True" />
+<test-case name="placeholder" executed="False" />
+</test-results>
+'@ | Set-Content $resultPath
+            Mock Write-Host {}
+            { Assert-EdgeActionResults $resultPath $started 1 } | Should -Throw 'Scenario tests failed'
+            Assert-MockCalled Write-Host -Scope It -Times 1 -Exactly -ParameterFilter { "$Object" -match 'Failure summary: 1 passed, 2 failed, 1 skipped' }
+            Assert-MockCalled Write-Host -Scope It -Times 1 -Exactly -ParameterFilter { "$Object" -match 'FAILED: Update-AzEdgeAction.UpdateExpanded \(Update-AzEdgeAction.Tests.ps1:44\).*Expected 1' }
+            Assert-MockCalled Write-Host -Scope It -Times 1 -Exactly -ParameterFilter { "$Object" -match 'FAILED: Describe setup failed.*Cleanup also failed' }
+            Assert-MockCalled Write-Host -Scope It -Times 0 -Exactly -ParameterFilter { "$Object" -match 'do-not-list-success|C:\\private' }
+        }
+        It 'adds only a matching fresh recorded error and preserves the original failure (base64: <Encoded>)' -TestCases @(
+            @{ Encoded = $false }
+            @{ Encoded = $true }
+        ) {
+            param($Encoded)
+            '<test-results failures="1" errors="0"><test-case name="Update-AzEdgeAction.UpdateExpanded" executed="True" success="False"><failure><message>The server responded with a Request Error, Status: BadRequest</message></failure></test-case></test-results>' |
+                Set-Content $resultPath
+            $recording = Join-Path $TestDrive 'Update-AzEdgeAction.Recording.json'
+            $content = '{"Error":{"Code":"400","Message":"The PATCH request body must contain at least one property."},"private":"do-not-print-body"}'
+            if ($Encoded) { $content = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($content)) }
+            @{
+                'Update-AzEdgeAction+[NoContext]+UpdateExpanded+$PATCH+https://example.invalid?sig=never-print+6' = @{
+                    Request = @{ Content = 'private code'; Headers = @{ Authorization = 'private bearer' } }
+                    Response = @{
+                        StatusCode = 400
+                        Headers = @{ 'Set-Cookie' = 'private cookie' }
+                        Content = $content
+                        isContentBase64 = $Encoded
+                    }
+                }
+            } | ConvertTo-Json -Depth 12 | Set-Content $recording
+            $before = (Get-FileHash $recording).Hash
+            Mock Write-Host {}
+            { Assert-EdgeActionResults $resultPath $started 1 -IncludeRecordedResponses } | Should -Throw 'Scenario tests failed (child exit 1)'
+            Assert-MockCalled Write-Host -Scope It -Times 1 -Exactly -ParameterFilter {
+                "$Object" -eq '  Recorded response: HTTP 400; service code: 400; message: The PATCH request body must contain at least one property.'
+            }
+            Assert-MockCalled Write-Host -Scope It -Times 0 -Exactly -ParameterFilter { "$Object" -match 'never-print|private code|private bearer|private cookie|do-not-print-body' }
+            (Get-FileHash $recording).Hash | Should -Be $before
+        }
+        It 'does not attribute old recordings or unrelated HTTP failures to an assertion' {
+            '<test-results failures="1" errors="0"><test-case name="Update-AzEdgeAction.UpdateExpanded" executed="True" success="False"><failure><message>Expected tags to be empty</message></failure></test-case></test-results>' |
+                Set-Content $resultPath
+            Mock Write-Host {}
+            Mock Get-Content { throw 'Recording should not be opened for an assertion' } -ParameterFilter { $Path -like '*.Recording.json' }
+            { Assert-EdgeActionResults $resultPath $started 1 -IncludeRecordedResponses } | Should -Throw 'Scenario tests failed'
+            Assert-MockCalled Get-Content -Scope It -Times 0 -Exactly -ParameterFilter { $Path -like '*.Recording.json' }
+            Assert-MockCalled Write-Host -Scope It -Times 0 -Exactly -ParameterFilter { "$Object" -match 'Recorded response:' }
+        }
+        It 'withholds unreliable recorded response correlations: <Reason>' -TestCases @(
+            @{ Reason = 'stale' }
+            @{ Reason = 'different scenario' }
+            @{ Reason = 'multiple matching errors' }
+        ) {
+            param($Reason)
+            '<test-results failures="1" errors="0"><test-case name="Update-AzEdgeAction.UpdateExpanded" executed="True" success="False"><failure><message>Request Error, Status: BadRequest</message></failure></test-case></test-results>' | Set-Content $resultPath
+            $recording = Join-Path $TestDrive 'Update-AzEdgeAction.Recording.json'
+            $scenario = if ($Reason -eq 'different scenario') { '[NoScenario]' } else { 'UpdateExpanded' }
+            $entry = @{ Response = @{ StatusCode = 400; Content = '{"error":{"code":"400","message":"unrelated"}}' } }
+            $data = @{ "Update-AzEdgeAction+[NoContext]+$scenario+request1" = $entry }
+            if ($Reason -eq 'multiple matching errors') { $data["Update-AzEdgeAction+[NoContext]+$scenario+request2"] = $entry }
+            $data | ConvertTo-Json -Depth 10 | Set-Content $recording
+            if ($Reason -eq 'stale') { (Get-Item $recording).LastWriteTimeUtc = $started.AddHours(-1) }
+            Mock Write-Host {}
+            { Assert-EdgeActionResults $resultPath $started 1 -IncludeRecordedResponses } | Should -Throw 'Scenario tests failed'
+            Assert-MockCalled Write-Host -Scope It -Times 0 -Exactly -ParameterFilter { "$Object" -match 'Recorded response:' }
+        }
+        It 'redacts bounded diagnostic messages without printing credential-bearing fields' {
+            $text = Format-EdgeActionDiagnosticText 'Failed https://example.invalid?sig=secret /subscriptions/private/path "embedded code" token=unquoted 00000000-0000-0000-0000-000000000001'
+            $text | Should -Not -Match 'example.invalid|sig=secret|private/path|embedded code|unquoted|00000000'
+            $text | Should -Match 'redacted'
+        }
+        It 'reports suite-only setup failures when no testcase executed' {
+            '<test-results failures="0" errors="1"><test-suite name="Describe setup" success="False"><failure><message>Setup failed</message></failure></test-suite></test-results>' | Set-Content $resultPath
+            Mock Write-Host {}
+            { Assert-EdgeActionResults $resultPath $started 1 } | Should -Throw 'Scenario tests failed'
+            Assert-MockCalled Write-Host -Scope It -Times 1 -Exactly -ParameterFilter { "$Object" -match 'FAILED: Describe setup - Setup failed' }
         }
     }
 }
@@ -1358,6 +1463,28 @@ Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -Enab
         Test-Path (Join-Path $fixture 'artifacts' 'edgeaction-test-runs') | Should -Be $false
         $stagedPester = Get-Content (Join-Path $artifact 'test' 'pester-path.txt')
         Test-Path (Split-Path $stagedPester) | Should -Be $false
+    }
+    It 'preserves direct harness stdout and stderr and adds a failure summary without copying recordings' {
+        @'
+[Console]::Out.WriteLine('original harness stdout')
+[Console]::Error.WriteLine('original harness stderr')
+'<test-results failures="1" errors="0"><test-case name="fixture.failure" executed="True" success="False"><failure><message>original assertion failure</message></failure></test-case></test-results>' |
+    Set-Content (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
+exit 9
+'@ | Set-Content $harness
+        $direct = & $pwsh -NoProfile -File $harness 2>&1
+        $LASTEXITCODE | Should -Be 9
+        $wrapped = & $pwsh -NoProfile -File $runner -Mode Playback 2>&1
+        $LASTEXITCODE | Should -Not -Be 0
+        foreach ($marker in @('original harness stdout', 'original harness stderr')) {
+            ($direct -join "`n") | Should -Match $marker
+            ($wrapped -join "`n") | Should -Match $marker
+        }
+        ($wrapped -join "`n") | Should -Match 'Failure summary: 0 passed, 1 failed'
+        ($wrapped -join "`n") | Should -Match 'FAILED: fixture.failure - original assertion failure'
+        ($wrapped -join "`n") | Should -Match 'Scenario harness exited with code 9'
+        ($wrapped -join "`n") | Should -Match 'child exit 1'
+        Test-Path (Join-Path $source 'test' 'fixture.Recording.json') | Should -Be $false
     }
     It 'imports Pester by name with newer installed versions using <Selection>' -TestCases @(
         @{ Selection = 'discovery' }

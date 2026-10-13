@@ -4,6 +4,46 @@ This page covers manual development-environment setup, repository generation/bui
 
 **Run the generation wrapper and tests from `src\EdgeAction\EdgeAction.Autorest`.** One-time build-tool setup starts at the repository root. Neither wrapper needs a caller-defined root variable; tests also need no user-set environment variables.
 
+## Workflow and commit boundaries
+
+**Separate what developers maintain and commit from what generation/build writes locally.** The existing generation wrapper combines preparation, compilation, and help refresh; it has no source-only or output-only mode. Refreshed parent help depends on the built command metadata, so a source-help refresh is not independent of generated/build output. A second generator is not required for the current workflow. The test runner is already a separate step.
+
+| Phase/output | Owner and commit decision |
+| --- | --- |
+| `README.md` specification pin/directives, `custom`, `examples`, scenario scripts and `utils.ps1` | Maintained inputs. Edit these rather than generated C#/exports; commit intentional changes. |
+| `EdgeAction.Autorest\docs` and `src\EdgeAction\EdgeAction\help` | Derived source-side documentation. Review meaningful command/example/help changes for the feature commit. A file being under `src` does not make every generated change appropriate. |
+| `Properties\AssemblyInfo.cs`, generation IDs, module GUIDs | Release/generation bookkeeping. Keep established metadata; do not include version-format normalization or random GUID-only churn as feature changes. |
+| `generated\EdgeAction` | Intermediate client/runtime/exports used by the local build. Retain locally, but exclude from the feature commit. The separate pipeline archive job owns publishing these files. |
+| `artifacts\Debug` and `artifacts\edgeaction-help-*` | Local compiled modules, help intermediates, test results and raw HTTP recordings. Do not commit these directories. |
+| Reviewed `test\*.Recording.json` and compatible `test\env.json` | Test inputs captured by an authorized Record run. Review sensitive content and replay consistency before committing. These HTTP snapshots are not a generated-code archive. Never commit local settings or `localEnv.json`. |
+
+### Practical sequence
+
+1. Review both the working tree and index, then edit maintained inputs. From the repository root, use `git status --short`, `git diff HEAD -- src\EdgeAction`, and `git diff --cached --stat`. Preserve existing work before generation: the tooling replaces outputs, not merges them.
+2. For specification/custom cmdlet/example changes, run the existing generation/build/help wrapper after [prerequisite setup](#prerequisites-and-build):
+
+```powershell
+Set-Location .\src\EdgeAction\EdgeAction.Autorest
+& ..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1
+```
+
+3. Review meaningful source/help changes separately from local outputs. Do not commit `generated\EdgeAction`, assembly-version formatting, or module-GUID-only churn. For scenario/helper-only edits, skip regeneration: the maintained test runner refreshes those scripts automatically into existing artifacts.
+4. If requests or recording contexts changed, preserve previous outputs and run the following **only with authorization to create/delete the selected fixtures**, after [test configuration](#configure-and-run-scenario-tests). For unchanged compatible recordings, run Playback alone.
+
+```powershell
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
+```
+
+Run Playback after Record has finished and inspect Record's result first; do not rebuild between them. A successful scenario run can still fail the recording handoff's sensitive-content checks. In that case, originals remain in artifacts: preserve and review them as described in [recording ownership](#results-and-recording-ownership), rather than staging raw output. Regeneration cannot reconstruct missing or overwritten HTTP recording entries.
+
+5. Review source help, tests and any eligible recording copy-back; stage only explicit intended files, then inspect `git diff --cached --stat` and `git diff --cached`. Do not use `git add -A` to collect generation results. If excluded files are already staged, review their index changes and unstage only those paths deliberately; unstaging need not discard the local files. Neither a build nor staged status is evidence that a file belongs in the feature commit.
+6. The repository's separate archive job in [azure-powershell-ci.yml](../../../.azure-pipelines/azure-powershell-ci.yml) regenerates/builds, stages `generated`, and publishes a bot archive PR. Do not reproduce that publication step in the feature branch. Local generation and pipeline generation share tooling; their commit ownership differs.
+
+### Staging is a separate boundary
+
+The module wrapper and the inspected shared preparation/build scripts contain no `git add` or commit operation. The archive pipeline explicitly performs both. Nevertheless, do not assume your index is empty or unchanged: inspect staged and unstaged changes before and after generation, including changes staged by other tools or earlier actions. The observed staged output after regeneration does not by itself identify which operation staged it.
+
 ## Prerequisites and build
 
 Use native runtimes, not npm dotnet or PowerShell shims. The accepted minimums below are not a guarantee that every newer combination has been tested.
@@ -72,11 +112,12 @@ Before preparation, the wrapper prints the README's configured commit and input-
 
 The shared repository workflow places intermediate generated source under `generated\EdgeAction` and built modules under `artifacts\Debug`. Keep generated-folder changes out of this PR; repository automation archives generated output. Review and stage maintained source, tests, and help explicitly rather than staging the entire checkout. Do not move intermediate generated source to artifacts or discard it merely to clean Git status: the shared build expects that layout.
 
-Prepare retains the existing generation ID and generated module GUID through the repository's own handling; bare AutoRest does not perform that repository preparation and can replace metadata. Failures may leave partial output. Fix the cause and rerun, recovering missing metadata manually if necessary. Help intermediates under `artifacts\edgeaction-help-<id>` are new output, not backups. There is no automatic rollback, git reset, staging or commit; the index is unchanged.
+Prepare retains the existing generation ID and generated module GUID through the repository's own handling; bare AutoRest does not perform that repository preparation and can replace metadata. This does not prevent GUID-only churn in source-side documentation or assembly-version normalization. Failures may leave partial output. Fix the cause and rerun, recovering missing metadata manually if necessary. Help intermediates under `artifacts\edgeaction-help-<id>` are new output, not backups. There is no automatic rollback or feature commit. Inspect the index separately; do not treat already-staged regeneration output as approved commit content.
 
 ```powershell
 git status --short
-git diff -- . ..\EdgeAction\help ..\..\..\generated\EdgeAction
+git diff HEAD -- . ..\EdgeAction\help ..\..\..\generated\EdgeAction
+git diff --cached --stat
 ```
 
 Do **not** run bare `autorest` in `src`, reset its cache, or rerun source `build-module.ps1`/Adapt as a help repair. Preparation relocates the standalone exports and manifest; that source directory is no longer a complete standalone module. Installing platyPS alone does not refresh existing help. The README owns the specification input; shared configuration selects generator `4.x`, not an exact extension version, so review runtime-generator changes too.
@@ -210,7 +251,7 @@ Review `.\test\*.Tests.ps1` first. The scenarios reuse the dedicated `powershell
 
 Each selected active group treats its maintained fixture parent and **all children under that parent as disposable**, including leftovers from earlier runs. Before creation and during teardown, shared cleanup deletes execution filters, non-default versions, the current default version, then the parent. The version list's current `IsDefaultVersion` values determine deletion order, not creation order or whether a swap test was expected to succeed. Missing/invalid default status or multiple reported defaults stop version cleanup rather than guessing. It never deletes the resource group or enumerates unrelated parents. Do not use those fixture names for other work or run the same fixture concurrently, even from different checkouts.
 
-Only an observed HTTP 404 counts as already absent. Cleanup waits for the delete cmdlets and verifies absence with GET; authorization, conflict, timeout, and remaining-resource failures stop the group rather than being suppressed. Cleanup failures appear in console/results and prevent Record copy-back. If setup and teardown both fail, both reasons are retained. Interrupted runs still require review; the next selected run attempts cleanup again, not a resource-group-wide reset. Entirely skipped Update groups have no provisioning or cleanup hooks.
+Only an observed HTTP 404 counts as already absent. Cleanup waits for the delete cmdlets and verifies absence with GET; authorization, conflict, timeout, and remaining-resource failures stop the group rather than being suppressed. Cleanup failures appear in console/results and prevent Record copy-back. If setup and teardown both fail, both reasons are retained. Interrupted runs still require review; the next selected run attempts cleanup again, not a resource-group-wide reset.
 
 Edit source scenarios and `utils.ps1`, then invoke `Test-EdgeAction.ps1`; it refreshes those scripts automatically. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
 
@@ -256,17 +297,35 @@ After recording succeeds, run playback against those artifacts **without rebuild
 
 Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; mixed active/skipped groups still record setup/teardown.
 
-The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 12 active scenario groups (Deploy, Get, New, Remove, and Switch). Setup and teardown use distinct recording contexts: the upstream recorder resets request counters even for skipped tests, so sharing a context can overwrite setup responses with teardown responses. Their older recordings require a fresh authorized Record run after this context fix, which refreshes the test scripts automatically, followed by Playback; API-version matching or regeneration alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
+The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 15 active scenario groups (Deploy, Get, New, Remove, Switch, and Update). Setup and teardown use distinct recording contexts: the upstream recorder resets request counters even for skipped tests, so sharing a context can overwrite setup responses with teardown responses. Their older recordings require a fresh authorized Record run after this context fix, which refreshes the test scripts automatically, followed by Playback; API-version matching or regeneration alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
+
+The three Update scenarios use disposable parents `eaupdatetag01`, `eaupdatever01`, and `eaupdatefilter01` in `powershelltests`. Parent updates verify expanded tag replacement without changing location/SKU, then clear tags using the public `-JsonString '{"tags":{}}'` parameter set. This is not evidence that expanded `-Tag @{}` supports clearing: the current generated serializer omits empty objects, sending an empty PATCH that the service rejects. The test deliberately covers the supported raw-JSON request without changing the generated model or runtime. Version updates change tags and verify that default status and deployment type remain unchanged; changing the default requires `Switch-AzEdgeActionVersionDefault`, not PATCH. Execution-filter updates deploy two versions, change `VersionId`, identifier headers and tags, then verify omitted tags and version are preserved by a header-only update. Other dedicated Update JSON/identity test cases remain skipped placeholders.
+
+These newly implemented tests need their own fresh recordings. No regeneration/build is needed solely for these scenario/helper changes when current module artifacts already exist. To record just these groups, then replay the same groups, run:
+
+```powershell
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login -TestName 'Update-AzEdgeAction', 'Update-AzEdgeActionVersion', 'Update-AzEdgeActionExecutionFilter'
+```
+
+After inspecting Record's result, without rebuilding:
+
+```powershell
+& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback -TestName 'Update-AzEdgeAction', 'Update-AzEdgeActionVersion', 'Update-AzEdgeActionExecutionFilter'
+```
 
 ### Results and recording ownership
 
 The child contains Pester's `-EnableExit` so it cannot close the caller. The parent rejects a nonzero child exit and missing, stale, failing, malformed, or all-skipped NUnit results, even if the generated harness reports success. Review the summary and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test\Az.EdgeAction-TestResults.xml`.
 
+Original child stdout, stderr and Pester output remain visible. On failure, the wrapper adds pass/fail/skipped counts, failed test or suite names, available script/line locations, failure messages and the XML path. For Record only, a fresh recording with exactly one matching scenario/status response can add HTTP status and service code/message. Assertion failures, stale recordings and ambiguous matches are not assigned a service error. Summary text redacts common URL, resource-ID, quoted-value and credential patterns and is length-limited; this is not a comprehensive sanitizer for arbitrary service messages. Headers and full request/response payloads are not printed by the added summary. Original output and raw artifact recordings are not filtered or rewritten, and failed runs never copy recordings to source.
+
+These summaries belong to `Test-EdgeAction.ps1`, not the direct `test-module.ps1` harness or interactive public cmdlets. A public cmdlet may show only a generic HTTP error when its generated error model cannot deserialize the service response. Record already retains response bodies in the artifact recording for local inspection; Playback reuses existing recordings rather than recording new responses.
+
 The wrapper loads settings/dependencies, checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result. **Only after a successful Record run passes fresh-result validation**, it copies recordings written by that run's selected groups to `src\EdgeAction\EdgeAction.Autorest\test`, overwriting those source recordings as **unstaged Git diff changes**. File hashes and modification times distinguish newly written recordings (including deterministic same-content rewrites) from stale artifacts. Playback, Live, failed runs, and unchanged unrelated artifacts never trigger copy-back. The runner never stages or commits files.
 
 The harness writes originals and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`. Copy-back includes `env.json` only when needed and compatible with the recording set; a filtered run cannot replace metadata required by untouched source recordings. Subscription/tenant identifiers remain consistent for playback, rather than being rewritten independently. Source recording/metadata edits, or changes to the scenario/helper fingerprints verified during refresh, stop handoff. Results XML, test scripts, `localEnv.json`, and other files are never copied back to source.
 
-**Copied for review does not mean sanitized or ready to publish.** The upstream recorder filters `Authorization` headers only. Handoff rejects detected credential-bearing headers, common secret fields, signed URLs, private keys, and query-bearing `Location`/`Azure-AsyncOperation` headers before any source writes. Polling-header checks do not assume particular query-key names, including service-specific `t`, `c`, `s`, or `h`. Handoff does not decode or certify embedded code/archives or comprehensively scan arbitrary payloads. Review and sanitize the Git diff, including identifiers and payloads, before staging or committing. A blocked handoff leaves originals in artifacts and reports the file/reason without printing its contents. Preserve consistent request/response URL mappings when sanitizing recordings for playback; merely stripping a polling query can break replay. After addressing incompatible metadata or sensitive content, manually preserve a reviewed, playback-compatible set; do not bypass the check by staging raw artifacts.
+**Copied for review does not mean sanitized or ready to publish.** The upstream recorder filters `Authorization` headers only. Handoff rejects detected credential-bearing headers, common secret fields, known signed/credential URL patterns, and private keys before any source writes. Like other AutoRest recordings in this repository, `Location`/`Azure-AsyncOperation` headers and their query strings are preserved unchanged unless those existing credential checks match. There is no blanket query-string rejection, query-key allowlist, or automatic URL rewriting. Retaining a query parameter is not proof that its value is safe to publish. Handoff does not decode or certify embedded code/archives or comprehensively scan arbitrary payloads. Review and sanitize the Git diff, including identifiers and payloads, before staging or committing. A blocked handoff leaves originals in artifacts and reports the file/reason without printing its contents. Preserve consistent request/response URL mappings when sanitizing recordings for playback; merely stripping a polling query can break replay. After addressing incompatible metadata or sensitive content, manually preserve a reviewed, playback-compatible set; do not bypass the check by staging raw artifacts.
 
 The runner does not back up recordings or roll back partial copy failures. Copy errors fail explicitly and may leave some source changes for inspection. **Preserve any uncopied outputs before rebuilding or rerunning**, because the upstream workflow can replace them. Existing snapshot directories are untouched. Do not run multiple harnesses/builds concurrently against the same artifacts or source test directory. After reviewing the copied files, rebuild and rerun playback to verify the source inputs. The developer still owns cleanup after interrupted/failed cloud runs, and skipped tests are not coverage.
 
@@ -276,6 +335,13 @@ Run these from the same `src\EdgeAction\EdgeAction.Autorest` directory. They exe
 
 ```powershell
 Import-Module Pester -RequiredVersion 4.10.1
-$result = Invoke-Pester -Script ..\tools\GenerationScripts\tests\Update-EdgeActionGeneratedFiles.Tests.ps1, ..\tools\TestScripts\tests\Test-EdgeAction.Tests.ps1, ..\tools\TestScripts\tests\ScenarioCleanup.Tests.ps1 -PassThru
+$result = Invoke-Pester -Script ..\tools\GenerationScripts\tests\Update-EdgeActionGeneratedFiles.Tests.ps1, ..\tools\TestScripts\tests\Test-EdgeAction.Tests.ps1, ..\tools\TestScripts\tests\ScenarioCleanup.Tests.ps1, ..\tools\TestScripts\tests\RecordingLifecycle.Tests.ps1, ..\tools\TestScripts\tests\UpdateScenarios.Tests.ps1 -PassThru
 if ($result.FailedCount -gt 0 -or $result.TotalCount -eq 0) { throw 'Offline wrapper tests failed or none ran.' }
+```
+
+With existing module build artifacts, also verify actual generated request serialization using an in-memory terminal (no network, authentication or recordings):
+
+```powershell
+$result = Invoke-Pester -Script ..\tools\TestScripts\tests\UpdateSerialization.Tests.ps1 -PassThru
+if ($result.FailedCount -gt 0 -or $result.TotalCount -ne 3) { throw 'Offline serialization checks failed.' }
 ```

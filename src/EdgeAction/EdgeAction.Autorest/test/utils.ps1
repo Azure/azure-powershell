@@ -128,7 +128,8 @@ function Assert-EdgeActionTestFixture {
     $fixtureNames = @(
         'eaptdeploydec02', 'eagetdec01', 'eagetfilterdec02', 'eagetverdec01',
         'eagetcodedec03', 'eatestdec01', 'eafilterdec03', 'eaverdec01',
-        'eadeletedec01', 'eadelfilterdec02', 'eadelverdec01', 'easwapdec01'
+        'eadeletedec01', 'eadelfilterdec02', 'eadelverdec01', 'easwapdec01',
+        'eaupdatetag01', 'eaupdatever01', 'eaupdatefilter01'
     )
     if ($ResourceGroupName -cne 'powershelltests' -or $Name -cnotin $fixtureNames) {
         throw 'Fixture cleanup is restricted to the maintained scenario names in the dedicated powershelltests resource group.'

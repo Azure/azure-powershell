@@ -297,8 +297,48 @@ function Invoke-EdgeActionScenario {
     Invoke-EdgeActionHarness $Mode $TestName
 }
 
+function Format-EdgeActionDiagnosticText {
+    param([string]$Text)
+    $text = $Text -replace 'https?://[^\s"''<>]+', '[URL redacted]' `
+        -replace '(?i)/subscriptions/[^\s"''<>]+', '[resource ID redacted]' `
+        -replace '(?i)[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}', '[ID redacted]' `
+        -replace '''[^'']*''|"[^"]*"', '[quoted value redacted]' `
+        -replace '(?i)(token|secret|password|authorization|sig|api[-_]?key)\s*[:=]\s*\S+', '$1=[redacted]' `
+        -replace '[\x00-\x1f\x7f]', ' '
+    if ($text.Length -gt 500) { $text = $text.Substring(0, 500) + ' [truncated]' }
+    $text
+}
+
+function Write-EdgeActionRecordedFailure {
+    param($Case, [string]$ResultsPath, [datetime]$Started)
+    # Only correlate a fresh Record response with the same scenario and reported HTTP status.
+    if ($Case.name -notmatch '^([A-Za-z]+-AzEdgeAction[A-Za-z]*)\.(.+)$') { return }
+    $group = $Matches[1]
+    $scenario = $Matches[2]
+    if ([string]$Case.failure.message -notmatch 'Status:\s*(\w+)') { return }
+    $status = [System.Net.HttpStatusCode]$Matches[1]
+    $recording = Join-Path (Split-Path $ResultsPath) "$group.Recording.json"
+    if (-not (Test-Path $recording) -or (Get-Item $recording).LastWriteTimeUtc -lt $Started) { return }
+    $data = Get-Content $recording -Raw | ConvertFrom-Json -AsHashtable
+    $responses = @(
+        foreach ($key in $data.Keys) {
+            $identity = $key -split '\+', 4
+            if ($identity.Count -eq 4 -and $identity[0] -ceq $group -and $identity[2] -ceq $scenario -and
+                [int]$data[$key].Response.StatusCode -eq [int]$status) { $data[$key].Response }
+        }
+    )
+    if ($responses.Count -ne 1 -or [int]$status -lt 400) { return }
+    $content = $responses[0].Content
+    if ($responses[0].isContentBase64) { $content = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($content)) }
+    $errorBody = $content | ConvertFrom-Json
+    if ($errorBody.Error) { $errorBody = $errorBody.Error }
+    $code = Format-EdgeActionDiagnosticText ([string]$errorBody.Code)
+    $message = Format-EdgeActionDiagnosticText ([string]$errorBody.Message)
+    Write-Host "  Recorded response: HTTP $([int]$status); service code: $code; message: $message"
+}
+
 function Assert-EdgeActionResults {
-    param([string]$Path, [datetime]$Started, [int]$ExitCode)
+    param([string]$Path, [datetime]$Started, [int]$ExitCode, [switch]$IncludeRecordedResponses)
     if (-not (Test-Path $Path) -or (Get-Item $Path).LastWriteTimeUtc -lt $Started) {
         if ($ExitCode -ne 0) { throw "Scenario harness failed before producing fresh results (child exit $ExitCode). See the child error above. Results: $Path." }
         throw "Missing or stale test results: $Path (child exit $ExitCode)."
@@ -308,11 +348,30 @@ function Assert-EdgeActionResults {
     $cases = @($xml.SelectNodes('//test-case'))
     $executed = @($cases | Where-Object { $_.executed -eq 'True' })
     $failed = @($executed | Where-Object { $_.success -ne 'True' })
-    if (-not $root -or $executed.Count -eq 0) { throw 'No executed scenario tests in the fresh NUnit results.' }
+    if (-not $root) { throw 'No executed scenario tests in the fresh NUnit results.' }
     Write-Host "Scenario results: $($executed.Count) executed, $($failed.Count) failed, $($cases.Count - $executed.Count) not executed. XML: $Path"
     if ($ExitCode -ne 0 -or $failed.Count -gt 0 -or [int]$root.failures -gt 0 -or [int]$root.errors -gt 0) {
+        Write-Host "Failure summary: $($executed.Count - $failed.Count) passed, $($failed.Count) failed, $($cases.Count - $executed.Count) skipped/not executed; XML errors: $($root.errors)."
+        $failures = @($xml.SelectNodes('//test-case[failure] | //test-suite[failure]'))
+        foreach ($failure in $failures) {
+            $label = Format-EdgeActionDiagnosticText ([string]$failure.name)
+            $message = Format-EdgeActionDiagnosticText ([string]$failure.failure.message)
+            $location = ''
+            if ([string]$failure.failure.'stack-trace' -match '([A-Za-z0-9_.-]+\.ps1): line (\d+)') {
+                $location = " ($($Matches[1]):$($Matches[2]))"
+            }
+            Write-Host "FAILED: $label$location - $message"
+            if ($IncludeRecordedResponses) {
+                try { Write-EdgeActionRecordedFailure $failure $Path $Started } catch {
+                    Write-Host '  Recorded response summary unavailable; inspect the artifact recording locally.'
+                }
+            }
+        }
+        if (-not $failures.Count) { Write-Host 'No failure details were supplied in XML; inspect the original child output above.' }
+        Write-Host "Results: $Path"
         throw "Scenario tests failed (child exit $ExitCode). Inspect $Path."
     }
+    if ($executed.Count -eq 0) { throw 'No executed scenario tests in the fresh NUnit results.' }
 }
 
 function Invoke-EdgeActionTestChild {
@@ -422,9 +481,6 @@ function Assert-EdgeActionRecordingReviewInput {
             foreach ($headerSet in 'Headers', 'ContentHeaders') {
                 foreach ($header in $message[$headerSet].Keys) {
                     $value = $message[$headerSet][$header] -join ''
-                    if ($header -match '^(?i:Location|Azure-AsyncOperation)$' -and $value.Contains('?')) {
-                        throw "$blocked Query-bearing polling/location header detected."
-                    }
                     if ($header -match '(?i)authorization|cookie|token|secret|api[-_]?key' -and
                         $value -notin @('', '[Filtered]', 'Sanitized')) { throw "$blocked Unfiltered credential-bearing header detected." }
                 }
@@ -529,7 +585,7 @@ function Invoke-EdgeActionTests {
     $started = [datetime]::UtcNow
     $code = Invoke-EdgeActionTestChild $childOptions
     Write-Host 'Starting fresh test-result validation.'
-    Assert-EdgeActionResults $path $started $code
+    Assert-EdgeActionResults $path $started $code -IncludeRecordedResponses:($mode -eq 'Record')
     Write-Host 'Completed fresh test-result validation.'
     if ($mode -eq 'Record') { Copy-EdgeActionRecordingsForReview $recordingsBefore $path }
     Write-Host "Completed $mode scenario harness; tests passed."
