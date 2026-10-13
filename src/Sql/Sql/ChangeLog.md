@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.3.0
 * Added immutability support for Azure SQL Managed Instance long-term retention backups.
     - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
     - Exposed immutability state in managed database long-term retention policy and backup output.

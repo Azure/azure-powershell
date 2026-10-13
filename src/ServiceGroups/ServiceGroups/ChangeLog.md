@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Updated the Service Groups API version to 2026-08-01
     - Added the `AttributeCriticality` parameter to `New-AzServiceGroup` and `Update-AzServiceGroup`
     - Removed `Get-AzServiceGroupAncestor` because the operation is not available in API version 2026-08-01
