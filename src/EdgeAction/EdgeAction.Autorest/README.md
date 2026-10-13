@@ -22,14 +22,12 @@ AutoRest does not generate authentication code for the module. Authentication is
 ## Development
 For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md).
 
-Edit maintained inputs here, then use `..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1`
-to generate, build, and refresh help locally. This is not a source-only generator:
-it also writes intermediate files under `generated\EdgeAction` and runnable modules under `artifacts\Debug`.
-Keep those outputs out of feature commits; review source-side help changes separately.
-Use `..\tools\TestScripts\Test-EdgeAction.ps1` for authorized Record runs and subsequent offline Playback.
-HTTP recordings are reviewed test inputs, not generated-code archives.
-See the [workflow and commit boundaries](how-to.md#workflow-and-commit-boundaries), including staged-change checks.
-The repository pipeline publishes generated-code changes through a separate bot archive PR.
+Use the existing repository preparation/build scripts, platyPS help commands, and
+the built artifact's `test-module.ps1` harness as described in the
+[development steps](how-to.md). No module-specific development wrapper is required.
+Commit maintained inputs, meaningful help changes, and reviewed scenario recordings.
+Do not include development tools, build artifacts, or changes under `generated`;
+the repository pipeline archives generated output through a separate bot PR.
 <!-- endregion -->
 
 ### AutoRest Configuration
