@@ -10,16 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get the details of the serviceGroup's ancestors</summary>
+    /// <summary>
+    /// Lists all available REST API operations for the Microsoft.Management resource provider.
+    /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListAncestors=>POST:"/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/listAncestors"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.Management/operations"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzServiceGroupAncestor_List", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Description(@"Get the details of the serviceGroup's ancestors")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOperation_List")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperation))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Description(@"Lists all available REST API operations for the Microsoft.Management resource provider.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/listAncestors", ApiVersion = "2024-02-01-preview")]
-    public partial class GetAzServiceGroupAncestor_List : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.HttpPath(Path = "/providers/Microsoft.Management/operations", ApiVersion = "2026-08-01")]
+    public partial class GetAzOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IContext
     {
@@ -123,20 +126,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="ServiceGroupName" /> property.</summary>
-        private string _serviceGroupName;
-
-        /// <summary>ServiceGroup Name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "ServiceGroup Name.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"ServiceGroup Name.",
-        SerializedName = @"serviceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.ParameterCategory.Path)]
-        public string ServiceGroupName { get => this._serviceGroupName; set => this._serviceGroupName = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -154,12 +143,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -208,9 +197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzServiceGroupAncestor_List" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="GetAzOperation_List" /> cmdlet class.
         /// </summary>
-        public GetAzServiceGroupAncestor_List()
+        public GetAzOperation_List()
         {
 
         }
@@ -302,12 +291,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'ServiceGroupsListAncestors' operation"))
+                using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token) )
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token) )
-                    {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token);
-                    }
+                    asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token);
                 }
             }
             catch (global::System.AggregateException aggregateException)
@@ -354,12 +340,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServiceGroupsListAncestors(ServiceGroupName, onOk, onDefault, this, Pipeline);
+                    await this.Client.OperationsList(onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ServiceGroupName=ServiceGroupName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -437,12 +423,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse">Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult">Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -454,10 +440,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
-                // nested-array / value / nextLink
+                // pageable / value / nextLink
                 if (null != result.Value)
                 {
                     if (0 == _responseSize && 1 == result.Value.Count)
@@ -491,7 +477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.ServiceGroupsListAncestors_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.OperationsList_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

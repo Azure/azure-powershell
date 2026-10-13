@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ServiceGroupCollectionResponse" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ServiceGroupAttributes" />
     /// </summary>
-    public partial class ServiceGroupCollectionResponseTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class ServiceGroupAttributesTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ServiceGroupCollectionResponse"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ServiceGroupAttributes"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ServiceGroupCollectionResponse"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ServiceGroupAttributes"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ServiceGroupCollectionResponse" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="ServiceGroupAttributes" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,32 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ServiceGroupCollectionResponse" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ServiceGroupAttributes" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ServiceGroupCollectionResponse"
-        /// />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ServiceGroupAttributes" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ServiceGroupCollectionResponse" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="ServiceGroupAttributes" />.</param>
         /// <returns>
-        /// an instance of <see cref="ServiceGroupCollectionResponse" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ServiceGroupAttributes" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ServiceGroupCollectionResponse.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return ServiceGroupAttributes.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -128,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ServiceGroupCollectionResponse.DeserializeFromPSObject(sourceValue);
+                return ServiceGroupAttributes.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ServiceGroupCollectionResponse.DeserializeFromDictionary(sourceValue);
+                return ServiceGroupAttributes.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

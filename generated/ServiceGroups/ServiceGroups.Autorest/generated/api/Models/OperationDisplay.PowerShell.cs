@@ -7,11 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.PowerShell;
 
-    /// <summary>
-    /// Response holding an array of service groups and a nextLink that supports pagination
-    /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(ServiceGroupCollectionResponseTypeConverter))]
-    public partial class ServiceGroupCollectionResponse
+    /// <summary>Localized display information for this particular operation.</summary>
+    [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
+    public partial class OperationDisplay
     {
 
         /// <summary>
@@ -65,44 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationDisplay"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplay" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplay DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new ServiceGroupCollectionResponse(content);
+            return new OperationDisplay(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationDisplay"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplay" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplay DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new ServiceGroupCollectionResponse(content);
+            return new OperationDisplay(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ServiceGroupCollectionResponse" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="OperationDisplay" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="ServiceGroupCollectionResponse" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="OperationDisplay" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplay FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationDisplay"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ServiceGroupCollectionResponse(global::System.Collections.IDictionary content)
+        internal OperationDisplay(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -111,23 +109,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Value"))
+            if (content.Contains("Provider"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             }
-            if (content.Contains("NextLink"))
+            if (content.Contains("Resource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).NextLink, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationDisplay"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ServiceGroupCollectionResponse(global::System.Management.Automation.PSObject content)
+        internal OperationDisplay(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -136,13 +142,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Value"))
+            if (content.Contains("Provider"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Provider, global::System.Convert.ToString);
             }
-            if (content.Contains("NextLink"))
+            if (content.Contains("Resource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponseInternal)this).NextLink, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Resource = (string) content.GetValueForProperty("Resource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Resource, global::System.Convert.ToString);
+            }
+            if (content.Contains("Operation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Operation = (string) content.GetValueForProperty("Operation",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Operation, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationDisplayInternal)this).Description, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -164,9 +178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             return ToJsonString();
         }
     }
-    /// Response holding an array of service groups and a nextLink that supports pagination
-    [System.ComponentModel.TypeConverter(typeof(ServiceGroupCollectionResponseTypeConverter))]
-    public partial interface IServiceGroupCollectionResponse
+    /// Localized display information for this particular operation.
+    [System.ComponentModel.TypeConverter(typeof(OperationDisplayTypeConverter))]
+    public partial interface IOperationDisplay
 
     {
 
