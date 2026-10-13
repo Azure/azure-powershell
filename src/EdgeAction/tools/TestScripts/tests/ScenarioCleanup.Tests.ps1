@@ -336,28 +336,24 @@ Describe 'Cleanup HTTP status and diagnostics' {
 }
 
 Describe 'Scenario cleanup wiring' {
-    It 'keeps every active scenario on shared pre-clean and teardown, with skipped groups inert' {
+    It 'keeps all fifteen active scenarios on shared pre-clean and teardown' {
         $testRoot = Split-Path $script:utilsPath
         $active = 0
         foreach ($file in Get-ChildItem $testRoot -Filter '*.Tests.ps1') {
             $text = Get-Content $file.FullName -Raw
-            if ($file.Name -like 'Update-*') {
-                $text | Should -Not -Match 'BeforeAll|AfterAll|New-AzEdgeAction '
-            } else {
-                $active++
-                $text | Should -Match 'New-EdgeActionTestResource'
-                $text | Should -Match 'BeforeAll\s*\{\s*Initialize-EdgeActionTestScenario'
-                $text | Should -Match 'AfterAll\s*\{[^}]*Complete-EdgeActionTestScenario'
-                $text | Should -Not -Match 'New-AzEdgeAction -'
-                $name = [regex]::Match($text, '(?i)\$script:edgeActionName\s*=\s*"([^"]+)"').Groups[1].Value
-                { Assert-EdgeActionTestFixture powershelltests $name } | Should -Not -Throw
-                if ($file.Name -like 'Remove-*') {
-                    $text | Should -Match '\$remaining.NotFound \| Should -Be \$true'
-                    $text | Should -Not -Match 'SilentlyContinue|Should -Throw'
-                }
+            $active++
+            $text | Should -Match 'New-EdgeActionTestResource'
+            $text | Should -Match 'BeforeAll\s*\{\s*Initialize-EdgeActionTestScenario'
+            $text | Should -Match 'AfterAll\s*\{[^}]*Complete-EdgeActionTestScenario'
+            $text | Should -Not -Match 'New-AzEdgeAction -'
+            $name = [regex]::Match($text, '(?i)\$script:edgeActionName\s*=\s*"([^"]+)"').Groups[1].Value
+            { Assert-EdgeActionTestFixture powershelltests $name } | Should -Not -Throw
+            if ($file.Name -like 'Remove-*') {
+                $text | Should -Match '\$remaining.NotFound \| Should -Be \$true'
+                $text | Should -Not -Match 'SilentlyContinue|Should -Throw'
             }
         }
-        $active | Should -Be 12
+        $active | Should -Be 15
     }
 }
 

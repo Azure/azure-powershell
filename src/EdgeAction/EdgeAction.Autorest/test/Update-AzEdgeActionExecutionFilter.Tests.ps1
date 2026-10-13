@@ -15,10 +15,61 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeActionExecutionF
 }
 
 Describe 'Update-AzEdgeActionExecutionFilter' {
-    It 'UpdateExpanded' -skip {
-        # Test updating execution filter to point to different version
-        # Skipping: Update cmdlet doesn't have -Version parameter
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { Initialize-EdgeActionTestScenario {
+        $script:resourceGroupName = "powershelltests"
+        $script:edgeActionName = "eaupdatefilter01"
+        $script:filterName = "updatefilter"
+        $script:versionIds = @{}
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+        foreach ($version in "v1", "v2") {
+            $isDefault = if ($version -eq "v1") { "True" } else { "False" }
+            $null = New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+                -EdgeActionName $script:edgeActionName -Version $version `
+                -DeploymentType "file" -IsDefaultVersion $isDefault -Location "global"
+            $null = Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+                -EdgeActionName $script:edgeActionName -Version $version `
+                -FilePath (Join-Path $PSScriptRoot 'test_handler.js')
+            $ready = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+                -EdgeActionName $script:edgeActionName -Version $version
+            if ($ready.ProvisioningState -ne "Succeeded" -or $ready.ValidationStatus -ne "Succeeded") {
+                throw "Update fixture version deployment did not succeed. ProvisioningState: $($ready.ProvisioningState), ValidationStatus: $($ready.ValidationStatus)"
+            }
+            if (-not $ready.Id) { throw "Update fixture version has no resource ID." }
+            $script:versionIds[$version] = $ready.Id
+        }
+        $null = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName -ExecutionFilter $script:filterName `
+            -VersionId $script:versionIds["v1"] -Location "global" `
+            -ExecutionFilterIdentifierHeaderName "X-Update-Filter" `
+            -ExecutionFilterIdentifierHeaderValue "initial"
+    } }
+
+    AfterAll {
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
+    }
+
+    It 'UpdateExpanded' {
+        $parameters = @{
+            ResourceGroupName = $script:resourceGroupName
+            EdgeActionName = $script:edgeActionName
+            ExecutionFilter = $script:filterName
+        }
+        $null = Update-AzEdgeActionExecutionFilter @parameters -VersionId $script:versionIds["v2"] `
+            -ExecutionFilterIdentifierHeaderName "X-Updated-Filter" `
+            -ExecutionFilterIdentifierHeaderValue "updated" -Tag @{ Purpose = "updated" }
+        $updated = Get-AzEdgeActionExecutionFilter @parameters
+        $updated.Name | Should -Be $script:filterName
+        $updated.VersionId | Should -Be $script:versionIds["v2"]
+        $updated.ExecutionFilterIdentifierHeaderName | Should -Be "X-Updated-Filter"
+        $updated.ExecutionFilterIdentifierHeaderValue | Should -Be "updated"
+        $updated.Tag['Purpose'] | Should -Be "updated"
+
+        $null = Update-AzEdgeActionExecutionFilter @parameters -ExecutionFilterIdentifierHeaderValue "preserved-tags"
+        $preserved = Get-AzEdgeActionExecutionFilter @parameters
+        $preserved.VersionId | Should -Be $script:versionIds["v2"]
+        $preserved.ExecutionFilterIdentifierHeaderName | Should -Be "X-Updated-Filter"
+        $preserved.ExecutionFilterIdentifierHeaderValue | Should -Be "preserved-tags"
+        $preserved.Tag['Purpose'] | Should -Be "updated"
     }
 
     It 'UpdateViaJsonString' -skip {
