@@ -69,9 +69,8 @@ FormatsToProcess = 'ServiceGroups.Autorest/Az.ServiceGroups.format.ps1xml'
 NestedModules = @('ServiceGroups.Autorest/Az.ServiceGroups.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzServiceGroup', 'Get-AzServiceGroupAncestor', 
-               'New-AzServiceGroup', 'Remove-AzServiceGroup', 
-               'Update-AzServiceGroup'
+FunctionsToExport = 'Get-AzServiceGroup', 'New-AzServiceGroup',
+               'Remove-AzServiceGroup', 'Update-AzServiceGroup'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

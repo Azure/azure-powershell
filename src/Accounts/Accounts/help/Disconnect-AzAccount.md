@@ -44,7 +44,7 @@ Disconnect-AzAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModificati
 
 ## DESCRIPTION
 The Disconnect-AzAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
-After executing this cmdlet, you will need to login again using Connect-AzAccount.
+After executing this cmdlet, you will need to log in again using Connect-AzAccount.
 
 ## EXAMPLES
 

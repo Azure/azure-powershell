@@ -16,21 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceGroup'))
 
 Describe 'New-AzServiceGroup' {
     It 'CreateExpanded' {
-        $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNew -DisplayName $env.ServiceGroupDisplayName -ParentResourceId $env.TenantParentId
+        $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNew -DisplayName $env.ServiceGroupDisplayName -ParentResourceId $env.TenantParentId -AttributeCriticality 1
         $serviceGroup | Should -Not -BeNullOrEmpty
         $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNew
         $serviceGroup.DisplayName | Should -Be $env.ServiceGroupDisplayName
+        $serviceGroup.AttributeCriticality | Should -Be 1
     }
 
     It 'CreateViaJsonString' {
-        $jsonString = '{"properties":{"displayName":"Test SG From JSON","parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
+        $jsonString = '{"properties":{"displayName":"Test SG From JSON","attributes":{"criticality":2},"parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
         $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNewJson -JsonString $jsonString
         $serviceGroup | Should -Not -BeNullOrEmpty
         $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNewJson
+        $serviceGroup.AttributeCriticality | Should -Be 2
     }
 
     It 'CreateViaJsonFilePath' {
-        $jsonContent = '{"properties":{"displayName":"Test SG From JSON File","parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
+        $jsonContent = '{"properties":{"displayName":"Test SG From JSON File","attributes":{"criticality":3},"parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
         $jsonFilePath = Join-Path -Path $PSScriptRoot -ChildPath 'New-AzServiceGroup-Params.json'
         $jsonContent | Out-File -FilePath $jsonFilePath -Encoding utf8
         try {
@@ -38,6 +40,7 @@ Describe 'New-AzServiceGroup' {
             $serviceGroup | Should -Not -BeNullOrEmpty
             $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNewJsonFile
             $serviceGroup.DisplayName | Should -Be 'Test SG From JSON File'
+            $serviceGroup.AttributeCriticality | Should -Be 3
         } finally {
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
         }
