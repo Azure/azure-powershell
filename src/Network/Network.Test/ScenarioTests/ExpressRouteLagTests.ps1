@@ -294,3 +294,73 @@ function Test-ExpressRouteLagIdentity
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test managing ExpressRouteLag authorizations and retrieving an authorization key.
+#>
+function Test-ExpressRouteLagAuthorization
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/expressRouteLags"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $peeringLocation = "Azure"
+    $encapsulation = "QinQ"
+    $bandwidthInGbps = 10
+    $numberOfPorts = 2
+    $lacpTimer = "fast"
+    $minimumActivePortsRequired = 2
+    $authorizationName = "testkey1"
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ExpressRouteLag
+        $expressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
+        Assert-NotNull $expressRouteLag
+
+        # Add an authorization
+        $authorization = $expressRouteLag | Add-AzExpressRouteLagAuthorization -Name $authorizationName
+        Assert-NotNull $authorization
+        Assert-True { Check-CmdletReturnType "Add-AzExpressRouteLagAuthorization" $authorization }
+        Assert-AreEqual $authorizationName $authorization.Name
+
+        # Get the authorization
+        $authorization = $expressRouteLag | Get-AzExpressRouteLagAuthorization -Name $authorizationName
+        Assert-NotNull $authorization
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteLagAuthorization" $authorization }
+        Assert-AreEqual $authorizationName $authorization.Name
+
+        # List authorizations
+        $authorizations = $expressRouteLag | Get-AzExpressRouteLagAuthorization
+        Assert-AreEqual 1 @($authorizations).Count
+
+        # Get the authorization key by name
+        $key = Get-AzExpressRouteLagAuthorizationKey -ResourceGroupName $rgname -ExpressRouteLagName $rname -Name $authorizationName
+        Assert-NotNull $key
+        Assert-NotNull $key.AuthorizationKey
+
+        # Get the authorization key from the LAG object
+        $keyFromObject = $expressRouteLag | Get-AzExpressRouteLagAuthorizationKey -Name $authorizationName
+        Assert-NotNull $keyFromObject
+        Assert-AreEqual $key.AuthorizationKey $keyFromObject.AuthorizationKey
+
+        # Remove the authorization
+        $removed = $expressRouteLag | Remove-AzExpressRouteLagAuthorization -Name $authorizationName -PassThru -Force
+        Assert-AreEqual $true $removed
+        $authorizations = $expressRouteLag | Get-AzExpressRouteLagAuthorization
+        Assert-AreEqual 0 @($authorizations).Count
+
+        # Remove ExpressRouteLag
+        $removedLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removedLag
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
