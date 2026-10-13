@@ -392,12 +392,20 @@ function Test-Gallery
         Assert-AreEqual $softDeletedVersion.Name $namedSoftDeletedByObject[0].Name;
 
         # Step 3: Restore the version and verify it is active and absent from the recycle bin
+        Assert-Throws {
+            Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location 'eastus2';
+        }
         $restoredVersion = Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
             -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc;
         Assert-AreEqual "PSGalleryImageVersion" $restoredVersion.GetType().Name;
         $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                    -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Assert-AreEqual $galleryImageVersionName $version.Name;
+        Assert-Throws {
+            Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc;
+        }
         $softDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
             -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName);
         Assert-AreEqual 0 $softDeletedVersions.Count;
