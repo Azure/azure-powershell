@@ -39,7 +39,8 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String
 ### AzureWorkloadEnableProtection
 ```
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableItem] <ProtectableItemBase>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ChildDatabaseName <String[]>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ModifyProtection
@@ -107,6 +108,21 @@ Type: System.String
 Parameter Sets: AzureFileShareEnableProtection
 Aliases:
 Accepted values: KeyBased, IdentityBased
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChildDatabaseName
+List of child database names to protect under a SQL (MSSQL) Instance snapshot protection. Applicable when protecting a SQL Instance with an MSSQLInstance (snapshot) policy.
+
+```yaml
+Type: System.String[]
+Parameter Sets: AzureWorkloadEnableProtection
+Aliases:
 
 Required: False
 Position: Named

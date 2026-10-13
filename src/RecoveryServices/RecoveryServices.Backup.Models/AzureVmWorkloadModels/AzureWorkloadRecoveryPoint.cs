@@ -26,6 +26,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public IList<SQLDataDirectory> DataDirectoryPaths { get; set; }
 
         /// <summary>
+        /// List of databases included in the recovery point.
+        /// </summary>
+        public IList<DatabaseInRP> IncludedDatabases { get; set; }
+
+        /// <summary>
+        /// Detailed info of the snapshot restore point, when the recovery point is a snapshot.
+        /// </summary>
+        public SnapshotRecoveryPointInfo SnapshotRecoveryPointInfo { get; set; }
+
+        /// <summary>
         /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
         /// </summary>
         public RecoveryPointTier RecoveryPointTier;

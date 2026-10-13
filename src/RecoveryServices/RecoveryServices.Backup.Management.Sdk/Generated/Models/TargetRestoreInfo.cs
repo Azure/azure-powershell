@@ -77,5 +77,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetDirectoryForFileRestore")]
         public string TargetDirectoryForFileRestore {get; set; }
+
+        /// <summary>
+        /// Gets or sets target directory mapping used for snapshot attach restore (e.g. { "all": "C:/temp" }).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetDirectoryMapping")]
+        public System.Collections.Generic.IDictionary<string, string> TargetDirectoryMapping {get; set; }
     }
 }

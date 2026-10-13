@@ -125,6 +125,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("VaultArchive")]
         public RecoveryPointTier TargetTier { get; set; }
 
+        /// <summary>
+        /// When set, only the latest recovery point for the item is fetched.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.GetLatestRecoveryPointOnly)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.GetLatestRecoveryPointOnly)]
+        public SwitchParameter GetLatestRecoveryPointOnly { get; set; }
+
+        /// <summary>
+        /// Id of the base snapshot recovery point.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseSnapshotRecoveryPointId)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseSnapshotRecoveryPointId)]
+        [ValidateNotNullOrEmpty]
+        public string BaseSnapshotRecoveryPointId { get; set; }
+
+        /// <summary>
+        /// Id of the datasource of the base snapshot recovery point.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseRecoveryPointDatasourceId)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseRecoveryPointDatasourceId)]
+        [ValidateNotNullOrEmpty]
+        public string BaseRecoveryPointDatasourceId { get; set; }
+
+        /// <summary>
+        /// Restore point query type to filter the recovery points to fetch (SQL/MSSQL items).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RestorePointQueryType)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RestorePointQueryType)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Full", "Log", "Differential", "FullAndDifferential", "All", "Incremental", "SnapshotFull", "SnapshotCopyOnlyFull", "Snapshot", "FullDifferentialAndSnapshot")]
+        public string RestorePointQueryType { get; set; }
+
+        /// <summary>
+        /// Recovery mode to filter the recovery points (e.g. SnapshotAttachAndRecover) for SQL (MSSQL) items.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryMode)]
+        [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryMode)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("SnapshotAttachAndRecover", "SnapshotAttach", "RecoveryUsingSnapshot")]
+        public string RecoveryMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -193,10 +234,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     
                     providerParameters.Add(RecoveryPointParams.StartDate, rangeStart);
                     providerParameters.Add(RecoveryPointParams.EndDate, rangeEnd);
+                    providerParameters.Add(RecoveryPointParams.GetLatestRPOnly, GetLatestRecoveryPointOnly.IsPresent);
+                    if (!string.IsNullOrEmpty(BaseSnapshotRecoveryPointId))
+                    {
+                        providerParameters.Add(RecoveryPointParams.BaseSnapshotRPId, BaseSnapshotRecoveryPointId);
+                    }
+                    if (!string.IsNullOrEmpty(BaseRecoveryPointDatasourceId))
+                    {
+                        providerParameters.Add(RecoveryPointParams.BaseRPDatasourceId, BaseRecoveryPointDatasourceId);
+                    }
+                    if (!string.IsNullOrEmpty(RecoveryMode))
+                    {
+                        providerParameters.Add(RecoveryPointParams.RecoveryMode, RecoveryMode);
+                    }
                     if (string.Compare(Item.BackupManagementType.ToString(),
                         BackupManagementType.AzureWorkload.ToString()) == 0)
                     {
-                        providerParameters.Add(RecoveryPointParams.RestorePointQueryType, "FullAndDifferential");
+                        string workloadQueryType = !string.IsNullOrEmpty(RestorePointQueryType) ?
+                            RestorePointQueryType : "FullAndDifferential";
+                        providerParameters.Add(RecoveryPointParams.RestorePointQueryType, workloadQueryType);
                     }
 
                     PsBackupProviderManager providerManager =

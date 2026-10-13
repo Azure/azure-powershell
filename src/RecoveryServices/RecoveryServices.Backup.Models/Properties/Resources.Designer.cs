@@ -1568,6 +1568,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to TargetResourceGroupName is required for SQL Instance snapshot restore..
+        /// </summary>
+        public static string AzureWorkloadSQLInstanceSnapshotTargetResourceGroupRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadSQLInstanceSnapshotTargetResourceGroupRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssignedIdentityId is required for SQL Instance snapshot restore..
+        /// </summary>
+        public static string AzureWorkloadSQLInstanceSnapshotUserAssignedIdentityRequired
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadSQLInstanceSnapshotUserAssignedIdentityRequired", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to resolve the clientId and principalId for the user-assigned managed identity '{0}'. Ensure the identity exists and you have access to it..
+        /// </summary>
+        public static string AzureWorkloadSQLInstanceSnapshotIdentityResolutionFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadSQLInstanceSnapshotIdentityResolutionFailed", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Target ResourceGroup parameter is not supported for Unmanaged Virtual machine restore.
         /// </summary>
         public static string TargetResourcegroupNotSupported

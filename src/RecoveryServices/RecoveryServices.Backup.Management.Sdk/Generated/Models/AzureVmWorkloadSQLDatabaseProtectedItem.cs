@@ -139,10 +139,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="nodesList">List of the nodes in case of distributed container.
         /// </param>
-        public AzureVmWorkloadSQLDatabaseProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string sourceLocation = default(string), string vaultId = default(string), SourceSideScanInfo sourceSideScanInfo = default(SourceSideScanInfo), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>), System.Collections.Generic.IList<DistributedNodesInfo> nodesList = default(System.Collections.Generic.IList<DistributedNodesInfo>))
+
+        /// <param name="parentProtectedItem">Name of the parent protected item (e.g., SQL Instance name) when this
+        /// database is protected as part of a parent.
+        /// </param>
+
+        /// <param name="protectionLevel">Protection type in case protected as part of a parent.
+        /// Possible values include: &#39;Database&#39;, &#39;DatabaseUnderInstance&#39;</param>
+        public AzureVmWorkloadSQLDatabaseProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string sourceLocation = default(string), string vaultId = default(string), SourceSideScanInfo sourceSideScanInfo = default(SourceSideScanInfo), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>), System.Collections.Generic.IList<DistributedNodesInfo> nodesList = default(System.Collections.Generic.IList<DistributedNodesInfo>), string parentProtectedItem = default(string), string protectionLevel = default(string))
 
         : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays, sourceLocation, vaultId, sourceSideScanInfo, friendlyName, serverName, parentName, parentType, protectionStatus, protectionState, lastBackupStatus, lastBackupTime, lastBackupErrorDetail, protectedItemDataSourceId, protectedItemHealthStatus, extendedInfo, kpisHealths, nodesList)
         {
+            this.ParentProtectedItem = parentProtectedItem;
+            this.ProtectionLevel = protectionLevel;
             CustomInit();
         }
 
@@ -150,6 +159,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets name of the parent protected item (e.g., SQL Instance name)
+        /// when this database is protected as part of a parent.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "parentProtectedItem")]
+        public string ParentProtectedItem {get; set; }
+
+        /// <summary>
+        /// Gets or sets protection type in case protected as part of a parent. Possible values include: &#39;Database&#39;, &#39;DatabaseUnderInstance&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protectionLevel")]
+        public string ProtectionLevel {get; set; }
 
     }
 }

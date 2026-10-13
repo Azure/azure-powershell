@@ -17,8 +17,10 @@ This command constructs the recovery configuration of a backed up item such as S
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-RecoveryPoint] <RecoveryPointBase>]
  [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
  [-AlternateWorkloadRestore] [-TargetContainer <ContainerBase>] [-RestoreAsFiles]
- [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+ [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-DisksToDetachOnClash <String[]>]
+ [-TargetResourceGroupName <String>] [-UserAssignedIdentityId <String>] [-TargetInstanceDatabaseName <String>]
+ [-RecoveryMode <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion]
+ [<CommonParameters>]
 ```
 
 ### LogChainParameterSet
@@ -26,8 +28,10 @@ Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-RecoveryPoint] <RecoveryPo
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-PointInTime] <DateTime>]
  [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
  [-AlternateWorkloadRestore] [-TargetContainer <ContainerBase>] [-RestoreAsFiles]
- [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+ [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-DisksToDetachOnClash <String[]>]
+ [-TargetResourceGroupName <String>] [-UserAssignedIdentityId <String>] [-TargetInstanceDatabaseName <String>]
+ [-RecoveryMode <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +61,24 @@ This command constructs the recovery configuration of a backed up item such as S
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -AlternateWorkloadRestore -RecoveryPoint $rp[0] -TargetItem <ProtectableItemBase> -TargetContainer $targetVMContainer -VaultId $vault.ID
 ```
 
+### Example 3: SQL Instance snapshot restore with customer-supplied target paths
+```powershell
+$recoveryConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $snapRp -OriginalWorkloadRestore -TargetResourceGroupName "sqlsnap-restore-rg" -UserAssignedIdentityId $uamiId -VaultId $vault.ID
+
+# The config lists each source volume path (from the snapshot recovery point) with a blank target
+# path. Set the target path for every volume you want to remap on filesystem clash, then restore.
+$recoveryConfig.targetPhysicalPath | Format-Table SourcePath, TargetPath
+$recoveryConfig.targetPhysicalPath[0].TargetPath = "X:\"
+$recoveryConfig.targetPhysicalPath[1].TargetPath = "P:\"
+
+Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $recoveryConfig -VaultId $vault.ID
+```
+
+For a SQL (MSSQL) Instance snapshot recovery point, the recovery config surfaces each source volume
+path with an empty `TargetPath`. Set the `TargetPath` on the volumes you want to remap (the portal
+shows the source path and asks for a target path), then pipe the config to `Restore-AzRecoveryServicesBackupItem`.
+This applies to both original (`-OriginalWorkloadRestore`) and alternate (`-AlternateWorkloadRestore`) location restore.
+
 ## PARAMETERS
 
 ### -AlternateWorkloadRestore
@@ -81,6 +103,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisksToDetachOnClash
+List of disk ARM IDs to detach in case of a filesystem clash during SQL (MSSQL) Instance snapshot restore.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -164,6 +201,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryMode
+Recovery mode for SQL (MSSQL) Instance snapshot restore. Accepted values: SnapshotAttachAndRecover (default), SnapshotAttach, RecoveryUsingSnapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryPoint
 Recovery point object to be restored
 
@@ -209,6 +262,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetInstanceDatabaseName
+Target database name for SQL (MSSQL) Instance snapshot restore (maps to the restore request's `targetInfo.databaseName`). Overrides the default `<targetInstance>/*_restored_<timestamp>` value; may be instance-qualified (e.g. `mssqlserver/*_lh_20261012_230309`).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetItem
 Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.
 
@@ -219,6 +287,36 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceGroupName
+Target resource group name for SQL (MSSQL) Instance snapshot restore. Required for SQL Instance snapshot restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ARM ID of the user-assigned managed identity used for SQL (MSSQL) Instance snapshot restore. Required for SQL Instance snapshot restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
         /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
+        /// <param name="vmWorkloadPolicyType">Type of the protection policy.
+        /// Possible values include: &#39;Invalid&#39;, &#39;SnapshotV1&#39;, &#39;SnapshotV2&#39;, &#39;Streaming&#39;</param>
+
         /// <param name="settings">Common settings for the backup management
         /// </param>
 
@@ -45,11 +48,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="makePolicyConsistent">Fix the policy inconsistency
         /// </param>
-        public AzureVmWorkloadProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string workLoadType = default(string), Settings settings = default(Settings), System.Collections.Generic.IList<SubProtectionPolicy> subProtectionPolicy = default(System.Collections.Generic.IList<SubProtectionPolicy>), bool? makePolicyConsistent = default(bool?))
+        public AzureVmWorkloadProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string workLoadType = default(string), string vmWorkloadPolicyType = default(string), Settings settings = default(Settings), System.Collections.Generic.IList<SubProtectionPolicy> subProtectionPolicy = default(System.Collections.Generic.IList<SubProtectionPolicy>), bool? makePolicyConsistent = default(bool?))
 
         : base(protectedItemsCount, resourceGuardOperationRequests)
         {
             this.WorkLoadType = workLoadType;
+            this.VmWorkloadPolicyType = vmWorkloadPolicyType;
             this.Settings = settings;
             this.SubProtectionPolicy = subProtectionPolicy;
             this.MakePolicyConsistent = makePolicyConsistent;
@@ -67,6 +71,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workLoadType")]
         public string WorkLoadType {get; set; }
+
+        /// <summary>
+        /// Gets or sets type of the protection policy. Possible values include: &#39;Invalid&#39;, &#39;SnapshotV1&#39;, &#39;SnapshotV2&#39;, &#39;Streaming&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vmWorkloadPolicyType")]
+        public string VmWorkloadPolicyType {get; set; }
 
         /// <summary>
         /// Gets or sets common settings for the backup management

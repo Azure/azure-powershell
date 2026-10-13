@@ -15,15 +15,17 @@ The **Register-AzRecoveryServicesBackupContainer** cmdlet registers Azure worklo
 ### Register (Default)
 ```
 Register-AzRecoveryServicesBackupContainer [-ResourceId] <String>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ReRegister
 ```
 Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force]
+ [-ContainerSubscriptionId <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureFileRegister
@@ -110,6 +112,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ContainerSubscriptionId
+Subscription ID of the subscription containing the containers to discover during registration, for cross-subscription container discovery. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: Register, ReRegister
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

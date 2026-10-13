@@ -25,10 +25,10 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-# Spec source: merged Azure/azure-rest-api-specs PR #44639 (RecoveryServicesBackup 2026-08-01, listMountScripts / MSRC-114273), merged 2026-08-29.
-commit: 4e6e13d398d4c2616237322a62394fc4f1dfeb81
+# Spec source: merged Azure/azure-rest-api-specs PR #46044 (RecoveryServicesBackup 2026-10-01 API version), merged 2026-10-08.
+commit: 3d87fd4a88462f3a3d0e8aaa96949c789ef8260d
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-08-01/bms.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-10-01/bms.json
 
 directive:
   # Normalize multiline descriptions so generated C# documentation remains well-formed.

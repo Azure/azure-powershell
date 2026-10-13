@@ -17,16 +17,19 @@ Gets the recovery points for a backed up item.
 ### NoFilterParameterSet (Default)
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-Tier <RecoveryPointTier>]
- [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly]
+ [-BaseSnapshotRecoveryPointId <String>] [-BaseRecoveryPointDatasourceId <String>]
+ [-RestorePointQueryType <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DateTimeFilter
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
  [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <Boolean>]
- [-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly] [-BaseSnapshotRecoveryPointId <String>]
+ [-BaseRecoveryPointDatasourceId <String>] [-RestorePointQueryType <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RecoveryPointId
@@ -143,6 +146,38 @@ The last command displays the list of pruned recovery points.
 
 ## PARAMETERS
 
+### -BaseRecoveryPointDatasourceId
+
+Id of the datasource of the base snapshot recovery point.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BaseSnapshotRecoveryPointId
+
+Id of the base snapshot recovery point. Used to fetch recovery points relative to a base snapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -170,6 +205,22 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GetLatestRecoveryPointOnly
+
+When set, only the latest recovery point for the item is fetched.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -235,6 +286,23 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestorePointQueryType
+
+Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Log, Differential, FullAndDifferential, All, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+Accepted values: Full, Log, Differential, FullAndDifferential, All, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

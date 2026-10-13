@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "MSSQL, AzureFiles";
+        private const string validWorkloadTypes = "MSSQL, MSSQLInstance, AzureFiles";
 
         /// <summary>
         /// Azure Vm Id.
@@ -117,6 +117,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Container.ForceOption)]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Subscription ID of the subscription containing the containers to discover during registration.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = RegisterParamSet, HelpMessage = ParamHelpMsgs.Container.ContainerSubscriptionId)]
+        [Parameter(Mandatory = false, ParameterSetName = ReRegisterParamSet, HelpMessage = ParamHelpMsgs.Container.ContainerSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerSubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -187,6 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ContainerParams.BackupManagementType, BackupManagementType.ToString() },
                                 { ContainerParams.Container, Container},
                                 { ContainerParams.ResourceGroupName, vmResourceGroupParsed },
+                                { ContainerParams.ContainerSubscriptionId, ContainerSubscriptionId },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =

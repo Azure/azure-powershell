@@ -164,7 +164,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents SAPHANA in Azure VM.
         /// </summary>
-        SAPHanaDatabase
+        SAPHanaDatabase,
+
+        /// <summary>
+        /// Represents a SQL Server instance in Azure VM (snapshot-based instance backup).
+        /// </summary>
+        MSSQLInstance
     }
 
     /// <summary>
@@ -454,7 +459,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Full,
         Differential,
         Log,
-        CopyOnlyFull
+        CopyOnlyFull,
+        SnapshotFull,
+        SnapshotCopyOnlyFull
     }
 
     /// <summary>
