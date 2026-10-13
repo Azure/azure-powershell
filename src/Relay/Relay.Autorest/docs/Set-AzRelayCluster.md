@@ -34,7 +34,7 @@ changed, so tags or capacity can be updated without having to re-specify -Locati
 
 ### Example 1: Update a Relay dedicated cluster
 ```powershell
-Set-AzRelayCluster -ResourceGroupName lucas-relay-rg -Name relaycluster01 -Location eastus -SkuCapacity 2
+Set-AzRelayCluster -ResourceGroupName lucas-relay-rg -Name relaycluster01 -SkuCapacity 2
 ```
 
 ```output
@@ -43,8 +43,7 @@ Location Name           ResourceGroupName
 East US  relaycluster01 lucas-relay-rg
 ```
 
-The cmdlet replaces the properties of an existing Relay dedicated cluster.
-`-Location` is mandatory because this cmdlet performs a full update; supply the cluster's existing location.
+The cmdlet updates the capacity of the existing Relay dedicated cluster while preserving its location and other properties.
 
 ## PARAMETERS
 
