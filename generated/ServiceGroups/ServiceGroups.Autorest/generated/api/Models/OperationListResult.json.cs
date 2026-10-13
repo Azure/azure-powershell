@@ -8,9 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Extensions;
 
     /// <summary>
-    /// Response holding an array of service groups and a nextLink that supports pagination
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
     /// </summary>
-    public partial class ServiceGroupCollectionResponse
+    public partial class OperationListResult
     {
 
         /// <summary>
@@ -56,22 +57,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject json ? new ServiceGroupCollectionResponse(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject json ? new OperationListResult(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject into a new instance of <see cref="ServiceGroupCollectionResponse" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject into a new instance of <see cref="OperationListResult" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ServiceGroupCollectionResponse(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject json)
+        internal OperationListResult(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -79,19 +80,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup) (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroup.FromJson(__u) )) ))() : null : _value;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperation) (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.Operation.FromJson(__u) )) ))() : null : _value;}
             {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ServiceGroupCollectionResponse" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="OperationListResult" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ServiceGroupCollectionResponse" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="OperationListResult" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode)
         {
@@ -103,16 +104,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
             {
                 return container;
             }
-            if (null != this._value)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.XNodeArray();
-                foreach( var __x in this._value )
+                if (null != this._value)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._value )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("value",__w);
                 }
-                container.Add("value",__w);
             }
-            AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }
