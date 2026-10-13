@@ -1,91 +1,189 @@
 {
-  "Get-AzMonitorHealthModelSignalDefinition+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions?api-version=2026-09-01-preview+1": {
+  "Get-AzMonitorHealthModelSignalDefinition+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions?api-version=2026-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions?api-version=2026-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000071" ],
-        "CommandName": [ "Get-AzMonitorHealthModelSignalDefinition" ],
-        "FullCommandName": [ "Get-AzMonitorHealthModelSignalDefinition_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "49"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000090"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelSignalDefinition"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelSignalDefinition_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000072" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000073" ],
-        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000074" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "246" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3746" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052014Z:00000000-0000-4000-8000-000000000074" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B6DDE0A4C79D456EADEBD0BAE4F15706 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:14Z" ],
-        "Date": [ "Thu, 10 Sep 2026 05:20:13 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000144"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000192"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000284"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "248"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151728Z:00000000-0000-4000-8000-000000000284"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3FFB029D8CD04F4CA211874ED25179EF Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:28Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:27 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "980" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "982"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions/azps-sig-shared-a9skjo\",\"name\":\"azps-sig-shared-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:18:26.1408686Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:18:26.29251Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared signal definition\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions/azps-sig-shared-r3wz6p\",\"name\":\"azps-sig-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:15:38.9816591Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:15:39.2010619Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared signal definition\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzMonitorHealthModelSignalDefinition+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions/azps-sig-shared-a9skjo?api-version=2026-09-01-preview+1": {
+  "Get-AzMonitorHealthModelSignalDefinition+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions/azps-sig-shared-r3wz6p?api-version=2026-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions/azps-sig-shared-a9skjo?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions/azps-sig-shared-r3wz6p?api-version=2026-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "00000000-0000-4000-8000-000000000075" ],
-        "CommandName": [ "Get-AzMonitorHealthModelSignalDefinition" ],
-        "FullCommandName": [ "Get-AzMonitorHealthModelSignalDefinition_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.CloudHealth/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "50"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000080"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelSignalDefinition"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelSignalDefinition_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000076" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000077" ],
-        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000078" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052014Z:00000000-0000-4000-8000-000000000078" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7842A4C54360495E8FB0B182DC649324 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:14Z" ],
-        "Date": [ "Thu, 10 Sep 2026 05:20:14 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000245"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000353"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000227"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "245"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151728Z:00000000-0000-4000-8000-000000000227"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 456B1D7A18C04BC88D050E6BE6C67E19 Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:28Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:28 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "968" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "970"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-a9skjo/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-a9skjo/signaldefinitions/azps-sig-shared-a9skjo\",\"name\":\"azps-sig-shared-a9skjo\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user1@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-10T05:18:26.1408686Z\",\"lastModifiedBy\":\"user1@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-10T05:18:26.29251Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared signal definition\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/signaldefinitions/azps-sig-shared-r3wz6p\",\"name\":\"azps-sig-shared-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/signaldefinitions\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:15:38.9816591Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:15:39.2010619Z\"},\"properties\":{\"signalKind\":\"AzureResourceMetric\",\"metricNamespace\":\"Microsoft.Compute/virtualMachines\",\"metricName\":\"Percentage CPU\",\"timeGrain\":\"PT5M\",\"aggregationType\":\"Average\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Shared signal definition\",\"refreshInterval\":\"PT5M\",\"dataUnit\":\"Percent\",\"evaluationRules\":{\"degradedRule\":{\"operator\":\"GreaterThan\",\"threshold\":70.0},\"unhealthyRule\":{\"operator\":\"GreaterThan\",\"threshold\":90.0}}}}",
       "isContentBase64": false
     }
   }
