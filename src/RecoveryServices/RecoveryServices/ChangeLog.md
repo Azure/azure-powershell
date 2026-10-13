@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 
 ## Version 7.15.0
 * Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listInstantItemRecoveryOperationResult` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
