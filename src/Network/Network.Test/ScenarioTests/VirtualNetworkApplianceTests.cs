@@ -41,7 +41,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkApplianceDualStack");
         }
 
-        [Fact(Skip = "Requires a new HTTP session recording to be generated via '-Record' mode against a live subscription before this test can run in Playback mode.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestVirtualNetworkApplianceCapacityProvider()
