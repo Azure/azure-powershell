@@ -168,7 +168,7 @@ directive:
       subject: ^HybridConnection$
     hide: true
 
-  # Custom Set-AzRelayCluster so tags/capacity can be updated without re-specifying -Location and -Capacity
+  # Custom Set-AzRelayCluster so tags/capacity can be updated without re-specifying -Location and -SkuCapacity
   - where:
       verb: Set
       subject: ^Cluster$

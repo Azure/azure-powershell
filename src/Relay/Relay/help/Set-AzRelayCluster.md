@@ -14,14 +14,14 @@ Sets a Relay Cluster
 
 ### SetExpanded (Default)
 ```
-Set-AzRelayCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Capacity <Int32>]
+Set-AzRelayCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkuCapacity <Int32>]
  [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzRelayCluster -InputObject <IRelayIdentity> [-Capacity <Int32>] [-Tag <ITrackedResourceTags>]
+Set-AzRelayCluster -InputObject <IRelayIdentity> [-SkuCapacity <Int32>] [-Tag <ITrackedResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Set-AzRelayCluster -InputObject <IRelayIdentity> [-Capacity <Int32>] [-Tag <ITra
 ## DESCRIPTION
 Sets a Relay Cluster.
 The cmdlet reads the current cluster first and only applies the properties that are being
-changed, so tags or capacity can be updated without having to re-specify -Location and -Capacity.
+changed, so tags or capacity can be updated without having to re-specify -Location and -SkuCapacity.
 
 ## EXAMPLES
 
@@ -53,21 +53,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Capacity
-The number of capacity units assigned to the Relay cluster.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -150,6 +135,21 @@ Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+The number of capacity units assigned to the Relay cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

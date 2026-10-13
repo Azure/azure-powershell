@@ -22,7 +22,7 @@
 * Added support for Relay dedicated clusters.
     - Added cmdlets `Get-AzRelayCluster`, `New-AzRelayCluster`, `Set-AzRelayCluster`, `Update-AzRelayCluster` and `Remove-AzRelayCluster`.
     - Added cmdlets `Get-AzRelayClusterNamespace`, `Get-AzRelayClusterSku` and `Get-AzRelayClusterAvailableClusterRegion`.
-    - `Set-AzRelayCluster` now reads the existing cluster before updating so that tags or capacity can be updated without re-specifying `-Location` and `-Capacity`.
+    - `Set-AzRelayCluster` now reads the existing cluster before updating so that tags or capacity can be updated without re-specifying `-Location` and `-SkuCapacity`.
 * Added `ClusterArmId` parameter to `New-AzRelayNamespace` and `Update-AzRelayNamespace` to assign a namespace to a dedicated cluster.
 * Added `MinimumTlsVersion` parameter to `New-AzRelayNamespace` and `Update-AzRelayNamespace`.
 * Fixed `Update-AzRelayNamespace` failing with "The server responded with an unrecognized response, Status: Accepted" by handling the namespace update (PATCH) as a long-running operation.

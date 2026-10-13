@@ -18,7 +18,7 @@ Sets a Relay Cluster
 .Description
 Sets a Relay Cluster.
 The cmdlet reads the current cluster first and only applies the properties that are being
-changed, so tags or capacity can be updated without having to re-specify -Location and -Capacity.
+changed, so tags or capacity can be updated without having to re-specify -Location and -SkuCapacity.
 #>
 
 function Set-AzRelayCluster{
@@ -57,7 +57,7 @@ param(
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
         [System.Int32]
         # The number of capacity units assigned to the Relay cluster.
-        ${Capacity},
+        ${SkuCapacity},
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
@@ -138,7 +138,7 @@ param(
     }
     process{
 try{
-            $hasCapacity = $PSBoundParameters.Remove('Capacity')
+            $hasCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -152,7 +152,7 @@ try{
             $hasProperty = $false
 
             if ($hasCapacity) {
-                $cluster.SkuCapacity = $Capacity
+                $cluster.SkuCapacity = $SkuCapacity
                 $hasProperty = $true
             }
             if ($hasTag) {
