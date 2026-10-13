@@ -300,6 +300,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (softDeletePolicyBound)
                     {
+                        if (this.ParameterSetName == "ObjectParameter")
+                        {
+                            gallery.SoftDeletePolicy = GalleriesClient.Get(resourceGroupName, galleryName).SoftDeletePolicy;
+                        }
+
                         galleryUpdate.SoftDeletePolicy = new SoftDeletePolicy(
                             isSoftDeleteEnabled: this.EnableSoftDelete.IsPresent
                                 ? true
@@ -312,6 +317,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             gracePeriodInDays: this.IsParameterBound(c => c.SoftDeleteGracePeriodInDays)
                                 ? (int?)this.SoftDeleteGracePeriodInDays
                                 : gallery.SoftDeletePolicy?.GracePeriodInDays);
+                    }
+                    else
+                    {
+                        galleryUpdate.SoftDeletePolicy = null;
                     }
 
                     if (this.IsParameterBound(c => c.Description))

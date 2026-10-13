@@ -2,6 +2,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         this.Name,
                         galleryImageVersion);
                     var output = new PSGalleryImageVersion();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map(result, output);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, output);
                     WriteObject(output);
                 }
             });

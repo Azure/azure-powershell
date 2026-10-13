@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -25,12 +26,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     case "ResourceIdParameter":
                         resourceGroupName = GetResourceGroupName(this.GalleryImageDefinitionResourceId);
-                        galleryName = GetResourceName(this.GalleryImageDefinitionResourceId, "Microsoft.Compute/galleries");
+                        galleryName = GetResourceName(this.GalleryImageDefinitionResourceId, "Microsoft.Compute/galleries", "images");
                         galleryImageDefinitionName = GetImageNameFromId(this.GalleryImageDefinitionResourceId);
                         break;
                     case "ObjectParameter":
                         resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                        galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/galleries");
+                        galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/galleries", "images");
                         galleryImageDefinitionName = GetImageNameFromId(this.InputObject.Id);
                         break;
                     default:
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private static string GetImageNameFromId(string resourceId)
         {
-            return GetInstanceId(resourceId, "Microsoft.Compute/galleries", "images", "versions");
+            return GetInstanceId(resourceId, "Microsoft.Compute/galleries", "images");
         }
 
         [Parameter(ParameterSetName = "DefaultParameter", Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(ParameterSetName = "DefaultParameter", Position = 3, ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = "ResourceIdParameter", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = "ObjectParameter", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = "ObjectParameter")]
         [Alias("GalleryImageVersionName")]
         public string Name { get; set; }
 
