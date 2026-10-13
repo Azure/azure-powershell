@@ -15,7 +15,7 @@ Removes legal hold immutability from a Managed Instance LTR backup. (Public Prev
 ### Default (Default)
 ```
 Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-BackupName] <String> -ResourceGroupName <String> [-Force] [-ForceDropExpired]
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-ForceDropExpired]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -191,7 +191,7 @@ Type: System.String
 Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
