@@ -37,30 +37,17 @@ tag: package-2026-07-preview
 title: Relay
 
 directive:
-  - where:
-      verb: Get
-      subject: NameSpace
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PrivateEndpointConnection
-        new-output-properties:
-          - List[PrivateEndpointConnection]
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      subject: NamespaceNetworkRuleSet
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - IPRule
-        new-output-properties:
-          - List[IPRule]
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
+  # Namespace Update (PATCH) is a long-running operation (the service returns 202 with
+  # Azure-AsyncOperation/Location headers), but the spec models it as synchronous. Mark it
+  # as long-running and declare the 202 response so the cmdlet polls instead of failing with
+  # "The server responded with an unrecognized response, Status: Accepted".
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}"].patch
+    transform: >-
+      $["x-ms-long-running-operation"] = true;
+      $["x-ms-long-running-operation-options"] = { "final-state-via": "azure-async-operation" };
+      if (!$.responses["202"]) { $.responses["202"] = { "description": "Accepted." }; }
+      return $;
 
   # Namespace Authorization Rule
   - from: swagger-document
@@ -179,6 +166,12 @@ directive:
   - where:
       verb: Set|Update
       subject: ^HybridConnection$
+    hide: true
+
+  # Custom Set-AzRelayCluster so tags/capacity can be updated without re-specifying -Location and -Capacity
+  - where:
+      verb: Set
+      subject: ^Cluster$
     hide: true
 
   - where:

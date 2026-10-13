@@ -84,7 +84,7 @@ Deletes a WCF relay.
 Creates or updates an authorization rule for a namespace.
 
 ### [Set-AzRelayCluster](Set-AzRelayCluster.md)
-Update a Relay cluster.
+Sets a Relay Cluster
 
 ### [Set-AzRelayHybridConnection](Set-AzRelayHybridConnection.md)
 Creates or updates a service hybrid connection.

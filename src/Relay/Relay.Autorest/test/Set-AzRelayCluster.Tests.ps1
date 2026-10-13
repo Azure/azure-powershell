@@ -15,19 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzRelayCluster'))
 }
 
 Describe 'Set-AzRelayCluster' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $clusterName = 'RelayClusterTestE2E2026'
+        $resourceGroupName = 'PPGTest'
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $tag = @{ dadasdadaddadassas = 'dasdxaxadasdczx' }
+        $cluster = Set-AzRelayCluster -Name $clusterName -ResourceGroupName $resourceGroupName -Tag $tag
+        $cluster | Should -Not -BeNullOrEmpty
+        $cluster.Name | Should -Be $clusterName
+        $cluster.ResourceGroupName | Should -Be $resourceGroupName
+        $cluster.Type | Should -Be 'microsoft.relay/clusters'
+        $cluster.SkuName | Should -Be 'Dedicated'
+        $cluster.ProvisioningState | Should -Be 'Succeeded'
+        $cluster.Status | Should -Be 'Active'
+        $cluster.ZoneRedundant | Should -Be $true
+        $cluster.Tag['dadasdadaddadassas'] | Should -Be 'dasdxaxadasdczx'
+
+        $updated = Get-AzRelayCluster -Name $clusterName -ResourceGroupName $resourceGroupName
+        $updated.Tag['dadasdadaddadassas'] | Should -Be 'dasdxaxadasdczx'
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $cluster = Get-AzRelayCluster -Name $clusterName -ResourceGroupName $resourceGroupName
+        $tag = @{ env = 'prod'; team = 'messaging' }
+        $result = Set-AzRelayCluster -InputObject $cluster -Tag $tag
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $clusterName
+        $result.Tag['env'] | Should -Be 'prod'
+        $result.Tag['team'] | Should -Be 'messaging'
     }
 }

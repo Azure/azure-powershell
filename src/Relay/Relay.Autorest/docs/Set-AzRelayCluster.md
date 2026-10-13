@@ -8,39 +8,27 @@ schema: 2.0.0
 # Set-AzRelayCluster
 
 ## SYNOPSIS
-Update a Relay cluster.
+Sets a Relay Cluster
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### SetExpanded (Default)
 ```
-Set-AzRelayCluster -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-SkuCapacity <Int32>] [-SkuTier <String>] [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzRelayCluster -Name <String> -ResourceGroupName <String> -Resource <IRelayCluster>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzRelayCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Capacity <Int32>]
+ [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### SetViaIdentityExpanded
 ```
-Set-AzRelayCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Set-AzRelayCluster -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+Set-AzRelayCluster -InputObject <IRelayIdentity> [-Capacity <Int32>] [-Tag <ITrackedResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a Relay cluster.
+Sets a Relay Cluster.
+The cmdlet reads the current cluster first and only applies the properties that are being
+changed, so tags or capacity can be updated without having to re-specify -Location and -Capacity.
 
 ## EXAMPLES
 
@@ -75,6 +63,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Capacity
+The number of capacity units assigned to the Relay cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -91,57 +94,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -InputObject
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: SetViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Relay cluster.
+The name of the Relay Dedicated Cluster
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases: ClusterName
 
 Required: True
@@ -166,61 +140,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-A Relay dedicated cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacity
-The number of capacity units assigned to the Relay cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-Tier of the Relay cluster SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -232,7 +161,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -246,23 +175,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneRedundant
-Indicates whether the Relay cluster was created as zone redundant.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceTags
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -308,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 
 ## OUTPUTS
 

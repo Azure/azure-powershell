@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Relay
-Module Guid: 5fa8f305-b934-43b4-9b11-83cda843428d
+Module Guid: 592d8930-1e91-4df7-88e9-274069a5f8eb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.relay
 Help Version: 1.0.0.0
 Locale: en-US
@@ -84,7 +84,7 @@ Deletes a WCF relay.
 Creates or updates an authorization rule for a namespace.
 
 ### [Set-AzRelayCluster](Set-AzRelayCluster.md)
-Update a Relay cluster.
+Sets a Relay Cluster
 
 ### [Set-AzRelayHybridConnection](Set-AzRelayHybridConnection.md)
 Creates or updates a service hybrid connection.
