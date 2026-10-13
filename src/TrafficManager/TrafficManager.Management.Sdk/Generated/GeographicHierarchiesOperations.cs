@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.TrafficManager
         public TrafficManagerManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the default Geographic Hierarchy used by the Geographic traffic routing method.
+        /// Gets the default Geographic Hierarchy used by the Geographic traffic
+        /// routing method.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
