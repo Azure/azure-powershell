@@ -2,12 +2,12 @@
   "Get-AzStorageDiscoveryWorkspace+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "425" ],
-        "x-ms-client-request-id": [ "0fc9af18-3e29-4a54-9d1b-cc9c42371fcd" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "86333d2e-bb46-436a-884e-102a60437a61" ],
         "CommandName": [ "Get-AzStorageDiscoveryWorkspace" ],
         "FullCommandName": [ "Get-AzStorageDiscoveryWorkspace_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,36 +22,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "85e60d20-26f3-492b-bc04-a6e6cdca41a7", "3dd76664-c3d3-42d9-9a77-6f41d4cbf034", "af9cf455-8e32-40cb-9e33-3c3218ebe071", "84fdc691-5804-458d-9112-93e1478ea0b7", "46f876b1-8de0-47d8-b117-e246768f1d71", "b79ddde4-1c46-4dd5-95c5-c466326e2b9d", "0ed8d70c-f4ce-4c37-9aaa-7cd5b380effd", "f0d0a237-a0e0-4291-8752-6075386aa486", "594e1834-d419-4bb5-b795-44f0ceaa5bf2", "94797993-0235-4183-8dad-1f3a98cfde62", "8550d02c-21b9-4297-9316-f6f3a54d3905" ],
+        "x-ms-original-request-ids": [ "034ee3a9-e055-4c51-8d79-1d34569cf093", "6b43d0e2-1e91-46dc-9b7f-3a009ac765ab", "5c86a475-dc11-43d5-804e-35a97ce5dbfe", "d3ce0c10-5f52-49f7-b7f3-fd01cab65c3e", "a6a13640-f8b1-4f79-8a68-7b712e3fc033", "a3bef84b-b7af-4d4f-bcb8-c6363b656a1e", "2eeb32a1-15c4-4bed-bc42-efc38c669d7d", "1ab86411-29c9-45d8-a84a-1c3970bb5b44", "9a28ebfe-47e2-4a6f-808b-d25d43c48987", "7a14ba20-c6ba-4823-b2e0-0ab719eddca7", "47cd1f34-f4ee-46b4-bb66-8bc9172415af" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "ad490265-49f4-4fdc-a1c2-fc401e0bde8b" ],
-        "x-ms-correlation-request-id": [ "ad490265-49f4-4fdc-a1c2-fc401e0bde8b" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261010T041033Z:ad490265-49f4-4fdc-a1c2-fc401e0bde8b" ],
+        "x-ms-request-id": [ "ee04fe2b-e4e5-44bb-8a82-101ee03829ab" ],
+        "x-ms-correlation-request-id": [ "ee04fe2b-e4e5-44bb-8a82-101ee03829ab" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261013T232632Z:ee04fe2b-e4e5-44bb-8a82-101ee03829ab" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F7717C3C7F544780960B70D0B9A977E8 Ref B: SN4AA2022303033 Ref C: 2026-10-10T04:10:32Z" ],
-        "Date": [ "Sat, 10 Oct 2026 04:10:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3AFB3436E0234B1D844DB2AA4EDB0B3C Ref B: SN4AA2022401011 Ref C: 2026-10-13T23:26:31Z" ],
+        "Date": [ "Tue, 13 Oct 2026 23:26:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2076" ],
+        "Content-Length": [ "2126" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:04:43.6887535Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"test storage discovery workspace 1\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace3\",\"name\":\"pshtestworkspace3\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:49:36.7709846Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:04:40.536934Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Enabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"logs/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:10:41.7981946Z\"},\"properties\":{\"sku\":\"Free\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"updated storage discovery workspace description\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"updatedScope\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"updatedKey\"],\"tags\":{\"updatedTag1\":\"updatedValue1\",\"updatedTag2\":\"updatedValue2\"}}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace3\",\"name\":\"pshtestworkspace3\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:49:36.7709846Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:10:37.8220167Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Enabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"logs/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
   "Get-AzStorageDiscoveryWorkspace+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1?api-version=2026-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "426" ],
-        "x-ms-client-request-id": [ "24e38aeb-d41c-4c64-96f0-12bacc4a4ecf" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "11afc4a7-449b-4d67-9bc8-66402e6cf051" ],
         "CommandName": [ "Get-AzStorageDiscoveryWorkspace" ],
         "FullCommandName": [ "Get-AzStorageDiscoveryWorkspace_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,37 +66,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"3e00337f-0000-0200-0000-6ac9b95c0000\"" ],
+        "ETag": [ "\"3e0074a0-0000-0200-0000-6ac9bac20000\"" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "91883fd7-18d1-415c-8bf7-f6cdeb33d881" ],
-        "x-ms-correlation-request-id": [ "79aca614-085e-41df-abdf-3c75441c7873" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261010T041033Z:79aca614-085e-41df-abdf-3c75441c7873" ],
+        "x-ms-request-id": [ "84391c2b-8144-4deb-8aec-17716a5c64ba" ],
+        "x-ms-correlation-request-id": [ "079e9a33-84b5-4623-82e8-98b5907d49c6" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261013T232633Z:079e9a33-84b5-4623-82e8-98b5907d49c6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E474D5AF23B748C2BC08F7721A36461D Ref B: SN4AA2022303033 Ref C: 2026-10-10T04:10:33Z" ],
-        "Date": [ "Sat, 10 Oct 2026 04:10:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 629FCE1064214253B0D148EE4F74034D Ref B: SN4AA2022401011 Ref C: 2026-10-13T23:26:33Z" ],
+        "Date": [ "Tue, 13 Oct 2026 23:26:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1066" ],
+        "Content-Length": [ "1115" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:04:43.6887535Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"test storage discovery workspace 1\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:10:41.7981946Z\"},\"properties\":{\"sku\":\"Free\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"updated storage discovery workspace description\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"updatedScope\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"updatedKey\"],\"tags\":{\"updatedTag1\":\"updatedValue1\",\"updatedTag2\":\"updatedValue2\"}}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
   "Get-AzStorageDiscoveryWorkspace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "427" ],
-        "x-ms-client-request-id": [ "988978c1-741e-40c8-9930-edcf635f6d9a" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "6c1f1050-9359-4288-9807-221f5a44b964" ],
         "CommandName": [ "Get-AzStorageDiscoveryWorkspace" ],
         "FullCommandName": [ "Get-AzStorageDiscoveryWorkspace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -111,24 +111,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "a55df4d3-98a7-4e61-b617-a5f440e70c79", "083e6a2b-2c65-4bf4-88f3-883036cc1aaa", "ce73f9d7-2b77-47a0-b241-4598977221b1", "fae209ed-5b09-4868-ab62-c7416685bd8d", "01bce6da-168d-4a36-bc51-05fcc90aba49", "a652b37d-d296-404e-9ab6-d17f6f2157fe", "fbeaa761-1f6f-4d55-ba35-31db83b2f2dd", "24d891e5-6175-473f-a583-9e1659f06fe8", "77a83e4d-36e5-4b84-b9d4-5a8cac4ae610", "df5f1d8a-2464-46e6-904a-a78bfa6b792b", "e67fa80c-63d3-45af-bda6-1fab63cc1b28" ],
+        "x-ms-original-request-ids": [ "f1e63b34-1230-4a9c-82f2-3e95353e22a4", "5c98453f-b1c7-426d-bef5-72063dc61adb", "f1d02364-770a-425a-9385-9e4e95be268c", "aa1f6ab4-d768-4fc0-b406-97a6d58a362d", "c0db0b43-17d7-4140-8940-b1f12430a40e", "905b0bdc-5b6f-441f-b88b-b330fb265eff", "6b2a402e-aba8-4101-becd-d39d406ae313", "51f36312-59ba-4c23-891d-6d457fcea2cf", "01cd5d14-f40d-4b33-8eba-a544a045ce75", "5d0d8bd1-6160-4187-885f-c6074b14819d", "8a8a2385-2891-4fb3-baa7-6839e704ae3d" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "722fe3c1-3380-4f69-90a8-bc0ed68b8d81" ],
-        "x-ms-correlation-request-id": [ "722fe3c1-3380-4f69-90a8-bc0ed68b8d81" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261010T041034Z:722fe3c1-3380-4f69-90a8-bc0ed68b8d81" ],
+        "x-ms-request-id": [ "492ea190-c827-4012-9437-7cf2f805111c" ],
+        "x-ms-correlation-request-id": [ "492ea190-c827-4012-9437-7cf2f805111c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20261013T232635Z:492ea190-c827-4012-9437-7cf2f805111c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 64232AD0CEB54DCBA59D1965C391797B Ref B: SN4AA2022303033 Ref C: 2026-10-10T04:10:33Z" ],
-        "Date": [ "Sat, 10 Oct 2026 04:10:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2447B2754669402889FF4679776F469F Ref B: SN4AA2022401011 Ref C: 2026-10-13T23:26:33Z" ],
+        "Date": [ "Tue, 13 Oct 2026 23:26:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2076" ],
+        "Content-Length": [ "2126" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:04:43.6887535Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"test storage discovery workspace 1\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace3\",\"name\":\"pshtestworkspace3\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:49:36.7709846Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:04:40.536934Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Enabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"logs/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace1\",\"name\":\"pshtestworkspace1\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:48:35.5723476Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:10:41.7981946Z\"},\"properties\":{\"sku\":\"Free\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"description\":\"updated storage discovery workspace description\",\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Disabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"data/\"}]}},\"scopes\":[{\"displayName\":\"updatedScope\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"updatedKey\"],\"tags\":{\"updatedTag1\":\"updatedValue1\",\"updatedTag2\":\"updatedValue2\"}}],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c/resourceGroups/storageDiscoveryTestRg/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/pshtestworkspace3\",\"name\":\"pshtestworkspace3\",\"type\":\"microsoft.storagediscovery/storagediscoveryworkspaces\",\"location\":\"eastus2\",\"systemData\":{\"createdBy\":\"amnguye@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-10T03:49:36.7709846Z\",\"lastModifiedBy\":\"amnguye@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-10T04:10:37.8220167Z\"},\"properties\":{\"sku\":\"Standard\",\"workspaceRoots\":[\"/subscriptions/818e4c17-fdd0-4450-8b90-b6e8763acc2c\"],\"capabilities\":{\"azureBlobStorage\":{\"capacityDetails\":{\"status\":\"Enabled\"},\"prefixConfigurations\":[{\"storageAccountName\":\"pshteststorageacct\",\"containerName\":\"pshtestcontainer\",\"prefix\":\"logs/\"}]}},\"scopes\":[{\"displayName\":\"scope1\",\"resourceTypes\":[\"Microsoft.Storage/storageAccounts\"],\"tagKeysOnly\":[\"key1\"],\"tags\":{\"tag1\":\"value1\"}}],\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   }
