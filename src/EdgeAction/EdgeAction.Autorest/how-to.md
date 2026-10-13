@@ -1,82 +1,82 @@
 # Developing Az.EdgeAction
 
-This page covers manual development-environment setup, repository generation/build/help refresh, and automated scenario tests. The module-local generation wrapper introduced here uses existing repository tooling; it is not an installer.
-
-**Run the generation wrapper and tests from `src\EdgeAction\EdgeAction.Autorest`.** One-time build-tool setup starts at the repository root. Neither wrapper needs a caller-defined root variable; tests also need no user-set environment variables.
+Use the repository's existing preparation/build scripts, platyPS commands, and the generated artifact test harness. No EdgeAction-specific development wrapper is required or included in the feature change.
 
 ## Workflow and commit boundaries
 
-**Separate what developers maintain and commit from what generation/build writes locally.** The existing generation wrapper combines preparation, compilation, and help refresh; it has no source-only or output-only mode. Refreshed parent help depends on the built command metadata, so a source-help refresh is not independent of generated/build output. A second generator is not required for the current workflow. The test runner is already a separate step.
-
-| Phase/output | Owner and commit decision |
+| Files | Ownership |
 | --- | --- |
-| `README.md` specification pin/directives, `custom`, `examples`, scenario scripts and `utils.ps1` | Maintained inputs. Edit these rather than generated C#/exports; commit intentional changes. |
-| `EdgeAction.Autorest\docs` and `src\EdgeAction\EdgeAction\help` | Derived source-side documentation. Review meaningful command/example/help changes for the feature commit. A file being under `src` does not make every generated change appropriate. |
-| `Properties\AssemblyInfo.cs`, generation IDs, module GUIDs | Release/generation bookkeeping. Keep established metadata; do not include version-format normalization or random GUID-only churn as feature changes. |
-| `generated\EdgeAction` | Intermediate client/runtime/exports used by the local build. Retain locally, but exclude from the feature commit. The separate pipeline archive job owns publishing these files. |
-| `artifacts\Debug` and `artifacts\edgeaction-help-*` | Local compiled modules, help intermediates, test results and raw HTTP recordings. Do not commit these directories. |
-| Reviewed `test\*.Recording.json` and compatible `test\env.json` | Test inputs captured by an authorized Record run. Review sensitive content and replay consistency before committing. These HTTP snapshots are not a generated-code archive. Never commit local settings or `localEnv.json`. |
+| AutoRest `README.md`, `custom`, `examples`, scenario scripts and `test\utils.ps1` | Maintained inputs; commit intentional changes. |
+| `EdgeAction.Autorest\docs` and `EdgeAction\help` | Review meaningful generated help changes for the feature commit. |
+| `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
+| `Properties\AssemblyInfo.cs`, generation IDs and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
+| `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
+| `artifacts` and `EdgeAction.Autorest\tools` | Local outputs/tools, not feature-commit content. The module's existing ignore rule covers its `tools` directory. |
 
-### Practical sequence
+Inspect both the working tree and index before and after generation. Do not collect generated output with `git add -A`, and do not discard local outputs merely to clean Git status. Already-staged files still require review. The [archive pipeline](../../../.azure-pipelines/azure-powershell-ci.yml) owns the separate generated-code archive PR; HTTP scenario recordings are different test inputs.
 
-1. Review both the working tree and index, then edit maintained inputs. From the repository root, use `git status --short`, `git diff HEAD -- src\EdgeAction`, and `git diff --cached --stat`. Preserve existing work before generation: the tooling replaces outputs, not merges them.
-2. For specification/custom cmdlet/example changes, run the existing generation/build/help wrapper after [prerequisite setup](#prerequisites-and-build):
+The steps below assume the intended checkout and a fresh native PowerShell session. Each command block identifies its starting directory. **Repository root** means the directory containing `build.proj`, `src`, and `tools`, not `src\EdgeAction\EdgeAction.Autorest`. Initialize the following variables again whenever a later step needs them in a new shell. Test commands change directories; return to the repository root before starting another repository-root block.
 
-```powershell
-Set-Location .\src\EdgeAction\EdgeAction.Autorest
-& ..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1
-```
-
-3. Review meaningful source/help changes separately from local outputs. Do not commit `generated\EdgeAction`, assembly-version formatting, or module-GUID-only churn. For scenario/helper-only edits, skip regeneration: the maintained test runner refreshes those scripts automatically into existing artifacts.
-4. If requests or recording contexts changed, preserve previous outputs and run the following **only with authorization to create/delete the selected fixtures**, after [test configuration](#configure-and-run-scenario-tests). For unchanged compatible recordings, run Playback alone.
+**Run from: repository root.**
 
 ```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
+$repo = (Get-Location).Path
+$source = Join-Path $repo 'src\EdgeAction\EdgeAction.Autorest'
+$artifact = Join-Path $repo 'artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest'
+git status --short
+git diff --cached --stat
 ```
 
-Run Playback after Record has finished and inspect Record's result first; do not rebuild between them. A successful scenario run can still fail the recording handoff's sensitive-content checks. In that case, originals remain in artifacts: preserve and review them as described in [recording ownership](#results-and-recording-ownership), rather than staging raw output. Regeneration cannot reconstruct missing or overwritten HTTP recording entries.
+Generation/build can replace local files. Preserve uncommitted inputs and recordings first; none of these commands provides automatic backup or rollback. Close PowerShell sessions holding built assemblies before rebuilding. On Windows, Process Explorer's **Find Handle or DLL** can identify an owner; opening another terminal or using `Remove-Module` does not unload DLLs held by an existing process.
 
-5. Review source help, tests and any eligible recording copy-back; stage only explicit intended files, then inspect `git diff --cached --stat` and `git diff --cached`. Do not use `git add -A` to collect generation results. If excluded files are already staged, review their index changes and unstage only those paths deliberately; unstaging need not discard the local files. Neither a build nor staged status is evidence that a file belongs in the feature commit.
-6. The repository's separate archive job in [azure-powershell-ci.yml](../../../.azure-pipelines/azure-powershell-ci.yml) regenerates/builds, stages `generated`, and publishes a bot archive PR. Do not reproduce that publication step in the feature branch. Local generation and pipeline generation share tooling; their commit ownership differs.
+## Prerequisites and process-local feeds
 
-### Staging is a separate boundary
+Use native PowerShell, .NET and Node.js executables, not npm PowerShell/.NET shims. This development workflow uses PowerShell 7.3+, .NET SDK 8+, and Node.js 20+. The development environment used PowerShell 7.6.6, .NET SDK 10.0.401, Node.js 20.20.2 and npm 10.8.2; these are observations, not repository-wide requirements.
 
-The module wrapper and the inspected shared preparation/build scripts contain no `git add` or commit operation. The archive pipeline explicitly performs both. Nevertheless, do not assume your index is empty or unchanged: inspect staged and unstaged changes before and after generation, including changes staged by other tools or earlier actions. The observed staged output after regeneration does not by itself identify which operation staged it.
+Install missing native runtimes using the [PowerShell instructions](https://learn.microsoft.com/powershell/scripting/install/installing-powershell), [.NET downloads](https://dotnet.microsoft.com/download/dotnet) and [Node.js releases](https://nodejs.org/download/release/). Reopen PowerShell after installation, and verify executable resolution.
 
-## Prerequisites and build
+**Run from: any directory** (these checks do not depend on the checkout).
 
-Use native runtimes, not npm dotnet or PowerShell shims. The accepted minimums below are not a guarantee that every newer combination has been tested.
+```powershell
+Get-Command pwsh, dotnet, node, npm | Select-Object Name, Source
+pwsh --version
+dotnet --version
+node --version
+npm --version
+```
 
-| Prerequisite | Minimum | Validated development version | Native installation |
-| --- | --- | --- | --- |
-| PowerShell | 7.3 | 7.6.6 | [PowerShell installation](https://learn.microsoft.com/powershell/scripting/install/installing-powershell); Windows: `winget install --id Microsoft.PowerShell --exact --source winget` |
-| .NET SDK | 8 | 10.0.401 | [SDK downloads](https://dotnet.microsoft.com/download/dotnet/10.0); Windows: `winget install --id Microsoft.DotNet.SDK.10 --exact --source winget` |
-| Node.js | 20 | 20.20.2 with npm 10.8.2 | [Node.js 20.20.2](https://nodejs.org/download/release/v20.20.2/); with an existing nvm installation recommended: `nvm install 20.20.2`, then `nvm use 20.20.2` |
+Install missing pinned developer dependencies. platyPS is needed for parent Markdown/MAML help; Pester 4.10.1 is needed for the existing scenario harness.
 
-Install missing runtimes, then reopen native PowerShell. The winget commands install the available package version, not necessarily the validated patch; use the linked release downloads for exact versions. npm is included with Node.js.
-
-The wrapper checks these minimum versions before preparation changes any generated files; the validated patch versions are not enforced. It selects a native SDK executable from PATH, or the standard Windows Program Files installation, ahead of npm dotnet shims. If no native SDK is available, install it or correct PATH. No caller-defined root variable or environment assignments are required.
-
-### Install pinned developer dependencies
-
-Run this manual setup once, skipping installs if the exact versions are already present. **platyPS 0.14.2 is required for parent Markdown and XML help**, even though AutoRest can generate its own command docs without it. These commands use the approved Microsoft npm proxy. npm installation is global, while PowerShell modules are installed for the current user.
+**Run from: any directory** (npm installs globally; PowerShell modules install for the current user).
 
 ```powershell
 npm install --global autorest@3.8.0 @autorest/core@3.10.9 --registry=https://packagefeedproxy.microsoft.io/npm/
 Install-Module platyPS -RequiredVersion 0.14.2 -Scope CurrentUser -Repository PSGallery
-
-Get-Command autorest | Select-Object Name, Source
-npm list --global --depth=0 autorest '@autorest/core'
+Install-Module Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Repository PSGallery -Force
 ```
 
-The wrapper checks the active AutoRest CLI's installed package metadata for **3.8.0** and loads exactly **platyPS 0.14.2**. Core **3.10.9** is an installation/reproducibility pin, not a checked selected-core version: preflight does not launch AutoRest, resolve extensions or populate its cache.
+Do not silently bypass a PowerShell module publisher/signature failure. Verify the intended PSGallery package and publisher before choosing a publisher-check exception. Other Pester versions may coexist, but explicitly import 4.10.1 in the disposable test process below; the harness imports Pester by name.
 
-Inside its isolated child process, the wrapper sets `autorest_registry` to `https://packagefeedproxy.microsoft.io/npm/` and `RestoreSources` to the checkout's `tools\LocalFeed`, `https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json`, and `https://packagefeedproxy.microsoft.io/nuget/v3/index.json`. These build-only overrides replace inherited values without changing the caller's environment, global npm configuration, `NuGet.Config`, TLS validation or vulnerability auditing. No repeated feed setup is needed.
+For the Microsoft development environment, set approved feeds **in this disposable shell only** before generation/build.
 
-### Check inputs, prepare, and build
+**Run from: repository root**, after initializing `$repo` above, in the shell that will perform preparation/build.
 
-1. **Update the specification input before generation.** Edit the AutoRest YAML in `src\EdgeAction\EdgeAction.Autorest\README.md`: set `commit` to the immutable `Azure/azure-rest-api-specs` commit SHA containing the intended changes, not a branch name, and set `input-file` to the OpenAPI JSON path at that commit. The current branch uses this fragment:
+```powershell
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $true
+$env:autorest_registry = 'https://packagefeedproxy.microsoft.io/npm/'
+$env:RestoreSources = @(
+    (Join-Path $repo 'tools\LocalFeed')
+    'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
+    'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
+) -join ';'
+```
+
+These values do not modify global npm configuration or `NuGet.Config`. Close the shell afterward to discard them. If restore reports an unreachable feed or `NU1900` while retrieving vulnerability data, fix network/feed access rather than disabling TLS or NuGet auditing.
+
+## Prepare and build in the repository
+
+The AutoRest YAML in `README.md` owns the specification pin. Keep an immutable commit SHA, not a branch name. The stable input is:
 
 ```yaml
 commit: 65eb9311d304dcf9874d05fdec39ea65baae8db8
@@ -84,264 +84,182 @@ input-file:
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 ```
 
-Replace the SHA and API-version/path for your chosen specification, and confirm that the JSON file exists at that exact commit in `Azure/azure-rest-api-specs`. Update only these fields; preserve the README's other configuration and directives.
+Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes; do not invent replacement IDs or discard intentional edits.
 
-2. **Review the input change and metadata.** Review the README diff; optionally commit the input change separately for traceability before regenerating. Keep the existing `generate-info.json` and `Properties\AssemblyInfo.cs`. If either was removed or rewritten by direct generation, review the diff and recover only unintended changes from this branch; do not invent generation IDs or discard intentional edits.
+Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing.
 
-3. **Run the module-local wrapper in the configured native shell to generate and build files.** From the repository root, run:
+**Run from: repository root**, in the same shell with `$repo`, `$source`, and the feed configuration initialized.
 
 ```powershell
-Set-Location .\src\EdgeAction\EdgeAction.Autorest
-git diff HEAD -- README.md generate-info.json Properties\AssemblyInfo.cs
-& ..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1
+$guidePath = Join-Path $source 'how-to.md'
+$guide = [IO.File]::ReadAllBytes($guidePath)
+try {
+    & .\tools\BuildScripts\PrepareAutorestModule.ps1 -RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate
+    if ($LASTEXITCODE -ne 0) { throw "Preparation failed (exit $LASTEXITCODE)." }
+} finally {
+    [IO.File]::WriteAllBytes($guidePath, $guide)
+}
+& .\tools\BuildScripts\BuildModules.ps1 -RepoRoot $repo -Configuration Debug -TargetModule EdgeAction
+if ($LASTEXITCODE -ne 0) { throw "Build failed (exit $LASTEXITCODE)." }
 ```
 
-Close shells holding built assemblies before rebuilding, and do not edit the module concurrently. The script loads platyPS 0.14.2, runs shared `PrepareAutorestModule.ps1 -ForceRegenerate` for EdgeAction, then `BuildModules.ps1 -Configuration Debug -TargetModule EdgeAction`. The build includes Accounts using the repository helper's normal preparation behavior, without forcing its regeneration. Normal AutoRest extension resolution and NuGet restore can download generator/build packages; the wrapper does not install developer prerequisites or configure machine-wide feeds.
+Preparation invokes AutoRest/standalone build steps and relocates generated output to `generated\EdgeAction`. The shared helper already supplies `-DisableAfterBuildTasks` to the generated build script; it is not a parameter of `PrepareAutorestModule.ps1`. There is no source-only generation promise: preparation/build writes generated code and local binaries as well as derived source documentation.
 
-On Windows, the wrapper first probes `artifacts\Debug\Az.Accounts\Microsoft.Azure.PowerShell.AssemblyLoading.dll` for exclusive writable access **without writing to it**, before prerequisite loading or Prepare can change generated output. Absent artifacts are allowed; locked or inaccessible files stop with the exact path. Close the owning PowerShell session, including older terminal tabs; opening a new window or running `Remove-Module` does not unload assemblies held by another process. Process Explorer's **Find Handle or DLL** search can identify the owner. The wrapper never terminates processes or changes permissions.
+Review `artifacts\autorest\EdgeAction\EdgeAction.Autorest.log` for generator failures and console output for restore/compiler failures. Failed preparation may leave partial output. Inspect the Git diff, correct the cause and rerun; do not reset the AutoRest cache or modify repository feeds as a generic repair.
 
-On failure only, the script checks PowerShell processes for that exact loaded DLL and reports verified process names/PIDs. Run `$PID` in candidate terminals to find the matching session, finish/save its work, and close it normally. The error also prints an optional `Stop-Process -Id <detected-PID> -Confirm` command for each verified holder; use it from another terminal only after rechecking the PID, because it interrupts all work in that process. Inaccessible/exited processes produce an explicit incomplete-inspection warning, not proof that no owner exists. The message includes the exact DLL path for Process Explorer and the generation retry command from the module directory.
+### Refresh parent help
 
-This is a focused check for the recurring Accounts DLL conflict, not a scan of every build output. Other files or a process loading the DLL after preflight can still cause a build failure. The Windows-specific probe is skipped on other platforms. The wrapper's own Accounts/EdgeAction imports happen only after the build, inside its short-lived child; they do not load those assemblies into your calling shell.
+After building, import the built modules in a fresh shell.
 
-The shared prepare helper already passes `-DisableAfterBuildTasks` to its generated build script. Do not add that switch to Prepare or the wrapper. After building, the script imports built Accounts/EdgeAction and runs `Update-MarkdownHelpModule`, the repository's common-parameter cleanup, and `New-AzMamlHelp`, then copies refreshed Markdown/XML to their destinations. It retains the parent module-page GUID/description. Explicit parameter-set metadata prevents platyPS 0.14.2 from dropping default-only syntax from XML; detailed help consistency checks live in tests, not the runtime script.
-
-4. **Review the results before committing.** The wrapper uses upstream delete/replace behavior for generated outputs, regardless of Git status. You can rerun without committing or undoing the previous generated results. Save any manual edits to generated files or parent cmdlet help first: there is no custom merge, backup or recovery system. Maintain examples/customizations in their source folders; refreshed command help comes from generated docs, not previous parent cmdlet pages. The maintained how-to is restored because AutoRest otherwise replaces it with a generic scaffold.
-
-Before preparation, the wrapper prints the README's configured commit and input-file excerpt, with variables unresolved, and confirms forced regeneration; generation IDs are bookkeeping, not specification SHAs or proof of the effective remote input.
-
-The shared repository workflow places intermediate generated source under `generated\EdgeAction` and built modules under `artifacts\Debug`. Keep generated-folder changes out of this PR; repository automation archives generated output. Review and stage maintained source, tests, and help explicitly rather than staging the entire checkout. Do not move intermediate generated source to artifacts or discard it merely to clean Git status: the shared build expects that layout.
-
-Prepare retains the existing generation ID and generated module GUID through the repository's own handling; bare AutoRest does not perform that repository preparation and can replace metadata. This does not prevent GUID-only churn in source-side documentation or assembly-version normalization. Failures may leave partial output. Fix the cause and rerun, recovering missing metadata manually if necessary. Help intermediates under `artifacts\edgeaction-help-<id>` are new output, not backups. There is no automatic rollback or feature commit. Inspect the index separately; do not treat already-staged regeneration output as approved commit content.
+**Run from: repository root.**
 
 ```powershell
-git status --short
-git diff HEAD -- . ..\EdgeAction\help ..\..\..\generated\EdgeAction
-git diff --cached --stat
-```
-
-Do **not** run bare `autorest` in `src`, reset its cache, or rerun source `build-module.ps1`/Adapt as a help repair. Preparation relocates the standalone exports and manifest; that source directory is no longer a complete standalone module. Installing platyPS alone does not refresh existing help. The README owns the specification input; shared configuration selects generator `4.x`, not an exact extension version, so review runtime-generator changes too.
-
-| Location | Ownership |
-| --- | --- |
-| `src\EdgeAction\EdgeAction.Autorest` | Maintained configuration, customizations, examples, and tests |
-| `src\EdgeAction\tools\GenerationScripts` | Single generation/build/help script and offline tests |
-| `src\EdgeAction\EdgeAction\help` | Reviewed parent-module command help and module page |
-| `src\EdgeAction\tools\TestScripts` | Module-local scenario runner, `EdgeAction.TestRunner.psm1`, configuration, and offline runner tests |
-| `generated\EdgeAction\EdgeAction.Autorest` | Generated code and standalone scripts |
-| `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest` | Built scenario harness and copied tests |
-
-Standalone `build-module.ps1`/`test-module.ps1` workflows assume a complete colocated generated module. In this repository, use the wrapper above and the artifact test runner below instead. Artifact Markdown lives in `artifacts\Debug\Az.EdgeAction\help`; the wrapper also writes `Az.EdgeAction-help.xml` in that artifact module directory.
-
-Generator errors are logged in `artifacts\autorest\EdgeAction\EdgeAction.Autorest.log`; NuGet/compiler errors are in build output. Recheck native executable resolution and process-local feeds before retrying a failed build.
-
-If preparation reports only a nested `build-module.ps1` process failure, inspect the current run's `obj\project.nuget.cache` for restore errors; old cache entries may belong to an earlier attempt. `NU1900` with an unreachable `https://api.nuget.org/v3/index.json` means vulnerability-data retrieval failed during restore (warnings are errors), not that AutoRest failed. The wrapper now supplies the approved NuGet proxy automatically. If restore still fails, check the reported source and network access to the configured feeds before retrying; do not disable auditing/TLS or change `NuGet.Config` to hide the error. Build-feed configuration does not apply to scenario-test invocation.
-
-## Configure and run scenario tests
-
-Use native PowerShell 7.3+ and **run all test commands from `src\EdgeAction\EdgeAction.Autorest`**. From the correct checkout's repository root, enter the module once:
-
-```powershell
-Set-Location .\src\EdgeAction\EdgeAction.Autorest
-```
-
-If your shell is elsewhere, navigate directly to that folder in the intended checkout using its full path. Stay there for the remaining test instructions, including offline runner tests. No previously assigned path variables or user-set environment variables are required. The runner derives repository and artifact paths from its own script location.
-
-The runner switches its child process to the artifact harness directory before invoking tests, so relative assembly paths use the built artifact DLLs rather than source-folder copies. Your shell stays in the source module directory.
-
-Confirm built artifacts and install any missing test prerequisites below before configuring the runner. It does not install native tools or build EdgeAction; authorized Record/Live runs automatically generate/build missing Resources test support as described below.
-
-### Confirm built artifacts
-
-If artifacts are missing or source files changed, follow the separate [Check inputs, prepare, and build](#check-inputs-prepare-and-build) instructions, then return to this module directory using the test entry step above. The runner requires `artifacts\Debug\Az.Accounts\Az.Accounts.psd1` and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test-module.ps1` under the invoked script's checkout; it does not build them automatically.
-
-### Install test prerequisites
-
-#### Install Pester 4.10.1 only if missing
-
-The runner automatically discovers Pester 4.10.1, validates its manifest/version, and imports an isolated temporary copy before running tests. **No manual discovery or verification step is required.** It does not install Pester or change your installed versions or global settings.
-
-If Pester 4.10.1 is not installed, install it once for the current user. Other Pester versions can remain installed alongside it:
-
-```powershell
-Install-Module -Name Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Repository PSGallery -Force
-```
-
-If adding 4.10.1 alongside Pester 5.7.0 fails with the known Authenticode issuer-chain mismatch (publisher `CN=Jakub Jares` in both, but `DigiCert Assured ID Root CA` versus `DigiCert Trusted Root G4`), **only for that error and an intentionally trusted PSGallery source**, retry:
-
-```powershell
-Install-Module -Name Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Repository PSGallery -Force -SkipPublisherCheck
-```
-
-[`-SkipPublisherCheck`](https://learn.microsoft.com/powershell/module/powershellget/install-module?view=powershellget-2.x#-skippublishercheck) bypasses the publisher-continuity check for this installation; it does **not** establish package trust or change global trust, TLS, or execution policy. Do not use it for arbitrary installation errors. Keep Pester 5 installed; the runner selects 4.10.1 explicitly. An existing trusted 4.10.1 installation selected through `PesterPath` below avoids installation altogether.
-
-Leave `PesterPath = ''` for automatic discovery. If the runner cannot find an existing 4.10.1 installation, reopen native PowerShell or set `PesterPath` in the optional local settings file below to its **absolute manifest filename**, for example `C:\tools\modules\Pester\4.10.1\Pester.psd1`, not a directory or `Pester.psm1`. The runner validates that file too; no reinstall or separate verification is needed. `PesterPath` is a settings key, not a runner parameter.
-
-### Test Settings
-
-**No local settings file is required.** The runner always loads `..\tools\TestScripts\TestSettings.psd1`. Without a local file or `-ConfigPath`, these shared defaults are used unchanged: Azure public cloud (`AzureCloud`), automatic Pester discovery, and no subscription.
-
-Create `TestSettings.local.psd1` beside it only when you need personal overrides, such as Brazilus, a test subscription, or a nonstandard Pester path. The runner loads this optional file automatically **over the shared defaults**; settings omitted from it still use `TestSettings.psd1`.
-
-| File | Role |
-| --- | --- |
-| `TestSettings.psd1` | Required, tracked shared defaults; used alone when no override is selected. |
-| `TestSettings.local.psd1` | Optional, Git-ignored personal overrides; loaded automatically when present. |
-| `TestSettings.local.example.psd1` | Optional Brazilus starter template; never loaded automatically. |
-
-For Brazilus, copy the example once, then edit the local copy with your authorized test subscription. This command preserves an existing local file:
-
-```powershell
-if (-not (Test-Path ..\tools\TestScripts\TestSettings.local.psd1)) {
-    Copy-Item ..\tools\TestScripts\TestSettings.local.example.psd1 ..\tools\TestScripts\TestSettings.local.psd1
+Import-Module .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 -Global
+Import-Module .\artifacts\Debug\Az.EdgeAction\Az.EdgeAction.psd1 -Global
+Import-Module platyPS -RequiredVersion 0.14.2
+$help = Join-Path (Get-Location) 'src\EdgeAction\EdgeAction\help'
+Update-MarkdownHelpModule -Path $help -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+Import-Module .\tools\BuildScripts\HelpMarkDown.psm1
+Get-ChildItem $help -Filter '*-*.md' | ForEach-Object {
+    Remove-CommonParameterFromMarkdown -Path $_.FullName -ParameterName ProgressAction
 }
 ```
 
-To choose a different override file, pass `-ConfigPath '<path>'`; it replaces the automatic local override, not the shared defaults. Relative paths are resolved from your current working directory. To ignore an existing local file and use only shared defaults, pass `-ConfigPath ..\tools\TestScripts\TestSettings.psd1`.
+AutoRest also refreshes command descriptions/examples in `EdgeAction.Autorest\docs`. Review and transfer relevant descriptions/examples into the corresponding parent help pages; `Update-MarkdownHelpModule` updates command metadata, not every authored description. Preserve the parent module-page GUID and description. With platyPS 0.14.2, check that commands with multiple parameter sets retain their default-only syntax in MAML; parameter blocks may need explicit parameter-set names instead of `(All)`.
 
-A nonempty `-SubscriptionId` argument takes precedence over either settings file. `-Mode` (default `Playback`), `-TestName`, `-AllowResourceChanges`, and `-Login` are command-line options, not settings keys.
+Generate local MAML after that review.
 
-These are the only supported settings keys; values must be strings. Omitted keys inherit the shared defaults.
+**Run from: repository root**, in the same help-review shell with `$help` initialized.
 
-| Key | Shared default and meaning | Record/Live requirement |
-| --- | --- | --- |
-| `SubscriptionId` | `''`; expected subscription GUID, not its display name. The example also leaves it empty. | Supply an authorized test subscription here or with `-SubscriptionId`; it must match the authenticated context. |
-| `EnvironmentName` | `AzureCloud`; the example uses `Brazilus`. No other environment names are accepted. | The selected Az environment must already be registered and match the context. |
-| `ResourceManagerUrl` | `https://management.azure.com/` for AzureCloud; the example uses `https://brazilus.management.azure.com/` for Brazilus. | Must match the selected environment and context. Arbitrary endpoints are rejected. |
-| `Audience` | `https://management.core.windows.net/` for both environments. | Must match the environment's authentication audience and context. |
-| `ResourceGroupName` | `powershelltests`; current source tests hardcode this group and resource names. Other groups are rejected. | The group must already exist and be readable; configuration does not retarget tests. |
-| `ApiVersion` | `2026-10-01`; validation of the expected API, not a way to rewrite generated requests or recordings. | Keep this value; other versions are rejected in every mode. |
-| `PesterPath` | `''`; discover installed Pester 4.10.1, or specify an absolute path to its `Pester.psd1` manifest. | The same installed version is required for all modes; the runner does not install it. |
+```powershell
+Import-Module .\tools\HelpGeneration\HelpGeneration.psm1
+$helpOutput = Join-Path (Get-Location) 'artifacts\edgeaction-help-review'
+$null = New-Item -ItemType Directory -Path (Join-Path $helpOutput 'help') -Force
+Copy-Item (Join-Path $help '*.md') (Join-Path $helpOutput 'help') -Force
+New-AzMamlHelp -HelpFolderPath (Join-Path $helpOutput 'help')
+```
 
-Copying the Brazilus example changes settings only; it does not register an Az environment or sign in. An existing Brazilus local override continues to take precedence over public defaults. Neither configuration proves stable-API availability or permissions. Do not put real subscription IDs, tenants, credentials, or tokens in the tracked defaults or example.
+Review the Markdown/MAML against built command metadata before publishing the source help. MAML/build outputs stay local. Do not manually normalize assembly versions or include GUID-only source-document churn.
 
-Results and recordings remain in the artifact harness directory. Successful Record runs also copy eligible outputs to source for unstaged review, as described below. The runner does not back them up.
+### Repository versus standalone layout
 
-### Automatic test-script refresh
+The repository build copies the complete module and scenario harness to `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest`. Run its `test-module.ps1` there. The maintained `src` directory is not a complete standalone module after preparation moves exports and the manifest.
 
-`Test-EdgeAction.ps1` refreshes maintained `test\*.Tests.ps1` and `test\utils.ps1` into the existing artifact test directory in **Playback, Record, and Live**. This happens after configuration/mutation-consent validation and before the recording snapshot, previous-result removal, or child harness startup. Only changed scripts are copied, their hashes are verified, and the runner reports updated/unchanged counts. **Do not manually copy these scripts or rebuild solely for scenario/helper edits.**
+Standalone `build-module.ps1`/`test-module.ps1` instructions apply only to a complete generated module with its colocated manifest, exports, runtime and dependencies. Do not run bare AutoRest or a leftover source `build-module.ps1` as a repository help-repair step.
 
-Refresh leaves recordings, `env.json`, `localEnv.json`, results, binaries, and unrelated files untouched. The subsequent harness still replaces its results and, in Record mode, writes recordings. Missing source inputs or a missing artifact test directory stop the run; create missing build outputs through the normal build workflow. Cmdlet/runtime changes and other test assets still need the normal build/refresh workflow.
+## Run scenario tests directly
 
-An artifact `*.Tests.ps1` without a matching maintained source stops the run before any script copy or harness execution. Review and move the named stale files out of the artifact test directory; the runner never deletes them automatically. Copy or verification failures also stop execution, although some scripts may already have been refreshed. Do not edit source or run another harness/build concurrently. Fresh test requests can require an authorized Record run before Playback succeeds; refresh does not fabricate or repair recordings. Direct invocation of generated `test-module.ps1` bypasses this maintained-runner refresh.
+The artifact harness supports `-Record`, `-Playback`, `-Live`, `-NotIsolated`, `-UsePreviousConfigForRecord`, `-RegenerateSupportModule`, and `-TestName`. Use one mode at a time. Playback is the default.
+
+**Use a disposable PowerShell terminal.** With `-NotIsolated`, Pester's `-EnableExit` can close that process. Omitting `-NotIsolated` launches another process; a process-only Azure login in the caller is not inherited. Direct execution does not read the former wrapper's local settings, refresh test scripts, validate the intended cloud/subscription, enforce mutation consent, summarize failures beyond Pester, or copy recordings back.
+
+### Refresh scenario-only edits
+
+If only scenario scripts or `utils.ps1` changed and current build artifacts exist, no regeneration is required. Explicitly copy the maintained scripts before starting the harness.
+
+**Run from: repository root.**
+
+```powershell
+$sourceTest = Join-Path (Get-Location) 'src\EdgeAction\EdgeAction.Autorest\test'
+$artifactTest = Join-Path (Get-Location) 'artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test'
+if (-not (Test-Path $artifactTest)) { throw 'Build EdgeAction first; the artifact test directory is missing.' }
+Get-ChildItem $sourceTest -Filter '*.Tests.ps1' | Copy-Item -Destination $artifactTest -Force
+Copy-Item (Join-Path $sourceTest 'utils.ps1') $artifactTest -Force
+```
+
+This does not copy recordings, environment files, results or binaries. If a scenario was removed or renamed, inspect the corresponding orphan artifact script before running; do not execute stale tests. Changes to cmdlets/runtime or other fixture files require an appropriate build or separately reviewed fixture refresh.
 
 ### Playback
 
-Playback is the default and requires no login:
-
-```powershell
-& ..\tools\testscripts\test-edgeaction.ps1
-```
-
-Optionally select one describe group:
-```powershell
-& ..\tools\testscripts\test-edgeaction.ps1 -testname 'get-azedgeaction'
-```
-
-Or use shared azurecloud settings explicitly, bypassing any local override:
-```powershell
-& ..\tools\testscripts\test-edgeaction.ps1 -configpath ..\tools\testscripts\testsettings.psd1
-```
-
-Existing preview recordings cannot satisfy stable `2026-10-01` requests. Playback failures are reported, not repaired by rewriting request keys. Skipped tests remain skipped; a run with no executed tests fails.
-
-### Explicit recording or live execution
-
-Review `.\test\*.Tests.ps1` first. The scenarios reuse the dedicated `powershelltests` resource group; even Get scenarios create/delete resources. Configuration **does not** retarget the hardcoded fixture names. Create the resource group beforehand in an authorized test subscription. Unsupported resource-group overrides fail rather than silently running elsewhere.
-
-Each selected active group treats its maintained fixture parent and **all children under that parent as disposable**, including leftovers from earlier runs. Before creation and during teardown, shared cleanup deletes execution filters, non-default versions, the current default version, then the parent. The version list's current `IsDefaultVersion` values determine deletion order, not creation order or whether a swap test was expected to succeed. Missing/invalid default status or multiple reported defaults stop version cleanup rather than guessing. It never deletes the resource group or enumerates unrelated parents. Do not use those fixture names for other work or run the same fixture concurrently, even from different checkouts.
-
-Only an observed HTTP 404 counts as already absent. Cleanup waits for the delete cmdlets and verifies absence with GET; authorization, conflict, timeout, and remaining-resource failures stop the group rather than being suppressed. Cleanup failures appear in console/results and prevent Record copy-back. If setup and teardown both fail, both reasons are retained. Interrupted runs still require review; the next selected run attempts cleanup again, not a resource-group-wide reset.
-
-Edit source scenarios and `utils.ps1`, then invoke `Test-EdgeAction.ps1`; it refreshes those scripts automatically. There is no manual `setupEnv` or sign-in step inside it: the harness calls it automatically; use the runner's `-Login` option below for authentication.
-
-#### Automatic Resources test support (Record/Live only)
-
-After configuration and `-AllowResourceChanges` checks, the runner loads built Accounts and Pester, then verifies the registered environment before preparing missing or incomplete `Az.Resources.TestSupport` under `$HOME\.PSSharedModules\Resources`. A missing Brazilus registration requires separate confirmation as described below; an unapproved or mismatched registration stops before support setup, login, or scenarios. **Playback skips environment verification and never prepares Resources support.** A complete installed module is validated/imported and reused without downloads or generation.
-
-Missing support requires the native build tools from the build prerequisites above (Node.js 20+, native .NET SDK 8+, installed AutoRest CLI). The runner supplies approved npm/NuGet feeds and native dotnet resolution inside its child process, restores those settings after setup, and does not install native tools or change global configuration. Pester 4.10.1 and built Accounts must already be available.
-
-The runner fills missing artifact `tools\Resources` files from the source module's generated `.\tools\Resources` README/customizations, then invokes the unchanged artifact `check-dependencies.ps1 -NotIsolated -Pester -Resources`. The helper downloads generator/NuGet packages and generates/builds local support, not Azure resources. An incomplete installation is regenerated in place by that helper; complete installations and existing artifact support inputs are not overwritten. Setup reports completion only after successful helper exit, required manifest/script/assembly checks, and module import.
-
-If source support inputs are missing, run the repository generation/build steps first; an empty artifact directory is not a substitute. Setup failures stop before authentication/scenarios and may leave partial local support output; recovery is not transactional. If all required files exist but the module cannot import, inspect that installation rather than replacing it automatically. The original direct `test-module.ps1` does not use this runner's automatic setup.
-
-#### Run with explicit consent
-
-Before Resources setup or `-Login`, the runner uses `Get-AzEnvironment` in its fresh `pwsh -NoProfile` child to verify the configured name, ARM endpoint, and audience. Existing registrations are checked read-only and are never overwritten. A registration made only in another shell is not inherited. An error starting with **Registered Azure environment** identifies this preflight check; **Azure context** identifies the later context check. Errors name the mismatched property without printing subscription IDs or credential-bearing URLs.
-
-If the configured Brazilus environment is missing, an interactive console prompts **[y/N]** before running `Add-AzEnvironment -Name Brazilus -ARMEndpoint 'https://brazilus.management.azure.com/' -Scope CurrentUser`. Only `y` or `yes` approves this separate action: it requests authentication metadata over the network and persistently adds the named environment to the CurrentUser Az profile for future processes; it does not sign in or switch the active context. A blank answer, decline, unavailable console input, or noninteractive execution stops without registration. `-AllowResourceChanges` does not approve registration, and Playback never prompts.
-
-After approval, the runner re-reads and validates the registered endpoints before support setup. A failed registration or unexpected metadata stops the run; any registration already persisted remains, with no rollback. Do not change the discovered audience merely to bypass validation. For unattended runs, use the same command manually in a setup shell with built Accounts imported, then verify `Get-AzEnvironment -Name Brazilus` in a fresh shell using that module before retrying.
-
-```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login -TestName 'Get-AzEdgeAction'
-```
-
-That command uses the subscription in local configuration; alternatively add `-SubscriptionId '<authorized-test-subscription-id>'`. Use `-Mode Live` with the same consent flags for live execution without recording. These flags authorize resource mutations, not just HTTP capture.
-
-The runner authenticates with `-Login` inside a child PowerShell process and invokes the artifact harness with `-NotIsolated` in that **same child**, preserving its process-local context. Context autosave is disabled for that child: its login does not switch the calling shell's context, so no production-context reset is needed afterward. The separately approved environment registration persists and is not removed on exit. Without `-Login`, an already-saved matching Az context must be available to the child; a process-only login in the caller is not inherited. Before any scenario, the runner verifies subscription, environment name, ARM endpoint, audience, and read access to the existing resource group. Endpoint selection does not prove that the stable API is deployed or the identity can perform every operation.
-
-#### Record and replay all EdgeAction scenarios
-
-From `src\EdgeAction\EdgeAction.Autorest`, omit `-TestName` to select all EdgeAction scenario groups, **not the entire repository's tests**. Recording creates/deletes real resources in the configured authorized subscription and `powershelltests` resource group:
-
-```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login
-```
-
-After recording succeeds, run playback against those artifacts **without rebuilding between these commands**:
-
-```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
-```
-
-Recording a single filtered group does not refresh the other groups' recordings. Outputs remain under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`; successful Record runs copy eligible recordings/metadata to source for review as described below. Review source changes and preserve any uncopied outputs before rebuilding. Skipped scenario bodies are not recorded or covered; mixed active/skipped groups still record setup/teardown.
-
-The cleanup change adds pre-clean, child-list/delete, and absence-check requests to all 15 active scenario groups (Deploy, Get, New, Remove, Switch, and Update). Setup and teardown use distinct recording contexts: the upstream recorder resets request counters even for skipped tests, so sharing a context can overwrite setup responses with teardown responses. Their older recordings require a fresh authorized Record run after this context fix, which refreshes the test scripts automatically, followed by Playback; API-version matching or regeneration alone is insufficient. The cleanup implementation and its offline fixtures do not refresh or fabricate scenario recordings.
-
-The three Update scenarios use disposable parents `eaupdatetag01`, `eaupdatever01`, and `eaupdatefilter01` in `powershelltests`. Parent updates verify expanded tag replacement without changing location/SKU, then clear tags using the public `-JsonString '{"tags":{}}'` parameter set. This is not evidence that expanded `-Tag @{}` supports clearing: the current generated serializer omits empty objects, sending an empty PATCH that the service rejects. The test deliberately covers the supported raw-JSON request without changing the generated model or runtime. Version updates change tags and verify that default status and deployment type remain unchanged; changing the default requires `Switch-AzEdgeActionVersionDefault`, not PATCH. Execution-filter updates deploy two versions, change `VersionId`, identifier headers and tags, then verify omitted tags and version are preserved by a header-only update. Other dedicated Update JSON/identity test cases remain skipped placeholders.
-
-These newly implemented tests need their own fresh recordings. No regeneration/build is needed solely for these scenario/helper changes when current module artifacts already exist. To record just these groups, then replay the same groups, run:
-
-```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login -TestName 'Update-AzEdgeAction', 'Update-AzEdgeActionVersion', 'Update-AzEdgeActionExecutionFilter'
-```
-
-After inspecting Record's result, without rebuilding:
-
-```powershell
-& ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback -TestName 'Update-AzEdgeAction', 'Update-AzEdgeActionVersion', 'Update-AzEdgeActionExecutionFilter'
-```
-
-### Results and recording ownership
-
-The child contains Pester's `-EnableExit` so it cannot close the caller. The parent rejects a nonzero child exit and missing, stale, failing, malformed, or all-skipped NUnit results, even if the generated harness reports success. Review the summary and `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test\Az.EdgeAction-TestResults.xml`.
-
-Original child stdout, stderr and Pester output remain visible. On failure, the wrapper adds pass/fail/skipped counts, failed test or suite names, available script/line locations, failure messages and the XML path. For Record only, a fresh recording with exactly one matching scenario/status response can add HTTP status and service code/message. Assertion failures, stale recordings and ambiguous matches are not assigned a service error. Summary text redacts common URL, resource-ID, quoted-value and credential patterns and is length-limited; this is not a comprehensive sanitizer for arbitrary service messages. Headers and full request/response payloads are not printed by the added summary. Original output and raw artifact recordings are not filtered or rewritten, and failed runs never copy recordings to source.
-
-These summaries belong to `Test-EdgeAction.ps1`, not the direct `test-module.ps1` harness or interactive public cmdlets. A public cmdlet may show only a generic HTTP error when its generated error model cannot deserialize the service response. Record already retains response bodies in the artifact recording for local inspection; Playback reuses existing recordings rather than recording new responses.
-
-The wrapper loads settings/dependencies, checks the selected live context, and invokes the existing artifact harness in an isolated child. It clears the previous results XML to require a fresh result. **Only after a successful Record run passes fresh-result validation**, it copies recordings written by that run's selected groups to `src\EdgeAction\EdgeAction.Autorest\test`, overwriting those source recordings as **unstaged Git diff changes**. File hashes and modification times distinguish newly written recordings (including deterministic same-content rewrites) from stale artifacts. Playback, Live, failed runs, and unchanged unrelated artifacts never trigger copy-back. The runner never stages or commits files.
-
-The harness writes originals and `env.json` under `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test`. Copy-back includes `env.json` only when needed and compatible with the recording set; a filtered run cannot replace metadata required by untouched source recordings. Subscription/tenant identifiers remain consistent for playback, rather than being rewritten independently. Source recording/metadata edits, or changes to the scenario/helper fingerprints verified during refresh, stop handoff. Results XML, test scripts, `localEnv.json`, and other files are never copied back to source.
-
-**Copied for review does not mean sanitized or ready to publish.** The upstream recorder filters `Authorization` headers only. Handoff rejects detected credential-bearing headers, common secret fields, known signed/credential URL patterns, and private keys before any source writes. Like other AutoRest recordings in this repository, `Location`/`Azure-AsyncOperation` headers and their query strings are preserved unchanged unless those existing credential checks match. There is no blanket query-string rejection, query-key allowlist, or automatic URL rewriting. Retaining a query parameter is not proof that its value is safe to publish. Handoff does not decode or certify embedded code/archives or comprehensively scan arbitrary payloads. Review and sanitize the Git diff, including identifiers and payloads, before staging or committing. A blocked handoff leaves originals in artifacts and reports the file/reason without printing its contents. Preserve consistent request/response URL mappings when sanitizing recordings for playback; merely stripping a polling query can break replay. After addressing incompatible metadata or sensitive content, manually preserve a reviewed, playback-compatible set; do not bypass the check by staging raw artifacts.
-
-The runner does not back up recordings or roll back partial copy failures. Copy errors fail explicitly and may leave some source changes for inspection. **Preserve any uncopied outputs before rebuilding or rerunning**, because the upstream workflow can replace them. Existing snapshot directories are untouched. Do not run multiple harnesses/builds concurrently against the same artifacts or source test directory. After reviewing the copied files, rebuild and rerun playback to verify the source inputs. The developer still owns cleanup after interrupted/failed cloud runs, and skipped tests are not coverage.
-
-## Offline tests for the wrappers
-
-Run these from the same `src\EdgeAction\EdgeAction.Autorest` directory. They exercise generation sequencing/error handling and the scenario runner with fixtures; they do not generate/build or access cloud resources:
+**Start from: repository root in a fresh native PowerShell terminal.** The block changes to `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest` before executing `test-module.ps1`.
 
 ```powershell
 Import-Module Pester -RequiredVersion 4.10.1
-$result = Invoke-Pester -Script ..\tools\GenerationScripts\tests\Update-EdgeActionGeneratedFiles.Tests.ps1, ..\tools\TestScripts\tests\Test-EdgeAction.Tests.ps1, ..\tools\TestScripts\tests\ScenarioCleanup.Tests.ps1, ..\tools\TestScripts\tests\RecordingLifecycle.Tests.ps1, ..\tools\TestScripts\tests\UpdateScenarios.Tests.ps1 -PassThru
-if ($result.FailedCount -gt 0 -or $result.TotalCount -eq 0) { throw 'Offline wrapper tests failed or none ran.' }
+Set-Location .\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest
+.\test-module.ps1 -NotIsolated -Playback -TestName 'Update-AzEdgeAction'
 ```
 
-With existing module build artifacts, also verify actual generated request serialization using an in-memory terminal (no network, authentication or recordings):
+Omit `-TestName` to run all groups. Missing request keys require compatible recordings, not regeneration alone. API-version changes, changed request sequences and separate fixture setup/cleanup recording contexts can all invalidate older recordings.
+
+### Authorized Record runs, including Brazilus
+
+Record and Live create/delete resources. Use only the authorized test subscription and the existing dedicated `powershelltests` resource group. The 15 scenario groups use distinct fixed parent names, but repeated runs reuse those names and each group's cases share its fixture. Setup can pre-clean those exact fixtures. Do not use these names for unrelated resources or run multiple harnesses/builds concurrently against the same fixtures/output directories.
+
+The harness's `check-dependencies.ps1` checks Pester and, for Record/Live, prepares Resources test support if missing. That preparation can download packages and invoke native build tools. Have the prerequisites/feed configuration above ready before starting; Playback does not require live Resources support.
+
+For an already registered Brazilus environment, explicitly authenticate and verify the context **in the same fresh terminal** that will execute the harness.
+
+**Start from: repository root.** The block changes to `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest` after authentication and runs `test-module.ps1` there.
 
 ```powershell
-$result = Invoke-Pester -Script ..\tools\TestScripts\tests\UpdateSerialization.Tests.ps1 -PassThru
-if ($result.FailedCount -gt 0 -or $result.TotalCount -ne 3) { throw 'Offline serialization checks failed.' }
+Import-Module .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
+Import-Module Pester -RequiredVersion 4.10.1
+$subscription = '<authorized-test-subscription-id>'
+$environment = Get-AzEnvironment -Name Brazilus
+if (-not $environment -or $environment.ResourceManagerUrl.TrimEnd('/') -ne 'https://brazilus.management.azure.com') {
+    throw 'Register and verify the approved Brazilus environment before recording.'
+}
+Disable-AzContextAutosave -Scope Process
+Connect-AzAccount -Environment Brazilus -Subscription $subscription -Scope Process
+$context = Get-AzContext
+if ($context.Subscription.Id -ne $subscription -or $context.Environment.Name -ne 'Brazilus') {
+    throw 'Unexpected test subscription or environment.'
+}
+Set-Location .\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest
+.\test-module.ps1 -NotIsolated -Record -TestName 'Update-AzEdgeAction'
 ```
+
+If Brazilus is not registered, obtain approval before registering its ARM endpoint with `Add-AzEnvironment`; verify the resulting endpoint and audience rather than accepting an environment name alone. For Azure public cloud, explicitly select and verify `AzureCloud` instead. The direct harness does not enforce these boundaries for you.
+
+`setupEnv` lives in maintained `src\EdgeAction\EdgeAction.Autorest\test\utils.ps1` and executes from the copied artifact file. It obtains subscription/tenant from the current context and uses `powershelltests`. Record writes artifact `test\env.json`; Live uses `test\localEnv.json`. `-UsePreviousConfigForRecord` loads earlier values before setup, but is not authentication or permission to use another subscription.
+
+After a successful Record, open another fresh terminal and run the Playback command above. Do not rebuild between Record and that first Playback. For all three Update groups, pass `-TestName 'Update-AzEdgeAction','Update-AzEdgeActionVersion','Update-AzEdgeActionExecutionFilter'`, or omit the filter for a complete run.
+
+Parent Update coverage uses nonempty expanded tags for replacement and the public `-JsonString '{"tags":{}}'` path for clearing. The current expanded serializer omits empty objects; `-Tag @{}` is not equivalent to the required tag-clear body. Version tag updates verify default/deployment-type preservation; changing the default requires `Switch-AzEdgeActionVersionDefault`. Filter updates cover `VersionId`, headers and tags, including preservation during a header-only PATCH. Skipped JSON/identity stubs are not coverage.
+
+## Results and recording review
+
+The harness prints normal Pester output and writes `test\Az.EdgeAction-TestResults.xml` under the artifact module. Inspect the latest timestamp, failed test/suite names, stack locations and messages; do not treat an old report as evidence about the latest code. Direct harness exit behavior is not a substitute for inspecting XML, especially after setup/cleanup failures.
+
+Record saves HTTP requests/responses in artifact `test\*.Recording.json`, including failed responses. A public cmdlet can display only a generic status if its generated error model cannot deserialize the service's error shape. Inspect the relevant response locally; do not publish full headers, URLs, IDs or payloads in logs. Playback reuses recordings and does not create new service responses.
+
+There is **no automatic recording handoff or sanitization** in these direct steps. Preserve failed/uncopied outputs before another Record/build. After successful Record and Playback, review identifiers, credentials, polling URLs and embedded code/archives, preserving consistent request/response keys needed by Playback. Then copy only the reviewed recording(s) and compatible environment metadata back to source.
+
+**Run from: repository root**, in a new shell after completing the recording review. This example copies only the parent Update recording.
+
+```powershell
+$artifactTest = Join-Path (Get-Location) 'artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\test'
+$sourceTest = Join-Path (Get-Location) 'src\EdgeAction\EdgeAction.Autorest\test'
+Copy-Item (Join-Path $artifactTest 'Update-AzEdgeAction.Recording.json') $sourceTest -Force
+```
+
+Copy `env.json` only after confirming compatibility with **all** source recordings that share it; a filtered run must not invalidate other groups. Never copy results XML, local settings, `localEnv.json` or entire artifact directories into source. Review `git diff` and stage explicit files only. Rebuild/replay the reviewed source fixtures before submitting them; neither generated-code archives nor successful tests certify that recordings are safe to publish.
+
+## Script reference
+
+### Repository workflow
+
+Use these entry points for this checkout. The commands above include their prerequisite configuration and review steps; this table is a reference, not a second sequence to execute.
+
+| Script | Execute from | Purpose |
+| --- | --- | --- |
+| `.\tools\BuildScripts\PrepareAutorestModule.ps1` | Repository root | Regenerate with `-RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate`; writes both derived source files and local generated output. |
+| `.\tools\BuildScripts\BuildModules.ps1` | Repository root | Build with `-RepoRoot $repo -Configuration Debug -TargetModule EdgeAction`; creates the artifact module used for testing. |
+| `.\test-module.ps1` | `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest`, relative to repository root | Run Pester scenarios with one of `-Playback`, `-Record`, or `-Live`. Use `-TestName` to select groups; follow the authentication/disposable-shell instructions above for `-NotIsolated`. |
+| `.\check-dependencies.ps1` | The same artifact module directory | Normally invoked by the harness, not a separate manual step. Checks/downloads dependencies and can prepare Resources support for Record/Live. |
+
+Maintain custom PowerShell cmdlets in `src\EdgeAction\EdgeAction.Autorest\custom`, authored help examples in `examples`, and scenarios/fixtures in `test` under that same source directory. Build/generation consumes those inputs; edit them rather than the copies in `generated` or `artifacts`.
+
+### Complete standalone module only
+
+**Execute each command below from the root of a complete standalone generated module**, where the script, project, `Az.EdgeAction.psd1`, exports, generated runtime, and dependencies are colocated (after building where needed). This is **not** the repository root, the post-preparation maintained `src` directory, or the repository's test artifact directory. Repository preparation splits these files across locations; the presence of a script alone does not make its directory a standalone module.
+
+| Command | Purpose and important options |
+| --- | --- |
+| `.\build-module.ps1` | Compile and refresh exports, manifest, help and test scaffolding. `-Release` selects Release compilation; `-NoDocs` suppresses Markdown generation. Optional follow-on actions include `-Run`, `-Test`, `-Docs`, and `-Pack`; `-Code` opens the development session in VS Code. |
+| `.\run-module.ps1` | Open an isolated PowerShell session with the built module imported; `-Code` also opens VS Code and configures attachment to that process. |
+| `.\generate-help.ps1` | Refresh standalone `docs` from built command metadata and authored `examples`. This does not replace the repository's separate parent-help/MAML steps. |
+| `.\test-module.ps1 -Playback` | Run recorded Pester scenarios. `-TestName` filters groups; Record/Live still require authorized fixtures and authentication. |
+| `.\pack-module.ps1` | Create a NuGet package from existing build output using `dotnet pack --no-build`; this does not publish the package. |
+| `.\export-surface.ps1` | Export cmdlet/model surface Markdown to `resources` for inspection. Options include `-IncludeGeneralParameters` and `-UseExpandedFormat`; this is not distributed command help. |
+| `.\check-dependencies.ps1` | Normally called by other scripts; checks/downloads selected dependencies with `-Accounts`, `-Pester`, or `-Resources`. It is not a read-only environment check. |

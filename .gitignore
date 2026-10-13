@@ -10,7 +10,6 @@ tmp/
 FilesChanged.txt
 CsprojMappings.json
 global.json
-/src/EdgeAction/tools/TestScripts/TestSettings.local.psd1
 
 obj
 bin

@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Update the tags of an Edge Action.
 Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags; the current expanded serializer omits `-Tag @{}`.
 Null tags are rejected.
 Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
@@ -46,6 +47,7 @@ Update-AzEdgeAction -InputObject <IEdgeActionIdentity> [-Property <IAny>] [-SkuN
 ## DESCRIPTION
 Update the tags of an Edge Action.
 Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags. The current expanded serializer omits `-Tag @{}`, producing an empty PATCH that the service rejects.
 Null tags are rejected.
 Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
@@ -63,6 +65,13 @@ myEdgeAction global   Succeeded         Standard Standard
 ```
 
 Updates the specified edge action with the provided tags.
+
+### Example 2: Clear all tags with an explicit JSON body
+```powershell
+Update-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction" -JsonString '{"tags":{}}'
+```
+
+Removes all tags from the edge action. Use the JSON parameter set for this operation: the current expanded serializer omits an empty `-Tag @{}` object, producing an empty PATCH that the service rejects.
 
 ## PARAMETERS
 
