@@ -77,10 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.TrackedResource(json);
+            __managedHsmResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateLinkResourceProperties.FromJson(__jsonProperties) : _property;}
-            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSku.FromJson(__jsonSku) : _sku;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
             AfterFromJson(json);
         }
 
@@ -103,10 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return container;
             }
-            __trackedResource?.ToJson(container, serializationMode);
+            __managedHsmResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
-            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

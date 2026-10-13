@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>The response of a Vault list operation.</summary>
+    /// <summary>List of vaults</summary>
     [System.ComponentModel.TypeConverter(typeof(VaultListResultTypeConverter))]
     public partial class VaultListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// The response of a Vault list operation.
+    /// List of vaults
     [System.ComponentModel.TypeConverter(typeof(VaultListResultTypeConverter))]
     public partial interface IVaultListResult
 

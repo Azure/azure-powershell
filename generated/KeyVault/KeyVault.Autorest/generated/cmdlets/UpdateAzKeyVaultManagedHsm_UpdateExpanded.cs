@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"update a managed HSM Pool in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2026-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2024-11-01")]
     public partial class UpdateAzKeyVaultManagedHsm_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IContext
@@ -41,17 +41,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Resource information with extended details.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsm();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -166,17 +157,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The geo-location where the resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The geo-location where the resource lives",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -188,12 +168,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the managed HSM Pool.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the managed HSM Pool.")]
+        /// <summary>Name of the managed HSM Pool</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the managed HSM Pool")]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the managed HSM Pool.",
+        Description = @"Name of the managed HSM Pool",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Path)]
@@ -239,18 +219,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule) })]
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule[] NetworkAclsIPRule { get => _parametersBody.NetworkAclsIPRule?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.NetworkAclsIPRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>(value) : null); }
-
-        /// <summary>The list of service tags.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of service tags.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of service tags.",
-        SerializedName = @"serviceTags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule[] NetworkAclsServiceTag { get => _parametersBody.NetworkAclsServiceTag?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.NetworkAclsServiceTag = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>(value) : null); }
 
         /// <summary>The list of virtual network rules.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -320,12 +288,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        /// <summary>Name of the resource group that contains the managed HSM pool.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the resource group that contains the managed HSM pool.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
+        Description = @"Name of the resource group that contains the managed HSM pool.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Path)]
@@ -372,12 +340,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
+        /// <summary>
+        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
+        /// for every service call.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription. The value must be an UUID.",
+        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(
@@ -388,17 +359,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Resource tags.</summary>
+        /// <summary>Resource tags</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags.",
+        Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
@@ -490,11 +461,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -819,24 +785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

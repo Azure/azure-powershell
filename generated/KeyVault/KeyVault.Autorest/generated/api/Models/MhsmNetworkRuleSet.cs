@@ -39,13 +39,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> IPRule { get => this._iPRule; set => this._iPRule = value; }
 
-        /// <summary>Backing field for <see cref="ServiceTag" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> _serviceTag;
-
-        /// <summary>The list of service tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> ServiceTag { get => this._serviceTag; set => this._serviceTag = value; }
-
         /// <summary>Backing field for <see cref="VirtualNetworkRule" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule> _virtualNetworkRule;
 
@@ -103,17 +96,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> IPRule { get; set; }
-        /// <summary>The list of service tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The list of service tags.",
-        SerializedName = @"serviceTags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> ServiceTag { get; set; }
         /// <summary>The list of virtual network rules.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -144,8 +126,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         string DefaultAction { get; set; }
         /// <summary>The list of IP address rules.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule> IPRule { get; set; }
-        /// <summary>The list of service tags.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule> ServiceTag { get; set; }
         /// <summary>The list of virtual network rules.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule> VirtualNetworkRule { get; set; }
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>The response of a ManagedHsm list operation.</summary>
+    /// <summary>List of managed HSM Pools</summary>
     public partial class ManagedHsmListResult
     {
 

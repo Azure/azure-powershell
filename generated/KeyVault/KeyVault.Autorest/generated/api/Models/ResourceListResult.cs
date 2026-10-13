@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>The list of vault resources.</summary>
+    /// <summary>List of vault resources.</summary>
     public partial class ResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResult,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal
@@ -21,11 +21,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource> _value;
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource> _value;
 
         /// <summary>The list of vault resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource> Value { get => this._value; set => this._value = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="ResourceListResult" /> instance.</summary>
         public ResourceListResult()
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         }
     }
-    /// The list of vault resources.
+    /// List of vault resources.
     public partial interface IResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
     {
@@ -50,25 +50,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         string NextLink { get; set; }
         /// <summary>The list of vault resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
         Description = @"The list of vault resources.",
         SerializedName = @"value",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource> Value { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource> Value { get; set; }
 
     }
-    /// The list of vault resources.
+    /// List of vault resources.
     internal partial interface IResourceListResultInternal
 
     {
         /// <summary>The URL to get the next set of vault resources.</summary>
         string NextLink { get; set; }
         /// <summary>The list of vault resources.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource> Value { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource> Value { get; set; }
 
     }
 }

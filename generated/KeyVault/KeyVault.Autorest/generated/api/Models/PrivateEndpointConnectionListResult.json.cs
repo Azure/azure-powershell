@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
+    /// <summary>List of private endpoint connections.</summary>
     public partial class PrivateEndpointConnectionListResult
     {
 

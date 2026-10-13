@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>The response of a DeletedVault list operation.</summary>
+    /// <summary>List of vaults</summary>
     public partial class DeletedVaultListResult
     {
 

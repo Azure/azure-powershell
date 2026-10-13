@@ -80,8 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {_bypass = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("bypass"), out var __jsonBypass) ? (string)__jsonBypass : (string)_bypass;}
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
             {_iPRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("ipRules"), out var __jsonIPRules) ? If( __jsonIPRules as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmipRule.FromJson(__u) )) ))() : null : _iPRule;}
-            {_serviceTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("serviceTags"), out var __jsonServiceTags) ? If( __jsonServiceTags as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRule.FromJson(__p) )) ))() : null : _serviceTag;}
-            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmVirtualNetworkRule.FromJson(__k) )) ))() : null : _virtualNetworkRule;}
+            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmVirtualNetworkRule.FromJson(__p) )) ))() : null : _virtualNetworkRule;}
             AfterFromJson(json);
         }
 
@@ -115,23 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 }
                 container.Add("ipRules",__w);
             }
-            if (null != this._serviceTag)
+            if (null != this._virtualNetworkRule)
             {
                 var __r = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.XNodeArray();
-                foreach( var __s in this._serviceTag )
+                foreach( var __s in this._virtualNetworkRule )
                 {
                     AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                 }
-                container.Add("serviceTags",__r);
-            }
-            if (null != this._virtualNetworkRule)
-            {
-                var __m = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.XNodeArray();
-                foreach( var __n in this._virtualNetworkRule )
-                {
-                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
-                }
-                container.Add("virtualNetworkRules",__m);
+                container.Add("virtualNetworkRules",__r);
             }
             AfterToJson(ref container);
             return container;

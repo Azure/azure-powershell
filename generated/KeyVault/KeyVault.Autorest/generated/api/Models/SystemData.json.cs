@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
+    /// <summary>
+    /// Metadata pertaining to creation and last modification of the key vault resource.
+    /// </summary>
     public partial class SystemData
     {
 

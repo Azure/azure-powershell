@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
+    /// <summary>
+    /// Metadata pertaining to creation and last modification of the key vault resource.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SystemDataTypeConverter))]
     public partial class SystemData
     {
@@ -194,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// Metadata pertaining to creation and last modification of the resource.
+    /// Metadata pertaining to creation and last modification of the key vault resource.
     [System.ComponentModel.TypeConverter(typeof(SystemDataTypeConverter))]
     public partial interface ISystemData
 

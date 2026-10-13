@@ -121,10 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmipRuleTypeConverter.ConvertFrom));
             }
-            if (content.Contains("ServiceTag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).ServiceTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRuleTypeConverter.ConvertFrom));
-            }
             if (content.Contains("VirtualNetworkRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).VirtualNetworkRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule>) content.GetValueForProperty("VirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).VirtualNetworkRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmVirtualNetworkRuleTypeConverter.ConvertFrom));
@@ -157,10 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             if (content.Contains("IPRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmipRuleTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ServiceTag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).ServiceTag = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmNetworkRuleSetInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRuleTypeConverter.ConvertFrom));
             }
             if (content.Contains("VirtualNetworkRule"))
             {

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>The response of a DeletedManagedHsm list operation.</summary>
+    /// <summary>List of deleted managed HSM Pools</summary>
     [System.ComponentModel.TypeConverter(typeof(DeletedManagedHsmListResultTypeConverter))]
     public partial class DeletedManagedHsmListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// The response of a DeletedManagedHsm list operation.
+    /// List of deleted managed HSM Pools
     [System.ComponentModel.TypeConverter(typeof(DeletedManagedHsmListResultTypeConverter))]
     public partial interface IDeletedManagedHsmListResult
 

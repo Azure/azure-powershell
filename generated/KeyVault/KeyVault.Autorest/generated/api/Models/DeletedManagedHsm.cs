@@ -7,28 +7,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>
-    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
-    /// </summary>
     public partial class DeletedManagedHsm :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsm,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource" />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ProxyResource();
 
         /// <summary>The deleted date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public global::System.DateTime? DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate; }
 
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; }
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>The Azure Resource Manager resource ID for the deleted managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public string Id { get => this._id; }
 
         /// <summary>The location of the original managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
@@ -39,41 +32,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public string MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; }
 
         /// <summary>Internal Acessors for DeletionDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.DeletionDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).DeletionDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Location = value ?? null; }
 
         /// <summary>Internal Acessors for MhsmId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.MhsmId { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).MhsmId = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmProperties Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.DeletedManagedHsmProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PurgeProtectionEnabled</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled = value; }
+        bool? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.PurgeProtectionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).PurgeProtectionEnabled = value ?? default(bool); }
 
         /// <summary>Internal Acessors for ScheduledPurgeDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Tag</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag = value; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Id = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name = value; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmInternal.Type { get => this._type; set { {_type = value;} } }
 
-        /// <summary>The name of the resource</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Name; }
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public string Name { get => this._name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmProperties _property;
@@ -94,68 +87,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public global::System.DateTime? ScheduledPurgeDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).ScheduledPurgeDate; }
 
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemData; }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
-
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
-
         /// <summary>Tags of the original managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesInternal)Property).Tag; }
 
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)__proxyResource).Type; }
+        /// <summary>Backing field for <see cref="Type" /> property.</summary>
+        private string _type;
+
+        /// <summary>The resource type of the managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public string Type { get => this._type; }
 
         /// <summary>Creates an new <see cref="DeletedManagedHsm" /> instance.</summary>
         public DeletedManagedHsm()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
-        }
     }
-    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
     public partial interface IDeletedManagedHsm :
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
     {
         /// <summary>The deleted date.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
@@ -168,6 +118,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"deletionDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? DeletionDate { get;  }
+        /// <summary>The Azure Resource Manager resource ID for the deleted managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The Azure Resource Manager resource ID for the deleted managed HSM Pool.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Id { get;  }
         /// <summary>The location of the original managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -190,6 +151,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"mhsmId",
         PossibleTypes = new [] { typeof(string) })]
         string MhsmId { get;  }
+        /// <summary>The name of the managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The name of the managed HSM Pool.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get;  }
         /// <summary>Purge protection status of the original managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
@@ -223,18 +195,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Tag { get;  }
+        /// <summary>The resource type of the managed HSM Pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resource type of the managed HSM Pool.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        string Type { get;  }
 
     }
-    /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
-    internal partial interface IDeletedManagedHsmInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IProxyResourceInternal
+    internal partial interface IDeletedManagedHsmInternal
+
     {
         /// <summary>The deleted date.</summary>
         global::System.DateTime? DeletionDate { get; set; }
+        /// <summary>The Azure Resource Manager resource ID for the deleted managed HSM Pool.</summary>
+        string Id { get; set; }
         /// <summary>The location of the original managed HSM.</summary>
         string Location { get; set; }
         /// <summary>The resource id of the original managed HSM.</summary>
         string MhsmId { get; set; }
+        /// <summary>The name of the managed HSM Pool.</summary>
+        string Name { get; set; }
         /// <summary>Properties of the deleted managed HSM</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmProperties Property { get; set; }
         /// <summary>Purge protection status of the original managed HSM.</summary>
@@ -243,6 +229,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         global::System.DateTime? ScheduledPurgeDate { get; set; }
         /// <summary>Tags of the original managed HSM.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedManagedHsmPropertiesTags Tag { get; set; }
+        /// <summary>The resource type of the managed HSM Pool.</summary>
+        string Type { get; set; }
 
     }
 }

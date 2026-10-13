@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a managed HSM Pool in the specified subscription.
+Update a managed HSM Pool in the specified subscription.
 .Description
-update a managed HSM Pool in the specified subscription.
+Update a managed HSM Pool in the specified subscription.
 .Example
 {{ Add code here }}
 .Example
@@ -37,49 +37,44 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [Name <String>]: The name of the deleted managed HSM.
+  [Location <String>]: The location of the deleted vault.
+  [Name <String>]: Name of the managed HSM Pool
   [OperationKind <String>]: Name of the operation
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection associated with the managed hsm pool.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VaultName <String>]: The name of the vault.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection associated with the key vault.
+  [ResourceGroupName <String>]: The name of the Resource Group to which the server belongs.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VaultName <String>]: Name of the vault
 
 NETWORKACLSIPRULE <IMhsmipRule[]>: The list of IP address rules.
   Value <String>: An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
-
-NETWORKACLSSERVICETAG <IMhsmServiceTagRule[]>: The list of service tags.
-  Tag <String>: Name of the service tag.
 
 NETWORKACLSVIRTUALNETWORKRULE <IMhsmVirtualNetworkRule[]>: The list of virtual network rules.
   Id <String>: Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
 
 PARAMETER <IManagedHsm>: Resource information with extended details.
-  [CreateMode <String>]: The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-  [EnablePurgeProtection <Boolean?>]: Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
-  [EnableSoftDelete <Boolean?>]: Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
   [IdentityType <String>]: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
   [IdentityUserAssignedIdentity <IUserAssignedIdentities>]: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
+  [Location <String>]: The supported Azure location where the managed HSM Pool should be created.
+  [SkuFamily <String>]: SKU Family of the managed HSM Pool
+  [SkuName <String>]: SKU of the managed HSM Pool
+  [Tag <IManagedHsmResourceTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [CreateMode <String>]: The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
+  [EnablePurgeProtection <Boolean?>]: Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
+  [EnableSoftDelete <Boolean?>]: Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
   [InitialAdminObjectId <List<String>>]: Array of initial administrators object ids for this managed hsm pool.
-  [Location <String>]: The geo-location where the resource lives
   [NetworkAclsBypass <String>]: Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
   [NetworkAclsDefaultAction <String>]: The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
   [NetworkAclsIPRule <List<IMhsmipRule>>]: The list of IP address rules.
     Value <String>: An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
-  [NetworkAclsServiceTag <List<IMhsmServiceTagRule>>]: The list of service tags.
-    Tag <String>: Name of the service tag.
   [NetworkAclsVirtualNetworkRule <List<IMhsmVirtualNetworkRule>>]: The list of virtual network rules.
     Id <String>: Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
   [PublicNetworkAccess <String>]: Control permission to the managed HSM from public networks.
   [Region <List<IMhsmGeoReplicatedRegion>>]: List of all regions associated with the managed hsm pool.
     [IsPrimary <Boolean?>]: A boolean value that indicates whether the region is the primary region or a secondary region.
     [Name <String>]: Name of the geo replicated region.
-  [SkuFamily <String>]: SKU Family of the managed HSM Pool
-  [SkuName <String>]: SKU of the managed HSM Pool
   [SoftDeleteRetentionInDay <Int32?>]: Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
-  [Tag <IManagedHsmTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [TenantId <String>]: The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
 
 REGION <IMhsmGeoReplicatedRegion[]>: List of all regions associated with the managed hsm pool.
@@ -98,7 +93,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [System.String]
-    # The name of the managed HSM Pool.
+    # Name of the managed HSM Pool
     ${Name},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -107,8 +102,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
+    # Name of the resource group that contains the managed HSM pool.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -118,8 +112,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -179,13 +173,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("AzureServices", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [System.String]
@@ -210,14 +197,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule[]]
     # The list of IP address rules.
     ${NetworkAclsIPRule},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule[]]
-    # The list of service tags.
-    ${NetworkAclsServiceTag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -271,9 +250,9 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags.
+    # Resource tags
     ${Tag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -372,6 +351,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.KeyVault.private\Update-AzKeyVaultManagedHsm_Update';
@@ -382,8 +364,6 @@ begin {
             UpdateViaJsonString = 'Az.KeyVault.private\Update-AzKeyVaultManagedHsm_UpdateViaJsonString';
         }
         if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -392,6 +372,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

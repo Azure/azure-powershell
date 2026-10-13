@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of managed HSM Pools.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> _value;
 
-        /// <summary>The MhsmPrivateEndpointConnection items on this page</summary>
+        /// <summary>The private endpoint connection associated with a managed HSM Pools.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> Value { get => this._value; set => this._value = value; }
 
@@ -39,25 +39,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     public partial interface IMhsmPrivateEndpointConnectionsListResult :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of managed HSM Pools.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The link to the next page of items",
+        Description = @"The URL to get the next set of managed HSM Pools.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The MhsmPrivateEndpointConnection items on this page</summary>
+        /// <summary>The private endpoint connection associated with a managed HSM Pools.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The MhsmPrivateEndpointConnection items on this page",
+        Description = @"The private endpoint connection associated with a managed HSM Pools.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> Value { get; set; }
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     internal partial interface IMhsmPrivateEndpointConnectionsListResultInternal
 
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of managed HSM Pools.</summary>
         string NextLink { get; set; }
-        /// <summary>The MhsmPrivateEndpointConnection items on this page</summary>
+        /// <summary>The private endpoint connection associated with a managed HSM Pools.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnection> Value { get; set; }
 
     }

@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
-    /// </summary>
+    /// <summary>Key Vault resource</summary>
     public partial class Resource :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal
@@ -18,20 +16,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
+        /// <summary>Fully qualified identifier of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>Azure location of the key vault resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
+        public string Location { get => this._location; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Id { get => this._id; set { {_id = value;} } }
 
+        /// <summary>Internal Acessors for Location</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Location { get => this._location; set { {_location = value;} } }
+
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Name { get => this._name; set { {_name = value;} } }
 
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemData()); set { {_systemData = value;} } }
+        /// <summary>Internal Acessors for Tag</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags()); set { {_tag = value;} } }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal.Type { get => this._type; set { {_type = value;} } }
@@ -39,49 +45,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the resource</summary>
+        /// <summary>Name of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
-        /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData _systemData;
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags _tag;
 
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
+        /// <summary>Tags assigned to the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemData()); }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
-
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags()); }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
+        /// <summary>Resource type of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
 
@@ -91,148 +69,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         }
     }
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// Key Vault resource
     public partial interface IResource :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
+        /// <summary>Fully qualified identifier of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Fully qualified resource ID for the resource. E.g. ""/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}""",
+        Description = @"Fully qualified identifier of the key vault resource.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
-        /// <summary>The name of the resource</summary>
+        /// <summary>Azure location of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The name of the resource",
+        Description = @"Azure location of the key vault resource.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get;  }
+        /// <summary>Name of the key vault resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Name of the key vault resource.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
+        /// <summary>Tags assigned to the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataCreatedAt { get;  }
-        /// <summary>The identity that created the resource.</summary>
+        Description = @"Tags assigned to the key vault resource.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Tag { get;  }
+        /// <summary>Resource type of the key vault resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataCreatedBy { get;  }
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get;  }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp of resource last modification (UTC)",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? SystemDataLastModifiedAt { get;  }
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        string SystemDataLastModifiedBy { get;  }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get;  }
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of the resource. E.g. ""Microsoft.Compute/virtualMachines"" or ""Microsoft.Storage/storageAccounts""",
+        Description = @"Resource type of the key vault resource.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
 
     }
-    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// Key Vault resource
     internal partial interface IResourceInternal
 
     {
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
+        /// <summary>Fully qualified identifier of the key vault resource.</summary>
         string Id { get; set; }
-        /// <summary>The name of the resource</summary>
+        /// <summary>Azure location of the key vault resource.</summary>
+        string Location { get; set; }
+        /// <summary>Name of the key vault resource.</summary>
         string Name { get; set; }
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData SystemData { get; set; }
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        global::System.DateTime? SystemDataCreatedAt { get; set; }
-        /// <summary>The identity that created the resource.</summary>
-        string SystemDataCreatedBy { get; set; }
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataCreatedByType { get; set; }
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        global::System.DateTime? SystemDataLastModifiedAt { get; set; }
-        /// <summary>The identity that last modified the resource.</summary>
-        string SystemDataLastModifiedBy { get; set; }
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
-        string SystemDataLastModifiedByType { get; set; }
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
+        /// <summary>Tags assigned to the key vault resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags Tag { get; set; }
+        /// <summary>Resource type of the key vault resource.</summary>
         string Type { get; set; }
 
     }

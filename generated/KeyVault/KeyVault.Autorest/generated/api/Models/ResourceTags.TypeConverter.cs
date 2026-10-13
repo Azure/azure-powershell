@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="PrivateEndpointConnectionTags" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ResourceTags" />
     /// </summary>
-    public partial class PrivateEndpointConnectionTagsTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class ResourceTagsTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="PrivateEndpointConnectionTags"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ResourceTags"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="PrivateEndpointConnectionTags"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ResourceTags"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="PrivateEndpointConnectionTags" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="ResourceTags" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,31 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="PrivateEndpointConnectionTags" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ResourceTags" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="PrivateEndpointConnectionTags" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ResourceTags" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="PrivateEndpointConnectionTags" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="ResourceTags" />.</param>
         /// <returns>
-        /// an instance of <see cref="PrivateEndpointConnectionTags" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ResourceTags" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return PrivateEndpointConnectionTags.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return ResourceTags.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return PrivateEndpointConnectionTags.DeserializeFromPSObject(sourceValue);
+                return ResourceTags.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return PrivateEndpointConnectionTags.DeserializeFromDictionary(sourceValue);
+                return ResourceTags.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

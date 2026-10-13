@@ -35,19 +35,19 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of the Azure region.
-  [Name <String>]: The name of the deleted managed HSM.
+  [Location <String>]: The location of the deleted vault.
+  [Name <String>]: Name of the managed HSM Pool
   [OperationKind <String>]: Name of the operation
-  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection associated with the managed hsm pool.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VaultName <String>]: The name of the vault.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection associated with the key vault.
+  [ResourceGroupName <String>]: The name of the Resource Group to which the server belongs.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VaultName <String>]: Name of the vault
 .Link
 https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultmanagedhsm
 #>
 function Get-AzKeyVaultManagedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
@@ -56,11 +56,10 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
+    # Name of the resource group that contains the managed HSM pool.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -69,8 +68,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -149,6 +148,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.KeyVault.private\Get-AzKeyVaultManagedHsm_Get';
@@ -157,8 +159,6 @@ begin {
             List1 = 'Az.KeyVault.private\Get-AzKeyVaultManagedHsm_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -167,6 +167,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

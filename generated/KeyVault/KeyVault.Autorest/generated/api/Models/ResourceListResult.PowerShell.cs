@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>The list of vault resources.</summary>
+    /// <summary>List of vault resources.</summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceListResultTypeConverter))]
     public partial class ResourceListResult
     {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.TrackedResourceTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTypeConverter.ConvertFrom));
             }
             if (content.Contains("NextLink"))
             {
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ITrackedResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.TrackedResourceTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTypeConverter.ConvertFrom));
             }
             if (content.Contains("NextLink"))
             {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// The list of vault resources.
+    /// List of vault resources.
     [System.ComponentModel.TypeConverter(typeof(ResourceListResultTypeConverter))]
     public partial interface IResourceListResult
 
