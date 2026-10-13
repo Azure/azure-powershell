@@ -41,7 +41,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkApplianceDualStack");
         }
 
-        [Fact]
+        [Fact(Skip = "Session recording is hand-authored/synthetic and has not yet been validated by a real Playback run. Remove this Skip once validated.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestVirtualNetworkApplianceCapacityProvider()
