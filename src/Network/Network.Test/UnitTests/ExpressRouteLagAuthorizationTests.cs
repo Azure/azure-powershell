@@ -6,9 +6,13 @@
 
 using Microsoft.Azure.Commands.Network;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Commands.Network.Test.UnitTests
@@ -64,6 +68,38 @@ namespace Commands.Network.Test.UnitTests
             Assert.Equal("test-auth", authorization.Name);
             Assert.Equal("InUse", authorization.AuthorizationUseStatus);
             Assert.Equal("Succeeded", authorization.ProvisioningState);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddAuthorizationHonorsWhatIf()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var operations = new Mock<IExpressRouteLagAuthorizationsOperations>();
+            var managementClient = new Mock<INetworkManagementClient>();
+            var commandRuntime = new Mock<ICommandRuntime>();
+            managementClient.SetupGet(client => client.ExpressRouteLagAuthorizations).Returns(operations.Object);
+            commandRuntime
+                .Setup(runtime => runtime.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(false);
+            var command = new AddAzureExpressRouteLagAuthorizationCommand
+            {
+                CommandRuntime = commandRuntime.Object,
+                NetworkClient = new NetworkClient(managementClient.Object),
+                Name = "test-auth",
+                ExpressRouteLagObject = new PSExpressRouteLag
+                {
+                    Name = "test-lag",
+                    ResourceGroupName = "test-rg"
+                }
+            };
+
+            command.Execute();
+
+            commandRuntime.Verify(
+                runtime => runtime.ShouldProcess("test-auth", It.Is<string>(action => !string.IsNullOrEmpty(action))),
+                Times.Once);
+            operations.VerifyNoOtherCalls();
         }
     }
 }

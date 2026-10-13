@@ -41,6 +41,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (!ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage))
+            {
+                return;
+            }
+
             var present = true;
 
             try
