@@ -15,6 +15,7 @@
 using System.Net;
 using System.Net.Security;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
     public class ClientProxyBaseTests
     {
         [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(false)]
         [InlineData(true)]
         public void ConstructorPreservesCertificateValidationCallback(bool hasExistingCallback)
