@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "301" ],
-        "x-ms-client-request-id": [ "11e9a927-6726-4dbb-af20-c2f570227c78" ],
+        "x-ms-unique-id": [ "561" ],
+        "x-ms-client-request-id": [ "353c1119-9286-49c7-847e-67120ae0e1a7" ],
         "CommandName": [ "Get-AzElasticSanSkuList" ],
         "FullCommandName": [ "Get-AzElasticSanSkuList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,15 +23,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
-        "x-ms-request-id": [ "fa9c50b9-594d-49cb-a573-f4e02dc226a0" ],
-        "x-ms-correlation-request-id": [ "fa9c50b9-594d-49cb-a573-f4e02dc226a0" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261009T231446Z:fa9c50b9-594d-49cb-a573-f4e02dc226a0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-request-id": [ "430e07fb-283c-4126-9806-d6f9d468a09b" ],
+        "x-ms-correlation-request-id": [ "430e07fb-283c-4126-9806-d6f9d468a09b" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261013T175401Z:430e07fb-283c-4126-9806-d6f9d468a09b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C2BDE1549ED448AD9356546CC3DD6434 Ref B: SN4AA2022304053 Ref C: 2026-10-09T23:14:46Z" ],
-        "Date": [ "Fri, 09 Oct 2026 23:14:46 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8A116F10785A4A16A5B458DEBBC5883B Ref B: SN4AA2022401017 Ref C: 2026-10-13T17:54:01Z" ],
+        "Date": [ "Tue, 13 Oct 2026 17:54:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "94140" ],

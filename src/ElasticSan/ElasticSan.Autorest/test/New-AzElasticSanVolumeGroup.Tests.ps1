@@ -34,7 +34,7 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $false
 
         $volGroupName3 = 'testvolgroup3' + $env.RandomString
-        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'UserAssigned'-IdentityUserAssignedIdentity $env.Useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName $env.Keyname -KeyVaultUri $env.KeyvaultUri -EncryptionUserAssignedIdentity $env.Useridentity.Id -ProtocolType Iscsi
+        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'UserAssigned' -IdentityUserAssignedIdentity $env.Useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName $env.Keyname -KeyVaultUri $env.KeyvaultUri -EncryptionUserAssignedIdentity $env.Useridentity.Id -ProtocolType Iscsi
         $volGroup.Name | Should -Be $volGroupName3
         $volGroup.Encryption | Should -Be "EncryptionAtRestWithCustomerManagedKey"
         $volGroup.IdentityType | Should -Be "UserAssigned"
