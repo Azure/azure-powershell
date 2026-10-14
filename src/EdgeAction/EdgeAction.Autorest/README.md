@@ -58,6 +58,14 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  # Generated help must name the public PowerShell cmdlet, not the REST operation.
+  - from: swagger-document
+    where: $..description
+    transform: |
+      if (typeof $ === 'string') {
+        $ = $.replace(/\bswapDefault\b/g, 'Switch-AzEdgeActionVersionDefault');
+      }
+
   # ARM POST operations require an empty body for ASP.NET pipeline compatibility
   # The getVersionCode and swapDefault operations need {} body even though swagger doesn't define request body
   - from: source-file-csharp
@@ -75,6 +83,13 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Patch$|^PatchViaIdentity$
     remove: true
   
+  # Parent updates support only tags; properties are empty and any supplied SKU is rejected.
+  - from: swagger-document
+    where: $.definitions.EdgeActionUpdate.properties
+    transform: |
+      delete $.properties;
+      delete $.sku;
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
