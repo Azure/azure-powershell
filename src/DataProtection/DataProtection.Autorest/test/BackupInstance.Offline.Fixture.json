@@ -1,0 +1,23 @@
+{
+  "NamePrefix": "dpinit",
+  "SubscriptionId": "",
+  "Location": "",
+  "DiskProfiles": [
+    { "Name": "standard-os", "SecurityType": "Standard", "DiskRole": "OS" },
+    { "Name": "standard-data", "SecurityType": "Standard", "DiskRole": "Data" },
+    { "Name": "trustedlaunch-os", "SecurityType": "TrustedLaunch", "DiskRole": "OS" },
+    { "Name": "trustedlaunch-data", "SecurityType": "TrustedLaunch", "DiskRole": "Data" }
+  ],
+  "SuspendedProtectionState": "BackupsSuspended",
+  "VaultedContainers": [ "application", "archive" ],
+  "VolumeName": "application-volume",
+  "Kubernetes": {
+    "IncludedNamespace": [ "application", "database" ],
+    "ExcludedNamespace": [ "scratch" ],
+    "IncludedResourceType": [ "deployments", "statefulsets" ],
+    "ExcludedResourceType": [ "secrets" ],
+    "LabelSelector": [ "app=regression" ],
+    "HookName": "before-backup",
+    "HookNamespace": "application"
+  }
+}
