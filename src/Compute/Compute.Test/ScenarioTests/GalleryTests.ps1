@@ -464,7 +464,7 @@ function Test-GallerySoftDeletePolicy
 
     try
     {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Tag @{ Owner = 'ComputeTest' } -Force;
 
         Assert-ThrowsContains {
             New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc -SoftDeleteRetentionPeriodInDays 30;
