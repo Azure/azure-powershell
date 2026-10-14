@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeAction'))
 
 Describe 'Update-AzEdgeAction' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdatetag01"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Update-AzEdgeAction'
         New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     } }
 

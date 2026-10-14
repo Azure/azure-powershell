@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionVersion'))
 
 Describe 'Remove-AzEdgeActionVersion' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eadelverdec01"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Remove-AzEdgeActionVersion'
         
         # Create edge action for testing
         New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName

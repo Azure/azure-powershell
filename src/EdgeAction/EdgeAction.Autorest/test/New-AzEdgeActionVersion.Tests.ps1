@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionVersion'))
 
 Describe 'New-AzEdgeActionVersion' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaverdec01"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'New-AzEdgeActionVersion'
         
         # Create edge action for version testing
         New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName

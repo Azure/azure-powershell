@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEdgeActionExecutionF
 
 Describe 'Update-AzEdgeActionExecutionFilter' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eaupdatefilter01"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Update-AzEdgeActionExecutionFilter'
         $script:filterName = "updatefilter"
         $script:versionIds = @{}
         New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
@@ -37,11 +37,18 @@ Describe 'Update-AzEdgeActionExecutionFilter' {
             if (-not $ready.Id) { throw "Update fixture version has no resource ID." }
             $script:versionIds[$version] = $ready.Id
         }
-        $null = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+        $filter = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName -ExecutionFilter $script:filterName `
             -VersionId $script:versionIds["v1"] -Location "global" `
             -ExecutionFilterIdentifierHeaderName "X-Update-Filter" `
-            -ExecutionFilterIdentifierHeaderValue "initial"
+            -ExecutionFilterIdentifierHeaderValue "initial" -ErrorAction Stop
+        if ($null -eq $filter) {
+            throw "Update fixture execution-filter creation returned no resource."
+        }
+        if ($filter.ProvisioningState -ne "Succeeded") {
+            throw "Update fixture execution-filter creation did not succeed. ProvisioningState: $($filter.ProvisioningState)"
+        }
+        if (-not $filter.Id) { throw "Update fixture execution filter has no resource ID." }
     } }
 
     AfterAll {
