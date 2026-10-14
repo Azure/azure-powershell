@@ -23,9 +23,6 @@
     - Refreshed update parameters and documented tag replacement, clearing, and immutable-property behavior.
     - Version tag updates preserve the default version; use `Switch-AzEdgeActionVersionDefault` to change it.
     - Clarified the JSON parameter path for clearing tags on EdgeActions, versions, and execution filters when expanded parameters omit empty objects.
-* Updated scenario tests to use randomized `rgps-powershellsdk-edgeaction-tests-` resource groups with run-owned cleanup.
-    - Recorded resource-group names are normalized to `powershellsdk-edgeaction-tests-rgname` for playback.
-    - Execution-filter update tests now stop on fixture creation errors and require successful provisioning before updating.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
