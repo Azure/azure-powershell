@@ -34,23 +34,35 @@ Set-AzSharedVMExtensionVersionDeprecation -InputObject <PSSharedVMExtensionVersi
 ```
 
 ## DESCRIPTION
-The **Set-AzSharedVMExtensionVersionDeprecation** cmdlet schedules a published shared VM extension version for graceful deprecation by setting a deprecation state, timeframe, and scope.
+The **Set-AzSharedVMExtensionVersionDeprecation** cmdlet updates the deprecation status of a published shared VM extension version. A fresh deprecation status is built from the supplied parameters on every call; the previous status is not merged.
+
+The required parameters depend on **-DeprecationState**:
+- **Active**: neither **-DaysUntilDeprecation** nor **-DeprecationType** may be supplied; the deprecation status is cleared.
+- **ScheduledForDeprecation**: both **-DaysUntilDeprecation** and **-DeprecationType** are required. The deprecation time is set to the current time plus the specified number of days.
+- **Deprecated**: **-DeprecationType** is required and **-DaysUntilDeprecation** is not allowed. The version is deprecated immediately.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Schedule a version for future deprecation
 ```powershell
 Set-AzSharedVMExtensionVersionDeprecation -ResourceGroupName 'myResourceGroup' -SharedVMExtensionName 'myVMExtension' -Version '1.0.0' -DeprecationState 'ScheduledForDeprecation' -DaysUntilDeprecation 90 -DeprecationType 'Minor'
 ```
 
 This command schedules version '1.0.0' of the shared VM extension 'myVMExtension' to be deprecated 90 days from now, for the 'Minor' deprecation scope.
 
-### Example 2
+### Example 2: Deprecate a version immediately
+```powershell
+Set-AzSharedVMExtensionVersionDeprecation -ResourceGroupName 'myResourceGroup' -SharedVMExtensionName 'myVMExtension' -Version '1.0.0' -DeprecationState 'Deprecated' -DeprecationType 'Major'
+```
+
+This command deprecates version '1.0.0' immediately for the 'Major' deprecation scope. -DaysUntilDeprecation must not be supplied for the 'Deprecated' state.
+
+### Example 3: Reactivate a version
 ```powershell
 Get-AzSharedVMExtensionVersion -ResourceGroupName 'myResourceGroup' -SharedVMExtensionName 'myVMExtension' -Version '1.0.0' | Set-AzSharedVMExtensionVersionDeprecation -DeprecationState 'Active'
 ```
 
-This command pipes the shared VM extension version object into `Set-AzSharedVMExtensionVersionDeprecation` and resets it back to the 'Active' state.
+This command pipes the shared VM extension version object into `Set-AzSharedVMExtensionVersionDeprecation` and resets it back to the 'Active' state, clearing any deprecation time and type.
 
 ## PARAMETERS
 
@@ -70,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -DaysUntilDeprecation
-The number of days from now after which the shared VM extension version is considered deprecated. Required when -DeprecationState is 'ScheduledForDeprecation' and no deprecation time has previously been set; if a deprecation time is already scheduled, this parameter is optional and only needs to be supplied to change it. When reactivating (-DeprecationState 'Active') with new deprecation data, this parameter must be supplied together with -DeprecationType.
+The number of days from now after which the shared VM extension version is scheduled for deprecation. Required together with -DeprecationType when -DeprecationState is 'ScheduledForDeprecation'. Not allowed when -DeprecationState is 'Active' or 'Deprecated'.
 
 ```yaml
 Type: System.Int32
@@ -115,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeprecationType
-The scope of deprecation, indicating which set of versions are affected.
+The scope of deprecation, indicating which set of versions are affected. Required when -DeprecationState is 'ScheduledForDeprecation' or 'Deprecated'. Not allowed when -DeprecationState is 'Active'.
 
 ```yaml
 Type: System.String

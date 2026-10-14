@@ -78,92 +78,111 @@ function Test-SharedVMExtensionVersionDeprecation
 		Assert-AreEqual $versionByName.Name $versionById.Name
 		Assert-AreEqual $versionByName.ReleaseNotes $versionById.ReleaseNotes
 
-		# Step 4: Verify invalid scheduling is rejected after reading the live version.
+		# Step 4: ScheduledForDeprecation requires both -DaysUntilDeprecation and -DeprecationType.
 		Assert-ThrowsContains {
 			Set-AzSharedVMExtensionVersionDeprecation `
 				-ResourceGroupName $rgname `
 				-SharedVMExtensionName $extensionName `
 				-Version $version `
 				-DeprecationState ScheduledForDeprecation
-		} '-DaysUntilDeprecation must be specified'
+		} '-DaysUntilDeprecation and -DeprecationType are both required'
 
-		# Step 5: Schedule deprecation with the day parameter alone and verify it persisted server-side.
+		# Step 5: ScheduledForDeprecation with only -DaysUntilDeprecation is rejected.
+		Assert-ThrowsContains {
+			Set-AzSharedVMExtensionVersionDeprecation `
+				-ResourceGroupName $rgname `
+				-SharedVMExtensionName $extensionName `
+				-Version $version `
+				-DeprecationState ScheduledForDeprecation `
+				-DaysUntilDeprecation 30
+		} '-DaysUntilDeprecation and -DeprecationType are both required'
+
+		# Step 6: ScheduledForDeprecation with only -DeprecationType is rejected.
+		Assert-ThrowsContains {
+			Set-AzSharedVMExtensionVersionDeprecation `
+				-ResourceGroupName $rgname `
+				-SharedVMExtensionName $extensionName `
+				-Version $version `
+				-DeprecationState ScheduledForDeprecation `
+				-DeprecationType Minor
+		} '-DaysUntilDeprecation and -DeprecationType are both required'
+
+		# Step 7: Schedule deprecation with both parameters and verify it persisted server-side.
 		$scheduled = Set-AzSharedVMExtensionVersionDeprecation `
 			-ResourceGroupName $rgname `
 			-SharedVMExtensionName $extensionName `
 			-Version $version `
 			-DeprecationState ScheduledForDeprecation `
-			-DaysUntilDeprecation 30
+			-DaysUntilDeprecation 30 `
+			-DeprecationType Minor
 
 		Assert-AreEqual 'ScheduledForDeprecation' $scheduled.DeprecationStatus.State
-		Assert-Null $scheduled.DeprecationStatus.DeprecationType
+		Assert-AreEqual 'Minor' $scheduled.DeprecationStatus.DeprecationType
 		Assert-NotNull $scheduled.DeprecationStatus.DeprecationTime
 		Assert-AreEqual 'SharedVMExtensionVersionDeprecation' $scheduled.Tags['scenario']
 		Assert-AreEqual 'Azure PowerShell live scenario test version.' $scheduled.ReleaseNotes
 
 		$persistedSchedule = Get-AzSharedVMExtensionVersion -ResourceId $scheduled.Id
 		Assert-AreEqual 'ScheduledForDeprecation' $persistedSchedule.DeprecationStatus.State
-		Assert-Null $persistedSchedule.DeprecationStatus.DeprecationType
+		Assert-AreEqual 'Minor' $persistedSchedule.DeprecationStatus.DeprecationType
 		Assert-AreEqual $scheduled.DeprecationStatus.DeprecationTime $persistedSchedule.DeprecationStatus.DeprecationTime
-		Assert-AreEqual 'SharedVMExtensionVersionDeprecation' $persistedSchedule.Tags['scenario']
-		Assert-AreEqual 'Azure PowerShell live scenario test version.' $persistedSchedule.ReleaseNotes
 
-		# Step 6: Set the deprecation type alone through the resource-ID parameter set and preserve the schedule.
-		$typedSchedule = Set-AzSharedVMExtensionVersionDeprecation `
+		# Step 8: Re-schedule with new values and verify the status is rebuilt from the supplied data.
+		$reScheduled = Set-AzSharedVMExtensionVersionDeprecation `
 			-ResourceId $persistedSchedule.Id `
-			-DeprecationState ScheduledForDeprecation `
-			-DeprecationType Minor
-
-		Assert-AreEqual 'ScheduledForDeprecation' $typedSchedule.DeprecationStatus.State
-		Assert-AreEqual 'Minor' $typedSchedule.DeprecationStatus.DeprecationType
-		Assert-AreEqual $persistedSchedule.DeprecationStatus.DeprecationTime $typedSchedule.DeprecationStatus.DeprecationTime
-
-		$persistedTypedSchedule = Get-AzSharedVMExtensionVersion -ResourceId $typedSchedule.Id
-		Assert-AreEqual 'ScheduledForDeprecation' $persistedTypedSchedule.DeprecationStatus.State
-		Assert-AreEqual 'Minor' $persistedTypedSchedule.DeprecationStatus.DeprecationType
-		Assert-AreEqual $typedSchedule.DeprecationStatus.DeprecationTime $persistedTypedSchedule.DeprecationStatus.DeprecationTime
-
-		# Step 7: Set both optional parameters together and verify unrelated resource state is preserved.
-		$combinedSchedule = Set-AzSharedVMExtensionVersionDeprecation `
-			-ResourceGroupName $rgname `
-			-SharedVMExtensionName $extensionName `
-			-Version $version `
 			-DeprecationState ScheduledForDeprecation `
 			-DaysUntilDeprecation 45 `
 			-DeprecationType Patch
 
-		Assert-AreEqual 'ScheduledForDeprecation' $combinedSchedule.DeprecationStatus.State
-		Assert-AreEqual 'Patch' $combinedSchedule.DeprecationStatus.DeprecationType
-		Assert-NotNull $combinedSchedule.DeprecationStatus.DeprecationTime
-		Assert-AreEqual 'SharedVMExtensionVersionDeprecation' $combinedSchedule.Tags['scenario']
-		Assert-AreEqual 'Azure PowerShell live scenario test version.' $combinedSchedule.ReleaseNotes
+		Assert-AreEqual 'ScheduledForDeprecation' $reScheduled.DeprecationStatus.State
+		Assert-AreEqual 'Patch' $reScheduled.DeprecationStatus.DeprecationType
+		Assert-NotNull $reScheduled.DeprecationStatus.DeprecationTime
+		Assert-AreNotEqual $persistedSchedule.DeprecationStatus.DeprecationTime $reScheduled.DeprecationStatus.DeprecationTime
 
-		$persistedCombinedSchedule = Get-AzSharedVMExtensionVersion -ResourceId $combinedSchedule.Id
-		Assert-AreEqual 'ScheduledForDeprecation' $persistedCombinedSchedule.DeprecationStatus.State
-		Assert-AreEqual 'Patch' $persistedCombinedSchedule.DeprecationStatus.DeprecationType
-		Assert-AreEqual $combinedSchedule.DeprecationStatus.DeprecationTime $persistedCombinedSchedule.DeprecationStatus.DeprecationTime
+		$persistedReSchedule = Get-AzSharedVMExtensionVersion -ResourceId $reScheduled.Id
+		Assert-AreEqual 'ScheduledForDeprecation' $persistedReSchedule.DeprecationStatus.State
+		Assert-AreEqual 'Patch' $persistedReSchedule.DeprecationStatus.DeprecationType
+		Assert-AreEqual $reScheduled.DeprecationStatus.DeprecationTime $persistedReSchedule.DeprecationStatus.DeprecationTime
 
-		# Step 8: Change state through the resource-ID parameter set and preserve existing deprecation details.
+		# Step 9: Deprecated requires -DeprecationType.
+		Assert-ThrowsContains {
+			Set-AzSharedVMExtensionVersionDeprecation `
+				-ResourceId $persistedReSchedule.Id `
+				-DeprecationState Deprecated
+		} '-DeprecationType is required'
+
+		# Step 10: Deprecated does not allow -DaysUntilDeprecation.
+		Assert-ThrowsContains {
+			Set-AzSharedVMExtensionVersionDeprecation `
+				-ResourceId $persistedReSchedule.Id `
+				-DeprecationState Deprecated `
+				-DeprecationType Major `
+				-DaysUntilDeprecation 5
+		} "-DaysUntilDeprecation cannot be specified when -DeprecationState is 'Deprecated'"
+
+		# Step 11: Deprecate the version immediately with -DeprecationType only.
 		$deprecated = Set-AzSharedVMExtensionVersionDeprecation `
-			-ResourceId $persistedCombinedSchedule.Id `
-			-DeprecationState Deprecated
+			-ResourceId $persistedReSchedule.Id `
+			-DeprecationState Deprecated `
+			-DeprecationType Major
 
 		Assert-AreEqual 'Deprecated' $deprecated.DeprecationStatus.State
-		Assert-AreEqual 'Patch' $deprecated.DeprecationStatus.DeprecationType
-		Assert-AreEqual $persistedCombinedSchedule.DeprecationStatus.DeprecationTime $deprecated.DeprecationStatus.DeprecationTime
+		Assert-AreEqual 'Major' $deprecated.DeprecationStatus.DeprecationType
+		Assert-NotNull $deprecated.DeprecationStatus.DeprecationTime
 
 		$persistedDeprecated = Get-AzSharedVMExtensionVersion -ResourceId $deprecated.Id
 		Assert-AreEqual 'Deprecated' $persistedDeprecated.DeprecationStatus.State
-		Assert-AreEqual 'Patch' $persistedDeprecated.DeprecationStatus.DeprecationType
+		Assert-AreEqual 'Major' $persistedDeprecated.DeprecationStatus.DeprecationType
 		Assert-AreEqual $deprecated.DeprecationStatus.DeprecationTime $persistedDeprecated.DeprecationStatus.DeprecationTime
 
-		# Step 9: Verify partial override validation and reactivate through the input-object parameter set.
+		# Step 12: Active does not allow deprecation parameters.
 		Assert-ThrowsContains {
 			$persistedDeprecated | Set-AzSharedVMExtensionVersionDeprecation `
 				-DeprecationState Active `
 				-DaysUntilDeprecation 10
-		} '-DaysUntilDeprecation and -DeprecationType must be specified together'
+		} "-DaysUntilDeprecation and -DeprecationType cannot be specified when -DeprecationState is 'Active'"
 
+		# Step 13: Reactivate through the input-object parameter set and verify the status is cleared.
 		$active = $persistedDeprecated | Set-AzSharedVMExtensionVersionDeprecation -DeprecationState Active
 		Assert-AreEqual 'Active' $active.DeprecationStatus.State
 		Assert-Null $active.DeprecationStatus.DeprecationTime

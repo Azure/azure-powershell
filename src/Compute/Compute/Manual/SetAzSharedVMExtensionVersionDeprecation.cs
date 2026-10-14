@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The number of days from now after which the shared VM extension version is considered deprecated. Required when -DeprecationState is 'ScheduledForDeprecation' and no deprecation time is already set. When reactivating (-DeprecationState 'Active') with new deprecation data, must be specified together with -DeprecationType.")]
+            HelpMessage = "The number of days from now after which the shared VM extension version is scheduled for deprecation. Required together with -DeprecationType when -DeprecationState is 'ScheduledForDeprecation'. Not allowed when -DeprecationState is 'Active' or 'Deprecated'.")]
         [ValidateRange(0, int.MaxValue)]
         public int? DaysUntilDeprecation { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The scope of deprecation, indicating which set of versions are affected.")]
+            HelpMessage = "The scope of deprecation, indicating which set of versions are affected. Required when -DeprecationState is 'ScheduledForDeprecation' or 'Deprecated'. Not allowed when -DeprecationState is 'Active'.")]
         [ValidateSet(
             Microsoft.Azure.Management.Compute.Models.DeprecationType.Hotfix,
             Microsoft.Azure.Management.Compute.Models.DeprecationType.Patch,
@@ -122,7 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var existing = SharedVMExtensionVersionClient.GetWithHttpMessagesAsync(resourceGroupName, sharedVMExtensionName, version).GetAwaiter().GetResult().Body;
 
                     existing.DeprecationStatus = ComputeDeprecationStatus(
-                        existing.DeprecationStatus,
                         this.DeprecationState,
                         this.IsParameterBound(c => c.DaysUntilDeprecation) ? this.DaysUntilDeprecation : null,
                         this.IsParameterBound(c => c.DeprecationType) ? this.DeprecationType : null,
@@ -138,50 +137,72 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         /// <summary>
-        /// Computes the updated <see cref="ExtensionDeprecationStatus"/> for a shared VM extension version based on
-        /// the requested deprecation state and the (optionally bound) day count / type overrides.
+        /// Builds a fresh <see cref="ExtensionDeprecationStatus"/> for a shared VM extension version from the
+        /// requested deprecation state and parameters. The previous status is intentionally not considered; the
+        /// returned status always reflects only the supplied inputs.
         /// </summary>
+        /// <remarks>
+        /// Validation rules:
+        /// <list type="bullet">
+        /// <item>'Active': neither -DaysUntilDeprecation nor -DeprecationType may be supplied; the status is cleared.</item>
+        /// <item>'ScheduledForDeprecation': both -DaysUntilDeprecation and -DeprecationType are required; the
+        /// deprecation time is set to <paramref name="utcNow"/> plus the supplied day count.</item>
+        /// <item>'Deprecated': -DeprecationType is required and -DaysUntilDeprecation is not allowed; the version is
+        /// deprecated immediately (deprecation time set to <paramref name="utcNow"/>).</item>
+        /// </list>
+        /// </remarks>
         internal static ExtensionDeprecationStatus ComputeDeprecationStatus(
-            ExtensionDeprecationStatus existing,
             string deprecationState,
             int? daysUntilDeprecation,
             string deprecationType,
             DateTime utcNow)
         {
-            var deprecationStatus = existing ?? new ExtensionDeprecationStatus();
-            deprecationStatus.State = deprecationState;
+            bool daysSupplied = daysUntilDeprecation.HasValue;
+            bool typeSupplied = deprecationType != null;
 
-            if (string.Equals(deprecationState, ExtensionState.ScheduledForDeprecation, StringComparison.OrdinalIgnoreCase)
-                && daysUntilDeprecation == null
-                && deprecationStatus.DeprecationTime == null)
+            var deprecationStatus = new ExtensionDeprecationStatus
             {
-                throw new PSArgumentException(
-                    "-DaysUntilDeprecation must be specified when -DeprecationState is 'ScheduledForDeprecation' and no deprecation time is already set.");
-            }
+                State = deprecationState
+            };
 
-            bool isReactivating = string.Equals(deprecationState, ExtensionState.Active, StringComparison.OrdinalIgnoreCase);
-            bool overrideSupplied = daysUntilDeprecation.HasValue || deprecationType != null;
-            bool partialOverride = daysUntilDeprecation.HasValue != (deprecationType != null);
-
-            if (isReactivating && partialOverride)
+            if (string.Equals(deprecationState, ExtensionState.Active, StringComparison.OrdinalIgnoreCase))
             {
-                throw new PSArgumentException(
-                    "-DaysUntilDeprecation and -DeprecationType must be specified together when reactivating (-DeprecationState 'Active') with new deprecation data.");
-            }
+                if (daysSupplied || typeSupplied)
+                {
+                    throw new PSArgumentException(
+                        "-DaysUntilDeprecation and -DeprecationType cannot be specified when -DeprecationState is 'Active'.");
+                }
 
-            if (isReactivating && !overrideSupplied)
-            {
-                // Clear any previously scheduled deprecation data when the version is reactivated,
-                // unless the caller explicitly supplied new values for both.
                 deprecationStatus.DeprecationTime = null;
                 deprecationStatus.DeprecationType = null;
             }
+            else if (string.Equals(deprecationState, ExtensionState.ScheduledForDeprecation, StringComparison.OrdinalIgnoreCase))
+            {
+                if (!daysSupplied || !typeSupplied)
+                {
+                    throw new PSArgumentException(
+                        "-DaysUntilDeprecation and -DeprecationType are both required when -DeprecationState is 'ScheduledForDeprecation'.");
+                }
+
+                deprecationStatus.DeprecationTime = utcNow.AddDays(daysUntilDeprecation.Value);
+                deprecationStatus.DeprecationType = deprecationType;
+            }
             else
             {
-                deprecationStatus.DeprecationTime = daysUntilDeprecation.HasValue
-                    ? (DateTime?)utcNow.AddDays(daysUntilDeprecation.Value)
-                    : (isReactivating ? null : deprecationStatus.DeprecationTime);
-                deprecationStatus.DeprecationType = deprecationType ?? (isReactivating ? null : deprecationStatus.DeprecationType);
+                if (!typeSupplied)
+                {
+                    throw new PSArgumentException(
+                        "-DeprecationType is required when -DeprecationState is 'Deprecated'.");
+                }
+
+                if (daysSupplied)
+                {
+                    throw new PSArgumentException(
+                        "-DaysUntilDeprecation cannot be specified when -DeprecationState is 'Deprecated'; the version is deprecated immediately.");
+                }
+
+                deprecationStatus.DeprecationTime = utcNow;
+                deprecationStatus.DeprecationType = deprecationType;
             }
 
             return deprecationStatus;
