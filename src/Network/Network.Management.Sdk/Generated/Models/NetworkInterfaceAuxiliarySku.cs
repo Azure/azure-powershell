@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NetworkInterfaceAuxiliarySku
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// A1
+        /// </summary>
         public const string A1 = "A1";
+        /// <summary>
+        /// A2
+        /// </summary>
         public const string A2 = "A2";
+        /// <summary>
+        /// A4
+        /// </summary>
         public const string A4 = "A4";
+        /// <summary>
+        /// A8
+        /// </summary>
         public const string A8 = "A8";
     }
 }

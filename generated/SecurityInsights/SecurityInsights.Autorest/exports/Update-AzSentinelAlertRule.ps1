@@ -25,19 +25,19 @@ Update-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 ENTITYMAPPING <EntityMapping[]>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-  [EntityType <EntityMappingType?>]: The V3 type of the mapped entity
-  [FieldMapping <IFieldMapping[]>]: array of field mappings for the given entity mapping
+  [EntityType <String>]: The V3 type of the mapped entity
+  [FieldMapping <List<IFieldMapping>>]: array of field mappings for the given entity mapping
     [ColumnName <String>]: the column name to be mapped to the identifier
     [Identifier <String>]: the V3 identifier of the entity
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [ActionId <String>]: Action ID
   [AlertRuleTemplateId <String>]: Alert rule template ID
   [AutomationRuleId <String>]: Automation rule ID
@@ -64,7 +64,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateScheduled', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
@@ -178,18 +178,18 @@ param(
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity]
+    [System.String]
     ${Severity},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
+    [System.String[]]
     ${Tactic},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -238,9 +238,9 @@ param(
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
+    [System.String[]]
     ${GroupByAlertDetail},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -255,9 +255,9 @@ param(
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
+    [System.String[]]
     ${GroupByEntity},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -265,9 +265,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]]
     # 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-    # To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
     ${EntityMapping},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -316,9 +315,9 @@ param(
 
     [Parameter(ParameterSetName='UpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator]
+    [System.String]
     ${TriggerOperator},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -329,9 +328,9 @@ param(
 
     [Parameter(ParameterSetName='UpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind]
+    [System.String]
     ${EventGroupingSettingAggregationKind},
 
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
@@ -348,15 +347,15 @@ param(
 
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT", "Office 365 Advanced Threat Protection", "Microsoft Defender Advanced Threat Protection")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName]
+    [System.String]
     ${ProductFilter},
 
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]]
+    [System.String[]]
     # High, Medium, Low, Informational
     ${SeveritiesFilter},
 
@@ -451,6 +450,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -479,22 +486,20 @@ begin {
             UpdateViaIdentityMicrosoftSecurityIncidentCreation = 'Az.SecurityInsights.custom\Update-AzSentinelAlertRule';
             UpdateViaIdentityFusionMLTI = 'Az.SecurityInsights.custom\Update-AzSentinelAlertRule';
         }
-        if (('UpdateScheduled', 'UpdateNRT', 'UpdateMicrosoftSecurityIncidentCreation', 'UpdateFusionMLTI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateScheduled', 'UpdateNRT', 'UpdateMicrosoftSecurityIncidentCreation', 'UpdateFusionMLTI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SuppressionDuration')) {
+        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SuppressionDuration') ) {
             $PSBoundParameters['SuppressionDuration'] = New-TimeSpan -Hours 5
         }
-        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('LookbackDuration')) {
+        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('LookbackDuration') ) {
             $PSBoundParameters['LookbackDuration'] = New-TimeSpan -Hours 5
         }
-        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('MatchingMethod')) {
+        if (('UpdateScheduled', 'UpdateNRT', 'UpdateViaIdentityUpdateScheduled', 'UpdateViaIdentityNRT') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('MatchingMethod') ) {
             $PSBoundParameters['MatchingMethod'] = "AllEntities"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -504,6 +509,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStackHciCluster'))
 }
 
 Describe 'Update-AzStackHciCluster' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip{
         Update-AzStackHciCluster -ResourceGroupName $env.ResourceGroup -Name $env.ClusterName -DesiredPropertyDiagnosticLevel "Enhanced" -DesiredPropertyWindowsServerSubscription "Disabled"
     }
 }

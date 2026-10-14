@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The response of the List NetworkRuleSet operation</summary>
+    /// <summary>Paged collection of NetworkRuleSet items</summary>
     public partial class NetworkRuleSetListResult
     {
 

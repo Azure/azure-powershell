@@ -48,11 +48,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </param>
 
         /// <param name="reservationType">Indicates the type of capacity reservation. Allowed values are &#39;Block&#39; for
-        /// block capacity reservations and &#39;Targeted&#39; for reservations that enable a
-        /// VM to consume a specific capacity reservation when a capacity reservation
-        /// group is provided. The reservation type is immutable and cannot be changed
-        /// after it is assigned.
-        /// Possible values include: &#39;Targeted&#39;, &#39;Block&#39;</param>
+        /// block capacity reservations that enable a VM to consume capacity only from
+        /// this capacity block when it is associated using a capacity reservation
+        /// group, &#39;Targeted&#39; for reservations that enable a VM to consume capacity
+        /// from an explicitly associated capacity reservation group and fall back to
+        /// the publicly available capacity if the reservation is full, and &#39;Open&#39; for
+        /// reservations that a VM consumes when it is eligible from an implicitly
+        /// associated capacity reservation group with the matching VM size and zone
+        /// without associating that capacity reservation group and fall back to the
+        /// publicly available capacity if the reservation is full. The reservation
+        /// type is immutable and cannot be changed after the capacity reservation
+        /// group is created.
+        /// Possible values include: &#39;Targeted&#39;, &#39;Block&#39;, &#39;Open&#39;</param>
         public CapacityReservationGroupProperties(System.Collections.Generic.IList<SubResourceReadOnly> capacityReservations = default(System.Collections.Generic.IList<SubResourceReadOnly>), System.Collections.Generic.IList<SubResourceReadOnly> virtualMachinesAssociated = default(System.Collections.Generic.IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile), string reservationType = default(string))
 
         {
@@ -107,10 +114,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets indicates the type of capacity reservation. Allowed values are
-        /// &#39;Block&#39; for block capacity reservations and &#39;Targeted&#39; for reservations
-        /// that enable a VM to consume a specific capacity reservation when a capacity
-        /// reservation group is provided. The reservation type is immutable and cannot
-        /// be changed after it is assigned. Possible values include: &#39;Targeted&#39;, &#39;Block&#39;
+        /// &#39;Block&#39; for block capacity reservations that enable a VM to consume
+        /// capacity only from this capacity block when it is associated using a
+        /// capacity reservation group, &#39;Targeted&#39; for reservations that enable a VM to
+        /// consume capacity from an explicitly associated capacity reservation group
+        /// and fall back to the publicly available capacity if the reservation is
+        /// full, and &#39;Open&#39; for reservations that a VM consumes when it is eligible
+        /// from an implicitly associated capacity reservation group with the matching
+        /// VM size and zone without associating that capacity reservation group and
+        /// fall back to the publicly available capacity if the reservation is full.
+        /// The reservation type is immutable and cannot be changed after the capacity
+        /// reservation group is created. Possible values include: &#39;Targeted&#39;, &#39;Block&#39;, &#39;Open&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "reservationType")]
         public string ReservationType {get; set; }

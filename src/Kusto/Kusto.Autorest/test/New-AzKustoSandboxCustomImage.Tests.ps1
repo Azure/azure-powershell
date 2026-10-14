@@ -21,7 +21,7 @@ Describe 'New-AzKustoSandboxCustomImage' {
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
         $sandboxCustomImageName = "testimage"
-        $languageVersion = "3.9.7"
+        $languageVersion = "3.10.8"
         $requirementsFileContent = "Pillow"
 
         New-AzKustoSandboxCustomImage -ClusterName $clusterName -Name $sandboxCustomImageName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -LanguageVersion $languageVersion -RequirementsFileContent $requirementsFileContent
@@ -34,7 +34,7 @@ Describe 'New-AzKustoSandboxCustomImage' {
         $resourceGroupName = $env.resourceGroupName
         $sandboxCustomImageName = "testimage"
         $sandboxCustomImageParameter = @{
-            LanguageVersion = "3.9.7"
+            LanguageVersion = "3.10.8"
             RequirementsFileContent = "Pillow"
         }
         

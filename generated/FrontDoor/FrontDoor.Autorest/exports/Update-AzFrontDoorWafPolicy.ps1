@@ -55,14 +55,30 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
+EXCEPTIONLISTEXCEPTION <IManagedRuleSetException[]>: List of exceptions.
+  MatchValue <List<String>>: List of values to be matched with.
+  MatchVariable <String>: The variable to be evaluated for excluding the request.
+  Scope <List<IManagedRuleSetScope>>: Scope(s) of the exception.
+    RuleSetType <String>: Defines the rule set type.         Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,         Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+    RuleSetVersion <String>: Defines the version of the rule set.
+    [RuleGroupScope <List<IRuleGroupScope>>]: List of rule group scopes.
+      RuleGroupName <String>: Defines the rule group name.
+      [RuleScope <List<IRuleScope>>]: List of rule scopes.
+        RuleId <String>: Defines the rule id.
+  ValueMatchOperator <String>: Comparison operator to apply to the value to be matched.
+  [Selector <String>]: When matchVariable is a collection, operator used to specify which elements         in the collection this exception applies to.         Currently supported only for RequestHeaderNames.
+  [SelectorMatchOperator <String>]: Comparison operator to apply to the selector when specifying which elements         in the collection this exception applies to.
+
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 LOGSCRUBBINGSETTING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive fields in the Web Application Firewall logs.
   [ScrubbingRule <List<IWebApplicationFirewallScrubbingRules>>]: List of log scrubbing rules applied to the Web Application Firewall logs.
@@ -138,6 +154,13 @@ param(
     [System.String]
     # Gets a unique read-only string that changes whenever the resource is updated.
     ${Etag},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
 
     [Parameter()]
     [Alias('ManagedRule')]
@@ -298,8 +321,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

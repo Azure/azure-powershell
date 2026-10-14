@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ProtocolType
     {
+        /// <summary>
+        /// DoNotUse
+        /// </summary>
         public const string DoNotUse = "DoNotUse";
+        /// <summary>
+        /// Icmp
+        /// </summary>
         public const string Icmp = "Icmp";
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Udp
+        /// </summary>
         public const string Udp = "Udp";
+        /// <summary>
+        /// Gre
+        /// </summary>
         public const string Gre = "Gre";
+        /// <summary>
+        /// Esp
+        /// </summary>
         public const string Esp = "Esp";
+        /// <summary>
+        /// Ah
+        /// </summary>
         public const string Ah = "Ah";
+        /// <summary>
+        /// Vxlan
+        /// </summary>
         public const string Vxlan = "Vxlan";
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
     }
 }

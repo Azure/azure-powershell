@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the EffectiveNetworkSecurityGroupListResult class.
         /// </summary>
 
-        /// <param name="value">A list of effective network security groups.
+        /// <param name="value">The EffectiveNetworkSecurityGroup items on this page
         /// </param>
 
-        /// <param name="nextLink">The URL to get the next set of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public EffectiveNetworkSecurityGroupListResult(System.Collections.Generic.IList<EffectiveNetworkSecurityGroup> value = default(System.Collections.Generic.IList<EffectiveNetworkSecurityGroup>), string nextLink = default(string))
+        public EffectiveNetworkSecurityGroupListResult(System.Collections.Generic.IList<EffectiveNetworkSecurityGroup> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -44,15 +44,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets a list of effective network security groups.
+        /// Gets or sets the EffectiveNetworkSecurityGroup items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<EffectiveNetworkSecurityGroup> Value {get; set; }
 
         /// <summary>
-        /// Gets the URL to get the next set of results.
+        /// Gets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

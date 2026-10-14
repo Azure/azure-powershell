@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MultiVmGroupCreateOption
     {
+        /// <summary>
+        /// AutoCreated
+        /// </summary>
         public const string AutoCreated = "AutoCreated";
+        /// <summary>
+        /// UserSpecified
+        /// </summary>
         public const string UserSpecified = "UserSpecified";
     }
 }

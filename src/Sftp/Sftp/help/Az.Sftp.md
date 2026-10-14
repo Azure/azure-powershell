@@ -17,3 +17,4 @@ Users can login using Microsoft Entra accounts, or local user accounts via stand
 
 ### [New-AzSftpCertificate](New-AzSftpCertificate.md)
 Generate SSH certificates for SFTP authentication using Microsoft Entra credentials.
+

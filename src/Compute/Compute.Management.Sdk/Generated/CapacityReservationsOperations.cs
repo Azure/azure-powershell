@@ -49,6 +49,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -70,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -107,7 +113,8 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "capacityReservationGroupName");
             }
 
-            string apiVersion = "2025-04-01";
+
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -118,6 +125,7 @@ namespace Microsoft.Azure.Management.Compute
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("capacityReservationGroupName", capacityReservationGroupName);
+                tracingParameters.Add("expand", expand);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -135,6 +143,10 @@ namespace Microsoft.Azure.Management.Compute
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("$expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -347,7 +359,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -575,8 +587,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -688,7 +705,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "capacityReservationName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -969,7 +986,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "capacityReservationName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1141,8 +1158,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1213,7 +1235,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "capacityReservationName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2026-04-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

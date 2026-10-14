@@ -13,200 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class IPGroupsOperationsExtensions
     {
         /// <summary>
-        /// Gets the specified ipGroups.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back
-        /// referenced by the IpGroups resource.
-        /// </param>
-        public static IpGroup Get(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, string expand = default(string))
-        {
-                return ((IIPGroupsOperations)operations).GetAsync(resourceGroupName, ipGroupsName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified ipGroups.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back
-        /// referenced by the IpGroups resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpGroup> GetAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, ipGroupsName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an ipGroups in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        public static IpGroup CreateOrUpdate(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, IpGroup parameters)
-        {
-                return ((IIPGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, ipGroupsName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an ipGroups in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpGroup> CreateOrUpdateAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, IpGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ipGroupsName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates tags of an IpGroups resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        public static IpGroup UpdateGroups(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters)
-        {
-                return ((IIPGroupsOperations)operations).UpdateGroupsAsync(resourceGroupName, ipGroupsName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates tags of an IpGroups resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpGroup> UpdateGroupsAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateGroupsWithHttpMessagesAsync(resourceGroupName, ipGroupsName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified ipGroups.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        public static void Delete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
-        {
-                ((IIPGroupsOperations)operations).DeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified ipGroups.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ipGroupsName'>
-        /// The name of the ipGroups.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets all IpGroups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<IpGroup> ListByResourceGroup(this IIPGroupsOperations operations, string resourceGroupName)
-        {
-                return ((IIPGroupsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all IpGroups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<IpGroup>> ListByResourceGroupAsync(this IIPGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all IpGroups in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -234,13 +40,207 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets all IpGroups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<IpGroup> ListByResourceGroup(this IIPGroupsOperations operations, string resourceGroupName)
+        {
+                return ((IIPGroupsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all IpGroups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<IpGroup>> ListByResourceGroupAsync(this IIPGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified ipGroups.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back
+        /// referenced by the IpGroups resource.
+        /// </param>
+        public static IpGroup Get(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, string expand = default(string))
+        {
+                return ((IIPGroupsOperations)operations).GetAsync(resourceGroupName, ipGroupsName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified ipGroups.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back
+        /// referenced by the IpGroups resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpGroup> GetAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, ipGroupsName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates an ipGroups in a specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        public static IpGroup CreateOrUpdate(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, IpGroup parameters)
+        {
+                return ((IIPGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, ipGroupsName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an ipGroups in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpGroup> CreateOrUpdateAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, IpGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ipGroupsName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates tags of an IpGroups resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        public static IpGroup UpdateGroups(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters)
+        {
+                return ((IIPGroupsOperations)operations).UpdateGroupsAsync(resourceGroupName, ipGroupsName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates tags of an IpGroups resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpGroup> UpdateGroupsAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateGroupsWithHttpMessagesAsync(resourceGroupName, ipGroupsName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified ipGroups.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        public static void Delete(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName)
+        {
+                ((IIPGroupsOperations)operations).DeleteAsync(resourceGroupName, ipGroupsName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified ipGroups.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ipGroupsName'>
+        /// The name of the ipGroups.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates or updates an ipGroups in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
@@ -307,39 +307,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IIPGroupsOperations operations, string resourceGroupName, string ipGroupsName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipGroupsName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets all IpGroups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<IpGroup> ListByResourceGroupNext(this IIPGroupsOperations operations, string nextPageLink)
-        {
-                return ((IIPGroupsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all IpGroups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<IpGroup>> ListByResourceGroupNextAsync(this IIPGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Gets all IpGroups in a subscription.
@@ -370,6 +337,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<IpGroup>> ListNextAsync(this IIPGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all IpGroups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<IpGroup> ListByResourceGroupNext(this IIPGroupsOperations operations, string nextPageLink)
+        {
+                return ((IIPGroupsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all IpGroups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<IpGroup>> ListByResourceGroupNextAsync(this IIPGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

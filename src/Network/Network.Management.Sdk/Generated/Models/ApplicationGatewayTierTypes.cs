@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayTierTypes
     {
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// WAF
+        /// </summary>
         public const string WAF = "WAF";
+        /// <summary>
+        /// Standard_v2
+        /// </summary>
         public const string StandardV2 = "Standard_v2";
+        /// <summary>
+        /// WAF_v2
+        /// </summary>
         public const string WAFV2 = "WAF_v2";
     }
 }

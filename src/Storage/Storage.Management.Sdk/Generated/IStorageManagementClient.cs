@@ -104,6 +104,16 @@ namespace Microsoft.Azure.Management.Storage
         IBlobContainersOperations BlobContainers { get; }
 
         /// <summary>
+        /// Gets the IConnectorsOperations
+        /// </summary>
+        IConnectorsOperations Connectors { get; }
+
+        /// <summary>
+        /// Gets the IDataSharesOperations
+        /// </summary>
+        IDataSharesOperations DataShares { get; }
+
+        /// <summary>
         /// Gets the IEncryptionScopesOperations
         /// </summary>
         IEncryptionScopesOperations EncryptionScopes { get; }

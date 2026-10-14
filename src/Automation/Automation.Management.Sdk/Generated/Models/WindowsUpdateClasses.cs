@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class WindowsUpdateClasses
     {
+        /// <summary>
+        /// Unclassified
+        /// </summary>
         public const string Unclassified = "Unclassified";
+        /// <summary>
+        /// Critical
+        /// </summary>
         public const string Critical = "Critical";
+        /// <summary>
+        /// Security
+        /// </summary>
         public const string Security = "Security";
+        /// <summary>
+        /// UpdateRollup
+        /// </summary>
         public const string UpdateRollup = "UpdateRollup";
+        /// <summary>
+        /// FeaturePack
+        /// </summary>
         public const string FeaturePack = "FeaturePack";
+        /// <summary>
+        /// ServicePack
+        /// </summary>
         public const string ServicePack = "ServicePack";
+        /// <summary>
+        /// Definition
+        /// </summary>
         public const string Definition = "Definition";
+        /// <summary>
+        /// Tools
+        /// </summary>
         public const string Tools = "Tools";
+        /// <summary>
+        /// Updates
+        /// </summary>
         public const string Updates = "Updates";
     }
 }

@@ -13,33 +13,117 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewaySslCipherSuite
     {
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+        /// </summary>
         public const string TLSEcdheRSAWithAES256CBCSHA384 = "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384";
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+        /// </summary>
         public const string TLSEcdheRSAWithAES128CBCSHA256 = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256";
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+        /// </summary>
         public const string TLSEcdheRSAWithAES256CBCSHA = "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA";
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+        /// </summary>
         public const string TLSEcdheRSAWithAES128CBCSHA = "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA";
+        /// <summary>
+        /// TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+        /// </summary>
         public const string TLSDHERSAWithAES256GCMSHA384 = "TLS_DHE_RSA_WITH_AES_256_GCM_SHA384";
+        /// <summary>
+        /// TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+        /// </summary>
         public const string TLSDHERSAWithAES128GCMSHA256 = "TLS_DHE_RSA_WITH_AES_128_GCM_SHA256";
+        /// <summary>
+        /// TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+        /// </summary>
         public const string TLSDHERSAWithAES256CBCSHA = "TLS_DHE_RSA_WITH_AES_256_CBC_SHA";
+        /// <summary>
+        /// TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+        /// </summary>
         public const string TLSDHERSAWithAES128CBCSHA = "TLS_DHE_RSA_WITH_AES_128_CBC_SHA";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_256_GCM_SHA384
+        /// </summary>
         public const string TLSRSAWithAES256GCMSHA384 = "TLS_RSA_WITH_AES_256_GCM_SHA384";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_128_GCM_SHA256
+        /// </summary>
         public const string TLSRSAWithAES128GCMSHA256 = "TLS_RSA_WITH_AES_128_GCM_SHA256";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_256_CBC_SHA256
+        /// </summary>
         public const string TLSRSAWithAES256CBCSHA256 = "TLS_RSA_WITH_AES_256_CBC_SHA256";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_128_CBC_SHA256
+        /// </summary>
         public const string TLSRSAWithAES128CBCSHA256 = "TLS_RSA_WITH_AES_128_CBC_SHA256";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_256_CBC_SHA
+        /// </summary>
         public const string TLSRSAWithAES256CBCSHA = "TLS_RSA_WITH_AES_256_CBC_SHA";
+        /// <summary>
+        /// TLS_RSA_WITH_AES_128_CBC_SHA
+        /// </summary>
         public const string TLSRSAWithAES128CBCSHA = "TLS_RSA_WITH_AES_128_CBC_SHA";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES256GCMSHA384 = "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES128GCMSHA256 = "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES256CBCSHA384 = "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES128CBCSHA256 = "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES256CBCSHA = "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA";
+        /// <summary>
+        /// TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+        /// </summary>
         public const string TLSEcdheEcdsaWithAES128CBCSHA = "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA";
+        /// <summary>
+        /// TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+        /// </summary>
         public const string TLSDHEDSSWithAES256CBCSHA256 = "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256";
+        /// <summary>
+        /// TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+        /// </summary>
         public const string TLSDHEDSSWithAES128CBCSHA256 = "TLS_DHE_DSS_WITH_AES_128_CBC_SHA256";
+        /// <summary>
+        /// TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+        /// </summary>
         public const string TLSDHEDSSWithAES256CBCSHA = "TLS_DHE_DSS_WITH_AES_256_CBC_SHA";
+        /// <summary>
+        /// TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+        /// </summary>
         public const string TLSDHEDSSWithAES128CBCSHA = "TLS_DHE_DSS_WITH_AES_128_CBC_SHA";
+        /// <summary>
+        /// TLS_RSA_WITH_3DES_EDE_CBC_SHA
+        /// </summary>
         public const string TLSRSAWith3DESEDECBCSHA = "TLS_RSA_WITH_3DES_EDE_CBC_SHA";
+        /// <summary>
+        /// TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
+        /// </summary>
         public const string TLSDHEDSSWith3DESEDECBCSHA = "TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA";
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        /// </summary>
         public const string TLSEcdheRSAWithAES128GCMSHA256 = "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256";
+        /// <summary>
+        /// TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        /// </summary>
         public const string TLSEcdheRSAWithAES256GCMSHA384 = "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384";
     }
 }

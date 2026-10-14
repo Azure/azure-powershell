@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnClientProtocol
     {
+        /// <summary>
+        /// IkeV2
+        /// </summary>
         public const string IkeV2 = "IkeV2";
+        /// <summary>
+        /// SSTP
+        /// </summary>
         public const string Sstp = "SSTP";
+        /// <summary>
+        /// OpenVPN
+        /// </summary>
         public const string OpenVPN = "OpenVPN";
     }
 }

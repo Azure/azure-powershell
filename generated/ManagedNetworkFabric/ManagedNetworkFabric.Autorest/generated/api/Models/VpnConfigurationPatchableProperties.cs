@@ -13,20 +13,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal
     {
 
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public string BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState; }
+
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? BfdConfigurationIntervalInMilliSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationIntervalInMilliSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationIntervalInMilliSecond = value ?? default(int); }
+
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public int? BfdConfigurationMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationMultiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationMultiplier = value ?? default(int); }
+
+        /// <summary>Internal Acessors for BfdConfigurationAdministrativeState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.BfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState = value ?? null; }
+
         /// <summary>Internal Acessors for OptionAProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesOptionAProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionAProperty { get => (this._optionAProperty = this._optionAProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPatchablePropertiesOptionAProperties()); set { {_optionAProperty = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionAProperty { get => (this._optionAProperty = this._optionAProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPatchProperties()); set { {_optionAProperty = value;} } }
 
         /// <summary>Internal Acessors for OptionAPropertyBfdConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionAPropertyBfdConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfiguration = value; }
-
-        /// <summary>Internal Acessors for OptionAPropertyBfdConfigurationAdministrativeState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionAPropertyBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdPatchConfiguration Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionAPropertyBfdConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).BfdConfiguration = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for OptionBProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionBProperty { get => (this._optionBProperty = this._optionBProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBProperties()); set { {_optionBProperty = value;} } }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionBProperty { get => (this._optionBProperty = this._optionBProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPatchProperties()); set { {_optionBProperty = value;} } }
 
         /// <summary>Internal Acessors for OptionBPropertyRouteTarget</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetInformation Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionBPropertyRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTarget = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetPatchInformation Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesInternal.OptionBPropertyRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTarget = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="NetworkToNetworkInterconnectId" /> property.</summary>
         private string _networkToNetworkInterconnectId;
@@ -36,70 +48,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         public string NetworkToNetworkInterconnectId { get => this._networkToNetworkInterconnectId; set => this._networkToNetworkInterconnectId = value; }
 
         /// <summary>Backing field for <see cref="OptionAProperty" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesOptionAProperties _optionAProperty;
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchProperties _optionAProperty;
 
         /// <summary>option A properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesOptionAProperties OptionAProperty { get => (this._optionAProperty = this._optionAProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPatchablePropertiesOptionAProperties()); set => this._optionAProperty = value; }
-
-        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string OptionAPropertyBfdConfigurationAdministrativeState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationAdministrativeState; }
-
-        /// <summary>Interval in milliseconds. Example: 300.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public int? OptionAPropertyBfdConfigurationIntervalInMilliSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationIntervalInMilliSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationIntervalInMilliSecond = value ?? default(int); }
-
-        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public int? OptionAPropertyBfdConfigurationMultiplier { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationMultiplier; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).BfdConfigurationMultiplier = value ?? default(int); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchProperties OptionAProperty { get => (this._optionAProperty = this._optionAProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPatchProperties()); set => this._optionAProperty = value; }
 
         /// <summary>MTU to use for option A peering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public int? OptionAPropertyMtu { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).Mtu; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).Mtu = value ?? default(int); }
+        public int? OptionAPropertyMtu { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).Mtu; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).Mtu = value ?? default(int); }
 
         /// <summary>Peer ASN number.Example : 28</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public long? OptionAPropertyPeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).PeerAsn = value ?? default(long); }
+        public long? OptionAPropertyPeerAsn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).PeerAsn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).PeerAsn = value ?? default(long); }
 
         /// <summary>IPv4 Address Prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string OptionAPropertyPrimaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).PrimaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).PrimaryIpv4Prefix = value ?? null; }
+        public string OptionAPropertyPrimaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).PrimaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).PrimaryIpv4Prefix = value ?? null; }
 
         /// <summary>IPv6 Address Prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string OptionAPropertyPrimaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).PrimaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).PrimaryIpv6Prefix = value ?? null; }
+        public string OptionAPropertyPrimaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).PrimaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).PrimaryIpv6Prefix = value ?? null; }
 
         /// <summary>Secondary IPv4 Address Prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string OptionAPropertySecondaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).SecondaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).SecondaryIpv4Prefix = value ?? null; }
+        public string OptionAPropertySecondaryIpv4Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).SecondaryIpv4Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).SecondaryIpv4Prefix = value ?? null; }
 
         /// <summary>Secondary IPv6 Address Prefix.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public string OptionAPropertySecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).SecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPropertiesInternal)OptionAProperty).SecondaryIpv6Prefix = value ?? null; }
+        public string OptionAPropertySecondaryIpv6Prefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).SecondaryIpv6Prefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ILayer3IPPrefixPatchPropertiesInternal)OptionAProperty).SecondaryIpv6Prefix = value ?? null; }
 
         /// <summary>Vlan Id.Example : 501</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public int? OptionAPropertyVlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).VlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionAPropertiesInternal)OptionAProperty).VlanId = value ?? default(int); }
+        public int? OptionAPropertyVlanId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).VlanId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchPropertiesInternal)OptionAProperty).VlanId = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="OptionBProperty" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties _optionBProperty;
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchProperties _optionBProperty;
 
         /// <summary>option B properties</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties OptionBProperty { get => (this._optionBProperty = this._optionBProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBProperties()); set => this._optionBProperty = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchProperties OptionBProperty { get => (this._optionBProperty = this._optionBProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPatchProperties()); set => this._optionBProperty = value; }
 
         /// <summary>
         /// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> OptionBPropertyExportRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).ExportRouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).ExportRouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> OptionBPropertyExportRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).ExportRouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).ExportRouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> OptionBPropertyImportRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).ImportRouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).ImportRouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> OptionBPropertyImportRouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).ImportRouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).ImportRouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="PeeringOption" /> property.</summary>
         private string _peeringOption;
@@ -110,19 +110,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 
         /// <summary>Route Targets to be applied for outgoing routes into CE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> RouteTargetExportIpv4RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetExportIpv4RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetExportIpv4RouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> RouteTargetExportIpv4RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetExportIpv4RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetExportIpv4RouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>Route Targets to be applied for outgoing routes from CE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> RouteTargetExportIpv6RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetExportIpv6RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetExportIpv6RouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> RouteTargetExportIpv6RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetExportIpv6RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetExportIpv6RouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>Route Targets to be applied for incoming routes into CE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> RouteTargetImportIpv4RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetImportIpv4RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetImportIpv4RouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> RouteTargetImportIpv4RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetImportIpv4RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetImportIpv4RouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>Route Targets to be applied for incoming routes from CE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> RouteTargetImportIpv6RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetImportIpv6RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBPropertiesInternal)OptionBProperty).RouteTargetImportIpv6RouteTarget = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> RouteTargetImportIpv6RouteTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetImportIpv6RouteTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchPropertiesInternal)OptionBProperty).RouteTargetImportIpv6RouteTarget = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="VpnConfigurationPatchableProperties" /> instance.</summary>
         public VpnConfigurationPatchableProperties()
@@ -134,17 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     public partial interface IVpnConfigurationPatchableProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.IJsonSerializable
     {
-        /// <summary>ARM Resource ID of the Network To Network Interconnect.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"ARM Resource ID of the Network To Network Interconnect.",
-        SerializedName = @"networkToNetworkInterconnectId",
-        PossibleTypes = new [] { typeof(string) })]
-        string NetworkToNetworkInterconnectId { get; set; }
         /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -156,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"administrativeState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
-        string OptionAPropertyBfdConfigurationAdministrativeState { get;  }
+        string BfdConfigurationAdministrativeState { get;  }
         /// <summary>Interval in milliseconds. Example: 300.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -167,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Interval in milliseconds. Example: 300.",
         SerializedName = @"intervalInMilliSeconds",
         PossibleTypes = new [] { typeof(int) })]
-        int? OptionAPropertyBfdConfigurationIntervalInMilliSecond { get; set; }
+        int? BfdConfigurationIntervalInMilliSecond { get; set; }
         /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -178,7 +167,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Multiplier for the Bfd Configuration. Example: 5.",
         SerializedName = @"multiplier",
         PossibleTypes = new [] { typeof(int) })]
-        int? OptionAPropertyBfdConfigurationMultiplier { get; set; }
+        int? BfdConfigurationMultiplier { get; set; }
+        /// <summary>ARM Resource ID of the Network To Network Interconnect.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"ARM Resource ID of the Network To Network Interconnect.",
+        SerializedName = @"networkToNetworkInterconnectId",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkToNetworkInterconnectId { get; set; }
         /// <summary>MTU to use for option A peering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -344,19 +344,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
     internal partial interface IVpnConfigurationPatchablePropertiesInternal
 
     {
+        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
+        string BfdConfigurationAdministrativeState { get; set; }
+        /// <summary>Interval in milliseconds. Example: 300.</summary>
+        int? BfdConfigurationIntervalInMilliSecond { get; set; }
+        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
+        int? BfdConfigurationMultiplier { get; set; }
         /// <summary>ARM Resource ID of the Network To Network Interconnect.</summary>
         string NetworkToNetworkInterconnectId { get; set; }
         /// <summary>option A properties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnConfigurationPatchablePropertiesOptionAProperties OptionAProperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionAPatchProperties OptionAProperty { get; set; }
         /// <summary>BFD Configuration properties.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration OptionAPropertyBfdConfiguration { get; set; }
-        /// <summary>Administrative state of the BfdConfiguration. Example: Enabled | Disabled.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Enabled", "Disabled", "MAT", "RMA")]
-        string OptionAPropertyBfdConfigurationAdministrativeState { get; set; }
-        /// <summary>Interval in milliseconds. Example: 300.</summary>
-        int? OptionAPropertyBfdConfigurationIntervalInMilliSecond { get; set; }
-        /// <summary>Multiplier for the Bfd Configuration. Example: 5.</summary>
-        int? OptionAPropertyBfdConfigurationMultiplier { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdPatchConfiguration OptionAPropertyBfdConfiguration { get; set; }
         /// <summary>MTU to use for option A peering.</summary>
         int? OptionAPropertyMtu { get; set; }
         /// <summary>Peer ASN number.Example : 28</summary>
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// <summary>Vlan Id.Example : 501</summary>
         int? OptionAPropertyVlanId { get; set; }
         /// <summary>option B properties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBProperties OptionBProperty { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVpnOptionBPatchProperties OptionBProperty { get; set; }
         /// <summary>
         /// Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
         /// </summary>
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         /// </summary>
         System.Collections.Generic.List<string> OptionBPropertyImportRouteTarget { get; set; }
         /// <summary>Route Targets to be applied.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetInformation OptionBPropertyRouteTarget { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRouteTargetPatchInformation OptionBPropertyRouteTarget { get; set; }
         /// <summary>Peering option list.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("OptionA", "OptionB")]
         string PeeringOption { get; set; }

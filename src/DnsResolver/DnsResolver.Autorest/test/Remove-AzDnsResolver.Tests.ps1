@@ -1,8 +1,5 @@
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
+# Self-contained test for Remove-AzDnsResolver
+
 $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzDnsResolver.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -12,23 +9,33 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolver' {
-    It 'Delete a DNS resolver by name, expected DNS resolver deleted' {
-         # ARRANGE
-        $dnsResolverName = "psdnsresolvername64";
-        $virtualNetworkName = "psvirtualnetworkname64";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        
-        if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
+        $location = 'westus2'
+        $rgName = "ps-dnsresolver-rm-68978"
+
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
         }
+    }
 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null
+        }
+    }
 
-        # ACT
-        Remove-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
+    It 'Delete a DNS resolver' {
+        $vnetName = "vnet-rm-1"
+        if ($TestMode -ne 'playback') {
+            New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+        }
+        $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/$vnetName"
 
-        # ASSERT 
-        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
+        New-AzDnsResolver -Name "resolver-rm-1" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+        Remove-AzDnsResolver -Name "resolver-rm-1" -ResourceGroupName $rgName
+
+        { Get-AzDnsResolver -DnsResolverName "resolver-rm-1" -ResourceGroupName $rgName } | Should -Throw
     }
 }

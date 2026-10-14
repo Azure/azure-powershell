@@ -68,8 +68,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private string _machineName;
 
         /// <summary>
-        /// The user-provided name for the bare metal machine created from this specification.
-        /// If not provided, the machine name will be generated programmatically.
+        /// The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will
+        /// be generated programmatically.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string MachineName { get => this._machineName; set => this._machineName = value; }
@@ -175,8 +175,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string MachineDetail { get; set; }
         /// <summary>
-        /// The user-provided name for the bare metal machine created from this specification.
-        /// If not provided, the machine name will be generated programmatically.
+        /// The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will
+        /// be generated programmatically.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -184,8 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The user-provided name for the bare metal machine created from this specification.
-        If not provided, the machine name will be generated programmatically.",
+        Description = @"The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will be generated programmatically.",
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
         string MachineName { get; set; }
@@ -240,8 +239,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The free-form additional information about the machine, e.g. an asset tag.</summary>
         string MachineDetail { get; set; }
         /// <summary>
-        /// The user-provided name for the bare metal machine created from this specification.
-        /// If not provided, the machine name will be generated programmatically.
+        /// The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will
+        /// be generated programmatically.
         /// </summary>
         string MachineName { get; set; }
         /// <summary>The slot the physical machine is in the rack based on the BOM configuration.</summary>

@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Compute.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperatingSystemStateTypes
     {
+        /// <summary>
+        /// Generalized image. Needs to be provisioned during deployment time.
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Generalized")]
         Generalized,
+        /// <summary>
+        /// Specialized image. Contains already provisioned OS Disk.
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Specialized")]
         Specialized
     }

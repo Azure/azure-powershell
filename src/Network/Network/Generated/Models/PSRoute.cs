@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string NextHopIpAddress { get; set; }
+        // NextHop is only populated when NextHopType is "VirtualApplianceEcmp". It carries the
+        // list of ECMP next hop IP addresses.
+        [JsonProperty(Order = 1)]
+        public PSRouteNextHopEcmp NextHop { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }

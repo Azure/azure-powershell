@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The list of cluster recovery points.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.

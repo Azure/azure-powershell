@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>")]
+            HelpMessage = "UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ï¿½idï¿½ or ï¿½getentï¿½ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>")]
         [ValidateNotNullOrEmpty]
         public string QuotaTarget { get; set; }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
                 Location = VolumeObject.Location;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

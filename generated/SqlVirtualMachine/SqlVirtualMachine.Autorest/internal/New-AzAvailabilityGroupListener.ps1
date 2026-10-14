@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Description
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Example
 New-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -Name 'AgListener01' -AvailabilityGroupName 'AG01' -IpAddress '192.168.16.7' -LoadBalancerResourceId $LoadBalancerResourceId -SubnetId $SubnetResourceId -ProbePort 9999 -SqlVirtualMachineId $sqlvmResourceId1,$sqlvmResourceId2
 .Example
@@ -28,21 +28,21 @@ $msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPA
 New-AzAvailabilityGroupListener -Name 'AgListener02' -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -AvailabilityGroupName 'AG02' -MultiSubnetIPConfiguration $msconfig1,$msconfig2
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>: Replica configurations.
-  [Commit <Commit?>]: Replica commit mode in availability group.
-  [Failover <Failover?>]: Replica failover mode in availability group.
-  [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-  [Role <Role?>]: Replica Role in availability group.
+  [Commit <String>]: Replica commit mode in availability group.
+  [Failover <String>]: Replica failover mode in availability group.
+  [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+  [Role <String>]: Replica Role in availability group.
   [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
 
 INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
@@ -59,7 +59,7 @@ LOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: List of load balancer 
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
   [ProbePort <Int32?>]: Probe port.
   [PublicIPAddressResourceId <String>]: Resource id of the public IP.
-  [SqlVirtualMachineInstance <String[]>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+  [SqlVirtualMachineInstance <List<String>>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
 
 MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet IP configurations for an AG listener.
   SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
@@ -67,40 +67,46 @@ MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
 
 PARAMETER <IAvailabilityGroupListener>: A SQL Server availability group listener.
-  [AvailabilityGroupConfigurationReplica <IAgReplica[]>]: Replica configurations.
-    [Commit <Commit?>]: Replica commit mode in availability group.
-    [Failover <Failover?>]: Replica failover mode in availability group.
-    [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-    [Role <Role?>]: Replica Role in availability group.
+  [AvailabilityGroupConfigurationReplica <List<IAgReplica>>]: Replica configurations.
+    [Commit <String>]: Replica commit mode in availability group.
+    [Failover <String>]: Replica failover mode in availability group.
+    [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+    [Role <String>]: Replica Role in availability group.
     [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
   [AvailabilityGroupName <String>]: Name of the availability group.
   [CreateDefaultAvailabilityGroupIfNotExist <Boolean?>]: Create a default availability group if it does not exist.
-  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of load balancer configurations for an availability group listener.
+  [LoadBalancerConfiguration <List<ILoadBalancerConfiguration>>]: List of load balancer configurations for an availability group listener.
     [LoadBalancerResourceId <String>]: Resource id of the load balancer.
     [PrivateIPAddressIpaddress <String>]: Private IP address bound to the availability group listener.
     [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
     [ProbePort <Int32?>]: Probe port.
     [PublicIPAddressResourceId <String>]: Resource id of the public IP.
-    [SqlVirtualMachineInstance <String[]>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
-  [MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>]: List of multi subnet IP configurations for an AG listener.
+    [SqlVirtualMachineInstance <List<String>>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+  [MultiSubnetIPConfiguration <List<IMultiSubnetIPConfiguration>>]: List of multi subnet IP configurations for an AG listener.
     SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
     [PrivateIPAddressIpaddress <String>]: Private IP address bound to the availability group listener.
     [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
   [Port <Int32?>]: Listener port.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+
+SQLVIRTUALMACHINEGROUPINPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
+  [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
+  [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
+  [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 #>
 function New-AzAvailabilityGroupListener {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('AvailabilityGroupListenerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -108,6 +114,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the resource group that contains the resource.
@@ -115,6 +123,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('GroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -122,6 +132,8 @@ param(
     ${SqlVMGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -132,46 +144,55 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
+    # Identity Parameter
+    ${SqlVirtualMachineGroupInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
     # Replica configurations.
-    # To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
     ${AvailabilityGroupConfigurationReplica},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.String]
     # Name of the availability group.
     ${AvailabilityGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Create a default availability group if it does not exist.
     ${CreateDefaultAvailabilityGroupIfNotExist},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ILoadBalancerConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ILoadBalancerConfiguration[]]
     # List of load balancer configurations for an availability group listener.
-    # To construct, see NOTES section for LOADBALANCERCONFIGURATION properties and create a hash table.
     ${LoadBalancerConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
     # List of multi subnet IP configurations for an AG listener.
-    # To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
     ${MultiSubnetIPConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='1433')]
     [System.Int32]
@@ -179,11 +200,23 @@ param(
     ${Port},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener]
     # A SQL Server availability group listener.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -253,25 +286,33 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateExpanded';
             CreateViaIdentity = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentity';
+            CreateViaIdentitySqlVirtualMachineGroup = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentitySqlVirtualMachineGroup';
+            CreateViaIdentitySqlVirtualMachineGroupExpanded = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentitySqlVirtualMachineGroupExpanded';
+            CreateViaJsonFilePath = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port')) {
+        if (('CreateExpanded', 'CreateViaIdentitySqlVirtualMachineGroupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port') ) {
             $PSBoundParameters['Port'] = 1433
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

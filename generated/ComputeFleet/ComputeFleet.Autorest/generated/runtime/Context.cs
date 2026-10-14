@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime
     /// The IContext Interface defines the communication mechanism for input customization.
     /// </summary>
     /// <remarks>
-    /// In the context, we will have client, pipeline, PSBoundParamters, default EventListener, Cancellation.
+    /// In the context, we will have client, pipeline, PSBoundParameters, default EventListener, Cancellation.
     /// </remarks>
     public interface IContext
     {
@@ -28,6 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime
         System.Threading.CancellationTokenSource CancellationTokenSource { get; set; }
         System.Collections.Generic.IDictionary<String, Object> ExtensibleParameters { get; }
         HttpPipeline Pipeline { get; set; }
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.ComputeFleet Client { get; }
+        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.MicrosoftAzureFleet Client { get; }
     }
 }

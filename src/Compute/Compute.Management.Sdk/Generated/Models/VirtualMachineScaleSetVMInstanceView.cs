@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// (Windows):** 15 characters &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters.
         /// &lt;br&gt;&lt;br&gt; For naming conventions and restrictions see [Azure infrastructure
         /// services implementation
-        /// guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+        /// guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
         /// </param>
 
         /// <param name="osName">The Operating System running on the hybrid machine.
@@ -83,7 +83,19 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="hyperVGeneration">The hypervisor generation of the Virtual Machine [V1, V2]
         /// Possible values include: &#39;V1&#39;, &#39;V2&#39;</param>
-        public VirtualMachineScaleSetVMInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string assignedHost = default(string), string placementGroupId = default(string), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string))
+
+        /// <param name="interconnectInstanceView">The Interconnect runtime view of the Scale Set VM instance. Minimum
+        /// api-version: 2026-03-01.
+        /// </param>
+
+        /// <param name="capacityReservationType">Specifies which type of capacity reservation the virtual machine scale set
+        /// VM instance will consume capacity from if eligible or whether it is
+        /// explicitly opted out from being associated and consuming capacity from any
+        /// reserved capacity available in the subscription. Minimum api-version:
+        /// 2026-04-01.
+        /// Possible values include: &#39;NotEligible&#39;, &#39;Targeted&#39;, &#39;Open&#39;, &#39;Disabled&#39;,
+        /// &#39;Block&#39;</param>
+        public VirtualMachineScaleSetVMInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string assignedHost = default(string), string placementGroupId = default(string), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), InterconnectInstanceView interconnectInstanceView = default(InterconnectInstanceView), string capacityReservationType = default(string))
 
         {
             this.PlatformUpdateDomain = platformUpdateDomain;
@@ -102,6 +114,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.OsName = osName;
             this.OsVersion = osVersion;
             this.HyperVGeneration = hyperVGeneration;
+            this.InterconnectInstanceView = interconnectInstanceView;
+            this.CapacityReservationType = capacityReservationType;
             CustomInit();
         }
 
@@ -196,7 +210,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// (Windows):** 15 characters &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters.
         /// &lt;br&gt;&lt;br&gt; For naming conventions and restrictions see [Azure infrastructure
         /// services implementation
-        /// guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+        /// guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "computerName")]
         public string ComputerName {get; set; }
@@ -218,5 +232,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hyperVGeneration")]
         public string HyperVGeneration {get; set; }
+
+        /// <summary>
+        /// Gets the Interconnect runtime view of the Scale Set VM instance. Minimum
+        /// api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectInstanceView")]
+        public InterconnectInstanceView InterconnectInstanceView {get; private set; }
+
+        /// <summary>
+        /// Gets specifies which type of capacity reservation the virtual machine scale
+        /// set VM instance will consume capacity from if eligible or whether it is
+        /// explicitly opted out from being associated and consuming capacity from any
+        /// reserved capacity available in the subscription. Minimum api-version:
+        /// 2026-04-01. Possible values include: &#39;NotEligible&#39;, &#39;Targeted&#39;, &#39;Open&#39;, &#39;Disabled&#39;, &#39;Block&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "capacityReservationType")]
+        public string CapacityReservationType {get; private set; }
     }
 }

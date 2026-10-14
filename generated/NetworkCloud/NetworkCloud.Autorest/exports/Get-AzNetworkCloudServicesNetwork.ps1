@@ -96,6 +96,22 @@ param(
     # Identity Parameter
     ${InputObject},
 
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Query')]
+    [System.String]
+    # The opaque token that the server returns to indicate where to continue listing resources from.
+    # This is used for paging through large result sets.
+    ${SkipToken},
+
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Query')]
+    [System.Int32]
+    # The maximum number of resources to return from the operation.
+    # Example: '$top=10'.
+    ${Top},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -158,8 +174,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

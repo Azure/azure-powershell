@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinitionWithHttpMessagesAsync(MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id)).GetAwaiter().GetResult().Body;
                 
                 if (DatabaseName == null || (mongoUserDefinitionGetResults.DatabaseName != null && mongoUserDefinitionGetResults.DatabaseName.Equals(DatabaseName)))
                 {

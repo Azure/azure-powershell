@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -62,10 +63,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(EnableWAD), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "The parameter is deprecated and will be removed in a future version. If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
@@ -82,11 +84,12 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(SkipStorage), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated because it is only used by the legacy Azure Enhanced Monitoring (AEM) extension for SAP, which is being deprecated. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 Position = 4,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Disables the settings for table content")]
+                HelpMessage = "The parameter is deprecated and will be removed in a future version. Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
 
         [Parameter(Mandatory = false,
@@ -101,12 +104,13 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Sets the access of the VM identity to the individual resources, e.g. data disks instead of the complete resource group.")]
         public SwitchParameter SetAccessToIndividualResources { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(InstallNewExtension), "17.0.0", "12.0.0", ChangeDescription = "This parameter is deprecated. The cmdlet installs the new VM Extension for SAP by default, so this switch is no longer required. It will be removed in a future release.")]
         [Parameter(
                 Mandatory = false,
                 Position = 6,
                 ParameterSetName = "NewExtension",
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Install the new extension.")]
+                HelpMessage = "Deprecated. The cmdlet installs the new VM Extension for SAP by default; this switch is no longer required and will be removed in a future version.")]
         public SwitchParameter InstallNewExtension { get; set; }
 
         [Parameter(
@@ -198,35 +202,32 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 var aemExtension = AEMHelper.GetAEMExtension(selectedVM, this.OSType);
-                /*
-                 * no extension + new extension switch => install new extension
-                 * new extension + new extension switch => install new extension
-                 * new extension + no extension switch => install new extension
-                 * no extension + no new extension switch => install old extension
-                 * old extension + no new extension switch => install old extension
-                 * old extension + new extension switch => error                 
-                 */
-                if ((aemExtension == null && InstallNewExtension.IsPresent)
-                    || (AEMHelper.IsNewExtension(aemExtension, this.OSType)))
+
+                // use the new extension by default, the old one is deprecated and will be completely removed
+                //
+                if (null != aemExtension && AEMHelper.IsOldExtension(aemExtension, this.OSType))
                 {
-                    this.SetNewExtension(selectedVM, selectedVMStatus);
-                }
-                else if ((aemExtension == null && !InstallNewExtension.IsPresent)
-                    || (AEMHelper.IsOldExtension(aemExtension, this.OSType) && !InstallNewExtension.IsPresent))
-                {
+                    if (InstallNewExtension.IsPresent)
+                    {
+                        this._Helper.WriteVerbose($"Migration from the old extension to the new one is not supported. " +
+                           $"Please remove the old extension first. (" +
+                           $"Extension installed={aemExtension != null} " +
+                           $"IsNewExtension={AEMHelper.IsNewExtension(aemExtension, this.OSType)} " +
+                           $"IsOldExtension={AEMHelper.IsOldExtension(aemExtension, this.OSType)} " +
+                           $"InstallNewExtension={InstallNewExtension.IsPresent} " +
+                           ")"
+                           );
+                        this._Helper.WriteError("Migration from the old extension to the new one is not supported. Please remove the old extension first.");
+                        return;
+                    }
+                    this._Helper.WriteWarning("[WARN] You have the old extension installed. The old extension is deprecated. Please uninstall it and then install the new one.");
                     this.SetOldExtension(selectedVM, selectedVMStatus);
                 }
                 else
                 {
-                    this._Helper.WriteVerbose($"Migration from the old extension to the new one is not supported. " +
-                        $"Please remove the old extension first. (" +
-                        $"Extension installed={aemExtension != null} " +
-                        $"IsNewExtension={AEMHelper.IsNewExtension(aemExtension, this.OSType)} " +
-                        $"IsOldExtension={AEMHelper.IsOldExtension(aemExtension, this.OSType)}" +
-                        $"InstallNewExtension={InstallNewExtension.IsPresent}");
-                    this._Helper.WriteError("Migration from the old extension to the new one is not supported. Please remove the old extension first.");
-                    return;
+                    this.SetNewExtension(selectedVM, selectedVMStatus);
                 }
+
             });
         }
 

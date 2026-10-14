@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -160,15 +159,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
-        /// Boolean Value for enabling Soft Delete Retention for server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "[Public Preview] Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified). To set a custom retention period use -SoftDeleteRetentionDays.")]
-        [PSArgumentCompleter("true", "false")]
-        [GenericBreakingChangeWithVersion("The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.", "16.0.0", "7.0.0")]
-        public bool? EnableSoftDelete { get; set; }
-
-        /// <summary>
         /// Soft-delete retention days for the server
         /// </summary>
         [Parameter(Mandatory = false,
@@ -190,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
             }
 
-            ValidateSoftDeleteParameters(SoftDeleteRetentionDays, EnableSoftDelete);
+            ValidateSoftDeleteRetentionDays(SoftDeleteRetentionDays);
 
             base.ExecuteCmdlet();
         }
@@ -235,8 +225,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 throw new PSArgumentException(string.Format(Properties.Resources.ServerNameInvalid, this.ServerName), "ServerName");
             }
 
-            int? softDeleteRetentionDays = ComputeSoftDeleteRetentionDays(this.SoftDeleteRetentionDays, this.EnableSoftDelete);
-
             List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
             newEntity.Add(new Model.AzureSqlServerModel()
             {
@@ -260,7 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 },
-                SoftDeleteRetentionDays = softDeleteRetentionDays
+                SoftDeleteRetentionDays = this.SoftDeleteRetentionDays
             });
             return newEntity;
         }

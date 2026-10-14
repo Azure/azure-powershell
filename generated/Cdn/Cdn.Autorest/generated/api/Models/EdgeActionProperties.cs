@@ -23,15 +23,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for Attachment</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionPropertiesInternal.Attachment { get => this._attachment; set { {_attachment = value;} } }
 
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
         /// <summary>The provisioning state of the edge action</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ProvisioningState { get => this._provisioningState; }
+        public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
 
         /// <summary>Creates an new <see cref="EdgeActionProperties" /> instance.</summary>
         public EdgeActionProperties()
@@ -57,15 +54,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>The provisioning state of the edge action</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The provisioning state of the edge action",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
-        string ProvisioningState { get;  }
+        string ProvisioningState { get; set; }
 
     }
     /// Represents an edge action properties

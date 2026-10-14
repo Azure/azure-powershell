@@ -11,6 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
     using System.Threading.Tasks;
     using System.Collections;
     using System.Linq;
+    using System;
+
 
     /// <summary>
     /// The interface for sending an HTTP request across the wire.
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
 
     public partial class HttpPipeline : ISendAsync
     {
+        private const int DefaultMaxRetry = 3;
         private ISendAsync pipeline;
         private ISendAsyncTerminalFactory terminal;
         private List<ISendAsyncFactory> steps = new List<ISendAsyncFactory>();
@@ -91,6 +94,111 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
         /// Returns an HttpPipeline with the current state of this pipeline.
         /// </summary>
         public HttpPipeline Clone() => new HttpPipeline(terminal) { steps = this.steps.ToList(), pipeline = this.pipeline };
+
+        private bool shouldRetry429(HttpResponseMessage response)
+        {
+            if (response.StatusCode == (System.Net.HttpStatusCode)429)
+            {
+                var retryAfter = response.Headers.RetryAfter;
+                if (retryAfter != null && retryAfter.Delta.HasValue)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// The step to handle 429 response with retry-after header.
+        /// </summary>
+        public async Task<HttpResponseMessage> Retry429(HttpRequestMessage request, IEventListener callback, ISendAsync next)
+        {
+            int retryCount = int.MaxValue;
+
+            try
+            {
+                try
+                {
+                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES_FOR_429"));
+                }
+                finally
+                {
+                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES_FOR_429"));
+                }
+            }
+            catch (System.Exception)
+            {
+                //no action
+            }
+            var cloneRequest = await request.CloneWithContent();
+            var response = await next.SendAsync(request, callback);
+            int count = 0;
+            while (shouldRetry429(response) && count++ < retryCount)
+            {
+                request = await cloneRequest.CloneWithContent();
+                var retryAfter = response.Headers.RetryAfter;
+                await Task.Delay(retryAfter.Delta.Value, callback.Token);
+                await callback.Signal("Debug", $"Start to retry {count} time(s) on status code 429 after waiting {retryAfter.Delta.Value.TotalSeconds} seconds.");
+                response = await next.SendAsync(request, callback);
+            }
+            return response;
+        }
+
+        private bool shouldRetryError(HttpResponseMessage response)
+        {
+            if (response.StatusCode >= System.Net.HttpStatusCode.InternalServerError)
+            {
+                if (response.StatusCode != System.Net.HttpStatusCode.NotImplemented &&
+                    response.StatusCode != System.Net.HttpStatusCode.HttpVersionNotSupported)
+                {
+                    return true;
+                }
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.RequestTimeout)
+            {
+                return true;
+            }
+            else if (response.StatusCode == (System.Net.HttpStatusCode)429 && response.Headers.RetryAfter == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if status code in HttpRequestExceptionWithStatus exception is greater 
+        /// than or equal to 500 and not NotImplemented (501) or HttpVersionNotSupported (505).
+        /// Or it's 429 (TOO MANY REQUESTS) without Retry-After header.
+        /// </summary>
+        public async Task<HttpResponseMessage> RetryError(HttpRequestMessage request, IEventListener callback, ISendAsync next)
+        {
+            int retryCount = DefaultMaxRetry;
+
+            try
+            {
+                try
+                {
+                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("PS_HTTP_MAX_RETRIES"));
+                }
+                finally
+                {
+                    retryCount = int.Parse(System.Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES"));
+                }
+            }
+            catch (System.Exception)
+            {
+                //no action
+            }
+            var cloneRequest = await request.CloneWithContent();
+            var response = await next.SendAsync(request, callback);
+            int count = 0;
+            while (shouldRetryError(response) && count++ < retryCount)
+            {
+                await callback.Signal("Debug", $"Start to retry {count} time(s) on status code {response.StatusCode}");
+                request = await cloneRequest.CloneWithContent();
+                response = await next.SendAsync(request, callback);
+            }
+            return response;
+        }
 
         public ISendAsyncTerminalFactory TerminalFactory
         {
@@ -117,6 +225,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
 
                 // create the pipeline from scratch.
                 var next = terminal.Create();
+                if (Convert.ToBoolean(@"true"))
+                {
+                    next = (new SendAsyncFactory(Retry429)).Create(next) ?? next;
+                    next = (new SendAsyncFactory(RetryError)).Create(next) ?? next;
+                }
                 foreach (var factory in steps)
                 {
                     // skip factories that return null.
@@ -243,6 +356,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {
+            // Resolve a relative target against the original request so same-origin relative nextLinks are not misclassified as cross-origin.
+            var effectiveTargetUri = requestUri;
+            if (effectiveTargetUri != null && !effectiveTargetUri.IsAbsoluteUri && original.RequestUri != null && original.RequestUri.IsAbsoluteUri)
+            {
+                System.Uri.TryCreate(original.RequestUri, effectiveTargetUri, out effectiveTargetUri);
+            }
+            // Keep credentials only for a same-origin (scheme+host+port) https target. A null target (no retarget, e.g. retry)
+            // or an unresolved relative target preserves existing behavior and keeps the headers.
+            var isSameOrigin = effectiveTargetUri == null || !effectiveTargetUri.IsAbsoluteUri ||
+                (original.RequestUri != null && original.RequestUri.IsAbsoluteUri &&
+                original.RequestUri.Scheme.Equals(effectiveTargetUri.Scheme, System.StringComparison.OrdinalIgnoreCase) &&
+                original.RequestUri.Host.Equals(effectiveTargetUri.Host, System.StringComparison.OrdinalIgnoreCase) &&
+                original.RequestUri.Port == effectiveTargetUri.Port &&
+                effectiveTargetUri.Scheme.Equals(System.Uri.UriSchemeHttps, System.StringComparison.OrdinalIgnoreCase));
             var clone = new HttpRequestMessage
             {
                 Method = method ?? original.Method,
@@ -263,6 +390,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime
                 */
                 if (!"x-ms-unique-id".Equals(header.Key) && !"x-ms-client-request-id".Equals(header.Key) && !"CommandName".Equals(header.Key) && !"FullCommandName".Equals(header.Key) && !"ParameterSetName".Equals(header.Key) && !"User-Agent".Equals(header.Key))
                 {
+                    if (!isSameOrigin && ("Authorization".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase) || "Proxy-Authorization".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase) || "Cookie".Equals(header.Key, System.StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
                     clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }

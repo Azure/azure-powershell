@@ -17,10 +17,11 @@ Update policy with specified rule set name within a resource group.
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CaptchaExpirationInMinutes <Int32?>] [-CustomBlockResponseBody <String>]
  [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>] [-EnabledState <String>]
- [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
- [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
- [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Etag <String>] [-ExceptionListException <IManagedRuleSetException[]>]
+ [-JavascriptChallengeExpirationInMinutes <Int32?>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByFieldsParameterSet
@@ -28,20 +29,22 @@ Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-Subscri
 Update-AzFrontDoorWafPolicy [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
  [-CaptchaExpirationInMinutes <Int32?>] [-CustomBlockResponseBody <String>]
  [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>] [-EnabledState <String>]
- [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
- [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
- [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Etag <String>] [-ExceptionListException <IManagedRuleSetException[]>]
+ [-JavascriptChallengeExpirationInMinutes <Int32?>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-CaptchaExpirationInMinutes <Int32?>]
  [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32?>] [-Customrule <ICustomRule[]>]
- [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32?>]
- [-LogScrubbingSetting <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
- [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledState <String>] [-Etag <String>] [-ExceptionListException <IManagedRuleSetException[]>]
+ [-JavascriptChallengeExpirationInMinutes <Int32?>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -293,6 +296,21 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExceptionListException
+List of exceptions.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]
 Parameter Sets: (All)
 Aliases:
 

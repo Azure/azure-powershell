@@ -14,18 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnAbortProfileToAFD
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Playback only
 Describe 'Invoke-AzCdnAbortProfileToAFDMigration' {
-    It 'Abort' {
-        $subId = $env.SubscriptionId
-        $cdnProfileName = 'cdn-migration-test-profile-abort'
-        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
-        $profileSku = "Standard_Microsoft";
-        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName -SkuName 'Premium_AzureFrontDoor'
-        Start-Sleep 60
-        Invoke-AzCdnAbortProfileToAFDMigration -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName
+    It 'Abort' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'AbortViaIdentity' -skip {

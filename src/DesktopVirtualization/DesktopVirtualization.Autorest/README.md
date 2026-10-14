@@ -44,13 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0feca76719343b0cb1e6a9d6064c7037827706ca
+commit: 7910c370daefac65d619a7cc0c0c5575b5665060
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/stable/2025-10-10/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -125,3 +125,8 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  # remove Update-AzWvdPrivateEndpointConnection, Finally, we need to remove all private endpoint connection related cmdlets and implement them in Az.Network. Please see https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/examples/private-link-resource-example.md for details.
+  - where:
+      verb: Update
+      subject: PrivateEndpointConnection
+    remove: true

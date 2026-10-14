@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Virtual Router Peering resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualRouterPeering : SubResource
+    public partial class VirtualRouterPeering : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VirtualRouterPeering class.
@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">Name of the virtual router peering that is unique within a virtual router.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Peering type.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
@@ -46,13 +46,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="peerIP">Peer IP.
         /// </param>
-        public VirtualRouterPeering(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), long? peerAsn = default(long?), string peerIP = default(string))
+        public VirtualRouterPeering(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), long? peerAsn = default(long?), string peerIP = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.PeerAsn = peerAsn;
             this.PeerIP = peerIP;
@@ -66,24 +64,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of the virtual router peering that is unique within a
-        /// virtual router.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets peering type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -110,8 +95,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
 
             if (this.PeerAsn != null)

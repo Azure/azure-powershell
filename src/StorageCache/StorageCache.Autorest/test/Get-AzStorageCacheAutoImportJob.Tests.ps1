@@ -14,9 +14,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageCacheAutoImportJ
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/path1', '/path2')
-
 Describe 'Get-AzStorageCacheAutoImportJob' {
+    BeforeAll {
+        New-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoImportPrefix @('/')
+    }
+
+    AfterAll {
+        Remove-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Confirm:$false
+    }
+
     It 'List' {
         {
             Get-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -ResourceGroupName 'acctest43511'
@@ -53,5 +59,3 @@ Describe 'Get-AzStorageCacheAutoImportJob' {
         } | Should -Not -Throw
     }
 }
-
-Remove-AzStorageCacheAutoImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoImportJob' -ResourceGroupName 'acctest43511' -Confirm:$false

@@ -145,7 +145,7 @@
     <!-- Copy appropriate targets -->
     <Copy SourceFiles="$(RepoTools)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
     <!-- Build and create package content -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration)&quot;" />
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
@@ -278,7 +278,8 @@
 $(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.dll;
 $(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.dll;
 $(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll;
-$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll" Exclude="$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
+$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll;
+$(RepoArtifacts)$(Configuration)/**/Microsoft.DataTransfer.Gateway.Encryption.dll" Exclude="$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
     </ItemGroup>
 
     <Message Importance="high" Text="$(RepoArtifacts)$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />

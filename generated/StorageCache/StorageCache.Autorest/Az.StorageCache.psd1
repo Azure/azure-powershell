@@ -1,7 +1,7 @@
 @{
   GUID = '113964d9-7d75-4a3d-ac1c-0014ed44358b'
   RootModule = './Az.StorageCache.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.StorageCache.private.dll'
   FormatsToProcess = './Az.StorageCache.format.ps1xml'
-  FunctionsToExport = 'Get-AzStorageCacheAmlFileSystem', 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize', 'Get-AzStorageCacheAutoExportJob', 'Get-AzStorageCacheAutoImportJob', 'Get-AzStorageCacheImportJob', 'Invoke-AzStorageCacheAmlFileSystemArchive', 'New-AzStorageCacheAmlFileSystem', 'New-AzStorageCacheAutoExportJob', 'New-AzStorageCacheAutoImportJob', 'New-AzStorageCacheImportJob', 'Remove-AzStorageCacheAmlFileSystem', 'Remove-AzStorageCacheAutoExportJob', 'Remove-AzStorageCacheAutoImportJob', 'Remove-AzStorageCacheImportJob', 'Stop-AzStorageCacheAmlFilesystemArchive', 'Test-AzStorageCacheAmlFileSystemSubnet', 'Update-AzStorageCacheAmlFileSystem', 'Update-AzStorageCacheAutoExportJob', 'Update-AzStorageCacheAutoImportJob', 'Update-AzStorageCacheImportJob'
+  FunctionsToExport = 'Get-AzStorageCacheAmlFileSystem', 'Get-AzStorageCacheAmlFileSystemSubnetRequiredSize', 'Get-AzStorageCacheAutoExportJob', 'Get-AzStorageCacheAutoImportJob', 'Get-AzStorageCacheExpansionJob', 'Get-AzStorageCacheImportJob', 'Invoke-AzStorageCacheAmlFileSystemArchive', 'New-AzStorageCacheAmlFileSystem', 'New-AzStorageCacheAutoExportJob', 'New-AzStorageCacheAutoImportJob', 'New-AzStorageCacheExpansionJob', 'New-AzStorageCacheImportJob', 'Remove-AzStorageCacheAmlFileSystem', 'Remove-AzStorageCacheAutoExportJob', 'Remove-AzStorageCacheAutoImportJob', 'Remove-AzStorageCacheExpansionJob', 'Remove-AzStorageCacheImportJob', 'Stop-AzStorageCacheAmlFilesystemArchive', 'Test-AzStorageCacheAmlFileSystemSubnet', 'Update-AzStorageCacheAmlFileSystem', 'Update-AzStorageCacheAutoExportJob', 'Update-AzStorageCacheAutoImportJob', 'Update-AzStorageCacheExpansionJob', 'Update-AzStorageCacheImportJob'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StorageCache'

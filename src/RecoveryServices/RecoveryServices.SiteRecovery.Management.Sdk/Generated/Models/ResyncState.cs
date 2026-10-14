@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ResyncState
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// PreparedForResynchronization
+        /// </summary>
         public const string PreparedForResynchronization = "PreparedForResynchronization";
+        /// <summary>
+        /// StartedResynchronization
+        /// </summary>
         public const string StartedResynchronization = "StartedResynchronization";
     }
 }

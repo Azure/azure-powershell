@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 return;
             }
+            {_exceptionsList = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonObject>("exceptionsList"), out var __jsonExceptionsList) ? Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionList.FromJson(__jsonExceptionsList) : _exceptionsList;}
             {_managedRuleSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray>("managedRuleSets"), out var __jsonManagedRuleSets) ? If( __jsonManagedRuleSets as Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet) (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSet.FromJson(__u) )) ))() : null : _managedRuleSet;}
             AfterFromJson(json);
         }
@@ -100,6 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 return container;
             }
+            AddIf( null != this._exceptionsList ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) this._exceptionsList.ToJson(null,serializationMode) : null, "exceptionsList" ,container.Add );
             if (null != this._managedRuleSet)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.XNodeArray();

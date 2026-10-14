@@ -85,6 +85,19 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = false)]
         public string[] Protocol { get; set; }
         
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceGeoLocation,
+            HelpMessage = "The source geographic location filters (ISO 3166-1 alpha-2 country codes, e.g. \"US\", \"CA\") of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] SourceGeoLocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination geographic location filters (ISO 3166-1 alpha-2 country codes, e.g. \"US\", \"CA\") of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationGeoLocation { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -97,17 +110,45 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            // Only one of DestinationAddress/DestinationIpGroup or DestinationFqdns is allowed
-            // Eventually we may want to have exclusivity with IpGroup too but for now not doing that
-            if (((DestinationAddress != null) || (DestinationIpGroup != null)) && (DestinationFqdn != null))
+            // Source types (SourceAddress, SourceIpGroup, SourceGeoLocation) are mutually exclusive.
+            // Only one source type may be specified per rule (matches NFVRP validation).
+            var sourceTypes = new[]
             {
-                throw new ArgumentException("Both DestinationAddress or DestinationIpGroup and DestinationFqdns not allowed");
+                SourceAddress != null,
+                SourceIpGroup != null,
+                SourceGeoLocation != null
+            };
+
+            if (sourceTypes.Count(x => x) > 1)
+            {
+                throw new ArgumentException("SourceAddresses, SourceIpGroups and SourceGeoLocations are exclusive to each other. Only one source type may be specified per rule.");
             }
 
-            // One of DestinationAddress, DestinationIpGroup or DestinationFqdns must be present
-            if ((DestinationAddress == null) && (DestinationIpGroup == null) && (DestinationFqdn == null))
+            // At least one source type must be present
+            if (!sourceTypes.Any(x => x))
             {
-                throw new ArgumentException("Either DestinationAddress, DestinationIpGroup or DestinationFqdns is required");
+                throw new ArgumentException("Either SourceAddress, SourceIpGroup or SourceGeoLocation is required");
+            }
+
+            // Destination types (DestinationAddress, DestinationIpGroup, DestinationFqdn, DestinationGeoLocation)
+            // are mutually exclusive. Only one destination type may be specified per rule (matches NFVRP validation).
+            var destinationTypes = new[]
+            {
+                DestinationAddress != null,
+                DestinationIpGroup != null,
+                DestinationFqdn != null,
+                DestinationGeoLocation != null
+            };
+
+            if (destinationTypes.Count(x => x) > 1)
+            {
+                throw new ArgumentException("DestinationAddresses, DestinationIpGroups, DestinationFqdns and DestinationGeoLocations are exclusive to each other. Only one destination type may be specified per rule.");
+            }
+
+            // One of DestinationAddress, DestinationIpGroup, DestinationFqdns or DestinationGeoLocation must be present
+            if (!destinationTypes.Any(x => x))
+            {
+                throw new ArgumentException("Either DestinationAddress, DestinationIpGroup, DestinationFqdns or DestinationGeoLocation is required");
             }
 
             var networkRule = new PSAzureFirewallPolicyNetworkRule
@@ -120,6 +161,8 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 DestinationFqdns = this.DestinationFqdn?.ToList(),
+                SourceGeoLocations = this.SourceGeoLocation?.ToList(),
+                DestinationGeoLocations = this.DestinationGeoLocation?.ToList(),
                 RuleType = "NetworkRule",
                 Description = this.Description
             };

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Network Racks.</summary>
+    /// <summary>Paged collection of NetworkRack items</summary>
     [System.ComponentModel.TypeConverter(typeof(NetworkRacksListResultTypeConverter))]
     public partial class NetworkRacksListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Network Racks.
+    /// Paged collection of NetworkRack items
     [System.ComponentModel.TypeConverter(typeof(NetworkRacksListResultTypeConverter))]
     public partial interface INetworkRacksListResult
 

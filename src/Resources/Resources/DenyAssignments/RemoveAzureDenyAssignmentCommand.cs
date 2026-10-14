@@ -62,9 +62,6 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "If specified, returns the deleted deny assignment.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string denyAssignmentId;
@@ -95,8 +92,6 @@ namespace Microsoft.Azure.Commands.Resources
             string target = denyAssignmentId ?? DenyAssignmentName;
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format("Are you sure you want to remove deny assignment '{0}'?", target),
                 string.Format("Removing deny assignment '{0}'", target),
                 target,
                 () =>
@@ -106,6 +101,13 @@ namespace Microsoft.Azure.Commands.Resources
                         DenyAssignmentName,
                         scope,
                         DefaultProfile.DefaultContext.Subscription.Id.ToString());
+
+                    if (result == null)
+                    {
+                        WriteWarning(string.Format(
+                            "Deny assignment '{0}' was not found; no action taken.", target));
+                        return;
+                    }
 
                     if (PassThru)
                     {

@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|Premium0V3|PremiumV3|PremiumMV3|PremiumV4|PremiumMV4]. For ASE: [Isolated|IsolatedV2].")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "PremiumV4", "PremiumMV4", "Isolated", "IsolatedV2", "PremiumContainer")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|Premium0V3|PremiumV3|PremiumMV3|PremiumV4|PremiumMV4]. For App Service Environments: [Isolated|IsolatedV2|IsolatedV4|IsolatedMV4].")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "PremiumV4", "PremiumMV4", "Isolated", "IsolatedV2", "IsolatedV4", "IsolatedMV4", "PremiumContainer")]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         [ValidateNotNullOrEmpty]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge|ExtraExtraLarge]")]
-        [ValidateSet("ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "ExtraExtraLarge", IgnoreCase = true)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [ExtraSmall|Small|Medium|Large|ExtraLarge|ExtraExtraLarge|ExtraExtraExtraLarge]. ExtraExtraExtraLarge selects the I6V4 SKU when Tier is IsolatedV4.")]
+        [ValidateSet("ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "ExtraExtraLarge", "ExtraExtraExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of App Service Environment")]
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public override void ExecuteCmdlet()
         {
             if (HyperV.IsPresent &&
-                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3"))
+                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3" && Tier != "IsolatedV4" && Tier != "IsolatedMV4"))
             {
-                throw new Exception("HyperV switch is only allowed for PremiumContainer ,  PremiumV3 or IsolatedV2 tiers");
+                throw new Exception("HyperV switch is only allowed for PremiumContainer, PremiumV3, PremiumMV3, IsolatedV2, IsolatedV4, or IsolatedMV4 tiers");
             }
             if (!HyperV.IsPresent && Tier == "PremiumContainer")
             {
@@ -106,14 +106,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             }
 
             var capacity = NumberofWorkers < 1 ? 1 : NumberofWorkers;
-            var skuName = CmdletHelpers.GetSkuName(Tier, WorkerSize);
-
-            var sku = new SkuDescription
-            {
-                Tier = Tier,
-                Name = skuName,
-                Capacity = capacity
-            };
+            var sku = CmdletHelpers.CreateSkuDescription(Tier, WorkerSize, capacity);
 
             var appServicePlan = new AppServicePlan
             {

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class BastionHostSkuName
     {
+        /// <summary>
+        /// Basic
+        /// </summary>
         public const string Basic = "Basic";
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Developer
+        /// </summary>
         public const string Developer = "Developer";
+        /// <summary>
+        /// Premium
+        /// </summary>
         public const string Premium = "Premium";
     }
 }

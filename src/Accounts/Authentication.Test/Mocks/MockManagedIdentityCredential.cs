@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Authentication.Test.Mocks
         public Func<AccessToken> TokenFactory { get; set; }
 
         public MockManagedIdentityCredential(string accountId)
-            : base(accountId)
+            : base(string.IsNullOrEmpty(accountId) ? ManagedIdentityId.SystemAssigned : ManagedIdentityId.FromUserAssignedClientId(accountId))
         {
             AccountId = accountId;
         }

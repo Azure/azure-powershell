@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetLimits(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareLimitsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetLimitsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareLimitsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareLimitsResponse> FileShareGetLimitsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareLimitsResponse> FileShareGetLimitsWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetProvisioningRecommendation(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetProvisioningRecommendationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse> FileShareGetProvisioningRecommendationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationRequest body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetProvisioningRecommendationViaJsonString(string subscriptionId, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse> FileShareGetProvisioningRecommendationViaJsonStringWithResult(string subscriptionId, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse> FileShareGetProvisioningRecommendationWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationRequest body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetUsageData(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUsageDataResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareGetUsageDataViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUsageDataResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUsageDataResponse> FileShareGetUsageDataViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUsageDataResponse> FileShareGetUsageDataWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1083,7 +1083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1192,7 +1192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1256,7 +1256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string resourceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1736,7 +1736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotDelete(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2018,7 +2018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotGet(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2061,7 +2061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2115,7 +2115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2172,7 +2172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotGetWithResult(string subscriptionId, string resourceGroupName, string resourceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2356,7 +2356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2398,7 +2398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2450,7 +2450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotListResult> FileShareSnapshotListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2504,7 +2504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotListResult> FileShareSnapshotListWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2687,7 +2687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotUpdate(string subscriptionId, string resourceGroupName, string resourceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2736,7 +2736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2796,7 +2796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2860,7 +2860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileShareSnapshotUpdateViaJsonString(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2909,7 +2909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceName, string name, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2959,7 +2959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot> FileShareSnapshotUpdateWithResult(string subscriptionId, string resourceGroupName, string resourceName, string name, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3337,7 +3337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3383,7 +3383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3438,7 +3438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse> FileSharesCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3495,7 +3495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCheckNameAvailabilityViaJsonString(string subscriptionId, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3539,7 +3539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse> FileSharesCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3584,7 +3584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse> FileSharesCheckNameAvailabilityWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3768,7 +3768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3815,7 +3815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3872,7 +3872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3932,7 +3932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string resourceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3978,7 +3978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4025,7 +4025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4396,7 +4396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesDelete(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4438,7 +4438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4669,7 +4669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesGet(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4710,7 +4710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4761,7 +4761,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4814,7 +4814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesGetWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4992,7 +4992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesListByParent(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5032,7 +5032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesListByParentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5081,7 +5081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult> FileSharesListByParentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5131,7 +5131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult> FileSharesListByParentWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5304,7 +5304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5342,7 +5342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5388,7 +5388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult> FileSharesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5434,7 +5434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareListResult> FileSharesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5606,7 +5606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5653,7 +5653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5710,7 +5710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5770,7 +5770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task FileSharesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string resourceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5816,7 +5816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5863,7 +5863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare> FileSharesUpdateWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareUpdate body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6232,7 +6232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6268,7 +6268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6311,7 +6311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6353,7 +6353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6522,7 +6522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreate(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6573,7 +6573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6635,7 +6635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6701,7 +6701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateViaJsonString(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6752,7 +6752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6804,7 +6804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsCreateWithResult(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7186,7 +7186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7232,7 +7232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7469,7 +7469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7512,7 +7512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7566,7 +7566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7623,7 +7623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnection> PrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7808,7 +7808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByFileShare(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7850,7 +7850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByFileShareViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7902,7 +7902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByFileShareViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7956,7 +7956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByFileShareWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8141,7 +8141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string resourceName, string privateLinkResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8184,7 +8184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8238,7 +8238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResource> PrivateLinkResourcesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8295,7 +8295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResource> PrivateLinkResourcesGetWithResult(string subscriptionId, string resourceGroupName, string resourceName, string privateLinkResourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8479,7 +8479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8521,7 +8521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateLinkResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8573,7 +8573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8627,7 +8627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IPrivateLinkResourceListResult> PrivateLinkResourcesListWithResult(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-09-01-preview";
+            var apiVersion = @"2026-06-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list frontend endpoints. It contains a list of Frontend endpoint objects and a URL link to get
-    /// the next set of results.
-    /// </summary>
+    /// <summary>Paged collection of FrontendEndpoint items</summary>
     [System.ComponentModel.TypeConverter(typeof(FrontendEndpointsListResultTypeConverter))]
     public partial class FrontendEndpointsListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list frontend endpoints. It contains a list of Frontend endpoint objects and a URL link to get
-    /// the next set of results.
+    /// Paged collection of FrontendEndpoint items
     [System.ComponentModel.TypeConverter(typeof(FrontendEndpointsListResultTypeConverter))]
     public partial interface IFrontendEndpointsListResult
 

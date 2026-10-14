@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public List<Job> GetAzureSiteRecoveryJob(
             JobQueryParameter jqp)
         {
-            var odataQuery = new ODataQuery<JobQueryParameter>(jqp.ToQueryString());
+            var filter = jqp.ToQueryString();
             var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationJobs.ListWithHttpMessagesAsync(
                     asrVaultCreds.ResourceGroupName,
                     asrVaultCreds.ResourceName,
-                    odataQuery,
+                    filter,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()

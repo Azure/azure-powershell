@@ -1,11 +1,11 @@
-﻿
+
 function GetDatasourceSetInfo
 {
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDatasource]
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDatasource]
 		$DatasourceInfo,
 
 		[Parameter(Mandatory=$true)]
@@ -16,13 +16,13 @@ function GetDatasourceSetInfo
 
 	process 
 	{
-		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DatasourceSet]::new()
+		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.DatasourceSet]::new()
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
 		$DataSourceSetInfo.ObjectType = "DatasourceSet"        
 		$DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
 		
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		if($manifest.enableDataSourceSetInfo -eq $true){		
+		if($manifest.enableDataSourceSetInfo -eq $true -and $manifest.dataSourceSetParentResource -ne $true){		
 			$DataSourceSetInfo.ResourceId =  $DatasourceInfo.ResourceId
 			$DataSourceSetInfo.ResourceName = $DatasourceInfo.ResourceName			
 			$DataSourceSetInfo.ResourceType =  $DataSourceInfo.ResourceType
@@ -69,7 +69,7 @@ function GetDatasourceInfo
 	process
 	{
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Datasource]::new()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
         $DataSourceInfo.ResourceId = $ResourceId
         $DataSourceInfo.ResourceLocation = $ResourceLocation

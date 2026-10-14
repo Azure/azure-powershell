@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ScrubbingRuleEntryMatchVariable
     {
+        /// <summary>
+        /// RequestHeaderNames
+        /// </summary>
         public const string RequestHeaderNames = "RequestHeaderNames";
+        /// <summary>
+        /// RequestCookieNames
+        /// </summary>
         public const string RequestCookieNames = "RequestCookieNames";
+        /// <summary>
+        /// RequestArgNames
+        /// </summary>
         public const string RequestArgNames = "RequestArgNames";
+        /// <summary>
+        /// RequestPostArgNames
+        /// </summary>
         public const string RequestPostArgNames = "RequestPostArgNames";
+        /// <summary>
+        /// RequestJSONArgNames
+        /// </summary>
         public const string RequestJsonArgNames = "RequestJSONArgNames";
+        /// <summary>
+        /// RequestIPAddress
+        /// </summary>
         public const string RequestIPAddress = "RequestIPAddress";
     }
 }

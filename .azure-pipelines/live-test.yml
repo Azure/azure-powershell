@@ -2,9 +2,8 @@ parameters:
   - name: GalleryName
     displayName: Gallery Name
     type: string
-    default: DailyBuild
+    default: Sign
     values:
-      - DailyBuild
       - Sign
       - PSGallery
   - name: PipelineBuildId

@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSCustomDomain CustomDomain { get; set; }
 
-        public Identity Identity { get; set; }
+        public StorageModels.Identity Identity { get; set; }
 
         public DateTime? LastGeoFailoverTime { get; set; }
 

@@ -1,44 +1,28 @@
-."$PSScriptRoot\dnsForwardingRulesetAssertions.ps1"
-."$PSScriptRoot\Constants.ps1"
-
-Add-AssertionOperator -Name 'BeSuccessfullyCreatedDnsForwardingRuleset' -Test $Function:BeSuccessfullyCreatedDnsForwardingRuleset
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDnsForwardingRuleset.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
 . ($mockingPath | Select-Object -First 1).FullName
-
 Describe 'New-AzDnsForwardingRuleset' {
-    It 'Create new DNS forwarding ruleset' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername24";
-        $outboundEndpointName = "psoutboundendpointname24";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname24";
-        $virtualNetworkName = "psvirtualnetworkname24";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-
-        if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-frs-new-63561"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            $vnet = New-AzVirtualNetwork -Name "vnet-frs" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            Add-AzVirtualNetworkSubnetConfig -Name "snet-frs" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation @((New-AzDelegation -Name "dnsResolvers" -ServiceName "Microsoft.Network/dnsResolvers")) | Out-Null
+            $vnet | Set-AzVirtualNetwork | Out-Null
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs"
+            New-AzDnsResolver -Name "resolver-frs" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+            $subnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs/subnets/snet-frs"
+            New-AzDnsResolverOutboundEndpoint -DnsResolverName "resolver-frs" -Name "oe-frs" -ResourceGroupName $rgName -Location $location -SubnetId $subnetId
         }
-
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
-        $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnetId -Location $LOCATION
-
-        # ACT
-        $dnsForwardingRuleset = New-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION -DnsResolverOutboundEndpoint  @{id = $outboundEndpoint.Id;}
-
-        # ASSERT
-        $dnsForwardingRuleset | Should -BeSuccessfullyCreatedDnsForwardingRuleset
+    }
+    AfterAll { if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null } }
+    It 'Create a forwarding ruleset' {
+        $oeId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/dnsResolvers/resolver-frs/outboundEndpoints/oe-frs"
+        $ruleset = New-AzDnsForwardingRuleset -Name "frs-new-1" -ResourceGroupName $rgName -Location $location -DnsResolverOutboundEndpoint @(@{id = $oeId})
+        $ruleset.ProvisioningState | Should -Be "Succeeded"
     }
 }
+

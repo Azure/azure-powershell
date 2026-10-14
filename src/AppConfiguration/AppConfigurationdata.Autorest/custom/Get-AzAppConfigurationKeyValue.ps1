@@ -31,6 +31,12 @@ Function Test-WildcardExpression {
 Gets a list of key-values.
 .Description
 Gets a list of key-values.
+.Example
+Get-AzAppConfigurationKeyValue -Endpoint $endpoint
+.Example
+Get-AzAppConfigurationKeyValue -Endpoint $endpoint -Key "key*"
+.Example
+Get-AzAppConfigurationKeyValue -Endpoint $endpoint -Key "keyName1"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue
 .Link
@@ -58,6 +64,12 @@ function Get-AzAppConfigurationKeyValue {
         [System.String]
         # Instructs the server to return elements that appear after the element referred to by the specified token.
         ${After},
+    
+        [Parameter(ParameterSetName='List')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+        [System.String]
+        # A filter used get key-values for a snapshot. The value should be the name of the snapshot. Not valid when used with 'key' and 'label' filters.
+        ${Snapshot},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]

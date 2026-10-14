@@ -1036,22 +1036,22 @@ function Operations-CrudTest {
         $newOperationResponseRepresentationSample = getAssetName
 
         #create parameters declared in UrlTemplate
-        $rid = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $rid = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $rid.Name = "rid"
         $rid.Description = "Resource identifier"
         $rid.Type = "string"
 
-        $query = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $query = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $query.Name = "query"
         $query.Description = "Query string"
         $query.Type = "string"
 
         #create request
-        $request = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
+        $request = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
         $request.Description = "Create/update resource request"
 
         #create query parameters for the request
-        $dummyQp = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $dummyQp = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $dummyQp.Name = $newOperationRequestParmName
         $dummyQp.Description = $newOperationRequestParamDescr
         $dummyQp.Type = $newOperationRequestParamType
@@ -1061,7 +1061,7 @@ function Operations-CrudTest {
         $request.QueryParameters = @($dummyQp)
 
         #create headers for the request
-        $header = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $header = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $header.Name = $newOperationRequestHeaderParamName
         $header.Description = $newOperationRequestHeaderParamDescr
         $header.DefaultValue = $newOperationRequestHeaderParamDefaultValue
@@ -1071,11 +1071,11 @@ function Operations-CrudTest {
         $request.Headers = @($header)
 
         #create request representation
-        $requestRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
+        $requestRepresentation = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $requestRepresentation.ContentType = $newOperationRequestRepresentationContentType
         $requestRepresentation.TypeName = "the type name"
 
-        $exp = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameterExample
+        $exp = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameterExample
         $exp.Value = "default"
         $exp.Description  = "My default request example"
         $exp.ExternalValue  = "https://contoso.com"
@@ -1085,18 +1085,18 @@ function Operations-CrudTest {
         $request.Representations = @($requestRepresentation)
 
         #create response
-        $response = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse
+        $response = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse
         $response.StatusCode = $newOperationResponseStatusCode
         $response.Description = $newOperationResponseDescription
 
         #create response representation
-        $responseRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
+        $responseRepresentation = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $responseRepresentation.ContentType = $newOperationResponseRepresentationContentType
         $responseRepresentation.Examples = @($exp)
         $response.Representations = @($responseRepresentation)
 
-        $newOperation = New-AzApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
-            –Method $newOperationMethod –UrlTemplate $newperationUrlTemplate –Description $newOperationDescription –TemplateParameters @($rid, $query) –Request $request –Responses @($response)
+        $newOperation = New-AzApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId -Name $newOperationName `
+            -Method $newOperationMethod -UrlTemplate $newperationUrlTemplate -Description $newOperationDescription -TemplateParameters @($rid, $query) -Request $request -Responses @($response)
           
         Assert-AreEqual $api.ApiId $newOperation.ApiId
         Assert-AreEqual $newOperationId $newOperation.OperationId
@@ -1174,22 +1174,22 @@ function Operations-CrudTest {
         $newOperationResponseRepresentationSample = getAssetName
 
         #create parameters declared in UrlTemplate
-        $rid = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $rid = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $rid.Name = "xrid"
         $rid.Description = "Resource identifier modified"
         $rid.Type = "string"
 
-        $query = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $query = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $query.Name = "xquery"
         $query.Description = "Query string modified"
         $query.Type = "string"
 
         #create request
-        $request = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
+        $request = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
         $request.Description = "Create/update resource request modified"
 
         #create query parameters for the request
-        $dummyQp = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $dummyQp = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $dummyQp.Name = $newOperationRequestParmName
         $dummyQp.Description = $newOperationRequestParamDescr
         $dummyQp.Type = $newOperationRequestParamType
@@ -1199,7 +1199,7 @@ function Operations-CrudTest {
         $request.QueryParameters = @($dummyQp)
 
         #create headers for the request
-        $header = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
+        $header = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
         $header.Name = $newOperationRequestHeaderParamName
         $header.Description = $newOperationRequestHeaderParamDescr
         $header.DefaultValue = $newOperationRequestHeaderParamDefaultValue
@@ -1209,24 +1209,24 @@ function Operations-CrudTest {
         $request.Headers = @($header)
 
         #create request representation
-        $requestRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
+        $requestRepresentation = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $requestRepresentation.ContentType = $newOperationRequestRepresentationContentType
         $requestRepresentation.Examples = @($exp)
         $request.Representations = @($requestRepresentation)
 
         #create response
-        $response = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse
+        $response = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse
         $response.StatusCode = $newOperationResponseStatusCode
         $response.Description = $newOperationResponseDescription
 
         #create response representation
-        $responseRepresentation = New-Object –TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
+        $responseRepresentation = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRepresentation
         $responseRepresentation.ContentType = $newOperationResponseRepresentationContentType
         $responseRepresentation.Examples = @($exp)
         $response.Representations = @($responseRepresentation)
 
-        $newOperation = Set-AzApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
-            –Method $newOperationMethod –UrlTemplate $newperationUrlTemplate –Description $newOperationDescription –TemplateParameters @($rid, $query) –Request $request –Responses @($response) -PassThru
+        $newOperation = Set-AzApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId -Name $newOperationName `
+            -Method $newOperationMethod -UrlTemplate $newperationUrlTemplate -Description $newOperationDescription -TemplateParameters @($rid, $query) -Request $request -Responses @($response) -PassThru
 
         Assert-AreEqual $api.ApiId $newOperation.ApiId
         Assert-AreEqual $newOperationId $newOperation.OperationId
@@ -1334,9 +1334,9 @@ function Product-CrudTest {
         $productSubscriptionsLimit = 10
         $productTerms = getAssetName
 
-        $newProduct = New-AzApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
-            –LegalTerms $productTerms –SubscriptionRequired $productSubscriptionRequired `
-            –ApprovalRequired $productApprovalRequired –State $productState -SubscriptionsLimit $productSubscriptionsLimit
+        $newProduct = New-AzApiManagementProduct -Context $context -ProductId $productId -Title $productName -Description $productDescription `
+            -LegalTerms $productTerms -SubscriptionRequired $productSubscriptionRequired `
+            -ApprovalRequired $productApprovalRequired -State $productState -SubscriptionsLimit $productSubscriptionsLimit
 
         Assert-AreEqual $productId $newProduct.ProductId
         Assert-AreEqual $productName $newProduct.Title
@@ -1365,9 +1365,9 @@ function Product-CrudTest {
         $productSubscriptionsLimit = 20
         $productTerms = getAssetName
 
-        $newProduct = Set-AzApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
-            –LegalTerms $productTerms -ApprovalRequired $productApprovalRequired `
-            –SubscriptionRequired $TRUE –State $productState -SubscriptionsLimit $productSubscriptionsLimit -PassThru
+        $newProduct = Set-AzApiManagementProduct -Context $context -ProductId $productId -Title $productName -Description $productDescription `
+            -LegalTerms $productTerms -ApprovalRequired $productApprovalRequired `
+            -SubscriptionRequired $TRUE -State $productState -SubscriptionsLimit $productSubscriptionsLimit -PassThru
 
         Assert-AreEqual $productId $newProduct.ProductId
         Assert-AreEqual $productName $newProduct.Title

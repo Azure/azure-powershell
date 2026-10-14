@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnType
     {
+        /// <summary>
+        /// PolicyBased
+        /// </summary>
         public const string PolicyBased = "PolicyBased";
+        /// <summary>
+        /// RouteBased
+        /// </summary>
         public const string RouteBased = "RouteBased";
     }
 }

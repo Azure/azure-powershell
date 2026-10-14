@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="enableSubvolumes">Flag indicating whether subvolume operations are enabled on the volume
+        /// Deprecated. Subvolume operations and this flag will be removed in a future
+        /// API version.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="breakthroughMode">Specifies whether the volume operates in Breakthrough Mode.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="fileSystemId">Unique FileSystem Identifier.
@@ -277,7 +282,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="inheritedSizeInBytes">Space shared by short term clone volume with parent volume in bytes.
         /// </param>
-        public VolumeGroupVolumeProperties(string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string serviceLevel = default(string), string networkFeatures = default(string), string securityStyle = default(string), string unixPermissions = default(string), string enableSubvolumes = default(string), string fileSystemId = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), string acceptGrowCapacityPoolForShortTermCloneSplit = default(string), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string), long? inheritedSizeInBytes = default(long?))
+        public VolumeGroupVolumeProperties(string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string serviceLevel = default(string), string networkFeatures = default(string), string securityStyle = default(string), string unixPermissions = default(string), string enableSubvolumes = default(string), string breakthroughMode = default(string), string fileSystemId = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string effectiveNetworkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), string acceptGrowCapacityPoolForShortTermCloneSplit = default(string), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string coolAccessTieringPolicy = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string), long? inheritedSizeInBytes = default(long?))
 
         {
             this.Id = id;
@@ -290,6 +295,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.SecurityStyle = securityStyle;
             this.UnixPermissions = unixPermissions;
             this.EnableSubvolumes = enableSubvolumes;
+            this.BreakthroughMode = breakthroughMode;
             this.FileSystemId = fileSystemId;
             this.CreationToken = creationToken;
             this.UsageThreshold = usageThreshold;
@@ -416,10 +422,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets flag indicating whether subvolume operations are enabled on
-        /// the volume Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// the volume
+        /// Deprecated. Subvolume operations and this flag will be removed in a future
+        /// API version. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableSubvolumes")]
         public string EnableSubvolumes {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the volume operates in Breakthrough Mode. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.breakthroughMode")]
+        public string BreakthroughMode {get; set; }
 
         /// <summary>
         /// Gets unique FileSystem Identifier.
@@ -832,6 +846,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 }
             }
 
+
             if (this.FileSystemId != null)
             {
                 if (this.FileSystemId.Length > 36)
@@ -857,9 +872,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "CreationToken", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(this.CreationToken, "^[a-zA-Z][a-zA-Z0-9\\-]{0,79}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.CreationToken, "^[a-zA-Z][a-zA-Z0-9\\-_]{0,79}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "CreationToken", "^[a-zA-Z][a-zA-Z0-9\\-]{0,79}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "CreationToken", "^[a-zA-Z][a-zA-Z0-9\\-_]{0,79}$");
                 }
             }
             if (this.UsageThreshold > 2638827906662400)

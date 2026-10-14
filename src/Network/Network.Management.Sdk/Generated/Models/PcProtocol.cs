@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PcProtocol
     {
+        /// <summary>
+        /// TCP
+        /// </summary>
         public const string TCP = "TCP";
+        /// <summary>
+        /// UDP
+        /// </summary>
         public const string UDP = "UDP";
+        /// <summary>
+        /// Any
+        /// </summary>
         public const string Any = "Any";
     }
 }

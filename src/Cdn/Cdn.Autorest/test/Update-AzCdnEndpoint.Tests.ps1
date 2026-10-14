@@ -14,29 +14,43 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnEndpoint'  {
-    It 'UpdateExpanded' {
-        $tags = @{
-            Tag1 = 11
-            Tag2 = 22
-        }
-        Update-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
-        $updatedEndpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+Describe 'Update-AzCdnEndpoint' {
+    BeforeAll {
+        $script:endpointName = 'e-clipstest310-update'
+        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+    }
 
-        $updatedEndpoint.Tag["Tag1"] | Should -Be "11"
-        $updatedEndpoint.Tag["Tag2"] | Should -Be "22"
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        Update-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $updated.Tag['Tag1'] | Should -Be '11'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $tags = @{
-            Tag1 = 33
-            Tag2 = 44
-        }
-        $endObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Update-AzCdnEndpoint -Tag $tags -InputObject $endObject
-        $updatedEndpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnEndpoint -Tag @{ Tag1 = 33 } -InputObject $endpoint
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $updated.Tag['Tag1'] | Should -Be '33'
+    }
 
-        $updatedEndpoint.Tag["Tag1"] | Should -Be "33"
-        $updatedEndpoint.Tag["Tag2"] | Should -Be "44"
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

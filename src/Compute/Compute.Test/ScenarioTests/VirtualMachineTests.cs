@@ -314,6 +314,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStopForceDeallocateExecution()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStopForceDeallocateExecution");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRemoteDesktop()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
@@ -440,6 +454,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCapacityReservationFutureReservation()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationFutureReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {
             TestRunner.RunTestScript("Test-VMwithSSHKey");
@@ -499,6 +520,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMvCPUFeatures()
         {
             TestRunner.RunTestScript("Test-VMvCPUFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMProcessorModeFeatures()
+        {
+            TestRunner.RunTestScript("Test-VMProcessorModeFeatures");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSpotPlusPriority()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSpotPlusPriority");
         }
 
         [Fact]
@@ -643,6 +678,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestOpenCapacityReservationGroup()
+        {
+            TestRunner.RunTestScript("Test-OpenCapacityReservationGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDisableCapacityReservationAssignment()
+        {
+            TestRunner.RunTestScript("Test-VMDisableCapacityReservationAssignment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVMDefaultsToTrustedLaunchImgWhenStnd()
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
@@ -699,6 +748,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineProxyAgentUseLocalFileRules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGalleryApplicationFlags()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGalleryApplicationFlags");
@@ -709,6 +765,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMDataDiskIOPSMBPS()
         {
             TestRunner.RunTestScript("Test-VMDataDiskIOPSMBPS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VMStorageFaultDomainAlignment");
         }
     }
 }

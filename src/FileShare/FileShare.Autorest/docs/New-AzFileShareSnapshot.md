@@ -15,14 +15,15 @@ Create a FileShareSnapshot.
 ### CreateExpanded (Default)
 ```
 New-AzFileShareSnapshot -Name <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-InitiatorId <String>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFileShareExpanded
 ```
-New-AzFileShareSnapshot -FileShareInputObject <IFileShareIdentity> -Name <String> [-Metadata <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFileShareSnapshot -FileShareInputObject <IFileShareIdentity> -Name <String> [-InitiatorId <String>]
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -114,6 +115,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InitiatorId
+The initiator of the FileShareSnapshot.
+This is a user-defined value.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityFileShareExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

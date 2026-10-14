@@ -91,6 +91,7 @@ $PowerStatus = @{
 }
 
 $HighAvailability = @{
+    Unknown = "Unknown";
     NO = "No";
     YES = "Yes";
 }
@@ -111,7 +112,8 @@ $VmReplicationValidationMessage = "Replication could not be initiated. Please en
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
     AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
-    VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
+    VmNotHighlyAvailable    = "The VM is not highly available. $VmReplicationValidationMessage";
+    VmUnknownHighlyAvailable = "The VM has unknown high availability status. $VmReplicationValidationMessage";
     HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services are not running on VM. $VmReplicationValidationMessage";
     VmWareToolsNotInstalled = "VMware Tools are not installed on the VM. To preserve static IPs during migration, install VMware Tools and wait up to 30 minutes for the system to detect the changes.";
     VmWareToolsNotRunning   = "VMware Tools are not running on the VM. To preserve static IPs during migration, ensure VMware Tools are running and wait up to 30 minutes for the system to detect the changes.";
@@ -123,14 +125,20 @@ $ArcResourceBridgeValidationMessages = @{
     NoClusters = "There are no Azure Local clusters found in the selected resource group."
 }
 
+$ArcMachineReuseValidationMessages = @{
+    NotFound         = "Unable to validate Azure Arc-enabled machine '{0}'. Please ensure the Arc machine exists at the specified resource group and matches the naming given in -TargetVMName. Underlying error: {1}";
+    KindIncompatible = "Azure Arc-enabled machine '{0}' has Kind='{1}', which is not compatible with Azure Local migration reuse. Only Arc machines with an unset Kind can be reused.";
+}
+
 $IdFormats = @{
-    ResourceGroupArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}"
-    MachineArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
-    StoragePathArmIdTemplate    = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
-    LogicalNetworkArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
-    MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
-    ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
-    ToLocalJobArmIdTemplate     = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    ResourceGroupArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}"
+    MachineArmIdTemplate              = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+    StoragePathArmIdTemplate          = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
+    LogicalNetworkArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
+    MigrateProjectArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
+    ProtectedItemArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+    ToLocalJobArmIdTemplate           = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    HybridComputeMachineArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}"
 }
 
 $TargetVMCPUCores = @{

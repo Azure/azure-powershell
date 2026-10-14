@@ -150,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string PrivilegeLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)Property).PrivilegeLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)Property).PrivilegeLevel = value ?? null; }
 
+        /// <summary>The name of the access level to apply when the privilege level is set to Other.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string PrivilegeLevelName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)Property).PrivilegeLevelName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetPropertiesInternal)Property).PrivilegeLevelName = value ?? null; }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetProperties _property;
 
@@ -366,8 +370,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Description = @"The access level allowed for the users in this key set.",
         SerializedName = @"privilegeLevel",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Standard", "Superuser")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Standard", "Superuser", "Other")]
         string PrivilegeLevel { get; set; }
+        /// <summary>The name of the access level to apply when the privilege level is set to Other.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The name of the access level to apply when the privilege level is set to Other.",
+        SerializedName = @"privilegeLevelName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivilegeLevelName { get; set; }
         /// <summary>The provisioning state of the bare metal machine key set.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -441,8 +456,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string OSGroupName { get; set; }
         /// <summary>The access level allowed for the users in this key set.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Standard", "Superuser")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Standard", "Superuser", "Other")]
         string PrivilegeLevel { get; set; }
+        /// <summary>The name of the access level to apply when the privilege level is set to Other.</summary>
+        string PrivilegeLevelName { get; set; }
         /// <summary>The list of the resource properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineKeySetProperties Property { get; set; }
         /// <summary>The provisioning state of the bare metal machine key set.</summary>

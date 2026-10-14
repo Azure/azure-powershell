@@ -29,11 +29,11 @@ Update-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String> [-Subscr
  [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
  [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
- [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
- [-EnableSystemAssignedIdentity <Boolean>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingVaultUri <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
+ [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
  [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
@@ -59,11 +59,11 @@ Update-AzNetworkCloudCluster -InputObject <INetworkCloudIdentity> [-IfMatch <Str
  [-ClusterLocation <String>] [-ClusterServicePrincipalApplicationId <String>]
  [-ClusterServicePrincipalId <String>] [-ClusterServicePrincipalPassword <SecureString>]
  [-ClusterServicePrincipalTenantId <String>] [-CommandOutputSettingContainerUrl <String>]
- [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
- [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
- [-EnableSystemAssignedIdentity <Boolean>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
- [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingVaultUri <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingOverride <ICommandOutputOverride[]>] [-ComputeDeploymentThresholdGrouping <String>]
+ [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
+ [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
+ [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>] [-UpdateStrategyMaxUnavailable <Int64>]
  [-UpdateStrategyThresholdType <String>] [-UpdateStrategyThresholdValue <Int64>] [-UpdateStrategyType <String>]
@@ -417,6 +417,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommandOutputSettingOverride
+The list of optional overrides allowing for association of storage containers and identities to specific types of command output.
+If a type is not overridden, the default identity and storage container will be utilized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeDeploymentThresholdGrouping
 Selection of how the type evaluation is applied to the cluster calculation.
 
@@ -725,7 +741,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateStrategyMaxUnavailable
-The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+Limited by the maximum number of machines in the increment.
 Defaults to the whole increment size.
 
 ```yaml

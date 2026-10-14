@@ -23,9 +23,9 @@ Put Update runs for a specified update
 Set-AzStackHciUpdateRun -ClusterName 'test-cluster' -ResourceGroupName 'test-rg' -UpdateRunName 'test-update-run' -UpdateName 'test-update'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,15 +39,17 @@ PROGRESSSTEP <IStep[]>: Recursive model for child steps of this step.
   [Name <String>]: Name of the step.
   [StartTimeUtc <DateTime?>]: When the step started, or empty if it has not started executing.
   [Status <String>]: Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
-  [Steps <IStep[]>]: Recursive model for child steps of this step.
+  [Steps <List<IStep>>]: Recursive model for child steps of this step.
+    [Description <String>]: More detailed description of the step.
+    [EndTimeUtc <DateTime?>]: When the step reached a terminal state.
+    [ErrorMessage <String>]: Error message, specified if the step is in a failed state.
+    [LastUpdatedTimeUtc <DateTime?>]: Completion time of this step or the last completed sub-step.
+    [Name <String>]: Name of the step.
+    [StartTimeUtc <DateTime?>]: When the step started, or empty if it has not started executing.
+    [Status <String>]: Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
+    [Steps <List<IStep>>]: Recursive model for child steps of this step.
 
 UPDATERUNSPROPERTY <IUpdateRun>: Details of an Update run
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Duration <String>]: Duration of the update run.
   [LastUpdatedTime <DateTime?>]: Timestamp of the most recently completed step in the update run.
   [Location <String>]: The geo-location where the resource lives
@@ -58,7 +60,7 @@ UPDATERUNSPROPERTY <IUpdateRun>: Details of an Update run
   [ProgressName <String>]: Name of the step.
   [ProgressStartTimeUtc <DateTime?>]: When the step started, or empty if it has not started executing.
   [ProgressStatus <String>]: Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
-  [ProgressStep <IStep[]>]: Recursive model for child steps of this step.
+  [ProgressStep <List<IStep>>]: Recursive model for child steps of this step.
     [Description <String>]: More detailed description of the step.
     [EndTimeUtc <DateTime?>]: When the step reached a terminal state.
     [ErrorMessage <String>]: Error message, specified if the step is in a failed state.
@@ -66,14 +68,14 @@ UPDATERUNSPROPERTY <IUpdateRun>: Details of an Update run
     [Name <String>]: Name of the step.
     [StartTimeUtc <DateTime?>]: When the step started, or empty if it has not started executing.
     [Status <String>]: Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
-    [Steps <IStep[]>]: Recursive model for child steps of this step.
-  [State <UpdateRunPropertiesState?>]: State of the update run.
+    [Steps <List<IStep>>]: Recursive model for child steps of this step.
+  [State <String>]: State of the update run.
   [TimeStarted <DateTime?>]: Timestamp of the update run was started.
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhciupdaterun
 #>
 function Set-AzStackHciUpdateRun {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -112,9 +114,8 @@ param(
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun]
     # Details of an Update run
-    # To construct, see NOTES section for UPDATERUNSPROPERTY properties and create a hash table.
     ${UpdateRunsProperty},
 
     [Parameter(ParameterSetName='PutExpanded')]
@@ -181,15 +182,14 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStep[]]
     # Recursive model for child steps of this step.
-    # To construct, see NOTES section for PROGRESSSTEP properties and create a hash table.
     ${ProgressStep},
 
     [Parameter(ParameterSetName='PutExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.UpdateRunPropertiesState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Unknown", "Succeeded", "InProgress", "Failed")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.UpdateRunPropertiesState]
+    [System.String]
     # State of the update run.
     ${State},
 
@@ -198,6 +198,18 @@ param(
     [System.DateTime]
     # Timestamp of the update run was started.
     ${TimeStarted},
+
+    [Parameter(ParameterSetName='PutViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Put operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PutViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Json string supplied to the Put operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -255,6 +267,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -276,10 +296,10 @@ begin {
         $mapping = @{
             Put = 'Az.StackHCI.private\Set-AzStackHciUpdateRun_Put';
             PutExpanded = 'Az.StackHCI.private\Set-AzStackHciUpdateRun_PutExpanded';
+            PutViaJsonFilePath = 'Az.StackHCI.private\Set-AzStackHciUpdateRun_PutViaJsonFilePath';
+            PutViaJsonString = 'Az.StackHCI.private\Set-AzStackHciUpdateRun_PutViaJsonString';
         }
-        if (('Put', 'PutExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Put', 'PutExpanded', 'PutViaJsonFilePath', 'PutViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -293,6 +313,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

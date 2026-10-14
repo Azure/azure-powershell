@@ -33,12 +33,16 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="statuses">The resource status information.
         /// </param>
-        public DiskInstanceView(string name = default(string), System.Collections.Generic.IList<DiskEncryptionSettings> encryptionSettings = default(System.Collections.Generic.IList<DiskEncryptionSettings>), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>))
+
+        /// <param name="storageAlignmentStatus">Specifies the storage alignment status for the disk.
+        /// Possible values include: &#39;Unaligned&#39;, &#39;Aligned&#39;</param>
+        public DiskInstanceView(string name = default(string), System.Collections.Generic.IList<DiskEncryptionSettings> encryptionSettings = default(System.Collections.Generic.IList<DiskEncryptionSettings>), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string storageAlignmentStatus = default(string))
 
         {
             this.Name = name;
             this.EncryptionSettings = encryptionSettings;
             this.Statuses = statuses;
+            this.StorageAlignmentStatus = storageAlignmentStatus;
             CustomInit();
         }
 
@@ -66,5 +70,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "statuses")]
         public System.Collections.Generic.IList<InstanceViewStatus> Statuses {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the storage alignment status for the disk. Possible values include: &#39;Unaligned&#39;, &#39;Aligned&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageAlignmentStatus")]
+        public string StorageAlignmentStatus {get; set; }
     }
 }

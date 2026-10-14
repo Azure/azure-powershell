@@ -56,5 +56,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets a list of destination replications
         /// </summary>
         public IList<PSNetAppFilesDestinationReplication> DestinationReplications { get; set; }
+
+        /// <summary>
+        /// Gets the machine-readable status of the external replication setup.
+        /// Possible values include: 'ClusterPeerRequired', 'ClusterPeerPending',
+        /// 'VServerPeerRequired', 'ReplicationCreateRequired', 'NoActionRequired'.
+        /// Only applies to external replications.
+        /// </summary>
+        public string ExternalReplicationSetupStatus { get; set; }
+
+        /// <summary>
+        /// Gets human-readable instructions describing the next step required to
+        /// finish the external replication setup.
+        /// </summary>
+        public string ExternalReplicationSetupInfo { get; set; }
+
+        /// <summary>
+        /// Gets the current data replication mirror state.
+        /// Possible values include: 'Uninitialized', 'Mirrored', 'Broken'.
+        /// </summary>
+        public string MirrorState { get; set; }
+
+        /// <summary>
+        /// Gets the volume replication relationship status.
+        /// Possible values include: 'Idle', 'Transferring'.
+        /// </summary>
+        public string RelationshipStatus { get; set; }
     }
 }

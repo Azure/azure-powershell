@@ -23,4 +23,16 @@ Describe 'New-AzMigrateLocalServerReplication' {
     It 'ByIdPowerUser' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'MigrateAsArcVM-ParameterExists' {
+        $cmd = Get-Command New-AzMigrateLocalServerReplication
+        $param = $cmd.Parameters['MigrateAsArcVM']
+        $param | Should -Not -BeNullOrEmpty
+        $param.ParameterType.Name | Should -Be 'String'
+    }
+
+    It 'MigrateAsArcVM-NotOnSetCmdlet' {
+        $cmd = Get-Command Set-AzMigrateLocalServerReplication
+        $cmd.Parameters.Keys | Should -Not -Contain 'MigrateAsArcVM'
+    }
 }

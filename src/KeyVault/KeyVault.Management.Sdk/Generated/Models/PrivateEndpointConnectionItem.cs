@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
-        /// Gets or sets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
+        /// Gets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
     }
 }

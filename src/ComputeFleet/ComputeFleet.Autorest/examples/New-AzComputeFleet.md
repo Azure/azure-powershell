@@ -1,312 +1,95 @@
-### Example 1: Create a new compute fleet resource by ResourceGroupName and FleetName
+### Example 1: Create a Compute Fleet in Launch mode with a VNet and managed disks
 ```powershell
-$fleet = Get-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet2"
-$securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-$fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-New-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Resource $fleet
+$resourceGroupName = "myResourceGroup"
+$location = "eastus"
+$fleetName = "fleet1"
+$vmNamePrefix = "fleet1prefix"
+$adminPassword = Read-Host "Enter admin password" -AsSecureString
+
+$subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+$nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsg"
+
+# Build IPConfiguration
+$ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetIPConfiguration]::new()
+$ipConfig.Name = "nic-ipConfig"
+$ipConfig.Primary = $true
+$ipConfig.SubnetId = $subnetId
+$ipConfig.PublicIPAddressConfigurationName = "nic-publicip"
+$ipConfig.IdleTimeoutInMinute = 15
+
+# Build NIC Configuration
+$nicConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetNetworkConfiguration]::new()
+$nicConfig.Name = "nic"
+$nicConfig.Primary = $true
+$nicConfig.EnableAcceleratedNetworking = $false
+$nicConfig.NetworkSecurityGroupId = $nsgId
+$nicConfig.IPConfiguration = @($ipConfig)
+
+# Build StorageProfile
+$storageProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetStorageProfile]::new()
+$storageProfile.ImageReferencePublisher = "canonical"
+$storageProfile.ImageReferenceOffer = "ubuntu-24_04-lts"
+$storageProfile.ImageReferenceSku = "server"
+$storageProfile.ImageReferenceVersion = "latest"
+$storageProfile.OSDiskCreateOption = "fromImage"
+$storageProfile.OSDiskCaching = "ReadWrite"
+$storageProfile.OSDiskOstype = "Linux"
+$storageProfile.ManagedDiskStorageAccountType = "Premium_LRS"
+
+# Build OSProfile
+$osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
+$osProfile.AdminUsername = "azureUser"
+$osProfile.ComputerNamePrefix = $fleetName
+$osProfile.AdminPassword = $adminPassword
+
+# Build BaseVirtualMachineProfile
+$baseVMProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfile]::new()
+$baseVMProfile.StorageProfile = $storageProfile
+$baseVMProfile.OSProfile = $osProfile
+$baseVMProfile.NetworkProfileNetworkApiVersion = "2020-11-01"
+$baseVMProfile.NetworkProfileNetworkInterfaceConfiguration = @($nicConfig)
+$baseVMProfile.SecurityProfileSecurityType = "TrustedLaunch"
+$baseVMProfile.UefiSettingSecureBootEnabled = $true
+$baseVMProfile.UefiSettingVTpmEnabled = $false
+$baseVMProfile.LicenseType = "None"
+
+# Build VM Sizes Profile
+$vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+$vmSize1.Name = "Standard_D2s_v3"
+$vmSize2 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+$vmSize2.Name = "Standard_D8s_v3"
+$vmSizesProfile = @($vmSize1, $vmSize2)
+
+New-AzComputeFleet -Name $fleetName `
+    -ResourceGroupName $resourceGroupName `
+    -Location $location `
+    -Mode "Launch" `
+    -VMNamePrefix $vmNamePrefix `
+    -VMSizesProfile $vmSizesProfile `
+    -ComputeProfileBaseVirtualMachineProfile $baseVMProfile `
+    -ComputeProfileComputeApiVersion "2024-11-01" `
+    -RegularPriorityProfileCapacity 5 `
+    -RegularPriorityProfileMinCapacity 0 `
+    -RegularPriorityProfileAllocationStrategy "LowestPrice"
 ```
 
 ```output
-AcceleratorCountMax                                  : 5
-AcceleratorCountMin                                  : 
-AdditionalLocationProfile                            : 
-AdditionalVirtualMachineCapabilityHibernationEnabled : 
-AdditionalVirtualMachineCapabilityUltraSsdEnabled    : 
-ComputeProfileBaseVirtualMachineProfile              : {
-                                                         "osProfile": {
-                                                           "computerNamePrefix": "testfleet",
-                                                           "adminUsername": "azureuser"
-                                                         },
-                                                         "storageProfile": {
-                                                           "imageReference": {
-                                                             "publisher": "canonical",
-                                                             "offer": "ubuntu-24_04-lts",
-                                                             "sku": "server",
-                                                             "version": "latest"
-                                                           },
-                                                           "osDisk": {
-                                                             "managedDisk": {
-                                                               "storageAccountType": "Premium_LRS"
-                                                             },
-                                                             "caching": "ReadWrite",
-                                                             "createOption": "fromImage",
-                                                             "osType": "Linux"
-                                                           }
-                                                         },
-                                                         "networkProfile": {
-                                                           "networkInterfaceConfigurations": [
-                                                             {
-                                                               "properties": {
-                                                                 "networkSecurityGroup": {
-                                                                   "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/t
-                                                       est-fleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-centralus-2-ni
-                                                       c01"
-                                                                 },
-                                                                 "primary": true,
-                                                                 "enableAcceleratedNetworking": false,
-                                                                 "ipConfigurations": [
-                                                                   {
-                                                                     "properties": {
-                                                                       "subnet": {
-                                                                         "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGr
-                                                       oups/test-fleet/providers/Microsoft.Network/virtualNetworks/vnet-centralus-2/subnets/sn
-                                                       et-centralus-1"
-                                                                       },
-                                                                       "publicIPAddressConfiguration": {
-                                                                         "properties": {
-                                                                           "idleTimeoutInMinutes": 15
-                                                                         },
-                                                                         "name": "vnet-centralus-2-nic01-publicip"
-                                                                       },
-                                                                       "primary": true
-                                                                     },
-                                                                     "name": "vnet-centralus-2-nic01-ipConfig"
-                                                                   }
-                                                                 ]
-                                                               },
-                                                               "name": "vnet-centralus-2-nic01"
-                                                             }
-                                                           ],
-                                                           "networkApiVersion": "2020-11-01"
-                                                         },
-                                                         "securityProfile": {
-                                                           "uefiSettings": {
-                                                             "secureBootEnabled": true,
-                                                             "vTpmEnabled": false
-                                                           },
-                                                           "securityType": "TrustedLaunch"
-                                                         },
-                                                         "licenseType": "None"
-                                                       }
-ComputeProfileComputeApiVersion                      : 2023-09-01
-ComputeProfilePlatformFaultDomainCount               : 1
-DataDiskCountMax                                     : 
-DataDiskCountMin                                     : 
-Id                                                   : /subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/test-fleet/providers
-                                                       /Microsoft.AzureFleet/fleets/testFleet
-IdentityPrincipalId                                  : 
-IdentityTenantId                                     : 
-IdentityType                                         : 
-IdentityUserAssignedIdentity                         : {
-                                                       }
-LocalStorageInGiBMax                                 : 
-LocalStorageInGiBMin                                 : 
-Location                                             : centralus
-MemoryInGiBMax                                       : 100
-MemoryInGiBMin                                       : 
-MemoryInGiBPerVcpuMax                                : 
-MemoryInGiBPerVcpuMin                                : 
-Name                                                 : testFleet
-NetworkBandwidthInMbpsMax                            : 
-NetworkBandwidthInMbpsMin                            : 
-NetworkInterfaceCountMax                             : 
-NetworkInterfaceCountMin                             : 
-PlanName                                             : 
-PlanProduct                                          : 
-PlanPromotionCode                                    : 
-PlanPublisher                                        : 
-PlanVersion                                          : 
-ProvisioningState                                    : Succeeded
-RdmaNetworkInterfaceCountMax                         : 
-RdmaNetworkInterfaceCountMin                         : 
-RegularPriorityProfileAllocationStrategy             : 
-RegularPriorityProfileCapacity                       : 
-RegularPriorityProfileMinCapacity                    : 
-ResourceGroupName                                    : test-fleet
-SpotPriorityProfileAllocationStrategy                : LowestPrice
-SpotPriorityProfileCapacity                          : 1
-SpotPriorityProfileEvictionPolicy                    : Delete
-SpotPriorityProfileMaintain                          : True
-SpotPriorityProfileMaxPricePerVM                     : 
-SpotPriorityProfileMinCapacity                       : 
-SystemDataCreatedAt                                  : 
-SystemDataCreatedBy                                  : 
-SystemDataCreatedByType                              : 
-SystemDataLastModifiedAt                             : 
-SystemDataLastModifiedBy                             : 
-SystemDataLastModifiedByType                         : 
-Tag                                                  : {
-                                                       }
-TimeCreated                                          : 11/18/2024 2:47:47 AM
-Type                                                 : Microsoft.AzureFleet/fleets
-UniqueId                                             : a20afdb9-995b-417c-9f2c-5facc83a7c80
-VCpuCountMax                                         : 5
-VCpuCountMin                                         : 
-VMAttributeAcceleratorManufacturer                   : 
-VMAttributeAcceleratorSupport                        : Included
-VMAttributeAcceleratorType                           : 
-VMAttributeArchitectureType                          : 
-VMAttributeBurstableSupport                          : Excluded
-VMAttributeCpuManufacturer                           : 
-VMAttributeExcludedVmsize                            : 
-VMAttributeLocalStorageDiskType                      : 
-VMAttributeLocalStorageSupport                       : Included
-VMAttributeRdmaSupport                               : Excluded
-VMAttributeVmcategory                                : 
-VMSizesProfile                                       : {{
-                                                         "name": "Standard_D2s_v3"
-                                                       }, {
-                                                         "name": "Standard_D4s_v3"
-                                                       }, {
-                                                         "name": "Standard_E2s_v3"
-                                                       }}
-Zone                                                 : 
+Name    Location    ProvisioningState
+----    --------    -----------------
+fleet1  eastus      Succeeded
 ```
 
-This command creates a new compute fleet resource by ResourceGroupName and FleetName.
+Creates a Compute Fleet named "fleet1" in Launch mode with a VM name prefix, using Ubuntu 24.04 LTS with TrustedLaunch security, Premium managed disks, and a regular priority profile targeting 5 VMs with LowestPrice allocation strategy. The fleet is configured with a network interface connected to an existing VNet subnet and NSG.
 
-### Example 2: Create a new compute fleet resource by Identity
+### Example 2: Create a Compute Fleet with a JSON file
 ```powershell
-$fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet"
-New-AzComputeFleet -InputObject $fleet -Resource $fleet
+New-AzComputeFleet -Name "spotfleet1" -ResourceGroupName "myResourceGroup" -JsonFilePath "C:\fleet-config.json"
 ```
 
 ```output
-AcceleratorCountMax                                  : 5
-AcceleratorCountMin                                  : 
-AdditionalLocationProfile                            : 
-AdditionalVirtualMachineCapabilityHibernationEnabled : 
-AdditionalVirtualMachineCapabilityUltraSsdEnabled    : 
-ComputeProfileBaseVirtualMachineProfile              : {
-                                                         "osProfile": {
-                                                           "computerNamePrefix": "testfleet",
-                                                           "adminUsername": "azureuser"
-                                                         },
-                                                         "storageProfile": {
-                                                           "imageReference": {
-                                                             "publisher": "canonical",
-                                                             "offer": "ubuntu-24_04-lts",
-                                                             "sku": "server",
-                                                             "version": "latest"
-                                                           },
-                                                           "osDisk": {
-                                                             "managedDisk": {
-                                                               "storageAccountType": "Premium_LRS"
-                                                             },
-                                                             "caching": "ReadWrite",
-                                                             "createOption": "fromImage",
-                                                             "osType": "Linux"
-                                                           }
-                                                         },
-                                                         "networkProfile": {
-                                                           "networkInterfaceConfigurations": [
-                                                             {
-                                                               "properties": {
-                                                                 "networkSecurityGroup": {
-                                                                   "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/t
-                                                       est-fleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-centralus-2-ni
-                                                       c01"
-                                                                 },
-                                                                 "primary": true,
-                                                                 "enableAcceleratedNetworking": false,
-                                                                 "ipConfigurations": [
-                                                                   {
-                                                                     "properties": {
-                                                                       "subnet": {
-                                                                         "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGr
-                                                       oups/test-fleet/providers/Microsoft.Network/virtualNetworks/vnet-centralus-2/subnets/sn
-                                                       et-centralus-1"
-                                                                       },
-                                                                       "publicIPAddressConfiguration": {
-                                                                         "properties": {
-                                                                           "idleTimeoutInMinutes": 15
-                                                                         },
-                                                                         "name": "vnet-centralus-2-nic01-publicip"
-                                                                       },
-                                                                       "primary": true
-                                                                     },
-                                                                     "name": "vnet-centralus-2-nic01-ipConfig"
-                                                                   }
-                                                                 ]
-                                                               },
-                                                               "name": "vnet-centralus-2-nic01"
-                                                             }
-                                                           ],
-                                                           "networkApiVersion": "2020-11-01"
-                                                         },
-                                                         "securityProfile": {
-                                                           "uefiSettings": {
-                                                             "secureBootEnabled": true,
-                                                             "vTpmEnabled": false
-                                                           },
-                                                           "securityType": "TrustedLaunch"
-                                                         },
-                                                         "licenseType": "None"
-                                                       }
-ComputeProfileComputeApiVersion                      : 2023-09-01
-ComputeProfilePlatformFaultDomainCount               : 1
-DataDiskCountMax                                     : 
-DataDiskCountMin                                     : 
-Id                                                   : /subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/test-fleet/providers
-                                                       /Microsoft.AzureFleet/fleets/testFleet
-IdentityPrincipalId                                  : 
-IdentityTenantId                                     : 
-IdentityType                                         : 
-IdentityUserAssignedIdentity                         : {
-                                                       }
-LocalStorageInGiBMax                                 : 
-LocalStorageInGiBMin                                 : 
-Location                                             : centralus
-MemoryInGiBMax                                       : 100
-MemoryInGiBMin                                       : 
-MemoryInGiBPerVcpuMax                                : 
-MemoryInGiBPerVcpuMin                                : 
-Name                                                 : testFleet
-NetworkBandwidthInMbpsMax                            : 
-NetworkBandwidthInMbpsMin                            : 
-NetworkInterfaceCountMax                             : 
-NetworkInterfaceCountMin                             : 
-PlanName                                             : 
-PlanProduct                                          : 
-PlanPromotionCode                                    : 
-PlanPublisher                                        : 
-PlanVersion                                          : 
-ProvisioningState                                    : Succeeded
-RdmaNetworkInterfaceCountMax                         : 
-RdmaNetworkInterfaceCountMin                         : 
-RegularPriorityProfileAllocationStrategy             : 
-RegularPriorityProfileCapacity                       : 
-RegularPriorityProfileMinCapacity                    : 
-ResourceGroupName                                    : test-fleet
-SpotPriorityProfileAllocationStrategy                : LowestPrice
-SpotPriorityProfileCapacity                          : 1
-SpotPriorityProfileEvictionPolicy                    : Delete
-SpotPriorityProfileMaintain                          : True
-SpotPriorityProfileMaxPricePerVM                     : 
-SpotPriorityProfileMinCapacity                       : 
-SystemDataCreatedAt                                  : 
-SystemDataCreatedBy                                  : 
-SystemDataCreatedByType                              : 
-SystemDataLastModifiedAt                             : 
-SystemDataLastModifiedBy                             : 
-SystemDataLastModifiedByType                         : 
-Tag                                                  : {
-                                                       }
-TimeCreated                                          : 11/18/2024 2:47:47 AM
-Type                                                 : Microsoft.AzureFleet/fleets
-UniqueId                                             : a20afdb9-995b-417c-9f2c-5facc83a7c80
-VCpuCountMax                                         : 5
-VCpuCountMin                                         : 
-VMAttributeAcceleratorManufacturer                   : 
-VMAttributeAcceleratorSupport                        : Included
-VMAttributeAcceleratorType                           : 
-VMAttributeArchitectureType                          : 
-VMAttributeBurstableSupport                          : Excluded
-VMAttributeCpuManufacturer                           : 
-VMAttributeExcludedVmsize                            : 
-VMAttributeLocalStorageDiskType                      : 
-VMAttributeLocalStorageSupport                       : Included
-VMAttributeRdmaSupport                               : Excluded
-VMAttributeVmcategory                                : 
-VMSizesProfile                                       : {{
-                                                         "name": "Standard_D2s_v3"
-                                                       }, {
-                                                         "name": "Standard_D4s_v3"
-                                                       }, {
-                                                         "name": "Standard_E2s_v3"
-                                                       }}
-Zone                                                 : 
+Name        Location    ProvisioningState
+----        --------    -----------------
+spotfleet1  eastus      Succeeded
 ```
 
-This command creates a new compute fleet resource by Identity.
-
+Creates a Compute Fleet using a JSON configuration file that contains the full fleet specification including compute profile, VM sizes, and priority settings. This approach is useful for complex configurations or when reusing fleet definitions across deployments.

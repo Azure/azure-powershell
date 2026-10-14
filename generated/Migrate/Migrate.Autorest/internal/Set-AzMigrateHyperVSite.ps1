@@ -16,44 +16,21 @@
 
 <#
 .Synopsis
-Method to create or update a site.
+Method to update a site.
 .Description
-Method to create or update a site.
+Method to update a site.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSite
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSite
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IHyperVSite>: Site REST Resource.
-  [AgentDetailKeyVaultId <String>]: Key vault ARM Id.
-  [AgentDetailKeyVaultUri <String>]: Key vault URI.
-  [ApplianceName <String>]: Appliance Name.
-  [DiscoverySolutionId <String>]: ARM ID of migration hub solution for SDS.
-  [ETag <String>]: eTag for concurrency control.
-  [Location <String>]: Azure location in which Sites is created.
-  [Name <String>]: Name of the Hyper-V site.
-  [ServicePrincipalIdentityDetailAadAuthority <String>]: AAD Authority URL which was used to request the token for the service principal.
-  [ServicePrincipalIdentityDetailApplicationId <String>]: Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  [ServicePrincipalIdentityDetailAudience <String>]: Intended audience for the service principal.
-  [ServicePrincipalIdentityDetailObjectId <String>]: Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  [ServicePrincipalIdentityDetailRawCertData <String>]: Raw certificate data for building certificate expiry flows.
-  [ServicePrincipalIdentityDetailTenantId <String>]: Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
-  [Tag <IHyperVSiteTags>]: Dictionary of <string>
-    [(Any) <String>]: This indicates any property can be added to this object.
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSite
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehypervsite
 #>
 function Set-AzMigrateHyperVSite {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSite])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -75,13 +52,6 @@ param(
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSite]
-    # Site REST Resource.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
@@ -163,10 +133,22 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVSiteTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVSiteTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -224,14 +206,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Update = 'Az.Migrate.private\Set-AzMigrateHyperVSite_Update';
             UpdateExpanded = 'Az.Migrate.private\Set-AzMigrateHyperVSite_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Migrate.private\Set-AzMigrateHyperVSite_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Migrate.private\Set-AzMigrateHyperVSite_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -240,6 +224,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

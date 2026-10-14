@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IMarketplaceRegistrationDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
 #>
 function Get-AzManagedServicesMarketplaceDefinition {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IMarketplaceRegistrationDefinition])]
     [CmdletBinding(DefaultParameterSetName='ListWithScope', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='GetWithScope', Mandatory)]

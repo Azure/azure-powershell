@@ -13,7 +13,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class PublicNetworkAccess
     {
+        /// <summary>
+        /// Inbound/Outbound to the managedCluster is allowed.
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Inbound traffic to managedCluster is disabled, traffic from managedCluster
+        /// is allowed.
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

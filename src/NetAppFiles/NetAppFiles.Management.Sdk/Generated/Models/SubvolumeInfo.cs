@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
     /// <summary>
     /// Subvolume Information properties
+    /// Deprecated. This resource type will be removed in a future API version.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class SubvolumeInfo : ProxyResource

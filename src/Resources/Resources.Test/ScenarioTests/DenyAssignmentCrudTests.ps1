@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ function Get-TestExcludePrincipalId
     try {
         return (Get-AzADUser -SignedIn).Id
     } catch {
-        # SP auth fallback: known user in the test tenant — override via TEST_EXCLUDE_PRINCIPAL_ID
+        # SP auth fallback: known user in the test tenant - override via TEST_EXCLUDE_PRINCIPAL_ID
         return "1840cc0e-55b5-442d-bbf6-52c0c7e27302"
     }
 }
@@ -67,7 +67,7 @@ function Test-NewDaAtSubscriptionScope
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -101,7 +101,7 @@ function Test-NewDaAtResourceGroupScope
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -153,7 +153,7 @@ function Test-NewDaWithExcludePrincipals
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -213,7 +213,7 @@ function Test-NewDaFromInputFile
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
         Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
     }
@@ -247,7 +247,7 @@ function Test-NewDaWithCustomId
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -273,7 +273,7 @@ function Test-RemoveDaById
 
     try
     {
-        Remove-AzDenyAssignment -Id $da.Id -Force
+        Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
 
         $result = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
         Assert-Null $result
@@ -281,7 +281,7 @@ function Test-RemoveDaById
     catch
     {
         # Cleanup on failure
-        Remove-AzDenyAssignment -Id $da.Id -Force -ErrorAction SilentlyContinue
+        Remove-AzDenyAssignment -Id $da.Id -Confirm:$false -ErrorAction SilentlyContinue
         throw
     }
 }
@@ -305,7 +305,7 @@ function Test-RemoveDaByNameAndScope
 
     Assert-NotNull $da
 
-    Remove-AzDenyAssignment -DenyAssignmentName $daName -Scope $subscriptionScope -Force
+    Remove-AzDenyAssignment -DenyAssignmentName $daName -Scope $subscriptionScope -Confirm:$false
 
     $result = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
     Assert-Null $result
@@ -330,7 +330,7 @@ function Test-RemoveDaByInputObject
 
     Assert-NotNull $da
 
-    $da | Remove-AzDenyAssignment -Force
+    $da | Remove-AzDenyAssignment -Confirm:$false
 
     $result = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
     Assert-Null $result
@@ -355,10 +355,66 @@ function Test-RemoveDaWithPassThru
 
     Assert-NotNull $da
 
-    $result = Remove-AzDenyAssignment -Id $da.Id -PassThru -Force
+    $result = Remove-AzDenyAssignment -Id $da.Id -PassThru -Confirm:$false
 
     Assert-NotNull $result
     Assert-AreEqual $da.Id $result.Id
+}
+
+<#
+.SYNOPSIS
+Verifies that -Confirm:$false suppresses the confirmation prompt and the deny assignment is deleted.
+#>
+function Test-RemoveDaConfirmFalseHonored
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $excludePrincipalId = Get-TestExcludePrincipalId
+    $daName = "Test-DA-ConfirmFalse-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    $da = New-AzDenyAssignment `
+        -DenyAssignmentName $daName `
+        -Description "Test -Confirm:`$false honored" `
+        -Scope $subscriptionScope `
+        -Action "Microsoft.Storage/storageAccounts/write" `
+        -ExcludePrincipalId $excludePrincipalId
+
+    Assert-NotNull $da
+
+    # Should not prompt and should not throw.
+    Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
+
+    $gone = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
+    Assert-Null $gone
+}
+
+<#
+.SYNOPSIS
+Verifies Remove-AzDenyAssignment is idempotent when removing a non-existent ID (returns null, does not throw).
+#>
+function Test-RemoveDaIdempotentById
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $randomId = "$subscriptionScope/providers/Microsoft.Authorization/denyAssignments/$([Guid]::NewGuid())"
+
+    # Should not throw. PassThru should yield $null because nothing was deleted.
+    $result = Remove-AzDenyAssignment -Id $randomId -PassThru -Confirm:$false
+
+    Assert-Null $result
+}
+
+<#
+.SYNOPSIS
+Verifies Remove-AzDenyAssignment is idempotent when removing by a non-existent name (returns null, does not throw).
+#>
+function Test-RemoveDaIdempotentByName
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $randomName = "Test-DA-DoesNotExist-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    # Should not throw. PassThru should yield $null because nothing was deleted.
+    $result = Remove-AzDenyAssignment -DenyAssignmentName $randomName -Scope $subscriptionScope -PassThru -Confirm:$false
+
+    Assert-Null $result
 }
 
 <#
@@ -392,7 +448,7 @@ function Test-NewAndRemoveDaEndToEnd
     Assert-AreEqual $da.Id $fetched.Id
 
     # 3. Delete
-    Remove-AzDenyAssignment -Id $da.Id -Force
+    Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
 
     # 4. Verify gone
     $gone = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
@@ -442,7 +498,7 @@ function Test-NewDaWithUserPrincipal
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -477,7 +533,7 @@ function Test-NewDaWithServicePrincipal
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -494,7 +550,7 @@ function Test-NewDaPerPrincipalNoExcludes
 
     try
     {
-        # No ExcludePrincipalId — should succeed in per-principal mode
+        # No ExcludePrincipalId - should succeed in per-principal mode
         $da = New-AzDenyAssignment `
             -DenyAssignmentName $daName `
             -Description "Per-principal DA without excluded principals" `
@@ -510,7 +566,7 @@ function Test-NewDaPerPrincipalNoExcludes
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -547,7 +603,7 @@ function Test-NewDaPerPrincipalWithExcludes
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
     }
 }
@@ -612,7 +668,7 @@ function Test-NewDaPerPrincipalFromInputFile
     {
         if ($da)
         {
-            Remove-AzDenyAssignment -Id $da.Id -Force
+            Remove-AzDenyAssignment -Id $da.Id -Confirm:$false
         }
         Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
     }

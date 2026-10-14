@@ -69,13 +69,29 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         public virtual IManagedClustersOperations ManagedClusters { get; private set; }
         /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
+        /// Gets the ITrustedAccessRolesOperations
         /// </summary>
-        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+        public virtual ITrustedAccessRolesOperations TrustedAccessRoles { get; private set; }
+        /// <summary>
+        /// Gets the ISnapshotsOperations
+        /// </summary>
+        public virtual ISnapshotsOperations Snapshots { get; private set; }
         /// <summary>
         /// Gets the IAgentPoolsOperations
         /// </summary>
         public virtual IAgentPoolsOperations AgentPools { get; private set; }
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        public virtual IMachinesOperations Machines { get; private set; }
+        /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        public virtual IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IManagedNamespacesOperations
+        /// </summary>
+        public virtual IManagedNamespacesOperations ManagedNamespaces { get; private set; }
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
@@ -89,21 +105,9 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         public virtual IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; private set; }
         /// <summary>
-        /// Gets the ISnapshotsOperations
-        /// </summary>
-        public virtual ISnapshotsOperations Snapshots { get; private set; }
-        /// <summary>
         /// Gets the ITrustedAccessRoleBindingsOperations
         /// </summary>
         public virtual ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; private set; }
-        /// <summary>
-        /// Gets the ITrustedAccessRolesOperations
-        /// </summary>
-        public virtual ITrustedAccessRolesOperations TrustedAccessRoles { get; private set; }
-        /// <summary>
-        /// Gets the IMachinesOperations
-        /// </summary>
-        public virtual IMachinesOperations Machines { get; private set; }
         /// <summary>
         /// Initializes a new instance of the ContainerServiceClient class.
         /// </summary>
@@ -344,17 +348,18 @@ namespace Microsoft.Azure.Management.ContainerService
         {
             this.Operations = new Operations(this);
             this.ManagedClusters = new ManagedClustersOperations(this);
-            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
+            this.TrustedAccessRoles = new TrustedAccessRolesOperations(this);
+            this.Snapshots = new SnapshotsOperations(this);
             this.AgentPools = new AgentPoolsOperations(this);
+            this.Machines = new MachinesOperations(this);
+            this.MaintenanceConfigurations = new MaintenanceConfigurationsOperations(this);
+            this.ManagedNamespaces = new ManagedNamespacesOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
-            this.Snapshots = new SnapshotsOperations(this);
             this.TrustedAccessRoleBindings = new TrustedAccessRoleBindingsOperations(this);
-            this.TrustedAccessRoles = new TrustedAccessRolesOperations(this);
-            this.Machines = new MachinesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-08-01";
+            this.ApiVersion = "2026-03-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

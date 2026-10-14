@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class Geo
     {
+        /// <summary>
+        /// GLOBAL
+        /// </summary>
         public const string Global = "GLOBAL";
+        /// <summary>
+        /// AFRI
+        /// </summary>
         public const string Afri = "AFRI";
+        /// <summary>
+        /// APAC
+        /// </summary>
         public const string Apac = "APAC";
+        /// <summary>
+        /// EURO
+        /// </summary>
         public const string Euro = "EURO";
+        /// <summary>
+        /// LATAM
+        /// </summary>
         public const string Latam = "LATAM";
+        /// <summary>
+        /// NAM
+        /// </summary>
         public const string NAM = "NAM";
+        /// <summary>
+        /// ME
+        /// </summary>
         public const string ME = "ME";
+        /// <summary>
+        /// OCEANIA
+        /// </summary>
         public const string Oceania = "OCEANIA";
+        /// <summary>
+        /// AQ
+        /// </summary>
         public const string AQ = "AQ";
     }
 }

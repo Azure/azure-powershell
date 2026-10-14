@@ -13,286 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkManagementClientExtensions
     {
         /// <summary>
-        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> PutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
-        {
-                return ((INetworkManagementClient)operations).PutBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> PutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.PutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static void DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
-        {
-                ((INetworkManagementClient)operations).DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the tokens specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static DeleteBastionShareableLinkByTokenHeaders DeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
-        {
-                return ((INetworkManagementClient)operations).DeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the Bastion Shareable Links for all the tokens specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkByTokenHeaders> DeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Return the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> GetBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
-        {
-                return ((INetworkManagementClient)operations).GetBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Return the Bastion Shareable Links for all the VMs specified in the
-        /// request.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> GetBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionActiveSession> GetActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName)
-        {
-                return ((INetworkManagementClient)operations).GetActiveSessionsAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionActiveSession>> GetActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionSessionState> DisconnectActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds)
-        {
-                return ((INetworkManagementClient)operations).DisconnectActiveSessionsAsync(resourceGroupName, bastionHostName, sessionIds).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionSessionState>> DisconnectActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DisconnectActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, sessionIds, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Checks whether a domain name in the cloudapp.azure.com zone is available
-        /// for use.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
-        /// <param name='domainNameLabel'>
-        /// The domain name to be verified. It must conform to the following regular
-        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-        /// </param>
-        public static DnsNameAvailabilityResult CheckDnsNameAvailability(this INetworkManagementClient operations, string location, string domainNameLabel)
-        {
-                return ((INetworkManagementClient)operations).CheckDnsNameAvailabilityAsync(location, domainNameLabel).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Checks whether a domain name in the cloudapp.azure.com zone is available
-        /// for use.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
-        /// <param name='domainNameLabel'>
-        /// The domain name to be verified. It must conform to the following regular
-        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DnsNameAvailabilityResult> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Retrieves detail of a provider port.
         /// </summary>
         /// <param name='operations'>
@@ -332,7 +52,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -353,7 +73,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -379,7 +99,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -400,7 +120,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -427,7 +147,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -449,7 +169,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -475,7 +195,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -496,7 +216,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -516,42 +236,278 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gives the supported security providers for the virtual wan.
+        /// Checks whether a domain name in the cloudapp.azure.com zone is available
+        /// for use.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// <param name='location'>
+        /// The name of the Azure region.
         /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which supported security providers are
-        /// needed.
+        /// <param name='domainNameLabel'>
+        /// The domain name to be verified. It must conform to the following regular
+        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
         /// </param>
-        public static VirtualWanSecurityProviders SupportedSecurityProviders(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName)
+        public static DnsNameAvailabilityResult CheckDnsNameAvailability(this INetworkManagementClient operations, string location, string domainNameLabel)
         {
-                return ((INetworkManagementClient)operations).SupportedSecurityProvidersAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+                return ((INetworkManagementClient)operations).CheckDnsNameAvailabilityAsync(location, domainNameLabel).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gives the supported security providers for the virtual wan.
+        /// Checks whether a domain name in the cloudapp.azure.com zone is available
+        /// for use.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// <param name='location'>
+        /// The name of the Azure region.
         /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which supported security providers are
-        /// needed.
+        /// <param name='domainNameLabel'>
+        /// The domain name to be verified. It must conform to the following regular
+        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWanSecurityProviders> SupportedSecurityProvidersAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DnsNameAvailabilityResult> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.SupportedSecurityProvidersWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> PutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
+        {
+                return ((INetworkManagementClient)operations).PutBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a Bastion Shareable Links for all the VMs specified in the request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> PutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static void DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
+        {
+                ((INetworkManagementClient)operations).DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the tokens specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static void DeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
+        {
+                ((INetworkManagementClient)operations).DeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the Bastion Shareable Links for all the tokens specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BastionSessionState> DisconnectActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds)
+        {
+                return ((INetworkManagementClient)operations).DisconnectActiveSessionsAsync(resourceGroupName, bastionHostName, sessionIds).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionSessionState>> DisconnectActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DisconnectActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, sessionIds, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BastionActiveSession> GetActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName)
+        {
+                return ((INetworkManagementClient)operations).GetActiveSessionsAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Returns the list of currently active sessions on the Bastion.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionActiveSession>> GetActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Return the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> GetBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
+        {
+                return ((INetworkManagementClient)operations).GetBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Return the Bastion Shareable Links for all the VMs specified in the
+        /// request.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> GetBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -565,11 +521,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static VpnProfileResponse Generatevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams)
         {
@@ -585,11 +540,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -602,13 +556,52 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gives the supported security providers for the virtual wan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN.
+        /// </param>
+        public static VirtualWanSecurityProviders SupportedSecurityProviders(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName)
+        {
+                return ((INetworkManagementClient)operations).SupportedSecurityProvidersAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gives the supported security providers for the virtual wan.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualWanSecurityProviders> SupportedSecurityProvidersAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SupportedSecurityProvidersWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -625,7 +618,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -648,7 +641,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -666,7 +659,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -686,14 +679,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static DeleteBastionShareableLinkByTokenHeaders BeginDeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
+        public static void BeginDeleteBastionShareableLinkByToken(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest)
         {
-                return ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
+                ((INetworkManagementClient)operations).BeginDeleteBastionShareableLinkByTokenAsync(resourceGroupName, bastionHostName, bslTokenRequest).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -704,7 +697,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -712,12 +705,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeleteBastionShareableLinkByTokenHeaders> BeginDeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteBastionShareableLinkByTokenAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkTokenListRequest bslTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.BeginDeleteBastionShareableLinkByTokenWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslTokenRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -726,7 +716,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -743,7 +733,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -767,11 +757,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static VpnProfileResponse BeginGeneratevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams)
         {
@@ -787,11 +776,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN whose associated VpnServerConfigurations is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -837,8 +825,7 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Return the Bastion Shareable Links for all the VMs specified in the
-        /// request.
+        /// Returns the list of currently active sessions on the Bastion.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -846,14 +833,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> GetBastionShareableLinkNext(this INetworkManagementClient operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<BastionSessionState> DisconnectActiveSessionsNext(this INetworkManagementClient operations, string nextPageLink)
         {
-                return ((INetworkManagementClient)operations).GetBastionShareableLinkNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((INetworkManagementClient)operations).DisconnectActiveSessionsNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Return the Bastion Shareable Links for all the VMs specified in the
-        /// request.
+        /// Returns the list of currently active sessions on the Bastion.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -864,9 +850,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> GetBastionShareableLinkNextAsync(this INetworkManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionSessionState>> DisconnectActiveSessionsNextAsync(this INetworkManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetBastionShareableLinkNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DisconnectActiveSessionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -905,7 +891,8 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
+        /// Return the Bastion Shareable Links for all the VMs specified in the
+        /// request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -913,13 +900,14 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<BastionSessionState> DisconnectActiveSessionsNext(this INetworkManagementClient operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<BastionShareableLink> GetBastionShareableLinkNext(this INetworkManagementClient operations, string nextPageLink)
         {
-                return ((INetworkManagementClient)operations).DisconnectActiveSessionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((INetworkManagementClient)operations).GetBastionShareableLinkNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Returns the list of currently active sessions on the Bastion.
+        /// Return the Bastion Shareable Links for all the VMs specified in the
+        /// request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -930,9 +918,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionSessionState>> DisconnectActiveSessionsNextAsync(this INetworkManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BastionShareableLink>> GetBastionShareableLinkNextAsync(this INetworkManagementClient operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DisconnectActiveSessionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetBastionShareableLinkNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

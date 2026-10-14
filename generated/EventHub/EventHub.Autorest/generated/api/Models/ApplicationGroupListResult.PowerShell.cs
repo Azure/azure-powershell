@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The response from the List Application Groups operation.</summary>
+    /// <summary>The response of a ApplicationGroup list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ApplicationGroupListResultTypeConverter))]
     public partial class ApplicationGroupListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The response from the List Application Groups operation.
+    /// The response of a ApplicationGroup list operation.
     [System.ComponentModel.TypeConverter(typeof(ApplicationGroupListResultTypeConverter))]
     public partial interface IApplicationGroupListResult
 

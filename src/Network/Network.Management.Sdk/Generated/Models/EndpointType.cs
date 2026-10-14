@@ -13,14 +13,41 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class EndpointType
     {
+        /// <summary>
+        /// AzureVM
+        /// </summary>
         public const string AzureVM = "AzureVM";
+        /// <summary>
+        /// AzureVNet
+        /// </summary>
         public const string AzureVNet = "AzureVNet";
+        /// <summary>
+        /// AzureSubnet
+        /// </summary>
         public const string AzureSubnet = "AzureSubnet";
+        /// <summary>
+        /// ExternalAddress
+        /// </summary>
         public const string ExternalAddress = "ExternalAddress";
+        /// <summary>
+        /// MMAWorkspaceMachine
+        /// </summary>
         public const string MMAWorkspaceMachine = "MMAWorkspaceMachine";
+        /// <summary>
+        /// MMAWorkspaceNetwork
+        /// </summary>
         public const string MMAWorkspaceNetwork = "MMAWorkspaceNetwork";
+        /// <summary>
+        /// AzureArcVM
+        /// </summary>
         public const string AzureArcVM = "AzureArcVM";
+        /// <summary>
+        /// AzureVMSS
+        /// </summary>
         public const string AzureVmss = "AzureVMSS";
+        /// <summary>
+        /// AzureArcNetwork
+        /// </summary>
         public const string AzureArcNetwork = "AzureArcNetwork";
     }
 }

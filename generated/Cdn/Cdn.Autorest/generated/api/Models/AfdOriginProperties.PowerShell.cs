@@ -76,85 +76,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SharedPrivateLinkResourceStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus = (string) content.GetValueForProperty("SharedPrivateLinkResourceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("AzureOriginId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOriginId = (string) content.GetValueForProperty("AzureOriginId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOriginId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourcePrivateLink"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLink = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLink, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SharedPrivateLinkResourcePrivateLinkLocation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLinkLocation = (string) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLinkLocation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLinkLocation, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourceGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceGroupId = (string) content.GetValueForProperty("SharedPrivateLinkResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceGroupId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateLinkId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).PrivateLinkId = (string) content.GetValueForProperty("PrivateLinkId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).PrivateLinkId, global::System.Convert.ToString);
-            }
             if (content.Contains("AzureOrigin"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOrigin = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOrigin = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
             }
             if (content.Contains("SharedPrivateLinkResource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("HostName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HostName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HostName, global::System.Convert.ToString);
             }
             if (content.Contains("HttpPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpPort = (int?) content.GetValueForProperty("HttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpPort = (int?) content.GetValueForProperty("HttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("HttpsPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpsPort = (int?) content.GetValueForProperty("HttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpsPort = (int?) content.GetValueForProperty("HttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OriginHostHeader"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginHostHeader = (string) content.GetValueForProperty("OriginHostHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginHostHeader, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginHostHeader = (string) content.GetValueForProperty("OriginHostHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginHostHeader, global::System.Convert.ToString);
             }
             if (content.Contains("Priority"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Priority = (int?) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Priority, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Priority = (int?) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Priority, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Weight"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Weight = (int?) content.GetValueForProperty("Weight",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Weight, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Weight = (int?) content.GetValueForProperty("Weight",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Weight, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EnabledState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnabledState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnabledState, global::System.Convert.ToString);
             }
             if (content.Contains("EnforceCertificateNameCheck"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DeploymentStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceStatus = (string) content.GetValueForProperty("SharedPrivateLinkResourceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureOriginId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOriginId = (string) content.GetValueForProperty("AzureOriginId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOriginId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourcePrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLink = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLink, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SharedPrivateLinkResourcePrivateLinkLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLinkLocation = (string) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLinkLocation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLinkLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceGroupId = (string) content.GetValueForProperty("SharedPrivateLinkResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).PrivateLinkId = (string) content.GetValueForProperty("PrivateLinkId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).PrivateLinkId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -173,85 +173,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("SharedPrivateLinkResourceStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus = (string) content.GetValueForProperty("SharedPrivateLinkResourceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("AzureOriginId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOriginId = (string) content.GetValueForProperty("AzureOriginId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOriginId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourcePrivateLink"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLink = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLink, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SharedPrivateLinkResourcePrivateLinkLocation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLinkLocation = (string) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLinkLocation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourcePrivateLinkLocation, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourceGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceGroupId = (string) content.GetValueForProperty("SharedPrivateLinkResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceGroupId, global::System.Convert.ToString);
-            }
-            if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateLinkId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).PrivateLinkId = (string) content.GetValueForProperty("PrivateLinkId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).PrivateLinkId, global::System.Convert.ToString);
-            }
             if (content.Contains("AzureOrigin"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOrigin = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).AzureOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOrigin = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureOrigin",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOrigin, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
             }
             if (content.Contains("SharedPrivateLinkResource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResource = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourceProperties) content.GetValueForProperty("SharedPrivateLinkResource",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResource, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SharedPrivateLinkResourcePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginGroupName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginGroupName = (string) content.GetValueForProperty("OriginGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("HostName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HostName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HostName, global::System.Convert.ToString);
             }
             if (content.Contains("HttpPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpPort = (int?) content.GetValueForProperty("HttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpPort = (int?) content.GetValueForProperty("HttpPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("HttpsPort"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpsPort = (int?) content.GetValueForProperty("HttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).HttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpsPort = (int?) content.GetValueForProperty("HttpsPort",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).HttpsPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("OriginHostHeader"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginHostHeader = (string) content.GetValueForProperty("OriginHostHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).OriginHostHeader, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginHostHeader = (string) content.GetValueForProperty("OriginHostHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).OriginHostHeader, global::System.Convert.ToString);
             }
             if (content.Contains("Priority"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Priority = (int?) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Priority, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Priority = (int?) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Priority, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Weight"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Weight = (int?) content.GetValueForProperty("Weight",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).Weight, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Weight = (int?) content.GetValueForProperty("Weight",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).Weight, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EnabledState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnabledState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnabledState, global::System.Convert.ToString);
             }
             if (content.Contains("EnforceCertificateNameCheck"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DeploymentStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceStatus = (string) content.GetValueForProperty("SharedPrivateLinkResourceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureOriginId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOriginId = (string) content.GetValueForProperty("AzureOriginId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).AzureOriginId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourcePrivateLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLink = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLink, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SharedPrivateLinkResourcePrivateLinkLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLinkLocation = (string) content.GetValueForProperty("SharedPrivateLinkResourcePrivateLinkLocation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourcePrivateLinkLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceGroupId = (string) content.GetValueForProperty("SharedPrivateLinkResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SharedPrivateLinkResourceRequestMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceRequestMessage = (string) content.GetValueForProperty("SharedPrivateLinkResourceRequestMessage",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).SharedPrivateLinkResourceRequestMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateLinkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).PrivateLinkId = (string) content.GetValueForProperty("PrivateLinkId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)this).PrivateLinkId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

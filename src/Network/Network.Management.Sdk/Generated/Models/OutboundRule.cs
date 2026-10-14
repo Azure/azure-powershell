@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Outbound rule of the load balancer.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class OutboundRule : SubResource
+    public partial class OutboundRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the OutboundRule class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of outbound rules
-        /// used by the load balancer. This name can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the outbound rule resource.
@@ -62,13 +61,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="idleTimeoutInMinutes">The timeout for the TCP idle connection.
         /// </param>
-        public OutboundRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? allocatedOutboundPorts = default(int?), System.Collections.Generic.IList<SubResource> frontendIPConfigurations = default(System.Collections.Generic.IList<SubResource>), SubResource backendAddressPool = default(SubResource), string protocol = default(string), bool? enableTcpReset = default(bool?), int? idleTimeoutInMinutes = default(int?))
+        public OutboundRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), int? allocatedOutboundPorts = default(int?), System.Collections.Generic.IList<SubResource> frontendIPConfigurations = default(System.Collections.Generic.IList<SubResource>), SubResource backendAddressPool = default(SubResource), string protocol = default(string), bool? enableTcpReset = default(bool?), int? idleTimeoutInMinutes = default(int?))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.AllocatedOutboundPorts = allocatedOutboundPorts;
             this.FrontendIPConfigurations = frontendIPConfigurations;
@@ -86,25 +83,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of
-        /// outbound rules used by the load balancer. This name can be used to access
-        /// the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the outbound rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

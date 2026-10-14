@@ -154,6 +154,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationProperty = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties) content.GetValueForProperty("DatadogOrganizationProperty",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationProperty, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogOrganizationPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceOfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceOfferDetails) content.GetValueForProperty("MarketplaceOfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MarketplaceOfferDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
@@ -165,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("LiftrResourcePreference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("SreAgentConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SreAgentConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration>) content.GetValueForProperty("SreAgentConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SreAgentConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SreAgentConfigurationTypeConverter.ConvertFrom));
             }
             if (content.Contains("DatadogOrganizationPropertyName"))
             {
@@ -197,6 +209,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("UserInfoPhoneNumber"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).UserInfoPhoneNumber = (string) content.GetValueForProperty("UserInfoPhoneNumber",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).UserInfoPhoneNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceOfferDetailPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailPublisherId = (string) content.GetValueForProperty("MarketplaceOfferDetailPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceOfferDetailOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailOfferId = (string) content.GetValueForProperty("MarketplaceOfferDetailOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailOfferId, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -233,6 +253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("DatadogOrganizationPropertyResourceCollection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationPropertyResourceCollection = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationPropertyResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -327,6 +351,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationProperty = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties) content.GetValueForProperty("DatadogOrganizationProperty",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationProperty, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogOrganizationPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SaaSData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSData = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISaaSData) content.GetValueForProperty("SaaSData",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSData, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SaaSDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MarketplaceOfferDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetail = (Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceOfferDetails) content.GetValueForProperty("MarketplaceOfferDetail",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetail, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.MarketplaceOfferDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
@@ -338,6 +370,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("LiftrResourcePreference"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("SreAgentConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SreAgentConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration>) content.GetValueForProperty("SreAgentConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SreAgentConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ISreAgentConfiguration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.SreAgentConfigurationTypeConverter.ConvertFrom));
             }
             if (content.Contains("DatadogOrganizationPropertyName"))
             {
@@ -370,6 +406,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("UserInfoPhoneNumber"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).UserInfoPhoneNumber = (string) content.GetValueForProperty("UserInfoPhoneNumber",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).UserInfoPhoneNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceOfferDetailPublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailPublisherId = (string) content.GetValueForProperty("MarketplaceOfferDetailPublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailPublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceOfferDetailOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailOfferId = (string) content.GetValueForProperty("MarketplaceOfferDetailOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).MarketplaceOfferDetailOfferId, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -406,6 +450,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("DatadogOrganizationPropertyResourceCollection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationPropertyResourceCollection = (bool?) content.GetValueForProperty("DatadogOrganizationPropertyResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).DatadogOrganizationPropertyResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SaaSDataSaaSresourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSDataSaaSresourceId = (string) content.GetValueForProperty("SaaSDataSaaSresourceId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceInternal)this).SaaSDataSaaSresourceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

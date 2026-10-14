@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Description = @"The Endpoint resource type.",
         SerializedName = @"endpointType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare", "S3WithHMAC")]
         string EndpointType { get; set; }
 
     }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>A description for the Endpoint.</summary>
         string Description { get; set; }
         /// <summary>The Endpoint resource type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureStorageBlobContainer", "NfsMount", "AzureStorageSmbFileShare", "SmbMount", "AzureMultiCloudConnector", "AzureStorageNfsFileShare", "S3WithHMAC")]
         string EndpointType { get; set; }
 
     }

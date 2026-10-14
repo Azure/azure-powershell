@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class LoadDistribution
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// SourceIP
+        /// </summary>
         public const string SourceIP = "SourceIP";
+        /// <summary>
+        /// SourceIPProtocol
+        /// </summary>
         public const string SourceIPProtocol = "SourceIPProtocol";
     }
 }

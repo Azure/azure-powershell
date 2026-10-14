@@ -3,46 +3,46 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "secondaryLocation": {
-      "value": "southcentralus"
+      "value": "chilecentral"
     },
     "namespace_name": {
-      "value": "namespaceName6xazrb"
+      "value": "namespaceNametu3zkp"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNamelzvg4y"
+      "value": "namespaceName54tgbd"
     },
     "primary_namespace_name": {
-      "value": "namespaceNamenxqfh4"
+      "value": "namespaceNames2m4oa"
     },
     "secondary_namespace_name": {
-      "value": "namespaceNamem3hun9"
+      "value": "namespaceNamerwt574"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-ruleultwf8"
+      "value": "auth-rulearhe1n"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-ruleg465d0"
+      "value": "auth-ruleo0sjpx"
     },
     "eventhub_name": {
-      "value": "eventHubs758f4"
+      "value": "eventHub1fj0mt"
     },
     "schema_group_name": {
-      "value": "schemaGroupijkz8r"
+      "value": "schemaGroupzx61er"
     },
     "appgroup_name": {
-      "value": "appGroup0exmij"
+      "value": "appGroup4ew0tz"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default"
+      "value": "/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-EventHub-a0nzt5/providers/Microsoft.Network/virtualNetworks/eh-ps-kuv4js-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-uedzlo"
+      "value": "privateEndpoint-lwcdq4"
     },
     "peName2": {
-      "value": "privateEndpoint-iq47tv"
+      "value": "privateEndpoint-vsz90w"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb"
+      "value": "/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-EventHub-a0nzt5/providers/Microsoft.EventHub/namespaces/namespaceNametu3zkp"
     },
     "useZoneRedundancy": {
       "value": true

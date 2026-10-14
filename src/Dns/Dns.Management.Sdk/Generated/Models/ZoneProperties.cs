@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// </param>
 
         /// <param name="zoneType">The type of this DNS zone (Public or Private).
-        /// Possible values include: 'Public', 'Private'</param>
+        /// Possible values include: &#39;Public&#39;, &#39;Private&#39;</param>
 
         /// <param name="registrationVirtualNetworks">A list of references to virtual networks that register hostnames in this
         /// DNS zone. This is a only when ZoneType is Private.

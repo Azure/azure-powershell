@@ -13,12 +13,13 @@ Creates new backup configuration object
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
+New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes> [-AutoProtection]
+ [-AutoProtectionExclusionRule <IBlobBackupAutoProtectionRule[]>]
  [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
  [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
  [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
  [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
- [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [-VaultedBackupContainer <String[]>] [-ResourceSelector <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,14 +56,92 @@ BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
 
 This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
 
+### Example 3: Create a BackupConfiguration for enabling auto-protection for AzureBlob.
+```powershell
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -AutoProtection
+```
+
+```output
+ObjectType                                          AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                          --------------------------- ------------------------------
+BlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Blob.
+When auto-protection is enabled, new containers will be automatically protected without requiring manual configuration.
+
+### Example 4: Create a BackupConfiguration for enabling auto-protection for AzureDataLakeStorage with exclusion rules.
+```powershell
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
+$rule.ObjectType = "BlobBackupAutoProtectionRule"
+$rule.Pattern = "logs-"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)
+```
+
+```output
+ObjectType                                              AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                              --------------------------- ------------------------------
+AdlsBlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Data Lake Storage.
+The exclusion rule excludes containers whose names match the prefix "logs-" from auto-protection.
+
+### Example 5: Create a BackupConfiguration for configuring protection with AzureElasticSAN
+```powershell
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001")
+```
+
+```output
+ObjectType                          ResourceSelector
+----------                          ----------------
+GenericBackupDatasourceParameters   {volume001}
+```
+
+This command creates a backup configuration client object for configuring backup of an Azure Elastic SAN volume group.
+The service currently supports protecting exactly one volume per backup instance, so ResourceSelector must contain a single volume name.
+
 ## PARAMETERS
+
+### -AutoProtection
+Switch parameter to enable auto-protection.
+When enabled, new containers matching the rules will be automatically protected.
+Use this parameter for DatasourceType AzureBlob or AzureDataLakeStorage.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoProtectionExclusionRule
+List of auto-protection exclusion rules.
+Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
+Use this parameter along with -AutoProtection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupHookReference
 Hook reference to be executed during backup.
-To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +218,7 @@ Boolean parameter to decide whether cluster scope resources are included for bac
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +279,7 @@ Boolean parameter to decide whether snapshot volumes are included for backup.
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -246,6 +325,23 @@ Accept wildcard characters: False
 ### -VaultedBackupContainer
 List of containers to be backed up inside the VaultStore.
 Use this parameter for DatasourceType AzureBlob.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+List of Azure Elastic SAN volume names to include in the backup.
+Use this parameter for DatasourceType AzureElasticSAN.
+The service currently supports exactly one volume per backup instance.
 
 ```yaml
 Type: System.String[]

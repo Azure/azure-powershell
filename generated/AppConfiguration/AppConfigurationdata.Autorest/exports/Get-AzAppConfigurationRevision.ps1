@@ -42,24 +42,29 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # Instructs the server to return elements that appear after the element referred to by the specified token.
+    # Instructs the server to return elements that appear after the element referred
+    # to by the specified token.
     ${After},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
     # A filter used to match keys.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/restapirevisions
     ${Key},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # A filter used to match labels
+    # A filter used to match labels.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/restapirevisions
     ${Label},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "description", "locked", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]
@@ -67,10 +72,27 @@ param(
     ${Select},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
+    # A filter used to query by tags.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/restapirevisions
+    ${Tag},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Requests the server to respond with the state of the resource at the specified time.
+    # Requests the server to respond with the state of the resource at the specified
+    # time.
     ${AcceptDatetime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
@@ -140,8 +162,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

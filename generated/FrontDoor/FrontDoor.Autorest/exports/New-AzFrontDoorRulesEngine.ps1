@@ -39,7 +39,7 @@ RULE <IRulesEngineRule[]>: A list of rules that define a particular Rules Engine
     [RouteConfigurationOverride <IRouteConfiguration>]: Override the route configuration.
       OdataType <String>: 
   Name <String>: A name to refer to this specific rule.
-  Priority <Int32>: A priority assigned to this rule. 
+  Priority <Int32>: A priority assigned to this rule.
   [MatchCondition <List<IRulesEngineMatchCondition>>]: A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
     MatchValue <List<String>>: Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
     MatchVariable <String>: Match Variable
@@ -71,15 +71,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -175,8 +175,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 12 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2026 -Month 05 -Day 17 -Hour 15 -Minute 34 -Second 00).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -98,8 +98,8 @@ function setupEnv() {
 
     $BlobsRestoreVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
-        ResourceGroupName = "adkayeth"
-        VaultName = "sadsasad"
+        ResourceGroupName = "dataprotectionpstest-rg"
+        VaultName = "dataprotectionpstest-bv"
     }
 
     $OssVariables = @{
@@ -168,16 +168,16 @@ function setupEnv() {
     }
 
     $AksRestoreVariables = @{
-        SubscriptionId = "2c6832bf-90ef-457a-a663-9aeae88a7f80" 
-        ResourceGroupName = "tiering-test"
-        VaultName = "aks-tiering-test" #"demobackupvault"
-        NewPolicyName = "" #"pstest-aks-policy"
-        PolicyName = "test01"
-        DataSourceLocation = "eastasia"
-        SourceClusterId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test/providers/Microsoft.ContainerService/managedClusters/aks-test-priyansh"
-        SnapshotResourceGroupId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test"
-        FriendlyName = "aks-test-priyansh\newBI"
-        ClusterName = "aks-test-priyansh"
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        ResourceGroupName = "shashargea-aue"
+        VaultName = "bv-aks-aue"
+        NewPolicyName = ""
+        PolicyName = "aks-operational-only"
+        DataSourceLocation = "australiaeast"
+        SourceClusterId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourceGroups/shashargea-aue/providers/Microsoft.ContainerService/managedClusters/testautomatic-aue"
+        SnapshotResourceGroupId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourceGroups/shashargea-snap-aue"
+        FriendlyName = "testautomatic-aue"
+        ClusterName = "testautomatic-aue"
     }
 
     $BlobHardeningVariables = @{
@@ -222,6 +222,19 @@ function setupEnv() {
         TargetCrossSubStorageAccountRGName = "dataprotectionpstest2-rg"
     }
 
+    $ElasticSanVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        Location = "eastasia"
+        ResourceGroupName = "dpp-esan-ps-recording"
+        VaultName = "TestEsanVault"
+        PolicyName = "TestEsanPolicy"
+        VolumeGroupName = "dppesantestps01-vg"
+        SourceVolumeName = "srcvol1"
+        RestoredVolumeName = "restoredvol1"
+        VolumeGroupId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dpp-esan-ps-recording/providers/Microsoft.ElasticSan/elasticSans/dppesantestps01/volumeGroups/dppesantestps01-vg"
+        SnapshotResourceGroupId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dpp-esan-ps-recording"
+    }
+
     $UpdateBIWithUAMIVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "hiagarg"
@@ -237,11 +250,11 @@ function setupEnv() {
     }
 
     $CrossSubscriptionRestoreVariables = @{
-        ResourceGroupName = "pgflexrestorefix"
-        VaultName = "pgflexrestorevault"
-        SubscriptionId = "2c6832bf-90ef-457a-a663-9aeae88a7f80"
-        TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/afs-pstest-rg/providers/Microsoft.Storage/storageAccounts/afspstestsa/blobServices/default/containers/pgflex-csr"
-        TargetContainerURI =  "https://afspstestsa.blob.core.windows.net/pgflex-csr"
+        ResourceGroupName = "pgflexfeaturetesting"
+        VaultName = "VaultSDTesting"
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobpstestsa/blobServices/default/containers/pgflex-csr"
+        TargetContainerURI =  "https://blobpstestsa.blob.core.windows.net/pgflex-csr"
         FileNamePrefix = "pgflex-csr-pstest-restoreasfiles"
     }
 
@@ -305,6 +318,17 @@ function setupEnv() {
         TargetContainerURI = "https://hiaga1psa.blob.core.windows.net/powershellpgflexrestore"
     }
 
+    $CosmosDBVariables = @{
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        ResourceGroupName = "cosmos-bugbash-PSrg-3"
+        VaultName = "testvault"
+        NewPolicyName = "pstest-cosmosdb-policy"
+        PolicyName = "pstest-simple-cosmosdb"
+        SourceCosmosDBAccountName = "cosmosbugbash-ps3-src"
+        TargetCosmosDBAccountName = "cosmosbugbash-ps3-tgt"
+        Location = "eastus2euap"
+    }
+
     $CmkEncryptionVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "dataprotectionpstest-rg"
@@ -318,7 +342,8 @@ function setupEnv() {
     $DPPVaultSoftDeleteVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         Location = "eastus2euap" 
-        DeletedVaultName = "raghav-dpp-sami-soft-delete-ON"  
+        DeletedVaultName = "azps-dpp-vault-undelete-test"
+        ResourceGroupName = "raghavchugh-test-rg"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -336,6 +361,7 @@ function setupEnv() {
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestAdlsBlobHardeningScenario", $AdlsBlobHardeningVariables) | Out-Null
+    $env.add("TestElasticSanScenario", $ElasticSanVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
@@ -343,6 +369,7 @@ function setupEnv() {
     $env.add("TestMUA", $MUAVariables) | Out-Null
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
+    $env.add("TestCosmosDB", $CosmosDBVariables) | Out-Null
     $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
     $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
@@ -359,4 +386,3 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
 }
-

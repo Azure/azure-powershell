@@ -124,10 +124,10 @@ param(
 
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Local path of image that the image should be created from.
-    # 
+    [System.Security.SecureString]
+    # Local path of image that the image should be created from (as SecureString).
     # This parameter is required for non marketplace images.
+    # Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
     ${ImagePath},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]

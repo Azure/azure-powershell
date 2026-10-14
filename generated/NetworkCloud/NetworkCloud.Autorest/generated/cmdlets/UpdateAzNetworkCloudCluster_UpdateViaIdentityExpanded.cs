@@ -276,6 +276,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string CommandOutputSettingContainerUrl { get => _clusterParametersBody.CommandOutputSettingContainerUrl ?? null; set => _clusterParametersBody.CommandOutputSettingContainerUrl = value; }
 
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized.",
+        SerializedName = @"overrides",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[] CommandOutputSettingOverride { get => _clusterParametersBody.CommandOutputSettingOverride?.ToArray() ?? null /* fixedArrayOf */; set => _clusterParametersBody.CommandOutputSettingOverride = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(value) : null); }
+
         /// <summary>Selection of how the type evaluation is applied to the cluster calculation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Selection of how the type evaluation is applied to the cluster calculation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
@@ -522,15 +537,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags Tag { get => _clusterParametersBody.Tag ?? null /* object */; set => _clusterParametersBody.Tag = value; }
 
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the
-        /// maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment. Defaults to the whole increment size.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
+        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
         SerializedName = @"maxUnavailable",
         PossibleTypes = new [] { typeof(long) })]
         public long UpdateStrategyMaxUnavailable { get => _clusterParametersBody.UpdateStrategyMaxUnavailable ?? default(long); set => _clusterParametersBody.UpdateStrategyMaxUnavailable = value; }
@@ -987,6 +1002,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CommandOutputSettingContainerUrl")))
             {
                 this.CommandOutputSettingContainerUrl = (string)(this.MyInvocation?.BoundParameters["CommandOutputSettingContainerUrl"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CommandOutputSettingOverride")))
+            {
+                this.CommandOutputSettingOverride = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[])(this.MyInvocation?.BoundParameters["CommandOutputSettingOverride"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SecretArchiveSettingVaultUri")))
             {

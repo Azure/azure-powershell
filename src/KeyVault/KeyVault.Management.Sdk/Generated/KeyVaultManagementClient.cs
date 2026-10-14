@@ -39,11 +39,9 @@ namespace Microsoft.Azure.Management.KeyVault
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -64,21 +62,13 @@ namespace Microsoft.Azure.Management.KeyVault
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
-        /// Gets the IVaultsOperations
-        /// </summary>
-        public virtual IVaultsOperations Vaults { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
-        /// <summary>
         /// Gets the IManagedHsmsOperations
         /// </summary>
         public virtual IManagedHsmsOperations ManagedHsms { get; private set; }
+        /// <summary>
+        /// Gets the IVaultsOperations
+        /// </summary>
+        public virtual IVaultsOperations Vaults { get; private set; }
         /// <summary>
         /// Gets the IMhsmPrivateEndpointConnectionsOperations
         /// </summary>
@@ -91,6 +81,14 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IMhsmRegionsOperations
         /// </summary>
         public virtual IMhsmRegionsOperations MhsmRegions { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
         /// <summary>
         /// Initializes a new instance of the KeyVaultManagementClient class.
         /// </summary>
@@ -326,15 +324,15 @@ namespace Microsoft.Azure.Management.KeyVault
         /// </summary>
         private void Initialize()
         {
-            this.Vaults = new VaultsOperations(this);
-            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
-            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.ManagedHsms = new ManagedHsmsOperations(this);
+            this.Vaults = new VaultsOperations(this);
             this.MhsmPrivateEndpointConnections = new MhsmPrivateEndpointConnectionsOperations(this);
             this.MhsmPrivateLinkResources = new MhsmPrivateLinkResourcesOperations(this);
             this.MhsmRegions = new MhsmRegionsOperations(this);
+            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-05-01";
+            this.ApiVersion = "2026-02-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

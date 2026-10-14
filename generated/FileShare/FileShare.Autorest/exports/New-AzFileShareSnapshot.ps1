@@ -89,6 +89,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityFileShareExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String]
+    # The initiator of the FileShareSnapshot.
+    # This is a user-defined value.
+    ${InitiatorId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityFileShareExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # The metadata

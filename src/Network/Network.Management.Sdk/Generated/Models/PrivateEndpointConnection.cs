@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// PrivateEndpointConnection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : SubResource
+    public partial class PrivateEndpointConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointConnection class.
@@ -28,11 +28,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
         /// </param>
 
-        /// <param name="type">The resource type.
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
@@ -56,10 +55,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
         public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string linkIdentifier = default(string), string privateEndpointLocation = default(string))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
-            this.Type = type;
             this.Etag = etag;
             this.PrivateEndpoint = privateEndpoint;
             this.ProvisioningState = provisioningState;
@@ -74,19 +71,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets the resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is

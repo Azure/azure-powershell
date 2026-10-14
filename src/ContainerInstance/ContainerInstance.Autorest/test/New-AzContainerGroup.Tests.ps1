@@ -64,6 +64,6 @@ Describe 'New-AzContainerGroup' {
 
     It 'creates a container group with system assigned and user assigned identity.' -skip {
         $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image nginx 
-        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName5 -Location $env.location -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UserIdentityName>
+        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName5 -Location $env.location -Container $container -EnableSystemAssignedIdentity -UserAssignedIdentity "/subscriptions/$($env.subscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$($env.UserIdentityName)"
     }
 }

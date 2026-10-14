@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DeploymentStatus
     {
+        /// <summary>
+        /// NotStarted
+        /// </summary>
         public const string NotStarted = "NotStarted";
+        /// <summary>
+        /// Deploying
+        /// </summary>
         public const string Deploying = "Deploying";
+        /// <summary>
+        /// Deployed
+        /// </summary>
         public const string Deployed = "Deployed";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
     }
 }

@@ -13,163 +13,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class StaticMembersOperationsExtensions
     {
         /// <summary>
-        /// Gets the specified static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        public static StaticMember Get(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName)
-        {
-                return ((IStaticMembersOperations)operations).GetAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<StaticMember> GetAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        public static StaticMember CreateOrUpdate(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, StaticMember parameters)
-        {
-                return ((IStaticMembersOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<StaticMember> CreateOrUpdateAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, StaticMember parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        public static void Delete(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName)
-        {
-                ((IStaticMembersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a static member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='networkGroupName'>
-        /// The name of the network group.
-        /// </param>
-        /// <param name='staticMemberName'>
-        /// The name of the static member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Lists the specified static member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -199,7 +49,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -226,6 +76,156 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Gets the specified static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        public static StaticMember Get(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName)
+        {
+                return ((IStaticMembersOperations)operations).GetAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticMember> GetAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        public static StaticMember CreateOrUpdate(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, StaticMember parameters)
+        {
+                return ((IStaticMembersOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StaticMember> CreateOrUpdateAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, StaticMember parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        public static void Delete(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName)
+        {
+                ((IStaticMembersOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a static member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='networkGroupName'>
+        /// The name of the network group.
+        /// </param>
+        /// <param name='staticMemberName'>
+        /// The name of the static member.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Lists the specified static member.

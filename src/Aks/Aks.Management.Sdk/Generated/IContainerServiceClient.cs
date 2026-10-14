@@ -79,14 +79,34 @@ namespace Microsoft.Azure.Management.ContainerService
         IManagedClustersOperations ManagedClusters { get; }
 
         /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
+        /// Gets the ITrustedAccessRolesOperations
         /// </summary>
-        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+        ITrustedAccessRolesOperations TrustedAccessRoles { get; }
+
+        /// <summary>
+        /// Gets the ISnapshotsOperations
+        /// </summary>
+        ISnapshotsOperations Snapshots { get; }
 
         /// <summary>
         /// Gets the IAgentPoolsOperations
         /// </summary>
         IAgentPoolsOperations AgentPools { get; }
+
+        /// <summary>
+        /// Gets the IMachinesOperations
+        /// </summary>
+        IMachinesOperations Machines { get; }
+
+        /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IManagedNamespacesOperations
+        /// </summary>
+        IManagedNamespacesOperations ManagedNamespaces { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
@@ -104,24 +124,9 @@ namespace Microsoft.Azure.Management.ContainerService
         IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; }
 
         /// <summary>
-        /// Gets the ISnapshotsOperations
-        /// </summary>
-        ISnapshotsOperations Snapshots { get; }
-
-        /// <summary>
         /// Gets the ITrustedAccessRoleBindingsOperations
         /// </summary>
         ITrustedAccessRoleBindingsOperations TrustedAccessRoleBindings { get; }
-
-        /// <summary>
-        /// Gets the ITrustedAccessRolesOperations
-        /// </summary>
-        ITrustedAccessRolesOperations TrustedAccessRoles { get; }
-
-        /// <summary>
-        /// Gets the IMachinesOperations
-        /// </summary>
-        IMachinesOperations Machines { get; }
 
     }
 }

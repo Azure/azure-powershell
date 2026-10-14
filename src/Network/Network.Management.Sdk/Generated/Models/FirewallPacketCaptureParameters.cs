@@ -47,7 +47,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="filters">Rules to filter packet captures.
         /// </param>
 
-        /// <param name="operation">The Azure Firewall packet capture operation to perform
+        /// <param name="operation">The packet capture operation to perform. If the Start operation is
+        /// selected, please provide all the fields in the
+        /// firewallPacketCaptureParameters to successfully initiate the packet
+        /// capture. If the Status or Stop operation is selected, only the operation
+        /// field is required; all other fields in the firewallPacketCaptureParameters
+        /// can be omitted to successfully retrieve the capture status or stop the
+        /// capture.
         /// Possible values include: &#39;Start&#39;, &#39;Status&#39;, &#39;Stop&#39;</param>
         public FirewallPacketCaptureParameters(int? durationInSeconds = default(int?), int? numberOfPacketsToCapture = default(int?), string sasUrl = default(string), string fileName = default(string), string protocol = default(string), System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> flags = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags>), System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> filters = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureRule>), string operation = default(string))
 
@@ -114,7 +120,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> Filters {get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Firewall packet capture operation to perform Possible values include: &#39;Start&#39;, &#39;Status&#39;, &#39;Stop&#39;
+        /// Gets or sets the packet capture operation to perform. If the Start
+        /// operation is selected, please provide all the fields in the
+        /// firewallPacketCaptureParameters to successfully initiate the packet
+        /// capture. If the Status or Stop operation is selected, only the operation
+        /// field is required; all other fields in the firewallPacketCaptureParameters
+        /// can be omitted to successfully retrieve the capture status or stop the
+        /// capture. Possible values include: &#39;Start&#39;, &#39;Status&#39;, &#39;Stop&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operation")]
         public string Operation {get; set; }

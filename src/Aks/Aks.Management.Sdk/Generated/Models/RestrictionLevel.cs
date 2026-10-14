@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         public const string Unrestricted = "Unrestricted";
         /// <summary>
-        /// Only */read RBAC permissions allowed on the managed node resource group
+        /// Only \*\/read RBAC permissions allowed on the managed node resource group
         /// </summary>
         public const string ReadOnly = "ReadOnly";
     }

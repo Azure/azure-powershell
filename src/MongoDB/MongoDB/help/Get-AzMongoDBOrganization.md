@@ -14,7 +14,8 @@ Get a OrganizationResource
 
 ### List (Default)
 ```
-Get-AzMongoDBOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMongoDBOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzMongoDBOrganization -ResourceGroupName <String> [-SubscriptionId <String[]
 
 ### GetViaIdentity
 ```
-Get-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

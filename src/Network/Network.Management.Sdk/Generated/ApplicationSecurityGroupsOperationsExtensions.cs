@@ -13,159 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ApplicationSecurityGroupsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        public static void Delete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
-        {
-                ((IApplicationSecurityGroupsOperations)operations).DeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets information about the specified application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        public static ApplicationSecurityGroup Get(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
-        {
-                return ((IApplicationSecurityGroupsOperations)operations).GetAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets information about the specified application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> GetAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        public static ApplicationSecurityGroup CreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters)
-        {
-                return ((IApplicationSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an application security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> CreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates an application security group&#39;s tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        public static ApplicationSecurityGroup UpdateTags(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters)
-        {
-                return ((IApplicationSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates an application security group&#39;s tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationSecurityGroupName'>
-        /// The name of the application security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> UpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all application security groups in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -199,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ApplicationSecurityGroup> List(this IApplicationSecurityGroupsOperations operations, string resourceGroupName)
         {
@@ -213,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -226,20 +73,137 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets information about the specified application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        public static ApplicationSecurityGroup Get(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        {
+                return ((IApplicationSecurityGroupsOperations)operations).GetAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets information about the specified application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> GetAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        public static ApplicationSecurityGroup CreateOrUpdate(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters)
+        {
+                return ((IApplicationSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> CreateOrUpdateAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, ApplicationSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates an application security group&#39;s tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        public static ApplicationSecurityGroup UpdateTags(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters)
+        {
+                return ((IApplicationSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, applicationSecurityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates an application security group&#39;s tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationSecurityGroup> UpdateTagsAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified application security group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        public static void BeginDelete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        public static void Delete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
         {
-                ((IApplicationSecurityGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
+                ((IApplicationSecurityGroupsOperations)operations).DeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -249,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
@@ -257,9 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an application security group.
@@ -268,7 +232,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
@@ -285,7 +249,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
@@ -299,6 +263,42 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        public static void BeginDelete(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName)
+        {
+                ((IApplicationSecurityGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationSecurityGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified application security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationSecurityGroupName'>
+        /// The name of the application security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationSecurityGroupsOperations operations, string resourceGroupName, string applicationSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all application security groups in a subscription.

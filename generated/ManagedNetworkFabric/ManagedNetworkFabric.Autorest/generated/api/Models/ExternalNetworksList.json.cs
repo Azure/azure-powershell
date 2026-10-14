@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of External Networks.</summary>
+    /// <summary>Paged collection of ExternalNetwork items</summary>
     public partial class ExternalNetworksList
     {
 

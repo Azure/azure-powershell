@@ -60,11 +60,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         public string IdentifierSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageIdentifierInternal)Identifier).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageIdentifierInternal)Identifier).Sku = value ?? null; }
 
         /// <summary>Backing field for <see cref="ImagePath" /> property.</summary>
-        private string _imagePath;
+        private System.Security.SecureString _imagePath;
 
         /// <summary>location of the image the gallery image should be created from</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Owned)]
-        public string ImagePath { get => this._imagePath; set => this._imagePath = value; }
+        public System.Security.SecureString ImagePath { get => this._imagePath; set => this._imagePath = value; }
 
         /// <summary>Internal Acessors for DownloadStatusDownloadSizeInMb</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagePropertiesInternal.DownloadStatusDownloadSizeInMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImageStatusInternal)Status).DownloadStatusDownloadSizeInMb = value ?? default(long); }
@@ -274,8 +274,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Update = true,
         Description = @"location of the image the gallery image should be created from",
         SerializedName = @"imagePath",
-        PossibleTypes = new [] { typeof(string) })]
-        string ImagePath { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ImagePath { get; set; }
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         /// <summary>The name of the gallery image definition SKU.</summary>
         string IdentifierSku { get; set; }
         /// <summary>location of the image the gallery image should be created from</summary>
-        string ImagePath { get; set; }
+        System.Security.SecureString ImagePath { get; set; }
         /// <summary>This property indicates the size of the VHD to be created.</summary>
         long? OSDiskImageSizeInMb { get; set; }
         /// <summary>Operating system type that the gallery image uses [Windows, Linux]</summary>

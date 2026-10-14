@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class FailoverType
     {
+        /// <summary>
+        /// ForcedAllowDataLoss
+        /// </summary>
         public const string ForcedAllowDataLoss = "ForcedAllowDataLoss";
+        /// <summary>
+        /// Planned
+        /// </summary>
         public const string Planned = "Planned";
     }
 }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Inbound NAT rule of the load balancer.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class InboundNatRule : SubResource
+    public partial class InboundNatRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the InboundNatRule class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within the set of inbound NAT rules
-        /// used by the load balancer. This name can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the inbound NAT rule resource.
@@ -91,13 +90,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="backendAddressPool">A reference to backendAddressPool resource.
         /// </param>
-        public InboundNatRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), int? frontendPortRangeStart = default(int?), int? frontendPortRangeEnd = default(int?), SubResource backendAddressPool = default(SubResource))
+        public InboundNatRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), NetworkInterfaceIPConfiguration backendIPConfiguration = default(NetworkInterfaceIPConfiguration), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), int? frontendPortRangeStart = default(int?), int? frontendPortRangeEnd = default(int?), SubResource backendAddressPool = default(SubResource))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.FrontendIPConfiguration = frontendIPConfiguration;
             this.BackendIPConfiguration = backendIPConfiguration;
@@ -120,25 +117,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within the set of
-        /// inbound NAT rules used by the load balancer. This name can be used to
-        /// access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the inbound NAT rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -238,8 +221,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
 
 

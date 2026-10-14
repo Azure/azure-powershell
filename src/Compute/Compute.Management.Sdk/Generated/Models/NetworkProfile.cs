@@ -36,12 +36,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="networkInterfaceConfigurations">Specifies the networking configurations that will be used to create the
         /// virtual machine networking resources.
         /// </param>
-        public NetworkProfile(System.Collections.Generic.IList<NetworkInterfaceReference> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterfaceReference>), string networkApiVersion = default(string), System.Collections.Generic.IList<VirtualMachineNetworkInterfaceConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineNetworkInterfaceConfiguration>))
+
+        /// <param name="interconnectGroupProfile">Specifies the interconnect group profile to associate with the virtual
+        /// machine. Minimum api-version: 2026-03-01.
+        /// </param>
+        public NetworkProfile(System.Collections.Generic.IList<NetworkInterfaceReference> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterfaceReference>), string networkApiVersion = default(string), System.Collections.Generic.IList<VirtualMachineNetworkInterfaceConfiguration> networkInterfaceConfigurations = default(System.Collections.Generic.IList<VirtualMachineNetworkInterfaceConfiguration>), InterconnectGroupProfile interconnectGroupProfile = default(InterconnectGroupProfile))
 
         {
             this.NetworkInterfaces = networkInterfaces;
             this.NetworkApiVersion = networkApiVersion;
             this.NetworkInterfaceConfigurations = networkInterfaceConfigurations;
+            this.InterconnectGroupProfile = interconnectGroupProfile;
             CustomInit();
         }
 
@@ -71,5 +76,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkInterfaceConfigurations")]
         public System.Collections.Generic.IList<VirtualMachineNetworkInterfaceConfiguration> NetworkInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the interconnect group profile to associate with the
+        /// virtual machine. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectGroupProfile")]
+        public InterconnectGroupProfile InterconnectGroupProfile {get; set; }
     }
 }

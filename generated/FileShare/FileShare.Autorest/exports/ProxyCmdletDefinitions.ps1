@@ -1178,6 +1178,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityFileShareExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String]
+    # The initiator of the FileShareSnapshot.
+    # This is a user-defined value.
+    ${InitiatorId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityFileShareExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesMetadata]))]
     [System.Collections.Hashtable]
     # The metadata
@@ -1361,7 +1369,7 @@ Create a file share.
 .Description
 Create a file share.
 .Example
-New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -NfProtocolPropertyRootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -PublicAccessPropertyAllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" }
+New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -RootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -AllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" } -EncryptionInTransitRequired Enabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare
@@ -1400,6 +1408,20 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String[]]
+    # The allowed set of subnets when access is restricted.
+    ${AllowedSubnet},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String]
+    # Encryption in transit defines whether data is encrypted for NFS shares.
+    ${EncryptionInTransitRequired},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("SSD")]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [System.String]
@@ -1411,13 +1433,6 @@ param(
     [System.String]
     # The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system.
     ${MountName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
-    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
-    [System.String]
-    # Root squash defines how root users on clients are mapped to the NFS share.
-    ${NfProtocolPropertyRootSquash},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NFS")]
@@ -1446,13 +1461,6 @@ param(
     ${ProvisionedThroughputMiBPerSec},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
-    [System.String[]]
-    # The allowed set of subnets when access is restricted.
-    ${PublicAccessPropertyAllowedSubnet},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [System.String]
@@ -1465,6 +1473,13 @@ param(
     [System.String]
     # The chosen redundancy level of the file share.
     ${Redundancy},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String]
+    # Root squash defines how root users on clients are mapped to the NFS share.
+    ${RootSquash},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
@@ -2644,7 +2659,7 @@ Update a FileShare
 .Description
 Update a FileShare
 .Example
-Update-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -NfProtocolPropertyRootSquash RootSquash -ProvisionedIoPerSec 5001 -ProvisionedStorageGiB 101 -ProvisionedThroughputMiBPerSec 126 -PublicNetworkAccess Disabled -Tag @{tag1="value1"} -PublicAccessPropertyAllowedSubnet $vnet1
+Update-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -RootSquash RootSquash -ProvisionedIoPerSec 5001 -ProvisionedStorageGiB 101 -ProvisionedThroughputMiBPerSec 126 -PublicNetworkAccess Disabled -Tag @{tag1="value1"} -AllowedSubnet $vnet1 -EncryptionInTransitRequired Enabled
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareIdentity
@@ -2706,11 +2721,19 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String[]]
+    # The allowed set of subnets when access is restricted.
+    ${AllowedSubnet},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [System.String]
-    # Root squash defines how root users on clients are mapped to the NFS share.
-    ${NfProtocolPropertyRootSquash},
+    # Encryption in transit defines whether data is encrypted for NFS shares.
+    ${EncryptionInTransitRequired},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -2736,19 +2759,19 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
-    [System.String[]]
-    # The allowed set of subnets when access is restricted.
-    ${PublicAccessPropertyAllowedSubnet},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
     [System.String]
     # Gets or sets allow or disallow public network access to azure managed file share
     ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category('Body')]
+    [System.String]
+    # Root squash defines how root users on clients are mapped to the NFS share.
+    ${RootSquash},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

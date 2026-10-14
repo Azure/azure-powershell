@@ -77,8 +77,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __l3IsolationDomainPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3IsolationDomainPatchableProperties(json);
+            {_aggregateRouteConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("aggregateRouteConfiguration"), out var __jsonAggregateRouteConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AggregateRoutePatchConfiguration.FromJson(__jsonAggregateRouteConfiguration) : _aggregateRouteConfiguration;}
+            {_connectedSubnetRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("connectedSubnetRoutePolicy"), out var __jsonConnectedSubnetRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ConnectedSubnetRoutePolicyPatch.FromJson(__jsonConnectedSubnetRoutePolicy) : _connectedSubnetRoutePolicy;}
+            {_staticRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("staticRouteRoutePolicy"), out var __jsonStaticRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.StaticRoutePolicyPatch.FromJson(__jsonStaticRoutePolicy) : _staticRoutePolicy;}
+            {_v4RoutePrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("v4routePrefixLimit"), out var __jsonV4RoutePrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties.FromJson(__jsonV4RoutePrefixLimit) : _v4RoutePrefixLimit;}
+            {_v6RoutePrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("v6routePrefixLimit"), out var __jsonV6RoutePrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.RoutePrefixLimitPatchProperties.FromJson(__jsonV6RoutePrefixLimit) : _v6RoutePrefixLimit;}
+            {_exportPolicyConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("exportPolicyConfiguration"), out var __jsonExportPolicyConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BmpExportPolicyPatchProperties.FromJson(__jsonExportPolicyConfiguration) : _exportPolicyConfiguration;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_redistributeConnectedSubnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("redistributeConnectedSubnets"), out var __jsonRedistributeConnectedSubnets) ? (string)__jsonRedistributeConnectedSubnets : (string)_redistributeConnectedSubnet;}
+            {_redistributeStaticRoute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("redistributeStaticRoutes"), out var __jsonRedistributeStaticRoutes) ? (string)__jsonRedistributeStaticRoutes : (string)_redistributeStaticRoute;}
             AfterFromJson(json);
         }
 
@@ -101,8 +108,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __l3IsolationDomainPatchableProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._aggregateRouteConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._aggregateRouteConfiguration.ToJson(null,serializationMode) : null, "aggregateRouteConfiguration" ,container.Add );
+            AddIf( null != this._connectedSubnetRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._connectedSubnetRoutePolicy.ToJson(null,serializationMode) : null, "connectedSubnetRoutePolicy" ,container.Add );
+            AddIf( null != this._staticRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._staticRoutePolicy.ToJson(null,serializationMode) : null, "staticRouteRoutePolicy" ,container.Add );
+            AddIf( null != this._v4RoutePrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._v4RoutePrefixLimit.ToJson(null,serializationMode) : null, "v4routePrefixLimit" ,container.Add );
+            AddIf( null != this._v6RoutePrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._v6RoutePrefixLimit.ToJson(null,serializationMode) : null, "v6routePrefixLimit" ,container.Add );
+            AddIf( null != this._exportPolicyConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._exportPolicyConfiguration.ToJson(null,serializationMode) : null, "exportPolicyConfiguration" ,container.Add );
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            AddIf( null != (((object)this._redistributeConnectedSubnet)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._redistributeConnectedSubnet.ToString()) : null, "redistributeConnectedSubnets" ,container.Add );
+            AddIf( null != (((object)this._redistributeStaticRoute)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._redistributeStaticRoute.ToString()) : null, "redistributeStaticRoutes" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

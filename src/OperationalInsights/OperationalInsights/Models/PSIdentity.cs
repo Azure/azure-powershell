@@ -13,6 +13,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using OIModels = Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             Type = string.IsNullOrEmpty(type) ? "SystemAssigned" : type;
         }
 
-        public PSIdentity(Identity identity)
+        public PSIdentity(OIModels.Identity identity)
         {
             this.PrincipalId = identity.PrincipalId;
             this.TenantId = identity.TenantId;
@@ -51,9 +52,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
         }
 
-        public Identity GetIdentity()
+        public OIModels.Identity GetIdentity()
         {
-            return new Identity(this.getIdentityType(), this.PrincipalId, this.TenantId);
+            return new OIModels.Identity(this.getIdentityType(), this.PrincipalId, this.TenantId);
         }
     }
 }

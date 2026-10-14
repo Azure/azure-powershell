@@ -128,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePatchPropertiesTypeConverter.ConvertFrom);
@@ -135,6 +139,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePatchParametersTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("VMImageRepositoryCredentials"))
             {
@@ -169,6 +189,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePatchPropertiesTypeConverter.ConvertFrom);
@@ -176,6 +200,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachinePatchParametersTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePatchParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("VMImageRepositoryCredentials"))
             {

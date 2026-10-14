@@ -65,9 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            __afdDomainUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainUpdatePropertiesParameters(json);
-            __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
+            {_mtlsSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("mtlsSettings"), out var __jsonMtlsSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParameters.FromJson(__jsonMtlsSettings) : _mtlsSetting;}
+            {_azureDnsZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("azureDnsZone"), out var __jsonAzureDnsZone) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonAzureDnsZone) : _azureDnsZone;}
+            {_preValidatedCustomDomainResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("preValidatedCustomDomainResourceId"), out var __jsonPreValidatedCustomDomainResourceId) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonPreValidatedCustomDomainResourceId) : _preValidatedCustomDomainResourceId;}
             {_validationProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("validationProperties"), out var __jsonValidationProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DomainValidationProperties.FromJson(__jsonValidationProperties) : _validationProperty;}
+            {_profileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("profileName"), out var __jsonProfileName) ? (string)__jsonProfileName : (string)_profileName;}
+            {_tlsSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("tlsSettings"), out var __jsonTlsSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters.FromJson(__jsonTlsSettings) : _tlsSetting;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
             {_domainValidationState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("domainValidationState"), out var __jsonDomainValidationState) ? (string)__jsonDomainValidationState : (string)_domainValidationState;}
             {_hostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("hostName"), out var __jsonHostName) ? (string)__jsonHostName : (string)_hostName;}
             {_extendedProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("extendedProperties"), out var __jsonExtendedProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainPropertiesExtendedProperties.FromJson(__jsonExtendedProperties) : _extendedProperty;}
@@ -105,11 +110,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            __afdDomainUpdatePropertiesParameters?.ToJson(container, serializationMode);
-            __afdStateProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._mtlsSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._mtlsSetting.ToJson(null,serializationMode) : null, "mtlsSettings" ,container.Add );
+            AddIf( null != this._azureDnsZone ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._azureDnsZone.ToJson(null,serializationMode) : null, "azureDnsZone" ,container.Add );
+            AddIf( null != this._preValidatedCustomDomainResourceId ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._preValidatedCustomDomainResourceId.ToJson(null,serializationMode) : null, "preValidatedCustomDomainResourceId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._validationProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._validationProperty.ToJson(null,serializationMode) : null, "validationProperties" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._profileName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._profileName.ToString()) : null, "profileName" ,container.Add );
+            }
+            AddIf( null != this._tlsSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._tlsSetting.ToJson(null,serializationMode) : null, "tlsSettings" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._deploymentStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._deploymentStatus.ToString()) : null, "deploymentStatus" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class MigrationRecoveryPointType
     {
+        /// <summary>
+        /// NotSpecified
+        /// </summary>
         public const string NotSpecified = "NotSpecified";
+        /// <summary>
+        /// ApplicationConsistent
+        /// </summary>
         public const string ApplicationConsistent = "ApplicationConsistent";
+        /// <summary>
+        /// CrashConsistent
+        /// </summary>
         public const string CrashConsistent = "CrashConsistent";
     }
 }

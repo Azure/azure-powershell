@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy
 
 ## NOTES
 

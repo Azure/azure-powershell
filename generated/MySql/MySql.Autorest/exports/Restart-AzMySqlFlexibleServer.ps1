@@ -28,9 +28,9 @@ Restart-AzMySqlFlexibleServer -InputObject $ID
 Restart-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -RestartWithFailover Enabled
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 .Outputs
 System.Boolean
 .Notes
@@ -39,7 +39,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: Identity Parameter
-  [AdvancedThreatProtectionName <AdvancedThreatProtectionName?>]: The name of the Advanced Threat Protection state.
+  [AdvancedThreatProtectionName <String>]: The name of the Advanced Threat Protection state.
   [BackupName <String>]: The name of the backup.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
@@ -47,14 +47,12 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LocationName <String>]: The name of the location.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
   [ServerName <String>]: The name of the server.
   [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 
 PARAMETER <IServerRestartParameter>: Server restart parameters.
   [MaxFailoverSecond <Int32?>]: The maximum allowed failover time in seconds.
-  [RestartWithFailover <EnableStatusEnum?>]: Whether or not failover to standby server when restarting a server with high availability enabled.
+  [RestartWithFailover <String>]: Whether or not failover to standby server when restarting a server with high availability enabled.
 .Link
 https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
 #>
@@ -64,6 +62,8 @@ function Restart-AzMySqlFlexibleServer {
 param(
     [Parameter(ParameterSetName='Restart', Mandatory)]
     [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
     [Alias('ServerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
@@ -72,6 +72,8 @@ param(
 
     [Parameter(ParameterSetName='Restart', Mandatory)]
     [Parameter(ParameterSetName='RestartExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -80,6 +82,8 @@ param(
 
     [Parameter(ParameterSetName='Restart')]
     [Parameter(ParameterSetName='RestartExpanded')]
+    [Parameter(ParameterSetName='RestartViaJsonFilePath')]
+    [Parameter(ParameterSetName='RestartViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -91,15 +95,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Restart', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RestartViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter]
     # Server restart parameters.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='RestartExpanded')]
@@ -111,11 +113,23 @@ param(
 
     [Parameter(ParameterSetName='RestartExpanded')]
     [Parameter(ParameterSetName='RestartViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum]
+    [System.String]
     # Whether or not failover to standby server when restarting a server with high availability enabled.
     ${RestartWithFailover},
+
+    [Parameter(ParameterSetName='RestartViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Restart operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RestartViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+    [System.String]
+    # Json string supplied to the Restart operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -191,6 +205,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -214,10 +236,10 @@ begin {
             RestartExpanded = 'Az.MySql.private\Restart-AzMySqlFlexibleServer_RestartExpanded';
             RestartViaIdentity = 'Az.MySql.private\Restart-AzMySqlFlexibleServer_RestartViaIdentity';
             RestartViaIdentityExpanded = 'Az.MySql.private\Restart-AzMySqlFlexibleServer_RestartViaIdentityExpanded';
+            RestartViaJsonFilePath = 'Az.MySql.private\Restart-AzMySqlFlexibleServer_RestartViaJsonFilePath';
+            RestartViaJsonString = 'Az.MySql.private\Restart-AzMySqlFlexibleServer_RestartViaJsonString';
         }
-        if (('Restart', 'RestartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restart', 'RestartExpanded', 'RestartViaJsonFilePath', 'RestartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -231,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

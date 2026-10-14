@@ -25,12 +25,12 @@ Get private DNS zone suffix in the cloud.
 {{ Add code here }}
 
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IGetPrivateDnsZoneSuffixResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.mysql/invoke-azmysqlexecutegetprivatednszonesuffix
 #>
 function Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IGetPrivateDnsZoneSuffixResponse])]
 [CmdletBinding(DefaultParameterSetName='Execute', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Execute = 'Az.MySql.private\Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix_Execute';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

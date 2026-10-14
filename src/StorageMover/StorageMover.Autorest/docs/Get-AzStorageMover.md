@@ -108,7 +108,7 @@ Type                         : microsoft.storagemover/storagemovers
 
 This command gets all the Storage movers in a resource group.
 
-### Example 2: Get a specific Storage mover
+### Example 3: Get a specific Storage mover
 ```powershell
 Get-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover1
 ```

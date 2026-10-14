@@ -121,5 +121,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithCertificateAuth");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionWithRoutingConfiguration()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithRoutingConfiguration");
+        }
     }
 }

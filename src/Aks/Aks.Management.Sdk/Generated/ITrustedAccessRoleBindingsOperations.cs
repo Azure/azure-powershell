@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TrustedAccessRoleBinding>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string trustedAccessRoleBindingName, TrustedAccessRoleBinding trustedAccessRoleBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TrustedAccessRoleBinding,TrustedAccessRoleBindingsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string trustedAccessRoleBindingName, TrustedAccessRoleBinding trustedAccessRoleBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a trusted access role binding.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TrustedAccessRoleBinding>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string trustedAccessRoleBindingName, TrustedAccessRoleBinding trustedAccessRoleBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TrustedAccessRoleBinding,TrustedAccessRoleBindingsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string resourceName, string trustedAccessRoleBindingName, TrustedAccessRoleBinding trustedAccessRoleBinding, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a trusted access role binding.

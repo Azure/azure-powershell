@@ -15,7 +15,7 @@ Creates a container nic configuration ip configuration object.
 ```
 New-AzContainerNicConfigIpConfig -Name <String> -Subnet <PSSubnet> [-SubnetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,36 @@ $networkProfile = New-AzNetworkProfile -Name np1 -Location "West US" -ResourceGr
 The first two commands create and initialize a vnet and a subnet. The third command creates a container nic ip configuration profile referencing the created subnet. The fourth command creates a container network interface configuration supplying the ip configuration profile created in the previous command. Finally, the fifth command creates a network profile initialized with the container network interface configuration stored in $containerNicConfig.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

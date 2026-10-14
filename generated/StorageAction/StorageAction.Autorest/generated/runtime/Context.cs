@@ -28,6 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Runtime
         System.Threading.CancellationTokenSource CancellationTokenSource { get; set; }
         System.Collections.Generic.IDictionary<String, Object> ExtensibleParameters { get; }
         HttpPipeline Pipeline { get; set; }
-        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.StorageAction Client { get; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageAction.StorageActionsManagementClient Client { get; }
     }
 }

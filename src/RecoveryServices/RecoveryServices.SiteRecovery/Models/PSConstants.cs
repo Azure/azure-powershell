@@ -127,6 +127,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Disabled = "Disabled";
 
         /// <summary>
+        ///     DiskNetworkAccessPolicy: Allow all network access.
+        /// </summary>
+        public const string AllowAll = "AllowAll";
+
+        /// <summary>
+        ///     DiskNetworkAccessPolicy: Allow private access through disk access resource.
+        /// </summary>
+        public const string AllowPrivate = "AllowPrivate";
+
+        /// <summary>
+        ///     DiskNetworkAccessPolicy: Deny all network access.
+        /// </summary>
+        public const string DenyAll = "DenyAll";
+
+        /// <summary>
         ///     Represents Disable protection.
         /// </summary>
         public const string DisableProtection = "Disable";

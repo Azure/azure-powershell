@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PublicIPAddressMigrationPhase
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Prepare
+        /// </summary>
         public const string Prepare = "Prepare";
+        /// <summary>
+        /// Commit
+        /// </summary>
         public const string Commit = "Commit";
+        /// <summary>
+        /// Abort
+        /// </summary>
         public const string Abort = "Abort";
+        /// <summary>
+        /// Committed
+        /// </summary>
         public const string Committed = "Committed";
     }
 }

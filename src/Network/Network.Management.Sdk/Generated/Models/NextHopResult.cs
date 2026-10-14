@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="nextHopType">Next hop type.
         /// Possible values include: &#39;Internet&#39;, &#39;VirtualAppliance&#39;,
-        /// &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;HyperNetGateway&#39;, &#39;None&#39;</param>
+        /// &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;HyperNetGateway&#39;,
+        /// &#39;VirtualApplianceEcmp&#39;, &#39;None&#39;</param>
 
         /// <param name="nextHopIPAddress">Next hop IP Address.
         /// </param>
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets next hop type. Possible values include: &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;HyperNetGateway&#39;, &#39;None&#39;
+        /// Gets or sets next hop type. Possible values include: &#39;Internet&#39;, &#39;VirtualAppliance&#39;, &#39;VirtualNetworkGateway&#39;, &#39;VnetLocal&#39;, &#39;HyperNetGateway&#39;, &#39;VirtualApplianceEcmp&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextHopType")]
         public string NextHopType {get; set; }

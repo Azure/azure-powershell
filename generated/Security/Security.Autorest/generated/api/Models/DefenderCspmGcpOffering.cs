@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingMdcContainersImageAssessment MdcContainersImageAssessment { get => (this._mdcContainersImageAssessment = this._mdcContainersImageAssessment ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmGcpOfferingMdcContainersImageAssessment()); set => this._mdcContainersImageAssessment = value; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value ?? null; }
 
         /// <summary>Internal Acessors for CiemDiscovery</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingCiemDiscovery Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingInternal.CiemDiscovery { get => (this._ciemDiscovery = this._ciemDiscovery ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmGcpOfferingCiemDiscovery()); set { {_ciemDiscovery = value;} } }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScanners Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingInternal.VMScanner { get => (this._vMScanner = this._vMScanner ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmGcpOfferingVMScanners()); set { {_vMScanner = value;} } }
 
         /// <summary>Internal Acessors for VMScannerConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersConfiguration Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingInternal.VMScannerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersInternal)VMScanner).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersInternal)VMScanner).Configuration = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersConfiguration Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingInternal.VMScannerConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersInternal)VMScanner).Configuration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersInternal)VMScanner).Configuration = value ?? null /* model class */; }
 
         /// <summary>The type of the security offering.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Security.Constant]

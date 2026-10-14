@@ -18,7 +18,7 @@ Describe 'Test-AzStorageCacheAmlFileSystemSubnet' {
     It 'CheckExpanded' {
         {
             # Test subnet validation using expanded parameters
-            $result = Test-AzStorageCacheAmlFileSystemSubnet -Location "canadacentral" -Name "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -PassThru
+            $result = Test-AzStorageCacheAmlFileSystemSubnet -Location "canadacentral" -Name "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -PassThru
             $result | Should -Not -Be $null
         } | Should -Not -Throw
     }
@@ -29,7 +29,7 @@ Describe 'Test-AzStorageCacheAmlFileSystemSubnet' {
             $jsonString = @"
 {
     "location": "canadacentral",
-    "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511",
+    "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet",
     "sku": {
         "name": "AMLFS-Durable-Premium-250"
     },
@@ -47,7 +47,7 @@ Describe 'Test-AzStorageCacheAmlFileSystemSubnet' {
             $jsonContent = @"
 {
     "location": "canadacentral",
-    "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/acctest43511",
+    "filesystemSubnet": "/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.Network/virtualNetworks/acctest43511/subnets/fsSubnet",
     "sku": {
         "name": "AMLFS-Durable-Premium-250"
     },

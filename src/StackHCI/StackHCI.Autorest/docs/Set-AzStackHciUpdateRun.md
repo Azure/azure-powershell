@@ -18,14 +18,28 @@ Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName 
  [-SubscriptionId <String>] [-Duration <String>] [-LastUpdatedTime <DateTime>] [-Location <String>]
  [-ProgressDescription <String>] [-ProgressEndTimeUtc <DateTime>] [-ProgressErrorMessage <String>]
  [-ProgressLastUpdatedTimeUtc <DateTime>] [-ProgressName <String>] [-ProgressStartTimeUtc <DateTime>]
- [-ProgressStatus <String>] [-ProgressStep <IStep[]>] [-State <UpdateRunPropertiesState>]
- [-TimeStarted <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressStatus <String>] [-ProgressStep <IStep[]>] [-State <String>] [-TimeStarted <DateTime>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Put
 ```
 Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String> -UpdateName <String>
  -UpdateRunsProperty <IUpdateRun> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PutViaJsonFilePath
+```
+Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String> -UpdateName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PutViaJsonString
+```
+Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String> -UpdateName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -83,6 +97,36 @@ Parameter Sets: PutExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Put operation
+
+```yaml
+Type: System.String
+Parameter Sets: PutViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Put operation
+
+```yaml
+Type: System.String
+Parameter Sets: PutViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,10 +286,9 @@ Accept wildcard characters: False
 
 ### -ProgressStep
 Recursive model for child steps of this step.
-To construct, see NOTES section for PROGRESSSTEP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IStep[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStep[]
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -276,7 +319,7 @@ Accept wildcard characters: False
 State of the update run.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.UpdateRunPropertiesState
+Type: System.String
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -335,10 +378,9 @@ Accept wildcard characters: False
 
 ### -UpdateRunsProperty
 Details of an Update run
-To construct, see NOTES section for UPDATERUNSPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 Parameter Sets: Put
 Aliases:
 
@@ -385,11 +427,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateRun
 
 ## NOTES
 

@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Item = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>) content.GetValueForProperty("Item",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Item, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTypeConverter.ConvertFrom));
             }
+            if (content.Contains("Etag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Etag, global::System.Convert.ToString);
+            }
             if (content.Contains("NextLink"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).NextLink, global::System.Convert.ToString);
@@ -141,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             if (content.Contains("Item"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Item = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>) content.GetValueForProperty("Item",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Item, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Etag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResultInternal)this).Etag, global::System.Convert.ToString);
             }
             if (content.Contains("NextLink"))
             {

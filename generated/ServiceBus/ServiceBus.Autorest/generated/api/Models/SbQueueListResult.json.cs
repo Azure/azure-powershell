@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>The response to the List Queues operation.</summary>
+    /// <summary>The response of a SBQueue list operation.</summary>
     public partial class SbQueueListResult
     {
 

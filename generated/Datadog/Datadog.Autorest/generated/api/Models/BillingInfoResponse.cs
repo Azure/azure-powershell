@@ -33,6 +33,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public string MarketplaceSaaInfoMarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).MarketplaceSubscriptionId = value ?? null; }
 
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
+        public string MarketplaceSaaInfoOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).OfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).OfferId = value ?? null; }
+
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Inlined)]
         public bool? MarketplaceSaaInfoSubscribed { get => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed; set => ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMarketplaceSaaSInfoInternal)MarketplaceSaasInfo).Subscribed = value ?? default(bool); }
@@ -125,6 +129,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"marketplaceSubscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSaaInfoMarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id of the Marketplace offer",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSaaInfoOfferId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -185,6 +200,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string MarketplaceSaaInfoMarketplaceStatus { get; set; }
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string MarketplaceSaaInfoMarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer</summary>
+        string MarketplaceSaaInfoOfferId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         bool? MarketplaceSaaInfoSubscribed { get; set; }
         /// <summary>Marketplace Subscription details</summary>

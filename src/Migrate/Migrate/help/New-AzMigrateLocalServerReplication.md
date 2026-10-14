@@ -17,9 +17,9 @@ Starts replication for the specified server.
 New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> -TargetVirtualSwitchId <String> -OSDiskID <String> [-TargetVMCPUCore <Int32>]
- [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>] [-TargetVMRam <Int64>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>]
+ [-TargetVMRam <Int64>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -27,9 +27,9 @@ New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <St
 New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> [-TargetVMCPUCore <Int32>] [-IsDynamicMemoryEnabled <String>]
- [-TargetVMRam <Int64>] [-SubscriptionId <String>] -DiskToInclude <AzLocalDiskInput[]>
- -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MigrateAsArcVM <String>] [-TargetVMRam <Int64>] [-SubscriptionId <String>]
+ -DiskToInclude <AzLocalDiskInput[]> -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Specifies the disks on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -181,11 +181,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MigrateAsArcVM
+Specifies whether to migrate the server as an Azure Arc-enabled VM.
+When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NicToInclude
 Specifies the NICs on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]
 Parameter Sets: ByIdPowerUser
 Aliases:
 
@@ -399,7 +415,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 
 ## NOTES
 

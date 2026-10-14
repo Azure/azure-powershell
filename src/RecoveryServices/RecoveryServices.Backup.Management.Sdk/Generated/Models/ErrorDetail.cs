@@ -8,36 +8,44 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Error Detail class which encapsulates Code, Message and Recommendations.
+    /// The error detail.
     /// </summary>
-    public partial class ErrorDetail
+    public partial class ManagementErrorDetail
     {
         /// <summary>
-        /// Initializes a new instance of the ErrorDetail class.
+        /// Initializes a new instance of the ManagementErrorDetail class.
         /// </summary>
-        public ErrorDetail()
+        public ManagementErrorDetail()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ErrorDetail class.
+        /// Initializes a new instance of the ManagementErrorDetail class.
         /// </summary>
 
-        /// <param name="code">Error code.
+        /// <param name="code">The error code.
         /// </param>
 
-        /// <param name="message">Error Message related to the Code.
+        /// <param name="message">The error message.
         /// </param>
 
-        /// <param name="recommendations">List of recommendation strings.
+        /// <param name="target">The error target.
         /// </param>
-        public ErrorDetail(string code = default(string), string message = default(string), System.Collections.Generic.IList<string> recommendations = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="details">The error details.
+        /// </param>
+
+        /// <param name="additionalInfo">The error additional info.
+        /// </param>
+        public ManagementErrorDetail(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<ManagementErrorDetail> details = default(System.Collections.Generic.IList<ManagementErrorDetail>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
 
         {
             this.Code = code;
             this.Message = message;
-            this.Recommendations = recommendations;
+            this.Target = target;
+            this.Details = details;
+            this.AdditionalInfo = additionalInfo;
             CustomInit();
         }
 
@@ -48,21 +56,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets error code.
+        /// Gets the error code.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
         public string Code {get; private set; }
 
         /// <summary>
-        /// Gets error Message related to the Code.
+        /// Gets the error message.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "message")]
         public string Message {get; private set; }
 
         /// <summary>
-        /// Gets list of recommendation strings.
+        /// Gets the error target.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "recommendations")]
-        public System.Collections.Generic.IList<string> Recommendations {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "target")]
+        public string Target {get; private set; }
+
+        /// <summary>
+        /// Gets the error details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
+        public System.Collections.Generic.IList<ManagementErrorDetail> Details {get; private set; }
+
+        /// <summary>
+        /// Gets the error additional info.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "additionalInfo")]
+        public System.Collections.Generic.IList<ErrorAdditionalInfo> AdditionalInfo {get; private set; }
     }
 }

@@ -142,6 +142,24 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A record set cannot contain DNS records together with an alias target resource or a Traffic Manager profile link. Specify either -DnsRecords or one of -TargetResourceId / -TrafficManagerProfileId, but not both..
+        /// </summary>
+        internal static string Error_RecordSetRecordsWithLink {
+            get {
+                return ResourceManager.GetString("Error_RecordSetRecordsWithLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A record set cannot specify both an alias target resource and a Traffic Manager profile link. Specify either -TargetResourceId or -TrafficManagerProfileId, but not both..
+        /// </summary>
+        internal static string Error_RecordSetTargetResourceAndTrafficManagerProfile {
+            get {
+                return ResourceManager.GetString("Error_RecordSetTargetResourceAndTrafficManagerProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot remove a record of type {0} from a record set of type {1}. The types must match..
         /// </summary>
         internal static string Error_RemoveRecordTypeMismatch {

@@ -23,9 +23,9 @@ Put Update summaries under the HCI cluster
 Set-AzStackHciUpdateSummary -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,8 +38,8 @@ HEALTHCHECKRESULT <IPrecheckResult[]>: An array of pre-check result objects.
   [HealthCheckSource <String>]: The name of the services called for the HealthCheck (I.E. Test-AzureStack, Test-Cluster).
   [Name <String>]: Name of the individual test/rule/alert that was executed. Unique, not exposed to the customer.
   [Remediation <String>]: Set of steps that can be taken to resolve the issue found.
-  [Severity <Severity?>]: Severity of the result (Critical, Warning, Informational, Hidden). This answers how important the result is. Critical is the only update-blocking severity.
-  [Status <Status?>]: The status of the check running (i.e. Failed, Succeeded, In Progress). This answers whether the check ran, and passed or failed.
+  [Severity <String>]: Severity of the result (Critical, Warning, Informational, Hidden). This answers how important the result is. Critical is the only update-blocking severity.
+  [Status <String>]: The status of the check running (i.e. Failed, Succeeded, In Progress). This answers whether the check ran, and passed or failed.
   [TagKey <String>]: Key that allow grouping/filtering individual tests.
   [TagValue <String>]: Value of the key that allow grouping/filtering individual tests.
   [TargetResourceId <String>]: The unique identifier for the affected resource (such as a node or drive).
@@ -53,46 +53,40 @@ PACKAGEVERSION <IPackageVersionInfo[]>: Current version of each updatable compon
   [Version <String>]: Package version
 
 UPDATELOCATIONPROPERTY <IUpdateSummaries>: Get the update summaries for the cluster
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [CurrentSbeVersion <String>]: Current Sbe version of the stamp.
   [CurrentVersion <String>]: Current Solution Bundle version of the stamp.
   [HardwareModel <String>]: Name of the hardware model.
   [HealthCheckDate <DateTime?>]: Last time the package-specific checks were run.
-  [HealthCheckResult <IPrecheckResult[]>]: An array of pre-check result objects.
+  [HealthCheckResult <List<IPrecheckResult>>]: An array of pre-check result objects.
     [AdditionalData <String>]: Property bag of key value pairs for additional information.
     [Description <String>]: Detailed overview of the issue and what impact the issue has on the stamp.
     [DisplayName <String>]: The health check DisplayName localized of the individual test executed.
     [HealthCheckSource <String>]: The name of the services called for the HealthCheck (I.E. Test-AzureStack, Test-Cluster).
     [Name <String>]: Name of the individual test/rule/alert that was executed. Unique, not exposed to the customer.
     [Remediation <String>]: Set of steps that can be taken to resolve the issue found.
-    [Severity <Severity?>]: Severity of the result (Critical, Warning, Informational, Hidden). This answers how important the result is. Critical is the only update-blocking severity.
-    [Status <Status?>]: The status of the check running (i.e. Failed, Succeeded, In Progress). This answers whether the check ran, and passed or failed.
+    [Severity <String>]: Severity of the result (Critical, Warning, Informational, Hidden). This answers how important the result is. Critical is the only update-blocking severity.
+    [Status <String>]: The status of the check running (i.e. Failed, Succeeded, In Progress). This answers whether the check ran, and passed or failed.
     [TagKey <String>]: Key that allow grouping/filtering individual tests.
     [TagValue <String>]: Value of the key that allow grouping/filtering individual tests.
     [TargetResourceId <String>]: The unique identifier for the affected resource (such as a node or drive).
     [TargetResourceName <String>]: The name of the affected resource.
     [Timestamp <DateTime?>]: The time in which the HealthCheck was called.
     [Title <String>]: User-facing name; one or more sentences indicating the direct issue.
-  [HealthState <HealthState?>]: Overall health state for update-specific health checks.
+  [HealthState <String>]: Overall health state for update-specific health checks.
   [LastChecked <DateTime?>]: Last time the update service successfully checked for updates
   [LastUpdated <DateTime?>]: Last time an update installation completed successfully.
   [Location <String>]: The geo-location where the resource lives
   [OemFamily <String>]: OEM family name.
-  [PackageVersion <IPackageVersionInfo[]>]: Current version of each updatable component.
+  [PackageVersion <List<IPackageVersionInfo>>]: Current version of each updatable component.
     [LastUpdated <DateTime?>]: Last time this component was updated.
     [PackageType <String>]: Package type
     [Version <String>]: Package version
-  [State <UpdateSummariesPropertiesState?>]: Overall update state of the stamp.
+  [State <String>]: Overall update state of the stamp.
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhciupdatesummary
 #>
 function Set-AzStackHciUpdateSummary {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries])]
 [CmdletBinding(DefaultParameterSetName='PutExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -118,9 +112,8 @@ param(
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateSummaries]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdateSummaries]
     # Get the update summaries for the cluster
-    # To construct, see NOTES section for UPDATELOCATIONPROPERTY properties and create a hash table.
     ${UpdateLocationProperty},
 
     [Parameter(ParameterSetName='PutExpanded')]
@@ -150,15 +143,14 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPrecheckResult[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPrecheckResult[]]
     # An array of pre-check result objects.
-    # To construct, see NOTES section for HEALTHCHECKRESULT properties and create a hash table.
     ${HealthCheckResult},
 
     [Parameter(ParameterSetName='PutExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Unknown", "Success", "Failure", "Warning", "Error", "InProgress")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.HealthState]
+    [System.String]
     # Overall health state for update-specific health checks.
     ${HealthState},
 
@@ -189,17 +181,28 @@ param(
     [Parameter(ParameterSetName='PutExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPackageVersionInfo[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPackageVersionInfo[]]
     # Current version of each updatable component.
-    # To construct, see NOTES section for PACKAGEVERSION properties and create a hash table.
     ${PackageVersion},
 
     [Parameter(ParameterSetName='PutExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.UpdateSummariesPropertiesState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Unknown", "AppliedSuccessfully", "UpdateAvailable", "UpdateInProgress", "UpdateFailed", "NeedsAttention", "PreparationInProgress", "PreparationFailed")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.UpdateSummariesPropertiesState]
+    [System.String]
     # Overall update state of the stamp.
     ${State},
+
+    [Parameter(ParameterSetName='PutViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Put operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PutViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Json string supplied to the Put operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -257,6 +260,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -278,10 +289,10 @@ begin {
         $mapping = @{
             Put = 'Az.StackHCI.private\Set-AzStackHciUpdateSummary_Put';
             PutExpanded = 'Az.StackHCI.private\Set-AzStackHciUpdateSummary_PutExpanded';
+            PutViaJsonFilePath = 'Az.StackHCI.private\Set-AzStackHciUpdateSummary_PutViaJsonFilePath';
+            PutViaJsonString = 'Az.StackHCI.private\Set-AzStackHciUpdateSummary_PutViaJsonString';
         }
-        if (('Put', 'PutExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Put', 'PutExpanded', 'PutViaJsonFilePath', 'PutViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -295,6 +306,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

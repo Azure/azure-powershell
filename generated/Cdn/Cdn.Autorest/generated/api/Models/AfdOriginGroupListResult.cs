@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list origin groups. It contains a list of origin groups objects and a URL link to get the next
-    /// set of results.
-    /// </summary>
+    /// <summary>The response of a AFDOriginGroup list operation.</summary>
     public partial class AfdOriginGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResultInternal
     {
 
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of origin objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> _value;
 
-        /// <summary>List of Azure Front Door origin groups within an Azure Front Door endpoint</summary>
+        /// <summary>The AFDOriginGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="AfdOriginGroupListResult" /> instance.</summary>
         public AfdOriginGroupListResult()
@@ -39,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Result of the request to list origin groups. It contains a list of origin groups objects and a URL link to get the next
-    /// set of results.
+    /// The response of a AFDOriginGroup list operation.
     public partial interface IAfdOriginGroupListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of origin objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of origin objects if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of Azure Front Door origin groups within an Azure Front Door endpoint</summary>
+        /// <summary>The AFDOriginGroup items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of Azure Front Door origin groups within an Azure Front Door endpoint",
+        Create = true,
+        Update = true,
+        Description = @"The AFDOriginGroup items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Value { get; set; }
 
     }
-    /// Result of the request to list origin groups. It contains a list of origin groups objects and a URL link to get the next
-    /// set of results.
+    /// The response of a AFDOriginGroup list operation.
     internal partial interface IAfdOriginGroupListResultInternal
 
     {
-        /// <summary>URL to get the next set of origin objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Azure Front Door origin groups within an Azure Front Door endpoint</summary>
+        /// <summary>The AFDOriginGroup items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> Value { get; set; }
 
     }

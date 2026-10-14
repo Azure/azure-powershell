@@ -101,6 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Custom certificate name",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -109,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The hub name.",
         SerializedName = @"hubName",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,6 +134,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"the region",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -133,6 +145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Custom domain name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -141,6 +156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -152,6 +170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -160,6 +181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -168,6 +192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the shared private link resource",
         SerializedName = @"sharedPrivateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -179,6 +206,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]

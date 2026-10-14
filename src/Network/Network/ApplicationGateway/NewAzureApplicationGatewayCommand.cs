@@ -160,6 +160,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of AdvancedRoutingMap")]
+        public PSApplicationGatewayAdvancedRoutingMap[] AdvancedRoutingMaps { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of AdvancedRoutingConditionSet")]
+        public PSApplicationGatewayAdvancedRoutingConditionSet[] AdvancedRoutingConditionSets { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }
 
@@ -222,6 +234,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = " Whether Response Buffering is enabled.")]
         public bool? EnableResponseBuffering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = " Whether the default server header is disabled in responses.")]
+        public bool? DisableDefaultServerHeaderInResponse { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -386,6 +403,16 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.UrlPathMaps = this.UrlPathMaps?.ToList();
             }
 
+            if (this.AdvancedRoutingMaps != null)
+            {
+                applicationGateway.AdvancedRoutingMaps = this.AdvancedRoutingMaps?.ToList();
+            }
+
+            if (this.AdvancedRoutingConditionSets != null)
+            {
+                applicationGateway.AdvancedRoutingConditionSets = this.AdvancedRoutingConditionSets?.ToList();
+            }
+
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules?.ToList();
@@ -457,6 +484,11 @@ namespace Microsoft.Azure.Commands.Network
                 else
                 {
                     applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
+                }
+
+                if (this.DisableDefaultServerHeaderInResponse.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.DisableDefaultServerHeaderInResponse = this.DisableDefaultServerHeaderInResponse.Value;
                 }
             }
 

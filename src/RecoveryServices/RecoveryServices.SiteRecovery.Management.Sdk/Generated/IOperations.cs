@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Operation to return the list of available operations.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

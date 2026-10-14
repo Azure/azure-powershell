@@ -19,7 +19,7 @@ Describe 'Remove-AzMongoDBOrganization' {
         {
             try {
                 # Attempt to delete the resource
-                Remove-AzMongoDBOrganization -Name $env.DeleteResourceName -ResourceGroupName $env.ResourceGroupName
+                Remove-AzMongoDBOrganization -Name $env.DeleteResourceName -ResourceGroupName $env.DeleteResourceGroupName
             }
             catch {
                 # Handle "Status: OK" and "NotFound (404)" as valid responses

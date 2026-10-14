@@ -14,22 +14,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEndpoint'  {
+Describe 'Get-AzCdnEndpoint' {
+    BeforeAll {
+        $script:endpointName = 'e-clipstest310-get'
+        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
     It 'List' {
         $endpoints = Get-AzCdnEndpoint -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
         $endpoints.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $endpoint.Name | Should -Be $env.ClassicEndpointName
+        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getEndpoint.Name | Should -Be $script:endpointName
     }
 
     It 'GetViaIdentity' {
-        $endpointObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Get-AzCdnEndpoint -InputObject $endpointObject
-        $endpoint.Name | Should -Be $env.ClassicEndpointName
+        $getEndpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $getEndpoint2 = Get-AzCdnEndpoint -InputObject $getEndpoint
+        $getEndpoint2.Name | Should -Be $script:endpointName
+    }
+
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

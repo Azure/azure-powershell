@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         public string BaseAddress { get => this._baseAddress; set => this._baseAddress = value; }
 
         /// <summary>Backing field for <see cref="BasicAuthName" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? _basicAuthName;
+        private string _basicAuthName;
 
         /// <summary>name of the basic auth entry.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get => this._basicAuthName; set => this._basicAuthName = value; }
+        public string BasicAuthName { get => this._basicAuthName; set => this._basicAuthName = value; }
 
         /// <summary>Backing field for <see cref="BlobServicesName" /> property.</summary>
         private string _blobServicesName;
@@ -279,13 +279,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="ManagementPolicyName" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName? _managementPolicyName;
+        private string _managementPolicyName;
 
         /// <summary>
         /// The name of the Storage Account Management Policy. It should always be 'default'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName? ManagementPolicyName { get => this._managementPolicyName; set => this._managementPolicyName = value; }
+        public string ManagementPolicyName { get => this._managementPolicyName; set => this._managementPolicyName = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -526,6 +526,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
@@ -534,6 +537,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow action name.",
         SerializedName = @"actionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -542,6 +548,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Analysis Name",
         SerializedName = @"analysisName",
         PossibleTypes = new [] { typeof(string) })]
@@ -550,6 +559,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"App Setting key name.",
         SerializedName = @"appSettingKey",
         PossibleTypes = new [] { typeof(string) })]
@@ -558,6 +570,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The auth provider for the users.",
         SerializedName = @"authprovider",
         PossibleTypes = new [] { typeof(string) })]
@@ -566,6 +581,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"ID of the backup.",
         SerializedName = @"backupId",
         PossibleTypes = new [] { typeof(string) })]
@@ -574,6 +592,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Module base address.",
         SerializedName = @"baseAddress",
         PossibleTypes = new [] { typeof(string) })]
@@ -582,16 +603,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"name of the basic auth entry.",
         SerializedName = @"basicAuthName",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("default")]
+        string BasicAuthName { get; set; }
         /// <summary>
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the blob Service within the specified storage account. Blob Service Name must be 'default'",
         SerializedName = @"BlobServicesName",
         PossibleTypes = new [] { typeof(string) })]
@@ -600,6 +628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the certificate order..",
         SerializedName = @"certificateOrderName",
         PossibleTypes = new [] { typeof(string) })]
@@ -608,6 +639,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"connectionStringKey",
         PossibleTypes = new [] { typeof(string) })]
@@ -616,6 +650,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Site Container Name",
         SerializedName = @"containerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -624,6 +661,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the database connection.",
         SerializedName = @"databaseConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -632,6 +672,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The numeric ID of the deleted app, e.g. 12345",
         SerializedName = @"deletedSiteId",
         PossibleTypes = new [] { typeof(string) })]
@@ -640,6 +683,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Detector Resource Name",
         SerializedName = @"detectorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -648,6 +694,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Diagnostic Category",
         SerializedName = @"diagnosticCategory",
         PossibleTypes = new [] { typeof(string) })]
@@ -656,6 +705,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the diagnostics item.",
         SerializedName = @"diagnosticsName",
         PossibleTypes = new [] { typeof(string) })]
@@ -664,6 +716,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the domain.",
         SerializedName = @"domainName",
         PossibleTypes = new [] { typeof(string) })]
@@ -672,6 +727,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of domain ownership identifier.",
         SerializedName = @"domainOwnershipIdentifierName",
         PossibleTypes = new [] { typeof(string) })]
@@ -680,6 +738,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the hybrid connection.",
         SerializedName = @"entityName",
         PossibleTypes = new [] { typeof(string) })]
@@ -688,6 +749,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The stage site identifier.",
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -696,6 +760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the function app registered with the static site build.",
         SerializedName = @"functionAppName",
         PossibleTypes = new [] { typeof(string) })]
@@ -704,6 +771,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Function name.",
         SerializedName = @"functionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -712,6 +782,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the gateway. Currently, the only supported string is ""primary"".",
         SerializedName = @"gatewayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -722,6 +795,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.",
         SerializedName = @"historyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -730,6 +806,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Hostname in the hostname binding.",
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
@@ -738,6 +817,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the hosting environment.",
         SerializedName = @"hostingEnvironmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -746,6 +828,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Deployment ID.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -754,6 +839,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -765,6 +853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'",
         SerializedName = @"immutabilityPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -773,6 +864,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the instance in the multi-role pool.",
         SerializedName = @"instance",
         PossibleTypes = new [] { typeof(string) })]
@@ -781,6 +875,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"instanceId",
         PossibleTypes = new [] { typeof(string) })]
@@ -789,6 +886,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The API Key ID. This is unique within a Application Insights component.",
         SerializedName = @"keyId",
         PossibleTypes = new [] { typeof(string) })]
@@ -797,6 +897,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the key.",
         SerializedName = @"keyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -805,6 +908,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The type of host key.",
         SerializedName = @"keyType",
         PossibleTypes = new [] { typeof(string) })]
@@ -813,6 +919,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the linked backend that should be retrieved",
         SerializedName = @"linkedBackendName",
         PossibleTypes = new [] { typeof(string) })]
@@ -821,6 +930,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -831,14 +943,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Storage Account Management Policy. It should always be 'default'",
         SerializedName = @"managementPolicyName",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName? ManagementPolicyName { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("default")]
+        string ManagementPolicyName { get; set; }
         /// <summary>Name of the certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the certificate.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -847,6 +966,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The namespace for this hybrid connection.",
         SerializedName = @"namespaceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -855,6 +977,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"GUID of the operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -863,6 +988,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Add-on name.",
         SerializedName = @"premierAddOnName",
         PossibleTypes = new [] { typeof(string) })]
@@ -871,6 +999,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -879,6 +1010,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"PID.",
         SerializedName = @"processId",
         PossibleTypes = new [] { typeof(string) })]
@@ -887,6 +1021,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Public certificate name.",
         SerializedName = @"publicCertificateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -897,6 +1034,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"In a purge status request, this is the Id of the operation the status of which is returned.",
         SerializedName = @"purgeId",
         PossibleTypes = new [] { typeof(string) })]
@@ -905,6 +1045,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The relay name for this hybrid connection.",
         SerializedName = @"relayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -913,6 +1056,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow repetition.",
         SerializedName = @"repetitionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -921,6 +1067,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The request history name.",
         SerializedName = @"requestHistoryName",
         PossibleTypes = new [] { typeof(string) })]
@@ -929,6 +1078,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the resource group to which the resource belongs.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -937,6 +1089,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Application Insights component resource.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -945,6 +1100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Virtual Network route.",
         SerializedName = @"routeName",
         PossibleTypes = new [] { typeof(string) })]
@@ -953,6 +1111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow run name.",
         SerializedName = @"runName",
         PossibleTypes = new [] { typeof(string) })]
@@ -963,6 +1124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The resource provider scope of the resource. Parent resource being extended by Managed Identities.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
@@ -971,6 +1135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Site extension name.",
         SerializedName = @"siteExtensionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -979,6 +1146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Site Name",
         SerializedName = @"siteName",
         PossibleTypes = new [] { typeof(string) })]
@@ -987,6 +1157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Slot Name",
         SerializedName = @"slot",
         PossibleTypes = new [] { typeof(string) })]
@@ -995,6 +1168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the snapshot to read.",
         SerializedName = @"snapshotId",
         PossibleTypes = new [] { typeof(string) })]
@@ -1003,6 +1179,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Type of source control",
         SerializedName = @"sourceControlType",
         PossibleTypes = new [] { typeof(string) })]
@@ -1013,6 +1192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -1021,6 +1203,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow trigger name.",
         SerializedName = @"triggerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1029,6 +1214,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The user id of the user.",
         SerializedName = @"userid",
         PossibleTypes = new [] { typeof(string) })]
@@ -1037,6 +1225,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The workflow versionId.",
         SerializedName = @"versionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -1045,6 +1236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The type of view. Only ""summary"" is supported at this time.",
         SerializedName = @"view",
         PossibleTypes = new [] { typeof(string) })]
@@ -1053,6 +1247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the virtual network.",
         SerializedName = @"vnetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1061,6 +1258,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of Web Job.",
         SerializedName = @"webJobName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1069,6 +1269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of worker machine, which typically starts with RD.",
         SerializedName = @"workerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1077,6 +1280,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the worker pool.",
         SerializedName = @"workerPoolName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1085,6 +1291,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Workflow name.",
         SerializedName = @"workflowName",
         PossibleTypes = new [] { typeof(string) })]
@@ -1112,7 +1321,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>Module base address.</summary>
         string BaseAddress { get; set; }
         /// <summary>name of the basic auth entry.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName? BasicAuthName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("default")]
+        string BasicAuthName { get; set; }
         /// <summary>
         /// The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
         /// </summary>
@@ -1181,7 +1391,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
         /// <summary>
         /// The name of the Storage Account Management Policy. It should always be 'default'
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagementPolicyName? ManagementPolicyName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("default")]
+        string ManagementPolicyName { get; set; }
         /// <summary>Name of the certificate.</summary>
         string Name { get; set; }
         /// <summary>The namespace for this hybrid connection.</summary>

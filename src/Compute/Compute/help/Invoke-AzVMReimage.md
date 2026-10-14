@@ -52,7 +52,7 @@ Specifies the password of the administrator account.
 <br>Has upper characters 
 <br> Has a digit 
 <br> Has a special character (Regex match [\\W_]) 
-<br><br> **Disallowed values:** \"abc@123\", \"P@$$w0rd\", \"P@ssw0rd\", \"P@ssword123\", \"Pa$$word\", \"pass@word1\", \"Password!\", \"Password1\", \"Password22\", \"iloveyou!\" 
+<br><br> **Disallowed values:** Common or easily guessed passwords aren't allowed.
 <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) 
 <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 

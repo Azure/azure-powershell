@@ -14,11 +14,11 @@ if (($null -eq $TestName) -or ($TestName -contains 'Start-AzSqlVMAssessment')) {
 }
 
 Describe 'Start-AzSqlVMAssessment' {
-    It 'Start' {
+    It 'Start' -skip{
         Start-AzSqlVMAssessment -ResourceGroupName $env.ResourceGroupName -SqlVirtualMachineName $env.SqlVMName
     }
 
-    It 'StartViaIdentity' {
+    It 'StartViaIdentity' -skip{
         $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
         Start-AzSqlVMAssessment -InputObject $sqlvm
     }

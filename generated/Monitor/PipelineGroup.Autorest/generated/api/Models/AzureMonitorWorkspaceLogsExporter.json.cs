@@ -66,8 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             {_api = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("api"), out var __jsonApi) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsApiConfig.FromJson(__jsonApi) : _api;}
-            {_concurrency = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("concurrency"), out var __jsonConcurrency) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ConcurrencyConfiguration.FromJson(__jsonConcurrency) : _concurrency;}
-            {_cache = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("cache"), out var __jsonCache) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.CacheConfiguration.FromJson(__jsonCache) : _cache;}
+            {_persistence = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("persistence"), out var __jsonPersistence) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ExporterPersistenceConfiguration.FromJson(__jsonPersistence) : _persistence;}
             AfterFromJson(json);
         }
 
@@ -103,8 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return container;
             }
             AddIf( null != this._api ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._api.ToJson(null,serializationMode) : null, "api" ,container.Add );
-            AddIf( null != this._concurrency ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._concurrency.ToJson(null,serializationMode) : null, "concurrency" ,container.Add );
-            AddIf( null != this._cache ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._cache.ToJson(null,serializationMode) : null, "cache" ,container.Add );
+            AddIf( null != this._persistence ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._persistence.ToJson(null,serializationMode) : null, "persistence" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

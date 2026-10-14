@@ -1,0 +1,464 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20'Reader'&api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zPyRmaWx0ZXI9cm9sZU5hbWUlMjBlcSUyMCdSZWFkZXInJmFwaS12ZXJzaW9uPTIwMjItMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "57413aaa-cbe1-454f-bc48-ebff89fc4b87"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e0395f76-c33c-4171-a7ff-476f617f9b8c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/e002f8ef-68d6-4391-88bd-8a0a3c26da04"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff221b68-bb39-4cf0-90a6-f55f0b481b58"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112324Z:ff221b68-bb39-4cf0-90a6-f55f0b481b58"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AA07812F3D5C4060B2908C480E5BF029 Ref B: DUB241062305040 Ref C: 2026-01-15T11:23:24Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:24 GMT"
+        ],
+        "Content-Length": [
+          "627"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"roleName\": \"Reader\",\n        \"type\": \"BuiltInRole\",\n        \"description\": \"View all resources, but does not allow you to make any changes.\",\n        \"assignableScopes\": [\n          \"/\"\n        ],\n        \"permissions\": [\n          {\n            \"actions\": [\n              \"*/read\"\n            ],\n            \"notActions\": [],\n            \"dataActions\": [],\n            \"notDataActions\": []\n          }\n        ],\n        \"createdOn\": \"2015-02-02T21:55:09.8806423Z\",\n        \"updatedOn\": \"2021-11-11T20:13:47.8628684Z\",\n        \"createdBy\": null,\n        \"updatedBy\": null\n      },\n      \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\n    }\n  ]\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zL2MzZDRlNWY2LWE3YjgtOTAxMi1jZGVmLTM0NTY3ODkwMTIzND9hcGktdmVyc2lvbj0yMDIyLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6acb7a28-30f2-4617-902e-3f7a1bb59d33"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "521"
+        ]
+      },
+      "RequestBody": "{\n  \"properties\": {\n    \"roleName\": \"CustomRole Delete Test\",\n    \"description\": \"Test role for new Permissions array format\",\n    \"type\": \"CustomRole\",\n    \"permissions\": [\n      {\n        \"actions\": [\n          \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n          \"Microsoft.Resources/deployments/*\"\n        ],\n        \"notActions\": [],\n        \"dataActions\": [],\n        \"notDataActions\": []\n      }\n    ],\n    \"assignableScopes\": [\n      \"/subscriptions/00000000-0000-0000-0000-000000000002\"\n    ]\n  }\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4bd1cdd7-0a13-4188-8091-14876a6fcd98"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/1331794e-492c-47fd-9dc9-f1b412f0ff96"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "2999"
+        ],
+        "x-ms-correlation-request-id": [
+          "48e19f4a-f15b-46bf-92eb-4b13d059eb4b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112327Z:48e19f4a-f15b-46bf-92eb-4b13d059eb4b"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EF903DD846F8497693025A6767F5A179 Ref B: DUB241062303060 Ref C: 2026-01-15T11:23:25Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:27 GMT"
+        ],
+        "Content-Length": [
+          "776"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"properties\": {\n    \"roleName\": \"CustomRole Delete Test\",\n    \"type\": \"CustomRole\",\n    \"description\": \"Test role for new Permissions array format\",\n    \"assignableScopes\": [\n      \"/subscriptions/00000000-0000-0000-0000-000000000002\"\n    ],\n    \"permissions\": [\n      {\n        \"actions\": [\n          \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n          \"Microsoft.Resources/deployments/*\"\n        ],\n        \"notActions\": [],\n        \"dataActions\": [],\n        \"notDataActions\": []\n      }\n    ],\n    \"createdOn\": \"2026-01-15T11:23:25.3339094Z\",\n    \"updatedOn\": \"2026-01-15T11:23:25.3339094Z\",\n    \"createdBy\": null,\n    \"updatedBy\": \"00000000-0000-0000-0000-000000000002\"\n  },\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234\",\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\n  \"name\": \"c3d4e5f6-a7b8-9012-cdef-345678901234\"\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20'CustomRole%20Delete%20Test'&api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zPyRmaWx0ZXI9cm9sZU5hbWUlMjBlcSUyMCdDdXN0b21Sb2xlJTIwRGVsZXRlJTIwVGVzdCcmYXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "a00a90f6-e28c-4b6f-ad13-bf0a07c71dc7"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "81e95118-6d06-476b-973f-5252aeba8495"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/aa4f1c58-9147-45fc-8192-e1249f308787"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "8cad85d8-7d13-402c-aeea-761423deae2f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112327Z:8cad85d8-7d13-402c-aeea-761423deae2f"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6E5F59CAA6A74870A155E1084C918FB4 Ref B: DUB241062301031 Ref C: 2026-01-15T11:23:27Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:27 GMT"
+        ],
+        "Content-Length": [
+          "822"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"roleName\": \"CustomRole Delete Test\",\n        \"type\": \"CustomRole\",\n        \"description\": \"Test role for new Permissions array format\",\n        \"assignableScopes\": [\n          \"/subscriptions/00000000-0000-0000-0000-000000000002\"\n        ],\n        \"permissions\": [\n          {\n            \"actions\": [\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n              \"Microsoft.Resources/deployments/*\"\n            ],\n            \"notActions\": [],\n            \"dataActions\": [],\n            \"notDataActions\": []\n          }\n        ],\n        \"createdOn\": \"2026-01-15T11:23:25.3639098Z\",\n        \"updatedOn\": \"2026-01-15T11:23:25.3639098Z\",\n        \"createdBy\": \"00000000-0000-0000-0000-000000000002\",\n        \"updatedBy\": \"00000000-0000-0000-0000-000000000002\"\n      },\n      \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234\",\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\n      \"name\": \"c3d4e5f6-a7b8-9012-cdef-345678901234\"\n    }\n  ]\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions?$filter=roleName%20eq%20'CustomRole%20Delete%20Test'&api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zPyRmaWx0ZXI9cm9sZU5hbWUlMjBlcSUyMCdDdXN0b21Sb2xlJTIwRGVsZXRlJTIwVGVzdCcmYXBpLXZlcnNpb249MjAyMi0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "449e211a-7232-4481-beff-6c54ece7d76b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4cde5d23-1dbd-444f-89c5-d68462f13dc2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/ec3b764b-1994-4b9c-9844-249d6457e8af"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "8145fe13-62b5-45f3-aa69-251515cb7ab4"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112332Z:8145fe13-62b5-45f3-aa69-251515cb7ab4"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 29DC4C0E3B004FA893E3C0234F561B31 Ref B: DUB241062301042 Ref C: 2026-01-15T11:23:32Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:31 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"value\": []\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zL2MzZDRlNWY2LWE3YjgtOTAxMi1jZGVmLTM0NTY3ODkwMTIzND9hcGktdmVyc2lvbj0yMDIyLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "790c3bae-f3f5-4328-8ef4-9e6a80fea187"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "962c1189-a652-4cbe-be02-e2a1f735a396"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/404e2fc0-db81-4afa-a2e2-888f52ec2583"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
+        ],
+        "x-ms-correlation-request-id": [
+          "53aa2517-6b8f-4abc-babf-a1efe9214114"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112328Z:53aa2517-6b8f-4abc-babf-a1efe9214114"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F332E01824AA449A8AEDAF951DB20A83 Ref B: DUB241062301036 Ref C: 2026-01-15T11:23:28Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:27 GMT"
+        ],
+        "Content-Length": [
+          "810"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"properties\": {\n    \"roleName\": \"CustomRole Delete Test\",\n    \"type\": \"CustomRole\",\n    \"description\": \"Test role for new Permissions array format\",\n    \"assignableScopes\": [\n      \"/subscriptions/00000000-0000-0000-0000-000000000002\"\n    ],\n    \"permissions\": [\n      {\n        \"actions\": [\n          \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n          \"Microsoft.Resources/deployments/*\"\n        ],\n        \"notActions\": [],\n        \"dataActions\": [],\n        \"notDataActions\": []\n      }\n    ],\n    \"createdOn\": \"2026-01-15T11:23:25.3639098Z\",\n    \"updatedOn\": \"2026-01-15T11:23:25.3639098Z\",\n    \"createdBy\": \"00000000-0000-0000-0000-000000000002\",\n    \"updatedBy\": \"00000000-0000-0000-0000-000000000002\"\n  },\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234\",\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\n  \"name\": \"c3d4e5f6-a7b8-9012-cdef-345678901234\"\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234?api-version=2022-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zL2MzZDRlNWY2LWE3YjgtOTAxMi1jZGVmLTM0NTY3ODkwMTIzND9hcGktdmVyc2lvbj0yMDIyLTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "790c3bae-f3f5-4328-8ef4-9e6a80fea187"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2025.41914",
+          "OSName/MacOs",
+          "OSVersion/Darwin.24.6.0.Darwin.Kernel.Version.24.6.0.Mon.Aug.11.21.16.30.PDT.2025.root.xnu.11417.140.69.701.11.1RELEASE.ARM64.T8132",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/9.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1814a414-fc86-4ccd-a119-582625303370"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000003/northeurope/18761349-dc5f-4c13-a6f1-96fca2a69d14"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "199"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [
+          "2999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2fc4bd23-8f06-4b51-b59e-fd3de70e18d0"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20260115T112332Z:2fc4bd23-8f06-4b51-b59e-fd3de70e18d0"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8CACF90762A04161B5308F98DE5BC081 Ref B: DUB241062301036 Ref C: 2026-01-15T11:23:28Z"
+        ],
+        "Date": [
+          "Thu, 15 Jan 2026 11:23:31 GMT"
+        ],
+        "Content-Length": [
+          "810"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"properties\": {\n    \"roleName\": \"CustomRole Delete Test\",\n    \"type\": \"CustomRole\",\n    \"description\": \"Test role for new Permissions array format\",\n    \"assignableScopes\": [\n      \"/subscriptions/00000000-0000-0000-0000-000000000002\"\n    ],\n    \"permissions\": [\n      {\n        \"actions\": [\n          \"Microsoft.Resources/subscriptions/resourceGroups/read\",\n          \"Microsoft.Resources/deployments/*\"\n        ],\n        \"notActions\": [],\n        \"dataActions\": [],\n        \"notDataActions\": []\n      }\n    ],\n    \"createdOn\": \"2026-01-15T11:23:25.3639098Z\",\n    \"updatedOn\": \"2026-01-15T11:23:29.7793072Z\",\n    \"createdBy\": \"00000000-0000-0000-0000-000000000002\",\n    \"updatedBy\": \"00000000-0000-0000-0000-000000000002\"\n  },\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000002/providers/Microsoft.Authorization/roleDefinitions/c3d4e5f6-a7b8-9012-cdef-345678901234\",\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\n  \"name\": \"c3d4e5f6-a7b8-9012-cdef-345678901234\"\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "00000000-0000-0000-0000-000000000002"
+  }
+}

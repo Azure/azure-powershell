@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class GatewayLoadBalancerTunnelProtocol
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Native
+        /// </summary>
         public const string Native = "Native";
+        /// <summary>
+        /// VXLAN
+        /// </summary>
         public const string Vxlan = "VXLAN";
     }
 }

@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CreatedAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).CreatedAt = (string) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).CreatedAt, global::System.Convert.ToString);
@@ -99,6 +103,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("SupportsScaling"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).SupportsScaling = (bool?) content.GetValueForProperty("SupportsScaling",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).SupportsScaling, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundant"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ZoneRedundant = (bool?) content.GetValueForProperty("ZoneRedundant",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ZoneRedundant, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -117,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("PlatformCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapability = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities) content.GetValueForProperty("PlatformCapability",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapability, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilitiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CreatedAt"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).CreatedAt = (string) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).CreatedAt, global::System.Convert.ToString);
@@ -140,6 +160,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             if (content.Contains("SupportsScaling"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).SupportsScaling = (bool?) content.GetValueForProperty("SupportsScaling",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).SupportsScaling, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ZoneRedundant"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ZoneRedundant = (bool?) content.GetValueForProperty("ZoneRedundant",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ZoneRedundant, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PlatformCapabilityConfidentialCompute"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapabilityConfidentialCompute = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute) content.GetValueForProperty("PlatformCapabilityConfidentialCompute",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).PlatformCapabilityConfidentialCompute, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ConfidentialComputeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ConfidentialComputeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ConfidentialComputeMode = (string) content.GetValueForProperty("ConfidentialComputeMode",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal)this).ConfidentialComputeMode, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     if (KeyType == JsonWebKeyType.Rsa) KeyType = JsonWebKeyType.RsaHsm;
                     else if (KeyType == JsonWebKeyType.EllipticCurve) KeyType = JsonWebKeyType.EllipticCurveHsm;
-                    // oct (AES) is only supported by managed HSM
+                    else if (KeyType == JsonWebKeyType.Octet) KeyType = "oct-HSM";
                 }
             }
 

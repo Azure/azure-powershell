@@ -1,7 +1,7 @@
 ---
 external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceaccountkeyauthtypeworkspaceconnectionpropertiesobject
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Create an in-memory object for AccountKeyAuthTypeWorkspaceConnectionProperties.
 
 ```
 New-AzMLWorkspaceAccountKeyAuthTypeWorkspaceConnectionPropertiesObject [-CredentialsSas <String>]
- [-Category <ConnectionCategory>] [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>]
+ [-Category <String>] [-ExpiryTime <DateTime>] [-IsSharedToAll <Boolean>]
  [-Metadata <IWorkspaceConnectionPropertiesV2Metadata>] [-SharedUserList <String[]>] [-Target <String>]
- [-Value <String>] [-ValueFormat <ValueFormat>] [<CommonParameters>]
+ [-Value <String>] [-ValueFormat <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ This command creates an in-memory object for AccessKeyAuthTypeWorkspaceConnectio
 Category of the connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,10 +92,9 @@ Accept wildcard characters: False
 
 ### -Metadata
 Store user metadata for this connection.
-To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceConnectionPropertiesV2Metadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspaceConnectionPropertiesV2Metadata
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +152,7 @@ Accept wildcard characters: False
 format for the workspace connection value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ValueFormat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AccountKeyAuthTypeWorkspaceConnectionProperties
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AccountKeyAuthTypeWorkspaceConnectionProperties
 
 ## NOTES
 

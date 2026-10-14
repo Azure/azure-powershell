@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location to check available endpoint services.
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<EndpointServiceResult> List(this IAvailableEndpointServicesOperations operations, string location)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location to check available endpoint services.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

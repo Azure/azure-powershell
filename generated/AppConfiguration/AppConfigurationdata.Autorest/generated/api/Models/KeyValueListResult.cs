@@ -14,6 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IHeaderSerializable
     {
 
+        /// <summary>Backing field for <see cref="Etag" /> property.</summary>
+        private string _etag;
+
+        /// <summary>An identifier representing the returned state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string Etag { get => this._etag; set => this._etag = value; }
+
         /// <summary>Backing field for <see cref="Item" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> _item;
 
@@ -53,6 +60,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
     public partial interface IKeyValueListResult :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IJsonSerializable
     {
+        /// <summary>An identifier representing the returned state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"An identifier representing the returned state of the resource.",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        string Etag { get; set; }
         /// <summary>The collection value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
@@ -92,6 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
     internal partial interface IKeyValueListResultInternal
 
     {
+        /// <summary>An identifier representing the returned state of the resource.</summary>
+        string Etag { get; set; }
         /// <summary>The collection value.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> Item { get; set; }
         /// <summary>The URI that can be used to request the next set of paged results.</summary>

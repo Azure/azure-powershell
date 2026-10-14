@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+## Version 9.7.2
+* Fixed a path traversal issue in `Get-AzStorageBlobContent` and `Get-AzDataLakeGen2ItemContent` where a source blob/file name containing directory traversal segments (e.g. `../`) could write content outside the specified destination directory.
+
+## Version 9.7.1
+* Updated storage account identity handling to explicitly use the Storage SDK `Identity` model in `New-AzStorageAccount` and `Set-AzStorageAccount`.
+
+## Version 9.7.0
+* Added ChangeSafety Support
+* Updated prompt in `Start-AzStorageAccountMigration`
+* Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
+* Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`
+* Added static website config in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
+
+## Version 9.6.1
+* Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated MinimumTlsVersion parameter description to note that TLS 1.3 is not yet supported
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
 ## Version 9.6.0
 * Supported encryption in transit in file service properties 
     - `Update-AzStorageFileServiceProperty`

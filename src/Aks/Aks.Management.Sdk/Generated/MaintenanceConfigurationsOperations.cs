@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<MaintenanceConfiguration>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MaintenanceConfiguration>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -276,7 +276,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -515,7 +516,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='parameters'>
         /// The maintenance configuration to create or update.
@@ -789,7 +791,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1150,7 +1153,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<MaintenanceConfiguration>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<MaintenanceConfiguration>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

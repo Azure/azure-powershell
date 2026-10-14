@@ -66,7 +66,9 @@ namespace Common.Authenticators.Test
 
             //Setup
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
             mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock());
+#pragma warning restore CS0618 // Type or member is obsolete
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
 

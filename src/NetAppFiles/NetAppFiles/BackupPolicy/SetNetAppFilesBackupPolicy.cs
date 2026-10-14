@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
                 Location = AccountObject.Location;
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
             IDictionary<string, string> tagPairs = null;

@@ -11,6 +11,9 @@ Locale: en-US
 This topic displays help for the Azure Event Hub PowerShell resource manager cmdlets.
 
 ## Az.EventHub Cmdlets
+### [Approve-AzEventHubFabricShortcut](Approve-AzEventHubFabricShortcut.md)
+Approves a Microsoft Fabric shortcut.
+
 ### [Approve-AzEventHubPrivateEndpointConnection](Approve-AzEventHubPrivateEndpointConnection.md)
 Approves an EventHub PrivateEndpointConnection
 
@@ -38,6 +41,9 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 ### [Get-AzEventHubConsumerGroup](Get-AzEventHubConsumerGroup.md)
 Gets a description for the specified consumer group.
 
+### [Get-AzEventHubFabricShortcut](Get-AzEventHubFabricShortcut.md)
+Gets a Microsoft Fabric shortcut.
+
 ### [Get-AzEventHubGeoDRConfiguration](Get-AzEventHubGeoDRConfiguration.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
@@ -50,20 +56,26 @@ Gets the description of the specified namespace.
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+
+### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+
 ### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection name.
 
 ### [Get-AzEventHubPrivateLink](Get-AzEventHubPrivateLink.md)
 Gets lists of resources that supports Privatelinks.
 
-### [Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzEventHubNetworkSecurityPerimeterConfigurationsForAssociation.md)
-Gets the network security configuration of an EventHub namespace for a given ResourceAssociationName.
-
-### [Get-AzEventHubNetworkSecurityPerimeterConfiguration](Get-AzEventHubNetworkSecurityPerimeterConfiguration.md)
-Gets list of NSP configurations an EventHub namespace.
-
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
 Gets the details of an EventHub schema group.
+
+### [Get-AzEventHubUpgradePreferencesOperation](Get-AzEventHubUpgradePreferencesOperation.md)
+Gets the upgrade preferences for an Event Hubs Dedicated cluster.
+
+### [Invoke-AzEventHubRejectFabricShortcut](Invoke-AzEventHubRejectFabricShortcut.md)
+Rejects a Microsoft Fabric shortcut.
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Create a new Event Hub as a nested resource within a Namespace.
@@ -75,13 +87,16 @@ Create an ApplicationGroup for a Namespace.
 Creates an EventHub Authorization Rule
 
 ### [New-AzEventHubAuthorizationRuleSASToken](New-AzEventHubAuthorizationRuleSASToken.md)
-Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub.
+Generates a SAS token for Azure eventhub authorization rule of namespace/eventhub. 
 
 ### [New-AzEventHubCluster](New-AzEventHubCluster.md)
 Create an instance of an Event Hubs Cluster.
 
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
 Create an Event Hubs consumer group as a nested resource within a Namespace.
+
+### [New-AzEventHubFabricShortcut](New-AzEventHubFabricShortcut.md)
+Create a Microsoft Fabric shortcut.
 
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
 Create a new Alias(Disaster Recovery configuration)
@@ -107,6 +122,9 @@ Create an EventHub schema group.
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 
+### [New-AzEventHubUpgradePreferencesOperation](New-AzEventHubUpgradePreferencesOperation.md)
+Create the upgrade preferences for an Event Hubs Dedicated cluster.
+
 ### [New-AzEventHubVirtualNetworkRuleConfig](New-AzEventHubVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 
@@ -120,19 +138,25 @@ Deletes an ApplicationGroup for a Namespace.
 Removes an EventHub Authorization Rule
 
 ### [Remove-AzEventHubCluster](Remove-AzEventHubCluster.md)
-Deletes an existing Event Hubs Cluster. This operation is idempotent.
+Deletes an existing Event Hubs Cluster.
+This operation is idempotent.
 
 ### [Remove-AzEventHubConsumerGroup](Remove-AzEventHubConsumerGroup.md)
 Deletes a consumer group from the specified Event Hub and resource group.
+
+### [Remove-AzEventHubFabricShortcut](Remove-AzEventHubFabricShortcut.md)
+Deletes a Microsoft Fabric shortcut.
 
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
-Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes an existing namespace. This operation also removes all associated resources under the namespace.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 Deletes an EventHub schema group.

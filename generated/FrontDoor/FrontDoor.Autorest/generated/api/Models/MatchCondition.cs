@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Description = @"Request variable to compare with.",
         SerializedName = @"matchVariable",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr", "JA4")]
         string MatchVariable { get; set; }
         /// <summary>Describes if the result of this condition should be negated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Description = @"Comparison type to use for matching with the variable value.",
         SerializedName = @"operator",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch", "AsnMatch", "ClientFingerprint")]
         string OperatorProperty { get; set; }
         /// <summary>
         /// Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
@@ -147,12 +147,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>List of possible match values.</summary>
         System.Collections.Generic.List<string> MatchValue { get; set; }
         /// <summary>Request variable to compare with.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr", "JA4")]
         string MatchVariable { get; set; }
         /// <summary>Describes if the result of this condition should be negated.</summary>
         bool? NegateCondition { get; set; }
         /// <summary>Comparison type to use for matching with the variable value.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch", "AsnMatch", "ClientFingerprint")]
         string OperatorProperty { get; set; }
         /// <summary>
         /// Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.

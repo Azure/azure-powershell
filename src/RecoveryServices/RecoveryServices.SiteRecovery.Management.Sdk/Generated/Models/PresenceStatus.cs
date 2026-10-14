@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class PresenceStatus
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Present
+        /// </summary>
         public const string Present = "Present";
+        /// <summary>
+        /// NotPresent
+        /// </summary>
         public const string NotPresent = "NotPresent";
     }
 }

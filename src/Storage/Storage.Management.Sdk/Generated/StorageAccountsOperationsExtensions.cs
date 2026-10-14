@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is
         /// requested.
         /// </param>
-        public static StorageAccountsFailoverHeaders Failover(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum56? failoverType = default(Enum56?))
+        public static StorageAccountsFailoverHeaders Failover(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum61? failoverType = default(Enum61?))
         {
                 return ((IStorageAccountsOperations)operations).FailoverAsync(resourceGroupName, accountName, failoverType).GetAwaiter().GetResult();
         }
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageAccountsFailoverHeaders> FailoverAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum56? failoverType = default(Enum56?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageAccountsFailoverHeaders> FailoverAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum61? failoverType = default(Enum61?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, accountName, failoverType, null, cancellationToken).ConfigureAwait(false))
             {
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='expand'>
         /// Specifies type of the key to be listed. Possible value is kerb.
         /// </param>
-        public static StorageAccountListKeysResult ListKeys(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum70? expand = default(Enum70?))
+        public static StorageAccountListKeysResult ListKeys(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum75? expand = default(Enum75?))
         {
                 return ((IStorageAccountsOperations)operations).ListKeysAsync(resourceGroupName, accountName, expand).GetAwaiter().GetResult();
         }
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageAccountListKeysResult> ListKeysAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum70? expand = default(Enum70?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageAccountListKeysResult> ListKeysAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum75? expand = default(Enum75?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, accountName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is
         /// requested.
         /// </param>
-        public static StorageAccountsFailoverHeaders BeginFailover(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum56? failoverType = default(Enum56?))
+        public static StorageAccountsFailoverHeaders BeginFailover(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum61? failoverType = default(Enum61?))
         {
                 return ((IStorageAccountsOperations)operations).BeginFailoverAsync(resourceGroupName, accountName, failoverType).GetAwaiter().GetResult();
         }
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageAccountsFailoverHeaders> BeginFailoverAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum56? failoverType = default(Enum56?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageAccountsFailoverHeaders> BeginFailoverAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, Enum61? failoverType = default(Enum61?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, accountName, failoverType, null, cancellationToken).ConfigureAwait(false))
             {

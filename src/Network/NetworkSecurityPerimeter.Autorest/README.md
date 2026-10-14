@@ -31,10 +31,10 @@ require:
 # readme.azure.noprofile.md is the common configuration file
 # - ../../../../tools/SwaggerCI/readme.azure.noprofile.md
   - $(this-folder)/../../readme.azure.noprofile.md
-commit: main
+commit: e6556d8af59d346de05e19d4e6dd7d0d6b67c128
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/b6d0dc8ef749d50348f0e27f5eee38ac3e5469d0/specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e6556d8af59d346de05e19d4e6dd7d0d6b67c128/specification/network/resource-manager/Microsoft.Network/Network/stable/2026-01-01/networkSecurityPerimeter.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -45,6 +45,7 @@ module-version: 0.1.0
 root-module-name: $(prefix).Network
 title: NetworkSecurityPerimeter
 subject-prefix: $(service-name)
+enable-change-safety: true
 sanitize-names: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 

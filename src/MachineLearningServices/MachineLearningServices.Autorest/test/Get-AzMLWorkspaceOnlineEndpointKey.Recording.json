@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceOnlineEndpointKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/listKeys?api-version=2024-04-01+1": {
+  "Get-AzMLWorkspaceOnlineEndpointKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/listKeys?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/listKeys?api-version=2024-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/listKeys?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "50e2ebab-8f53-47e1-b632-3362ab8dc84a" ],
+        "x-ms-unique-id": [ "154" ],
+        "x-ms-client-request-id": [ "a014104b-140c-4cf0-9809-66770cd69bde" ],
         "CommandName": [ "Get-AzMLWorkspaceOnlineEndpointKey" ],
         "FullCommandName": [ "Get-AzMLWorkspaceOnlineEndpointKey_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.5.4", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,19 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/eastus/ccbde45a-76ae-4e03-96b6-c5500df334fa" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.056" ],
-        "x-ms-request-id": [ "869ae8ee-3d9a-4288-889d-d4aa3c9b1e66" ],
-        "x-ms-correlation-request-id": [ "869ae8ee-3d9a-4288-889d-d4aa3c9b1e66" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240725T081242Z:869ae8ee-3d9a-4288-889d-d4aa3c9b1e66" ],
+        "azureml-served-by-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.039" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-request-id": [ "70bfa694-58ac-469e-b623-eff145f68d89" ],
+        "x-ms-correlation-request-id": [ "70bfa694-58ac-469e-b623-eff145f68d89" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251104T094007Z:70bfa694-58ac-469e-b623-eff145f68d89" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FC64233334584C1098390C2DD4A03F1C Ref B: MAA201060514029 Ref C: 2024-07-25T08:12:40Z" ],
-        "Date": [ "Thu, 25 Jul 2024 08:12:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 13C277EC9F224AAFACAD5FB7DF9EA36F Ref B: JKT201051406023 Ref C: 2025-11-04T09:40:06Z" ],
+        "Date": [ "Tue, 04 Nov 2025 09:40:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "48" ],

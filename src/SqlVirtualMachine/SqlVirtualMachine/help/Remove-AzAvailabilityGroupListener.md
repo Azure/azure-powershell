@@ -19,6 +19,13 @@ Remove-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -S
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentitySqlVirtualMachineGroup
+```
+Remove-AzAvailabilityGroupListener -Name <String>
+ -SqlVirtualMachineGroupInputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzAvailabilityGroupListener -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>]
@@ -76,7 +83,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
@@ -95,7 +101,7 @@ Name of the availability group listener.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentitySqlVirtualMachineGroup
 Aliases: AvailabilityGroupListenerName
 
 Required: True
@@ -148,6 +154,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlVirtualMachineGroupInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
+Parameter Sets: DeleteViaIdentitySqlVirtualMachineGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

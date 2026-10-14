@@ -1,4 +1,4 @@
-﻿#
+#
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ function Test-ServiceRelatedCmdlets{
   Try
   {
     New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableLocalAuth $true
     $service = New-AzCosmosDBService -ResourceGroupName $resourceGroupName -AccountName $accountName -ServiceName $serviceName -InstanceCount $instanceCount -InstanceSize $instanceSize
     Assert-AreEqual $service.InstanceCount $instanceCount
 

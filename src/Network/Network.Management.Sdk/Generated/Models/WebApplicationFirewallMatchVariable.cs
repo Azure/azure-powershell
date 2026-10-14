@@ -13,13 +13,37 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class WebApplicationFirewallMatchVariable
     {
+        /// <summary>
+        /// RemoteAddr
+        /// </summary>
         public const string RemoteAddr = "RemoteAddr";
+        /// <summary>
+        /// RequestMethod
+        /// </summary>
         public const string RequestMethod = "RequestMethod";
+        /// <summary>
+        /// QueryString
+        /// </summary>
         public const string QueryString = "QueryString";
+        /// <summary>
+        /// PostArgs
+        /// </summary>
         public const string PostArgs = "PostArgs";
+        /// <summary>
+        /// RequestUri
+        /// </summary>
         public const string RequestUri = "RequestUri";
+        /// <summary>
+        /// RequestHeaders
+        /// </summary>
         public const string RequestHeaders = "RequestHeaders";
+        /// <summary>
+        /// RequestBody
+        /// </summary>
         public const string RequestBody = "RequestBody";
+        /// <summary>
+        /// RequestCookies
+        /// </summary>
         public const string RequestCookies = "RequestCookies";
     }
 }

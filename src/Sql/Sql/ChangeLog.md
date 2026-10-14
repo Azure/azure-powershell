@@ -18,6 +18,34 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added immutability support for Azure SQL Managed Instance long-term retention backups.
+    - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
+    - Exposed immutability state in managed database long-term retention policy and backup output.
+    - Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` to manage time-based immutability.
+    - Added `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` to manage legal holds.
+
+## Version 7.2.0
+* Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Fixed `Restore-AzSqlDatabase` to omit the high availability (HA) replica count when the parameter is not specified.
+* Added selective-fields support to Azure SQL auditing
+    - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
+    - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+    - Updated blob auditing operations to API version `2026-08-01-preview`
+
+## Version 7.1.0
+* Added multi-database Managed Instance links through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.
+* Enhanced `Get-AzSqlDeletedServer` subscription-level queries by making location optional and adding `ScheduledPurgeTime` and `Location` output.
+
+## Version 7.0.0
+* Added ChangeSafety Support
+* Removed `EnableSoftDelete` from `New-AzSqlServer`, `Set-AzSqlServer`. Used `SoftDeleteRetentionDays` instead: setting `SoftDeleteRetentionDays`.
+* Reverted "the support for UAMI authentication in Data Sync cmdlets"
+
+## Version 6.5.0
+* Added support for User Assigned Managed Identity (UAMI) authentication in Data Sync cmdlets (`New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember`, `Update-AzSqlSyncMember`)
+* Removed legacy usage of 2014 APIs in Firewall Rule cmdlets
+
+## Version 6.4.2
 * Fixed error handling in Az.Sql cmdlets that inherit from `AzureSqlCmdletBase` to surface descriptive error messages instead of generic 'Operation returned an invalid status code' when API calls fail. This restores meaningful error details such as Azure Policy violation messages.
 
 ## Version 6.4.1

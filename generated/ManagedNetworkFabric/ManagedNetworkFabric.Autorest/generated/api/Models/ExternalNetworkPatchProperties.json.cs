@@ -65,11 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __annotationResource = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AnnotationResource(json);
-            __externalNetworkPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkPatchableProperties(json);
+            {_importRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("importRoutePolicy"), out var __jsonImportRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ImportRoutePolicyPatch.FromJson(__jsonImportRoutePolicy) : _importRoutePolicy;}
+            {_exportRoutePolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("exportRoutePolicy"), out var __jsonExportRoutePolicy) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExportRoutePolicyPatch.FromJson(__jsonExportRoutePolicy) : _exportRoutePolicy;}
+            {_optionBProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionBProperties"), out var __jsonOptionBProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3OptionBPatchProperties.FromJson(__jsonOptionBProperties) : _optionBProperty;}
             {_optionAProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionAProperties"), out var __jsonOptionAProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkPatchPropertiesOptionAProperties.FromJson(__jsonOptionAProperties) : _optionAProperty;}
+            {_staticRouteConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("staticRouteConfiguration"), out var __jsonStaticRouteConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkStaticRoutePatchConfiguration.FromJson(__jsonStaticRouteConfiguration) : _staticRouteConfiguration;}
+            {_annotation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("annotation"), out var __jsonAnnotation) ? (string)__jsonAnnotation : (string)_annotation;}
+            {_networkToNetworkInterconnectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("networkToNetworkInterconnectId"), out var __jsonNetworkToNetworkInterconnectId) ? (string)__jsonNetworkToNetworkInterconnectId : (string)_networkToNetworkInterconnectId;}
             {_peeringOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("peeringOption"), out var __jsonPeeringOption) ? (string)__jsonPeeringOption : (string)_peeringOption;}
-            {_optionBProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionBProperties"), out var __jsonOptionBProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3OptionBProperties.FromJson(__jsonOptionBProperties) : _optionBProperty;}
             AfterFromJson(json);
         }
 
@@ -104,11 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __annotationResource?.ToJson(container, serializationMode);
-            __externalNetworkPatchableProperties?.ToJson(container, serializationMode);
-            AddIf( null != this._optionAProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._optionAProperty.ToJson(null,serializationMode) : null, "optionAProperties" ,container.Add );
-            AddIf( null != (((object)this._peeringOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._peeringOption.ToString()) : null, "peeringOption" ,container.Add );
+            AddIf( null != this._importRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._importRoutePolicy.ToJson(null,serializationMode) : null, "importRoutePolicy" ,container.Add );
+            AddIf( null != this._exportRoutePolicy ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._exportRoutePolicy.ToJson(null,serializationMode) : null, "exportRoutePolicy" ,container.Add );
             AddIf( null != this._optionBProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._optionBProperty.ToJson(null,serializationMode) : null, "optionBProperties" ,container.Add );
+            AddIf( null != this._optionAProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._optionAProperty.ToJson(null,serializationMode) : null, "optionAProperties" ,container.Add );
+            AddIf( null != this._staticRouteConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._staticRouteConfiguration.ToJson(null,serializationMode) : null, "staticRouteConfiguration" ,container.Add );
+            AddIf( null != (((object)this._annotation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._annotation.ToString()) : null, "annotation" ,container.Add );
+            AddIf( null != (((object)this._networkToNetworkInterconnectId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._networkToNetworkInterconnectId.ToString()) : null, "networkToNetworkInterconnectId" ,container.Add );
+            AddIf( null != (((object)this._peeringOption)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._peeringOption.ToString()) : null, "peeringOption" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

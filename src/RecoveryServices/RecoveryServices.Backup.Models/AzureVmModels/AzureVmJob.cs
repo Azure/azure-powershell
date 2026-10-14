@@ -40,6 +40,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string DynamicErrorMessage { get; set; }
 
         /// <summary>
+        /// Subscription ID of the VM associated with this job.
+        /// </summary>
+        public string ContainerSubscriptionId { get; set; }
+
+        /// <summary>
         /// Property bag consisting of the some Azure VM specific job details.
         /// </summary>
         public Dictionary<string, string> Properties { get; set; }

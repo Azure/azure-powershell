@@ -134,6 +134,9 @@ Create an in-memory object for ScriptSecureStringExecutionParameter.
 ### [New-AzVMwareScriptStringExecutionParameterObject](New-AzVMwareScriptStringExecutionParameterObject.md)
 Create an in-memory object for ScriptStringExecutionParameter.
 
+### [New-AzVMwareVcf5LicenseObject](New-AzVMwareVcf5LicenseObject.md)
+Create an in-memory object for Vcf5License.
+
 ### [New-AzVMwareVmHostPlacementPolicyPropertyObject](New-AzVMwareVmHostPlacementPolicyPropertyObject.md)
 Create an in-memory object for VmHostPlacementPolicyProperties.
 

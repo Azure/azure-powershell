@@ -13,159 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class PrivateEndpointsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified private endpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        public static void Delete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
-        {
-                ((IPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified private endpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified private endpoint by resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static PrivateEndpoint Get(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string))
-        {
-                return ((IPrivateEndpointsOperations)operations).GetAsync(resourceGroupName, privateEndpointName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified private endpoint by resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpoint> GetAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, privateEndpointName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an private endpoint in the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        public static PrivateEndpoint CreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
-        {
-                return ((IPrivateEndpointsOperations)operations).CreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an private endpoint in the specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpoint> CreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all private endpoints in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> List(this IPrivateEndpointsOperations operations, string resourceGroupName)
-        {
-                return ((IPrivateEndpointsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all private endpoints in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all private endpoints in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -193,20 +40,137 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets all private endpoints in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> List(this IPrivateEndpointsOperations operations, string resourceGroupName)
+        {
+                return ((IPrivateEndpointsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all private endpoints in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified private endpoint by resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static PrivateEndpoint Get(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string))
+        {
+                return ((IPrivateEndpointsOperations)operations).GetAsync(resourceGroupName, privateEndpointName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified private endpoint by resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PrivateEndpoint> GetAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, privateEndpointName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an private endpoint in the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        public static PrivateEndpoint CreateOrUpdate(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters)
+        {
+                return ((IPrivateEndpointsOperations)operations).CreateOrUpdateAsync(resourceGroupName, privateEndpointName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an private endpoint in the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PrivateEndpoint> CreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified private endpoint.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        public static void BeginDelete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
+        public static void Delete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
         {
-                ((IPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
+                ((IPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -216,7 +180,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
@@ -224,9 +188,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates an private endpoint in the specified resource group.
@@ -235,7 +199,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
@@ -252,7 +216,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
@@ -263,6 +227,75 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<PrivateEndpoint> BeginCreateOrUpdateAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, PrivateEndpoint parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified private endpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        public static void BeginDelete(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName)
+        {
+                ((IPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified private endpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateEndpointsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets all private endpoints in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> ListBySubscriptionNext(this IPrivateEndpointsOperations operations, string nextPageLink)
+        {
+                return ((IPrivateEndpointsOperations)operations).ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all private endpoints in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListBySubscriptionNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -296,39 +329,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all private endpoints in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateEndpoint> ListBySubscriptionNext(this IPrivateEndpointsOperations operations, string nextPageLink)
-        {
-                return ((IPrivateEndpointsOperations)operations).ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all private endpoints in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateEndpoint>> ListBySubscriptionNextAsync(this IPrivateEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -907,7 +907,7 @@ function Test-RemoveElasticPool
 	try
 	{
 		# Create a pool with all values
-		Remove-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName –Confirm:$false
+		Remove-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -Confirm:$false
 
 		# Create a pool using piping
 		$ep2 | Remove-AzSqlElasticPool -Force

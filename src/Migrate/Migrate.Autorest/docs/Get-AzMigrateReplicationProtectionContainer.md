@@ -25,6 +25,18 @@ Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionCont
  [<CommonParameters>]
 ```
 
+### GetViaIdentityReplicationFabric
+```
+Get-AzMigrateReplicationProtectionContainer -ProtectionContainerName <String>
+ -ReplicationFabricInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityVault
+```
+Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
+ -VaultInputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ResourceGroupName <String>
@@ -85,7 +97,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityVault, List
 Aliases:
 
 Required: True
@@ -100,7 +112,7 @@ Protection container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityReplicationFabric, GetViaIdentityVault
 Aliases:
 
 Required: True
@@ -110,12 +122,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReplicationFabricInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityReplicationFabric
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group where the recovery services vault is present.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -126,11 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the recovery services vault.
+The name of the Vault
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -145,7 +173,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -155,14 +183,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: GetViaIdentityVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IProtectionContainer
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectionContainer
 
 ## NOTES
 

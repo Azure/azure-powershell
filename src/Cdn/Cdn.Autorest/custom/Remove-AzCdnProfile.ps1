@@ -153,6 +153,21 @@ function Remove-AzCdnProfile {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Remove-AzCdnProfile_Delete' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
     
     process {
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
@@ -160,9 +175,11 @@ function Remove-AzCdnProfile {
         $hasPassThru = $PSBoundParameters.Remove('PassThru')
 
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }

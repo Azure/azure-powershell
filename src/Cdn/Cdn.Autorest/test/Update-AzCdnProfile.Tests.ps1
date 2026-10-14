@@ -14,38 +14,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnProfile'  {
+Describe 'Update-AzCdnProfile' {
+    BeforeAll {
+        $script:profileName = 'cdnpps01-upd'
+        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
     It 'UpdateExpanded' {
-        $tags = @{
-            Tag1 = 11
-            Tag2  = 22
-        }
-
-        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
-        Update-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
-
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "11"
-        $updatedProfile.Tag["Tag2"] | Should -Be "22"
+        Update-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '11'
+        $u.Tag['Tag2'] | Should -Be '22'
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $tags = @{
-            Tag1 = 33
-            Tag2  = 44
-        }
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $profileObject = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-
-        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
-        Update-AzCdnProfile -Tag $tags -InputObject $profileObject
-
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "33"
-        $updatedProfile.Tag["Tag2"] | Should -Be "44"
+        $p = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnProfile -Tag @{ Tag1 = 33 } -InputObject $p
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '33'
     }
 }

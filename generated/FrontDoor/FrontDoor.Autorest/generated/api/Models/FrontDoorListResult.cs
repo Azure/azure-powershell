@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list Front Doors. It contains a list of Front Door objects and a URL link to get the next set
-    /// of results.
-    /// </summary>
+    /// <summary>Paged collection of FrontDoor items</summary>
     public partial class FrontDoorListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResult,
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorListResultInternal
@@ -22,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of Front Door objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> _value;
 
-        /// <summary>List of Front Doors within a resource group.</summary>
+        /// <summary>The FrontDoor items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> Value { get => this._value; }
 
@@ -39,43 +36,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
         }
     }
-    /// Result of the request to list Front Doors. It contains a list of Front Door objects and a URL link to get the next set
-    /// of results.
+    /// Paged collection of FrontDoor items
     public partial interface IFrontDoorListResult :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of Front Door objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of Front Door objects if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of Front Doors within a resource group.</summary>
+        /// <summary>The FrontDoor items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of Front Doors within a resource group.",
+        Description = @"The FrontDoor items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> Value { get;  }
 
     }
-    /// Result of the request to list Front Doors. It contains a list of Front Door objects and a URL link to get the next set
-    /// of results.
+    /// Paged collection of FrontDoor items
     internal partial interface IFrontDoorListResultInternal
 
     {
-        /// <summary>URL to get the next set of Front Door objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Front Doors within a resource group.</summary>
+        /// <summary>The FrontDoor items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor> Value { get; set; }
 
     }

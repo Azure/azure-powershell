@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class SqlServerLicenseType
     {
+        /// <summary>
+        /// NotSpecified
+        /// </summary>
         public const string NotSpecified = "NotSpecified";
+        /// <summary>
+        /// NoLicenseType
+        /// </summary>
         public const string NoLicenseType = "NoLicenseType";
+        /// <summary>
+        /// PAYG
+        /// </summary>
         public const string Payg = "PAYG";
+        /// <summary>
+        /// AHUB
+        /// </summary>
         public const string Ahub = "AHUB";
     }
 }

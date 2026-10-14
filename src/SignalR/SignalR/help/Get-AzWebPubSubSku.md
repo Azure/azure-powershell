@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISkuList
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ISkuList
 
 ## NOTES
 

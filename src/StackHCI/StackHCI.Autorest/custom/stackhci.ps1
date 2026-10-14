@@ -1,4 +1,4 @@
-#
+﻿#
 # AzureStack HCI Registration and Unregistration Powershell Cmdlets.
 #
 
@@ -3105,7 +3105,7 @@ function Test-ClusterArcEnabled {
 
     $computerNames = @($ClusterNodes | ForEach-Object { "$($_.Name).$ClusterDNSSuffix" })
 
-    # Inline check block — throws if the node is not properly Arc-enabled
+    # Inline check block - throws if the node is not properly Arc-enabled
     $checkBlock = {
         param([string]$SubscriptionId, [string]$ArcResourceGroupName)
         $nodeName = $env:COMPUTERNAME
@@ -3316,7 +3316,7 @@ function Invoke-MSIFlow {
         if (-not $allArcEnabled) {
             # Check if this is a cloud deployment
             if (ValidateCloudDeployment) {
-                # For cloud deployments, nodes must already be Arc-enabled — fail early
+                # For cloud deployments, nodes must already be Arc-enabled - fail early
                 throw "Cloud deployment detected but not all cluster nodes are Arc-enabled. Ensure all nodes are Arc-connected before running registration.`n$arcCheckError"  
             }
             else {

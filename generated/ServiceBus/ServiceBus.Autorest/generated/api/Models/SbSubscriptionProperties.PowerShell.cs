@@ -185,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).IsClientAffine = (bool?) content.GetValueForProperty("IsClientAffine",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).IsClientAffine, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).UserMetadata, global::System.Convert.ToString);
+            }
             if (content.Contains("CountDetailActiveMessageCount"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).CountDetailActiveMessageCount = (long?) content.GetValueForProperty("CountDetailActiveMessageCount",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).CountDetailActiveMessageCount, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
@@ -309,6 +313,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("IsClientAffine"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).IsClientAffine = (bool?) content.GetValueForProperty("IsClientAffine",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).IsClientAffine, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserMetadata"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).UserMetadata = (string) content.GetValueForProperty("UserMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscriptionPropertiesInternal)this).UserMetadata, global::System.Convert.ToString);
             }
             if (content.Contains("CountDetailActiveMessageCount"))
             {

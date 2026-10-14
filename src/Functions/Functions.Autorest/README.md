@@ -48,7 +48,7 @@ In this directory, run AutoRest:
 ``` yaml
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.x"
+  "@autorest/powershell": "4.x"
 
 directive:
   - suppress: XmsResourceInPutResponse
@@ -127,6 +127,8 @@ directive:
   - remove-operation: WebApps_GetProductionSiteDeploymentStatus
   - remove-operation: WebApps_GetSlotSiteDeploymentStatusSlot
   - remove-operation: Workflows_RegenerateAccessKey
+  # Prevent generation of StorageAccounts cmdlet — Functions uses custom Storage helper for Flex Consumption
+  - remove-operation: StorageAccounts_Update
   - from: WebApps.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.200
     transform: delete $.schema
@@ -566,19 +568,19 @@ directive:
       subject: App
     set:
       preview-announcement:
-        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+        preview-message: "*******************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n*******************************************************************************************"
   - where:
       verb: New
       subject: App|AppPlan
     set:
       preview-announcement:
-        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+        preview-message: "*******************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n*******************************************************************************************"
   - where:
       verb: Get|Remove|Update
       subject: App|AppPlan|AppSetting
     set:
       preview-announcement:
-        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+        preview-message: "*******************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n*******************************************************************************************"
 ```
 
 ``` yaml

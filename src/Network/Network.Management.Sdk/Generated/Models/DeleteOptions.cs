@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DeleteOptions
     {
+        /// <summary>
+        /// Delete
+        /// </summary>
         public const string Delete = "Delete";
+        /// <summary>
+        /// Detach
+        /// </summary>
         public const string Detach = "Detach";
     }
 }

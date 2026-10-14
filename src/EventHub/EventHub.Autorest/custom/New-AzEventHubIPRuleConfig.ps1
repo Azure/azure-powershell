@@ -30,7 +30,21 @@ function New-AzEventHubIPRuleConfig{
 		[Parameter(HelpMessage = "The IP Filter Action")]
         [System.String]
 		# The IP Filter Action
-        ${Action}
+        ${Action},
+
+		[Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend}
 	)
 
 	process{

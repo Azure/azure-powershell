@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -88,64 +88,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Creates/Updates the Static CIDR resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
-        /// </param>
-        /// <param name='staticCidrName'>
-        /// Static Cidr allocation name.
-        /// </param>
-        public static StaticCidr Create(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr))
-        {
-                return ((IStaticCidrsOperations)operations).CreateAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, body).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates/Updates the Static CIDR resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
-        /// </param>
-        /// <param name='staticCidrName'>
-        /// Static Cidr allocation name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<StaticCidr> CreateAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, body, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets the specific Static CIDR resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -168,7 +117,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -190,54 +139,54 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Delete the Static CIDR resource.
+        /// Creates/Updates the Static CIDR resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
-        /// The name of the network manager.
+        /// 
         /// </param>
         /// <param name='poolName'>
-        /// Pool resource name.
+        /// The name of the IPAM pool.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// Name for the static CIDR.
         /// </param>
-        public static StaticCidrsDeleteHeaders Delete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public static StaticCidr Create(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr))
         {
-                return ((IStaticCidrsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
+                return ((IStaticCidrsOperations)operations).CreateAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, body).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the Static CIDR resource.
+        /// Creates/Updates the Static CIDR resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
-        /// The name of the network manager.
+        /// 
         /// </param>
         /// <param name='poolName'>
-        /// Pool resource name.
+        /// The name of the IPAM pool.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// Name for the static CIDR.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StaticCidrsDeleteHeaders> DeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StaticCidr> CreateAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, StaticCidr body = default(StaticCidr), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, body, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
             }
         }
         /// <summary>
@@ -247,7 +196,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -256,11 +205,11 @@ namespace Microsoft.Azure.Management.Network
         /// Pool resource name.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// StaticCidr resource name to retrieve.
         /// </param>
-        public static StaticCidrsDeleteHeaders BeginDelete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public static void Delete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
         {
-                return ((IStaticCidrsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
+                ((IStaticCidrsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -270,7 +219,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -279,17 +228,62 @@ namespace Microsoft.Azure.Management.Network
         /// Pool resource name.
         /// </param>
         /// <param name='staticCidrName'>
-        /// StaticCidr resource name to delete.
+        /// StaticCidr resource name to retrieve.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StaticCidrsDeleteHeaders> BeginDeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Delete the Static CIDR resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// Pool resource name.
+        /// </param>
+        /// <param name='staticCidrName'>
+        /// StaticCidr resource name to retrieve.
+        /// </param>
+        public static void BeginDelete(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        {
+                ((IStaticCidrsOperations)operations).BeginDeleteAsync(resourceGroupName, networkManagerName, poolName, staticCidrName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete the Static CIDR resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// Pool resource name.
+        /// </param>
+        /// <param name='staticCidrName'>
+        /// StaticCidr resource name to retrieve.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IStaticCidrsOperations operations, string resourceGroupName, string networkManagerName, string poolName, string staticCidrName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, staticCidrName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets list of Static CIDR resources at Network Manager level.

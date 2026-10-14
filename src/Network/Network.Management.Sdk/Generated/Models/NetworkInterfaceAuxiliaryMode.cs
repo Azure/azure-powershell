@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NetworkInterfaceAuxiliaryMode
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// MaxConnections
+        /// </summary>
         public const string MaxConnections = "MaxConnections";
+        /// <summary>
+        /// Floating
+        /// </summary>
         public const string Floating = "Floating";
+        /// <summary>
+        /// AcceleratedConnections
+        /// </summary>
         public const string AcceleratedConnections = "AcceleratedConnections";
     }
 }

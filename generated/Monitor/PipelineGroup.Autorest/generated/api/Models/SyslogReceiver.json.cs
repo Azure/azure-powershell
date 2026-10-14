@@ -78,7 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("endpoint"), out var __jsonEndpoint) ? (string)__jsonEndpoint : (string)_endpoint;}
-            {_protocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("protocol"), out var __jsonProtocol) ? (string)__jsonProtocol : (string)_protocol;}
+            {_allowedFormat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray>("allowedFormats"), out var __jsonAllowedFormats) ? If( __jsonAllowedFormats as Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _allowedFormat;}
+            {_transportProtocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("transportProtocol"), out var __jsonTransportProtocol) ? (string)__jsonTransportProtocol : (string)_transportProtocol;}
+            {_allowSkipPriHeader = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonBoolean>("allowSkipPriHeader"), out var __jsonAllowSkipPriHeader) ? (bool?)__jsonAllowSkipPriHeader : _allowSkipPriHeader;}
             AfterFromJson(json);
         }
 
@@ -102,7 +104,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return container;
             }
             AddIf( null != (((object)this._endpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._endpoint.ToString()) : null, "endpoint" ,container.Add );
-            AddIf( null != (((object)this._protocol)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._protocol.ToString()) : null, "protocol" ,container.Add );
+            if (null != this._allowedFormat)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.XNodeArray();
+                foreach( var __x in this._allowedFormat )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("allowedFormats",__w);
+            }
+            AddIf( null != (((object)this._transportProtocol)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._transportProtocol.ToString()) : null, "transportProtocol" ,container.Add );
+            AddIf( null != this._allowSkipPriHeader ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonBoolean((bool)this._allowSkipPriHeader) : null, "allowSkipPriHeader" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

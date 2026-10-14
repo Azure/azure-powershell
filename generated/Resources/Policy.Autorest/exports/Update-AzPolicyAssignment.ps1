@@ -66,10 +66,6 @@ Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelect
 $Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
@@ -87,16 +83,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IPolicyAssignment>: 
+  [AssignmentType <String>]: The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
   [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
-  [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+  [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
   [IdentityType <String>]: The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   [IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]: The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     [(Any) <IUserAssignedIdentitiesValue>]: This indicates any property can be added to this object.
   [Location <String>]: The location of the policy assignment. Only required when utilizing managed identity.
-  [Metadata <IPolicyAssignmentPropertiesMetadata>]: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [MetadataRaw <IAny>]: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   [NonComplianceMessage <List<INonComplianceMessage>>]: The messages that describe why a resource is non-compliant with the policy.
     Message <String>: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
     [PolicyDefinitionReferenceId <String>]: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
@@ -108,12 +104,14 @@ INPUTOBJECT <IPolicyAssignment>:
       [Kind <String>]: The selector kind.
       [NotIn <List<String>>]: The list of values to filter out.
     [Value <String>]: The value to override the policy property.
-  [Parameter <IParameterValues>]: The parameter values for the assigned policy rule. The keys are the parameter names.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [ParameterRaw <IPolicyAssignmentPropertiesParameters>]: The parameter values for the assigned policy rule. The keys are the parameter names.
+    [(Any) <IParameterValuesValue>]: This indicates any property can be added to this object.
   [PolicyDefinitionId <String>]: The ID of the policy definition or policy set definition being assigned.
   [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
     [Name <String>]: The name of the resource selector.
     [Selector <List<ISelector>>]: The list of the selector expressions.
+  [SelfServeExemptionSettingEnabled <Boolean?>]: Indicates whether self-serve exemption is enabled.
+  [SelfServeExemptionSettingPolicyDefinitionReferenceId <List<String>>]: The policy definition reference IDs for self-serve exemption.
 
 OVERRIDE <IOverride[]>: The policy property value override.
   [Kind <String>]: The override kind.
@@ -152,7 +150,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The scope of the policy assignment.
-    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+    # Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'), or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}')
     ${Scope},
 
     [Parameter(ParameterSetName='IdParameterString', Mandatory, ValueFromPipeline)]
@@ -186,7 +184,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -201,11 +198,11 @@ param(
     ${Location},
 
     [Parameter(ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll.
     ${EnforcementMode},
 
     [Parameter()]
@@ -245,12 +242,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
 
     [Parameter(ParameterSetName='NameParameterString', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='IdParameterString', Mandatory, ValueFromPipelineByPropertyName)]

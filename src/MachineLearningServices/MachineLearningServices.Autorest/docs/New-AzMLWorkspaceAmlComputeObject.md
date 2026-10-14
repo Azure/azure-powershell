@@ -15,11 +15,10 @@ Create an in-memory object for AmlCompute.
 ```
 New-AzMLWorkspaceAmlComputeObject [-AdminUserName <String>] [-AdminUserPassword <String>]
  [-AdminUserSshPublicKey <String>] [-Description <String>] [-DisableLocalAuth <Boolean>]
- [-EnableNodePublicIP <Boolean>] [-IsolatedNetwork <Boolean>] [-OSType <OSType>] [-PropertyBag <IAny>]
- [-RemoteLoginPortPublicAccess <RemoteLoginPortPublicAccess>] [-ResourceId <String>]
- [-ScaleMaxNodeCount <Int32>] [-ScaleMinNodeCount <Int32>] [-ScaleNodeIdleTimeBeforeScaleDown <TimeSpan>]
- [-SubnetId <String>] [-VirtualMachineImageId <String>] [-VMPriority <VMPriority>] [-VMSize <String>]
- [<CommonParameters>]
+ [-EnableNodePublicIP <Boolean>] [-IsolatedNetwork <Boolean>] [-OSType <String>] [-PropertyBag <IAny>]
+ [-RemoteLoginPortPublicAccess <String>] [-ResourceId <String>] [-ScaleMaxNodeCount <Int32>]
+ [-ScaleMinNodeCount <Int32>] [-ScaleNodeIdleTimeBeforeScaleDown <TimeSpan>] [-SubnetId <String>]
+ [-VirtualMachineImageId <String>] [-VMPriority <String>] [-VMSize <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +146,7 @@ Accept wildcard characters: False
 Compute OS Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OSType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +180,7 @@ NotSpecified - Indicates that the public ssh port is closed on all nodes of the 
 It can be default only during cluster creation time, after creation it will be either enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RemoteLoginPortPublicAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +286,7 @@ Accept wildcard characters: False
 Virtual Machine priority.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.VMPriority
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +319,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AmlCompute
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AmlCompute
 
 ## NOTES
 

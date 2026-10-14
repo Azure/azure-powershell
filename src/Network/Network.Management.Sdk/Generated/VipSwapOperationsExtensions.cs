@@ -13,6 +13,49 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VipSwapOperationsExtensions
     {
         /// <summary>
+        /// Gets the list of SwapResource which identifies the slot type for the
+        /// specified cloud service. The slot type on a cloud service can either be
+        /// Staging or Production
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the cloud service.
+        /// </param>
+        public static SwapResourceListResult List(this IVipSwapOperations operations, string groupName, string resourceName)
+        {
+                return ((IVipSwapOperations)operations).ListAsync(groupName, resourceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the list of SwapResource which identifies the slot type for the
+        /// specified cloud service. The slot type on a cloud service can either be
+        /// Staging or Production
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='groupName'>
+        /// 
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the cloud service.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SwapResourceListResult> ListAsync(this IVipSwapOperations operations, string groupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(groupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the SwapResource which identifies the slot type for the specified
         /// cloud service. The slot type on a cloud service can either be Staging or
         /// Production
@@ -21,7 +64,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.
@@ -40,7 +83,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.
@@ -62,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.
@@ -79,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.
@@ -92,56 +135,13 @@ namespace Microsoft.Azure.Management.Network
             (await operations.CreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets the list of SwapResource which identifies the slot type for the
-        /// specified cloud service. The slot type on a cloud service can either be
-        /// Staging or Production
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='groupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the cloud service.
-        /// </param>
-        public static SwapResourceListResult List(this IVipSwapOperations operations, string groupName, string resourceName)
-        {
-                return ((IVipSwapOperations)operations).ListAsync(groupName, resourceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the list of SwapResource which identifies the slot type for the
-        /// specified cloud service. The slot type on a cloud service can either be
-        /// Staging or Production
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='groupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the cloud service.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SwapResourceListResult> ListAsync(this IVipSwapOperations operations, string groupName, string resourceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(groupName, resourceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Performs vip swap operation on swappable cloud services.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='resourceName'>
         /// The name of the cloud service.

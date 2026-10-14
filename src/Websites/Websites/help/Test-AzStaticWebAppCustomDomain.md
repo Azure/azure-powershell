@@ -19,6 +19,35 @@ Test-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGro
  [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ValidateViaJsonString
+```
+Test-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaJsonFilePath
+```
+Test-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaIdentityStaticSiteExpanded
+```
+Test-AzStaticWebAppCustomDomain -DomainName <String> -StaticSiteInputObject <IWebsitesIdentity>
+ [-Kind <String>] [-ValidationMethod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaIdentityStaticSite
+```
+Test-AzStaticWebAppCustomDomain -DomainName <String> -StaticSiteInputObject <IWebsitesIdentity>
+ -StaticSiteCustomDomainRequestPropertiesEnvelope <IStaticSiteCustomDomainRequestPropertiesArmResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ValidateViaIdentityExpanded
 ```
 Test-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-Kind <String>] [-ValidationMethod <String>]
@@ -83,7 +112,7 @@ The custom domain to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath, ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityStaticSite
 Aliases:
 
 Required: True
@@ -95,7 +124,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -109,12 +137,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Validate operation
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded, ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -129,7 +187,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -174,13 +232,43 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticSiteCustomDomainRequestPropertiesEnvelope
+Static Site Custom Domain Request Properties ARM resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteCustomDomainRequestPropertiesArmResource
+Parameter Sets: ValidateViaIdentityStaticSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -StaticSiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityStaticSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -191,7 +279,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded
+Parameter Sets: ValidateExpanded, ValidateViaJsonString, ValidateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -206,7 +294,7 @@ Validation method for adding a custom domain
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded, ValidateViaIdentityStaticSiteExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -251,6 +339,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteCustomDomainRequestPropertiesArmResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 

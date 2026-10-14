@@ -15,8 +15,8 @@ Creates a route for a route table.
 
 ```
 New-AzRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NextHopIpAddress <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,21 @@ This command creates a route named Route07 which forwards traffic to IP prefixes
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AddressPrefix
 Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies. You can also specify a Service Tag here (this feature is in Public Preview).
 
@@ -76,6 +91,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,12 +140,12 @@ Accept wildcard characters: False
 ```
 
 ### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
-This route forwards packets to that address.
-Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
+Specifies the next hop IP address(es) that this route forwards packets to.
+For a *NextHopType* of VirtualAppliance, supply a single IP address of a virtual appliance that you add to your Azure virtual network.
+For a *NextHopType* of VirtualApplianceEcmp, supply between 2 and 64 IP addresses to load-balance traffic across using equal-cost multi-path (ECMP) routing.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -135,6 +165,8 @@ The default Internet gateway provided by Azure.
 If you specify this value, the route does not forward packets. 
 - VirtualAppliance.
 A virtual appliance that you add to your Azure virtual network. 
+- VirtualApplianceEcmp.
+Multiple virtual appliances that traffic is load-balanced across using equal-cost multi-path (ECMP) routing. Provide the appliance IP addresses through the *NextHopIpAddress* parameter. 
 - VirtualNetworkGateway.
 An Azure server-to-server virtual private network gateway. 
 - VnetLocal.

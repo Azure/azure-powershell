@@ -2705,3 +2705,51 @@ function Test-A2AUpdateProtectionWithZone {
     WaitForJobCompletion -JobId $ReprotectJob.Name
     Write-Host "Reprotection completed successfully."
 }
+
+# ---- A2A Private Disk Access (API 2026-02-01) ----------------------------
+# Pwsh scenario stubs for the SkipFact entries in AsrA2ATests.cs. These are
+# intentionally minimal placeholders: the actual cassette + recording is
+# tracked as follow-up. The C# unit coverage for the parameter binding,
+# property round-trip, and constructor copy lives in
+# A2APrivateDiskAccessUnitTests.cs.
+
+function Test-NewA2AManagedDiskReplicationConfigurationWithPrivateAccess_AllowPrivate {
+    param([string] $seed = '901', [string] $vaultSettingsFilePath = $null)
+    # Once a vault + DiskAccess cassette is recorded, this should:
+    #   1. Build $cfg via:
+    #        $diskAccess = New-AzDiskAccess -ResourceGroupName $rg -Name $da -Location $loc
+    #        $cfg = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    #                  -ManagedDisk -DiskId $diskId `
+    #                  -RecoveryResourceGroupId $rrg `
+    #                  -RecoveryReplicaDiskAccountType Premium_LRS `
+    #                  -RecoveryTargetDiskAccountType  Premium_LRS `
+    #                  -RecoveryNetworkAccessPolicy   AllowPrivate `
+    #                  -RecoveryDiskAccessId          $diskAccess.Id `
+    #                  -RecoveryPublicNetworkAccess   Disabled
+    #   2. Call New-AzRecoveryServicesAsrReplicationProtectedItem with $cfg.
+    #   3. After enable completes, fetch the protected item and assert:
+    #        $pe.ProviderSpecificDetails.ProtectedDisks[0].RecoveryNetworkAccessPolicy -eq 'AllowPrivate'
+    #        $pe.ProviderSpecificDetails.ProtectedDisks[0].RecoveryDiskAccessId        -eq $diskAccess.Id
+    #        $pe.ProviderSpecificDetails.ProtectedDisks[0].RecoveryPublicNetworkAccess -eq 'Disabled'
+    throw 'NotImplemented: pending cassette recording for A2A Private Disk Access (AllowPrivate path).'
+}
+
+function Test-NewA2AManagedDiskReplicationConfigurationWithPrivateAccess_DenyAll {
+    param([string] $seed = '902', [string] $vaultSettingsFilePath = $null)
+    # Same shape as the AllowPrivate variant, but with:
+    #     -RecoveryNetworkAccessPolicy DenyAll
+    #     (no -RecoveryDiskAccessId)
+    #     -RecoveryPublicNetworkAccess Disabled
+    # Assertion: read-back of RecoveryNetworkAccessPolicy is 'DenyAll' and
+    # RecoveryDiskAccessId is $null on the protected item.
+    throw 'NotImplemented: pending cassette recording for A2A Private Disk Access (DenyAll path).'
+}
+
+function Test-NewA2AManagedDiskReplicationConfigurationWithoutPrivateAccess_BackwardCompat {
+    param([string] $seed = '903', [string] $vaultSettingsFilePath = $null)
+    # Build $cfg WITHOUT any of the three new parameters. Enable protection
+    # and assert that the three new read-back properties are all $null,
+    # proving the 2026-02-01 schema change is fully backward-compatible
+    # with scripts that pre-date the new parameters.
+    throw 'NotImplemented: pending cassette recording for A2A Private Disk Access (backward-compat path).'
+}

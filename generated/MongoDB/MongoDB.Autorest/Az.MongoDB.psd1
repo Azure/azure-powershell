@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MongoDB.private.dll'
   FormatsToProcess = './Az.MongoDB.format.ps1xml'
-  FunctionsToExport = 'Get-AzMongoDBOrganization', 'New-AzMongoDBOrganization', 'Remove-AzMongoDBOrganization'
+  FunctionsToExport = 'Get-AzMongoDBCluster', 'Get-AzMongoDBOrganization', 'Get-AzMongoDBProject', 'Get-AzMongoDBProjectClusterTierRegion', 'Limit-AzMongoDBProject', 'New-AzMongoDBCluster', 'New-AzMongoDBOrganization', 'New-AzMongoDBProject', 'Remove-AzMongoDBCluster', 'Remove-AzMongoDBOrganization', 'Remove-AzMongoDBProject'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'MongoDb'

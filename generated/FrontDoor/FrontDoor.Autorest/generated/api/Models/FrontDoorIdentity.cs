@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ExperimentName" /> property.</summary>
+        private string _experimentName;
+
+        /// <summary>The Experiment identifier associated with the Experiment</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        public string ExperimentName { get => this._experimentName; set => this._experimentName = value; }
+
         /// <summary>Backing field for <see cref="FrontDoorName" /> property.</summary>
         private string _frontDoorName;
 
@@ -40,10 +47,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string PolicyName { get => this._policyName; set => this._policyName = value; }
 
+        /// <summary>Backing field for <see cref="ProfileName" /> property.</summary>
+        private string _profileName;
+
+        /// <summary>The Profile identifier associated with the Tenant and Partner</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        public string ProfileName { get => this._profileName; set => this._profileName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -57,10 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -73,6 +84,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     public partial interface IFrontDoorIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
+        /// <summary>The Experiment identifier associated with the Experiment</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Experiment identifier associated with the Experiment",
+        SerializedName = @"experimentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExperimentName { get; set; }
         /// <summary>Name of the Front Door which is globally unique.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
@@ -117,14 +139,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"policyName",
         PossibleTypes = new [] { typeof(string) })]
         string PolicyName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The Profile identifier associated with the Tenant and Partner</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The Profile identifier associated with the Tenant and Partner",
+        SerializedName = @"profileName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfileName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -139,17 +172,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"rulesEngineName",
         PossibleTypes = new [] { typeof(string) })]
         string RulesEngineName { get; set; }
-        /// <summary>
-        /// The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -158,6 +188,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     internal partial interface IFrontDoorIdentityInternal
 
     {
+        /// <summary>The Experiment identifier associated with the Experiment</summary>
+        string ExperimentName { get; set; }
         /// <summary>Name of the Front Door which is globally unique.</summary>
         string FrontDoorName { get; set; }
         /// <summary>Name of the Frontend endpoint which is unique within the Front Door.</summary>
@@ -166,14 +198,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         string Id { get; set; }
         /// <summary>The name of the Web Application Firewall Policy.</summary>
         string PolicyName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The Profile identifier associated with the Tenant and Partner</summary>
+        string ProfileName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Name of the Rules Engine which is unique within the Front Door.</summary>
         string RulesEngineName { get; set; }
-        /// <summary>
-        /// The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

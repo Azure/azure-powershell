@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];                               
                 BackupVaultName = NameParts[1];
                 Name = NameParts[2];
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = BackupVaultObject.ResourceGroupName;
-                var NameParts = BackupVaultObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(BackupVaultObject.Id);
                 AccountName = NameParts[0];
                 if (NameParts.Length > 1)
                 {

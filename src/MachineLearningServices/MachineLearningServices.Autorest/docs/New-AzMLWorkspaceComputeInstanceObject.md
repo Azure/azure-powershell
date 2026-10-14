@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecomputeinstanceobject
 schema: 2.0.0
 ---
 
@@ -13,17 +13,15 @@ Create an in-memory object for ComputeInstance.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceComputeInstanceObject [-ApplicationSharingPolicy <ApplicationSharingPolicy>]
- [-AssignedUserObjectId <String>] [-AssignedUserTenantId <String>]
- [-AuthorizationType <ComputeInstanceAuthorizationType>] [-CreationScriptArgument <String>]
+New-AzMLWorkspaceComputeInstanceObject [-ApplicationSharingPolicy <String>] [-AssignedUserObjectId <String>]
+ [-AssignedUserTenantId <String>] [-AuthorizationType <String>] [-CreationScriptArgument <String>]
  [-CreationScriptData <String>] [-CreationScriptSource <String>] [-CreationScriptTimeout <String>]
- [-Description <String>] [-DisableLocalAuth <Boolean>] [-EnableNodePublicIP <Boolean>]
- [-LastOperationName <OperationName>] [-LastOperationStatus <OperationStatus>] [-LastOperationTime <DateTime>]
- [-LastOperationTrigger <OperationTrigger>] [-ResourceId <String>]
+ [-CustomService <ICustomService[]>] [-Description <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableNodePublicIP <Boolean>] [-Location <String>] [-ResourceId <String>]
  [-ScheduleComputeStartStop <IComputeStartStopSchedule[]>] [-SshSettingAdminPublicKey <String>]
- [-SshSettingSshPublicAccess <SshPublicAccess>] [-StartupScriptArgument <String>]
- [-StartupScriptData <String>] [-StartupScriptSource <String>] [-StartupScriptTimeout <String>]
- [-SubnetId <String>] [-VersionRuntime <String>] [-VMSize <String>] [<CommonParameters>]
+ [-SshSettingSshPublicAccess <String>] [-StartupScriptArgument <String>] [-StartupScriptData <String>]
+ [-StartupScriptSource <String>] [-StartupScriptTimeout <String>] [-SubnetId <String>] [-VMSize <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +44,7 @@ If Personal, only the creator can access applications on this compute instance.
 When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignedUserObjectId
-User's AAD Object Id.
+User’s AAD Object Id.
 
 ```yaml
 Type: System.String
@@ -73,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignedUserTenantId
-User's AAD Tenant Id.
+User’s AAD Tenant Id.
 
 ```yaml
 Type: System.String
@@ -92,7 +90,7 @@ The Compute Instance Authorization type.
 Available values are personal (default).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -CreationScriptSource
-The storage source of the script: inline, workspace.
+The storage source of the script: workspace.
 
 ```yaml
 Type: System.String
@@ -153,6 +151,21 @@ Optional time period passed to timeout command.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomService
+List of Custom Services added to the compute.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICustomService[]
 Parameter Sets: (All)
 Aliases:
 
@@ -210,56 +223,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LastOperationName
-Name of the last operation.
+### -Location
+Location for the underlying compute.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastOperationStatus
-Operation status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastOperationTime
-Time of the last operation.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LastOperationTrigger
-Trigger of operation.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -287,10 +255,9 @@ Accept wildcard characters: False
 
 ### -ScheduleComputeStartStop
 The list of compute start stop schedules to be applied.
-To construct, see NOTES section for SCHEDULECOMPUTESTARTSTOP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeStartStopSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeStartStopSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -323,7 +290,7 @@ Possible values are: Disabled - Indicates that the public ssh port is closed on 
 Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -365,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartupScriptSource
-The storage source of the script: inline, workspace.
+The storage source of the script: workspace.
 
 ```yaml
 Type: System.String
@@ -409,21 +376,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VersionRuntime
-Runtime of compute instance.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VMSize
 Virtual Machine Size.
 
@@ -446,7 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance
 
 ## NOTES
 

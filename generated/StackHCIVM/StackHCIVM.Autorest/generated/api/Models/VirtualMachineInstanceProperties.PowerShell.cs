@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("OSProfileAdminPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword = (string) content.GetValueForProperty("OSProfileAdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword = (System.Security.SecureString) content.GetValueForProperty("OSProfileAdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("OSProfileAdminUsername"))
             {
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             }
             if (content.Contains("OSProfileAdminPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword = (string) content.GetValueForProperty("OSProfileAdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword = (System.Security.SecureString) content.GetValueForProperty("OSProfileAdminPassword",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesInternal)this).OSProfileAdminPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("OSProfileAdminUsername"))
             {

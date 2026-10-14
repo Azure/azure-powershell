@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

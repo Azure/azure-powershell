@@ -690,7 +690,6 @@ function Test-CreateServerWithSoftDeleteRetention
 	$serverName3 = Get-ServerName
 	$serverName4 = Get-ServerName
 	$serverName5 = Get-ServerName
-	$serverName6 = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
@@ -700,59 +699,50 @@ function Test-CreateServerWithSoftDeleteRetention
 
 	try
 	{
-		# Scenario 1: Create server with EnableSoftDelete $true (should default to 7 days)
+		# Scenario 1: Create server with SoftDeleteRetentionDays 7 (maximum retention)
 		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName1 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $true
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 7
 		Assert-AreEqual $server1.ServerName $serverName1
 		Assert-AreEqual $server1.ServerVersion $version
 		Assert-AreEqual $server1.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		Assert-AreEqual $server1.SoftDeleteRetentionDays 7
 
-		# Scenario 2: Create server with EnableSoftDelete $true and SoftDeleteRetentionDays
+		# Scenario 2: Create server with a custom SoftDeleteRetentionDays value
 		$server2 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName2 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $true -SoftDeleteRetentionDays $retentionDays
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays $retentionDays
 		Assert-AreEqual $server2.ServerName $serverName2
 		Assert-AreEqual $server2.ServerVersion $version
 		Assert-AreEqual $server2.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server2.ServerName + ".") $server2.FullyQualifiedDomainName
 		Assert-AreEqual $server2.SoftDeleteRetentionDays $retentionDays
 
-		# Scenario 3: Create server with EnableSoftDelete $false (should have 0 retention days)
+		# Scenario 3: Create server with SoftDeleteRetentionDays 0 (soft-delete disabled)
 		$server3 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName3 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $false
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 0
 		Assert-AreEqual $server3.ServerName $serverName3
 		Assert-AreEqual $server3.ServerVersion $version
 		Assert-AreEqual $server3.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server3.ServerName + ".") $server3.FullyQualifiedDomainName
 		Assert-AreEqual $server3.SoftDeleteRetentionDays 0
 
-		# Scenario 4: Create server with EnableSoftDelete $false and SoftDeleteRetentionDays 0
+		# Scenario 4: Create server with SoftDeleteRetentionDays at the minimum enabled value (1 day)
 		$server4 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName4 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -EnableSoftDelete $false -SoftDeleteRetentionDays 0
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 1
 		Assert-AreEqual $server4.ServerName $serverName4
 		Assert-AreEqual $server4.ServerVersion $version
 		Assert-AreEqual $server4.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server4.ServerName + ".") $server4.FullyQualifiedDomainName
-		Assert-AreEqual $server4.SoftDeleteRetentionDays 0
+		Assert-AreEqual $server4.SoftDeleteRetentionDays 1
 
-		# Scenario 5: Create server with SoftDeleteRetentionDays 0 (should disable soft-delete)
+		# Scenario 5: Create server without SoftDeleteRetentionDays parameter (should return -1, the "never configured" sentinel)
 		$server5 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName5 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -SoftDeleteRetentionDays 0
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
 		Assert-AreEqual $server5.ServerName $serverName5
 		Assert-AreEqual $server5.ServerVersion $version
 		Assert-AreEqual $server5.SqlAdministratorLogin $serverLogin
 		Assert-StartsWith ($server5.ServerName + ".") $server5.FullyQualifiedDomainName
-		Assert-AreEqual $server5.SoftDeleteRetentionDays 0
-
-		# Scenario 6: Create server without either parameter.
-		$server6 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName6 `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
-		Assert-AreEqual $server6.ServerName $serverName6
-		Assert-AreEqual $server6.ServerVersion $version
-		Assert-AreEqual $server6.SqlAdministratorLogin $serverLogin
-		Assert-StartsWith ($server6.ServerName + ".") $server6.FullyQualifiedDomainName
-		Assert-True {$server6.SoftDeleteRetentionDays -eq -1}
+		Assert-True {$server5.SoftDeleteRetentionDays -eq -1}
 	}
 	finally
 	{
@@ -777,7 +767,7 @@ function Test-UpdateServerWithSoftDeleteRetention
 
 	try
 	{
-		# Scenario 1: Update server from default (0) to enable soft-delete with 7 days
+		# Scenario 1: Enable soft-delete on a newly-created server (initial state is -1, "never configured") with 7 days retention
 		$server1 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays $retentionDays1
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
@@ -801,7 +791,7 @@ function Test-UpdateServerWithSoftDeleteRetention
 		Assert-StartsWith ($server3.ServerName + ".") $server3.FullyQualifiedDomainName
 		Assert-AreEqual $server3.SoftDeleteRetentionDays $retentionDays3
 
-		# Scenario 4: Update server to disable soft-delete by setting retention days to 0
+		# Scenario 4: Update server to disable soft-delete by setting retention days to 0, and verify Get-AzSqlServer reflects the disabled state
 		$server4 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays 0
 		Assert-AreEqual $server4.ServerName $server.ServerName
 		Assert-AreEqual $server4.ServerVersion $server.ServerVersion
@@ -809,12 +799,11 @@ function Test-UpdateServerWithSoftDeleteRetention
 		Assert-StartsWith ($server4.ServerName + ".") $server4.FullyQualifiedDomainName
 		Assert-AreEqual $server4.SoftDeleteRetentionDays 0
 
-		# Scenario 5: Verify Get-AzSqlServer reflects the disabled state
 		$serverGet = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual $serverGet.ServerName $server.ServerName
 		Assert-AreEqual $serverGet.SoftDeleteRetentionDays 0
 
-		# Scenario 6: Re-enable soft-delete, then update another parameter (password) and verify retention days unchanged
+		# Scenario 5: Re-enable soft-delete, then update another parameter (password) and verify retention days unchanged
 		$server5 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SoftDeleteRetentionDays $retentionDays1
 		Assert-AreEqual $server5.SoftDeleteRetentionDays $retentionDays1
 

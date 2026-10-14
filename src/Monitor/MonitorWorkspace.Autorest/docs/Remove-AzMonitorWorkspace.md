@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzMonitorWorkspace
 
 ## SYNOPSIS
-Delete a workspace
+Deletes an Azure Monitor Workspace
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Delete a workspace
+Deletes an Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -155,6 +155,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

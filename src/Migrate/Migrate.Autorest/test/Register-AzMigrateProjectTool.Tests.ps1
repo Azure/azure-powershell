@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Register-AzMigrateProjectTool' {
+Describe 'Register-AzMigrateProjectTool' -Tag 'LiveOnly' {
     It 'RegisterExpanded' {
         $toolName = "ServerMigration"
         $projName = "signoffccyproj"

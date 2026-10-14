@@ -14,12 +14,24 @@ namespace Microsoft.Azure.Management.Network.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResourceIdentityType
     {
+        /// <summary>
+        /// SystemAssigned
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "SystemAssigned")]
         SystemAssigned,
+        /// <summary>
+        /// UserAssigned
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "UserAssigned")]
         UserAssigned,
+        /// <summary>
+        /// SystemAssigned, UserAssigned
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "SystemAssigned, UserAssigned")]
         SystemAssignedUserAssigned,
+        /// <summary>
+        /// None
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "None")]
         None
     }

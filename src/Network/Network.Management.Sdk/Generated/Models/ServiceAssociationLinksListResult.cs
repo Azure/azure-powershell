@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Response for ServiceAssociationLinks_List operation.
+    /// Paged collection of ServiceAssociationLink items
     /// </summary>
     public partial class ServiceAssociationLinksListResult
     {
@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ServiceAssociationLinksListResult class.
         /// </summary>
 
-        /// <param name="value">The service association links in a subnet.
+        /// <param name="value">The ServiceAssociationLink items on this page
         /// </param>
 
-        /// <param name="nextLink">The URL to get the next set of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ServiceAssociationLinksListResult(System.Collections.Generic.IList<ServiceAssociationLink> value = default(System.Collections.Generic.IList<ServiceAssociationLink>), string nextLink = default(string))
+        public ServiceAssociationLinksListResult(System.Collections.Generic.IList<ServiceAssociationLink> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -44,15 +44,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the service association links in a subnet.
+        /// Gets or sets the ServiceAssociationLink items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<ServiceAssociationLink> Value {get; set; }
 
         /// <summary>
-        /// Gets the URL to get the next set of results.
+        /// Gets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

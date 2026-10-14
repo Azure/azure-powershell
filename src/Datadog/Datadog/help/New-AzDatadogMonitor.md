@@ -15,13 +15,14 @@ Create a monitor resource.
 ### CreateExpanded (Default)
 ```
 New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity] [-Location <String>] [-MonitoringStatus <String>]
+ [-EnableSystemAssignedIdentity] [-Location <String>] [-MarketplaceOfferDetailOfferId <String>]
+ [-MarketplaceOfferDetailPublisherId <String>] [-MonitoringStatus <String>]
  [-OrganizationApiKey <SecureString>] [-OrganizationApplicationKey <SecureString>] [-OrganizationCspm]
  [-OrganizationEnterpriseAppId <String>] [-OrganizationId <String>]
  [-OrganizationLinkingAuthCode <SecureString>] [-OrganizationLinkingClientId <SecureString>]
  [-OrganizationName <String>] [-OrganizationRedirectUri <String>] [-OrganizationResourceCollection]
- [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>] [-UserInfoName <String>]
- [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SaaSDataSaaSresourceId <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>]
+ [-UserInfoName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,12 +43,13 @@ New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId
 ### CreateViaIdentityExpanded
 ```
 New-AzDatadogMonitor -InputObject <IDatadogIdentity> [-EnableSystemAssignedIdentity] [-Location <String>]
+ [-MarketplaceOfferDetailOfferId <String>] [-MarketplaceOfferDetailPublisherId <String>]
  [-MonitoringStatus <String>] [-OrganizationApiKey <SecureString>] [-OrganizationApplicationKey <SecureString>]
  [-OrganizationCspm] [-OrganizationEnterpriseAppId <String>] [-OrganizationId <String>]
  [-OrganizationLinkingAuthCode <SecureString>] [-OrganizationLinkingClientId <SecureString>]
  [-OrganizationName <String>] [-OrganizationRedirectUri <String>] [-OrganizationResourceCollection]
- [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>] [-UserInfoName <String>]
- [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SaaSDataSaaSresourceId <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>]
+ [-UserInfoName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -164,6 +166,36 @@ Accept wildcard characters: False
 
 ### -Location
 The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceOfferDetailOfferId
+The offer ID (e.g., "dd_liftr_v3_decoupled").
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MarketplaceOfferDetailPublisherId
+The publisher ID (e.g., "datadog1591740804488").
 
 ```yaml
 Type: System.String
@@ -384,6 +416,21 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SaaSDataSaaSresourceId
+SaaS resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

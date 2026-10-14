@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppConfigurationLock
 }
 
 Describe 'Remove-AzAppConfigurationLock' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        # Create a dedicated key and lock it
+        $lockKey = "unlocktest-key1"
+        Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $lockKey -Value "unlock-value"
+        Set-AzAppConfigurationLock -Endpoint $env.endpoint -Key $lockKey
+        $result = Remove-AzAppConfigurationLock -Endpoint $env.endpoint -Key $lockKey
+        $result | Should -Not -BeNullOrEmpty
+        $result.Locked | Should -BeFalse
+        # Cleanup
+        Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $lockKey
     }
 }

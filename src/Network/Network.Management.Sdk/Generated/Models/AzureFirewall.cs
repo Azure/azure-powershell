@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
-        /// <param name="ipGroups">IpGroups associated with AzureFirewall.
+        /// <param name="afcConfiguration">AFC configuration for the Azure Firewall.
         /// </param>
 
         /// <param name="applicationRuleCollections">Collection of application rule collections used by Azure Firewall.
@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="hubIPAddresses">IP addresses associated with AzureFirewall.
         /// </param>
 
+        /// <param name="ipGroups">IpGroups associated with AzureFirewall.
+        /// </param>
+
         /// <param name="sku">The Azure Firewall Resource SKU.
         /// </param>
 
@@ -93,7 +96,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="autoscaleConfiguration">Properties to provide a custom autoscale configuration to this azure
         /// firewall.
         /// </param>
-        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration))
+
+        /// <param name="aiSecurityAddOn">Indicates whether the AI security add-on is enabled for the Azure Firewall.
+        /// </param>
+        public AzureFirewall(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), string provisioningState = default(string), AfcConfiguration afcConfiguration = default(AfcConfiguration), System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), bool? aiSecurityAddOn = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -101,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Zones = zones;
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
-            this.IPGroups = ipGroups;
+            this.AfcConfiguration = afcConfiguration;
             this.ApplicationRuleCollections = applicationRuleCollections;
             this.NatRuleCollections = natRuleCollections;
             this.NetworkRuleCollections = networkRuleCollections;
@@ -111,9 +117,11 @@ namespace Microsoft.Azure.Management.Network.Models
             this.VirtualHub = virtualHub;
             this.FirewallPolicy = firewallPolicy;
             this.HubIPAddresses = hubIPAddresses;
+            this.IPGroups = ipGroups;
             this.Sku = sku;
             this.AdditionalProperties = additionalProperties;
             this.AutoscaleConfiguration = autoscaleConfiguration;
+            this.AiSecurityAddOn = aiSecurityAddOn;
             CustomInit();
         }
 
@@ -150,10 +158,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets ipGroups associated with AzureFirewall.
+        /// Gets aFC configuration for the Azure Firewall.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipGroups")]
-        public System.Collections.Generic.IList<AzureFirewallIpGroups> IPGroups {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.afcConfiguration")]
+        public AfcConfiguration AfcConfiguration {get; private set; }
 
         /// <summary>
         /// Gets or sets collection of application rule collections used by Azure
@@ -212,6 +220,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public HubIPAddresses HubIPAddresses {get; set; }
 
         /// <summary>
+        /// Gets ipGroups associated with AzureFirewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipGroups")]
+        public System.Collections.Generic.IList<AzureFirewallIpGroups> IPGroups {get; private set; }
+
+        /// <summary>
         /// Gets or sets the Azure Firewall Resource SKU.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sku")]
@@ -230,6 +244,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoscaleConfiguration")]
         public AzureFirewallAutoscaleConfiguration AutoscaleConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the AI security add-on is enabled for the
+        /// Azure Firewall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.aiSecurityAddOn")]
+        public bool? AiSecurityAddOn {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -273,6 +294,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     }
                 }
             }
+
 
 
 

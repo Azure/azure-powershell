@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FirewallPolicyIdpsQuerySortOrder
     {
+        /// <summary>
+        /// Ascending
+        /// </summary>
         public const string Ascending = "Ascending";
+        /// <summary>
+        /// Descending
+        /// </summary>
         public const string Descending = "Descending";
     }
 }

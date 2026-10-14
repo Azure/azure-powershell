@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of InternetGateways.</summary>
+    /// <summary>Paged collection of InternetGateway items</summary>
     [System.ComponentModel.TypeConverter(typeof(InternetGatewaysListResultTypeConverter))]
     public partial class InternetGatewaysListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of InternetGateways.
+    /// Paged collection of InternetGateway items
     [System.ComponentModel.TypeConverter(typeof(InternetGatewaysListResultTypeConverter))]
     public partial interface IInternetGatewaysListResult
 

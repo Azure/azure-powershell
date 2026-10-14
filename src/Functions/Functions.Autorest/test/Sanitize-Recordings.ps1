@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$Root = $PSScriptRoot,
     [switch]$FailOnMissing
@@ -105,7 +105,7 @@ $patterns = @(
     },
 
     # === Multi-key + base64 redaction ===
-    # (Optional repair pattern — uncomment if prior runs produced \\\"value\\\":\\\"SANITIZED-KEY-VALUE\\\")
+    # (Optional repair pattern - uncomment if prior runs produced \\\"value\\\":\\\"SANITIZED-KEY-VALUE\\\")
     # @{
     #     Name = 'Fix_DoubleEscaped_SanitizedValues'
     #     Regex = '\\\\\"value\\\\\":\\\\\"SANITIZED-KEY-VALUE\\\\\"'

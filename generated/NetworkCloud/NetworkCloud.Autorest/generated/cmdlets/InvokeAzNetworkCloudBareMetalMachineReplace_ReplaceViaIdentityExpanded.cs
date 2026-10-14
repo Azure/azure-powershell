@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Replace the provided bare metal machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines/{bareMetalMachineName}/replace", ApiVersion = "2025-09-01")]
     public partial class InvokeAzNetworkCloudBareMetalMachineReplace_ReplaceViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -196,6 +196,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>
+        /// The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize
+        /// all safeguards.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.",
+        SerializedName = @"safeguardMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("All", "None")]
+        public string SafeguardMode { get => _bareMetalMachineReplaceParametersBody.SafeguardMode ?? null; set => _bareMetalMachineReplaceParametersBody.SafeguardMode = value; }
+
         /// <summary>The serial number of the bare metal machine.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The serial number of the bare metal machine.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
@@ -206,6 +221,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         SerializedName = @"serialNumber",
         PossibleTypes = new [] { typeof(string) })]
         public string SerialNumber { get => _bareMetalMachineReplaceParametersBody.SerialNumber ?? null; set => _bareMetalMachineReplaceParametersBody.SerialNumber = value; }
+
+        /// <summary>
+        /// The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The indicator of whether to bypass clearing storage while replacing a bare metal machine.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The indicator of whether to bypass clearing storage while replacing a bare metal machine.",
+        SerializedName = @"storagePolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Preserve", "DiscardAll")]
+        public string StoragePolicy { get => _bareMetalMachineReplaceParametersBody.StoragePolicy ?? null; set => _bareMetalMachineReplaceParametersBody.StoragePolicy = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

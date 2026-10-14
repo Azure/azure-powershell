@@ -1,6 +1,6 @@
 {
   "resourceType": "networkFabrics",
-  "apiVersion": "2023-06-15",
+  "apiVersion": "2025-07-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
   },
@@ -29,6 +29,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricArmConfigurationDiff",
+      "description": "Post action: Triggers diff of NetworkFabric ARM Configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricarmconfigurationdiff"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Post action: Triggers diff of NetworkFabric ARM Configuration.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
               "value": "[Path.networkFabricName]"
             },
             {
@@ -82,6 +120,44 @@
       ]
     },
     {
+      "name": "Invoke-AzNetworkFabricDeviceConfiguration",
+      "description": "Post action: Triggers view of network fabric configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricdeviceconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Post action: Triggers view of network fabric configuration.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Invoke-AzNetworkFabricProvision",
       "description": "Provisions the underlying resources in the given Network Fabric instance.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
@@ -105,6 +181,158 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricResyncNetworkFabricCertificate",
+      "description": "Resync all Network Devices to use the latest certificates.\nDoes not generate new certificates.\nAllows network devices missed during a previous certificate rotation to be brought back into sync.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricresyncnetworkfabriccertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "resync all Network Devices to use the latest certificates. Does not generate new certificates. Allows network devices missed during a previous certificate rotation to be brought back into sync.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricResyncNetworkFabricPassword",
+      "description": "Resync the Terminal Server and all Network Devices to use the latest passwords.\nDoes not generate new passwords.\\n\\nAllows devices to be brought back in sync after a partially successful password rotation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricresyncnetworkfabricpassword"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "resync the Terminal Server and all Network Devices to use the latest passwords. Does not generate new passwords.\\n\\nAllows devices to be brought back in sync after a partially successful password rotation.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricRotateNetworkFabricCertificate",
+      "description": "Rotate new certificates, then rotate the Network Devices to use the new certificates.\nNote that disabled devices cannot be updated and must be resynchronized with the new certificates once they are enabled.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricrotatenetworkfabriccertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "rotate new certificates, then rotate the Network Devices to use the new certificates. Note that disabled devices cannot be updated and must be resynchronized with the new certificates once they are enabled.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricRotateNetworkFabricPassword",
+      "description": "Rotate new passwords, then rotate the Terminal Server and Network Devices to use the new passwords.\\n\\nNote that disabled devices cannot be updated and must be resynchronized with the new passwords once they are enabled.\\n\\nFails if any of the devices could not be updated with the new password.\\nFailed devices should be resynchronized with the new passwords once possible.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricrotatenetworkfabricpassword"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "rotate new passwords, then rotate the Terminal Server and Network Devices to use the new passwords.\\n\\nNote that disabled devices cannot be updated and must be resynchronized with the new passwords once they are enabled.\\n\\nFails if any of the devices could not be updated with the new password.\\nFailed devices should be resynchronized with the new passwords once possible.",
+          "parameters": [
+            {
+              "name": "-NetworkFabricName",
               "value": "[Path.networkFabricName]"
             },
             {

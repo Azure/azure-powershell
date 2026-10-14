@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="sourceIPGroups">List of source IpGroups for this rule.
         /// </param>
 
+        /// <param name="sourceKubeSelectorGroups">List of source Kubernetes Selector Groups for this rule.
+        /// </param>
+
         /// <param name="terminateTls">Terminate TLS connections for this rule.
         /// </param>
 
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="httpHeadersToInsert">List of HTTP/S headers to insert.
         /// </param>
-        public ApplicationRule(string name = default(string), string description = default(string), System.Collections.Generic.IList<string> sourceAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<FirewallPolicyRuleApplicationProtocol> protocols = default(System.Collections.Generic.IList<FirewallPolicyRuleApplicationProtocol>), System.Collections.Generic.IList<string> targetFqdns = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> targetUrls = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> fqdnTags = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceIPGroups = default(System.Collections.Generic.IList<string>), bool? terminateTls = default(bool?), System.Collections.Generic.IList<string> webCategories = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<FirewallPolicyHttpHeaderToInsert> httpHeadersToInsert = default(System.Collections.Generic.IList<FirewallPolicyHttpHeaderToInsert>))
+        public ApplicationRule(string name = default(string), string description = default(string), System.Collections.Generic.IList<string> sourceAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<FirewallPolicyRuleApplicationProtocol> protocols = default(System.Collections.Generic.IList<FirewallPolicyRuleApplicationProtocol>), System.Collections.Generic.IList<string> targetFqdns = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> targetUrls = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> fqdnTags = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceIPGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceKubeSelectorGroups = default(System.Collections.Generic.IList<string>), bool? terminateTls = default(bool?), System.Collections.Generic.IList<string> webCategories = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<FirewallPolicyHttpHeaderToInsert> httpHeadersToInsert = default(System.Collections.Generic.IList<FirewallPolicyHttpHeaderToInsert>))
 
         : base(name, description)
         {
@@ -71,6 +74,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.TargetUrls = targetUrls;
             this.FqdnTags = fqdnTags;
             this.SourceIPGroups = sourceIPGroups;
+            this.SourceKubeSelectorGroups = sourceKubeSelectorGroups;
             this.TerminateTls = terminateTls;
             this.WebCategories = webCategories;
             this.HttpHeadersToInsert = httpHeadersToInsert;
@@ -124,6 +128,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceIpGroups")]
         public System.Collections.Generic.IList<string> SourceIPGroups {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of source Kubernetes Selector Groups for this rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceKubeSelectorGroups")]
+        public System.Collections.Generic.IList<string> SourceKubeSelectorGroups {get; set; }
 
         /// <summary>
         /// Gets or sets terminate TLS connections for this rule.

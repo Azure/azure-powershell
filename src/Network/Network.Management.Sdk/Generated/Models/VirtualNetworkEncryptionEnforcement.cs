@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkEncryptionEnforcement
     {
+        /// <summary>
+        /// DropUnencrypted
+        /// </summary>
         public const string DropUnencrypted = "DropUnencrypted";
+        /// <summary>
+        /// AllowUnencrypted
+        /// </summary>
         public const string AllowUnencrypted = "AllowUnencrypted";
     }
 }

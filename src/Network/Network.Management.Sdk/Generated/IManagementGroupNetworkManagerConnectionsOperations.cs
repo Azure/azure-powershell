@@ -14,95 +14,13 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IManagementGroupNetworkManagerConnectionsOperations
     {
         /// <summary>
-        /// Create a network manager connection on this management group.
-        /// </summary>
-        /// <remarks>
-        /// Create a network manager connection on this management group.
-        /// </remarks>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='parameters'>
-        /// Network manager connection to be created/updated.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> CreateOrUpdateWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Get a specified connection created by this management group.
-        /// </summary>
-        /// <remarks>
-        /// Get a specified connection created by this management group.
-        /// </remarks>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> GetWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Delete specified pending connection created by this management group.
-        /// </summary>
-        /// <remarks>
-        /// Delete specified pending connection created by this management group.
-        /// </remarks>
-        /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
-        /// </param>
-        /// <param name='networkManagerConnectionName'>
-        /// Name for the network manager connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// List all network manager connections created by this management group.
         /// </summary>
         /// <remarks>
         /// List all network manager connections created by this management group.
         /// </remarks>
         /// <param name='managementGroupId'>
-        /// The management group Id which uniquely identify the Microsoft Azure
-        /// management group.
+        /// The management group ID.
         /// </param>
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
@@ -127,6 +45,84 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<NetworkManagerConnection>>> ListWithHttpMessagesAsync(string managementGroupId, int? top = default(int?), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a specified connection created by this management group.
+        /// </summary>
+        /// <remarks>
+        /// Get a specified connection created by this management group.
+        /// </remarks>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> GetWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create a network manager connection on this management group.
+        /// </summary>
+        /// <remarks>
+        /// Create a network manager connection on this management group.
+        /// </remarks>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='parameters'>
+        /// Network manager connection to be created/updated.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetworkManagerConnection>> CreateOrUpdateWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, NetworkManagerConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete specified pending connection created by this management group.
+        /// </summary>
+        /// <remarks>
+        /// Delete specified pending connection created by this management group.
+        /// </remarks>
+        /// <param name='managementGroupId'>
+        /// The management group ID.
+        /// </param>
+        /// <param name='networkManagerConnectionName'>
+        /// Name for the network manager connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string managementGroupId, string networkManagerConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List all network manager connections created by this management group.

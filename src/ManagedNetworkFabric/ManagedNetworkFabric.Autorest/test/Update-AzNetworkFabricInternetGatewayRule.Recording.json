@@ -1,0 +1,49 @@
+{
+  "Update-AzNetworkFabricInternetGatewayRule+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/jnarvaez-infra-system?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/jnarvaez-infra-system?api-version=2025-07-15",
+      "Content": "{\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "3"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "mock"
+        ],
+        "x-ms-correlation-request-id": [
+          "mock"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "430"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/jnarvaez-infra-system\", \"name\": \"jnarvaez-infra-system\", \"type\": \"Microsoft.ManagedNetworkFabric/internetGatewayRules\", \"location\": \"uksouth\", \"properties\": {\"action\": \"Allow\", \"addressList\": [\"10.10.10.10\"], \"configurationState\": \"Succeeded\", \"provisioningState\": \"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

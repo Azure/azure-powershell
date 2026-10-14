@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Automation.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EncryptionKeySourceType
     {
+        /// <summary>
+        /// Microsoft.Automation
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Microsoft.Automation")]
         MicrosoftAutomation,
+        /// <summary>
+        /// Microsoft.Keyvault
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Microsoft.Keyvault")]
         MicrosoftKeyvault
     }

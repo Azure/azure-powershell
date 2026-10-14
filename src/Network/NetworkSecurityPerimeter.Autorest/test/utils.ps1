@@ -102,6 +102,9 @@ function setupEnv() {
 
     set-content -Path (Join-Path $PSScriptRoot 'localEnv.json') -Value (ConvertTo-Json $env)
     
+    # Ensure Azure context matches the subscription from env.json
+    Set-AzContext -Subscription $env.SubscriptionId
+
     Write-Host -ForegroundColor Magenta "Create resource group"
 
     # create resource group if it doesnt exists

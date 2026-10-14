@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     AzureContext,
                     AzureEnvironment.Endpoint.ResourceManager);
 
-            siteRecoveryClient.SubscriptionId = cloudCredentials.SubscriptionId;
+            siteRecoveryClient.SubscriptionId = System.Guid.Parse(cloudCredentials.SubscriptionId);
             siteRecoveryClient.BaseUri = endPointUri;
 
             if (null == siteRecoveryClient)

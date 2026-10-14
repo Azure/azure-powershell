@@ -29,7 +29,7 @@ Describe 'Remove-AzWvdRegistrationInfo' {
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' 
 
         $regInfo = Remove-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `

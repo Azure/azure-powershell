@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -703,6 +699,10 @@
   {
     "alias": "DiskPool",
     "module": "DiskPool"
+  },
+  {
+    "alias": "Discovery",
+    "module": "Discovery"
   },
   {
     "alias": "Datadog",
@@ -889,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },
@@ -941,22 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "ArizeAI",
-    "module": "ArizeAI"
-  },
-  {
-    "module": "WeightsAndBiases",
-    "alias": "WeightsAndBiases"
-  },
-  {
-    "module": "Pinecone",
-    "alias": "Pinecone"
-  },
-  {
-    "alias": "LambdaTest",
-    "module": "LambdaTest"
-  },
-  {
     "alias": "Carbon",
     "module": "Carbon"
   },
@@ -975,6 +955,10 @@
   {
     "alias": "CloudHsm",
     "module": "CloudHsm"
+  },
+  {
+    "alias": "CloudHealth",
+    "module": "CloudHealth"
   },
   {
     "alias": "StorageDiscovery",
@@ -1005,6 +989,10 @@
     "module": "EdgeAction"
   },
   {
+    "module": "ChangeSafety",
+    "alias": "ChangeSafety"
+  },
+  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   },
@@ -1023,5 +1011,29 @@
   {
     "module": "PlanetaryComputer",
     "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
+  },
+  {
+    "alias": "Dell",
+    "module": "Dell"
+  },
+  {
+    "alias": "Mission",
+    "module": "Mission"
+  },
+  {
+    "module": "DocumentDB",
+    "alias": "DocumentDB"
   }
 ]

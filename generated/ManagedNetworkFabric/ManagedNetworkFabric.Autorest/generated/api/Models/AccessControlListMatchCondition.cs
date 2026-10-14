@@ -67,14 +67,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> IPLength { get => this._iPLength; set => this._iPLength = value; }
 
+        /// <summary>Backing field for <see cref="IcmpConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties _icmpConfiguration;
+
+        /// <summary>Internet Control Message Protocol (ICMP) configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties IcmpConfiguration { get => (this._icmpConfiguration = this._icmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IcmpConfigurationProperties()); set => this._icmpConfiguration = value; }
+
+        /// <summary>Internet Control Message Protocol (ICMP) types</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> IcmpConfigurationIcmpType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationPropertiesInternal)IcmpConfiguration).IcmpType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationPropertiesInternal)IcmpConfiguration).IcmpType = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for IcmpConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal.IcmpConfiguration { get => (this._icmpConfiguration = this._icmpConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IcmpConfigurationProperties()); set { {_icmpConfiguration = value;} } }
+
         /// <summary>Internal Acessors for PortCondition</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConditionInternal.PortCondition { get => (this._portCondition = this._portCondition ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPortCondition()); set { {_portCondition = value;} } }
 
         /// <summary>Internal Acessors for IPCondition</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.IPCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.IPCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).IPCondition = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for VlanMatchCondition</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal.VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="PortCondition" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition _portCondition;
@@ -83,7 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition PortCondition { get => (this._portCondition = this._portCondition ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.AccessControlListPortCondition()); set => this._portCondition = value; }
 
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> PortConditionFlag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortConditionInternal)PortCondition).Flag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortConditionInternal)PortCondition).Flag = value ?? null /* arrayOf */; }
 
@@ -103,6 +120,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public string PortConditionPortType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortConditionInternal)PortCondition).PortType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IPortConditionInternal)PortCondition).PortType = value ?? null; }
 
+        /// <summary>Backing field for <see cref="ProtocolNeighbor" /> property.</summary>
+        private System.Collections.Generic.List<string> _protocolNeighbor;
+
+        /// <summary>Protocol neighbors that need to be matched.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ProtocolNeighbor { get => this._protocolNeighbor; set => this._protocolNeighbor = value; }
+
         /// <summary>List of the protocols that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> ProtocolType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).ProtocolType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).ProtocolType = value ?? null /* arrayOf */; }
@@ -118,11 +142,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition VlanMatchCondition { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchCondition = value ?? null /* model class */; }
 
-        /// <summary>List of inner vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> VlanMatchConditionInnerVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionInnerVlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionInnerVlan = value ?? null /* arrayOf */; }
 
-        /// <summary>List of vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inherited)]
         public System.Collections.Generic.List<string> VlanMatchConditionVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionVlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonMatchConditionsInternal)__commonMatchConditions).VlanMatchConditionVlan = value ?? null /* arrayOf */; }
 
@@ -197,14 +225,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"ipLengths",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> IPLength { get; set; }
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>Internet Control Message Protocol (ICMP) types</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of protocol flags that need to be matched.",
+        Description = @"Internet Control Message Protocol (ICMP) types",
+        SerializedName = @"icmpTypes",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> IcmpConfigurationIcmpType { get; set; }
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg",
         SerializedName = @"flags",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> PortConditionFlag { get; set; }
@@ -218,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Layer4 protocol type that needs to be matched.",
         SerializedName = @"layer4Protocol",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string PortConditionLayer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -252,8 +294,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"Port type that needs to be matched.",
         SerializedName = @"portType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortConditionPortType { get; set; }
+        /// <summary>Protocol neighbors that need to be matched.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Protocol neighbors that need to be matched.",
+        SerializedName = @"protocolNeighbors",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ProtocolNeighbor { get; set; }
         /// <summary>List of TTL [Time To Live] values that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
@@ -279,20 +332,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         System.Collections.Generic.List<string> Fragment { get; set; }
         /// <summary>List of IP Lengths that need to be matched.</summary>
         System.Collections.Generic.List<string> IPLength { get; set; }
+        /// <summary>Internet Control Message Protocol (ICMP) configuration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIcmpConfigurationProperties IcmpConfiguration { get; set; }
+        /// <summary>Internet Control Message Protocol (ICMP) types</summary>
+        System.Collections.Generic.List<string> IcmpConfigurationIcmpType { get; set; }
         /// <summary>Defines the port condition that needs to be matched.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListPortCondition PortCondition { get; set; }
-        /// <summary>List of protocol flags that need to be matched.</summary>
+        /// <summary>
+        /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible
+        /// TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+        /// </summary>
         System.Collections.Generic.List<string> PortConditionFlag { get; set; }
         /// <summary>Layer4 protocol type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("TCP", "UDP", "SCTP")]
         string PortConditionLayer4Protocol { get; set; }
         /// <summary>List of the Ports that need to be matched.</summary>
         System.Collections.Generic.List<string> PortConditionPort { get; set; }
         /// <summary>List of the port Group Names that need to be matched.</summary>
         System.Collections.Generic.List<string> PortConditionPortGroupName { get; set; }
         /// <summary>Port type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourcePort", "DestinationPort", "Bidirectional")]
         string PortConditionPortType { get; set; }
+        /// <summary>Protocol neighbors that need to be matched.</summary>
+        System.Collections.Generic.List<string> ProtocolNeighbor { get; set; }
         /// <summary>List of TTL [Time To Live] values that need to be matched.</summary>
         System.Collections.Generic.List<string> TtlValue { get; set; }
 

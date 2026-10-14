@@ -13,6 +13,33 @@ namespace Microsoft.Azure.Management.Network
     public static partial class WebCategoriesOperationsExtensions
     {
         /// <summary>
+        /// Gets all the Azure Web Categories in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AzureWebCategory> ListBySubscription(this IWebCategoriesOperations operations)
+        {
+                return ((IWebCategoriesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the Azure Web Categories in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureWebCategory>> ListBySubscriptionAsync(this IWebCategoriesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the specified Azure Web Category.
         /// </summary>
         /// <param name='operations'>
@@ -47,33 +74,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<AzureWebCategory> GetAsync(this IWebCategoriesOperations operations, string name, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(name, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the Azure Web Categories in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<AzureWebCategory> ListBySubscription(this IWebCategoriesOperations operations)
-        {
-                return ((IWebCategoriesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the Azure Web Categories in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureWebCategory>> ListBySubscriptionAsync(this IWebCategoriesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

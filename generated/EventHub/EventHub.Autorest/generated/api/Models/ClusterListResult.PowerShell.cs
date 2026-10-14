@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The response of the List Event Hubs Clusters operation.</summary>
+    /// <summary>The response of a Cluster list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ClusterListResultTypeConverter))]
     public partial class ClusterListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The response of the List Event Hubs Clusters operation.
+    /// The response of a Cluster list operation.
     [System.ComponentModel.TypeConverter(typeof(ClusterListResultTypeConverter))]
     public partial interface IClusterListResult
 

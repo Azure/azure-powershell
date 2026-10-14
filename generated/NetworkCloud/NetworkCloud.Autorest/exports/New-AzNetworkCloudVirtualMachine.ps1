@@ -46,12 +46,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 NETWORKATTACHMENT <INetworkAttachment[]>: The list of network attachments to the virtual machine.
-  AttachedNetworkId <String>: The resource ID of the associated network attached to the virtual machine.         It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
-  IPAllocationMethod <String>: The IP allocation mechanism for the virtual machine.         Dynamic and Static are only valid for l3Network which may also specify Disabled.         Otherwise, Disabled is the only permitted value.
-  [DefaultGateway <String>]: The indicator of whether this is the default gateway.         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
-  [Ipv4Address <String>]: The IPv4 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.          If IPAllocationMethod is:         Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.         Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.         Disabled - this field will be empty.
-  [Ipv6Address <String>]: The IPv6 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.          If IPAllocationMethod is:         Static - this field must contain an IPv6 address range from within the range specified in the attached network.         Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.         Disabled - this field will be empty.
-  [Name <String>]: The associated network's interface name.         If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.         If the user doesn’t specify this value, the default interface name of the network resource will be used.         For a CloudServicesNetwork resource, this name will be ignored.
+  AttachedNetworkId <String>: The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+  IPAllocationMethod <String>: The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value.
+  [DefaultGateway <String>]: The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
+  [Ipv4Address <String>]: The IPv4 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.  If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network. Disabled - this field will be empty.
+  [Ipv6Address <String>]: The IPv6 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.  If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty.
+  [Name <String>]: The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
 
 PLACEMENTHINT <IVirtualMachinePlacementHint[]>: The scheduling hints for the virtual machine.
   HintType <String>: The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
@@ -114,14 +114,17 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The resource ID of the associated network attached to the virtual machine.It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+    # The resource ID of the associated network attached to the virtual machine.
+    # It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
     ${CloudServiceNetworkAttachmentAttachedNetworkId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify Disabled.Otherwise, Disabled is the only permitted value.
+    # The IP allocation mechanism for the virtual machine.
+    # Dynamic and Static are only valid for l3Network which may also specify Disabled.
+    # Otherwise, Disabled is the only permitted value.
     ${CloudServiceNetworkAttachmentIPAllocationMethod},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -180,25 +183,37 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The indicator of whether this is the default gateway.Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
+    # The indicator of whether this is the default gateway.
+    # Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
     ${CloudServiceNetworkAttachmentDefaultGateway},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The IPv4 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.If IPAllocationMethod is:Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.Disabled - this field will be empty.
+    # The IPv4 address of the virtual machine.
+    # This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
+    # If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
+    # Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
+    # Disabled - this field will be empty.
     ${CloudServiceNetworkAttachmentIpv4Address},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The IPv6 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.If IPAllocationMethod is:Static - this field must contain an IPv6 address range from within the range specified in the attached network.Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.Disabled - this field will be empty.
+    # The IPv6 address of the virtual machine.
+    # This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
+    # If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network.
+    # Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
+    # Disabled - this field will be empty.
     ${CloudServiceNetworkAttachmentIpv6Address},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The associated network's interface name.If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.If the user doesn’t specify this value, the default interface name of the network resource will be used.For a CloudServicesNetwork resource, this name will be ignored.
+    # The associated network's interface name.
+    # If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
+    # If the user doesn’t specify this value, the default interface name of the network resource will be used.
+    # For a CloudServicesNetwork resource, this name will be ignored.
     ${CloudServiceNetworkAttachmentName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -212,6 +227,12 @@ param(
     [System.String]
     # The extended location type, for example, CustomLocation.
     ${ConsoleExtendedLocationType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
@@ -231,8 +252,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # The Base64 encoded cloud-init network data.
+    # Field Deprecated: The Base64 encoded cloud-init network data.
+    # The networkDataContent property will be used in preference to this property.
     ${NetworkData},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The Base64 encoded cloud-init network data.
+    ${NetworkDataContent},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Ephemeral", "Persistent")]
@@ -278,10 +306,25 @@ param(
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Field Deprecated: The Base64 encoded cloud-init user data.
+    # The userDataContent property will be used in preference to this property.
+    ${UserData},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Base64 encoded cloud-init user data.
-    ${UserData},
+    ${UserDataContent},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("T1", "T2", "T3")]
@@ -402,8 +445,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

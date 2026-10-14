@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'CreateScenarioTestOnlineEndpo
 Describe 'CreateScenarioTestOnlineEndpoint' {
     It 'CreateWorkspaceOnlineEndpoint' {
         {
-            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.onlineEndpoint -Location eastus -AuthMode 'AADToken' -IdentityType 'SystemAssigned'
+            New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.onlineEndpoint -Location $env.manualRegion -AuthMode 'AADToken' -EnableSystemAssignedIdentity
         } | Should -Not -Throw
     }
 
@@ -49,7 +49,7 @@ Describe 'CreateScenarioTestOnlineEndpoint' {
             $envOnline = Get-AzMLWorkspaceEnvironmentVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name "openmpi4_1_0-ubuntu22_04" -Version 1
             $modelOnline = Get-AzMLWorkspaceModelVersion -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name work-online-model -Version 1
             
-            New-AzMLWorkspaceOnlineDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -EndpointName $env.onlineEndpoint -Name $env.onlineDeployment -Location $env.region -EndpointComputeType 'Managed' -CodeId $codeidOnline -CodeScoringScript "score.py" -EnvironmentId $envOnline.Id -Model $modelOnline.Id -InstanceType "Standard_F4s_v2" -SkuName "Default" -SkuCapacity 3
+            New-AzMLWorkspaceOnlineDeployment -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -EndpointName $env.onlineEndpoint -Name $env.onlineDeployment -Location $env.manualRegion -EndpointComputeType 'Managed' -CodeId $codeidOnline -CodeScoringScript "score.py" -EnvironmentId $envOnline.Id -Model $modelOnline.Id -InstanceType "Standard_F4s_v2" -SkuName "Default" -SkuCapacity 3
         } | Should -Not -Throw
     }
 

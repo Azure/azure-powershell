@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="customNetworkInterfaceName">The custom name of the network interface attached to the private endpoint.
         /// </param>
-        public PrivateEndpointProperties(Subnet subnet = default(Subnet), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string))
+
+        /// <param name="billingSku">The billing sku of the private endpoint.
+        /// Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;</param>
+        public PrivateEndpointProperties(Subnet subnet = default(Subnet), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), string ipVersionType = default(string), System.Collections.Generic.IList<PrivateLinkServiceConnection> privateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<PrivateLinkServiceConnection> manualPrivateLinkServiceConnections = default(System.Collections.Generic.IList<PrivateLinkServiceConnection>), System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat> customDnsConfigs = default(System.Collections.Generic.IList<CustomDnsConfigPropertiesFormat>), System.Collections.Generic.IList<ApplicationSecurityGroup> applicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<PrivateEndpointIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateEndpointIPConfiguration>), string customNetworkInterfaceName = default(string), string billingSku = default(string))
 
         {
             this.Subnet = subnet;
@@ -73,6 +76,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ApplicationSecurityGroups = applicationSecurityGroups;
             this.IPConfigurations = ipConfigurations;
             this.CustomNetworkInterfaceName = customNetworkInterfaceName;
+            this.BillingSku = billingSku;
             CustomInit();
         }
 
@@ -150,5 +154,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customNetworkInterfaceName")]
         public string CustomNetworkInterfaceName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the billing sku of the private endpoint. Possible values include: &#39;PayAsYouGo&#39;, &#39;Fixed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "billingSku")]
+        public string BillingSku {get; set; }
     }
 }

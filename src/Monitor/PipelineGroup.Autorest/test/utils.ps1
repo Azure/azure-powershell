@@ -30,6 +30,14 @@ function Start-TestSleep {
     }
 }
 
+function Get-RequiredEnv([string]$Name) {
+    $val = [Environment]::GetEnvironmentVariable($Name)
+    if ([string]::IsNullOrWhiteSpace($val)) {
+        throw "Required environment variable '$Name' is not set."
+    }
+    return $val
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -43,10 +51,11 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.pipelineGroupName = "testgroup"
-    $env.resourceGroup = "kubetest"
-    $env.location = "centraluseuap"
-    $env.extLocName = "/subscriptions/b09d4a2d-699b-4c76-8c7a-d97165a77a3b/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/customloctest"
+
+    $env.pipelineGroupName = Get-RequiredEnv 'PIPELINEGROUP_NAME'
+    $env.resourceGroup     = Get-RequiredEnv 'RESOURCE_GROUP'
+    $env.location          = Get-RequiredEnv 'LOCATION'
+    $env.extLocName        = Get-RequiredEnv 'EXTENDED_LOCATION_RESOURCE_ID'
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

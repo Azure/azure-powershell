@@ -13,194 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualWansOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the details of a VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being retrieved.
-        /// </param>
-        public static VirtualWAN Get(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
-        {
-                return ((IVirtualWansOperations)operations).GetAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being retrieved.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWAN> GetAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
-        /// VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being created or updated.
-        /// </param>
-        public static VirtualWAN CreateOrUpdate(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, VirtualWAN WANParameters)
-        {
-                return ((IVirtualWansOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualWANName, WANParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
-        /// VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being created or updated.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWAN> CreateOrUpdateAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, VirtualWAN WANParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualWANName, WANParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates a VirtualWAN tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being updated.
-        /// </param>
-        public static VirtualWAN UpdateTags(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject WANParameters)
-        {
-                return ((IVirtualWansOperations)operations).UpdateTagsAsync(resourceGroupName, virtualWANName, WANParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a VirtualWAN tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being updated.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualWAN> UpdateTagsAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject WANParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualWANName, WANParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being deleted.
-        /// </param>
-        public static void Delete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
-        {
-                ((IVirtualWansOperations)operations).DeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a VirtualWAN.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being deleted.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the VirtualWANs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualWAN> ListByResourceGroup(this IVirtualWansOperations operations, string resourceGroupName)
-        {
-                return ((IVirtualWansOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the VirtualWANs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualWAN>> ListByResourceGroupAsync(this IVirtualWansOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the VirtualWANs in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -228,6 +40,78 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Lists all the VirtualWANs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VirtualWAN> ListByResourceGroup(this IVirtualWansOperations operations, string resourceGroupName)
+        {
+                return ((IVirtualWansOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the VirtualWANs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualWAN>> ListByResourceGroupAsync(this IVirtualWansOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        public static VirtualWAN Get(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
+        {
+                return ((IVirtualWansOperations)operations).GetAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualWAN> GetAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
         /// VirtualWAN.
         /// </summary>
@@ -235,10 +119,126 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being created or updated.
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        public static VirtualWAN CreateOrUpdate(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, VirtualWAN WANParameters)
+        {
+                return ((IVirtualWansOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualWANName, WANParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
+        /// VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualWAN> CreateOrUpdateAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, VirtualWAN WANParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualWANName, WANParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a VirtualWAN tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        public static VirtualWAN UpdateTags(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject WANParameters)
+        {
+                return ((IVirtualWansOperations)operations).UpdateTagsAsync(resourceGroupName, virtualWANName, WANParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a VirtualWAN tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualWAN> UpdateTagsAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject WANParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualWANName, WANParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        public static void Delete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
+        {
+                ((IVirtualWansOperations)operations).DeleteAsync(resourceGroupName, virtualWANName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
+        /// VirtualWAN.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualWANName'>
+        /// The name of the VirtualWAN being retrieved.
         /// </param>
         public static VirtualWAN BeginCreateOrUpdate(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, VirtualWAN WANParameters)
         {
@@ -253,10 +253,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being created or updated.
+        /// The name of the VirtualWAN being retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -275,10 +275,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being deleted.
+        /// The name of the VirtualWAN being retrieved.
         /// </param>
         public static void BeginDelete(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName)
         {
@@ -292,10 +292,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualWan.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN being deleted.
+        /// The name of the VirtualWAN being retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -303,39 +303,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualWANName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the VirtualWANs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualWAN> ListByResourceGroupNext(this IVirtualWansOperations operations, string nextPageLink)
-        {
-                return ((IVirtualWansOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the VirtualWANs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualWAN>> ListByResourceGroupNextAsync(this IVirtualWansOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Lists all the VirtualWANs in a subscription.
@@ -366,6 +333,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualWAN>> ListNextAsync(this IVirtualWansOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the VirtualWANs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VirtualWAN> ListByResourceGroupNext(this IVirtualWansOperations operations, string nextPageLink)
+        {
+                return ((IVirtualWansOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the VirtualWANs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualWAN>> ListByResourceGroupNextAsync(this IVirtualWansOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

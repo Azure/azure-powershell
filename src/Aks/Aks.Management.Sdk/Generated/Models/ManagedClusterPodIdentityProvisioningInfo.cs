@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Pod identity provisioning information.
+    /// </summary>
     public partial class ManagedClusterPodIdentityProvisioningInfo
     {
         /// <summary>

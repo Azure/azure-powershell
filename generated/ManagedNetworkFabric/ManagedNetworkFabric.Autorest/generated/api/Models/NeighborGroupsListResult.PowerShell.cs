@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Neighbor Group.</summary>
+    /// <summary>Paged collection of NeighborGroup items</summary>
     [System.ComponentModel.TypeConverter(typeof(NeighborGroupsListResultTypeConverter))]
     public partial class NeighborGroupsListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Neighbor Group.
+    /// Paged collection of NeighborGroup items
     [System.ComponentModel.TypeConverter(typeof(NeighborGroupsListResultTypeConverter))]
     public partial interface INeighborGroupsListResult
 

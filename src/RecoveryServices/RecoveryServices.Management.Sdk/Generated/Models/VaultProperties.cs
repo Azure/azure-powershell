@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// <param name="monitoringSettings">Monitoring Settings of the vault
         /// </param>
 
+        /// <param name="costManagementSettings">Cost Management Settings of the vault
+        /// </param>
+
         /// <param name="restoreSettings">Restore Settings of the vault
         /// </param>
 
@@ -78,7 +81,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
         /// </param>
-        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="regionOfChoiceSettings">Region of choice settings for this vault.
+        /// </param>
+        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), CostManagementSettings costManagementSettings = default(CostManagementSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), RegionOfChoiceSettings regionOfChoiceSettings = default(RegionOfChoiceSettings))
 
         {
             this.ProvisioningState = provisioningState;
@@ -92,12 +98,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             this.BackupStorageVersion = backupStorageVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.MonitoringSettings = monitoringSettings;
+            this.CostManagementSettings = costManagementSettings;
             this.RestoreSettings = restoreSettings;
             this.RedundancySettings = redundancySettings;
             this.SecuritySettings = securitySettings;
             this.SecureScore = secureScore;
             this.BcdrSecurityLevel = bcdrSecurityLevel;
             this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
+            this.RegionOfChoiceSettings = regionOfChoiceSettings;
             CustomInit();
         }
 
@@ -176,6 +184,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         public MonitoringSettings MonitoringSettings {get; set; }
 
         /// <summary>
+        /// Gets or sets cost Management Settings of the vault
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "costManagementSettings")]
+        public CostManagementSettings CostManagementSettings {get; set; }
+
+        /// <summary>
         /// Gets or sets restore Settings of the vault
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restoreSettings")]
@@ -212,5 +226,42 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuardOperationRequests")]
         public System.Collections.Generic.IList<string> ResourceGuardOperationRequests {get; set; }
+
+        /// <summary>
+        /// Gets or sets region of choice settings for this vault.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "regionOfChoiceSettings")]
+        public RegionOfChoiceSettings RegionOfChoiceSettings {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            if (this.SecuritySettings != null)
+            {
+                this.SecuritySettings.Validate();
+            }
+
+
+
+
+        }
     }
 }

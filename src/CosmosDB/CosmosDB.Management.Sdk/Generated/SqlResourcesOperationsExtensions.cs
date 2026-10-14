@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlDatabaseGetResults> ListSqlDatabases(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults> ListSqlDatabases(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((ISqlResourcesOperations)operations).ListSqlDatabasesAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlDatabaseGetResults>> ListSqlDatabasesAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults>> ListSqlDatabasesAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSqlDatabasesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -189,8 +189,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
-        /// DB database account with the provided name.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -204,14 +204,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static ThroughputSettingsGetResults GetSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        public static Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults> ListClientEncryptionKeys(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((ISqlResourcesOperations)operations).GetSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).ListClientEncryptionKeysAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
-        /// DB database account with the provided name.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -228,15 +228,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults>> ListClientEncryptionKeysAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListClientEncryptionKeysWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -250,13 +251,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static ThroughputSettingsGetResults UpdateSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults GetClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName)
         {
-                return ((ISqlResourcesOperations)operations).UpdateSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).GetClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -269,19 +274,23 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> GetClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -295,13 +304,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static ThroughputSettingsGetResults MigrateSqlDatabaseToAutoscale(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults CreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
         {
-                return ((ISqlResourcesOperations)operations).MigrateSqlDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).CreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -314,58 +327,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateSqlDatabaseToAutoscaleAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> CreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.MigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults MigrateSqlDatabaseToManualThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((ISqlResourcesOperations)operations).MigrateSqlDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateSqlDatabaseToManualThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.MigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -385,7 +356,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlContainerGetResults> ListSqlContainers(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        public static Microsoft.Rest.Azure.IPage<SqlContainerGetResults> ListSqlContainers(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
                 return ((ISqlResourcesOperations)operations).ListSqlContainersAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
@@ -408,7 +379,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlContainerGetResults>> ListSqlContainersAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlContainerGetResults>> ListSqlContainersAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSqlContainersWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -564,6 +535,283 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlContainerHeaders> DeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static BackupInformation RetrieveContinuousBackupInformation(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location)
+        {
+                return ((ISqlResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, containerName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults> ListSqlStoredProcedures(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlStoredProceduresAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults>> ListSqlStoredProceduresAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlStoredProceduresWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        public static SqlStoredProcedureGetResults GetSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
+        {
+                return ((ISqlResourcesOperations)operations).GetSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> GetSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        public static SqlStoredProcedureGetResults CreateUpdateSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters)
+        {
+                return ((ISqlResourcesOperations)operations).CreateUpdateSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> CreateUpdateSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        public static SqlResourcesDeleteSqlStoredProcedureHeaders DeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
+        {
+                return ((ISqlResourcesOperations)operations).DeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlStoredProcedureHeaders> DeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -779,8 +1027,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -794,14 +1041,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults> ListClientEncryptionKeys(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlTriggerGetResults> ListSqlTriggers(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
         {
-                return ((ISqlResourcesOperations)operations).ListClientEncryptionKeysAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).ListSqlTriggersAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -814,20 +1063,22 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults>> ListClientEncryptionKeysAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlTriggerGetResults>> ListSqlTriggersAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListClientEncryptionKeysWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSqlTriggersWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -841,17 +1092,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
-        public static ClientEncryptionKeyGetResults GetClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName)
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
+        /// </param>
+        public static SqlTriggerGetResults GetSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
         {
-                return ((ISqlResourcesOperations)operations).GetClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).GetSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -865,22 +1118,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> GetClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> GetSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -894,17 +1149,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
-        public static ClientEncryptionKeyGetResults CreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
+        /// </param>
+        public static SqlTriggerGetResults CreateUpdateSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters)
         {
-                return ((ISqlResourcesOperations)operations).CreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).CreateUpdateSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -918,22 +1175,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> CreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> CreateUpdateSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateUpdateSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -950,14 +1209,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlStoredProcedureGetResults> ListSqlStoredProcedures(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
+        /// </param>
+        public static SqlResourcesDeleteSqlTriggerHeaders DeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
         {
-                return ((ISqlResourcesOperations)operations).ListSqlStoredProceduresAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).DeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -973,186 +1234,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='containerName'>
         /// Cosmos DB container name.
+        /// </param>
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlStoredProcedureGetResults>> ListSqlStoredProceduresAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlTriggerHeaders> DeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSqlStoredProceduresWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        public static SqlStoredProcedureGetResults GetSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
-        {
-                return ((ISqlResourcesOperations)operations).GetSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> GetSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        public static SqlStoredProcedureGetResults CreateUpdateSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters)
-        {
-                return ((ISqlResourcesOperations)operations).CreateUpdateSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> CreateUpdateSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        public static SqlResourcesDeleteSqlStoredProcedureHeaders DeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
-        {
-                return ((ISqlResourcesOperations)operations).DeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlStoredProcedureHeaders> DeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -1176,7 +1267,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlUserDefinedFunctionGetResults> ListSqlUserDefinedFunctions(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+        public static Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults> ListSqlUserDefinedFunctions(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
         {
                 return ((ISqlResourcesOperations)operations).ListSqlUserDefinedFunctionsAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
         }
@@ -1203,7 +1294,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlUserDefinedFunctionGetResults>> ListSqlUserDefinedFunctionsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults>> ListSqlUserDefinedFunctionsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSqlUserDefinedFunctionsWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1384,7 +1475,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1398,16 +1490,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlTriggerGetResults> ListSqlTriggers(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+        public static ThroughputSettingsGetResults GetSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((ISqlResourcesOperations)operations).ListSqlTriggersAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).GetSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1421,21 +1511,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlTriggerGetResults>> ListSqlTriggersAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> GetSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSqlTriggersWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1449,19 +1536,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        public static SqlTriggerGetResults GetSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
+        public static ThroughputSettingsGetResults UpdateSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).GetSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).UpdateSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1475,24 +1556,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> GetSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> UpdateSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1506,19 +1581,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        public static SqlTriggerGetResults CreateUpdateSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters)
+        public static ThroughputSettingsGetResults MigrateSqlDatabaseToAutoscale(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((ISqlResourcesOperations)operations).CreateUpdateSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).MigrateSqlDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1532,24 +1601,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> CreateUpdateSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateSqlDatabaseToAutoscaleAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateUpdateSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.MigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1563,19 +1626,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        public static SqlResourcesDeleteSqlTriggerHeaders DeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
+        public static ThroughputSettingsGetResults MigrateSqlDatabaseToManualThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((ISqlResourcesOperations)operations).DeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).MigrateSqlDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1589,328 +1646,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlTriggerHeaders> DeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> MigrateSqlDatabaseToManualThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
-        /// with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static SqlRoleDefinitionGetResults GetSqlRoleDefinition(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName)
-        {
-                return ((ISqlResourcesOperations)operations).GetSqlRoleDefinitionAsync(roleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
-        /// with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> GetSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetSqlRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.MigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
-        }
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static SqlRoleDefinitionGetResults CreateUpdateSqlRoleDefinition(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters)
-        {
-                return ((ISqlResourcesOperations)operations).CreateUpdateSqlRoleDefinitionAsync(roleDefinitionId, resourceGroupName, accountName, createUpdateSqlRoleDefinitionParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> CreateUpdateSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, createUpdateSqlRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static void DeleteSqlRoleDefinition(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName)
-        {
-                ((ISqlResourcesOperations)operations).DeleteSqlRoleDefinitionAsync(roleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteSqlRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlRoleDefinitionGetResults> ListSqlRoleDefinitions(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
-        {
-                return ((ISqlResourcesOperations)operations).ListSqlRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlRoleDefinitionGetResults>> ListSqlRoleDefinitionsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListSqlRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
-        /// with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static SqlRoleAssignmentGetResults GetSqlRoleAssignment(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName)
-        {
-                return ((ISqlResourcesOperations)operations).GetSqlRoleAssignmentAsync(roleAssignmentId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
-        /// with the given Id.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> GetSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetSqlRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static SqlRoleAssignmentGetResults CreateUpdateSqlRoleAssignment(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters)
-        {
-                return ((ISqlResourcesOperations)operations).CreateUpdateSqlRoleAssignmentAsync(roleAssignmentId, resourceGroupName, accountName, createUpdateSqlRoleAssignmentParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> CreateUpdateSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, createUpdateSqlRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static void DeleteSqlRoleAssignment(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName)
-        {
-                ((ISqlResourcesOperations)operations).DeleteSqlRoleAssignmentAsync(roleAssignmentId, resourceGroupName, accountName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteSqlRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
@@ -1924,7 +1668,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<SqlRoleAssignmentGetResults> ListSqlRoleAssignments(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults> ListSqlRoleAssignments(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((ISqlResourcesOperations)operations).ListSqlRoleAssignmentsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -1944,7 +1688,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<SqlRoleAssignmentGetResults>> ListSqlRoleAssignmentsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults>> ListSqlRoleAssignmentsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSqlRoleAssignmentsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1952,7 +1696,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
+        /// with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1963,19 +1708,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        public static BackupInformation RetrieveContinuousBackupInformation(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location)
+        public static SqlRoleAssignmentGetResults GetSqlRoleAssignment(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
         {
-                return ((ISqlResourcesOperations)operations).RetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, containerName, location).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).GetSqlRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
+        /// with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1986,20 +1729,283 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> RetrieveContinuousBackupInformationAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> GetSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.RetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetSqlRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static SqlRoleAssignmentGetResults CreateUpdateSqlRoleAssignment(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters)
+        {
+                return ((ISqlResourcesOperations)operations).CreateUpdateSqlRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateSqlRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> CreateUpdateSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateSqlRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static SqlResourcesDeleteSqlRoleAssignmentHeaders DeleteSqlRoleAssignment(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ISqlResourcesOperations)operations).DeleteSqlRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlRoleAssignmentHeaders> DeleteSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteSqlRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults> ListSqlRoleDefinitions(this ISqlResourcesOperations operations, string resourceGroupName, string accountName)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlRoleDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults>> ListSqlRoleDefinitionsAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlRoleDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static SqlRoleDefinitionGetResults GetSqlRoleDefinition(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ISqlResourcesOperations)operations).GetSqlRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> GetSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static SqlRoleDefinitionGetResults CreateUpdateSqlRoleDefinition(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters)
+        {
+                return ((ISqlResourcesOperations)operations).CreateUpdateSqlRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateSqlRoleDefinitionParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> CreateUpdateSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateSqlRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static SqlResourcesDeleteSqlRoleDefinitionHeaders DeleteSqlRoleDefinition(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
+        {
+                return ((ISqlResourcesOperations)operations).DeleteSqlRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlRoleDefinitionHeaders> DeleteSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -2093,7 +2099,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2107,13 +2114,17 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        public static ThroughputSettingsGetResults BeginUpdateSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        public static ClientEncryptionKeyGetResults BeginCreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
         {
-                return ((ISqlResourcesOperations)operations).BeginUpdateSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2126,103 +2137,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> BeginCreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateSqlDatabaseToAutoscale(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((ISqlResourcesOperations)operations).BeginMigrateSqlDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateSqlDatabaseToAutoscaleAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginMigrateSqlDatabaseToManualThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((ISqlResourcesOperations)operations).BeginMigrateSqlDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateSqlDatabaseToManualThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginMigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -2325,6 +2249,171 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlContainerHeaders> BeginDeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        public static BackupInformation BeginRetrieveContinuousBackupInformation(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location)
+        {
+                return ((ISqlResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, containerName, location).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        public static SqlStoredProcedureGetResults BeginCreateUpdateSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> BeginCreateUpdateSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        public static SqlResourcesDeleteSqlStoredProcedureHeaders BeginDeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
+        {
+                return ((ISqlResourcesOperations)operations).BeginDeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlStoredProcedureHeaders> BeginDeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -2487,8 +2576,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2502,17 +2590,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
         /// </param>
-        public static ClientEncryptionKeyGetResults BeginCreateUpdateClientEncryptionKey(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters)
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
+        /// </param>
+        public static SqlTriggerGetResults BeginCreateUpdateSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateClientEncryptionKeyAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2526,21 +2616,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClientEncryptionKeyGetResults> BeginCreateUpdateClientEncryptionKeyAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> BeginCreateUpdateSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, clientEncryptionKeyName, createUpdateClientEncryptionKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateUpdateSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2557,16 +2650,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
-        public static SqlStoredProcedureGetResults BeginCreateUpdateSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters)
+        public static SqlResourcesDeleteSqlTriggerHeaders BeginDeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginDeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2583,72 +2676,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlStoredProcedureGetResults> BeginCreateUpdateSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlTriggerHeaders> BeginDeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, createUpdateSqlStoredProcedureParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        public static SqlResourcesDeleteSqlStoredProcedureHeaders BeginDeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
-        {
-                return ((ISqlResourcesOperations)operations).BeginDeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlStoredProcedureHeaders> BeginDeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -2768,7 +2804,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2782,19 +2818,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        public static SqlTriggerGetResults BeginCreateUpdateSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters)
+        public static ThroughputSettingsGetResults BeginUpdateSqlDatabaseThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginUpdateSqlDatabaseThroughputAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2807,25 +2837,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlTriggerGetResults> BeginCreateUpdateSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginUpdateSqlDatabaseThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, createUpdateSqlTriggerParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, updateThroughputParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2839,19 +2863,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        public static SqlResourcesDeleteSqlTriggerHeaders BeginDeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
+        public static ThroughputSettingsGetResults BeginMigrateSqlDatabaseToAutoscale(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
         {
-                return ((ISqlResourcesOperations)operations).BeginDeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginMigrateSqlDatabaseToAutoscaleAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -2864,19 +2882,148 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlTriggerHeaders> BeginDeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateSqlDatabaseToAutoscaleAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginMigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        public static ThroughputSettingsGetResults BeginMigrateSqlDatabaseToManualThroughput(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+        {
+                return ((ISqlResourcesOperations)operations).BeginMigrateSqlDatabaseToManualThroughputAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ThroughputSettingsGetResults> BeginMigrateSqlDatabaseToManualThroughputAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginMigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static SqlRoleAssignmentGetResults BeginCreateUpdateSqlRoleAssignment(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters)
+        {
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateSqlRoleAssignmentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> BeginCreateUpdateSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, createUpdateSqlRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        public static SqlResourcesDeleteSqlRoleAssignmentHeaders BeginDeleteSqlRoleAssignment(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId)
+        {
+                return ((ISqlResourcesOperations)operations).BeginDeleteSqlRoleAssignmentAsync(resourceGroupName, accountName, roleAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlRoleAssignmentHeaders> BeginDeleteSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteSqlRoleAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, roleAssignmentId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -2887,18 +3034,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static SqlRoleDefinitionGetResults BeginCreateUpdateSqlRoleDefinition(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters)
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static SqlRoleDefinitionGetResults BeginCreateUpdateSqlRoleDefinition(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlRoleDefinitionAsync(roleDefinitionId, resourceGroupName, accountName, createUpdateSqlRoleDefinitionParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateSqlRoleDefinitionParameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2907,21 +3054,21 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> BeginCreateUpdateSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlRoleDefinitionGetResults> BeginCreateUpdateSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, createUpdateSqlRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, createUpdateSqlRoleDefinitionParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -2932,18 +3079,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static void BeginDeleteSqlRoleDefinition(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName)
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        public static SqlResourcesDeleteSqlRoleDefinitionHeaders BeginDeleteSqlRoleDefinition(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId)
         {
-                ((ISqlResourcesOperations)operations).BeginDeleteSqlRoleDefinitionAsync(roleDefinitionId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).BeginDeleteSqlRoleDefinitionAsync(resourceGroupName, accountName, roleDefinitionId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -2952,156 +3099,291 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
         /// <param name='roleDefinitionId'>
         /// The GUID for the Role Definition.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string roleDefinitionId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SqlResourcesDeleteSqlRoleDefinitionHeaders> BeginDeleteSqlRoleDefinitionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string roleDefinitionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteSqlRoleDefinitionWithHttpMessagesAsync(roleDefinitionId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteSqlRoleDefinitionWithHttpMessagesAsync(resourceGroupName, accountName, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// Lists the SQL databases under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static SqlRoleAssignmentGetResults BeginCreateUpdateSqlRoleAssignment(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters)
+        public static Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults> ListSqlDatabasesNext(this ISqlResourcesOperations operations, string nextPageLink)
         {
-                return ((ISqlResourcesOperations)operations).BeginCreateUpdateSqlRoleAssignmentAsync(roleAssignmentId, resourceGroupName, accountName, createUpdateSqlRoleAssignmentParameters).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).ListSqlDatabasesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
+        /// Lists the SQL databases under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<SqlRoleAssignmentGetResults> BeginCreateUpdateSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults>> ListSqlDatabasesNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, createUpdateSqlRoleAssignmentParameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSqlDatabasesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        public static void BeginDeleteSqlRoleAssignment(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults> ListClientEncryptionKeysNext(this ISqlResourcesOperations operations, string nextPageLink)
         {
-                ((ISqlResourcesOperations)operations).BeginDeleteSqlRoleAssignmentAsync(roleAssignmentId, resourceGroupName, accountName).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).ListClientEncryptionKeysNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteSqlRoleAssignmentAsync(this ISqlResourcesOperations operations, string roleAssignmentId, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults>> ListClientEncryptionKeysNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteSqlRoleAssignmentWithHttpMessagesAsync(roleAssignmentId, resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListClientEncryptionKeysNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Lists the SQL container under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        public static BackupInformation BeginRetrieveContinuousBackupInformation(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location)
+        public static Microsoft.Rest.Azure.IPage<SqlContainerGetResults> ListSqlContainersNext(this ISqlResourcesOperations operations, string nextPageLink)
         {
-                return ((ISqlResourcesOperations)operations).BeginRetrieveContinuousBackupInformationAsync(resourceGroupName, accountName, databaseName, containerName, location).GetAwaiter().GetResult();
+                return ((ISqlResourcesOperations)operations).ListSqlContainersNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Lists the SQL container under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupInformation> BeginRetrieveContinuousBackupInformationAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlContainerGetResults>> ListSqlContainersNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, location, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListSqlContainersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults> ListSqlStoredProceduresNext(this ISqlResourcesOperations operations, string nextPageLink)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlStoredProceduresNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults>> ListSqlStoredProceduresNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlStoredProceduresNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlTriggerGetResults> ListSqlTriggersNext(this ISqlResourcesOperations operations, string nextPageLink)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlTriggersNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlTriggerGetResults>> ListSqlTriggersNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlTriggersNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults> ListSqlUserDefinedFunctionsNext(this ISqlResourcesOperations operations, string nextPageLink)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlUserDefinedFunctionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults>> ListSqlUserDefinedFunctionsNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlUserDefinedFunctionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults> ListSqlRoleAssignmentsNext(this ISqlResourcesOperations operations, string nextPageLink)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlRoleAssignmentsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults>> ListSqlRoleAssignmentsNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlRoleAssignmentsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults> ListSqlRoleDefinitionsNext(this ISqlResourcesOperations operations, string nextPageLink)
+        {
+                return ((ISqlResourcesOperations)operations).ListSqlRoleDefinitionsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults>> ListSqlRoleDefinitionsNextAsync(this ISqlResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListSqlRoleDefinitionsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

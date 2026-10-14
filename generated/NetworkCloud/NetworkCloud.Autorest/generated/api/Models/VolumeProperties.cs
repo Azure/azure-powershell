@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="AllocatedSizeMiB" /> property.</summary>
+        private long? _allocatedSizeMiB;
+
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public long? AllocatedSizeMiB { get => this._allocatedSizeMiB; }
+
         /// <summary>Backing field for <see cref="AttachedTo" /> property.</summary>
         private System.Collections.Generic.List<string> _attachedTo;
 
@@ -35,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The descriptive message about the current detailed status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string DetailedStatusMessage { get => this._detailedStatusMessage; }
+
+        /// <summary>Internal Acessors for AllocatedSizeMiB</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal.AllocatedSizeMiB { get => this._allocatedSizeMiB; set { {_allocatedSizeMiB = value;} } }
 
         /// <summary>Internal Acessors for AttachedTo</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal.AttachedTo { get => this._attachedTo; set { {_attachedTo = value;} } }
@@ -66,11 +76,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         public string SerialNumber { get => this._serialNumber; }
 
         /// <summary>Backing field for <see cref="SizeMiB" /> property.</summary>
-        private long? _sizeMiB;
+        private long _sizeMiB;
 
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
-        public long? SizeMiB { get => this._sizeMiB; set => this._sizeMiB = value; }
+        public long SizeMiB { get => this._sizeMiB; set => this._sizeMiB = value; }
+
+        /// <summary>Backing field for <see cref="StorageApplianceId" /> property.</summary>
+        private string _storageApplianceId;
+
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public string StorageApplianceId { get => this._storageApplianceId; set => this._storageApplianceId = value; }
 
         /// <summary>Creates an new <see cref="VolumeProperties" /> instance.</summary>
         public VolumeProperties()
@@ -82,6 +99,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     public partial interface IVolumeProperties :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The allocated size of the volume in Mebibytes.",
+        SerializedName = @"allocatedSizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? AllocatedSizeMiB { get;  }
         /// <summary>
         /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
         /// </summary>
@@ -141,23 +169,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"serialNumber",
         PossibleTypes = new [] { typeof(string) })]
         string SerialNumber { get;  }
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long SizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
-        Description = @"The size of the allocation for this volume in Mebibytes.",
-        SerializedName = @"sizeMiB",
-        PossibleTypes = new [] { typeof(long) })]
-        long? SizeMiB { get; set; }
+        Update = true,
+        Description = @"The resource ID of the storage appliance that hosts the volume.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageApplianceId { get; set; }
 
     }
     /// VolumeProperties represents properties of the volume resource.
     internal partial interface IVolumePropertiesInternal
 
     {
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        long? AllocatedSizeMiB { get; set; }
         /// <summary>
         /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
         /// </summary>
@@ -172,8 +213,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string ProvisioningState { get; set; }
         /// <summary>The unique identifier of the volume.</summary>
         string SerialNumber { get; set; }
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
-        long? SizeMiB { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        long SizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
+        string StorageApplianceId { get; set; }
 
     }
 }

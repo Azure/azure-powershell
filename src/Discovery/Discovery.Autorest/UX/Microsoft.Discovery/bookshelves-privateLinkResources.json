@@ -1,0 +1,52 @@
+{
+  "resourceType": "bookshelves/privateLinkResources",
+  "apiVersion": "2026-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.discovery"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiscoveryBookshelfPrivateLinkResource",
+      "description": "Gets the specified private link resource for the bookshelf.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateLinkResources/{privateLinkResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.discovery/get-azdiscoverybookshelfprivatelinkresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-BookshelfName <String>",
+              "-PrivateLinkResourceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified private link resource for the bookshelf.",
+          "parameters": [
+            {
+              "name": "-BookshelfName",
+              "value": "[Path.bookshelfName]"
+            },
+            {
+              "name": "-PrivateLinkResourceName",
+              "value": "[Path.privateLinkResourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

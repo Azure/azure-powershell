@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="priority">Specifies the priority for the virtual machine. Minimum api-version:
         /// 2019-03-01
-        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;</param>
+        /// Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;</param>
 
         /// <param name="evictionPolicy">Specifies the eviction policy for the Azure Spot virtual machine and Azure
         /// Spot scale set. For Azure Spot virtual machines, both &#39;Deallocate&#39; and
@@ -155,6 +155,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// allocate virtual machine. Minimum api-version: 2021-04-01.
         /// </param>
 
+        /// <param name="interconnectBlockProfile">Specifies information about the Interconnect Block that is used to allocate
+        /// the Virtual Machine. Minimum api-version: 2026-03-01.
+        /// </param>
+
         /// <param name="applicationProfile">Specifies the gallery applications that should be made available to the
         /// VM/VMSS.
         /// </param>
@@ -162,7 +166,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachineProperties(HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?))
+
+        /// <param name="resiliencyProfile">Resiliency profile for the virtual machine.
+        /// </param>
+        public VirtualMachineProperties(HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile))
 
         {
             this.HardwareProfile = hardwareProfile;
@@ -190,8 +197,10 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ScheduledEventsProfile = scheduledEventsProfile;
             this.UserData = userData;
             this.CapacityReservation = capacityReservation;
+            this.InterconnectBlockProfile = interconnectBlockProfile;
             this.ApplicationProfile = applicationProfile;
             this.TimeCreated = timeCreated;
+            this.ResiliencyProfile = resiliencyProfile;
             CustomInit();
         }
 
@@ -296,7 +305,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the priority for the virtual machine. Minimum
-        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;
+        /// api-version: 2019-03-01 Possible values include: &#39;Regular&#39;, &#39;Low&#39;, &#39;Spot&#39;, &#39;SpotPlus&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "priority")]
         public string Priority {get; set; }
@@ -412,6 +421,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public CapacityReservationProfile CapacityReservation {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies information about the Interconnect Block that is
+        /// used to allocate the Virtual Machine. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectBlockProfile")]
+        public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the gallery applications that should be made
         /// available to the VM/VMSS.
         /// </summary>
@@ -424,6 +440,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeCreated")]
         public System.DateTime? TimeCreated {get; private set; }
+
+        /// <summary>
+        /// Gets or sets resiliency profile for the virtual machine.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resiliencyProfile")]
+        public ResiliencyProfile ResiliencyProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -438,6 +460,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
+
 
 
 

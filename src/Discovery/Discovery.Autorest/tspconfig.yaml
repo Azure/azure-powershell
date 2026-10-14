@@ -1,0 +1,43 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/Discovery/Discovery.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: "Az"
+    subject-prefix: "Discovery"
+    service-name: "Discovery"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    additionalDirectories:
+      - "specification/discovery/Discovery.Management.Shared"
+      - "specification/discovery/Discovery.Bookshelf.Management"
+      - "specification/discovery/Discovery.Supercomputer.Management"
+      - "specification/discovery/Discovery.Workspace.Management"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Hide the Operations endpoint from public interface
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to current context
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Remove unexpanded parameter sets for Create/Update
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|ViaJsonString|ViaJsonFilePath))
+        remove: true
+      # Remove ViaIdentity Create variants
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      # Remove Set-* cmdlets
+      - where:
+          verb: Set
+        remove: true

@@ -13,8 +13,10 @@ Creates an IP Tag.
 ## SYNTAX
 
 ```
-New-AzPublicIpTag -IpTagType <String> -Tag <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPublicIpTag -IpTagType <String> -Tag <String> [-FirstPartyServiceTagId <String>]
+ [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,14 +26,52 @@ The **New-AzPublicIpTag** cmdlet creates a IP Tag.
 
 ### Example 1: Create a new IP Tag
 ```powershell
-$ipTag = New-AzPublicIpTag -IpTagType $ipTagType -Tag $tag
+$ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
 ```
 
 This command creates a new IP Tag with the Tagtype like "FirstPartyUsage"
 and tag like "/Sql". This is used in publicIpAddress creation with these
 specific tags for allocation.
 
+### Example 2: Create an IP Tag associated with a First Party Service Tag
+```powershell
+$serviceTagId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/ContosoServiceTag"
+$ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql" -FirstPartyServiceTagId $serviceTagId
+```
+
+This command creates an IP Tag that is associated with the specified First Party Service Tag resource.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -57,6 +97,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirstPartyServiceTagId
+The resource ID of the First Party Service Tag to associate with the IP Tag.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

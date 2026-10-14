@@ -16,7 +16,8 @@ Create a Packet Capture Parameter for Azure Firewall
 New-AzFirewallPacketCaptureParameter [-DurationInSeconds <UInt32>] [-NumberOfPacketsToCapture <UInt32>]
  [-SasUrl <String>] [-FileName <String>] [-Protocol <String>] [-Flag <String[]>]
  [-Filter <PSAzureFirewallPacketCaptureRule[]>] -Operation <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,36 @@ $Params = New-AzFirewallPacketCaptureParameter -Operation "Stop"
 This creates the parameters used for stopping a packet capture operation on the azure firewall 
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

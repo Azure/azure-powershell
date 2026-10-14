@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves all the ExpressRouteCrossConnections in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets details about the specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group (peering location of the circuit).
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
         /// The name of the ExpressRouteCrossConnection (service key of the circuit).
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Management.Network
         /// Update the specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the update express route crossConnection operation.
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, ExpressRouteCrossConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnection,ExpressRouteCrossConnectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, ExpressRouteCrossConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates an express route cross connection tags.
@@ -122,10 +122,10 @@ namespace Microsoft.Azure.Management.Network
         /// Updates an express route cross connection tags.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the cross connection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='crossConnectionParameters'>
         /// Parameters supplied to update express route cross connection tags.
@@ -145,6 +145,95 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, TagsObject crossConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to commit the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> CommitCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to get express route circuit migration information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> GetCircuitMigrationInfoWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to execute the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> MigrateCircuitWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets the currently advertised ARP table associated with the express route
         /// cross connection in a resource group.
         /// </summary>
@@ -153,10 +242,10 @@ namespace Microsoft.Azure.Management.Network
         /// cross connection in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -179,40 +268,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult>> ListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the route table summary associated with the express route cross
-        /// connection in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Gets the route table summary associated with the express route cross
-        /// connection in a resource group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult>> ListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets the currently advertised routes table associated with the express
         /// route cross connection in a resource group.
         /// </summary>
@@ -221,10 +276,10 @@ namespace Microsoft.Azure.Management.Network
         /// route cross connection in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -247,16 +302,200 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult>> ListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets the route table summary associated with the express route cross
+        /// connection in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Gets the route table summary associated with the express route cross
+        /// connection in a resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The path of the device.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult>> ListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Prepares an express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to prepare the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> PrepareCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to restore BGP for the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> RestoreBgpForCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to roll back the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> RollbackCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to shut down BGP for the express route circuit
+        /// migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> ShutDownBgpForCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Validates express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to validate express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitValidateResponse>> ValidateCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Update the specified ExpressRouteCrossConnection.
         /// </summary>
         /// <remarks>
         /// Update the specified ExpressRouteCrossConnection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the update express route crossConnection operation.
@@ -273,7 +512,96 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnection>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, ExpressRouteCrossConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnection,ExpressRouteCrossConnectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, ExpressRouteCrossConnection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Commits the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to commit the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginCommitCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </summary>
+        /// <remarks>
+        /// Gets migration health information for an express route circuit cross
+        /// connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to get express route circuit migration information.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginGetCircuitMigrationInfoWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Executes the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to execute the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginMigrateCircuitWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the currently advertised ARP table associated with the express route
@@ -284,10 +612,10 @@ namespace Microsoft.Azure.Management.Network
         /// cross connection in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -310,6 +638,40 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsArpTableListResult>> BeginListArpTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets the currently advertised routes table associated with the express
+        /// route cross connection in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Gets the currently advertised routes table associated with the express
+        /// route cross connection in a resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='devicePath'>
+        /// The path of the device.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult>> BeginListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets the route table summary associated with the express route cross
         /// connection in a resource group.
         /// </summary>
@@ -318,10 +680,10 @@ namespace Microsoft.Azure.Management.Network
         /// connection in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -344,24 +706,19 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCrossConnectionsRoutesTableSummaryListResult>> BeginListRoutesTableSummaryWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the currently advertised routes table associated with the express
-        /// route cross connection in a resource group.
+        /// Prepares an express route circuit migration for a cross connection.
         /// </summary>
         /// <remarks>
-        /// Gets the currently advertised routes table associated with the express
-        /// route cross connection in a resource group.
+        /// Prepares an express route circuit migration for a cross connection.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='crossConnectionName'>
-        /// The name of the ExpressRouteCrossConnection.
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
         /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='devicePath'>
-        /// The path of the device.
+        /// <param name='parameters'>
+        /// Parameters supplied to prepare the express route circuit migration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -375,7 +732,128 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitsRoutesTableListResult>> BeginListRoutesTableWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, string peeringName, string devicePath, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginPrepareCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Restores BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to restore BGP for the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginRestoreBgpForCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Rolls back the express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to roll back the express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginRollbackCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Shuts down BGP sessions as part of an express route circuit migration for a
+        /// cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to shut down BGP for the express route circuit
+        /// migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitHealthCheckResponse>> BeginShutDownBgpForCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Validates express route circuit migration for a cross connection.
+        /// </summary>
+        /// <remarks>
+        /// Validates express route circuit migration for a cross connection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='crossConnectionName'>
+        /// The name of the ExpressRouteCrossConnection (service key of the circuit).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to validate express route circuit migration.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<MigrateExpressRouteCircuitValidateResponse>> BeginValidateCircuitMigrationWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, MigrateExpressRouteCircuitValidateAndHealthCheckRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves all the ExpressRouteCrossConnections in a subscription.

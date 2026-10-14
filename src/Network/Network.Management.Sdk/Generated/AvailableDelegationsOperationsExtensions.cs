@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location of the subnet.
+        /// The name of the Azure region.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<AvailableDelegation> List(this IAvailableDelegationsOperations operations, string location)
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location of the subnet.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

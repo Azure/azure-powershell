@@ -17,9 +17,12 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  -Location <String> [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
  [-RequireInfrastructureEncryption] [-ZoneRedundant] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-IdentityType <String>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
- [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-SkuName <String>]
- [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-IPAddressType <String>] [-SkuName <String>]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +185,21 @@ Create a standard EventHub namespace `myNamespace` with Auto Inflate enabled.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AlternateName
 Alternate name specified when alias and namespace names are same
 
@@ -202,6 +220,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -272,8 +305,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoDataReplicationLocation
+Replica locations for geo data replication.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the namespace.
+Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
 
 ```yaml
 Type: System.String

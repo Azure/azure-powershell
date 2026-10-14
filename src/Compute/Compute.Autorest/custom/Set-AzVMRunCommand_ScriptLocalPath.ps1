@@ -232,6 +232,7 @@ function Set-AzVMRunCommand_ScriptLocalPath {
             $script = ""
             if ((Get-ChildItem $scriptLocalPath | Select-Object Extension).Extension -eq ".sh"){
                 foreach ($line in Get-Content -Path $scriptLocalPath){
+                    if ([string]::IsNullOrWhiteSpace($line)) { continue }
                     $words = $line.trim().split()
                     $commentFound = $false
                     foreach ($word in $words){
@@ -253,6 +254,7 @@ function Set-AzVMRunCommand_ScriptLocalPath {
             }
             else{
                 foreach ($line in Get-Content -Path $scriptLocalPath){
+                    if ([string]::IsNullOrWhiteSpace($line)) { continue }
                     $words = $line.trim().split()
                     $commentFound = $false
                     foreach ($word in $words){

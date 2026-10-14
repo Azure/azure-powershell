@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserve
 #>
 function New-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -66,6 +66,14 @@ function New-AzMigrateLocalServerReplication {
         ${IsDynamicMemoryEnabled},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether to migrate the server as an Azure Arc-enabled VM. When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+        ${MigrateAsArcVM},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int64]
         # Specifies the target RAM size in MB. 
@@ -73,13 +81,13 @@ function New-AzMigrateLocalServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
         # Specifies the NICs on the source server to be included for replication.
         ${NicToInclude},
 
@@ -177,13 +185,14 @@ function New-AzMigrateLocalServerReplication {
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
-        $HasMachineId = $PSBoundParameters.ContainsKey('MachineId')
-        $HasTargetStoragePathId = $PSBoundParameters.ContainsKey('TargetStoragePathId')
-        $HasTargetResourceGroupId = $PSBoundParameters.ContainsKey('TargetResourceGroupId')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+        }
+        $HasMigrateAsArcVM = $PSBoundParameters.ContainsKey('MigrateAsArcVM')
+        if ($HasMigrateAsArcVM) {
+            $migrateAsArcVMEnabled = [System.Convert]::ToBoolean($MigrateAsArcVM)
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
@@ -198,6 +207,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
         $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
+        $null = $PSBoundParameters.Remove('MigrateAsArcVM')
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('DiskToInclude')
         $null = $PSBoundParameters.Remove('NicToInclude')
@@ -212,7 +222,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
         # Validate ARM ID format from inputs
-        if ($HasMachineId -and !(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
+        if (!(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
         {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $MachineId `
@@ -220,14 +230,14 @@ function New-AzMigrateLocalServerReplication {
                 -Format $IdFormats.MachineArmIdTemplate
         }
 
-        if ($HasTargetStoragePathId -and !(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetStoragePathId `
                 -ResourceType "StorageContainer" `
                 -Format $IdFormats.StoragePathArmIdTemplate
         }
 
-        if ($HasTargetResourceGroupId -and !(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetResourceGroupId `
                 -ResourceType "ResourceGroup" `
@@ -246,6 +256,39 @@ function New-AzMigrateLocalServerReplication {
                 -ResourceId $TargetTestVirtualSwitchId `
                 -ResourceType "LogicalNetwork" `
                 -Format $IdFormats.LogicalNetworkArmIdTemplate
+        }
+
+        # Validate TargetVMName (pure parameter check; hoisted up-front so we fail fast
+        # before doing any source/target discovery work).
+        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+            throw "The target virtual machine name must be between 1 and 64 characters long."
+        }
+        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
+            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+        }
+        elseif (IsReservedOrTrademarked($TargetVMName)) {
+            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
+        }
+
+        # Arc-enabled VM reuse preflight (only when -MigrateAsArcVM "true").
+        # Verifies that the customer-onboarded Arc machine exists at the expected
+        # target ARM tuple and has a reusable Kind. Performed up-front so the
+        # cmdlet fails fast on Arc misconfig before any discovery work.
+        if ($HasMigrateAsArcVM -and $migrateAsArcVMEnabled) {
+            # Az.ConnectedMachine is a conditional dependency required only for the Arc
+            # reuse preflight. Fail fast with an actionable install hint if it's missing.
+            CheckConnectedMachineModuleDependency
+
+            # $TargetResourceGroupId is "/subscriptions/{sub}/resourceGroups/{rg}".
+            # Format already validated above by Test-AzureResourceIdFormat.
+            $targetRgIdArray = $TargetResourceGroupId.Split("/")
+            $targetSubId     = $targetRgIdArray[2]
+            $targetRgName    = $targetRgIdArray[4]
+
+            Test-ArcMachineReuseEligibility `
+                -TargetSubscriptionId    $targetSubId `
+                -TargetResourceGroupName $targetRgName `
+                -TargetVMName            $TargetVMName
         }
 
         # $MachineId is in the format of
@@ -621,28 +664,17 @@ function New-AzMigrateLocalServerReplication {
             throw "$($ArcResourceBridgeValidationMessages.NotRunning). Make sure the Arc Resource Bridge is online before retrying."
         }
 
-        # Validate TargetVMName
-        if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
-            throw "The target virtual machine name must be between 1 and 64 characters long."
-        }
-        elseif ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
-            throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
-        }
-        elseif (IsReservedOrTrademarked($TargetVMName)) {
-            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
-        }
-
         # Construct create protected item request object
-        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties]::new()
+        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
         $protectedItemProperties.ReplicationExtensionName = $replicationExtensionName
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $machine.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $false
         }
 
@@ -651,6 +683,34 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccountId
         $customProperties.SourceFabricAgentName = $sourceDra.Name
+
+        # Validate storage path exists and is in a usable state
+        $storagePath = Get-AzResource `
+            -ResourceId $TargetStoragePathId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $storagePath) {
+            throw "Storage path with Id '$TargetStoragePathId' not found. Please provide a valid storage path ARM ID."
+        }
+
+        # Creation must have succeeded for the storage path to be usable
+        $creationStatus = $storagePath.Properties.status.provisioningStatus.status
+        if ([string]::IsNullOrEmpty($creationStatus)) {
+            throw "Storage path '$($storagePath.Name)' creation status is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($creationStatus -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$creationStatus'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
+        }
+
+        # The latest operation (ProvisioningState) must also be Succeeded
+        $provisioningState = $storagePath.Properties.provisioningState
+        if ([string]::IsNullOrEmpty($provisioningState)) {
+            throw "Storage path '$($storagePath.Name)' provisioning state is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($provisioningState -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a provisioning state of '$provisioningState'. Only storage paths with a 'Succeeded' provisioning state can be used. Please resolve the issue or select a different storage path."
+        }
+
         $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name
@@ -658,6 +718,9 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
+        if ($HasMigrateAsArcVM) {
+            $customProperties.MigrateAsArcVM = $migrateAsArcVMEnabled
+        }
     
         # Determine target VM Hyper-V Generation
         if ($SiteType -eq $SiteTypes.HyperVSites) { 
@@ -710,7 +773,7 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Construct default dynamic memory config
-        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
+        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
         $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
         $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -835,12 +898,12 @@ function New-AzMigrateLocalServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCINicInput[]]$nics
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCINicInput[]]$nics
         }
         
         $protectedItemProperties.CustomProperty = $customProperties

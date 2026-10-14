@@ -31,12 +31,3 @@ Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, Disp
 
 This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
 Policy assignment.
-
-### Example 5: [Backcompat] Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
-
-```powershell
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-```
-
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy assignment.

@@ -14,8 +14,9 @@ Updates a public IP address.
 ## SYNTAX
 
 ```
-Set-AzPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-DdosCustomPolicyId <String>]
+ [-RemoveDdosCustomPolicy] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,43 @@ First command gets the public IP address resource with name $publicIPName in the
     Set-AzPublicIPAddress command updates the public IP address resource with the 
     updated object. DomainNameLabel & Fqdn are modified as expected.
 
+### Example 4: Associate a DDoS custom policy with a supported public IP address
+```powershell
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+
+Set-AzPublicIpAddress -PublicIpAddress $publicIp -DdosCustomPolicyId $ddosCustomPolicyId
+```
+
+The first command gets a Standard public IP address.
+The second command associates the DDoS custom policy with the public IP address. The service
+validates that the public IP address has a supported attachment, such as a network interface.
+
+### Example 5: Remove a DDoS custom policy association
+```powershell
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+
+Set-AzPublicIpAddress -PublicIpAddress $publicIp -RemoveDdosCustomPolicy
+```
+
+The first command gets the public IP address. The second command removes its DDoS custom policy
+association.
+
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -90,6 +127,38 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DdosCustomPolicyId
+The DDoS custom policy ID to associate with a supported public IP address.
+The service validates whether the public IP address attachment supports a DDoS custom policy.
+This parameter cannot be used with `-RemoveDdosCustomPolicy`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -120,6 +189,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -RemoveDdosCustomPolicy
+Removes the DDoS custom policy association from the Public IP address.
+This parameter cannot be used with `-DdosCustomPolicyId`.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

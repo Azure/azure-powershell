@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzAccount..
+        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the login dialog. In PowerShell, execute Connect-AzAccount..
         /// </summary>
         public static string AdalUserInteractionRequired {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzAccount..
+        ///   Looks up a localized string similar to No account found in the context. Please log in using Connect-AzAccount..
         /// </summary>
         public static string ArmAccountNotFound {
             get {
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in..
         /// </summary>
         public static string NoSubscriptionInContext {
             get {
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to log in..
         /// </summary>
         public static string NoTenantInContext {
             get {
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You may need to login again after updating &quot;{0}&quot;..
+        ///   Looks up a localized string similar to You may need to log in again after updating &quot;{0}&quot;..
         /// </summary>
         public static string SwitchLoginMethodWarning {
             get {
@@ -961,6 +961,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string x86InProgramFiles {
             get {
                 return ResourceManager.GetString("x86InProgramFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account type &apos;{0}&apos; is not supported for SSH certificate generation. Supported types are: User, ServicePrincipal..
+        /// </summary>
+        public static string UnsupportedAccountTypeForSshCertificate {
+            get {
+                return ResourceManager.GetString("UnsupportedAccountTypeForSshCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No credential (client secret or certificate) found for the Service Principal. Please re-authenticate using Connect-AzAccount with -CertificateThumbprint, -CertificatePath, or a client secret..
+        /// </summary>
+        public static string ServicePrincipalCredentialNotFound {
+            get {
+                return ResourceManager.GetString("ServicePrincipalCredentialNotFound", resourceCulture);
             }
         }
     }

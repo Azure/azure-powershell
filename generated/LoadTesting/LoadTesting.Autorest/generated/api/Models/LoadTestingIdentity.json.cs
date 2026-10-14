@@ -76,12 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_quotaBucketName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("quotaBucketName"), out var __jsonQuotaBucketName) ? (string)__jsonQuotaBucketName : (string)QuotaBucketName;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_loadTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("loadTestName"), out var __jsonLoadTestName) ? (string)__jsonLoadTestName : (string)LoadTestName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_quotaBucketName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("quotaBucketName"), out var __jsonQuotaBucketName) ? (string)__jsonQuotaBucketName : (string)_quotaBucketName;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_loadTestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("loadTestName"), out var __jsonLoadTestName) ? (string)__jsonLoadTestName : (string)_loadTestName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

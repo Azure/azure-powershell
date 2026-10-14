@@ -15,36 +15,37 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of the operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with the operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of the operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with the
+        /// operation.
         /// </summary>
         /// <remarks>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of the operation. Some
-        /// operations create jobs. This method returns the list of jobs associated
-        /// with the operation.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of the operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with the
+        /// operation.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// vaults
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backup item.
+        /// backupFabrics
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backup item.
+        /// The name of the ProtectionContainerResource
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backup item name whose details are to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
         /// <param name='operationId'>
-        /// OperationID represents the operation whose status needs to be fetched.
+        /// The name of the ProtectedItemResource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationStatus>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationStatus>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

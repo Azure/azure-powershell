@@ -30,12 +30,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchProperties Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchParametersInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkPatchProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for StorageOption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsPatch Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchParametersInternal.StorageOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOption = value ?? null /* model class */; }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchProperties _property;
 
         /// <summary>The list of the resource properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkPatchProperties()); set => this._property = value; }
+
+        /// <summary>The indicator to enable shared storage on the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageOptionMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionMode = value ?? null; }
+
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public long? StorageOptionSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionSizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionSizeMiB = value ?? default(long); }
+
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageOptionStorageApplianceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionStorageApplianceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchPropertiesInternal)Property).StorageOptionStorageApplianceId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchParametersTags _tag;
@@ -81,6 +96,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         string EnableDefaultEgressEndpoint { get; set; }
+        /// <summary>The indicator to enable shared storage on the cloud services network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The indicator to enable shared storage on the cloud services network.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageOptionMode { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? StorageOptionSizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource ID of the storage appliance that hosts the storage.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageOptionStorageApplianceId { get; set; }
         /// <summary>The Azure resource tags that will replace the existing ones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -109,6 +158,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string EnableDefaultEgressEndpoint { get; set; }
         /// <summary>The list of the resource properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchProperties Property { get; set; }
+        /// <summary>The storage options for the cloud services network.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkStorageOptionsPatch StorageOption { get; set; }
+        /// <summary>The indicator to enable shared storage on the cloud services network.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        string StorageOptionMode { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        long? StorageOptionSizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        string StorageOptionStorageApplianceId { get; set; }
         /// <summary>The Azure resource tags that will replace the existing ones.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetworkPatchParametersTags Tag { get; set; }
 

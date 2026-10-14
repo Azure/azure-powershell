@@ -34,6 +34,9 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject 
         [Parameter(HelpMessage="Waf associations.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation[]]
         $Association,
+        [Parameter(HelpMessage="Indicates if this is a profile-level WAF policy.")]
+        [bool]
+        $IsProfileLevel,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $WafPolicyId
@@ -44,6 +47,9 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject 
 
         if ($PSBoundParameters.ContainsKey('Association')) {
             $Object.Association = $Association
+        }
+        if ($PSBoundParameters.ContainsKey('IsProfileLevel')) {
+            $Object.IsProfileLevel = $IsProfileLevel
         }
         if ($PSBoundParameters.ContainsKey('WafPolicyId')) {
             $Object.WafPolicyId = $WafPolicyId

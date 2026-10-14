@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Lists all private link resources on an application gateway.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.

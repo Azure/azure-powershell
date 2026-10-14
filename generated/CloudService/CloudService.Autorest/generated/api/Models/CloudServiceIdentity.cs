@@ -122,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the cloud service.",
         SerializedName = @"cloudServiceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -130,6 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The IP configuration name.",
         SerializedName = @"ipConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -138,6 +144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -146,6 +155,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the location that the OS version pertains to.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -154,6 +166,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the network interface.",
         SerializedName = @"networkInterfaceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -162,6 +177,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the OS family.",
         SerializedName = @"osFamilyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -170,6 +188,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the OS version.",
         SerializedName = @"osVersionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -178,6 +199,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the public IP Address.",
         SerializedName = @"publicIpAddressName",
         PossibleTypes = new [] { typeof(string) })]
@@ -186,6 +210,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the resource group.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -194,6 +221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the role instance.",
         SerializedName = @"roleInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -202,6 +232,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the role.",
         SerializedName = @"roleName",
         PossibleTypes = new [] { typeof(string) })]
@@ -213,6 +246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -224,6 +260,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.",
         SerializedName = @"updateDomain",
         PossibleTypes = new [] { typeof(int) })]

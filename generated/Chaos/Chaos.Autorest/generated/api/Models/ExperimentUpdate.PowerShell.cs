@@ -104,19 +104,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             // actually deserialize
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.TagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentUpdateTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -125,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -145,19 +145,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             // actually deserialize
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ITags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.TagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentUpdateTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -166,6 +158,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentUpdateInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
         /// Maximal amount of returned signatures is 1000.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.

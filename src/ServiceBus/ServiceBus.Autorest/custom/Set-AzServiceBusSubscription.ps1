@@ -128,7 +128,7 @@ function Set-AzServiceBusSubscription{
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
         ${DeadLetteringOnMessageExpiration},
-        
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -189,6 +189,17 @@ function Set-AzServiceBusSubscription{
         ${ProxyUseDefaultCredentials}
 	)
 
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) { $dynamicParameters.Add($entry.Key, $entry.Value) }
+            }
+        }
+        return $dynamicParameters
+    }
     process{
         try{
             $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
@@ -206,8 +217,8 @@ function Set-AzServiceBusSubscription{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $subscription = Get-AzServiceBusSubscription @PSBoundParameters
-
+            $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusSubscription' -BoundParameters $PSBoundParameters
+            $subscription = Get-AzServiceBusSubscription @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')

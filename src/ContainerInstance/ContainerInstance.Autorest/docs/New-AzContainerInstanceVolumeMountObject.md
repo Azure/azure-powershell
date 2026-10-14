@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstancevolumemountobject
 schema: 2.0.0
 ---
 
 # New-AzContainerInstanceVolumeMountObject
 
 ## SYNOPSIS
-Create a in-memory object for VolumeMount
+Create an in-memory object for VolumeMount.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzContainerInstanceVolumeMountObject -MountPath <String> -Name <String> [-Re
 ```
 
 ## DESCRIPTION
-Create a in-memory object for VolumeMount
+Create an in-memory object for VolumeMount.
 
 ## EXAMPLES
 
@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.VolumeMount
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.VolumeMount
 
 ## NOTES
 

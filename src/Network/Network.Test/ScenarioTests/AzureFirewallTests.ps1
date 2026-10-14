@@ -528,7 +528,7 @@ function Test-AzureFirewallCRUDWithZones {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -Zone 1, 2, 3
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -Zone 1, 2, 3
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -Zone 1, 2, 3
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -832,7 +832,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams {
         $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall with a single public IP address
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -916,7 +916,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams {
         Assert-AreEqual true $delete
 
         # Create AzureFirewall with Two Public IP addresses
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress @($publicip1, $publicip2)
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress @($publicip1, $publicip2)
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1090,7 +1090,7 @@ function Test-AzureFirewallAllocateAndDeallocate {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no vnet, public ip)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -2221,10 +2221,10 @@ function Test-InvokeAzureFirewallPacketCapture {
         # Create the firewall packet capture parameters
         $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
-        # Invoke a firewall packet capture
-        $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
-        Assert-NotNull $response
-        Assert-AreEqual "Microsoft.Azure.Management.Network.Models.AzureFirewallsPacketCaptureHeaders" $response.GetType().fullname
+        # Invoke a firewall packet capture.
+        # The cmdlet is deprecated and no longer returns a response object (the PUT PacketCapture
+        # call is fire-and-forget), so simply assert that the invocation completes without error.
+        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
     }
     finally {
         # Cleanup
@@ -2633,6 +2633,39 @@ function Test-AzureFirewallEdgeZoneZonesValidation {
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
         Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+function Test-AzureFirewallAfcConfiguration {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = "centraluseuap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24 -DefaultOutboundAccess $false
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet | Out-Null
+
+        # IpTag required by the subscription's AddIpTagsToPublicIpAddresses policy
+        $ipTag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        New-AzPublicIpAddress -ResourceGroupName $rgname -Name $publicIpName -Location $location -AllocationMethod Static -Sku Standard -IpTag $ipTag | Out-Null
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+        # AfcConfiguration (incl. ServiceEndpoint) is a read-only property surfaced from the RP; a standard firewall is not AFC-managed
+        Assert-Null $getAzureFirewall.AfcConfiguration
     }
     finally {
         # Cleanup

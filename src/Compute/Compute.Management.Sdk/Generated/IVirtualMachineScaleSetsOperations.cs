@@ -442,6 +442,34 @@ namespace Microsoft.Azure.Management.Compute
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UpdateInstancesWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, System.Collections.Generic.IList<string> instanceIds, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <remarks>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='body'>
+        /// The input object for the MigrateVMAvailabilityZone API.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders>> MigrateVMAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets list of OS upgrades on a VM scale set instance.
         /// </summary>
         /// <remarks>
@@ -1016,6 +1044,34 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginUpdateInstancesWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, System.Collections.Generic.IList<string> instanceIds, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </summary>
+        /// <remarks>
+        /// Migrates one or more virtual machines in a VM scale set to an availability
+        /// zone.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='body'>
+        /// The input object for the MigrateVMAvailabilityZone API.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualMachineScaleSetsMigrateVMAvailabilityZoneHeaders>> BeginMigrateVMAvailabilityZoneWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, MigrateVMAvailabilityZoneInput body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale set.

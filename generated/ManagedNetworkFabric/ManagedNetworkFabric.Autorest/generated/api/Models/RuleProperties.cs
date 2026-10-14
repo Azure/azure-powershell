@@ -27,6 +27,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> AddressList { get => this._addressList; set => this._addressList = value; }
 
+        /// <summary>Backing field for <see cref="Condition" /> property.</summary>
+        private string _condition;
+
+        /// <summary>Specify rule condition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public string Condition { get => this._condition; set => this._condition = value; }
+
+        /// <summary>Backing field for <see cref="DestinationAddressList" /> property.</summary>
+        private System.Collections.Generic.List<string> _destinationAddressList;
+
+        /// <summary>List of Addresses to be allowed or denied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> DestinationAddressList { get => this._destinationAddressList; set => this._destinationAddressList = value; }
+
+        /// <summary>Backing field for <see cref="HeaderAddressList" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties> _headerAddressList;
+
+        /// <summary>List of header Name and source addresses associated with the header.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties> HeaderAddressList { get => this._headerAddressList; set => this._headerAddressList = value; }
+
+        /// <summary>Backing field for <see cref="SourceAddressList" /> property.</summary>
+        private System.Collections.Generic.List<string> _sourceAddressList;
+
+        /// <summary>List of source IPv4 and IPv6 address to be allowed or denied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> SourceAddressList { get => this._sourceAddressList; set => this._sourceAddressList = value; }
+
         /// <summary>Creates an new <see cref="RuleProperties" /> instance.</summary>
         public RuleProperties()
         {
@@ -51,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string Action { get; set; }
         /// <summary>List of Addresses to be allowed or denied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -60,6 +88,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"addressList",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> AddressList { get; set; }
+        /// <summary>Specify rule condition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specify rule condition.",
+        SerializedName = @"condition",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("And", "Or")]
+        string Condition { get; set; }
+        /// <summary>List of Addresses to be allowed or denied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of Addresses to be allowed or denied.",
+        SerializedName = @"destinationAddressList",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> DestinationAddressList { get; set; }
+        /// <summary>List of header Name and source addresses associated with the header.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of header Name and source addresses associated with the header.",
+        SerializedName = @"headerAddressList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties> HeaderAddressList { get; set; }
+        /// <summary>List of source IPv4 and IPv6 address to be allowed or denied.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of source IPv4 and IPv6 address to be allowed or denied.",
+        SerializedName = @"sourceAddressList",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> SourceAddressList { get; set; }
 
     }
     /// Rules for the InternetGateways
@@ -71,6 +144,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         string Action { get; set; }
         /// <summary>List of Addresses to be allowed or denied.</summary>
         System.Collections.Generic.List<string> AddressList { get; set; }
+        /// <summary>Specify rule condition.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("And", "Or")]
+        string Condition { get; set; }
+        /// <summary>List of Addresses to be allowed or denied.</summary>
+        System.Collections.Generic.List<string> DestinationAddressList { get; set; }
+        /// <summary>List of header Name and source addresses associated with the header.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties> HeaderAddressList { get; set; }
+        /// <summary>List of source IPv4 and IPv6 address to be allowed or denied.</summary>
+        System.Collections.Generic.List<string> SourceAddressList { get; set; }
 
     }
 }

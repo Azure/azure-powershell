@@ -46,7 +46,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="diskEncryptionInfo">The recovery disk encryption information (for one / single pass flows).
         /// </param>
-        public A2AVmManagedDiskInputDetails(string diskId, string primaryStagingAzureStorageAccountId, string recoveryResourceGroupId, string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo))
+
+        /// <param name="recoveryNetworkAccessPolicy">The network access policy for the recovery managed disk.
+        /// Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;</param>
+
+        /// <param name="recoveryDiskAccessId">The recovery disk access Arm Id.
+        /// </param>
+
+        /// <param name="recoveryPublicNetworkAccess">The public network access setting for the recovery managed disk.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public A2AVmManagedDiskInputDetails(string diskId, string primaryStagingAzureStorageAccountId, string recoveryResourceGroupId, string recoveryReplicaDiskAccountType = default(string), string recoveryTargetDiskAccountType = default(string), string recoveryDiskEncryptionSetId = default(string), DiskEncryptionInfo diskEncryptionInfo = default(DiskEncryptionInfo), string recoveryNetworkAccessPolicy = default(string), string recoveryDiskAccessId = default(string), string recoveryPublicNetworkAccess = default(string))
 
         {
             this.DiskId = diskId;
@@ -56,6 +65,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryTargetDiskAccountType = recoveryTargetDiskAccountType;
             this.RecoveryDiskEncryptionSetId = recoveryDiskEncryptionSetId;
             this.DiskEncryptionInfo = diskEncryptionInfo;
+            this.RecoveryNetworkAccessPolicy = recoveryNetworkAccessPolicy;
+            this.RecoveryDiskAccessId = recoveryDiskAccessId;
+            this.RecoveryPublicNetworkAccess = recoveryPublicNetworkAccess;
             CustomInit();
         }
 
@@ -109,6 +121,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskEncryptionInfo")]
         public DiskEncryptionInfo DiskEncryptionInfo {get; set; }
+
+        /// <summary>
+        /// Gets or sets the network access policy for the recovery managed disk. Possible values include: &#39;AllowAll&#39;, &#39;AllowPrivate&#39;, &#39;DenyAll&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryNetworkAccessPolicy")]
+        public string RecoveryNetworkAccessPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk access Arm Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryDiskAccessId")]
+        public string RecoveryDiskAccessId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the public network access setting for the recovery managed
+        /// disk. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPublicNetworkAccess")]
+        public string RecoveryPublicNetworkAccess {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -129,6 +160,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RecoveryResourceGroupId");
             }
+
+
+
 
 
 

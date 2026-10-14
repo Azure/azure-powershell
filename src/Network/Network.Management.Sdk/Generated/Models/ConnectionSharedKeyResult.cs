@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// SharedKey Resource .
     /// </summary>
-    public partial class ConnectionSharedKeyResult : SubResource
+    public partial class ConnectionSharedKeyResult : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKeyResult class.
@@ -27,22 +27,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="properties">Properties of the shared key.
-        /// </param>
-
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
         /// </param>
-        public ConnectionSharedKeyResult(string id = default(string), SharedKeyProperties properties = default(SharedKeyProperties), string name = default(string), string type = default(string))
 
-        : base(id)
+        /// <param name="properties">Properties of the shared key.
+        /// </param>
+        public ConnectionSharedKeyResult(string id = default(string), string name = default(string), string type = default(string), SharedKeyProperties properties = default(SharedKeyProperties))
+
+        : base(id, name, type)
         {
             this.Properties = properties;
-            this.Name = name;
-            this.Type = type;
             CustomInit();
         }
 
@@ -57,19 +54,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public SharedKeyProperties Properties {get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -82,8 +66,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.Properties.Validate();
             }
-
-
         }
     }
 }

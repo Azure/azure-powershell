@@ -12,7 +12,7 @@ Implements Route Policy GET method.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzNetworkFabricRoutePolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Get-AzNetworkFabricRoutePolicy -InputObject <IManagedNetworkFabricIdentity> [-De
  [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzNetworkFabricRoutePolicy -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -159,7 +159,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True

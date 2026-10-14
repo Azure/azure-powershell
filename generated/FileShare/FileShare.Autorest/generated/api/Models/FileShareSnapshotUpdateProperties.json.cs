@@ -63,7 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 return;
             }
-            {_metadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonObject>("metadata"), out var __jsonMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareSnapshotUpdatePropertiesMetadata.FromJson(__jsonMetadata) : _metadata;}
             AfterFromJson(json);
         }
 
@@ -98,7 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
             {
                 return container;
             }
-            AddIf( null != this._metadata ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._metadata.ToJson(null,serializationMode) : null, "metadata" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._metadata ? (Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Json.JsonNode) this._metadata.ToJson(null,serializationMode) : null, "metadata" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

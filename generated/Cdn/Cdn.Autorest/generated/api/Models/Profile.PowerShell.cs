@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeConverter.ConvertFrom);
@@ -116,10 +120,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Kind"))
             {
@@ -177,22 +177,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("LogScrubbing"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).LogScrubbing = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileLogScrubbing) content.GetValueForProperty("LogScrubbing",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).LogScrubbing, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbingTypeConverter.ConvertFrom);
@@ -216,6 +200,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("OriginResponseTimeoutSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).OriginResponseTimeoutSecond = (int?) content.GetValueForProperty("OriginResponseTimeoutSecond",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).OriginResponseTimeoutSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("LogScrubbingState"))
             {
@@ -242,6 +242,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilePropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeConverter.ConvertFrom);
@@ -249,10 +253,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfilePropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("Kind"))
             {
@@ -310,22 +310,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).SkuName, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("LogScrubbing"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).LogScrubbing = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileLogScrubbing) content.GetValueForProperty("LogScrubbing",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).LogScrubbing, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbingTypeConverter.ConvertFrom);
@@ -349,6 +333,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("OriginResponseTimeoutSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).OriginResponseTimeoutSecond = (int?) content.GetValueForProperty("OriginResponseTimeoutSecond",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).OriginResponseTimeoutSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("LogScrubbingState"))
             {

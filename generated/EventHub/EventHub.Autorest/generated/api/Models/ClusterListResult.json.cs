@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The response of the List Event Hubs Clusters operation.</summary>
+    /// <summary>The response of a Cluster list operation.</summary>
     public partial class ClusterListResult
     {
 

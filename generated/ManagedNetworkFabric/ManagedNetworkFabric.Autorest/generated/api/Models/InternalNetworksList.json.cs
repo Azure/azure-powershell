@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Extensions;
 
-    /// <summary>List of Internal Networks.</summary>
+    /// <summary>Paged collection of InternalNetwork items</summary>
     public partial class InternalNetworksList
     {
 

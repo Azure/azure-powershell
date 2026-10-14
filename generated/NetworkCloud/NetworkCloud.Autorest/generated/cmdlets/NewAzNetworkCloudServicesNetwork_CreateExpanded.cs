@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetwork))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"create a new cloud services network or create the properties of the existing cloud services network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks/{cloudServicesNetworkName}", ApiVersion = "2025-09-01")]
     public partial class NewAzNetworkCloudServicesNetwork_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>
-        /// Upon creation, the additional services that are provided by the platform will be allocated and
-        /// represented in the status of this resource. All resources associated with this cloud services network will be part
-        /// of the same layer 2 (L2) isolation domain. At least one service network must be created but may be reused across many
-        /// virtual machines and/or Hybrid AKS clusters.
+        /// Upon creation, the additional services that are provided by the platform will be allocated and represented in the status
+        /// of this resource. All resources associated with this cloud services network will be part of the same layer 2 (L2) isolation
+        /// domain. At least one service network must be created but may be reused across many virtual machines and/or Hybrid AKS
+        /// clusters.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICloudServicesNetwork _cloudServicesNetworkParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetwork();
 
@@ -254,6 +254,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>
+        /// The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with
+        /// the standard storage enablement.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The indicator to enable shared storage on the cloud services network. If not specified, the allocation will align with the standard storage enablement.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "Standard")]
+        public string StorageOptionMode { get => _cloudServicesNetworkParametersBody.StorageOptionMode ?? null; set => _cloudServicesNetworkParametersBody.StorageOptionMode = value; }
+
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The requested storage allocation for the volume in Mebibytes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long StorageOptionSizeMiB { get => _cloudServicesNetworkParametersBody.StorageOptionSizeMiB ?? default(long); set => _cloudServicesNetworkParametersBody.StorageOptionSizeMiB = value; }
+
+        /// <summary>The resource ID of the storage appliance that hosts the storage.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the storage appliance that hosts the storage.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource ID of the storage appliance that hosts the storage.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageOptionStorageApplianceId { get => _cloudServicesNetworkParametersBody.StorageOptionStorageApplianceId ?? null; set => _cloudServicesNetworkParametersBody.StorageOptionStorageApplianceId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;

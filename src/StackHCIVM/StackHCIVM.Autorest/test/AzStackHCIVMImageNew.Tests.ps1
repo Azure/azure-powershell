@@ -16,7 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMImageNew'))
 
 Describe 'AzStackHCIVMImageNew' {
     It 'Create Image '  {
-        New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        $secureImagePath = ConvertTo-SecureString -String $env.imagePath -AsPlainText -Force
+        New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $secureImagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
     It 'Create MarketplaceImage' 
     {

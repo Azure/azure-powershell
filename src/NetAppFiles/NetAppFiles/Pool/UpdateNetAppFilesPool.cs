@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 Name = NameParts[1];
             }

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// List network usages for a subscription.
         /// </remarks>
         /// <param name='location'>
-        /// The location where resource usage is queried.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

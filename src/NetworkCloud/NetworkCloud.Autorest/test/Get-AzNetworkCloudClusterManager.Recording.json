@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudClusterManager+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudClusterManager+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudClusterManager+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudClusterManager+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManager?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudClusterManager+[NoContext]+Get ClusterManager with UserAssigned Identity+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerUA?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudClusterManager+[NoContext]+Get ClusterManager with UserAssigned Identity+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerUA?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerUA?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerUA?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -133,10 +133,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudClusterManager+[NoContext]+Get ClusterManager with SystemAssigned Identity+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerSA?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudClusterManager+[NoContext]+Get ClusterManager with SystemAssigned Identity+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerSA?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerSA?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers/testClusterManagerSA?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -178,10 +178,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudClusterManager+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudClusterManager+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg3ifbec/providers/Microsoft.NetworkCloud/clusterManagers?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the private link resources supported for the key vault.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

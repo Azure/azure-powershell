@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance
     using GetTelemetryIdDelegate = global::System.Func<string>;
     using TelemetryDelegate = global::System.Action<string, global::System.Management.Automation.InvocationInfo, string, global::System.Management.Automation.PSCmdlet>;
     using NewRequestPipelineDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
+    using ChangeSafetyPolicyTokenDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
@@ -28,15 +29,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
+        private static bool _init = false;
+
+        private static readonly global::System.Object _initLock = new global::System.Object();
+
+        private static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module _instance;
+
         /// <summary>the ISendAsync pipeline instance</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.HttpPipeline _pipeline;
 
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.HttpPipeline _pipelineWithProxy;
 
+        private static readonly global::System.Object _singletonLock = new global::System.Object();
+
         public bool _useProxy = false;
 
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
+
+        /// <summary>
+        /// Change Safety: delegate called after OnNewRequest to (conditionally) add the policy-token pipeline step.
+        /// </summary>
+        public ChangeSafetyPolicyTokenDelegate AddChangeSafetyPolicyTokenHandler { get; set; }
 
         /// <summary>Gets completion data for azure specific fields</summary>
         public ArgumentCompleterDelegate ArgumentCompleter { get; set; }
@@ -56,11 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance
         /// <summary>The delegate to get the telemetry info.</summary>
         public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
-        /// <summary>Backing field for <see cref="Instance" /> property.</summary>
-        private static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module _instance;
-
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module());
+        public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
         public string Name => @"Az.ContainerInstance";
@@ -110,6 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
+            AddChangeSafetyPolicyTokenHandler?.Invoke( invocationInfo, (step)=> { pipeline.Append(step); } );
             return pipeline;
         }
 
@@ -125,9 +137,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
-            CustomInit();
+            if (_init == false)
+            {
+                lock (_initLock) {
+                    if (_init == false) {
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                        CustomInit();
+                        _init = true;
+                    }
+                }
+            }
         }
 
         /// <summary>Creates the module instance.</summary>

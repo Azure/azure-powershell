@@ -26,7 +26,7 @@ Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $
 Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -RemoveRule
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,47 +34,46 @@ To create the parameters described below, construct a hash table containing the 
 
 CRITERIA <IScheduleBasedBackupCriteria[]>: Criterias to be associated with the schedule tag.
   ObjectType <String>: Type of the specific object - used for deserializing
-  [AbsoluteCriterion <AbsoluteMarker[]>]: it contains absolute values like "AllBackup" / "FirstOfDay" / "FirstOfWeek" / "FirstOfMonth"         and should be part of AbsoluteMarker enum
-  [DaysOfMonth <IDay[]>]: This is day of the month from 1 to 28 other wise last of month
+  [AbsoluteCriterion <List<String>>]: it contains absolute values like "AllBackup" / "FirstOfDay" / "FirstOfWeek" / "FirstOfMonth"         and should be part of AbsoluteMarker enum
+  [DaysOfMonth <List<IDay>>]: This is day of the month from 1 to 28 other wise last of month
     [Date <Int32?>]: Date of the month
     [IsLast <Boolean?>]: Whether Date is last date of month
-  [DaysOfTheWeek <DayOfWeek[]>]: It should be Sunday/Monday/T..../Saturday
-  [MonthsOfYear <Month[]>]: It should be January/February/....../December
-  [ScheduleTime <DateTime[]>]: List of schedule times for backup
-  [WeeksOfTheMonth <WeekNumber[]>]: It should be First/Second/Third/Fourth/Last
+  [DaysOfTheWeek <List<String>>]: It should be Sunday/Monday/T..../Saturday
+  [MonthsOfYear <List<String>>]: It should be January/February/....../December
+  [ScheduleTime <List<DateTime>>]: List of schedule times for backup
+  [WeeksOfTheMonth <List<String>>]: It should be First/Second/Third/Fourth/Last
 
 POLICY <IBackupPolicy>: Backup Policy Object.
-  DatasourceType <String[]>: Type of datasource for the backup management
+  DatasourceType <List<String>>: Type of datasource for the backup management
   ObjectType <String>: 
-  PolicyRule <IBasePolicyRule[]>: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
+  PolicyRule <List<IBasePolicyRule>>: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
     Name <String>: 
     ObjectType <String>: 
     DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-    DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+    DataStoreType <String>: type of datastore; Operational/Vault/Archive
     TriggerObjectType <String>: Type of the specific object - used for deserializing
-    Lifecycle <ISourceLifeCycle[]>: 
+    Lifecycle <List<ISourceLifeCycle>>: 
       DeleteAfterDuration <String>: Duration of deletion after given timespan
       DeleteAfterObjectType <String>: Type of the specific object - used for deserializing
       SourceDataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-      SourceDataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
-      [TargetDataStoreCopySetting <ITargetCopySetting[]>]: 
+      SourceDataStoreType <String>: type of datastore; Operational/Vault/Archive
+      [TargetDataStoreCopySetting <List<ITargetCopySetting>>]: 
         CopyAfterObjectType <String>: Type of the specific object - used for deserializing
         DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-        DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+        DataStoreType <String>: type of datastore; Operational/Vault/Archive
     [BackupParameterObjectType <String>]: Type of the specific object - used for deserializing
     [IsDefault <Boolean?>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 #>
 function Edit-AzDataProtectionPolicyTagClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy])]
 [CmdletBinding(DefaultParameterSetName='RemoveTag', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
     # Backup Policy Object.
-    # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
 
     [Parameter(Mandatory)]
@@ -91,9 +90,8 @@ param(
 
     [Parameter(ParameterSetName='updateTag', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IScheduleBasedBackupCriteria[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IScheduleBasedBackupCriteria[]]
     # Criterias to be associated with the schedule tag.
-    # To construct, see NOTES section for CRITERIA properties and create a hash table.
     ${Criteria}
 )
 
@@ -104,6 +102,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -133,6 +134,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

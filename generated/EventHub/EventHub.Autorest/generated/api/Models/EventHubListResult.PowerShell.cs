@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell;
 
-    /// <summary>The result of the List EventHubs operation.</summary>
+    /// <summary>Paged collection of Eventhub items</summary>
     [System.ComponentModel.TypeConverter(typeof(EventHubListResultTypeConverter))]
     public partial class EventHubListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             return ToJsonString();
         }
     }
-    /// The result of the List EventHubs operation.
+    /// Paged collection of Eventhub items
     [System.ComponentModel.TypeConverter(typeof(EventHubListResultTypeConverter))]
     public partial interface IEventHubListResult
 

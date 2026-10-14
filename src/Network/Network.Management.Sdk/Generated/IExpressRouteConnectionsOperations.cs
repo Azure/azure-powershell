@@ -14,102 +14,13 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRouteConnectionsOperations
     {
         /// <summary>
-        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
-        /// circuit.
-        /// </summary>
-        /// <remarks>
-        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
-        /// circuit.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the connection subresource.
-        /// </param>
-        /// <param name='putExpressRouteConnectionParameters'>
-        /// Parameters required in an ExpressRouteConnection PUT operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteConnection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, ExpressRouteConnection putExpressRouteConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the specified ExpressRouteConnection.
-        /// </summary>
-        /// <remarks>
-        /// Gets the specified ExpressRouteConnection.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the ExpressRoute connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes a connection to a ExpressRoute circuit.
-        /// </summary>
-        /// <remarks>
-        /// Deletes a connection to a ExpressRoute circuit.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the connection subresource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Lists ExpressRouteConnections.
         /// </summary>
         /// <remarks>
         /// Lists ExpressRouteConnections.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -129,6 +40,35 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteConnectionList>> ListWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Gets the specified ExpressRouteConnection.
+        /// </summary>
+        /// <remarks>
+        /// Gets the specified ExpressRouteConnection.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the express route gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
         /// circuit.
         /// </summary>
@@ -137,13 +77,73 @@ namespace Microsoft.Azure.Management.Network
         /// circuit.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
+        /// The name of the express route gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection subresource.
+        /// The name of the express route connection.
+        /// </param>
+        /// <param name='putExpressRouteConnectionParameters'>
+        /// Parameters required in an ExpressRouteConnection PUT operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteConnection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, ExpressRouteConnection putExpressRouteConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes a connection to a ExpressRoute circuit.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a connection to a ExpressRoute circuit.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the express route gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
+        /// circuit.
+        /// </summary>
+        /// <remarks>
+        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
+        /// circuit.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the express route gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route connection.
         /// </param>
         /// <param name='putExpressRouteConnectionParameters'>
         /// Parameters required in an ExpressRouteConnection PUT operation.
@@ -169,13 +169,13 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a connection to a ExpressRoute circuit.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
+        /// The name of the express route gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection subresource.
+        /// The name of the express route connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

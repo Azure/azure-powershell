@@ -39,7 +39,7 @@ Describe 'FileShare-Pipeline' {
             -MediaTier "SSD" `
             -Protocol "NFS" `
             -ProvisionedStorageGiB 512 `
-            -NfProtocolPropertyRootSquash "RootSquash" `
+            -RootSquash "RootSquash" `
             -Tag @{"pipeline" = "test1"; "stage" = "initial"}
             
         New-AzFileShare -ResourceName $script:pipelineShare2 `
@@ -48,7 +48,7 @@ Describe 'FileShare-Pipeline' {
             -MediaTier "SSD" `
             -Protocol "NFS" `
             -ProvisionedStorageGiB 512 `
-            -NfProtocolPropertyRootSquash "RootSquash" `
+            -RootSquash "RootSquash" `
             -Tag @{"pipeline" = "test2"; "stage" = "initial"}
             
         New-AzFileShare -ResourceName $script:pipelineShare3 `
@@ -57,7 +57,7 @@ Describe 'FileShare-Pipeline' {
             -MediaTier "SSD" `
             -Protocol "NFS" `
             -ProvisionedStorageGiB 512 `
-            -NfProtocolPropertyRootSquash "RootSquash" `
+            -RootSquash "RootSquash" `
             -Tag @{"pipeline" = "test3"; "stage" = "initial"; "protocol" = "nfs"}
     }
 
@@ -115,7 +115,7 @@ Describe 'FileShare-Pipeline' {
                     -MediaTier "SSD" `
                     -Protocol "NFS" `
                     -ProvisionedStorageGiB 512 `
-                    -NfProtocolPropertyRootSquash "RootSquash"
+                    -RootSquash "RootSquash"
                 
                 # Get and remove through pipeline
                 Get-AzFileShare -ResourceName $tempName -ResourceGroupName $env.resourceGroup | 
@@ -136,12 +136,12 @@ Describe 'FileShare-Pipeline' {
                 
                 New-AzFileShare -ResourceName $temp1 -ResourceGroupName $env.resourceGroup `
                     -Location $env.location -MediaTier "SSD" -Protocol "NFS" `
-                    -ProvisionedStorageGiB 512 -NfProtocolPropertyRootSquash "RootSquash" `
+                    -ProvisionedStorageGiB 512 -RootSquash "RootSquash" `
                     -Tag @{"delete-me" = "yes"; "batch" = "1"}
                     
                 New-AzFileShare -ResourceName $temp2 -ResourceGroupName $env.resourceGroup `
                     -Location $env.location -MediaTier "SSD" -Protocol "NFS" `
-                    -ProvisionedStorageGiB 512 -NfProtocolPropertyRootSquash "RootSquash" `
+                    -ProvisionedStorageGiB 512 -RootSquash "RootSquash" `
                     -Tag @{"delete-me" = "yes"; "batch" = "1"}
                 
                 # Filter and remove through pipeline
@@ -172,7 +172,7 @@ Describe 'FileShare-Pipeline' {
                     -MediaTier "SSD" `
                     -Protocol "NFS" `
                     -ProvisionedStorageGiB 512 `
-                    -NfProtocolPropertyRootSquash "RootSquash" `
+                    -RootSquash "RootSquash" `
                     -Tag @{"stage" = "created"} |
                     Get-AzFileShare |
                     Update-AzFileShare -ProvisionedStorageGiB 768 -Tag @{"stage" = "updated"} |
@@ -213,7 +213,7 @@ Describe 'FileShare-Pipeline' {
                         -MediaTier "SSD" `
                         -Protocol "NFS" `
                         -ProvisionedStorageGiB 512 `
-                        -NfProtocolPropertyRootSquash "RootSquash" `
+                        -RootSquash "RootSquash" `
                         -Tag @{"batch" = "test"; "index" = "$_"}
                     $shares += $name
                 }
@@ -487,7 +487,7 @@ Describe 'FileShare-Pipeline' {
                         -MediaTier "SSD" `
                         -Protocol "NFS" `
                         -ProvisionedStorageGiB 512 `
-                        -NfProtocolPropertyRootSquash "RootSquash" `
+                        -RootSquash "RootSquash" `
                         -Tag @{"bulk" = "true"; "index" = "$_"}
                     $bulkShares += $name
                 }

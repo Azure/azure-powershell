@@ -42,14 +42,15 @@ function Invoke-AzContainerInstanceCommand {
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
       [System.String]
       # The name of the resource group.
+      # The name is case insensitive.
       ${ResourceGroupName},
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
       [System.String]
-      # Subscription credentials which uniquely identify Microsoft Azure subscription.
-      # The subscription ID forms part of the URI for every service call.
+      # The ID of the target subscription.
+      # The value must be an UUID.
       ${SubscriptionId},
   
       [Parameter(Mandatory)]
@@ -83,52 +84,70 @@ function Invoke-AzContainerInstanceCommand {
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Azure')]
       [System.Management.Automation.PSObject]
-      # The credentials, account, tenant, and subscription used for communication with Azure.
+      # The DefaultProfile parameter is not functional.
+      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
       ${DefaultProfile},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Wait for .NET debugger to attach
       ${Break},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be appended to the front of the pipeline
       ${HttpPipelineAppend},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be prepended to the front of the pipeline
       ${HttpPipelinePrepend},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [System.Uri]
       # The URI for the proxy server to use
       ${Proxy},
-  
+
       [Parameter(DontShow)]
       [ValidateNotNull()]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [System.Management.Automation.PSCredential]
       # Credentials for a proxy server to use for the remote call
       ${ProxyCredential},
-  
+
       [Parameter(DontShow)]
       [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Use the default credentials for the proxy
       ${ProxyUseDefaultCredentials}
   )
-    process {
-      try {
-        Az.ContainerInstance.internal\Invoke-AzContainerInstanceCommand @PSBoundParameters
-      } catch {
+
+    dynamicparam {
+      # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+      # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+      $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+      $wrapped = Get-Command -Name 'Az.ContainerInstance.private\Invoke-AzContainerInstanceCommand_ExecuteExpanded' -ErrorAction Ignore
+      if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+        $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+        foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+          if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+            $dynamicParameters.Add($entry.Key, $entry.Value)
+          }
+        }
+      }
+      return $dynamicParameters
+    }
+
+    process {
+      try {
+        Az.ContainerInstance.internal\Invoke-AzContainerInstanceCommand @PSBoundParameters
+      } catch {
         throw
       }
     }

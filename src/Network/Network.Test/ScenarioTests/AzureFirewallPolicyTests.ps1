@@ -252,11 +252,13 @@ function Test-AzureFirewallPolicyCRUD {
         $result = $azureFirewallPolicyAsJob | Wait-Job
         Assert-AreEqual "Completed" $result.State
     }
+
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
 }
+
 
 <#
 .SYNOPSIS
@@ -1597,19 +1599,20 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "westus2"
+    $location = "francecentral"
     $vnetName = Get-ResourceName
-    $pacFile = "fake_pacfile_url"
+    $pacFile = "https://teststgeproxywithrbacfix.blob.core.windows.net/pacfile/proxy.pac"
+    $userAssignedManagedIdentity = "/subscriptions/e7eb2257-46e4-4826-94df-153853fea38f/resourcegroups/newrgeproxy/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PacFileMSI-testmsirbacfix"
    
     try {
 
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
-        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -HttpsPort 121 -EnablePacFile  -PacFilePort 122 -PacFile $pacFile
+        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 85 -EnablePacFile  -PacFilePort 122 -PacFile $pacFile
 
         # Create AzureFirewallPolicy (with Explicit Proxy Settings)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId @($userAssignedManagedIdentity)
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -1622,12 +1625,14 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
         Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxy
         Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
-        Assert-AreEqual 121 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
         Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
         Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }        
 
         # Modify
-        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -HttpsPort 123 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
+        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
         # Set AzureFirewallPolicy
         $azureFirewallPolicy.ExplicitProxy = $exProxy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
@@ -1635,14 +1640,98 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
 
         Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
         Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
-        Assert-AreEqual 123 $getAzureFirewallPolicy.ExplicitProxy.HttpsPort
         Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
         Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
     }
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Policy with Multiple UAMIs
+#>
+
+function Test-AzureFirewallPolicyWithMultipleUAMI {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "francecentral"
+    $vnetName = Get-ResourceName
+    $pacFile = "https://teststgeproxywithrbacfix.blob.core.windows.net/pacfile/proxy.pac"
+    $transportSecurityName = "cert"
+    $transportSecurityId = "https://eproxyclipskv.vault.azure.net/secrets/cert/a0497e639d04459aa880901be337c52d"
+    $userAssignedManagedIdentity = "/subscriptions/e7eb2257-46e4-4826-94df-153853fea38f/resourcegroups/newrgeproxy/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PacFileMSI-testmsirbacfix"
+    $transportSecurityIdentity = "/subscriptions/e7eb2257-46e4-4826-94df-153853fea38f/resourcegroups/ExplicitProxyCLIPSTestResource/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ExplicitProxy_tlsidentity"
+    $tier = "Premium"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy  -EnableExplicitProxy  -HttpPort 85 -EnablePacFile  -PacFilePort 122 -PacFile $pacFile 
+
+        # Create AzureFirewallPolicy (with Explicit Proxy Settings)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -ExplicitProxy $explicitProxySettings -UserAssignedIdentityId $userAssignedManagedIdentity
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+       
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull  $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-NotNull  $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 85 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 122 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }        
+
+        # Two different UAMIs for Explicit Proxy and TLS Inspection
+        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
+        # Set AzureFirewallPolicy
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -ExplicitProxy $exProxy -TransportSecurityName $transportSecurityName -TransportSecurityKeyVaultSecretId $transportSecurityId -UserAssignedIdentityId @($userAssignedManagedIdentity, $transportSecurityIdentity)
+
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 2 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($transportSecurityIdentity) }
+
+        # Single UAMI to set both Explicit Proxy and TLS Inspection
+        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
+        # Set AzureFirewallPolicy
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -ExplicitProxy $exProxy -TransportSecurityName $transportSecurityName -TransportSecurityKeyVaultSecretId $transportSecurityId -UserAssignedIdentityId @($userAssignedManagedIdentity)
+
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+
 }
 
 <#
@@ -1966,6 +2055,31 @@ function Test-AzureFirewallPolicySizeProperty {
 
         #verification
         Assert-NotNull $getAzureFirewallPolicy.Size
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AzureFirewallPolicyAfcManaged {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $location = "westus2"
+
+    try {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create AzureFirewallPolicy
+        New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # AfcManaged is a read-only property surfaced from the RP; a standard policy is not AFC-managed
+        Assert-Null $getAzureFirewallPolicy.AfcManaged
     }
     finally {
         # Cleanup
@@ -2317,4 +2431,184 @@ function Test-AzureFirewallPolicyWithParentBasePolicy {
     $fwp | Set-AzFirewallPolicy
     $azureFirewallChildPolicy2 = New-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location
     Set-AzFirewallPolicy -Name $azureFirewallChildPolicyName2 -ResourceGroupName $rgname -Location $location -BasePolicy $azureFirewallPolicy.Id
+}
+
+<#
+.SYNOPSIS
+Tests Kube Selector Group CRUD on an Azure Firewall Policy.
+#>
+function Test-AzureFirewallPolicyKubeSelectorGroupCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $ksgName = Get-ResourceName
+    $location = "australiasoutheast"
+
+    try {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the firewall policy
+        New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Build label selectors
+        $podExpression = New-AzFirewallPolicyLabelSelectorExpression -Key "tier" -Operator "In" -Value "frontend", "backend"
+        $podSelector = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ app = "web"; env = "production" } -MatchExpression $podExpression
+        $namespaceSelector = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ "kubernetes.io/metadata.name" = "production" }
+
+        # Create the Kube Selector Group
+        $created = New-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PodSelector $podSelector -NamespaceSelector $namespaceSelector
+        Assert-NotNull $created
+
+        # Get and verify
+        $ksg = Get-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual $ksgName $ksg.Name
+        Assert-NotNull $ksg.Properties.PodSelector
+        Assert-AreEqual "web" $ksg.Properties.PodSelector.MatchLabels["app"]
+        Assert-AreEqual "production" $ksg.Properties.PodSelector.MatchLabels["env"]
+        Assert-AreEqual 1 @($ksg.Properties.PodSelector.MatchExpressions).Count
+        Assert-AreEqual "tier" $ksg.Properties.PodSelector.MatchExpressions[0].Key
+        Assert-AreEqual "In" $ksg.Properties.PodSelector.MatchExpressions[0].Operator
+        Assert-AreEqual 2 @($ksg.Properties.PodSelector.MatchExpressions[0].Values).Count
+        Assert-NotNull $ksg.Properties.NamespaceSelector
+        Assert-AreEqual "production" $ksg.Properties.NamespaceSelector.MatchLabels["kubernetes.io/metadata.name"]
+        Assert-AreEqual "Succeeded" $ksg.Properties.ProvisioningState
+
+        # List and verify
+        $list = Get-AzFirewallPolicyKubeSelectorGroup -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual 1 @($list).Count
+
+        # Update the pod selector
+        $podExpression2 = New-AzFirewallPolicyLabelSelectorExpression -Key "tier" -Operator "In" -Value "frontend"
+        $podSelector2 = New-AzFirewallPolicyKubeLabelSelector -MatchLabel @{ app = "api" } -MatchExpression $podExpression2
+        Set-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PodSelector $podSelector2
+
+        $updated = Get-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual "api" $updated.Properties.PodSelector.MatchLabels["app"]
+        Assert-AreEqual 1 @($updated.Properties.PodSelector.MatchExpressions[0].Values).Count
+
+        # The namespace selector was not passed to Set and must be preserved.
+        Assert-NotNull $updated.Properties.NamespaceSelector
+        Assert-AreEqual "production" $updated.Properties.NamespaceSelector.MatchLabels["kubernetes.io/metadata.name"]
+
+        # Remove
+        $removed = Remove-AzFirewallPolicyKubeSelectorGroup -Name $ksgName -ResourceGroupName $rgname -FirewallPolicyName $azureFirewallPolicyName -PassThru -Force
+        Assert-AreEqual true $removed
+
+        # Verify removal
+        $listAfter = Get-AzFirewallPolicyKubeSelectorGroup -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
+        Assert-AreEqual 0 @($listAfter).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
+Tests AzureFirewallPolicy CRUD with Network Rule source/destination Geo Locations.
+#>
+function Test-AzureFirewallPolicyCRUDWithNetworkRuleGeoLocations {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "eastus2euap"
+
+    $ruleGroupName = Get-ResourceName
+
+    # AzureFirewallPolicyNetworkRuleCollection
+    $networkRcName = "networkRc"
+    $networkRcPriority = 200
+    $networkRcActionType = "Deny"
+
+    # AzureFirewallPolicyNetworkRule 1 - source geo location
+    $networkRule1Name = "networkRuleSourceGeo"
+    $networkRule1Desc = "desc1"
+    $networkRule1Protocol1 = "TCP"
+    $networkRule1SourceGeo1 = "US"
+    $networkRule1SourceGeo2 = "CA"
+    $networkRule1DestinationAddress1 = "10.10.10.1"
+    $networkRule1DestinationPort1 = "90"
+
+    # AzureFirewallPolicyNetworkRule 2 - destination geo location
+    $networkRule2Name = "networkRuleDestinationGeo"
+    $networkRule2Desc = "desc2"
+    $networkRule2Protocol1 = "TCP"
+    $networkRule2SourceAddress1 = "192.168.0.0/16"
+    $networkRule2DestinationGeo1 = "US"
+    $networkRule2DestinationGeo2 = "GB"
+    $networkRule2DestinationPort1 = "443"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+
+        # Create Network Rule with source Geo Locations
+        $networkRule1 = New-AzFirewallPolicyNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1 -SourceGeoLocation $networkRule1SourceGeo1, $networkRule1SourceGeo2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+
+        # Create Network Rule with destination Geo Locations
+        $networkRule2 = New-AzFirewallPolicyNetworkRule -Name $networkRule2Name -Description $networkRule2Desc -Protocol $networkRule2Protocol1 -SourceAddress $networkRule2SourceAddress1 -DestinationGeoLocation $networkRule2DestinationGeo1, $networkRule2DestinationGeo2 -DestinationPort $networkRule2DestinationPort1
+
+        # Create a Filter Rule Collection with the two network rules
+        $networkRc = New-AzFirewallPolicyFilterRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule1, $networkRule2 -ActionType $networkRcActionType
+
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $networkRc -FirewallPolicyObject $azureFirewallPolicy
+
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+
+        # Check rule collection groups count
+        Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
+
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+        Assert-AreEqual 1 @($getRg.properties.ruleCollection).Count
+
+        $filterRuleCollection = $getRg.Properties.GetRuleCollectionByName($networkRcName)
+        Assert-AreEqual $networkRcName $filterRuleCollection.Name
+        Assert-AreEqual $networkRcPriority $filterRuleCollection.Priority
+        Assert-AreEqual $networkRcActionType $filterRuleCollection.Action.Type
+        Assert-AreEqual 2 $filterRuleCollection.Rules.Count
+
+        # Verify network rule 1 - source geo locations
+        $networkRule1Get = $filterRuleCollection.GetRuleByName($networkRule1Name)
+        Assert-AreEqual $networkRule1Name $networkRule1Get.Name
+        Assert-AreEqual 2 $networkRule1Get.SourceGeoLocations.Count
+        Assert-AreEqual $networkRule1SourceGeo1 $networkRule1Get.SourceGeoLocations[0]
+        Assert-AreEqual $networkRule1SourceGeo2 $networkRule1Get.SourceGeoLocations[1]
+        Assert-AreEqual 1 $networkRule1Get.DestinationAddresses.Count
+        Assert-AreEqual $networkRule1DestinationAddress1 $networkRule1Get.DestinationAddresses[0]
+
+        # Verify network rule 2 - destination geo locations
+        $networkRule2Get = $filterRuleCollection.GetRuleByName($networkRule2Name)
+        Assert-AreEqual $networkRule2Name $networkRule2Get.Name
+        Assert-AreEqual 1 $networkRule2Get.SourceAddresses.Count
+        Assert-AreEqual $networkRule2SourceAddress1 $networkRule2Get.SourceAddresses[0]
+        Assert-AreEqual 2 $networkRule2Get.DestinationGeoLocations.Count
+        Assert-AreEqual $networkRule2DestinationGeo1 $networkRule2Get.DestinationGeoLocations[0]
+        Assert-AreEqual $networkRule2DestinationGeo2 $networkRule2Get.DestinationGeoLocations[1]
+
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

@@ -94,6 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {_autoDeleteOnIdle = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("autoDeleteOnIdle"), out var __jsonAutoDeleteOnIdle) ? global::System.Xml.XmlConvert.ToTimeSpan( __jsonAutoDeleteOnIdle ) : _autoDeleteOnIdle;}
             {_enablePartitioning = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean>("enablePartitioning"), out var __jsonEnablePartitioning) ? (bool?)__jsonEnablePartitioning : _enablePartitioning;}
             {_enableExpress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean>("enableExpress"), out var __jsonEnableExpress) ? (bool?)__jsonEnableExpress : _enableExpress;}
+            {_userMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("userMetadata"), out var __jsonUserMetadata) ? (string)__jsonUserMetadata : (string)_userMetadata;}
             AfterFromJson(json);
         }
 
@@ -151,6 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)(null != this._autoDeleteOnIdle ? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(global::System.Xml.XmlConvert.ToString((global::System.TimeSpan)this._autoDeleteOnIdle)): null), "autoDeleteOnIdle" ,container.Add );
             AddIf( null != this._enablePartitioning ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean((bool)this._enablePartitioning) : null, "enablePartitioning" ,container.Add );
             AddIf( null != this._enableExpress ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonBoolean((bool)this._enableExpress) : null, "enableExpress" ,container.Add );
+            AddIf( null != (((object)this._userMetadata)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._userMetadata.ToString()) : null, "userMetadata" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

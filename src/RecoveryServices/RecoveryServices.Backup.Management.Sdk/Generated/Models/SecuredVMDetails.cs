@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="securedVmosDiskEncryptionSetId">Gets or Sets Disk Encryption Set Id for Secured VM OS Disk
         /// </param>
-        public SecuredVMDetails(string securedVmosDiskEncryptionSetId = default(string))
+
+        /// <param name="dataDiskEncryptionSettings">Data disk encryption settings for Secured VM. This will be used to provide
+        /// Disk Encryption Set Id for each data disk.
+        /// </param>
+        public SecuredVMDetails(string securedVmosDiskEncryptionSetId = default(string), DataDiskEncryptionSettings dataDiskEncryptionSettings = default(DataDiskEncryptionSettings))
 
         {
             this.SecuredVMOSDiskEncryptionSetId = securedVmosDiskEncryptionSetId;
+            this.DataDiskEncryptionSettings = dataDiskEncryptionSettings;
             CustomInit();
         }
 
@@ -44,5 +49,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securedVMOsDiskEncryptionSetId")]
         public string SecuredVMOSDiskEncryptionSetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets data disk encryption settings for Secured VM. This will be
+        /// used to provide Disk Encryption Set Id for each data disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dataDiskEncryptionSettings")]
+        public DataDiskEncryptionSettings DataDiskEncryptionSettings {get; set; }
     }
 }

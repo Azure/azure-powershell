@@ -90,6 +90,10 @@
       "_justification": "Legitimate test session record"
     },
     {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUDWithMutualAuthentication.json",
+      "_justification": "Legitimate test session record for mutual TLS (mTLS) scenarios; contains PFX-formatted client and server test certificates recorded during the Application Gateway mTLS Passthrough test (added by PR #30158). All certificates are ephemeral test data; no live credentials."
+    },
+    {
       "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
       "_justification": "Legitimate test session record, resources are deleted"
     },

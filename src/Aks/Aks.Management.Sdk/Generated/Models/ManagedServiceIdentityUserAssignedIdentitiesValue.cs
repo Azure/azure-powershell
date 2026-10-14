@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// User assigned identity properties.
+    /// </summary>
     public partial class ManagedServiceIdentityUserAssignedIdentitiesValue
     {
         /// <summary>

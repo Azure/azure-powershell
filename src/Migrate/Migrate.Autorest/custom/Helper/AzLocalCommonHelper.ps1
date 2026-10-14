@@ -37,6 +37,19 @@ function CheckStorageModuleDependency {
     }
 }
 
+function CheckConnectedMachineModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param()
+
+    process {
+        $module = Get-Module -ListAvailable -Name Az.ConnectedMachine
+        if ($null -eq $module) {
+            $message = "Az.ConnectedMachine Module must be installed to use -MigrateAsArcVM 'true'. Please run 'Install-Module -Name Az.ConnectedMachine' to install and continue."
+            throw $message
+        }
+    }
+}
+
 function GetARGQueryForArcResourceBridge {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
@@ -258,6 +271,65 @@ function InvokeAzMigrateGetCommandWithRetries {
     }
 }
 
+function Test-ArcMachineReuseEligibility {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        # Subscription that should contain the target Arc-enabled machine.
+        ${TargetSubscriptionId},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Resource group that should contain the target Arc-enabled machine.
+        ${TargetResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Name of the Arc-enabled machine to be reused (matches -TargetVMName on the cmdlet).
+        ${TargetVMName}
+    )
+
+    process {
+        $arcMachineId = $IdFormats.HybridComputeMachineArmIdTemplate -f $TargetSubscriptionId, $TargetResourceGroupName, $TargetVMName
+
+        # GET the Arc-enabled machine via Az.ConnectedMachine. The module's presence is
+        # validated up-front by CheckConnectedMachineModuleDependency in the calling cmdlet,
+        # so reaching this point implies Az.ConnectedMachine is available.
+        $getErrors = $null
+        $arcMachine = Az.ConnectedMachine\Get-AzConnectedMachine `
+            -SubscriptionId    $TargetSubscriptionId `
+            -ResourceGroupName $TargetResourceGroupName `
+            -Name              $TargetVMName `
+            -ErrorAction       SilentlyContinue `
+            -ErrorVariable     getErrors
+
+        # 1. Existence: a null result means the lookup failed for any reason (not found,
+        #    auth, throttling, network, etc.). We deliberately do not distinguish 404 from
+        #    other failures: the actionable guidance is the same (verify the Arc machine
+        #    exists at the expected resource group and matches -TargetVMName), and including
+        #    the underlying exception message preserves diagnostic detail when present.
+        if ($null -eq $arcMachine) {
+            $underlyingError = if ($getErrors -and $getErrors[0] -and $getErrors[0].Exception) {
+                $getErrors[0].Exception.Message
+            } else {
+                '(no error details available)'
+            }
+            throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId, $underlyingError)
+        }
+
+        # 2. Kind must be unset (any non-empty value blocks reuse).
+        if (-not [string]::IsNullOrEmpty($arcMachine.Kind)) {
+            throw ($ArcMachineReuseValidationMessages.KindIncompatible -f $arcMachineId, $arcMachine.Kind)
+        }
+
+        # Note: status and location checks are intentionally omitted. The DataReplication
+        # service will surface those failures at PUT time if they matter.
+
+        Write-Verbose "Arc machine reuse preflight passed: $arcMachineId"
+    }
+}
+
 function Test-ReplicationPrequisites {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param (
@@ -302,9 +374,15 @@ function Test-ReplicationPrequisites {
             throw $VmReplicationValidationMessages.HyperVIntegrationServicesNotRunning
         }
 
-        # Hyper-V VMs should be highly available
-        if (![string]::IsNullOrEmpty($Machine.ClusterId) -and $Machine.HighAvailability -eq $HighAvailability.NO) {
-            throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+        # Hyper-V VMs on cluster should be highly available
+        if (![string]::IsNullOrEmpty($Machine.ClusterId)) {
+            if ($Machine.HighAvailability -eq $HighAvailability.NO) {
+                throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+            }
+            elseif ($Machine.HighAvailability -ne $HighAvailability.YES) {
+                # Unknown or unexpected value
+                throw $VmReplicationValidationMessages.VmUnknownHighlyAvailable
+            }
         }
     }
 

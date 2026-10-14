@@ -22,9 +22,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         /// <summary>Backing field for <see cref="Key" /> property.</summary>
         private string _key;
 
-        /// <summary>The key of the key-value to retrieve.</summary>
+        /// <summary>The key of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public string Key { get => this._key; set => this._key = value; }
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Creates an new <see cref="AppConfigurationdataIdentity" /> instance.</summary>
         public AppConfigurationdataIdentity()
@@ -46,17 +53,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The key of the key-value to retrieve.</summary>
+        /// <summary>The key of the key-value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The key of the key-value to retrieve.",
+        Description = @"The key of the key-value.",
         SerializedName = @"key",
         PossibleTypes = new [] { typeof(string) })]
         string Key { get; set; }
+        /// <summary>The name of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the snapshot.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get; set; }
 
     }
     internal partial interface IAppConfigurationdataIdentityInternal
@@ -64,8 +82,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
     {
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The key of the key-value to retrieve.</summary>
+        /// <summary>The key of the key-value.</summary>
         string Key { get; set; }
+        /// <summary>The name of the snapshot.</summary>
+        string Name { get; set; }
 
     }
 }

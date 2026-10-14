@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRouteProviderPort resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteProviderPort : Resource
+    public partial class ExpressRouteProviderPort : TrackedResourceWithOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteProviderPort class.

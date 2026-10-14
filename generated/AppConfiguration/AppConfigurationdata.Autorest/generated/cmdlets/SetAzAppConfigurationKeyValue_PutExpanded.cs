@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"put a key-value.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv/{key}", ApiVersion = "1.0")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv/{key}", ApiVersion = "2026-04-01")]
     public partial class SetAzAppConfigurationKeyValue_PutExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -37,6 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A key-value pair representing application settings.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue _entityBody = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValue();
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
@@ -62,13 +63,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.AppConfigurationdata Client => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.ClientAPI;
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>Backing field for <see cref="ClientRequestId" /> property.</summary>
+        private string _clientRequestId;
+
+        /// <summary>An opaque, globally-unique, client-generated string identifier for the request.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "An opaque, globally-unique, client-generated string identifier for the request.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An opaque, globally-unique, client-generated string identifier for the request.",
+        SerializedName = @"x-ms-client-request-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
+        public string ClientRequestId { get => this._clientRequestId; set => this._clientRequestId = value; }
+
+        /// <summary>The content type of the value stored within the key-value.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The content type of the value stored within the key-value.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"The content type of the value stored within the key-value.",
         SerializedName = @"content_type",
         PossibleTypes = new [] { typeof(string) })]
         public string ContentType { get => _entityBody.ContentType ?? null; set => _entityBody.ContentType = value; }
@@ -82,6 +97,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The description of the key-value.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The description of the key-value.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The description of the key-value.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _entityBody.Description ?? null; set => _entityBody.Description = value; }
 
         /// <summary>Backing field for <see cref="Endpoint" /> property.</summary>
         private string _endpoint;
@@ -97,13 +123,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Uri)]
         public string Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>A value representing the current state of the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A value representing the current state of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"A value representing the current state of the resource.",
         SerializedName = @"etag",
         PossibleTypes = new [] { typeof(string) })]
         public string Etag { get => _entityBody.Etag ?? null; set => _entityBody.Etag = value; }
@@ -127,13 +153,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _ifMatch;
 
         /// <summary>
-        /// Used to perform an operation only if the targeted resource's etag matches the value provided.
+        /// Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag matches the value provided.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Used to perform an operation only if the targeted resource's etag matches the value provided.",
+        Description = @"Used to perform an operation only if the targeted resource's etag matches the
+        value provided.",
         SerializedName = @"If-Match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -143,13 +171,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _ifNoneMatch;
 
         /// <summary>
-        /// Used to perform an operation only if the targeted resource's etag does not match the value provided.
+        /// Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag does not match the value provided.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Used to perform an operation only if the targeted resource's etag does not match the value provided.",
+        Description = @"Used to perform an operation only if the targeted resource's etag does not
+        match the value provided.",
         SerializedName = @"If-None-Match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -172,17 +202,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Path)]
         public string Key { get => this._key; set => this._key = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
-        SerializedName = @"key",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Key1 { get => _entityBody.Key ?? null; set => _entityBody.Key = value; }
-
         /// <summary>Backing field for <see cref="Label" /> property.</summary>
         private string _label;
 
@@ -197,35 +216,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
         public string Label { get => this._label; set => this._label = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>A date representing the last time the key-value was modified.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A date representing the last time the key-value was modified.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
-        SerializedName = @"label",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Label1 { get => _entityBody.Label ?? null; set => _entityBody.Label = value; }
-
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
+        Description = @"A date representing the last time the key-value was modified.",
         SerializedName = @"last_modified",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime LastModified { get => _entityBody.LastModified ?? default(global::System.DateTime); set => _entityBody.LastModified = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>Indicates whether the key-value is locked.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether the key-value is locked.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"Indicates whether the key-value is locked.",
         SerializedName = @"locked",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Locked { get => _entityBody.Locked ?? default(global::System.Management.Automation.SwitchParameter); set => _entityBody.Locked = value; }
@@ -273,25 +281,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
         public string SyncToken { get => this._syncToken; set => this._syncToken = value; }
 
-        /// <summary>Dictionary of <string></summary>
+        /// <summary>The tags of the key-value</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dictionary of <string>")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tags of the key-value")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dictionary of <string>",
+        Description = @"The tags of the key-value",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags Tag { get => _entityBody.Tag ?? null /* object */; set => _entityBody.Tag = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>The value of the key-value.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The value of the key-value.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"The value of the key-value.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
         public string Value { get => _entityBody.Value ?? null; set => _entityBody.Value = value; }
@@ -505,12 +513,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.PutKeyValue(Key, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, _entityBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.PutKeyValue(Key, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, _entityBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Key=Key,Endpoint=Endpoint,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Key=Key,Endpoint=Endpoint,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,ClientRequestId=this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -600,7 +608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/vnd.microsoft.appconfig.kv+json/application/json/application/problem+json
+                // onOk - response for 200 / application/vnd.microsoft.appconfig.kv+json/application/problem+json/application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue
                 var result = (await response);
                 if (null != result)

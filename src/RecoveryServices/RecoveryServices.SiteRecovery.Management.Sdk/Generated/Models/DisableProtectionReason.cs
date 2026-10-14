@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DisableProtectionReason
     {
+        /// <summary>
+        /// NotSpecified
+        /// </summary>
         public const string NotSpecified = "NotSpecified";
+        /// <summary>
+        /// MigrationComplete
+        /// </summary>
         public const string MigrationComplete = "MigrationComplete";
     }
 }

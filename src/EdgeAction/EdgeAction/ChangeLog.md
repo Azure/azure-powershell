@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 0.1.2
+* Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
+* Clarified the behavior and help of `Switch-AzEdgeActionVersionDefault` for swapping the default version of an Edge Action
+
 ## Version 0.1.1
 * Updated to API version 2025-12-01-preview
 * Removed `Add-AzEdgeActionAttachment` cmdlet (operation no longer available in API)

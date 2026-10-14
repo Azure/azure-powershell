@@ -244,7 +244,7 @@ Create a workspace
 Create an in-memory object for PerfCounterDataSource.
 
 ### [New-AzPipelineGroup](New-AzPipelineGroup.md)
-create a pipeline group instance.
+Create a pipeline group instance.
 
 ### [New-AzPlatformTelemetryDataSourceObject](New-AzPlatformTelemetryDataSourceObject.md)
 Create an in-memory object for PlatformTelemetryDataSource.
@@ -361,7 +361,7 @@ Update for private link scope
 Update part of a workspace
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
-update a pipeline group instance
+Update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.

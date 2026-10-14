@@ -26,9 +26,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName)
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string expand = default(string))
         {
-                return ((ICapacityReservationsOperations)operations).ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
+                return ((ICapacityReservationsOperations)operations).ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName, expand).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -45,12 +51,18 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, expand, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -208,8 +220,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -232,8 +249,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -352,8 +374,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -376,8 +403,13 @@ namespace Microsoft.Azure.Management.Compute
         /// The operation to delete a capacity reservation. This operation is allowed
         /// only when all the associated resources are disassociated from the capacity
         /// reservation. Please refer to https://aka.ms/CapacityReservation for more
-        /// details. Note: Block capacity reservations cannot be deleted after it has
-        /// been successfully allocated until the schedule end time.
+        /// details. Note: Block capacity reservations cannot be deleted after they
+        /// have been successfully allocated until the schedule end time. Future
+        /// capacity reservations (Minimum API version: 2026-04-01) can be deleted if
+        /// their reservation state is one of: Pending, Declined, FulfillmentFailed, or
+        /// Approved. Otherwise, Future capacity reservations in the Committed, Live,
+        /// or PartiallyFulfilled state cannot be deleted until minimumCommitmentDays
+        /// have elapsed since their scheduled start date.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

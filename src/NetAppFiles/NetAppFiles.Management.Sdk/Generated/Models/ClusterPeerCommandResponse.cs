@@ -24,14 +24,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the ClusterPeerCommandResponse class.
         /// </summary>
 
-        /// <param name="peerAcceptCommand">A command that needs to be run on the external ONTAP to accept cluster
-        /// peering.  Will only be present if &lt;code&gt;clusterPeeringStatus&lt;/code&gt; is
-        /// &lt;code&gt;pending&lt;/code&gt;
+        /// <param name="properties">Represents the properties of the cluster peer command response.
         /// </param>
-        public ClusterPeerCommandResponse(string peerAcceptCommand = default(string))
+        public ClusterPeerCommandResponse(ClusterPeerCommandResponseProperties properties = default(ClusterPeerCommandResponseProperties))
 
         {
-            this.PeerAcceptCommand = peerAcceptCommand;
+            this.Properties = properties;
             CustomInit();
         }
 
@@ -42,11 +40,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets a command that needs to be run on the external ONTAP to accept
-        /// cluster peering.  Will only be present if &lt;code&gt;clusterPeeringStatus&lt;/code&gt;
-        /// is &lt;code&gt;pending&lt;/code&gt;
+        /// Gets or sets represents the properties of the cluster peer command
+        /// response.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "peerAcceptCommand")]
-        public string PeerAcceptCommand {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public ClusterPeerCommandResponseProperties Properties {get; set; }
     }
 }

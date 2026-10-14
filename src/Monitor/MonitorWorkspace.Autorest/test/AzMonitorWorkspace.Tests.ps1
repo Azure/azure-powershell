@@ -60,6 +60,20 @@ Describe 'AzMonitorWorkspace' {
         } | Should -Not -Throw
     }
 
+    It 'GetMetricsContainer' {
+        {
+            $config = Get-AzMonitorWorkspaceMetricsContainer -AzureMonitorWorkspaceName $env.monitorWorkspace1 -ResourceGroupName $env.resourceGroup -Name $env.metricsContainer1
+            $config.Name | Should -Be $env.metricsContainer1
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateMetricsContainer' {
+        {
+            $config = Update-AzMonitorWorkspaceMetricsContainer -AzureMonitorWorkspaceName $env.monitorWorkspace1 -ResourceGroupName $env.resourceGroup -Name $env.metricsContainer1 -Version "1.0"
+            $config.Name | Should -Be $env.metricsContainer1
+        } | Should -Not -Throw
+    }
+
     It 'Delete' {
         {
             Remove-AzMonitorWorkspace -ResourceGroupName $env.resourceGroup -Name $env.monitorWorkspace1

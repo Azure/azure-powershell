@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzAppConfigurationKeyVal
 }
 
 Describe 'Test-AzAppConfigurationKeyValue' {
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExisting' {
+        # Create a dedicated key for this test
+        $testKey = "checktest-key1"
+        Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $testKey -Value "exists"
+        { Test-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $testKey } | Should -Not -Throw
+        # Cleanup
+        Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $testKey
     }
 
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckNonExisting' {
+        # Test a key-value that does not exist (HEAD returns 404 which throws)
+        { Test-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key "nonexistent-key-playback" } | Should -Throw
     }
 }

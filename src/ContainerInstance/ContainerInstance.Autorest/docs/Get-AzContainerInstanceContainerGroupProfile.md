@@ -43,6 +43,12 @@ Get-AzContainerInstanceContainerGroupProfile -InputObject <IContainerInstanceIde
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityContainerGroupProfile
+```
+Get-AzContainerInstanceContainerGroupProfile -ContainerGroupProfileInputObject <IContainerInstanceIdentity>
+ -RevisionNumber <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzContainerInstanceContainerGroupProfile -ResourceGroupName <String> [-SubscriptionId <String[]>]
@@ -189,6 +195,21 @@ The command gets the first revision of the container group profile `test-cgp` in
 
 ## PARAMETERS
 
+### -ContainerGroupProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
+Parameter Sets: GetViaIdentityContainerGroupProfile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -207,7 +228,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
@@ -257,7 +277,7 @@ The revision number of the container group profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get1, GetViaIdentityContainerGroupProfile
 Aliases:
 
 Required: True
@@ -292,7 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupProfile
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupProfile
 
 ## NOTES
 

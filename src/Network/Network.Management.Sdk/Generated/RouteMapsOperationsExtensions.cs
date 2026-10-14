@@ -13,19 +13,59 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RouteMapsOperationsExtensions
     {
         /// <summary>
+        /// Retrieves the details of all RouteMaps.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RouteMap> List(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName)
+        {
+                return ((IRouteMapsOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of all RouteMaps.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RouteMap>> ListAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the details of a RouteMap.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static RouteMap Get(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
         {
@@ -39,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -64,13 +105,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static RouteMap CreateOrUpdate(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters)
         {
@@ -84,13 +126,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -109,13 +152,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void Delete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
         {
@@ -129,13 +173,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,58 +190,20 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeMapName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves the details of all RouteMaps.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group&#39;.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<RouteMap> List(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName)
-        {
-                return ((IRouteMapsOperations)operations).ListAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of all RouteMaps.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group&#39;.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RouteMap>> ListAsync(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a RouteMap if it doesn&#39;t exist else updates the existing one.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static RouteMap BeginCreateOrUpdate(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters)
         {
@@ -210,13 +217,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -235,13 +243,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static void BeginDelete(this IRouteMapsOperations operations, string resourceGroupName, string virtualHubName, string routeMapName)
         {
@@ -255,13 +264,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

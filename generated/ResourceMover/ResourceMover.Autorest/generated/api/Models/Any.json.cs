@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any
     {
 

@@ -15,8 +15,8 @@ Uncordon the provided bare metal machine's Kubernetes node.
 ### Uncordon (Default)
 ```
 Invoke-AzNetworkCloudBareMetalMachineUncordon -BareMetalMachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UncordonViaIdentity

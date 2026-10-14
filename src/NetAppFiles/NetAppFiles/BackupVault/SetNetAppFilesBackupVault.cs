@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupVault
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;                
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
             IDictionary<string, string> tagPairs = null;

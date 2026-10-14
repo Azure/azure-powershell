@@ -67,6 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 return;
             }
+            {_storageOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("storageOptions"), out var __jsonStorageOptions) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageOptions.FromJson(__jsonStorageOptions) : _storageOption;}
+            {_storageStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("storageStatus"), out var __jsonStorageStatus) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CloudServicesNetworkStorageStatus1.FromJson(__jsonStorageStatus) : _storageStatus;}
             {_additionalEgressEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("additionalEgressEndpoints"), out var __jsonAdditionalEgressEndpoints) ? If( __jsonAdditionalEgressEndpoints as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IEgressEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.EgressEndpoint.FromJson(__u) )) ))() : null : _additionalEgressEndpoint;}
             {_associatedResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("associatedResourceIds"), out var __jsonAssociatedResourceIds) ? If( __jsonAssociatedResourceIds as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _associatedResourceId;}
             {_clusterId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("clusterId"), out var __jsonClusterId) ? (string)__jsonClusterId : (string)_clusterId;}
@@ -111,6 +113,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (returnNow)
             {
                 return container;
+            }
+            AddIf( null != this._storageOption ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._storageOption.ToJson(null,serializationMode) : null, "storageOptions" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._storageStatus ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._storageStatus.ToJson(null,serializationMode) : null, "storageStatus" ,container.Add );
             }
             if (null != this._additionalEgressEndpoint)
             {

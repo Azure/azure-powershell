@@ -35,33 +35,30 @@ param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The name of the policy definition to get.
+    # The name of the policy set definition to get.
     ${Name},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The full Id of the policy definition to get.
+    # The full Id of the policy set definition to get.
     ${Id},
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
@@ -75,34 +72,34 @@ param(
     [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only built-in policy definitions.
+    # Causes cmdlet to return only built-in policy set definitions.
     ${Builtin},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy set definitions.
     ${Custom},
 
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionVersion')]
     [System.String]
-    # The policy definition version in #.#.# format.
+    # The policy set definition version in #.#.# format.
     ${Version},
 
-    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
+    # Causes cmdlet to return only custom policy set definition versions.
     ${ListVersion},
-
-    [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -115,6 +112,15 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
+
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -176,30 +182,30 @@ begin {
     # mapping table of generated cmdlet parameter sets
     if ($Version -or $ListVersion) {
         $mapping = @{
-            NameSub = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_Get';               # Name, SubscriptionId
-            NameMG = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_Get1';               # Name, ManagementGroupName
-            MG = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List';                   # ManagementGroupName
-            Sub = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List1';                 # SubscriptionId
-            BuiltinId='Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_Get';          # Id
-            BuiltinGet='Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_Get';         # Name
+            NameSub = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';               # Name, SubscriptionId
+            NameMG = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                # Name, ManagementGroupName
+            MG = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                    # ManagementGroupName
+            Sub = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';                   # SubscriptionId
+            BuiltinId='Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';          # Id
+            BuiltinGet='Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';         # Name
         }
     }
     else {
         $mapping = @{
-            NameSub = 'Az.Policy.private\Get-AzPolicySetDefinition_Get';                      # Name, SubscriptionId
-            NameMG = 'Az.Policy.private\Get-AzPolicySetDefinition_Get1';                      # Name, ManagementGroupName
-            Sub = 'Az.Policy.private\Get-AzPolicySetDefinition_List';                         # SubscriptionId
-            MG = 'Az.Policy.private\Get-AzPolicySetDefinition_List1';                         # ManagementGroupName
-            BuiltinId='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';                 # Id
-            BuiltinGet='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';                # Name
+            NameSub = 'Az.Policy.internal\Get-AzPolicySetDefinition';                      # Name, SubscriptionId
+            NameMG = 'Az.Policy.internal\Get-AzPolicySetDefinition';                       # Name, ManagementGroupName
+            Sub = 'Az.Policy.internal\Get-AzPolicySetDefinition';                          # SubscriptionId
+            MG = 'Az.Policy.internal\Get-AzPolicySetDefinition';                           # ManagementGroupName
+            BuiltinId='Az.Policy.internal\Get-AzPolicySetDefinitionBuilt';                 # Id
+            BuiltinGet='Az.Policy.internal\Get-AzPolicySetDefinitionBuilt';                # Name
         }
     }
 
     if ($ListVersion) {
-        $mapping['NameSub'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List2';         # Name, SubscriptionId
-        $mapping['NameMG'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersion_List3';          # Name, ManagementGroup
-        $mapping['BuiltinId'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_List';   # Id
-        $mapping['BuiltinGet'] = 'Az.Policy.private\Get-AzPolicySetDefinitionVersionBuilt_List';  # Name
+        $mapping['NameSub'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';          # Name, SubscriptionId
+        $mapping['NameMG'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersion';           # Name, ManagementGroup
+        $mapping['BuiltinId'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';   # Id
+        $mapping['BuiltinGet'] = 'Az.Policy.internal\Get-AzPolicySetDefinitionVersionBuilt';  # Name
    }
 }
 
@@ -212,18 +218,22 @@ process {
     $PSBoundParameters['ErrorAction'] = 'Stop'
 
     # handle disallowed cases not handled by PS parameter attributes
-    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
+    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupId']) {
         throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
-    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'Version is only allowed if Name or Id  are provided.'
+    if ($PSBoundParameters['Version'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'Version is only allowed when exactly one of Name or Id is provided.'
     }
 
-    if ($PSBoundParameters['ListVersion'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
-        throw 'ListVersion is only allowed if Name or Id  are provided.'
+    if ($PSBoundParameters['ListVersion'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'ListVersion is only allowed when exactly one of Name or Id is provided.'
     }
 
+    if ($PSBoundParameters['Expand'] -and !(($PSBoundParameters['Name'] -xor $PSBoundParameters['Id']))) {
+        throw 'Expand is only allowed when exactly one of Name or Id is provided.'
+    }
+    
     # handle specific parameter sets
     $parameterSet = $PSCmdlet.ParameterSetName
     $calledParameterSet = 'Sub'
@@ -248,7 +258,7 @@ process {
                         }
                     }
                     'mgname' {
-                        $PSBoundParameters['ManagementGroupName'] = $parsed['ManagementGroupName']
+                        $PSBoundParameters['ManagementGroupId'] = $parsed['ManagementGroupName']
                         $PSBoundParameters['Name'] = $parsed['Name']
                         $calledParameterSet = 'NameMG';
                     }
@@ -272,8 +282,7 @@ process {
                 $calledParameterSet = 'Sub';
             }
         }
-        elseif ($PSBoundParameters['ManagementGroupName']) {
-            $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
+        elseif ($PSBoundParameters['ManagementGroupId']) {
             if ($PSBoundParameters['Name']) {
                 $calledParameterSet = 'NameMG'
             }
@@ -300,8 +309,6 @@ process {
     }
 
     # remove parameters not used by generated cmdlets
-    $null = $PSBoundParameters.Remove('BackwardCompatible')
-    $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
     $null = $PSBoundParameters.Remove('Builtin')
     $null = $PSBoundParameters.Remove('Custom')
@@ -316,7 +323,6 @@ process {
     $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
     $scriptCmd = {& $wrappedCmd @PSBoundParameters}
 
-    # get output and fix up for backward compatibility
     try {
         $output = Invoke-Command -ScriptBlock $scriptCmd
     }
@@ -343,25 +349,6 @@ process {
     }
 
     foreach ($item in $output) {
-        # add property bag for backward compatibility with previous SDK cmdlets
-        if ($BackwardCompatible) {
-            $propertyBag = @{
-                Description = $item.Description;
-                DisplayName = $item.DisplayName;
-                Metadata = ConvertObjectToPSObject $item.Metadata;
-                Parameters = ConvertObjectToPSObject $item.Parameter;
-                PolicyDefinitionGroups = ConvertObjectToPSObject $item.PolicyDefinitionGroup;
-                PolicyDefinitions = ConvertObjectToPSObject $item.PolicyDefinition;
-                PolicyType = $item.PolicyType
-            }
-
-            $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceId' -Value $item.Id
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceName' -Value $item.Name
-            $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
-            $item | Add-Member -MemberType NoteProperty -Name 'PolicySetDefinitionId' -Value $item.Id
-        }
-
         # use PSCustomObject for JSON properties
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
         $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force

@@ -32,11 +32,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="statuses">The resource status information.
         /// </param>
 
+        /// <param name="reservationStateInfo">The reservation state information for a capacity reservation, this detail
+        /// is primarily provided for Future capacity reservations. Minimum API
+        /// version: 2026-04-01.
+        /// </param>
+
         /// <param name="name">The name of the capacity reservation.
         /// </param>
-        public CapacityReservationInstanceViewWithName(CapacityReservationUtilization utilizationInfo = default(CapacityReservationUtilization), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), string name = default(string))
+        public CapacityReservationInstanceViewWithName(CapacityReservationUtilization utilizationInfo = default(CapacityReservationUtilization), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), CapacityReservationStateInfo reservationStateInfo = default(CapacityReservationStateInfo), string name = default(string))
 
-        : base(utilizationInfo, statuses)
+        : base(utilizationInfo, statuses, reservationStateInfo)
         {
             this.Name = name;
             CustomInit();

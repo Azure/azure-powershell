@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             }
             {_endpointType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointType"), out var __jsonEndpointType) ? (string)__jsonEndpointType : (string)_endpointType;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
+            {_endpointKind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endpointKind"), out var __jsonEndpointKind) ? (string)__jsonEndpointKind : (string)_endpointKind;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -110,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 {
                     return new NfsMountEndpointProperties(json);
                 }
+                case "S3WithHMAC":
+                {
+                    return new S3WithHmacEndpointProperties(json);
+                }
                 case "SmbMount":
                 {
                     return new SmbMountEndpointProperties(json);
@@ -142,6 +147,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 AddIf( null != (((object)this._endpointType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._endpointType.ToString()) : null, "endpointType" ,container.Add );
             }
             AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._endpointKind)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._endpointKind.ToString()) : null, "endpointKind" ,container.Add );
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

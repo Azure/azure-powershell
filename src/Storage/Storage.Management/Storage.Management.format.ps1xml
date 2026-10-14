@@ -541,6 +541,22 @@
                 <Label>LastAccessTimeTrackingPolicy.BlobType</Label>
                 <ScriptBlock>$_.LastAccessTimeTrackingPolicy.BlobType</ScriptBlock>
               </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.Enabled</Label>
+                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.IndexDocument</Label>
+                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.DefaultIndexDocumentPath</Label>
+                <ScriptBlock>$_.StaticWebsite.DefaultIndexDocumentPath</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.ErrorDocument404Path</Label>
+                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -671,6 +687,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>TagsReplication</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Rules</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -708,6 +728,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>if ($_.PriorityReplication.Enabled -eq $true) {"Enabled"} else {if ($_.PriorityReplication.Enabled -eq $false) {"Disabled"} } </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.TagsReplication.Enabled -eq $true) {"Enabled"} else {if ($_.TagsReplication.Enabled -eq $false) {"Disabled"} } </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

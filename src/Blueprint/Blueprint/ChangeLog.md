@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.1
+* Updated the deprecation message for Blueprint cmdlets.
+
+## Version 0.5.0
+* Added ChangeSafety Support
+
 ## Version 0.4.6
 * Deprecation of Blueprint cmdlets.
 

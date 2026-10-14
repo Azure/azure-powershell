@@ -19,7 +19,7 @@ Describe 'Remove-AzEventHubAuthorizationRule' {
     $namespaceAuthRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule2 -Rights @("Manage", "Send", "Listen")
 
     $listOfNamespaceAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-    $listOfNamespaceAuthRules.Count | Should -Be 8
+    $listOfNamespaceAuthRules.Count | Should -Be 5
 
     $listOfEventHubAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
     $listOfEventHubAuthRules.Count | Should -Be 2
@@ -28,7 +28,7 @@ Describe 'Remove-AzEventHubAuthorizationRule' {
     $eventhubAuthRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name entityAuthRule2 -Rights @("Manage", "Send", "Listen")
 
     $listOfNamespaceAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-    $listOfNamespaceAuthRules.Count | Should -Be 8
+    $listOfNamespaceAuthRules.Count | Should -Be 5
 
     $listOfEventHubAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
     $listOfEventHubAuthRules.Count | Should -Be 4
@@ -48,7 +48,7 @@ Describe 'Remove-AzEventHubAuthorizationRule' {
         { Get-AzEventHubAuthorizationRule -InputObject $namespaceAuthRule -ErrorAction Stop } | Should -Throw
 
         $listOfNamespaceAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-        $listOfNamespaceAuthRules.Count | Should -Be 6
+        $listOfNamespaceAuthRules.Count | Should -Be 3
 
         $listOfEventHubAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
         $listOfEventHubAuthRules.Count | Should -Be 3
@@ -57,7 +57,7 @@ Describe 'Remove-AzEventHubAuthorizationRule' {
         { Get-AzEventHubAuthorizationRule -InputObject $eventhubAuthRule -ErrorAction Stop } | Should -Throw
 
         $listOfNamespaceAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-        $listOfNamespaceAuthRules.Count | Should -Be 6
+        $listOfNamespaceAuthRules.Count | Should -Be 3
 
         $listOfEventHubAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
         $listOfEventHubAuthRules.Count | Should -Be 2

@@ -13,8 +13,30 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     public static class VirtualMachinePriorityTypes
     {
+        /// <summary>
+        /// Regular Priority for a standalone virtual machine or the virtual machines
+        /// in the scale set.
+        /// This is the default priority and it will be used to deploy regular VM/VMSS.
+        /// </summary>
         public const string Regular = "Regular";
+        /// <summary>
+        /// Low priority for a standalone virtual machine or the virtual machines in
+        /// the scale set. Will be Deprecated, use Spot instead.
+        /// </summary>
         public const string Low = "Low";
+        /// <summary>
+        /// Spot priority for a standalone virtual machine or the virtual machines in
+        /// the scale set.
+        /// </summary>
         public const string Spot = "Spot";
+        /// <summary>
+        /// SpotPlus priority for a standalone virtual machine or the virtual machines
+        /// in the scale set.
+        /// This is an enum value that will be used to deploy Azure Spot Plus VM/VMSS,
+        /// which is the next
+        /// generation of Azure Spot VM/VMSS with more reliability and longer running
+        /// time.
+        /// </summary>
+        public const string SpotPlus = "SpotPlus";
     }
 }

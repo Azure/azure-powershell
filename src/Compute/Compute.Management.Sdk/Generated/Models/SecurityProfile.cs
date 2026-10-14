@@ -38,8 +38,10 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="securityType">Specifies the SecurityType of the virtual machine. It has to be set to any
         /// specified value to enable UefiSettings. The default behavior is:
-        /// UefiSettings will not be enabled unless this property is set.
-        /// Possible values include: &#39;TrustedLaunch&#39;, &#39;ConfidentialVM&#39;</param>
+        /// UefiSettings will not be enabled unless this property is set and is not
+        /// Standard. If not specified, Standard will be returned starting api version
+        /// 2025-11-01.
+        /// Possible values include: &#39;Standard&#39;, &#39;TrustedLaunch&#39;, &#39;ConfidentialVM&#39;</param>
 
         /// <param name="encryptionIdentity">Specifies the Managed Identity used by ADE to get access token for keyvault
         /// operations.
@@ -86,7 +88,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies the SecurityType of the virtual machine. It has to
         /// be set to any specified value to enable UefiSettings. The default behavior
-        /// is: UefiSettings will not be enabled unless this property is set. Possible values include: &#39;TrustedLaunch&#39;, &#39;ConfidentialVM&#39;
+        /// is: UefiSettings will not be enabled unless this property is set and is not
+        /// Standard. If not specified, Standard will be returned starting api version
+        /// 2025-11-01. Possible values include: &#39;Standard&#39;, &#39;TrustedLaunch&#39;, &#39;ConfidentialVM&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityType")]
         public string SecurityType {get; set; }

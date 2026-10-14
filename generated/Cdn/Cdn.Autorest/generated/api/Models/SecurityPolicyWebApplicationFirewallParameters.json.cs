@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             __securityPolicyPropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyPropertiesParameters(json);
             {_wafPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("wafPolicy"), out var __jsonWafPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonWafPolicy) : _wafPolicy;}
             {_association = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("associations"), out var __jsonAssociations) ? If( __jsonAssociations as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallAssociation.FromJson(__u) )) ))() : null : _association;}
+            {_isProfileLevel = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean>("isProfileLevel"), out var __jsonIsProfileLevel) ? (bool?)__jsonIsProfileLevel : _isProfileLevel;}
             AfterFromJson(json);
         }
 
@@ -116,6 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 }
                 container.Add("associations",__w);
             }
+            AddIf( null != this._isProfileLevel ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonBoolean((bool)this._isProfileLevel) : null, "isProfileLevel" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

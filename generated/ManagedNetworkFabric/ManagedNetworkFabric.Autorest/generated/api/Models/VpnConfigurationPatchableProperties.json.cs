@@ -105,8 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            {_optionBProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionBProperties"), out var __jsonOptionBProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.OptionBProperties.FromJson(__jsonOptionBProperties) : _optionBProperty;}
-            {_optionAProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionAProperties"), out var __jsonOptionAProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnConfigurationPatchablePropertiesOptionAProperties.FromJson(__jsonOptionAProperties) : _optionAProperty;}
+            {_optionBProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionBProperties"), out var __jsonOptionBProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionBPatchProperties.FromJson(__jsonOptionBProperties) : _optionBProperty;}
+            {_optionAProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("optionAProperties"), out var __jsonOptionAProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VpnOptionAPatchProperties.FromJson(__jsonOptionAProperties) : _optionAProperty;}
             {_networkToNetworkInterconnectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("networkToNetworkInterconnectId"), out var __jsonNetworkToNetworkInterconnectId) ? (string)__jsonNetworkToNetworkInterconnectId : (string)_networkToNetworkInterconnectId;}
             {_peeringOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("peeringOption"), out var __jsonPeeringOption) ? (string)__jsonPeeringOption : (string)_peeringOption;}
             AfterFromJson(json);

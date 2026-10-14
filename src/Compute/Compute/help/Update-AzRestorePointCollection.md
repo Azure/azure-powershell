@@ -14,12 +14,12 @@ Update Restore Point Collection.
 
 ```
 Update-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InstantAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update Restore Point Collection. Can only Update Tags
+Update Restore Point Collection. Can update tags and the InstantAccess setting.
 
 ## EXAMPLES
 
@@ -30,6 +30,13 @@ Update-AzRestorePointCollection -ResourceGroupName <String> -Name <String> -Tag 
 
 Add updated tags using -Tag parameter
 
+### Example 2
+```powershell
+Update-AzRestorePointCollection -ResourceGroupName "MyResourceGroup" -Name "MyRPCollection" -InstantAccess $false
+```
+
+Disable Instant Access on an existing restore point collection.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -39,6 +46,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstantAccess
+Enables or disables instant access snapshot for restore points created under this restore point collection for Premium SSD v2 or Ultra disk.
+This parameter requires a supported Compute API version and the required subscription feature flag for instant access restore points. In subscriptions or regions where this feature is not enabled, the request may be ignored or rejected.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

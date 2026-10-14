@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ProbeProtocol
     {
+        /// <summary>
+        /// Http
+        /// </summary>
         public const string Http = "Http";
+        /// <summary>
+        /// Tcp
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Https
+        /// </summary>
         public const string Https = "Https";
     }
 }

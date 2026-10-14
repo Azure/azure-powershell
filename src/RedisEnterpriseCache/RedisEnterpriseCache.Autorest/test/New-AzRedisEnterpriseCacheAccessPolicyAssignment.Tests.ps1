@@ -14,20 +14,3 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRedisEnterpriseCacheAcc
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzRedisEnterpriseCacheAccessPolicyAssignment' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

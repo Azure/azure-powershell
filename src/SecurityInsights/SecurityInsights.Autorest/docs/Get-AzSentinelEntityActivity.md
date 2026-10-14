@@ -12,9 +12,16 @@ Get Insights and Activities for an entity.
 
 ## SYNTAX
 
+### Queries (Default)
 ```
 Get-AzSentinelEntityActivity -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### QueriesViaIdentity
+```
+Get-AzSentinelEntityActivity -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +81,7 @@ entity ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Queries
 Aliases:
 
 Required: True
@@ -84,13 +91,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: QueriesViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Queries
 Aliases:
 
 Required: True
@@ -105,7 +127,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Queries
 Aliases:
 
 Required: False
@@ -120,7 +142,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Queries
 Aliases:
 
 Required: True
@@ -135,9 +157,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IGetQueriesResponse
 
 ## NOTES
 

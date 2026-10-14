@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='fleetName'>
         /// Cosmos DB fleet name. Needs to be unique under a subscription.
         /// </param>
-        public static FleetResource Update(this IFleetOperations operations, string resourceGroupName, string fleetName, FleetResourceUpdate body = default(FleetResourceUpdate))
+        public static FleetResource Update(this IFleetOperations operations, string resourceGroupName, string fleetName, FleetResourceUpdate body)
         {
                 return ((IFleetOperations)operations).UpdateAsync(resourceGroupName, fleetName, body).GetAwaiter().GetResult();
         }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(this IFleetOperations operations, string resourceGroupName, string fleetName, FleetResourceUpdate body = default(FleetResourceUpdate), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(this IFleetOperations operations, string resourceGroupName, string fleetName, FleetResourceUpdate body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, fleetName, body, null, cancellationToken).ConfigureAwait(false))
             {

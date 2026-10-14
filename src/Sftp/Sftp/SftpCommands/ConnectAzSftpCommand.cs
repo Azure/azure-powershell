@@ -262,10 +262,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 else if (autoGenerateCert)
                 {
                     WriteVerbose("[CertGen] Generating SSH key pair and certificate...");
+
+                    // Check for existing key pair at target location before generation
+                    string targetPrivateKey = !string.IsNullOrEmpty(PrivateKeyFile) ? PrivateKeyFile
+                        : (!string.IsNullOrEmpty(credentialsFolder) ? Path.Combine(credentialsFolder, SftpConstants.SshPrivateKeyName) : null);
+                    string targetPublicKey = !string.IsNullOrEmpty(PublicKeyFile) ? PublicKeyFile
+                        : (targetPrivateKey != null ? targetPrivateKey + ".pub" : null);
+
+                    if (targetPrivateKey != null && !ShouldRegenerateKeyPair(targetPrivateKey, targetPublicKey))
+                    {
+                        WriteVerbose("[Auth] Using existing SSH key pair for certificate generation");
+                    }
+                    else if (targetPrivateKey != null && (File.Exists(targetPrivateKey) || (targetPublicKey != null && File.Exists(targetPublicKey))))
+                    {
+                        WriteVerbose("[Auth] Overwriting existing SSH key pair per user confirmation");
+                        if (File.Exists(targetPrivateKey)) File.Delete(targetPrivateKey);
+                        if (targetPublicKey != null && File.Exists(targetPublicKey)) File.Delete(targetPublicKey);
+                    }
+
+                    var keyGenStartTime = DateTime.UtcNow;
                     var (pubKey, privKey, delKeys) = FileUtils.CheckOrCreatePublicPrivateFiles(
                         PublicKeyFile, PrivateKeyFile, credentialsFolder, SshClientFolder);
                     PublicKeyFile = pubKey;
                     PrivateKeyFile = privKey;
+                    var keyGenElapsed = DateTime.UtcNow - keyGenStartTime;
+                    WriteVerbose($"[CertGen] SSH key pair ready in {keyGenElapsed.TotalSeconds:F1} seconds");
 
                     WriteDebug($"[CertGen] SSH keys ready - Public: '{PublicKeyFile}', Private: '{PrivateKeyFile}'");
 
@@ -291,8 +312,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
                     WriteDebug($"[CertGen] Certificate will be created at: '{certPath}'");
                     WriteVerbose("[CertGen] Requesting certificate from Microsoft Entra...");
+                    var certRequestStartTime = DateTime.UtcNow;
 
                     var (cert, certUsername) = FileUtils.GetAndWriteCertificate(DefaultContext, PublicKeyFile, certPath, SshClientFolder, CmdletCancellationToken);
+
+                    var certRequestElapsed = DateTime.UtcNow - certRequestStartTime;
+                    WriteVerbose($"[CertGen] Certificate obtained from Microsoft Entra in {certRequestElapsed.TotalSeconds:F1} seconds");
 
                     CertificateFile = cert;
                     user = certUsername;
@@ -419,7 +444,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
 
                 // Start SFTP operation
-                WriteVerbose("[SFTP] Starting SFTP client process...");
+                WriteVerbose($"[SFTP] Starting SFTP client process to '{hostname}'...");
+                WriteVerbose($"[SFTP] Authentication: user='{sftpSession.Username}', port={sftpSession.Port}, buffer={BufferSizeInBytes} bytes");
+                var sftpStartTime = DateTime.UtcNow;
                 var process = DoSftpOp(sftpSession, SftpUtils.StartSftpConnection);
                 // Wait for the SFTP process to complete before cleaning up credentials
                 if (process != null)
@@ -438,7 +465,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     }
                     else
                     {
+                        var sftpElapsed = DateTime.UtcNow - sftpStartTime;
                         WriteDebug($"[SFTP] SFTP process exited with code: {process.ExitCode}");
+                        WriteVerbose($"[SFTP] Session ended after {sftpElapsed.TotalSeconds:F0} seconds (exit code: {process.ExitCode})");
                         WriteVerbose("[Cleanup] SFTP session ended, cleaning up temporary credentials...");
                     }
                     CleanupCredentials(deleteKeys, deleteCert, credentialsFolder, CertificateFile, PrivateKeyFile, PublicKeyFile);
@@ -476,6 +505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 {
                     WriteDebug($"[Cleanup] Deleting temporary certificate: '{certFile}'");
                     FileUtils.DeleteFile(certFile);
+                    WriteVerbose("[Cleanup] Temporary certificate deleted");
                 }
 
                 if (deleteKeys)
@@ -500,9 +530,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 {
                     WriteDebug($"[Cleanup] Removing temporary credentials folder: '{credentialsFolder}'");
                     Directory.Delete(credentialsFolder, true);
+                    WriteVerbose("[Cleanup] Temporary credentials folder removed");
                 }
 
-                WriteDebug("[Cleanup] Credential cleanup completed");
+                WriteVerbose("[Cleanup] Credential cleanup completed successfully");
             }
             catch (IOException ex)
             {

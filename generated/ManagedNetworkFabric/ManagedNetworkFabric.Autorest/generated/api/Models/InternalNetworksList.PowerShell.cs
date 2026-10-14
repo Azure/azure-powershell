@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PowerShell;
 
-    /// <summary>List of Internal Networks.</summary>
+    /// <summary>Paged collection of InternalNetwork items</summary>
     [System.ComponentModel.TypeConverter(typeof(InternalNetworksListTypeConverter))]
     public partial class InternalNetworksList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             return ToJsonString();
         }
     }
-    /// List of Internal Networks.
+    /// Paged collection of InternalNetwork items
     [System.ComponentModel.TypeConverter(typeof(InternalNetworksListTypeConverter))]
     public partial interface IInternalNetworksList
 

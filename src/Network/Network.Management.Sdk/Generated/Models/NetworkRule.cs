@@ -51,7 +51,18 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="destinationFqdns">List of destination FQDNs.
         /// </param>
-        public NetworkRule(string name = default(string), string description = default(string), System.Collections.Generic.IList<string> ipProtocols = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPorts = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceIPGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationIPGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationFqdns = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="sourceKubeSelectorGroups">List of source Kubernetes Selector Groups for this rule.
+        /// </param>
+
+        /// <param name="sourceGeoLocations">List of source geographic location filters (ISO 3166-1 alpha-2 country
+        /// codes, e.g. &#34;US&#34;, &#34;CA&#34;) for this rule.
+        /// </param>
+
+        /// <param name="destinationGeoLocations">List of destination geographic location filters (ISO 3166-1 alpha-2 country
+        /// codes, e.g. &#34;US&#34;, &#34;CA&#34;) for this rule.
+        /// </param>
+        public NetworkRule(string name = default(string), string description = default(string), System.Collections.Generic.IList<string> ipProtocols = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPorts = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceIPGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationIPGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationFqdns = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceKubeSelectorGroups = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourceGeoLocations = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationGeoLocations = default(System.Collections.Generic.IList<string>))
 
         : base(name, description)
         {
@@ -62,6 +73,9 @@ namespace Microsoft.Azure.Management.Network.Models
             this.SourceIPGroups = sourceIPGroups;
             this.DestinationIPGroups = destinationIPGroups;
             this.DestinationFqdns = destinationFqdns;
+            this.SourceKubeSelectorGroups = sourceKubeSelectorGroups;
+            this.SourceGeoLocations = sourceGeoLocations;
+            this.DestinationGeoLocations = destinationGeoLocations;
             CustomInit();
         }
 
@@ -112,5 +126,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "destinationFqdns")]
         public System.Collections.Generic.IList<string> DestinationFqdns {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of source Kubernetes Selector Groups for this rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceKubeSelectorGroups")]
+        public System.Collections.Generic.IList<string> SourceKubeSelectorGroups {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of source geographic location filters (ISO 3166-1 alpha-2
+        /// country codes, e.g. &#34;US&#34;, &#34;CA&#34;) for this rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceGeoLocations")]
+        public System.Collections.Generic.IList<string> SourceGeoLocations {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of destination geographic location filters (ISO 3166-1
+        /// alpha-2 country codes, e.g. &#34;US&#34;, &#34;CA&#34;) for this rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "destinationGeoLocations")]
+        public System.Collections.Generic.IList<string> DestinationGeoLocations {get; set; }
     }
 }

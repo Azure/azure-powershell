@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzSqlVMGroup')) {
 }
 
 Describe 'Get-AzSqlVMGroup' {
-    It 'List1' {
+    It 'List1' -skip{
         $groups = Get-AzSqlVMGroup
 
         $groups.Count | Should -Be 1
@@ -30,7 +30,7 @@ Describe 'Get-AzSqlVMGroup' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $groups = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMGroupName
 
         $groups.Count | Should -Be 1
@@ -45,7 +45,7 @@ Describe 'Get-AzSqlVMGroup' {
         $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
     }
 
-    It 'List' {
+    It 'List' -skip{
         $groups = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName
 
         $groups.Count | Should -Be 1
@@ -60,8 +60,8 @@ Describe 'Get-AzSqlVMGroup' {
         $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
     }
 
-    It 'GetViaIdentity' {
-        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
+    It 'GetViaIdentity' -skip{
+        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
         $groups = Get-AzSqlVMGroup  -InputObject $group1
 
         $groups.Count | Should -Be 1

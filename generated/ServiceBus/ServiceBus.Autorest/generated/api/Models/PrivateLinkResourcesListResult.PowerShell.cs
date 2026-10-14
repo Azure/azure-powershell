@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>Result of the List private link resources operation.</summary>
+    /// <summary>The response of a PrivateLinkResource list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourcesListResultTypeConverter))]
     public partial class PrivateLinkResourcesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// Result of the List private link resources operation.
+    /// The response of a PrivateLinkResource list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourcesListResultTypeConverter))]
     public partial interface IPrivateLinkResourcesListResult
 

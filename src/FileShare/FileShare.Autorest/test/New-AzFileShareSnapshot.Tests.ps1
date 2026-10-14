@@ -66,4 +66,32 @@ Describe 'New-AzFileShareSnapshot' {
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
         } | Should -Not -Throw
     }
+
+    It 'CreateWithAllParameters' {
+        {            
+            $config = New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $env.snapshotName02 `
+                                               -Metadata @{meta1="value1";meta2="value2"} `
+                                               -InitiatorId "backup-vault-001"
+            $config.Name | Should -Be $env.snapshotName02
+            $config.Metadata.Count | should -be 2
+            $config.Metadata["meta1"] | should -Be "value1"
+            $config.Metadata["meta2"] | should -Be "value2"
+            $config.InitiatorId | should -be "backup-vault-001"
+
+            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $env.snapshotName02
+            $config.Name | Should -Be $env.snapshotName02
+            $config.Metadata.Count | should -be 2
+            $config.Metadata["meta1"] | should -Be "value1"
+            $config.Metadata["meta2"] | should -Be "value2"
+            $config.InitiatorId | should -be "backup-vault-001"
+
+            Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                        -ResourceName $env.fileShareName01 `
+                                        -Name $env.snapshotName02
+        } | Should -Not -Throw
+    }
 }

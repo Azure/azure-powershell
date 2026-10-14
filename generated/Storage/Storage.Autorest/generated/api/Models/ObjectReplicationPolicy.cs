@@ -55,6 +55,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for TagsReplication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyInternal.TagsReplication { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).TagsReplication; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).TagsReplication = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
@@ -149,6 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? TagReplicationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).TagReplicationEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal)Property).TagReplicationEnabled = value ?? default(bool); }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -262,6 +271,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"sourceAccount",
         PossibleTypes = new [] { typeof(string) })]
         string SourceAccount { get; set; }
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether object replication tags replication feature is enabled for the policy.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? TagReplicationEnabled { get; set; }
 
     }
     /// The replication policy between two storage accounts. Multiple rules can be defined in one policy.
@@ -294,6 +316,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
         /// </summary>
         string SourceAccount { get; set; }
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        bool? TagReplicationEnabled { get; set; }
+        /// <summary>Optional. The object replication policy tags replication feature options.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication TagsReplication { get; set; }
 
     }
 }

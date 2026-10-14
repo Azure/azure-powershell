@@ -33,7 +33,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationdataIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Key <String>]: The key of the key-value to retrieve.
+  [Key <String>]: The key of the key-value.
+  [Name <String>]: The name of the snapshot.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationlock
 #>
@@ -68,13 +69,21 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag matches the value provided.
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag matches the
+    # value provided.
     ${IfMatch},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag does not match the value provided.
+    # Used to perform an operation only if the targeted resource's etag does not
+    # match the value provided.
     ${IfNoneMatch},
 
     [Parameter()]
@@ -145,8 +154,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

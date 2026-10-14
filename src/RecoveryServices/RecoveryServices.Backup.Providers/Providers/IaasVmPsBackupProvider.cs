@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string[] exclusionDisksList = ProviderData.ContainsKey(ItemParams.ExclusionDisksList) ? (string[])ProviderData[ItemParams.ExclusionDisksList] : null;
             SwitchParameter resetDiskExclusionSetting = ProviderData.ContainsKey(ItemParams.ResetExclusionSettings) ? (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings] : new SwitchParameter(false);
             bool excludeAllDataDisks = ProviderData.ContainsKey(ItemParams.ExcludeAllDataDisks) ? (bool)ProviderData[ItemParams.ExcludeAllDataDisks] : false;
+            string containerSubscriptionId = ProviderData.ContainsKey(ItemParams.ContainerSubscriptionId) ? (string)ProviderData[ItemParams.ContainerSubscriptionId] : null;
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
             ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ? (ItemBase)ProviderData[ItemParams.Item] : null;
             AzureVmItem item = ProviderData.ContainsKey(ItemParams.Item) ? (AzureVmItem)ProviderData[ItemParams.Item] : null;
@@ -141,27 +142,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMResourceGroupName,
                     policy);
 
-                WorkloadProtectableItemResource protectableObjectResource =
-                    GetAzureVMProtectableObject(
-                        azureVMName,
-                        azureVMRGName,
-                        isComputeAzureVM,
-                        vaultName: vaultName,
-                        resourceGroupName: resourceGroupName);
-
-                Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(protectableObjectResource.Id);
-                containerUri = HelperUtils.GetContainerUri(
-                    keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableObjectResource.Id);
-
-                IaaSVMProtectableItem iaasVmProtectableItem =
-                    (IaaSVMProtectableItem)protectableObjectResource.Properties;                
-
-                if (iaasVmProtectableItem != null)
+                if (!string.IsNullOrEmpty(containerSubscriptionId))
                 {
-                    sourceResourceId = iaasVmProtectableItem.VirtualMachineId;                    
+                    // CSB: the VM is in a different subscription than the vault, so discovery (which only
+                    // sees the vault's subscription) is skipped and the URIs/sourceResourceId are built
+                    // directly; the backend derives the VM's subscription from sourceResourceId.
+                    // -ContainerSubscriptionId is compute-only, so the VM is always an ARM compute VM here.
+
+                    string containerType = "iaasvmcontainerv2";
+
+                    containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    protectedItemUri = string.Format("vm;{0};{1};{2}",
+                        containerType, azureVMRGName, azureVMName);
+                    sourceResourceId = string.Format(
+                        "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualMachines/{3}",
+                        containerSubscriptionId, azureVMRGName, computeAzureVMVersion, azureVMName);
+                }
+                else
+                {
+                    WorkloadProtectableItemResource protectableObjectResource =
+                        GetAzureVMProtectableObject(
+                            azureVMName,
+                            azureVMRGName,
+                            isComputeAzureVM,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
+
+                    Dictionary<UriEnums, string> keyValueDict =
+                        HelperUtils.ParseUri(protectableObjectResource.Id);
+                    containerUri = HelperUtils.GetContainerUri(
+                        keyValueDict, protectableObjectResource.Id);
+                    protectedItemUri = HelperUtils.GetProtectableItemUri(
+                        keyValueDict, protectableObjectResource.Id);
+
+                    IaaSVMProtectableItem iaasVmProtectableItem =
+                        (IaaSVMProtectableItem)protectableObjectResource.Properties;
+
+                    if (iaasVmProtectableItem != null)
+                    {
+                        sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
+                    }
                 }
             }
             else if(isDiskExclusionParamPresent && parameterSetName.Contains("Modify"))
@@ -521,7 +542,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string cVMOsDiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId) ?
                 ProviderData[RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId].ToString() : null;
 
-            if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+            if (targetSubscriptionId == null || targetSubscriptionId == "")
+            {
+                // For OLR of a CSB item, resolve the target storage account in the VM's subscription by
+                // deriving it from the recovery point's SourceResourceId (no extra customer input); otherwise
+                // fall back to the vault's (context) subscription.
+                if (string.Compare(restoreType, "OriginalLocation") == 0 && !string.IsNullOrEmpty(rp.SourceResourceId))
+                {
+                    Dictionary<UriEnums, string> sourceResourceUriDict = HelperUtils.ParseUri(rp.SourceResourceId);
+                    targetSubscriptionId = HelperUtils.GetSubscriptionIdFromId(sourceResourceUriDict, rp.SourceResourceId);
+                }
+                else
+                {
+                    targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+                }
+            }
 
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
 
@@ -799,46 +834,74 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            IEnumerable<string> ie =
-                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
-            string asyncHeader = string.Empty;
-            foreach (string s in ie)
-            {
-                asyncHeader = s;
-            }
+            string operationId = ilRResponse.Response.Headers.GetAzureAsyncOperationId();
 
             AzureVmRPMountScriptDetails result = null;
-            var response = TrackingHelpers.GetOperationStatus(
+
+            // Wait for the provision LRO to reach a terminal state before fetching scripts.
+            var provisionOperationStatus = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
-                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
-                    operationId,
+                opId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                    opId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
 
-            if (response != null && response.Status != null &&
-                   response.Properties != null && ((OperationStatusProvisionILRExtendedInfo)
-                   response.Properties).RecoveryTarget != null)
+            // Fail fast unless the provision operation succeeded. GetOperationStatus blocks until a
+            // terminal state, so any non-Succeeded status (e.g. Failed or Canceled) is a failure; surface
+            // the service error when present, otherwise a generic message, instead of continuing to the
+            // list action and masking it with a downstream null or secondary error.
+            if (provisionOperationStatus != null &&
+                !string.Equals(
+                    provisionOperationStatus.Status,
+                    ServiceClientModel.OperationStatusValues.Succeeded,
+                    StringComparison.OrdinalIgnoreCase))
             {
-                InstantItemRecoveryTarget recoveryTarget =
-                    ((OperationStatusProvisionILRExtendedInfo)
-                    response.Properties).RecoveryTarget;
+                var provisionError = provisionOperationStatus.Error;
+                throw new Exception(string.Format(
+                    Resources.OperationFailed,
+                    "Provision Item Level Recovery Access",
+                    provisionError != null ? provisionError.Code : provisionOperationStatus.Status,
+                    provisionError != null
+                        ? provisionError.Message
+                        : string.Format(
+                            "The provision operation ended in a non-successful terminal state '{0}'.",
+                            provisionOperationStatus.Status)));
+            }
 
-                if (recoveryTarget.ClientScripts.Count != 0)
-                {
-                    if (recoveryTarget.ClientScripts.Count == 2)
-                    {
-                        // clientScriptForConnection.OsType == "Windows"
-                        result = this.GenerateILRResponseForWindowsVMs(
-                                recoveryTarget.ClientScripts[1], out content);
-                    }
-                    else
-                    {
-                        // clientScriptForConnection.OsType == "Linux"
-                        result = this.GenerateILRResponseForLinuxVMs(
-                                recoveryTarget.ClientScripts[0],
-                                protectedItemName, rp.RecoveryPointTime.ToString(), out content);
-                    }
-                }
+            // Always source the mount scripts from the dedicated listInstantItemRecoveryOperationResult
+            // action using the provision operationId (MSRC 114273). Scripts are no longer read from the
+            // operationsStatus response regardless of whether the service currently redacts them; once all
+            // clients migrate off operationsStatus the service will begin redacting scriptContent there.
+            InstantItemRecoveryTarget recoveryTarget =
+                ServiceClientAdapter.GetInstantItemRecoveryOperationResult(
+                    containerUri,
+                    protectedItemName,
+                    rp.RecoveryPointId,
+                    operationId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+
+            if (recoveryTarget == null || recoveryTarget.ClientScripts == null ||
+                recoveryTarget.ClientScripts.Count == 0)
+            {
+                throw new ArgumentException(Resources.ILRNoClientScriptsReturned);
+            }
+
+            // Preserve the original PowerShell client-script selection semantics: when the
+            // service returns two scripts, index 1 is the Windows iSCSI mount tool that carries
+            // the download URL; a single script is the Linux inline script. Selecting by OSType
+            // is unsafe because both returned scripts report OSType "Windows" and the first one
+            // has no URL, which crashed the Windows download path.
+            if (recoveryTarget.ClientScripts.Count == 2)
+            {
+                result = this.GenerateILRResponseForWindowsVMs(
+                    recoveryTarget.ClientScripts[1], out content);
+            }
+            else
+            {
+                result = this.GenerateILRResponseForLinuxVMs(
+                    recoveryTarget.ClientScripts[0],
+                    protectedItemName, rp.RecoveryPointTime.ToString(), out content);
             }
 
             string scriptDownloadLocation =
@@ -851,7 +914,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureSession.Instance.DataStore.WriteFile(result.FilePath, Convert.FromBase64String(content));
 
             Logger.Instance.WriteVerbose(string.Format(
-                Resources.MountRecoveryPointInfoMessage, result.FilePath, result.Password));
+                Resources.MountRecoveryPointInfoMessage, result.FilePath, "REDACTED"));
             return result;
         }
 

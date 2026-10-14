@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// An Azure Cosmos DB SQL Role Definition.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SqlRoleDefinitionGetResults : ARMProxyResource
+    public partial class SqlRoleDefinitionGetResults : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SqlRoleDefinitionGetResults class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the SqlRoleDefinitionGetResults class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the database account.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the database account.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="roleName">A user-friendly name for the Role Definition. Must be unique for the
@@ -51,9 +57,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="permissions">The set of operations allowed through this Role Definition.
         /// </param>
-        public SqlRoleDefinitionGetResults(string id = default(string), string name = default(string), string type = default(string), string roleName = default(string), RoleDefinitionType? propertiesType = default(RoleDefinitionType?), System.Collections.Generic.IList<string> assignableScopes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<Permission> permissions = default(System.Collections.Generic.IList<Permission>))
+        public SqlRoleDefinitionGetResults(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string roleName = default(string), RoleDefinitionType? propertiesType = default(RoleDefinitionType?), System.Collections.Generic.IList<string> assignableScopes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<Permission> permissions = default(System.Collections.Generic.IList<Permission>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.RoleName = roleName;
             this.PropertiesType = propertiesType;

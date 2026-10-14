@@ -1,0 +1,52 @@
+{
+  "resourceType": "accounts/metricsContainers",
+  "apiVersion": "2025-10-03",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorWorkspaceMetricsContainer",
+      "description": "Gets metrics container settings for a monitoring account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/metricsContainers/{metricsContainerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspacemetricscontainer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureMonitorWorkspaceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets metrics container settings for a monitoring account.",
+          "parameters": [
+            {
+              "name": "-AzureMonitorWorkspaceName",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.metricsContainerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -46,6 +46,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string KeyVaultSecretId { get; set; }
 
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "Key identifier of a key stored in Managed HSM.")]
+        [ValidateNotNullOrEmpty]
+        public string HsmKeyId { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "Base-64 encoded public certificate data corresponding to the key stored in Managed HSM.")]
+        [ValidateNotNullOrEmpty]
+        public string HsmPublicCertData { get; set; }
+
         public PSApplicationGatewaySslCertificate NewObject()
         {
             var sslCertificate = new PSApplicationGatewaySslCertificate();
@@ -58,6 +70,15 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             sslCertificate.KeyVaultSecretId = this.KeyVaultSecretId;
+
+            if (!string.IsNullOrEmpty(this.HsmKeyId) || !string.IsNullOrEmpty(this.HsmPublicCertData))
+            {
+                sslCertificate.Hsm = new PSApplicationGatewayManagedHsm
+                {
+                    KeyId = this.HsmKeyId,
+                    PublicCertData = this.HsmPublicCertData
+                };
+            }
 
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

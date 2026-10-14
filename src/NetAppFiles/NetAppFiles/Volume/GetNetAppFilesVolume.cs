@@ -22,9 +22,12 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using System.Collections.Generic;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(GetAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
@@ -108,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
-                var NameParts = PoolObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

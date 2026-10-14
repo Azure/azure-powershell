@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the RadiusAuthServerListResult class.
         /// </summary>
 
-        /// <param name="value">List of Radius servers with respective radius secrets.
+        /// <param name="value">The RadiusAuthServer items on this page
         /// </param>
 
-        /// <param name="nextLink">URL to get the next set of operation list results if there are any.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public RadiusAuthServerListResult(System.Collections.Generic.IList<RadiusAuthServer> value = default(System.Collections.Generic.IList<RadiusAuthServer>), string nextLink = default(string))
+        public RadiusAuthServerListResult(System.Collections.Generic.IList<RadiusAuthServer> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -44,16 +44,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets list of Radius servers with respective radius secrets.
+        /// Gets or sets the RadiusAuthServer items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<RadiusAuthServer> Value {get; set; }
 
         /// <summary>
-        /// Gets or sets uRL to get the next set of operation list results if there are
-        /// any.
+        /// Gets or sets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

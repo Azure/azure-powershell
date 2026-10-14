@@ -1,17 +1,17 @@
 {
-  "Get-AzDatadogMarketplaceAgreement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/agreements?api-version=2025-06-11+1": {
+  "Get-AzDatadogMarketplaceAgreement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/agreements?api-version=2025-12-26-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/agreements?api-version=2025-06-11",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/providers/Microsoft.Datadog/agreements?api-version=2025-12-26-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "11ba874f-077b-4a9f-a474-c688bc81f0c4" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "88e73e2b-ee1f-4056-a841-d78c453b24b6" ],
         "CommandName": [ "Get-AzDatadogMarketplaceAgreement" ],
         "FullCommandName": [ "Get-AzDatadogMarketplaceAgreement_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Datadog/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.4", "Az.Datadog/0.3.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=88551f9d-e011-4f80-8154-fa258dcd4ccb/centralindia/775e544f-e7a7-4d05-9d87-6bee25bb0eee" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=ab48980c-f752-44ae-9263-c9242c6fb64f/southeastasia/7dcfc27d-b38f-4807-ae33-d3440f23fe5e" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0b211baa-00db-496b-b625-0e3961b2c5bd" ],
-        "mise-correlation-id": [ "695b4980-15cd-4bd6-8ee8-0058db0f1680" ],
+        "mise-correlation-id": [ "7bd9bb22-2a6a-4bee-ae29-62fbc819fd85" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3971ac35-7103-45cb-8aca-8d3121df9a09" ],
-        "x-ms-correlation-request-id": [ "b807cc89-0379-4bab-94ec-7bbf742b8969" ],
+        "x-ms-request-id": [ "f7a95dda-b61f-417f-820a-aff13a15f7b5" ],
+        "x-ms-correlation-request-id": [ "1ebb1932-dfcf-4cc4-95ab-9f71f0ebeb70" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20251108T170543Z:b807cc89-0379-4bab-94ec-7bbf742b8969" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260723T095050Z:1ebb1932-dfcf-4cc4-95ab-9f71f0ebeb70" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5EBB77F5315D487CB2B29ADF708C7F0C Ref B: MAA201060515021 Ref C: 2025-11-08T17:05:38Z" ],
-        "Date": [ "Sat, 08 Nov 2025 17:05:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A50C1B2A334A4E02BD26FF19ED2AC018 Ref B: SG2AA1070304036 Ref C: 2026-07-23T09:50:46Z" ],
+        "Date": [ "Thu, 23 Jul 2026 09:50:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "849" ],

@@ -102,15 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 if (disk.IsManagedDisk)
                 {
-                    providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
-                    {
-                        DiskId = disk.DiskId,
-                        RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                        PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                        RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                        RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                        RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId
-                    });
+                    providerSettings.VMManagedDisks.Add(
+                        Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: false));
                 }
                 else
                 {

@@ -14,6 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal
     {
 
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public string ConfidentialComputeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialComputeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialComputeMode = value ?? null; }
+
         /// <summary>Backing field for <see cref="CreatedAt" /> property.</summary>
         private string _createdAt;
 
@@ -36,6 +40,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         /// <summary>Internal Acessors for MetricId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal.MetricId { get => this._metricId; set { {_metricId = value;} } }
 
+        /// <summary>Internal Acessors for PlatformCapability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal.PlatformCapability { get => (this._platformCapability = this._platformCapability ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilities()); set { {_platformCapability = value;} } }
+
+        /// <summary>Internal Acessors for PlatformCapabilityConfidentialCompute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal.PlatformCapabilityConfidentialCompute { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialCompute; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialCompute = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
@@ -44,6 +54,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 
         /// <summary>Internal Acessors for UpdatedAt</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IClusterPropertiesInternal.UpdatedAt { get => this._updatedAt; set { {_updatedAt = value;} } }
+
+        /// <summary>Backing field for <see cref="PlatformCapability" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities _platformCapability;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities PlatformCapability { get => (this._platformCapability = this._platformCapability ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.PlatformCapabilities()); set => this._platformCapability = value; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -73,6 +89,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string UpdatedAt { get => this._updatedAt; }
 
+        /// <summary>Backing field for <see cref="ZoneRedundant" /> property.</summary>
+        private bool? _zoneRedundant;
+
+        /// <summary>A value that indicates whether the cluster is zone redundant.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
+        public bool? ZoneRedundant { get => this._zoneRedundant; set => this._zoneRedundant = value; }
+
         /// <summary>Creates an new <see cref="ClusterProperties" /> instance.</summary>
         public ClusterProperties()
         {
@@ -83,6 +106,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
     public partial interface IClusterProperties :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Setting to Enable or Disable Confidential Compute",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The UTC time when the Event Hubs Cluster was created.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -152,18 +187,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         SerializedName = @"updatedAt",
         PossibleTypes = new [] { typeof(string) })]
         string UpdatedAt { get;  }
+        /// <summary>A value that indicates whether the cluster is zone redundant.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A value that indicates whether the cluster is zone redundant.",
+        SerializedName = @"zoneRedundant",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ZoneRedundant { get; set; }
 
     }
     /// Event Hubs Cluster properties supplied in responses in List or Get operations.
     internal partial interface IClusterPropertiesInternal
 
     {
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The UTC time when the Event Hubs Cluster was created.</summary>
         string CreatedAt { get; set; }
         /// <summary>
         /// The metric ID of the cluster resource. Provided by the service and not modifiable by the user.
         /// </summary>
         string MetricId { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPlatformCapabilities PlatformCapability { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConfidentialCompute PlatformCapabilityConfidentialCompute { get; set; }
         /// <summary>Provisioning state of the Cluster.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Unknown", "Creating", "Deleting", "Scaling", "Active", "Failed", "Succeeded", "Canceled")]
         string ProvisioningState { get; set; }
@@ -173,6 +226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         bool? SupportsScaling { get; set; }
         /// <summary>The UTC time when the Event Hubs Cluster was last updated.</summary>
         string UpdatedAt { get; set; }
+        /// <summary>A value that indicates whether the cluster is zone redundant.</summary>
+        bool? ZoneRedundant { get; set; }
 
     }
 }

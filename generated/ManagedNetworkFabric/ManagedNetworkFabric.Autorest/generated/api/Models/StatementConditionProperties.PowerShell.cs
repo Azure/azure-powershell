@@ -111,6 +111,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IPCommunityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IPExtendedCommunityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).Type, global::System.Convert.ToString);
@@ -118,14 +126,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("IPPrefixId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPPrefixId = (string) content.GetValueForProperty("IPPrefixId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPPrefixId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IPCommunityId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)this).IPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)this).IPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("IPExtendedCommunityId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)this).IPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)this).IPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
@@ -144,6 +144,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IPCommunityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IPExtendedCommunityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).Type, global::System.Convert.ToString);
@@ -151,14 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("IPPrefixId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPPrefixId = (string) content.GetValueForProperty("IPPrefixId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IStatementConditionPropertiesInternal)this).IPPrefixId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IPCommunityId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)this).IPCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityIdListInternal)this).IPCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("IPExtendedCommunityId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)this).IPExtendedCommunityId = (System.Collections.Generic.List<string>) content.GetValueForProperty("IPExtendedCommunityId",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityIdListInternal)this).IPExtendedCommunityId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

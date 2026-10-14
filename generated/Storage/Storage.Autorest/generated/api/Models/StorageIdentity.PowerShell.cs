@@ -136,6 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName = (string) content.GetValueForProperty("DataShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionScopeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).EncryptionScopeName = (string) content.GetValueForProperty("EncryptionScopeName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).EncryptionScopeName, global::System.Convert.ToString);
@@ -228,6 +236,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("ContainerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName = (string) content.GetValueForProperty("DataShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionScopeName"))
             {

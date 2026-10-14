@@ -65,15 +65,16 @@ namespace Microsoft.Azure.Commands.Network
             "VnetLocal",
             "Internet",
             "VirtualAppliance",
+            "VirtualApplianceEcmp",
             "None"
         )]
         public string NextHopType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.",
+            HelpMessage = "The next hop IP address(es) packets should be forwarded to. For NextHopType 'VirtualAppliance' supply a single IP address. For NextHopType 'VirtualApplianceEcmp' supply 2 to 64 IP addresses to load-balance traffic across (equal-cost multi-path routing).",
             ValueFromPipelineByPropertyName = true)]
-        public string NextHopIpAddress { get; set; }
+        public string[] NextHopIpAddress { get; set; }
 
 
         public override void Execute()
@@ -96,8 +97,39 @@ namespace Microsoft.Azure.Commands.Network
 
             vRoutes.AddressPrefix = this.AddressPrefix;
             vRoutes.NextHopType = this.NextHopType;
-            vRoutes.NextHopIpAddress = this.NextHopIpAddress;
             vRoutes.Name = this.Name;
+
+            // -NextHopIpAddress is a list so a single parameter expresses both a standard single
+            // next hop (NextHopType 'VirtualAppliance') and an equal-cost multi-path (ECMP) list
+            // (NextHopType 'VirtualApplianceEcmp'). NextHopType determines which one is populated.
+            bool isEcmpNextHopType = string.Equals(this.NextHopType, "VirtualApplianceEcmp", System.StringComparison.OrdinalIgnoreCase);
+            int nextHopIpAddressCount = this.NextHopIpAddress == null ? 0 : this.NextHopIpAddress.Length;
+
+            if (isEcmpNextHopType)
+            {
+                // ECMP requires between 2 and 64 next hop IP addresses.
+                if (nextHopIpAddressCount < 2 || nextHopIpAddressCount > 64)
+                {
+                    throw new PSArgumentException("The -NextHopType 'VirtualApplianceEcmp' requires the -NextHopIpAddress parameter with a minimum of 2 and a maximum of 64 next hop IP addresses.");
+                }
+
+                vRoutes.NextHop = new PSRouteNextHopEcmp
+                {
+                    NextHopIpAddresses = new List<string>(this.NextHopIpAddress)
+                };
+            }
+            else
+            {
+                // Non-ECMP next hop types take at most a single IP address, matching the behavior
+                // prior to ECMP support. Multiple addresses are only meaningful for ECMP.
+                if (nextHopIpAddressCount > 1)
+                {
+                    throw new PSArgumentException("Multiple -NextHopIpAddress values are only supported when -NextHopType is 'VirtualApplianceEcmp'.");
+                }
+
+                vRoutes.NextHopIpAddress = this.NextHopIpAddress == null ? null : this.NextHopIpAddress.FirstOrDefault();
+            }
+
             this.RouteTable.Routes.Add(vRoutes);
             WriteObject(this.RouteTable, true);
         }

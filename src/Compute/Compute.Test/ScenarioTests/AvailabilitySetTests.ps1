@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -396,4 +396,54 @@ function New-TestVmInAvailabilitySet {
     
     New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vmConfig;
     return Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName;
+}
+
+<#
+.SYNOPSIS
+Test Update-AzAvailabilitySet with ScheduledEventsPolicy parameters
+(-ScheduledEventsApiVersion and -EnableAllInstancesDown).
+
+Note: ScheduledEventsPolicy on AvailabilitySet is only supported in regions
+where the feature is enabled. This test pins to 'eastus2euap' for that reason.
+Re-record only against a subscription/region with the feature flag enabled.
+#>
+function Test-AvailabilitySetScheduledEventsPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = 'eastus2euap';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $asetName = 'avs' + $rgname;
+        $apiVersion = '2020-07-01';
+
+        # Create an Availability Set (Aligned SKU is required for ScheduledEventsPolicy)
+        New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc `
+            -PlatformUpdateDomainCount 2 -PlatformFaultDomainCount 2 -Sku 'Aligned';
+
+        $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-NotNull $aset;
+
+        # Apply ScheduledEvents settings via Update-AzAvailabilitySet
+        $aset | Update-AzAvailabilitySet `
+            -ScheduledEventsApiVersion $apiVersion `
+            -EnableAllInstancesDown $true;
+
+        $updated = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-NotNull $updated.ScheduledEventsPolicy;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $updated.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $updated.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

@@ -26,6 +26,13 @@ Remove-AzDnsResolverOutboundEndpoint -InputObject <IDnsResolverIdentity> [-IfMat
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityDnsResolver
+```
+Remove-AzDnsResolverOutboundEndpoint -DnsResolverInputObject <IDnsResolverIdentity> -Name <String>
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes an outbound endpoint for a DNS resolver.
 WARNING: This operation cannot be undone.
@@ -80,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: DeleteViaIdentityDnsResolver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DnsResolverName
 The name of the DNS resolver.
 
@@ -114,7 +136,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -133,7 +154,7 @@ The name of the outbound endpoint for the DNS resolver.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityDnsResolver
 Aliases: OutboundEndpointName
 
 Required: True

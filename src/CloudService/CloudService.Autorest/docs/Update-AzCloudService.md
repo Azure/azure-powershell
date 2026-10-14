@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCloudService
 
 ## SYNOPSIS
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 
 ## SYNTAX
@@ -19,7 +19,7 @@ Update-AzCloudService -InputObject <ICloudServiceIdentity> -Parameter <ICloudSer
 ```
 
 ## DESCRIPTION
-Create or update a cloud service.
+Create a cloud service.
 Please note some properties can be set only during cloud service creation.
 
 ## EXAMPLES
@@ -118,7 +118,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -149,10 +148,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Describes the cloud service.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 Parameter Sets: (All)
 Aliases:
 
@@ -199,13 +197,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ## NOTES
 

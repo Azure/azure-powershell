@@ -1,6 +1,6 @@
 {
   "resourceType": "monitors/tagRules",
-  "apiVersion": "2025-06-11",
+  "apiVersion": "2025-12-26-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datadog"
   },

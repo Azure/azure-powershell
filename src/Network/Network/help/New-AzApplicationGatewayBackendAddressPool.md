@@ -16,7 +16,7 @@ Creates a back-end address pool for an application gateway.
 ```
 New-AzApplicationGatewayBackendAddressPool -Name <String> [-BackendIPAddresses <String[]>]
  [-BackendFqdns <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ This command creates a back-end address pool named Pool02 by using the IP addres
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BackendFqdns
 Specifies a list of back-end FQDNs that this cmdlet associates with the back-end server pool.
 
@@ -61,6 +76,21 @@ Specifies a list of back-end IP addresses that this cmdlet associates with the b
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

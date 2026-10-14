@@ -310,6 +310,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; private set; }
         /// <summary>
+        /// Gets the IManagedInstanceLongTermRetentionBackupsOperations
+        /// </summary>
+        public virtual IManagedInstanceLongTermRetentionBackupsOperations ManagedInstanceLongTermRetentionBackups { get; private set; }
+        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations
         /// </summary>
         public virtual IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; private set; }
@@ -341,6 +345,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IRecommendedSensitivityLabelsOperations
         /// </summary>
         public virtual IRecommendedSensitivityLabelsOperations RecommendedSensitivityLabels { get; private set; }
+        /// <summary>
+        /// Gets the IFirewallRulesOperations
+        /// </summary>
+        public virtual IFirewallRulesOperations FirewallRules { get; private set; }
         /// <summary>
         /// Gets the IIPv6FirewallRulesOperations
         /// </summary>
@@ -738,6 +746,7 @@ namespace Microsoft.Azure.Management.Sql
             this.Usages = new UsagesOperations(this);
             this.LongTermRetentionBackups = new LongTermRetentionBackupsOperations(this);
             this.LongTermRetentionManagedInstanceBackups = new LongTermRetentionManagedInstanceBackupsOperations(this);
+            this.ManagedInstanceLongTermRetentionBackups = new ManagedInstanceLongTermRetentionBackupsOperations(this);
             this.RestorableDroppedManagedDatabases = new RestorableDroppedManagedDatabasesOperations(this);
             this.DistributedAvailabilityGroups = new DistributedAvailabilityGroupsOperations(this);
             this.ServerTrustCertificates = new ServerTrustCertificatesOperations(this);
@@ -746,6 +755,7 @@ namespace Microsoft.Azure.Management.Sql
             this.ManagedDatabaseRecommendedSensitivityLabels = new ManagedDatabaseRecommendedSensitivityLabelsOperations(this);
             this.SensitivityLabels = new SensitivityLabelsOperations(this);
             this.RecommendedSensitivityLabels = new RecommendedSensitivityLabelsOperations(this);
+            this.FirewallRules = new FirewallRulesOperations(this);
             this.IPv6FirewallRules = new IPv6FirewallRulesOperations(this);
             this.ReplicationLinks = new ReplicationLinksOperations(this);
             this.VirtualClusters = new VirtualClustersOperations(this);

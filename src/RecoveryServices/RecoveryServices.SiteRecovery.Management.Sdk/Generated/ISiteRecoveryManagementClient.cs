@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
     using Models;
 
     /// <summary>
-    /// 
+    /// Open API for RecoveryServicesSiteRecovery
     /// </summary>
     public partial interface ISiteRecoveryManagementClient :  System.IDisposable
     {
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
 
 
         /// <summary>
-        /// The subscription Id.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -82,11 +82,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationAppliancesOperations
         /// </summary>
         IReplicationAppliancesOperations ReplicationAppliances { get; }
-
-        /// <summary>
-        /// Gets the IReplicationEligibilityResultsOperations
-        /// </summary>
-        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
 
         /// <summary>
         /// Gets the IReplicationEventsOperations
@@ -222,6 +217,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the IReplicationVaultSettingOperations
         /// </summary>
         IReplicationVaultSettingOperations ReplicationVaultSetting { get; }
+
+        /// <summary>
+        /// Gets the IReplicationEligibilityResultsOperations
+        /// </summary>
+        IReplicationEligibilityResultsOperations ReplicationEligibilityResults { get; }
 
     }
 }

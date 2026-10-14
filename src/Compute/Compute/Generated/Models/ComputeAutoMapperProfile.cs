@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.Gallery, TO.PSGalleryList>();
                 cfg.CreateMap<TO.PSGalleryList, TO.PSGallery>();
                 cfg.CreateMap<TO.PSGallery, TO.PSGalleryList>();
+                cfg.CreateMap<TO.PSGallery, FROM.GalleryUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
                 cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();
@@ -248,7 +250,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.CapacityReservation, TO.PSCapacityReservationList>();
                 cfg.CreateMap<TO.PSCapacityReservationList, TO.PSCapacityReservation>();
                 cfg.CreateMap<TO.PSCapacityReservation, TO.PSCapacityReservationList>();
-                cfg.CreateMap<FROM.RestorePoint, TO.PSRestorePoint>();
+                cfg.CreateMap<FROM.InterconnectBlock, TO.PSInterconnectBlock>()
+                    .ForMember(dest => dest.VirtualMachinesAssociated, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.VirtualMachinesAssociated : null))
+                    .ForMember(dest => dest.InterconnectGroup, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InterconnectGroup : null))
+                    .ForMember(dest => dest.InterconnectBlockId, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InterconnectBlockId : null))
+                    .ForMember(dest => dest.ProvisioningTime, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningTime : null))
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null))
+                    .ForMember(dest => dest.InstanceView, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InstanceView : null))
+                    .ForMember(dest => dest.TimeCreated, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.TimeCreated : null));
+                cfg.CreateMap<TO.PSInterconnectBlock, FROM.InterconnectBlock>();
+                cfg.CreateMap<FROM.InterconnectBlock, TO.PSInterconnectBlockList>()
+                    .ForMember(dest => dest.VirtualMachinesAssociated, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.VirtualMachinesAssociated : null))
+                    .ForMember(dest => dest.InterconnectGroup, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InterconnectGroup : null))
+                    .ForMember(dest => dest.InterconnectBlockId, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InterconnectBlockId : null))
+                    .ForMember(dest => dest.ProvisioningTime, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningTime : null))
+                    .ForMember(dest => dest.ProvisioningState, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.ProvisioningState : null))
+                    .ForMember(dest => dest.InstanceView, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.InstanceView : null))
+                    .ForMember(dest => dest.TimeCreated, opt => opt.MapFrom(src => src.Properties != null ? src.Properties.TimeCreated : null));
+                cfg.CreateMap<TO.PSInterconnectBlockList, TO.PSInterconnectBlock>();
+                cfg.CreateMap<TO.PSInterconnectBlock, TO.PSInterconnectBlockList>();
+                cfg.CreateMap<FROM.RestorePoint, TO.PSRestorePoint>()
+                    .ForMember(dest => dest.InstantAccessDurationInMinutes, opt => opt.MapFrom(src => src.InstantAccessDurationMinutes));
                 cfg.CreateMap<FROM.RestorePointCollection, TO.PSRestorePointCollection>();
             });
             _mapper = config.CreateMapper();

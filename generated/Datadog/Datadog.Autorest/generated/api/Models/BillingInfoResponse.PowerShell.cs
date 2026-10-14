@@ -110,6 +110,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId = (string) content.GetValueForProperty("MarketplaceSaaInfoBilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("MarketplaceSaaInfoOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId = (string) content.GetValueForProperty("MarketplaceSaaInfoOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId, global::System.Convert.ToString);
+            }
             if (content.Contains("MarketplaceSaaInfoSubscribed"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoSubscribed = (bool?) content.GetValueForProperty("MarketplaceSaaInfoSubscribed",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoSubscribed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -166,6 +170,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("MarketplaceSaaInfoBilledAzureSubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId = (string) content.GetValueForProperty("MarketplaceSaaInfoBilledAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoBilledAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaaInfoOfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId = (string) content.GetValueForProperty("MarketplaceSaaInfoOfferId",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IBillingInfoResponseInternal)this).MarketplaceSaaInfoOfferId, global::System.Convert.ToString);
             }
             if (content.Contains("MarketplaceSaaInfoSubscribed"))
             {

@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationKeyValu
 }
 
 Describe 'Get-AzAppConfigurationKeyValue' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $env.key -Label "test"
+        $result | Should -Not -BeNullOrEmpty
+        $result.Key | Should -Be $env.key
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $results = Get-AzAppConfigurationKeyValue -Endpoint $env.endpoint
+        $results | Should -Not -BeNullOrEmpty
+        $results.Count | Should -BeGreaterOrEqual 1
+        $results[0].PSObject.Properties.Name | Should -Contain 'Description'
     }
 }

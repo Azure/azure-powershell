@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if(null != deletedKey.Key)
             {
                 Key = deletedKey.Key.ToTrack1JsonWebKey();
-                KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
             }
+            KeySize = deletedKey.Properties.KeySize;
             Attributes = new PSKeyVaultKeyAttributes()
             {
                 Enabled = deletedKey.Properties.Enabled,
@@ -122,7 +122,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             get { return Key?.CurveName; }
         }
-
-        public int? KeySize;
     }
 }

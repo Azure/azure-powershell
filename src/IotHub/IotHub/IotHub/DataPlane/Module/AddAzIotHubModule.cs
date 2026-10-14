@@ -120,13 +120,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters();
+
             if (this.AuthMethod.Equals(PSDeviceAuthType.x509_thumbprint))
             {
                 authTypeDynamicParameter = new AuthTypeDynamicParameter();
                 return authTypeDynamicParameter;
             }
 
-            return null;
+            return parameters;
         }
 
         private AuthTypeDynamicParameter authTypeDynamicParameter;

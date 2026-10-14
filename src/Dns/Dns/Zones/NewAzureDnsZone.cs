@@ -164,6 +164,7 @@ namespace Microsoft.Azure.Commands.Dns
                     null,
                     true,
                     resourceRecords,
+                    null,
                     null);
             }
             return recordSet;

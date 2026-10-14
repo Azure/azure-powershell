@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrateIdentity"
         /// />.
         /// </summary>
@@ -168,10 +176,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName = (string) content.GetValueForProperty("AlertSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("VirtualMachineName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            }
             if (content.Contains("FabricName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName = (string) content.GetValueForProperty("FabricName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName, global::System.Convert.ToString);
@@ -252,6 +256,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualMachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -275,10 +283,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionProxyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
@@ -385,10 +389,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName = (string) content.GetValueForProperty("AlertSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).AlertSettingName, global::System.Convert.ToString);
             }
-            if (content.Contains("VirtualMachineName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
-            }
             if (content.Contains("FabricName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName = (string) content.GetValueForProperty("FabricName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).FabricName, global::System.Convert.ToString);
@@ -469,6 +469,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName = (string) content.GetValueForProperty("VaultSettingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VaultSettingName, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualMachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName = (string) content.GetValueForProperty("VirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).VirtualMachineName, global::System.Convert.ToString);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).Location, global::System.Convert.ToString);
@@ -492,10 +496,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("EmailConfigurationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName = (string) content.GetValueForProperty("EmailConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).EmailConfigurationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionProxyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName = (string) content.GetValueForProperty("PrivateEndpointConnectionProxyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).PrivateEndpointConnectionProxyName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
@@ -524,6 +524,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(MigrateIdentityTypeConverter))]
     public partial interface IMigrateIdentity

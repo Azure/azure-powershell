@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkPeeringLevel
     {
+        /// <summary>
+        /// FullyInSync
+        /// </summary>
         public const string FullyInSync = "FullyInSync";
+        /// <summary>
+        /// RemoteNotInSync
+        /// </summary>
         public const string RemoteNotInSync = "RemoteNotInSync";
+        /// <summary>
+        /// LocalNotInSync
+        /// </summary>
         public const string LocalNotInSync = "LocalNotInSync";
+        /// <summary>
+        /// LocalAndRemoteNotInSync
+        /// </summary>
         public const string LocalAndRemoteNotInSync = "LocalAndRemoteNotInSync";
     }
 }

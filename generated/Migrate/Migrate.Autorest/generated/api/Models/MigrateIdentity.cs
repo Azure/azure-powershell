@@ -208,13 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
-        /// <summary>Backing field for <see cref="PrivateEndpointConnectionProxyName" /> property.</summary>
-        private string _privateEndpointConnectionProxyName;
-
-        /// <summary>The private endpoint connection proxy name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string PrivateEndpointConnectionProxyName { get => this._privateEndpointConnectionProxyName; set => this._privateEndpointConnectionProxyName = value; }
-
         /// <summary>Backing field for <see cref="PrivateLinkResourceName" /> property.</summary>
         private string _privateLinkResourceName;
 
@@ -295,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
 
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ResourceName { get => this._resourceName; set => this._resourceName = value; }
 
@@ -375,6 +368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Run as account ARM name.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
@@ -383,6 +379,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the email notification configuration.",
         SerializedName = @"alertSettingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -391,6 +390,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Cluster ARM name.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -399,6 +401,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Unique name of a database instance in Azure migration hub.",
         SerializedName = @"databaseInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -407,6 +412,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Unique name of a database in Azure migration hub.",
         SerializedName = @"databaseName",
         PossibleTypes = new [] { typeof(string) })]
@@ -415,6 +423,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Deployment Id.",
         SerializedName = @"deploymentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -423,6 +434,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The email configuration name.",
         SerializedName = @"emailConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -431,6 +445,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Unique name of an event within a migrate project.",
         SerializedName = @"eventName",
         PossibleTypes = new [] { typeof(string) })]
@@ -439,6 +456,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The fabric agent name.",
         SerializedName = @"fabricAgentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -447,6 +467,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Fabric name.",
         SerializedName = @"fabricName",
         PossibleTypes = new [] { typeof(string) })]
@@ -455,6 +478,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Host ARM name.",
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
@@ -463,6 +489,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -471,6 +500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Replication protection intent name.",
         SerializedName = @"intentObjectName",
         PossibleTypes = new [] { typeof(string) })]
@@ -479,6 +511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"job id to track.",
         SerializedName = @"jobId",
         PossibleTypes = new [] { typeof(string) })]
@@ -487,6 +522,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Job ARM name.",
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
@@ -495,6 +533,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -503,6 +544,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Logical network name.",
         SerializedName = @"logicalNetworkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -511,6 +555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Machine ARM name.",
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -519,6 +566,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Protection Container mapping name.",
         SerializedName = @"mappingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -527,6 +577,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Azure Migrate project.",
         SerializedName = @"migrateProjectName",
         PossibleTypes = new [] { typeof(string) })]
@@ -535,6 +588,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Migration item name.",
         SerializedName = @"migrationItemName",
         PossibleTypes = new [] { typeof(string) })]
@@ -543,6 +599,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The migration recovery point name.",
         SerializedName = @"migrationRecoveryPointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -551,6 +610,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Network mapping name.",
         SerializedName = @"networkMappingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -559,6 +621,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Primary network name.",
         SerializedName = @"networkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -567,6 +632,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -575,6 +643,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Operation status ARM name.",
         SerializedName = @"operationStatusName",
         PossibleTypes = new [] { typeof(string) })]
@@ -583,6 +654,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Replication policy name.",
         SerializedName = @"policyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -591,22 +665,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The private endpoint connection name.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The private endpoint connection proxy name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The private endpoint connection proxy name.",
-        SerializedName = @"privateEndpointConnectionProxyName",
-        PossibleTypes = new [] { typeof(string) })]
-        string PrivateEndpointConnectionProxyName { get; set; }
         /// <summary>The private link name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The private link name.",
         SerializedName = @"privateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -615,6 +687,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Protectable item name.",
         SerializedName = @"protectableItemName",
         PossibleTypes = new [] { typeof(string) })]
@@ -623,6 +698,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The protected item name.",
         SerializedName = @"protectedItemName",
         PossibleTypes = new [] { typeof(string) })]
@@ -631,6 +709,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Protection container name.",
         SerializedName = @"protectionContainerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -639,6 +720,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Recovery services provider name.",
         SerializedName = @"providerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -647,6 +731,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the recovery plan.",
         SerializedName = @"recoveryPlanName",
         PossibleTypes = new [] { typeof(string) })]
@@ -655,6 +742,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The recovery point name.",
         SerializedName = @"recoveryPointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -663,6 +753,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Replication protected item name.",
         SerializedName = @"replicatedProtectedItemName",
         PossibleTypes = new [] { typeof(string) })]
@@ -671,6 +764,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The replication extension name.",
         SerializedName = @"replicationExtensionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -679,6 +775,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Replication protection cluster name.",
         SerializedName = @"replicationProtectionClusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -687,15 +786,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the recovery services vault.",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Vault",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceName { get; set; }
@@ -703,6 +808,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Site name.",
         SerializedName = @"siteName",
         PossibleTypes = new [] { typeof(string) })]
@@ -711,6 +819,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Unique name of a migration solution within a migrate project.",
         SerializedName = @"solutionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -719,6 +830,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Storage classification mapping name.",
         SerializedName = @"storageClassificationMappingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -727,6 +841,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Storage classification name.",
         SerializedName = @"storageClassificationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -735,6 +852,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -743,6 +863,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The vault name.",
         SerializedName = @"vaultName",
         PossibleTypes = new [] { typeof(string) })]
@@ -751,6 +874,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Vault setting name.",
         SerializedName = @"vaultSettingName",
         PossibleTypes = new [] { typeof(string) })]
@@ -759,6 +885,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"VCenter ARM name.",
         SerializedName = @"vcenterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -767,6 +896,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Virtual Machine name.",
         SerializedName = @"virtualMachineName",
         PossibleTypes = new [] { typeof(string) })]
@@ -832,8 +964,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string PolicyName { get; set; }
         /// <summary>The private endpoint connection name.</summary>
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The private endpoint connection proxy name.</summary>
-        string PrivateEndpointConnectionProxyName { get; set; }
         /// <summary>The private link name.</summary>
         string PrivateLinkResourceName { get; set; }
         /// <summary>Protectable item name.</summary>
@@ -856,7 +986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string ReplicationProtectionClusterName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>The name of the recovery services vault.</summary>
+        /// <summary>The name of the Vault</summary>
         string ResourceName { get; set; }
         /// <summary>Site name.</summary>
         string SiteName { get; set; }

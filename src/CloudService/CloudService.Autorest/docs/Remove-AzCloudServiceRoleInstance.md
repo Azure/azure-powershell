@@ -15,14 +15,28 @@ Deletes role instances in a cloud service.
 ### DeleteExpanded (Default)
 ```
 Remove-AzCloudServiceRoleInstance -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstance <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] [-RoleInstance <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityExpanded
 ```
-Remove-AzCloudServiceRoleInstance -InputObject <ICloudServiceIdentity> -RoleInstance <String[]>
+Remove-AzCloudServiceRoleInstance -InputObject <ICloudServiceIdentity> [-RoleInstance <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaJsonFilePath
+```
+Remove-AzCloudServiceRoleInstance -CloudServiceName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaJsonString
+```
+Remove-AzCloudServiceRoleInstance -CloudServiceName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +73,7 @@ Name of the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -87,7 +101,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
@@ -98,6 +111,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Delete operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Delete operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -136,7 +179,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -152,10 +195,10 @@ Value of '*' will signify all role instances of the cloud service.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: DeleteExpanded, DeleteViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,7 +211,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: False

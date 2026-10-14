@@ -124,6 +124,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSpotPlusPriority()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSpotPlusPriority");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetWriteAcceleratorUpdate()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetWriteAcceleratorUpdate");
@@ -482,6 +489,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetProxyAgentUseLocalFileRules()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetProxyAgentUseLocalFileRules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetAddProxyAgentExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetAddProxyAgentExtension");
@@ -513,6 +527,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetHighSpeedInterconnectPlacement()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetZonalPlatformFaultDomainAlignMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfigStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment");
         }
     }
 }

@@ -7,30 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Result of the request to list rules. It contains a list of rule objects and a URL link to get the next set of results.
-    /// </summary>
+    /// <summary>The response of a Rule list operation.</summary>
     public partial class RuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResultInternal
     {
 
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of rule objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> _value;
 
-        /// <summary>List of AzureFrontDoor rules within a rule set.</summary>
+        /// <summary>The Rule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="RuleListResult" /> instance.</summary>
         public RuleListResult()
@@ -38,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Result of the request to list rules. It contains a list of rule objects and a URL link to get the next set of results.
+    /// The response of a Rule list operation.
     public partial interface IRuleListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of rule objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next set of rule objects if there are any.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of AzureFrontDoor rules within a rule set.</summary>
+        /// <summary>The Rule items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of AzureFrontDoor rules within a rule set.",
+        Create = true,
+        Update = true,
+        Description = @"The Rule items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Value { get; set; }
 
     }
-    /// Result of the request to list rules. It contains a list of rule objects and a URL link to get the next set of results.
+    /// The response of a Rule list operation.
     internal partial interface IRuleListResultInternal
 
     {
-        /// <summary>URL to get the next set of rule objects if there are any.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of AzureFrontDoor rules within a rule set.</summary>
+        /// <summary>The Rule items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> Value { get; set; }
 
     }

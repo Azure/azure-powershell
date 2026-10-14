@@ -25,6 +25,8 @@ Describe 'New-AzNetworkFabricNeighborGroup' {
                     "2F::/100"
                 )
             }
+            $destinationIpv4Address = "10.10.10.10"
+            $destinationIpv6Address  = "2F::/100"
 
             New-AzNetworkFabricNeighborGroup -SubscriptionId $global:config.common.subscriptionId -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -Destination $destination
 

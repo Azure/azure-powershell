@@ -14,7 +14,7 @@ Timeline for an entity.
 
 ```
 Get-AzSentinelEntityTimeline -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime> [-Kind <EntityTimelineKind[]>]
+ [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime> [-Kind <String[]>]
  [-NumberOfBucket <Int32>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Array of timeline Item kinds.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityTimelineKind[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityTimelineResponse
 
 ## NOTES
 

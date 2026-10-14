@@ -1,6 +1,6 @@
 {
   "resourceType": "monitors",
-  "apiVersion": "2025-06-11",
+  "apiVersion": "2025-12-26-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datadog"
   },
@@ -26,6 +26,44 @@
       "examples": [
         {
           "description": "Get marketplace and organization info mapped to the given monitor.",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzDatadogMonitorDefaultApplicationKey",
+      "description": "Get the default application key.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/getDefaultApplicationKey",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultapplicationkey"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the default application key.",
           "parameters": [
             {
               "name": "-MonitorName",
@@ -105,6 +143,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzDatadogLatestDatadogMonitorResourceLinkedSaaS",
+      "description": "Returns the latest SaaS linked to the Datadog organization of the underlying monitor.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/latestLinkedSaaS",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datadog/invoke-azdatadoglatestdatadogmonitorresourcelinkedsaas"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the latest SaaS linked to the Datadog organization of the underlying monitor.",
+          "parameters": [
+            {
+              "name": "-MonitorName",
               "value": "[Path.monitorName]"
             },
             {

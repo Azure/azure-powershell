@@ -1,9 +1,0 @@
-{
-    "if": {
-        "field": "type",
-        "equals": "microsoft.resources/subscriptions"
-    },
-    "then": {
-        "effect": "manual"
-    }
-}

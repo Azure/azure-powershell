@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 6.6.1
+* Upgraded the Key Vault control plane API version to '2026-02-01'.
+    - Earlier API versions retire on 27 February 2027; this upgrade keeps `Az.KeyVault` working afterward.
+    - No action or cmdlet behavior change is required. `New-AzKeyVault` has created vaults with RBAC (Role-Based Access Control) enabled by default since Az.KeyVault 6.0.0 and sends this setting explicitly, so the new service default does not affect it. Use `DisableRbacAuthorization` for access policies.
+
+## Version 6.6.0
+* Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.
+* Upgraded `Azure.Security.KeyVault.Keys` dependency from `4.6.0-beta.1` to `4.10.0`.
+
+## Version 6.5.1
+* Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
+
+## Version 6.5.0
+* Added ChangeSafety Support
+* Added support for creating AES `oct-HSM` keys via `Add-AzKeyVaultKey -KeyType oct -Destination HSM`.
+* Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error.
+* Removed certificate-backed items from `Get-AzKeyVaultKey`/`Get-AzKeyVaultSecret`; use `Get-AzKeyVaultCertificate` instead [#26217].
+
 ## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.
 

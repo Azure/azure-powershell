@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkInterfaceTapConfigurationsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// Get all Tap configurations in a network interface.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
-        /// </param>
-        public static void Delete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration> List(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
         {
-                ((INetworkInterfaceTapConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
+                return ((INetworkInterfaceTapConfigurationsOperations)operations).ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// Get all Tap configurations in a network interface.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
-        /// </param>
-        /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>> ListAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Get the specified tap configuration on a network interface.
@@ -61,13 +58,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static NetworkInterfaceTapConfiguration Get(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
         {
@@ -81,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -106,13 +105,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static NetworkInterfaceTapConfiguration CreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters)
         {
@@ -126,13 +126,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,62 +146,24 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Get all Tap configurations in a network interface.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkInterfaceName'>
-        /// The name of the network interface.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration> List(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
-        {
-                return ((INetworkInterfaceTapConfigurationsOperations)operations).ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get all Tap configurations in a network interface.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkInterfaceName'>
-        /// The name of the network interface.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterfaceTapConfiguration>> ListAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified tap configuration from the NetworkInterface.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void BeginDelete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        public static void Delete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
         {
-                ((INetworkInterfaceTapConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
+                ((INetworkInterfaceTapConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -210,20 +173,21 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a Tap configuration in the specified NetworkInterface.
@@ -232,13 +196,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static NetworkInterfaceTapConfiguration BeginCreateOrUpdate(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, NetworkInterfaceTapConfiguration tapConfigurationParameters)
         {
@@ -252,13 +217,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
         /// <param name='tapConfigurationName'>
-        /// The name of the tap configuration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -269,6 +235,50 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkInterfaceName'>
+        /// The name of the network interface.
+        /// </param>
+        /// <param name='tapConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static void BeginDelete(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName)
+        {
+                ((INetworkInterfaceTapConfigurationsOperations)operations).BeginDeleteAsync(resourceGroupName, networkInterfaceName, tapConfigurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified tap configuration from the NetworkInterface.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkInterfaceName'>
+        /// The name of the network interface.
+        /// </param>
+        /// <param name='tapConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkInterfaceTapConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string tapConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tapConfigurationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Get all Tap configurations in a network interface.

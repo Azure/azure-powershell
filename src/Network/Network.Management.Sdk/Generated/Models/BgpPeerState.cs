@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class BgpPeerState
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// Stopped
+        /// </summary>
         public const string Stopped = "Stopped";
+        /// <summary>
+        /// Idle
+        /// </summary>
         public const string Idle = "Idle";
+        /// <summary>
+        /// Connecting
+        /// </summary>
         public const string Connecting = "Connecting";
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
     }
 }

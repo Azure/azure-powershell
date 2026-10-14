@@ -197,7 +197,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # AdminPassword - admin password
     ${OSProfileAdminPassword},
 

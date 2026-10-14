@@ -97,5 +97,5 @@ Describe 'UpdatePolicySetDefinition' {
         {
             Update-AzPolicySetDefinition -SubscriptionId $subscriptionId
         } | Should -Throw $missingParameters
-    }
+    }    
 }

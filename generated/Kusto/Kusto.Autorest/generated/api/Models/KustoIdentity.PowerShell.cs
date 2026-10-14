@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.KustoIdentity"
         /// />.
         /// </summary>
@@ -100,6 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -107,10 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             if (content.Contains("ClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ClusterName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -177,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -184,10 +196,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             if (content.Contains("ClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ClusterName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Location"))
             {
@@ -244,6 +252,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(KustoIdentityTypeConverter))]
     public partial interface IKustoIdentity

@@ -14,10 +14,6 @@ namespace Microsoft.Azure.Management.Sql.Models
     public static class ServerCreateMode
     {
         public const string Normal = "Normal";
-        public const string ServerMigrationV1 = "ServerMigrationV1";
-        public const string DatabaseMigrationV1 = "DatabaseMigrationV1";
-        public const string ServerMigration = "ServerMigration";
-        public const string Standby = "Standby";
         public const string Restore = "Restore";
     }
 }

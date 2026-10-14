@@ -1,0 +1,50 @@
+{
+  "Limit-AzMongoDBProject+[NoContext]+Limit+$POST+https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/tierLimitReached?api-version=2026-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cbdb67be-e103-4770-a797-2a2fa42eb6f3/resourceGroups/sharmaanuTest/providers/MongoDB.Atlas/organizations/KanedaTest/projects/test-project-1/tierLimitReached?api-version=2026-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "69519338-49ba-4bf8-9f02-35ff46ac6c69" ],
+        "CommandName": [ "Limit-AzMongoDBProject" ],
+        "FullCommandName": [ "Limit-AzMongoDBProject_Limit" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.MongoDB/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=da7826b0-7505-464c-a74d-7b72637b257f/eastus2/ae19d976-42cd-45c0-b2f0-bb9f046c20a2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "7080559f-cdb6-437a-81ef-65a9772f9172" ],
+        "x-ms-correlation-request-id": [ "40dc170c-0a82-4766-a57e-3365a7be9666" ],
+        "x-ms-client-request-id": [ "69519338-49ba-4bf8-9f02-35ff46ac6c69" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "d561116b-3b87-4749-b653-303715a69110" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20260625T150625Z:40dc170c-0a82-4766-a57e-3365a7be9666" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6A5F62330A0745A0929E1AC24BA52F07 Ref B: PNQ231110907031 Ref C: 2026-06-25T15:06:25Z" ],
+        "Date": [ "Thu, 25 Jun 2026 15:06:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "69" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"limits\":[{\"type\":\"FREE\",\"maximum\":1,\"current\":1,\"isReached\":true}]}",
+      "isContentBase64": false
+    }
+  }
+}

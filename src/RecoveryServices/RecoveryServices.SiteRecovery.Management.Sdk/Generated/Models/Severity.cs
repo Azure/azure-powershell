@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class Severity
     {
+        /// <summary>
+        /// NONE
+        /// </summary>
         public const string None = "NONE";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Info
+        /// </summary>
         public const string Info = "Info";
     }
 }

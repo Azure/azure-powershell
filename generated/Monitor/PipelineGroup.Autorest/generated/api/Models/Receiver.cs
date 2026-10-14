@@ -13,43 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal
     {
 
-        /// <summary>
-        /// Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper
-        /// will write the output map.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string DestinationFieldDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).DestinationFieldDestination; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).DestinationFieldDestination = value ?? null; }
-
-        /// <summary>
-        /// Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes
-        /// and fieldName is empty, the object's attributes themselves will contain the key value output pairs.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string DestinationFieldName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).DestinationFieldName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).DestinationFieldName = value ?? null; }
-
-        /// <summary>
-        /// Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> JsonArrayMapperKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperKey = value ?? null /* arrayOf */; }
-
-        /// <summary>Internal Acessors for JsonArrayMapperDestinationField</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperDestinationField Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.JsonArrayMapperDestinationField { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperDestinationField; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperDestinationField = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for JsonArrayMapperSourceField</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperSourceField Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.JsonArrayMapperSourceField { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperSourceField; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapperSourceField = value ?? null /* model class */; }
-
         /// <summary>Internal Acessors for Otlp</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.Otlp { get => (this._otlp = this._otlp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.OtlpReceiver()); set { {_otlp = value;} } }
 
         /// <summary>Internal Acessors for Syslog</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiver Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.Syslog { get => (this._syslog = this._syslog ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.SyslogReceiver()); set { {_syslog = value;} } }
-
-        /// <summary>Internal Acessors for Udp</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.Udp { get => (this._udp = this._udp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiver()); set { {_udp = value;} } }
-
-        /// <summary>Internal Acessors for UdpJsonArrayMapper</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonArrayMapper Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IReceiverInternal.UdpJsonArrayMapper { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapper; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).JsonArrayMapper = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -61,22 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// <summary>Backing field for <see cref="Otlp" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver _otlp;
 
-        /// <summary>
-        /// OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
-        /// </summary>
+        /// <summary>OTLP receiver configurations. This field is mandatory for OTLP receivers.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver Otlp { get => (this._otlp = this._otlp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.OtlpReceiver()); set => this._otlp = value; }
 
         /// <summary>OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
         public string OtlpEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiverInternal)Otlp).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiverInternal)Otlp).Endpoint = value ?? null; }
-
-        /// <summary>
-        /// Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading
-        /// the body of the message itself.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string SourceFieldName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).SourceFieldName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).SourceFieldName = value ?? null; }
 
         /// <summary>Backing field for <see cref="Syslog" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiver _syslog;
@@ -85,13 +44,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiver Syslog { get => (this._syslog = this._syslog ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.SyslogReceiver()); set => this._syslog = value; }
 
+        /// <summary>
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public bool? SyslogAllowSkipPriHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).AllowSkipPriHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).AllowSkipPriHeader = value ?? default(bool); }
+
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> SyslogAllowedFormat { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).AllowedFormat; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).AllowedFormat = value ?? null /* arrayOf */; }
+
         /// <summary>Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
         public string SyslogEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).Endpoint = value ?? null; }
 
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
+        /// <summary>Transport protocol. Default tcp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string SyslogProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).Protocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).Protocol = value ?? null; }
+        public string SyslogTransportProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).TransportProtocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal)Syslog).TransportProtocol = value ?? null; }
+
+        /// <summary>Backing field for <see cref="TlsConfiguration" /> property.</summary>
+        private string _tlsConfiguration;
+
+        /// <summary>
+        /// Reference to a named TLS configuration. If not specified, default TLS configuration is used.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        public string TlsConfiguration { get => this._tlsConfiguration; set => this._tlsConfiguration = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -99,25 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         /// <summary>The type of receiver.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
-
-        /// <summary>Backing field for <see cref="Udp" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver _udp;
-
-        /// <summary>UDP receiver configurations. This field is mandatory for UDP receivers.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver Udp { get => (this._udp = this._udp ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiver()); set => this._udp = value; }
-
-        /// <summary>The encoding of the stream being received.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string UdpEncoding { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).Encoding; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).Encoding = value ?? null; }
-
-        /// <summary>TCP endpoint definition. Example: 0.0.0.0:<port>.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public string UdpEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).Endpoint = value ?? null; }
-
-        /// <summary>Max read queue length.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Inlined)]
-        public int? UdpReadQueueLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).ReadQueueLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiverInternal)Udp).ReadQueueLength = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="Receiver" /> instance.</summary>
         public Receiver()
@@ -129,48 +88,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     public partial interface IReceiver :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper
-        /// will write the output map.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper will write the output map.",
-        SerializedName = @"destination",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("body", "attributes")]
-        string DestinationFieldDestination { get; set; }
-        /// <summary>
-        /// Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes
-        /// and fieldName is empty, the object's attributes themselves will contain the key value output pairs.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes and fieldName is empty, the object's attributes themselves will contain the key value output pairs.",
-        SerializedName = @"fieldName",
-        PossibleTypes = new [] { typeof(string) })]
-        string DestinationFieldName { get; set; }
-        /// <summary>
-        /// Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.",
-        SerializedName = @"keys",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> JsonArrayMapperKey { get; set; }
         /// <summary>The name of receiver.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -194,8 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         PossibleTypes = new [] { typeof(string) })]
         string OtlpEndpoint { get; set; }
         /// <summary>
-        /// Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading
-        /// the body of the message itself.
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -203,10 +119,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading the body of the message itself.",
-        SerializedName = @"fieldName",
+        Description = @"Configure the receiver to allow parsing of messages without the PRI header. Default false.",
+        SerializedName = @"allowSkipPriHeader",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SyslogAllowSkipPriHeader { get; set; }
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of allowed message formats for syslog/CEF ingestion. Default 'all'.",
+        SerializedName = @"allowedFormats",
         PossibleTypes = new [] { typeof(string) })]
-        string SourceFieldName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("all", "syslogRfc3164", "syslogRfc5424", "cefRfc3164", "cefRfc5424", "rawCef")]
+        System.Collections.Generic.List<string> SyslogAllowedFormat { get; set; }
         /// <summary>Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
@@ -218,18 +146,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"endpoint",
         PossibleTypes = new [] { typeof(string) })]
         string SyslogEndpoint { get; set; }
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
+        /// <summary>Transport protocol. Default tcp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Protocol to parse syslog messages. Default rfc3164",
-        SerializedName = @"protocol",
+        Description = @"Transport protocol. Default tcp.",
+        SerializedName = @"transportProtocol",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("rfc3164", "rfc5424")]
-        string SyslogProtocol { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("tcp", "udp")]
+        string SyslogTransportProtocol { get; set; }
+        /// <summary>
+        /// Reference to a named TLS configuration. If not specified, default TLS configuration is used.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Reference to a named TLS configuration. If not specified, default TLS configuration is used.",
+        SerializedName = @"tlsConfiguration",
+        PossibleTypes = new [] { typeof(string) })]
+        string TlsConfiguration { get; set; }
         /// <summary>The type of receiver.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -240,110 +181,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Description = @"The type of receiver.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Syslog", "Ama", "PipelineGroup", "OTLP", "UDP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Syslog", "OTLP")]
         string Type { get; set; }
-        /// <summary>The encoding of the stream being received.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The encoding of the stream being received.",
-        SerializedName = @"encoding",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("nop", "utf-8", "utf-16le", "utf-16be", "ascii", "big5")]
-        string UdpEncoding { get; set; }
-        /// <summary>TCP endpoint definition. Example: 0.0.0.0:<port>.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"TCP endpoint definition. Example: 0.0.0.0:<port>.",
-        SerializedName = @"endpoint",
-        PossibleTypes = new [] { typeof(string) })]
-        string UdpEndpoint { get; set; }
-        /// <summary>Max read queue length.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Max read queue length.",
-        SerializedName = @"readQueueLength",
-        PossibleTypes = new [] { typeof(int) })]
-        int? UdpReadQueueLength { get; set; }
 
     }
     /// Receiver Info.
     internal partial interface IReceiverInternal
 
     {
-        /// <summary>
-        /// Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper
-        /// will write the output map.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("body", "attributes")]
-        string DestinationFieldDestination { get; set; }
-        /// <summary>
-        /// Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes
-        /// and fieldName is empty, the object's attributes themselves will contain the key value output pairs.
-        /// </summary>
-        string DestinationFieldName { get; set; }
-        /// <summary>
-        /// Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys
-        /// array and the matching values are the parsed json array elements.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperDestinationField JsonArrayMapperDestinationField { get; set; }
-        /// <summary>
-        /// Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
-        /// </summary>
-        System.Collections.Generic.List<string> JsonArrayMapperKey { get; set; }
-        /// <summary>
-        /// Define a source field from which a json array will be read and parsed to it's elements. The number of elements in the
-        /// json array is expected to be the same as the length of keys.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonMapperSourceField JsonArrayMapperSourceField { get; set; }
         /// <summary>The name of receiver.</summary>
         string Name { get; set; }
-        /// <summary>
-        /// OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
-        /// </summary>
+        /// <summary>OTLP receiver configurations. This field is mandatory for OTLP receivers.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IOtlpReceiver Otlp { get; set; }
         /// <summary>OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.</summary>
         string OtlpEndpoint { get; set; }
-        /// <summary>
-        /// Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading
-        /// the body of the message itself.
-        /// </summary>
-        string SourceFieldName { get; set; }
         /// <summary>Syslog configurations. This field is mandatory for syslog type receivers.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiver Syslog { get; set; }
+        /// <summary>
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
+        /// </summary>
+        bool? SyslogAllowSkipPriHeader { get; set; }
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("all", "syslogRfc3164", "syslogRfc5424", "cefRfc3164", "cefRfc5424", "rawCef")]
+        System.Collections.Generic.List<string> SyslogAllowedFormat { get; set; }
         /// <summary>Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.</summary>
         string SyslogEndpoint { get; set; }
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("rfc3164", "rfc5424")]
-        string SyslogProtocol { get; set; }
-        /// <summary>The type of receiver.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Syslog", "Ama", "PipelineGroup", "OTLP", "UDP")]
-        string Type { get; set; }
-        /// <summary>UDP receiver configurations. This field is mandatory for UDP receivers.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IUdpReceiver Udp { get; set; }
-        /// <summary>The encoding of the stream being received.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("nop", "utf-8", "utf-16le", "utf-16be", "ascii", "big5")]
-        string UdpEncoding { get; set; }
-        /// <summary>TCP endpoint definition. Example: 0.0.0.0:<port>.</summary>
-        string UdpEndpoint { get; set; }
+        /// <summary>Transport protocol. Default tcp.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("tcp", "udp")]
+        string SyslogTransportProtocol { get; set; }
         /// <summary>
-        /// Json array mapper - allows this udp receiver to parse a value from a given source field as a json array, match a key to
-        /// each parsed value and output the key-value map to a given output field.
+        /// Reference to a named TLS configuration. If not specified, default TLS configuration is used.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IJsonArrayMapper UdpJsonArrayMapper { get; set; }
-        /// <summary>Max read queue length.</summary>
-        int? UdpReadQueueLength { get; set; }
+        string TlsConfiguration { get; set; }
+        /// <summary>The type of receiver.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("Syslog", "OTLP")]
+        string Type { get; set; }
 
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualWanSecurityProviderType
     {
+        /// <summary>
+        /// External
+        /// </summary>
         public const string External = "External";
+        /// <summary>
+        /// Native
+        /// </summary>
         public const string Native = "Native";
     }
 }

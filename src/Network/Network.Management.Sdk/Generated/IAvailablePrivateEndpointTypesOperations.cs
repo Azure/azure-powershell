@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
         /// in this subscription in this region.
         /// </remarks>
         /// <param name='location'>
-        /// The location of the domain name.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Management.Network
         /// Returns all of the resource types that can be linked to a Private Endpoint
         /// in this subscription in this region.
         /// </remarks>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AvailablePrivateEndpointType>>> ListByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AvailablePrivateEndpointType>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns all of the resource types that can be linked to a Private Endpoint

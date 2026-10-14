@@ -10,13 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
     /// <summary>A frontend endpoint used for routing.</summary>
     public partial class FrontendEndpoint :
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint,
-        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource" />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource __subResource = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.SubResource();
 
         /// <summary>Defines the source of the SSL certificate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
@@ -42,9 +37,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inlined)]
         public string HostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointUpdateParametersInternal)Property).HostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointUpdateParametersInternal)Property).HostName = value ?? null; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)__subResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal)__subResource).Id = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Origin(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PropertyOrigin.Owned)]
+        public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Internal Acessors for CustomHttpsConfiguration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomHttpsConfiguration Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointInternal.CustomHttpsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointPropertiesInternal)Property).CustomHttpsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpointPropertiesInternal)Property).CustomHttpsConfiguration = value ?? null /* model class */; }
@@ -155,23 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__subResource), __subResource);
-            await eventListener.AssertObjectIsValid(nameof(__subResource), __subResource);
-        }
     }
     /// A frontend endpoint used for routing.
     public partial interface IFrontendEndpoint :
-        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource
+        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.IJsonSerializable
     {
         /// <summary>Defines the source of the SSL certificate</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
@@ -236,6 +221,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
         string HostName { get; set; }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string Id { get; set; }
         /// <summary>
         /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
         /// </summary>
@@ -369,8 +365,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 
     }
     /// A frontend endpoint used for routing.
-    internal partial interface IFrontendEndpointInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResourceInternal
+    internal partial interface IFrontendEndpointInternal
+
     {
         /// <summary>Defines the source of the SSL certificate</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("AzureKeyVault", "FrontDoor")]
@@ -398,6 +394,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         string CustomHttpsProvisioningSubstate { get; set; }
         /// <summary>The host name of the frontendEndpoint. Must be a domain name.</summary>
         string HostName { get; set; }
+        /// <summary>Resource ID.</summary>
+        string Id { get; set; }
         /// <summary>The Key Vault containing the SSL certificate</summary>
         Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IKeyVaultCertificateSourceParametersVault KeyVaultCertificateSourceParameterVault { get; set; }
         /// <summary>

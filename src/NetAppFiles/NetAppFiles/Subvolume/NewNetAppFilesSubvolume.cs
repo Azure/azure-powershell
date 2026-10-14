@@ -13,18 +13,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
-using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Backup
+namespace Microsoft.Azure.Commands.NetAppFiles.Subvolume
 {
+    [CmdletDeprecationWithVersion("17.0.0", "2.0.0")]
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSubvolume",
@@ -127,7 +129,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
                 Location = VolumeObject.Location;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

@@ -117,6 +117,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).AddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).AddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("Condition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).Condition = (string) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).Condition, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).DestinationAddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("DestinationAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).DestinationAddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SourceAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).SourceAddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("SourceAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).SourceAddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("HeaderAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).HeaderAddressList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties>) content.GetValueForProperty("HeaderAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).HeaderAddressList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.HeaderAddressPropertiesTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -141,6 +157,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             if (content.Contains("AddressList"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).AddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("AddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).AddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Condition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).Condition = (string) content.GetValueForProperty("Condition",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).Condition, global::System.Convert.ToString);
+            }
+            if (content.Contains("DestinationAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).DestinationAddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("DestinationAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).DestinationAddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SourceAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).SourceAddressList = (System.Collections.Generic.List<string>) content.GetValueForProperty("SourceAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).SourceAddressList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("HeaderAddressList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).HeaderAddressList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties>) content.GetValueForProperty("HeaderAddressList",((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRulePropertiesInternal)this).HeaderAddressList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IHeaderAddressProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.HeaderAddressPropertiesTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -12,5 +12,5 @@ ETag Id                                                                         
      /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/mua-rg/providers/Microsoft.DataProtection/resourceGuards/mua-resource-guard                                                   centraluseuap mua-resource-guard
 ```
 
-The first command is used to fetch the resource guard to be updated. The second and third command is used to fecth the critical operations user want to update. 
+The first command is used to fetch the resource guard to be updated. The second and third command is used to fetch the critical operations user want to update. 
 The fourth command is used to exclude some critical operations from the resource guard

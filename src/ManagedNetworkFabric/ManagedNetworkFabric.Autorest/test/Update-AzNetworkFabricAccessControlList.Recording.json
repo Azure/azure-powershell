@@ -1,0 +1,72 @@
+{
+  "Update-AzNetworkFabricAccessControlList+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricAccessControlList"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricAccessControlList_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2143"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"configurationType\": \"File\", \"aclsUrl\": \"https://ACL-Storage-URL\", \"defaultAction\": \"Permit\", \"matchConfigurations\": [{\"matchConfigurationName\": \"example-match\", \"sequenceNumber\": 123, \"ipAddressType\": \"IPv4\", \"matchConditions\": [{\"protocolTypes\": [\"TCP\"], \"vlanMatchCondition\": {\"vlans\": [\"20-30\"], \"innerVlans\": [\"30\"], \"vlanGroupNames\": [\"example-vlanGroup\"]}, \"ipCondition\": {\"type\": \"SourceIP\", \"prefixType\": \"Prefix\", \"ipPrefixValues\": [\"10.20.20.20/12\"], \"ipGroupNames\": [\"example-ipGroup\"]}, \"etherTypes\": [\"0x1\"], \"fragments\": [\"0xff00-0xffff\"], \"ipLengths\": [\"4094-9214\"], \"ttlValues\": [\"23\"], \"dscpMarkings\": [\"32\"], \"protocolNeighbors\": [\"example-neighbor\"], \"portCondition\": {\"portType\": \"SourcePort\", \"layer4Protocol\": \"TCP\", \"ports\": [\"1-20\"], \"portGroupNames\": [\"example-portGroup\"], \"flags\": [\"established\"]}, \"icmpConfiguration\": {\"icmpTypes\": [\"echo\"]}}], \"actions\": [{\"type\": \"PoliceRate\", \"policeRateConfiguration\": {\"bitRate\": {\"rate\": 15, \"unit\": \"bps\"}, \"burstSize\": {\"size\": 2, \"unit\": \"Bytes\"}}}]}], \"dynamicMatchConfigurations\": [{\"ipGroups\": [{\"name\": \"example-ipGroup\", \"ipAddressType\": \"IPv4\", \"ipPrefixes\": [\"10.20.3.1/20\"]}], \"vlanGroups\": [{\"name\": \"example-vlanGroup\", \"vlans\": [\"20-30\"]}], \"portGroups\": [{\"name\": \"example-portGroup\", \"ports\": [\"100-200\"]}]}], \"lastSyncedTime\": \"2023-06-17T08:56:23.203Z\", \"aclType\": \"ControlPlaneTrafficPolicy\", \"deviceRole\": \"CE\", \"globalAccessControlListActions\": {\"enableCount\": \"True\"}, \"lastOperation\": {\"details\": \"Succeeded\"}, \"configurationState\": \"Succeeded\", \"provisioningState\": \"Accepted\", \"administrativeState\": \"Enabled\"}, \"tags\": {\"KeyId\": \"keyValue\"}, \"location\": \"eastUs\", \"id\": \"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl\", \"name\": \"example-acl\", \"type\": \"microsoft.managednetworkfabric/accessControlLists\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

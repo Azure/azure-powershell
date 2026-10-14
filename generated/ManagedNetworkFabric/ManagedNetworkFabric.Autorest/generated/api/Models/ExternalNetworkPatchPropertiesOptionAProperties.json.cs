@@ -66,8 +66,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __layer3IPPrefixProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.Layer3IPPrefixProperties(json);
-            __l3OptionAProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.L3OptionAProperties(json);
+            {_bfdConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bfdConfiguration"), out var __jsonBfdConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.BfdPatchConfiguration.FromJson(__jsonBfdConfiguration) : _bfdConfiguration;}
+            {_bmpConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("bmpConfiguration"), out var __jsonBmpConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ExternalNetworkBmpPatchProperties.FromJson(__jsonBmpConfiguration) : _bmpConfiguration;}
+            {_nativeIpv4PrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("nativeIpv4PrefixLimit"), out var __jsonNativeIpv4PrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv4PrefixLimitPatchProperties.FromJson(__jsonNativeIpv4PrefixLimit) : _nativeIpv4PrefixLimit;}
+            {_nativeIpv6PrefixLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonObject>("nativeIpv6PrefixLimit"), out var __jsonNativeIpv6PrefixLimit) ? Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.NativeIpv6PrefixLimitPatchProperties.FromJson(__jsonNativeIpv6PrefixLimit) : _nativeIpv6PrefixLimit;}
+            {_primaryIpv4Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("primaryIpv4Prefix"), out var __jsonPrimaryIpv4Prefix) ? (string)__jsonPrimaryIpv4Prefix : (string)_primaryIpv4Prefix;}
+            {_primaryIpv6Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("primaryIpv6Prefix"), out var __jsonPrimaryIpv6Prefix) ? (string)__jsonPrimaryIpv6Prefix : (string)_primaryIpv6Prefix;}
+            {_secondaryIpv4Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("secondaryIpv4Prefix"), out var __jsonSecondaryIpv4Prefix) ? (string)__jsonSecondaryIpv4Prefix : (string)_secondaryIpv4Prefix;}
+            {_secondaryIpv6Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("secondaryIpv6Prefix"), out var __jsonSecondaryIpv6Prefix) ? (string)__jsonSecondaryIpv6Prefix : (string)_secondaryIpv6Prefix;}
+            {_mtu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("mtu"), out var __jsonMtu) ? (int?)__jsonMtu : _mtu;}
+            {_vlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("vlanId"), out var __jsonVlanId) ? (int?)__jsonVlanId : _vlanId;}
+            {_fabricAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("fabricASN"), out var __jsonFabricAsn) ? (long?)__jsonFabricAsn : _fabricAsn;}
+            {_peerAsn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber>("peerASN"), out var __jsonPeerAsn) ? (long?)__jsonPeerAsn : _peerAsn;}
+            {_ingressAclId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("ingressAclId"), out var __jsonIngressAclId) ? (string)__jsonIngressAclId : (string)_ingressAclId;}
+            {_egressAclId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("egressAclId"), out var __jsonEgressAclId) ? (string)__jsonEgressAclId : (string)_egressAclId;}
+            {_v4OverV6BgpSession = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("v4OverV6BgpSession"), out var __jsonV4OverV6BgpSession) ? (string)__jsonV4OverV6BgpSession : (string)_v4OverV6BgpSession;}
+            {_v6OverV4BgpSession = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("v6OverV4BgpSession"), out var __jsonV6OverV4BgpSession) ? (string)__jsonV6OverV4BgpSession : (string)_v6OverV4BgpSession;}
             AfterFromJson(json);
         }
 
@@ -104,8 +118,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __layer3IPPrefixProperties?.ToJson(container, serializationMode);
-            __l3OptionAProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._bfdConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._bfdConfiguration.ToJson(null,serializationMode) : null, "bfdConfiguration" ,container.Add );
+            AddIf( null != this._bmpConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._bmpConfiguration.ToJson(null,serializationMode) : null, "bmpConfiguration" ,container.Add );
+            AddIf( null != this._nativeIpv4PrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._nativeIpv4PrefixLimit.ToJson(null,serializationMode) : null, "nativeIpv4PrefixLimit" ,container.Add );
+            AddIf( null != this._nativeIpv6PrefixLimit ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) this._nativeIpv6PrefixLimit.ToJson(null,serializationMode) : null, "nativeIpv6PrefixLimit" ,container.Add );
+            AddIf( null != (((object)this._primaryIpv4Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._primaryIpv4Prefix.ToString()) : null, "primaryIpv4Prefix" ,container.Add );
+            AddIf( null != (((object)this._primaryIpv6Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._primaryIpv6Prefix.ToString()) : null, "primaryIpv6Prefix" ,container.Add );
+            AddIf( null != (((object)this._secondaryIpv4Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._secondaryIpv4Prefix.ToString()) : null, "secondaryIpv4Prefix" ,container.Add );
+            AddIf( null != (((object)this._secondaryIpv6Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._secondaryIpv6Prefix.ToString()) : null, "secondaryIpv6Prefix" ,container.Add );
+            AddIf( null != this._mtu ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._mtu) : null, "mtu" ,container.Add );
+            AddIf( null != this._vlanId ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((int)this._vlanId) : null, "vlanId" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._fabricAsn ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((long)this._fabricAsn) : null, "fabricASN" ,container.Add );
+            }
+            AddIf( null != this._peerAsn ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNumber((long)this._peerAsn) : null, "peerASN" ,container.Add );
+            AddIf( null != (((object)this._ingressAclId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._ingressAclId.ToString()) : null, "ingressAclId" ,container.Add );
+            AddIf( null != (((object)this._egressAclId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._egressAclId.ToString()) : null, "egressAclId" ,container.Add );
+            AddIf( null != (((object)this._v4OverV6BgpSession)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._v4OverV6BgpSession.ToString()) : null, "v4OverV6BgpSession" ,container.Add );
+            AddIf( null != (((object)this._v6OverV4BgpSession)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._v6OverV4BgpSession.ToString()) : null, "v6OverV4BgpSession" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

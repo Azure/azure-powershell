@@ -13,15 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal
     {
 
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ICredentialsInternal.Type { get => this._type; set { {_type = value;} } }
-
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type= @"AzureKeyVaultSmb";
+        private string _type;
 
         /// <summary>The Credentials type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="Credentials" /> instance.</summary>
         public Credentials()
@@ -36,14 +33,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The Credentials type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = true,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
         Description = @"The Credentials type.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureKeyVaultSmb", "AzureKeyVaultS3WithHMAC")]
+        string Type { get; set; }
 
     }
     /// The Credentials.
@@ -51,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
 
     {
         /// <summary>The Credentials type.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("AzureKeyVaultSmb", "AzureKeyVaultS3WithHMAC")]
         string Type { get; set; }
 
     }

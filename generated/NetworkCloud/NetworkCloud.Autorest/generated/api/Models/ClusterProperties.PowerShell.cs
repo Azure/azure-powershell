@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).VulnerabilityScanningSetting = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVulnerabilityScanningSettings) content.GetValueForProperty("VulnerabilityScanningSetting",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).VulnerabilityScanningSetting, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VulnerabilityScanningSettingsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ActionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).ActionState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>) content.GetValueForProperty("ActionState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).ActionState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionStateTypeConverter.ConvertFrom));
+            }
             if (content.Contains("AnalyticsWorkspaceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).AnalyticsWorkspaceId = (string) content.GetValueForProperty("AnalyticsWorkspaceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).AnalyticsWorkspaceId, global::System.Convert.ToString);
@@ -199,6 +203,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("CommandOutputSettingContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("ManagedResourceGroupConfigurationLocation"))
             {
@@ -465,6 +473,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).VulnerabilityScanningSetting = (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVulnerabilityScanningSettings) content.GetValueForProperty("VulnerabilityScanningSetting",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).VulnerabilityScanningSetting, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VulnerabilityScanningSettingsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ActionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).ActionState = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>) content.GetValueForProperty("ActionState",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).ActionState, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ActionStateTypeConverter.ConvertFrom));
+            }
             if (content.Contains("AnalyticsWorkspaceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).AnalyticsWorkspaceId = (string) content.GetValueForProperty("AnalyticsWorkspaceId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).AnalyticsWorkspaceId, global::System.Convert.ToString);
@@ -532,6 +544,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             if (content.Contains("CommandOutputSettingContainerUrl"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingContainerUrl = (string) content.GetValueForProperty("CommandOutputSettingContainerUrl",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingContainerUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommandOutputSettingOverride"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingOverride = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>) content.GetValueForProperty("CommandOutputSettingOverride",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal)this).CommandOutputSettingOverride, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverrideTypeConverter.ConvertFrom));
             }
             if (content.Contains("ManagedResourceGroupConfigurationLocation"))
             {

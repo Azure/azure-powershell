@@ -71,10 +71,10 @@ function setupEnv() {
     $clusterremove2 = New-AzStackHciCluster -Name "$($clusterName)-remove2" -ResourceGroupName $resourceGroup -Location $resourceLocation
     Write-Host -ForegroundColor Green "Cluster Created" $clusterremove2.Name
 
-    $arcSetting = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $clusterName
+    $arcSetting = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $cluster.Name
     Write-Host -ForegroundColor Green "ArcSetting Created" $arcSetting.Name
 
-    $arcSetting2 = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName "$($clusterName)-remove2"
+    $arcSetting2 = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $clusterremove2.Name
     Write-Host -ForegroundColor Green "ArcSetting Created" $arcSetting2.Name
 
     $extension = New-AzStackHciExtension -ArcSettingName $arcSetting.Name -ClusterName $cluster.Name -Name $extensionName -ResourceGroupName $resourceGroup -ExtensionParameterPublisher $extensionPublisher -ExtensionParameterType $extensionName
@@ -89,7 +89,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Write-Host -ForegroundColor Green "Cleaning up " $resourceGroup
-    Remove-AzResourceGroup -Name $resourceGroup
+    Write-Host -ForegroundColor Green "Cleaning up " $env.ResourceGroup
+    Remove-AzResourceGroup -Name $env.ResourceGroup
 }
 

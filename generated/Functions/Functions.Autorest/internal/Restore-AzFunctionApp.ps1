@@ -25,9 +25,9 @@ Description for Restores a specific backup to another app (or deployment slot, i
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRestoreRequest
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRestoreRequest
 .Outputs
 System.Boolean
 .Notes
@@ -36,7 +36,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATABASE <IDatabaseBackupSetting[]>: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
-  DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
   [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   [Name <String>]: 
@@ -49,7 +49,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -79,7 +79,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -117,18 +117,89 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [AdjustConnectionString <Boolean?>]: <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
   [AppServicePlan <String>]: Specify app service plan that will own restored site.
   [BlobName <String>]: Name of a blob which contains the backup.
-  [Database <IDatabaseBackupSetting[]>]: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
-    DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
+  [Database <List<IDatabaseBackupSetting>>]: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
+    DatabaseType <String>: Database type (e.g. SqlAzure / MySql).
     [ConnectionString <String>]: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
   [HostingEnvironment <String>]: App Service Environment name, if needed (only when restoring an app to an App Service Environment).
   [IgnoreConflictingHostName <Boolean?>]: Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to         the app's object when it is being restored, but that might fail due to conflicts during the operation.
   [IgnoreDatabase <Boolean?>]: Ignore the databases and only restore the site content
-  [OperationType <BackupRestoreOperationType?>]: Operation type.
+  [OperationType <String>]: Operation type.
   [Overwrite <Boolean?>]: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
   [SiteName <String>]: Name of an app.
   [StorageAccountUrl <String>]: SAS URL to the container.
+
+SITEINPUTOBJECT <IFunctionsIdentity>: Identity Parameter
+  [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [ActionName <String>]: The workflow action name.
+  [AnalysisName <String>]: Analysis Name
+  [AppSettingKey <String>]: App Setting key name.
+  [Authprovider <String>]: The auth provider for the users.
+  [BackupId <String>]: ID of the backup.
+  [BaseAddress <String>]: Module base address.
+  [BasicAuthName <String>]: name of the basic auth entry.
+  [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  [CertificateOrderName <String>]: Name of the certificate order..
+  [ConnectionStringKey <String>]: 
+  [ContainerName <String>]: Site Container Name
+  [DatabaseConnectionName <String>]: Name of the database connection.
+  [DeletedSiteId <String>]: The numeric ID of the deleted app, e.g. 12345
+  [DetectorName <String>]: Detector Resource Name
+  [DiagnosticCategory <String>]: Diagnostic Category
+  [DiagnosticsName <String>]: Name of the diagnostics item.
+  [DomainName <String>]: Name of the domain.
+  [DomainOwnershipIdentifierName <String>]: Name of domain ownership identifier.
+  [EntityName <String>]: Name of the hybrid connection.
+  [EnvironmentName <String>]: The stage site identifier.
+  [FunctionAppName <String>]: Name of the function app registered with the static site build.
+  [FunctionName <String>]: Function name.
+  [GatewayName <String>]: Name of the gateway. Currently, the only supported string is "primary".
+  [HistoryName <String>]: The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run.
+  [HostName <String>]: Hostname in the hostname binding.
+  [HostingEnvironmentName <String>]: Name of the hosting environment.
+  [Id <String>]: Deployment ID.
+  [Id1 <String>]: Resource identity path
+  [ImmutabilityPolicyName <String>]: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  [Instance <String>]: Name of the instance in the multi-role pool.
+  [InstanceId <String>]: 
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [KeyName <String>]: The name of the key.
+  [KeyType <String>]: The type of host key.
+  [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
+  [Location <String>]: 
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [Name <String>]: Name of the certificate.
+  [NamespaceName <String>]: The namespace for this hybrid connection.
+  [OperationId <String>]: GUID of the operation.
+  [PremierAddOnName <String>]: Add-on name.
+  [PrivateEndpointConnectionName <String>]: Name of the private endpoint connection.
+  [ProcessId <String>]: PID.
+  [PublicCertificateName <String>]: Public certificate name.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [RelayName <String>]: The relay name for this hybrid connection.
+  [RepetitionName <String>]: The workflow repetition.
+  [RequestHistoryName <String>]: The request history name.
+  [ResourceGroupName <String>]: Name of the resource group to which the resource belongs.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RouteName <String>]: Name of the Virtual Network route.
+  [RunName <String>]: The workflow run name.
+  [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
+  [SiteExtensionId <String>]: Site extension name.
+  [SiteName <String>]: Site Name
+  [Slot <String>]: Slot Name
+  [SnapshotId <String>]: The ID of the snapshot to read.
+  [SourceControlType <String>]: Type of source control
+  [SubscriptionId <String>]: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [TriggerName <String>]: The workflow trigger name.
+  [Userid <String>]: The user id of the user.
+  [VersionId <String>]: The workflow versionId.
+  [View <String>]: The type of view. Only "summary" is supported at this time.
+  [VnetName <String>]: Name of the virtual network.
+  [WebJobName <String>]: Name of Web Job.
+  [WorkerName <String>]: Name of worker machine, which typically starts with RD.
+  [WorkerPoolName <String>]: Name of the worker pool.
+  [WorkflowName <String>]: Workflow name.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
@@ -138,6 +209,10 @@ function Restore-AzFunctionApp {
 param(
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # ID of the backup.
@@ -145,6 +220,8 @@ param(
 
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
@@ -152,6 +229,8 @@ param(
 
     [Parameter(ParameterSetName='Restore', Mandatory)]
     [Parameter(ParameterSetName='RestoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -159,6 +238,8 @@ param(
 
     [Parameter(ParameterSetName='Restore')]
     [Parameter(ParameterSetName='RestoreExpanded')]
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath')]
+    [Parameter(ParameterSetName='RestoreViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -172,19 +253,26 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
+    # Identity Parameter
+    ${SiteInputObject},
 
     [Parameter(ParameterSetName='Restore', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='RestoreViaIdentitySite', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRestoreRequest]
     # Description of a restore request.
-    # To construct, see NOTES section for REQUEST properties and create a hash table.
     ${Request},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
@@ -192,6 +280,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Specify app service plan that will own restored site.
@@ -199,6 +288,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of a blob which contains the backup.
@@ -206,16 +296,17 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDatabaseBackupSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDatabaseBackupSetting[]]
     # Collection of databases which should be restored.
     # This list has to match the list of databases included in the backup.
-    # To construct, see NOTES section for DATABASE properties and create a hash table.
     ${Database},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # App Service Environment name, if needed (only when restoring an app to an App Service Environment).
@@ -223,6 +314,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Changes a logic when restoring an app with custom domains.
@@ -232,6 +324,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Ignore the databases and only restore the site content
@@ -239,6 +332,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Kind of resource.
@@ -246,14 +340,16 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType])]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Default", "Clone", "Relocation", "Snapshot", "CloudFS")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BackupRestoreOperationType]
+    [System.String]
     # Operation type.
     ${OperationType},
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>.
@@ -262,6 +358,7 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of an app.
@@ -269,10 +366,23 @@ param(
 
     [Parameter(ParameterSetName='RestoreExpanded')]
     [Parameter(ParameterSetName='RestoreViaIdentityExpanded')]
+    [Parameter(ParameterSetName='RestoreViaIdentitySiteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # SAS URL to the container.
     ${StorageAccountUrl},
+
+    [Parameter(ParameterSetName='RestoreViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Restore operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RestoreViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Restore operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -348,16 +458,21 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Restore = 'Az.Functions.private\Restore-AzFunctionApp_Restore';
             RestoreExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreExpanded';
             RestoreViaIdentity = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentity';
             RestoreViaIdentityExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentityExpanded';
+            RestoreViaIdentitySite = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentitySite';
+            RestoreViaIdentitySiteExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaIdentitySiteExpanded';
+            RestoreViaJsonFilePath = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaJsonFilePath';
+            RestoreViaJsonString = 'Az.Functions.private\Restore-AzFunctionApp_RestoreViaJsonString';
         }
-        if (('Restore', 'RestoreExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restore', 'RestoreExpanded', 'RestoreViaJsonFilePath', 'RestoreViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -366,6 +481,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

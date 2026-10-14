@@ -1847,7 +1847,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # location of the image the gallery image should be created from
     ${ImagePath},
 
@@ -4098,7 +4098,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # AdminPassword - admin password
     ${AdminPassword},
 
@@ -6527,7 +6527,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # location of the image the gallery image should be created from
     ${ImagePath},
 
@@ -8658,7 +8658,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # AdminPassword - admin password
     ${OSProfileAdminPassword},
 

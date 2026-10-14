@@ -30,12 +30,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string AgentResourceId { get => this._agentResourceId; }
 
+        /// <summary>Backing field for <see cref="Connection" /> property.</summary>
+        private System.Collections.Generic.List<string> _connection;
+
+        /// <summary>List of connections associated to this job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Connection { get => this._connection; set => this._connection = value; }
+
         /// <summary>Backing field for <see cref="CopyMode" /> property.</summary>
         private string _copyMode;
 
         /// <summary>Strategy to use for copy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string CopyMode { get => this._copyMode; set => this._copyMode = value; }
+
+        /// <summary>Backing field for <see cref="DataIntegrityValidation" /> property.</summary>
+        private string _dataIntegrityValidation;
+
+        /// <summary>The checksum validation mode for the job definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string DataIntegrityValidation { get => this._dataIntegrityValidation; set => this._dataIntegrityValidation = value; }
 
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
@@ -46,6 +60,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string Description { get => this._description; set => this._description = value; }
+
+        /// <summary>
+        /// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+        /// Hour value 24 cannot be combined with any other minute value but 0.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public int? ExecutionTimeHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTimeHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTimeHour = value ?? default(int); }
+
+        /// <summary>
+        /// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public float? ExecutionTimeMinute { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTimeMinute; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTimeMinute = value ?? default(float); }
 
         /// <summary>Backing field for <see cref="JobType" /> property.</summary>
         private string _jobType;
@@ -92,6 +119,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
+        /// <summary>Internal Acessors for Schedule</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal.Schedule { get => (this._schedule = this._schedule ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ScheduleInfo()); set { {_schedule = value;} } }
+
+        /// <summary>Internal Acessors for ScheduleExecutionTime</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal.ScheduleExecutionTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).ExecutionTime = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for SourceResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal.SourceResourceId { get => this._sourceResourceId; set { {_sourceResourceId = value;} } }
 
@@ -104,12 +137,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for TargetResourceId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal.TargetResourceId { get => this._targetResourceId; set { {_targetResourceId = value;} } }
 
+        /// <summary>Backing field for <see cref="PreservePermission" /> property.</summary>
+        private bool? _preservePermission;
+
+        /// <summary>Boolean to preserve permissions or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public bool? PreservePermission { get => this._preservePermission; set => this._preservePermission = value; }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
         /// <summary>The provisioning state of this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="Schedule" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo _schedule;
+
+        /// <summary>Schedule information for the Job Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo Schedule { get => (this._schedule = this._schedule ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ScheduleInfo()); set => this._schedule = value; }
+
+        /// <summary>Optional CRON expression for advanced scheduling</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public string ScheduleCronExpression { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).CronExpression; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).CronExpression = value ?? null; }
+
+        /// <summary>Days of the month for monthly schedules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<int> ScheduleDaysOfMonth { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).DaysOfMonth; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).DaysOfMonth = value ?? null /* arrayOf */; }
+
+        /// <summary>Days of the week for weekly schedules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> ScheduleDaysOfWeek { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).DaysOfWeek; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).DaysOfWeek = value ?? null /* arrayOf */; }
+
+        /// <summary>End time of the schedule (in UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public global::System.DateTime? ScheduleEndDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).EndDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).EndDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>Type of schedule — Monthly, Weekly, or Daily</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public string ScheduleFrequency { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).Frequency; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).Frequency = value ?? null; }
+
+        /// <summary>Whether the schedule is currently active</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public bool? ScheduleIsActive { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).IsActive; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).IsActive = value ?? default(bool); }
+
+        /// <summary>Specific one-time execution date and time</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inlined)]
+        public global::System.DateTime? ScheduleStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).StartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)Schedule).StartDate = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="SourceName" /> property.</summary>
         private string _sourceName;
@@ -197,6 +272,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"agentResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string AgentResourceId { get;  }
+        /// <summary>List of connections associated to this job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of connections associated to this job",
+        SerializedName = @"connections",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Connection { get; set; }
         /// <summary>Strategy to use for copy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = true,
@@ -209,6 +295,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
         string CopyMode { get; set; }
+        /// <summary>The checksum validation mode for the job definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The checksum validation mode for the job definition.",
+        SerializedName = @"dataIntegrityValidation",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
+        string DataIntegrityValidation { get; set; }
         /// <summary>
         /// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for
         /// migrating data between cloud to cloud.
@@ -223,6 +321,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
+        /// <summary>
+        /// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+        /// Hour value 24 cannot be combined with any other minute value but 0.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.",
+        SerializedName = @"hour",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ExecutionTimeHour { get; set; }
+        /// <summary>
+        /// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.",
+        SerializedName = @"minute",
+        PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
+        float? ExecutionTimeMinute { get; set; }
         /// <summary>The type of the Job.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -271,6 +397,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Queued", "Started", "Running", "CancelRequested", "Canceling", "Canceled", "Failed", "Succeeded", "PausedByBandwidthManagement")]
         string LatestJobRunStatus { get;  }
+        /// <summary>Boolean to preserve permissions or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Boolean to preserve permissions or not.",
+        SerializedName = @"preservePermissions",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? PreservePermission { get; set; }
         /// <summary>The provisioning state of this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -283,6 +420,84 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Succeeded", "Canceled", "Failed", "Deleting")]
         string ProvisioningState { get;  }
+        /// <summary>Optional CRON expression for advanced scheduling</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Optional CRON expression for advanced scheduling",
+        SerializedName = @"cronExpression",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScheduleCronExpression { get; set; }
+        /// <summary>Days of the month for monthly schedules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Days of the month for monthly schedules",
+        SerializedName = @"daysOfMonth",
+        PossibleTypes = new [] { typeof(int) })]
+        System.Collections.Generic.List<int> ScheduleDaysOfMonth { get; set; }
+        /// <summary>Days of the week for weekly schedules</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Days of the week for weekly schedules",
+        SerializedName = @"daysOfWeek",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ScheduleDaysOfWeek { get; set; }
+        /// <summary>End time of the schedule (in UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"End time of the schedule (in UTC)",
+        SerializedName = @"endDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ScheduleEndDate { get; set; }
+        /// <summary>Type of schedule — Monthly, Weekly, or Daily</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Type of schedule — Monthly, Weekly, or Daily",
+        SerializedName = @"frequency",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        string ScheduleFrequency { get; set; }
+        /// <summary>Whether the schedule is currently active</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether the schedule is currently active",
+        SerializedName = @"isActive",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ScheduleIsActive { get; set; }
+        /// <summary>Specific one-time execution date and time</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specific one-time execution date and time",
+        SerializedName = @"startDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? ScheduleStartDate { get; set; }
         /// <summary>The name of the source Endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -372,14 +587,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// Fully qualified resource id of the Agent to assign for new Job Runs of this Job Definition.
         /// </summary>
         string AgentResourceId { get; set; }
+        /// <summary>List of connections associated to this job</summary>
+        System.Collections.Generic.List<string> Connection { get; set; }
         /// <summary>Strategy to use for copy.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Additive", "Mirror")]
         string CopyMode { get; set; }
+        /// <summary>The checksum validation mode for the job definition.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("SaveVerifyFileMD5", "SaveFileMD5", "None")]
+        string DataIntegrityValidation { get; set; }
         /// <summary>
         /// A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for
         /// migrating data between cloud to cloud.
         /// </summary>
         string Description { get; set; }
+        /// <summary>
+        /// The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+        /// Hour value 24 cannot be combined with any other minute value but 0.
+        /// </summary>
+        int? ExecutionTimeHour { get; set; }
+        /// <summary>
+        /// The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
+        float? ExecutionTimeMinute { get; set; }
         /// <summary>The type of the Job.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("OnPremToCloud", "CloudToCloud")]
         string JobType { get; set; }
@@ -392,9 +622,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The current status of the Job Run in a non-terminal state, if exists.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Queued", "Started", "Running", "CancelRequested", "Canceling", "Canceled", "Failed", "Succeeded", "PausedByBandwidthManagement")]
         string LatestJobRunStatus { get; set; }
+        /// <summary>Boolean to preserve permissions or not.</summary>
+        bool? PreservePermission { get; set; }
         /// <summary>The provisioning state of this resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Succeeded", "Canceled", "Failed", "Deleting")]
         string ProvisioningState { get; set; }
+        /// <summary>Schedule information for the Job Definition.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfo Schedule { get; set; }
+        /// <summary>Optional CRON expression for advanced scheduling</summary>
+        string ScheduleCronExpression { get; set; }
+        /// <summary>Days of the month for monthly schedules</summary>
+        System.Collections.Generic.List<int> ScheduleDaysOfMonth { get; set; }
+        /// <summary>Days of the week for weekly schedules</summary>
+        System.Collections.Generic.List<string> ScheduleDaysOfWeek { get; set; }
+        /// <summary>End time of the schedule (in UTC)</summary>
+        global::System.DateTime? ScheduleEndDate { get; set; }
+        /// <summary>Time of day to execute (hours and minutes)</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime ScheduleExecutionTime { get; set; }
+        /// <summary>Type of schedule — Monthly, Weekly, or Daily</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        string ScheduleFrequency { get; set; }
+        /// <summary>Whether the schedule is currently active</summary>
+        bool? ScheduleIsActive { get; set; }
+        /// <summary>Specific one-time execution date and time</summary>
+        global::System.DateTime? ScheduleStartDate { get; set; }
         /// <summary>The name of the source Endpoint.</summary>
         string SourceName { get; set; }
         /// <summary>Fully qualified resource ID of the source Endpoint.</summary>

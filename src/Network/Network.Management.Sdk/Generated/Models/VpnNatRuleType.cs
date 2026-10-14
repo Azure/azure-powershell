@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VpnNatRuleType
     {
+        /// <summary>
+        /// Static
+        /// </summary>
         public const string Static = "Static";
+        /// <summary>
+        /// Dynamic
+        /// </summary>
         public const string Dynamic = "Dynamic";
     }
 }

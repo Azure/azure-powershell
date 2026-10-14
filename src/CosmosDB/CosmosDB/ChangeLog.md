@@ -20,6 +20,15 @@
 
 ## Upcoming Release
 
+## Version 1.22.0
+* Regenerated the Cosmos DB management SDK with stable API version 2026-03-15.
+
+## Version 1.21.1
+* Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.
+
+## Version 1.21.0
+* Added ChangeSafety Support
+
 ## Version 1.20.0
 * Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
 * Added `-Capabilities` parameter to `Update-AzCosmosDBAccount` to allow adding or removing account capabilities.

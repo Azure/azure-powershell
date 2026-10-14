@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage task assignment names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
-        public static StorageTaskAssignment Create(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties)
+        public static StorageTaskAssignment Create(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties))
         {
                 return ((IStorageTaskAssignmentsOperations)operations).CreateAsync(resourceGroupName, accountName, storageTaskAssignmentName, properties).GetAwaiter().GetResult();
         }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageTaskAssignment> CreateAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageTaskAssignment> CreateAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, storageTaskAssignmentName, properties, null, cancellationToken).ConfigureAwait(false))
             {
@@ -286,6 +286,59 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        public static StorageTaskAssignmentsStopAssignmentHeaders StopAssignment(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName)
+        {
+                return ((IStorageTaskAssignmentsOperations)operations).StopAssignmentAsync(resourceGroupName, accountName, storageTaskAssignmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StorageTaskAssignmentsStopAssignmentHeaders> StopAssignmentAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.StopAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, storageTaskAssignmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Asynchronously creates a new storage task assignment sub-resource with the
         /// specified parameters. If a storage task assignment is already created and a
         /// subsequent create request is issued with different properties, the storage
@@ -309,7 +362,7 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage task assignment names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
-        public static StorageTaskAssignment BeginCreate(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties)
+        public static StorageTaskAssignment BeginCreate(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties))
         {
                 return ((IStorageTaskAssignmentsOperations)operations).BeginCreateAsync(resourceGroupName, accountName, storageTaskAssignmentName, properties).GetAwaiter().GetResult();
         }
@@ -341,7 +394,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<StorageTaskAssignment> BeginCreateAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<StorageTaskAssignment> BeginCreateAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, StorageTaskAssignmentProperties properties = default(StorageTaskAssignmentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, storageTaskAssignmentName, properties, null, cancellationToken).ConfigureAwait(false))
             {
@@ -450,6 +503,59 @@ namespace Microsoft.Azure.Management.Storage
         public static async System.Threading.Tasks.Task<StorageTaskAssignmentsDeleteHeaders> BeginDeleteAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, storageTaskAssignmentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        public static StorageTaskAssignmentsStopAssignmentHeaders BeginStopAssignment(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName)
+        {
+                return ((IStorageTaskAssignmentsOperations)operations).BeginStopAssignmentAsync(resourceGroupName, accountName, storageTaskAssignmentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Stops any active running storage action for the storage task assignment
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='storageTaskAssignmentName'>
+        /// The name of the storage task assignment within the specified resource
+        /// group. Storage task assignment names must be between 3 and 24 characters in
+        /// length and use numbers and lower-case letters only.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<StorageTaskAssignmentsStopAssignmentHeaders> BeginStopAssignmentAsync(this IStorageTaskAssignmentsOperations operations, string resourceGroupName, string accountName, string storageTaskAssignmentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginStopAssignmentWithHttpMessagesAsync(resourceGroupName, accountName, storageTaskAssignmentName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }

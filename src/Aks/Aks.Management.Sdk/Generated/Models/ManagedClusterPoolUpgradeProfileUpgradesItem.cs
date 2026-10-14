@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Available upgrades for an AgentPool.
+    /// </summary>
     public partial class ManagedClusterPoolUpgradeProfileUpgradesItem
     {
         /// <summary>

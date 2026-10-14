@@ -31,13 +31,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchProperties()); set => this._property = value; }
 
-        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags _tag;
-
-        /// <summary>tags to be updated</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchTags()); set => this._tag = value; }
-
         /// <summary>Creates an new <see cref="DesktopPatch" /> instance.</summary>
         public DesktopPatch()
         {
@@ -70,17 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"friendlyName",
         PossibleTypes = new [] { typeof(string) })]
         string FriendlyName { get; set; }
-        /// <summary>tags to be updated</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"tags to be updated",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags Tag { get; set; }
 
     }
     /// Desktop properties that can be patched.
@@ -93,8 +75,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string FriendlyName { get; set; }
         /// <summary>Detailed properties for Desktop</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchProperties Property { get; set; }
-        /// <summary>tags to be updated</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags Tag { get; set; }
 
     }
 }

@@ -17,14 +17,15 @@ Creates a routing rule for an application gateway.
 New-AzApplicationGatewayRoutingRule -Name <String> -RuleType <String> -Priority <Int32>
  [-BackendSettings <PSApplicationGatewayBackendSettings>] [-Listener <PSApplicationGatewayListener>]
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzApplicationGatewayRoutingRule -Name <String> -RuleType <String> -Priority <Int32>
  [-BackendSettingsId <String>] [-ListenerId <String>] [-BackendAddressPoolId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ $Rule = New-AzApplicationGatewayRoutingRule -Name "Rule01" -RuleType Basic -Prio
 This command creates a basic routing rule named Rule01 and stores the result in the variable named $Rule.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackendAddressPool
 Application gateway BackendAddressPool
@@ -92,6 +108,21 @@ ID of the application gateway BackendSettings
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

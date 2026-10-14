@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AddressSpaceAggregationOption
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// Manual
+        /// </summary>
         public const string Manual = "Manual";
     }
 }

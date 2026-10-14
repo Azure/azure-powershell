@@ -34,18 +34,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// means disable.
         /// </param>
 
+        /// <param name="disablePeeringRoute">Whether to disable the routes learned by peering on the route table. &#39;None&#39;
+        /// means peering routes are enabled, &#39;All&#39; means all peering routes are
+        /// disabled.
+        /// Possible values include: &#39;None&#39;, &#39;All&#39;</param>
+
         /// <param name="provisioningState">The provisioning state of the route table resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="resourceGuid">The resource GUID property of the route table.
         /// </param>
-        public RouteTablePropertiesFormat(System.Collections.Generic.IList<Route> routes = default(System.Collections.Generic.IList<Route>), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), bool? disableBgpRoutePropagation = default(bool?), string provisioningState = default(string), string resourceGuid = default(string))
+        public RouteTablePropertiesFormat(System.Collections.Generic.IList<Route> routes = default(System.Collections.Generic.IList<Route>), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), bool? disableBgpRoutePropagation = default(bool?), string disablePeeringRoute = default(string), string provisioningState = default(string), string resourceGuid = default(string))
 
         {
             this.Routes = routes;
             this.Subnets = subnets;
             this.DisableBgpRoutePropagation = disableBgpRoutePropagation;
+            this.DisablePeeringRoute = disablePeeringRoute;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
             CustomInit();
@@ -75,6 +81,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "disableBgpRoutePropagation")]
         public bool? DisableBgpRoutePropagation {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to disable the routes learned by peering on the route
+        /// table. &#39;None&#39; means peering routes are enabled, &#39;All&#39; means all peering
+        /// routes are disabled. Possible values include: &#39;None&#39;, &#39;All&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "disablePeeringRoute")]
+        public string DisablePeeringRoute {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the route table resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

@@ -528,7 +528,7 @@ function Test-AzureVmWorkloadFullRestore
 			-Item $item | Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 				-VaultId $vault.ID `
 				-TargetItem $protectableInstances[0] `
-				–AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
+				-AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
 					-VaultId $vault.ID | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }
@@ -536,7 +536,7 @@ function Test-AzureVmWorkloadFullRestore
 		$restoreConfig2 = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 			-VaultId $vault.ID `
 			-RecoveryPoint $recoveryPoint[0] `
-			–OriginalWorkloadRestore;
+			-OriginalWorkloadRestore;
 
 		Assert-NotNull $restoreConfig2
 
@@ -571,7 +571,7 @@ function Test-AzureVmWorkloadFullRestore
 			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
 			-Item $item[0] `
 			-TargetItem $protectableInstances[0] `
-			–AlternateWorkloadRestore;
+			-AlternateWorkloadRestore;
 
 		Assert-NotNull $restoreConfig3
 
@@ -585,7 +585,7 @@ function Test-AzureVmWorkloadFullRestore
 			-VaultId $vault.ID `
 			-PointInTime $recoveryLogChain[0].StartTime.AddMinutes(1) `
 			-Item $item[0] `
-			–OriginalWorkloadRestore;
+			-OriginalWorkloadRestore;
 
 		Assert-NotNull $restoreConfig4
 
@@ -660,7 +660,7 @@ function Test-AzureVmWorkloadFullRestoreWithFiles
 			-Item $item | Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
 				-VaultId $vault.ID `
 				-TargetItem $protectableInstances[0] `
-				–AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
+				-AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
 					-VaultId $vault.ID | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob1.Status -eq "Completed" }

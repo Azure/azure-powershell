@@ -14,15 +14,21 @@ Microsoft Azure PowerShell: ComputeFleet cmdlets
 ### [Get-AzComputeFleet](Get-AzComputeFleet.md)
 Get a Fleet
 
-### [Get-AzComputeFleetVMSS](Get-AzComputeFleetVMSS.md)
+### [Get-AzComputeFleetVirtualMachine](Get-AzComputeFleetVirtualMachine.md)
+List VirtualMachine resources of a Launch mode Fleet.
+
+### [Get-AzComputeFleetVirtualMachineScaleSet](Get-AzComputeFleetVirtualMachineScaleSet.md)
 List VirtualMachineScaleSet resources by Fleet
 
 ### [New-AzComputeFleet](New-AzComputeFleet.md)
-create a Fleet
+Create a Fleet
 
 ### [Remove-AzComputeFleet](Remove-AzComputeFleet.md)
 Delete a Fleet
 
+### [Set-AzComputeFleet](Set-AzComputeFleet.md)
+Update a Fleet
+
 ### [Update-AzComputeFleet](Update-AzComputeFleet.md)
-update a Fleet
+Update a Fleet
 

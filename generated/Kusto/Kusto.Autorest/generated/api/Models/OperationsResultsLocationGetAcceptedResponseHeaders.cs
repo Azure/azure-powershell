@@ -42,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"Azure-AsyncOperation",
         PossibleTypes = new [] { typeof(string) })]

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The region where the nrp are located at.
+        /// The location for which the WAF dynamic manifest is requested.
         /// </param>
         public static ApplicationGatewayWafDynamicManifestResult Get(this IApplicationGatewayWafDynamicManifestsDefaultOperations operations, string location)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The region where the nrp are located at.
+        /// The location for which the WAF dynamic manifest is requested.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

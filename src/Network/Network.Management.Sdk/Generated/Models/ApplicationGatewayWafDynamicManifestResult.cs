@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Response for ApplicationGatewayWafDynamicManifest API service call.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayWafDynamicManifestResult
+    public partial class ApplicationGatewayWafDynamicManifestResult : ProxyResourceWithSettableId
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayWafDynamicManifestResult class.
@@ -42,15 +42,18 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ruleSetVersion">The version of the web application firewall rule set type.
         /// </param>
-        public ApplicationGatewayWafDynamicManifestResult(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet> availableRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet>), string ruleSetType = default(string), string ruleSetVersion = default(string))
 
+        /// <param name="displayName">Human-readable display name for the managed rule set version (e.g.,
+        /// &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </param>
+        public ApplicationGatewayWafDynamicManifestResult(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet> availableRuleSets = default(System.Collections.Generic.IList<ApplicationGatewayFirewallManifestRuleSet>), string ruleSetType = default(string), string ruleSetVersion = default(string), string displayName = default(string))
+
+        : base(id, name, type)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.AvailableRuleSets = availableRuleSets;
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
+            this.DisplayName = displayName;
             CustomInit();
         }
 
@@ -59,24 +62,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the available rulesets.
@@ -95,5 +80,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRuleSet.ruleSetVersion")]
         public string RuleSetVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets human-readable display name for the managed rule set version
+        /// (e.g., &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultRuleSet.displayName")]
+        public string DisplayName {get; set; }
     }
 }

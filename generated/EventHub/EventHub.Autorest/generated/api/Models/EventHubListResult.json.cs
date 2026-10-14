@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
 
-    /// <summary>The result of the List EventHubs operation.</summary>
+    /// <summary>Paged collection of Eventhub items</summary>
     public partial class EventHubListResult
     {
 

@@ -19,6 +19,46 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Added deprecation notices to Azure NetApp Files subvolume cmdlets
+* Added breaking change notices for removing `EnableSubvolume` and the `EnableSubvolumes` volume output property
+* Fixed the output type of `Get-AzNetAppFilesVolumeQuotaRule` from `PSNetAppFilesVolume` to `PSNetAppFilesVolumeQuotaRule`
+
+## Version 1.4.0
+ * Added FileAccessLogs to `Get-AzNetAppFilesCache` output.
+ * Added Breakthrough Mode support for Azure NetApp Files volumes:
+     - Added `-BreakthroughMode` to `New-AzNetAppFilesVolume` and `New-AzNetAppFilesVolumeGroup`.
+     - Added `BreakthroughMode` to volume output in `Get-AzNetAppFilesVolume` and `Get-AzNetAppFilesVolumeGroup`
+
+## Version 1.3.0
+* Added ChangeSafety Support
+* Added FileAccessLogs to PSNetAppFilesCache ouput
+* Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles
+* Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter
+
+## Version 1.2.0
+* Updated to API version 2026-01-01
+* Added new cmdlets for the Buckets resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesBucket`
+    - `New-AzNetAppFilesBucket`
+    - `Update-AzNetAppFilesBucket`
+    - `Remove-AzNetAppFilesBucket`
+    - `New-AzNetAppFilesBucketCredential`
+    - `Set-AzNetAppFilesBucketAkvCredential`
+    - `Update-AzNetAppFilesBucketCertificate`
+* Added new cmdlets for the Caches resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesCache`
+    - `New-AzNetAppFilesCache`
+    - `Update-AzNetAppFilesCache`
+    - `Remove-AzNetAppFilesCache`
+    - `Get-AzNetAppFilesCachePeeringPassphrase`
+    - `Set-AzNetAppFilesCachePool`
+    - `Reset-AzNetAppFilesCacheSmbPassword`
+* `Start-AzNetAppFilesPeerExternalCluster` now returns the cluster peering command and passphrase as a `PSClusterPeerCommandResponse` (was previously discarded)
+* Surfaced new replication properties on `PSNetAppFilesReplicationObject` (`(Get-AzNetAppFilesVolume).DataProtection.Replication`):
+    - `ExternalReplicationSetupStatus`, `ExternalReplicationSetupInfo` - external replication setup state machine + next-step guidance
+    - `MirrorState`, `RelationshipStatus` - current mirror state and transfer status
+
 ## Version 1.1.0
 * Updated to api-version 2025-12-01
 * Added new cmdlet `Get-AzNetAppFilesVolumeQuotaReport` to get quota report for a volume with optional filtering by `QuotaType`, `QuotaTarget`, and `UsageThresholdPercentage`

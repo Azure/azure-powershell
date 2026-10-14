@@ -670,9 +670,6 @@
   <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
     <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
   </data>
-  <data name="MissingEnableSoftDelete" xml:space="preserve">
-    <value>SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified.</value>
-  </data>
   <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
     <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
   </data>
@@ -781,14 +778,14 @@
   <data name="ResourceGroupNotFoundForRestore" xml:space="preserve">
     <value>Cannot restore deleted server '{0}' because resource group '{1}' does not exist. Please create the resource group before restoring the server.</value>
   </data>
-  <data name="InvalidSoftDeleteRetentionDaysForDisablingSoftDelete" xml:space="preserve">
-    <value>SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false.</value>
-  </data>
-  <data name="InvalidSoftDeleteRetentionDaysRange" xml:space="preserve">
-    <value>SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true.</value>
-  </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Locking the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
+  </data>
+  <data name="LockAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
+    <value>Locking the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'.</value>
+  </data>
+  <data name="LockAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
+    <value>Are you sure you want to lock the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'? Once locked, the backup cannot be dropped until expiration.</value>
   </data>
   <data name="RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Removing the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
@@ -796,11 +793,23 @@
   <data name="RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'? Once removed, it will be possible to delete the backup. </value>
   </data>
+  <data name="RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
+    <value>Removing the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'.</value>
+  </data>
+  <data name="RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'? Once removed, it will be possible to delete the backup.</value>
+  </data>
   <data name="SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to set a legal hold for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'? The backup will not be deleted, even once expired, until the legal hold is removed. </value>
   </data>
   <data name="SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Setting legal hold immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
+  </data>
+  <data name="SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
+    <value>Are you sure you want to set a legal hold for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'? The backup will not be deleted, even once expired, until the legal hold is removed.</value>
+  </data>
+  <data name="SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
+    <value>Setting legal hold immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'.</value>
   </data>
   <data name="RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Removing the legal hold immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
@@ -810,6 +819,15 @@
   </data>
   <data name="RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupExpiredWarning" xml:space="preserve">
     <value>Warning! The Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}' is expired, and removing the legal hold will cause the backup to be dropped immediately.</value>
+  </data>
+  <data name="RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
+    <value>Removing the legal hold immutability for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'.</value>
+  </data>
+  <data name="RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove a legal hold for the Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}'? Once removed, it will be possible to delete the backup.</value>
+  </data>
+  <data name="RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupExpiredWarning" xml:space="preserve">
+    <value>Warning! The Long Term Retention backup '{0}' on database '{1}' on managed instance '{2}' in location '{3}' is expired, and removing the legal hold will cause the backup to be dropped immediately.</value>
   </data>
   <data name="LockAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to lock the time-based immutability for the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'? Once locked, the backup cannot be dropped until expiration. </value>

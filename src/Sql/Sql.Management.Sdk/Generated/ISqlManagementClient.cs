@@ -380,6 +380,11 @@ namespace Microsoft.Azure.Management.Sql
         ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; }
 
         /// <summary>
+        /// Gets the IManagedInstanceLongTermRetentionBackupsOperations
+        /// </summary>
+        IManagedInstanceLongTermRetentionBackupsOperations ManagedInstanceLongTermRetentionBackups { get; }
+
+        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations
         /// </summary>
         IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; }
@@ -418,6 +423,11 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IRecommendedSensitivityLabelsOperations
         /// </summary>
         IRecommendedSensitivityLabelsOperations RecommendedSensitivityLabels { get; }
+
+        /// <summary>
+        /// Gets the IFirewallRulesOperations
+        /// </summary>
+        IFirewallRulesOperations FirewallRules { get; }
 
         /// <summary>
         /// Gets the IIPv6FirewallRulesOperations

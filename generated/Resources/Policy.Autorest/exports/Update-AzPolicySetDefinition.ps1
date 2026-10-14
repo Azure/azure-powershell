@@ -30,7 +30,7 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition '[{ 
 $groupsJson = ConvertTo-Json @{ name = "group1"; displayName = "Virtual Machine Security" }, @{ name = "group2" }
 Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson
 .Example
-Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
+Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '1.1.0'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
@@ -46,17 +46,16 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPolicySetDefinition>: 
   [Description <String>]: The policy set definition description.
   [DisplayName <String>]: The display name of the policy set definition.
-  [Metadata <IPolicySetDefinitionPropertiesMetadata>]: The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-  [Parameter <IParameterDefinitions>]: The policy set definition parameters that can be used in policy definition references.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [MetadataRaw <IAny>]: The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+  [ParameterRaw <IPolicySetDefinitionPropertiesParameters>]: The policy set definition parameters that can be used in policy definition references.
+    [(Any) <IParameterDefinitionsValue>]: This indicates any property can be added to this object.
   [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
     PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
     [DefinitionVersion <String>]: The version of the policy definition to use.
     [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
     [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
-    [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
-      [(Any) <Object>]: This indicates any property can be added to this object.
+    [ParameterRaw <IPolicyDefinitionReferenceParameters>]: The parameter values for the referenced policy rule. The keys are the parameter names.
+      [(Any) <IParameterValuesValue>]: This indicates any property can be added to this object.
   [PolicyDefinitionGroup <List<IPolicyDefinitionGroup>>]: The metadata describing groups of policy definition references within the policy set definition.
     Name <String>: The name of the group.
     [AdditionalMetadataId <String>]: A resource ID of a resource that contains additional metadata about the group.
@@ -90,16 +89,17 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The resource Id of the policy definition to update.
+    # The resource Id of the policy set definition to update.
     ${Id},
 
     [Parameter(ValueFromPipelineByPropertyName)]
@@ -118,12 +118,11 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReference[]]))]
     [System.String]
-    # The policy definition array in JSON string form.
+    # The policy set definition array in JSON string form.
     ${PolicyDefinition},
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy set definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -136,6 +135,15 @@ param(
     # The keys are the parameter names.
     ${Parameter},
 
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Alias('PolicySetDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy set definition version in #.#.# format.
+    ${Version},
+
     [Parameter()]
     [Alias('GroupDefinition')]
     [AllowEmptyCollection()]
@@ -145,12 +153,6 @@ param(
     # The metadata describing groups of policy definition references within the policy set definition.
     # To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create a hash table.
     ${PolicyDefinitionGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
 
     [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

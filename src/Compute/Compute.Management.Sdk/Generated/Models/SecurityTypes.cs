@@ -13,6 +13,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     public static class SecurityTypes
     {
+        /// <summary>
+        /// Indicates a VM without UEFI features such as SecureBoot or vTPM; returned
+        /// as the default value when securityType is not specified.
+        /// </summary>
+        public const string Standard = "Standard";
         public const string TrustedLaunch = "TrustedLaunch";
         public const string ConfidentialVM = "ConfidentialVM";
     }

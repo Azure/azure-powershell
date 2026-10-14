@@ -77,9 +77,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return;
             }
-            __terminalServerPatchableProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.TerminalServerPatchableProperties(json);
-            __layer3IPPrefixProperties = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.Layer3IPPrefixProperties(json);
+            {_username = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("username"), out var __jsonUsername) ? (string)__jsonUsername : (string)_username;}
+            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? new System.Net.NetworkCredential("",(string)__jsonPassword).SecurePassword : _password;}
+            {_serialNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("serialNumber"), out var __jsonSerialNumber) ? (string)__jsonSerialNumber : (string)_serialNumber;}
+            {_primaryIpv4Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("primaryIpv4Prefix"), out var __jsonPrimaryIpv4Prefix) ? (string)__jsonPrimaryIpv4Prefix : (string)_primaryIpv4Prefix;}
+            {_primaryIpv6Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("primaryIpv6Prefix"), out var __jsonPrimaryIpv6Prefix) ? (string)__jsonPrimaryIpv6Prefix : (string)_primaryIpv6Prefix;}
+            {_secondaryIpv4Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("secondaryIpv4Prefix"), out var __jsonSecondaryIpv4Prefix) ? (string)__jsonSecondaryIpv4Prefix : (string)_secondaryIpv4Prefix;}
+            {_secondaryIpv6Prefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("secondaryIpv6Prefix"), out var __jsonSecondaryIpv6Prefix) ? (string)__jsonSecondaryIpv6Prefix : (string)_secondaryIpv6Prefix;}
             {_networkDeviceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString>("networkDeviceId"), out var __jsonNetworkDeviceId) ? (string)__jsonNetworkDeviceId : (string)_networkDeviceId;}
+            {_secretRotationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray>("secretRotationStatus"), out var __jsonSecretRotationStatus) ? If( __jsonSecretRotationStatus as Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ISecretRotationStatus) (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.SecretRotationStatus.FromJson(__u) )) ))() : null : _secretRotationStatus;}
             AfterFromJson(json);
         }
 
@@ -102,11 +108,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
             {
                 return container;
             }
-            __terminalServerPatchableProperties?.ToJson(container, serializationMode);
-            __layer3IPPrefixProperties?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._username)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._username.ToString()) : null, "username" ,container.Add );
+            AddIf( null != (((object)this._password)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._password))) : null, "password" ,container.Add );
+            AddIf( null != (((object)this._serialNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._serialNumber.ToString()) : null, "serialNumber" ,container.Add );
+            AddIf( null != (((object)this._primaryIpv4Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._primaryIpv4Prefix.ToString()) : null, "primaryIpv4Prefix" ,container.Add );
+            AddIf( null != (((object)this._primaryIpv6Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._primaryIpv6Prefix.ToString()) : null, "primaryIpv6Prefix" ,container.Add );
+            AddIf( null != (((object)this._secondaryIpv4Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._secondaryIpv4Prefix.ToString()) : null, "secondaryIpv4Prefix" ,container.Add );
+            AddIf( null != (((object)this._secondaryIpv6Prefix)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._secondaryIpv6Prefix.ToString()) : null, "secondaryIpv6Prefix" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._networkDeviceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.JsonString(this._networkDeviceId.ToString()) : null, "networkDeviceId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._secretRotationStatus)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._secretRotationStatus )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("secretRotationStatus",__w);
+                }
             }
             AfterToJson(ref container);
             return container;

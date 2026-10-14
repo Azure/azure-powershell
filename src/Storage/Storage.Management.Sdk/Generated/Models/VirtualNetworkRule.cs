@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         public VirtualNetworkRuleAction? Action {get; set; }
 
         /// <summary>
-        /// Gets or sets gets the state of virtual network rule. Possible values include: &#39;Provisioning&#39;, &#39;Deprovisioning&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;NetworkSourceDeleted&#39;
+        /// Gets gets the state of virtual network rule. Possible values include: &#39;Provisioning&#39;, &#39;Deprovisioning&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;NetworkSourceDeleted&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
-        public string State {get; set; }
+        public string State {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

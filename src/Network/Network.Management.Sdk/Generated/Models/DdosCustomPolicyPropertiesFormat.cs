@@ -38,13 +38,18 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="frontEndIPConfiguration">The list of frontend IP configurations associated with the custom policy.
         /// </param>
-        public DdosCustomPolicyPropertiesFormat(string resourceGuid = default(string), string provisioningState = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<SubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<SubResource>))
+
+        /// <param name="publicIPAddresses">The list of public IP addresses associated with the custom policy. This
+        /// list is read-only.
+        /// </param>
+        public DdosCustomPolicyPropertiesFormat(string resourceGuid = default(string), string provisioningState = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<SubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
             this.DetectionRules = detectionRules;
             this.FrontEndIPConfiguration = frontEndIPConfiguration;
+            this.PublicIPAddresses = publicIPAddresses;
             CustomInit();
         }
 
@@ -81,5 +86,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "frontEndIpConfiguration")]
         public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets the list of public IP addresses associated with the custom policy.
+        /// This list is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddresses")]
+        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
     }
 }

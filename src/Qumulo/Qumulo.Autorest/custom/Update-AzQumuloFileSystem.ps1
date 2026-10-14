@@ -25,7 +25,7 @@ Update-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IQumuloIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
+Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ INPUTOBJECT <IQumuloIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.qumulo/update-azqumulofilesystem
 #>
 function Update-AzQumuloFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -73,7 +73,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

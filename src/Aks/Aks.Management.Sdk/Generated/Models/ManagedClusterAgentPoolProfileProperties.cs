@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="eTag">Unique read-only string used to implement optimistic concurrency. The eTag
         /// value will change when the resource is updated. Specify an if-match or
         /// if-none-match header with the eTag value for a subsequent request to enable
-        /// optimistic concurrency per the normal etag convention.
+        /// optimistic concurrency per the normal eTag convention.
         /// </param>
 
         /// <param name="count">Number of agents (VMs) to host docker containers. Allowed values must be in
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Possible values include: &#39;OS&#39;, &#39;Temporary&#39;</param>
 
         /// <param name="workloadRuntime">Determines the type of workload a node can run.
-        /// Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;</param>
+        /// Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;, &#39;KataVmIsolation&#39;</param>
 
         /// <param name="messageOfTheDay">Message of the day for Linux nodes, base64-encoded. A base64-encoded string
         /// which will be written to /etc/motd after decoding. This allows
@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// OSType is Linux. The default is Windows2019 when Kubernetes &lt;= 1.24 or
         /// Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows.
         /// Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;,
-        /// &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;</param>
+        /// &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;, &#39;Windows2025&#39;,
+        /// &#39;Ubuntu2404&#39;, &#39;AzureContainerLinux&#39;</param>
 
         /// <param name="maxCount">The maximum number of nodes for auto-scaling
         /// </param>
@@ -174,13 +175,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
         /// </param>
 
-        /// <param name="scaleSetPriority">The Virtual Machine Scale Set priority. If not specified, the default is
-        /// &#39;Regular&#39;.
+        /// <param name="scaleSetPriority">The Virtual Machine Scale Set priority.
         /// Possible values include: &#39;Spot&#39;, &#39;Regular&#39;</param>
 
-        /// <param name="scaleSetEvictionPolicy">The Virtual Machine Scale Set eviction policy to use. This cannot be
-        /// specified unless the scaleSetPriority is &#39;Spot&#39;. If not specified, the
-        /// default is &#39;Delete&#39;.
+        /// <param name="scaleSetEvictionPolicy">The Virtual Machine Scale Set eviction policy. The eviction policy
+        /// specifies what to do with the VM when it is evicted. The default is Delete.
+        /// For more information about eviction see [spot
+        /// VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)
         /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="spotMaxPrice">The max price (in US Dollars) you are willing to pay for spot instances.
@@ -232,8 +233,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// will be created/upgraded using a snapshot.
         /// </param>
 
-        /// <param name="capacityReservationGroupId">AKS will associate the specified agent pool with the Capacity Reservation
-        /// Group.
+        /// <param name="capacityReservationGroupId">The fully qualified resource ID of the Capacity Reservation Group to
+        /// provide virtual machines from a reserved group of Virtual Machines. This is
+        /// of the form:
+        /// &#39;/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}&#39;
+        /// Customers use it to create an agentpool with a specified CRG. For more
+        /// information see [Capacity
+        /// Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview)
         /// </param>
 
         /// <param name="hostGroupId">The fully qualified resource ID of the Dedicated Host Group to provision
@@ -260,6 +266,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// be set if agent pool mode is not Gateway.
         /// </param>
 
+        /// <param name="artifactStreamingProfile">Configuration for using artifact streaming on AKS.
+        /// </param>
+
         /// <param name="virtualMachinesProfile">Specifications on VirtualMachines agent pool.
         /// </param>
 
@@ -268,7 +277,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="status">Contains read-only information about the Agent Pool.
         /// </param>
-        public ManagedClusterAgentPoolProfileProperties(string eTag = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGb = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string workloadRuntime = default(string), string messageOfTheDay = default(string), string vnetSubnetId = default(string), string podSubnetId = default(string), string podIPAllocationMode = default(string), int? maxPods = default(int?), string osType = default(string), string osSku = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string scaleDownMode = default(string), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string currentOrchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), System.Collections.Generic.IList<string> availabilityZones = default(System.Collections.Generic.IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixId = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> nodeLabels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> nodeTaints = default(System.Collections.Generic.IList<string>), string proximityPlacementGroupId = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSsd = default(bool?), bool? enableFips = default(bool?), string gpuInstanceProfile = default(string), CreationData creationData = default(CreationData), string capacityReservationGroupId = default(string), string hostGroupId = default(string), AgentPoolNetworkProfile networkProfile = default(AgentPoolNetworkProfile), AgentPoolWindowsProfile windowsProfile = default(AgentPoolWindowsProfile), AgentPoolSecurityProfile securityProfile = default(AgentPoolSecurityProfile), GPUProfile gpuProfile = default(GPUProfile), AgentPoolGatewayProfile gatewayProfile = default(AgentPoolGatewayProfile), VirtualMachinesProfile virtualMachinesProfile = default(VirtualMachinesProfile), System.Collections.Generic.IList<VirtualMachineNodes> virtualMachineNodesStatus = default(System.Collections.Generic.IList<VirtualMachineNodes>), AgentPoolStatus status = default(AgentPoolStatus))
+
+        /// <param name="localDnsProfile">Configures the per-node local DNS, with VnetDNS and KubeDNS overrides.
+        /// LocalDNS helps improve performance and reliability of DNS resolution in an
+        /// AKS cluster. For more details see aka.ms/aks/localdns.
+        /// </param>
+        public ManagedClusterAgentPoolProfileProperties(string eTag = default(string), int? count = default(int?), string vmSize = default(string), int? osDiskSizeGb = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string workloadRuntime = default(string), string messageOfTheDay = default(string), string vnetSubnetId = default(string), string podSubnetId = default(string), string podIPAllocationMode = default(string), int? maxPods = default(int?), string osType = default(string), string osSku = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string scaleDownMode = default(string), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string currentOrchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), System.Collections.Generic.IList<string> availabilityZones = default(System.Collections.Generic.IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixId = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> nodeLabels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> nodeTaints = default(System.Collections.Generic.IList<string>), string proximityPlacementGroupId = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSsd = default(bool?), bool? enableFips = default(bool?), string gpuInstanceProfile = default(string), CreationData creationData = default(CreationData), string capacityReservationGroupId = default(string), string hostGroupId = default(string), AgentPoolNetworkProfile networkProfile = default(AgentPoolNetworkProfile), AgentPoolWindowsProfile windowsProfile = default(AgentPoolWindowsProfile), AgentPoolSecurityProfile securityProfile = default(AgentPoolSecurityProfile), GPUProfile gpuProfile = default(GPUProfile), AgentPoolGatewayProfile gatewayProfile = default(AgentPoolGatewayProfile), AgentPoolArtifactStreamingProfile artifactStreamingProfile = default(AgentPoolArtifactStreamingProfile), VirtualMachinesProfile virtualMachinesProfile = default(VirtualMachinesProfile), System.Collections.Generic.IList<VirtualMachineNodes> virtualMachineNodesStatus = default(System.Collections.Generic.IList<VirtualMachineNodes>), AgentPoolStatus status = default(AgentPoolStatus), LocalDNSProfile localDnsProfile = default(LocalDNSProfile))
 
         {
             this.ETag = eTag;
@@ -321,9 +335,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             this.SecurityProfile = securityProfile;
             this.GpuProfile = gpuProfile;
             this.GatewayProfile = gatewayProfile;
+            this.ArtifactStreamingProfile = artifactStreamingProfile;
             this.VirtualMachinesProfile = virtualMachinesProfile;
             this.VirtualMachineNodesStatus = virtualMachineNodesStatus;
             this.Status = status;
+            this.LocalDnsProfile = localDnsProfile;
             CustomInit();
         }
 
@@ -337,7 +353,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Gets unique read-only string used to implement optimistic concurrency. The
         /// eTag value will change when the resource is updated. Specify an if-match or
         /// if-none-match header with the eTag value for a subsequent request to enable
-        /// optimistic concurrency per the normal etag convention.
+        /// optimistic concurrency per the normal eTag convention.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "eTag")]
         public string ETag {get; private set; }
@@ -386,7 +402,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string KubeletDiskType {get; set; }
 
         /// <summary>
-        /// Gets or sets determines the type of workload a node can run. Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;
+        /// Gets or sets determines the type of workload a node can run. Possible values include: &#39;OCIContainer&#39;, &#39;WasmWasi&#39;, &#39;KataVmIsolation&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workloadRuntime")]
         public string WorkloadRuntime {get; set; }
@@ -443,7 +459,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Gets or sets specifies the OS SKU used by the agent pool. The default is
         /// Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes &lt;=
-        /// 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;
+        /// 1.24 or Windows2022 when Kubernetes &gt;= 1.25 if OSType is Windows. Possible values include: &#39;Ubuntu&#39;, &#39;AzureLinux&#39;, &#39;AzureLinux3&#39;, &#39;CBLMariner&#39;, &#39;Windows2019&#39;, &#39;Windows2022&#39;, &#39;Ubuntu2204&#39;, &#39;Windows2025&#39;, &#39;Ubuntu2404&#39;, &#39;AzureContainerLinux&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "osSKU")]
         public string OSSku {get; set; }
@@ -572,16 +588,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string NodePublicIPPrefixId {get; set; }
 
         /// <summary>
-        /// Gets or sets the Virtual Machine Scale Set priority. If not specified, the
-        /// default is &#39;Regular&#39;. Possible values include: &#39;Spot&#39;, &#39;Regular&#39;
+        /// Gets or sets the Virtual Machine Scale Set priority. Possible values include: &#39;Spot&#39;, &#39;Regular&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSetPriority")]
         public string ScaleSetPriority {get; set; }
 
         /// <summary>
-        /// Gets or sets the Virtual Machine Scale Set eviction policy to use. This
-        /// cannot be specified unless the scaleSetPriority is &#39;Spot&#39;. If not
-        /// specified, the default is &#39;Delete&#39;. Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
+        /// Gets or sets the Virtual Machine Scale Set eviction policy. The eviction
+        /// policy specifies what to do with the VM when it is evicted. The default is
+        /// Delete. For more information about eviction see [spot
+        /// VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSetEvictionPolicy")]
         public string ScaleSetEvictionPolicy {get; set; }
@@ -674,8 +690,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public CreationData CreationData {get; set; }
 
         /// <summary>
-        /// Gets or sets aKS will associate the specified agent pool with the Capacity
-        /// Reservation Group.
+        /// Gets or sets the fully qualified resource ID of the Capacity Reservation
+        /// Group to provide virtual machines from a reserved group of Virtual
+        /// Machines. This is of the form:
+        /// &#39;/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}&#39;
+        /// Customers use it to create an agentpool with a specified CRG. For more
+        /// information see [Capacity
+        /// Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capacityReservationGroupID")]
         public string CapacityReservationGroupId {get; set; }
@@ -723,6 +744,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public AgentPoolGatewayProfile GatewayProfile {get; set; }
 
         /// <summary>
+        /// Gets or sets configuration for using artifact streaming on AKS.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "artifactStreamingProfile")]
+        public AgentPoolArtifactStreamingProfile ArtifactStreamingProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets specifications on VirtualMachines agent pool.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachinesProfile")]
@@ -739,6 +766,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public AgentPoolStatus Status {get; set; }
+
+        /// <summary>
+        /// Gets or sets configures the per-node local DNS, with VnetDNS and KubeDNS
+        /// overrides. LocalDNS helps improve performance and reliability of DNS
+        /// resolution in an AKS cluster. For more details see aka.ms/aks/localdns.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "localDNSProfile")]
+        public LocalDNSProfile LocalDnsProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -809,6 +844,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 this.GatewayProfile.Validate();
             }
+
+
 
 
 

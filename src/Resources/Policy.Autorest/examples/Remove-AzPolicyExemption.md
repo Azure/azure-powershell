@@ -20,16 +20,3 @@ The first command gets a resource group named ResourceGroup11, and then stores t
 The second command gets the policy exemption at a resource group level, and then stores it in the $PolicyExemption variable.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.
-
-### Example 3: [Backcompat] Remove policy exemption by ID
-```powershell
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11' 
-$PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId -BackwardCompatible
-Remove-AzPolicyExemption -Id $PolicyExemption.ResourceId -Force -BackwardCompatible
-True
-```
-
-The first command gets a resource group named ResourceGroup11, and then stores that object in the $ResourceGroup variable.
-The second command gets the policy exemption at a resource group level, and then stores it in the $PolicyExemption variable.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
-The final command removes the policy exemption that the **ResourceId** property of $PolicyExemption identifies.

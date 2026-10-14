@@ -136,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string AzureFileIdentityBasedAuthenticationDirectoryServiceOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationDirectoryServiceOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AzureFileIdentityBasedAuthenticationDirectoryServiceOption = value ?? null; }
 
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? BlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobEnabled = value ?? default(bool); }
+
         /// <summary>Failure reason when blob restore is failed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string BlobRestoreStatusFailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).BlobRestoreStatusFailureReason; }
@@ -159,6 +163,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public bool? CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName; }
+
+        /// <summary>
+        /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? DataCollaborationPolicyPropertyAllowCrossTenantDataSharing { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowCrossTenantDataSharing = value ?? default(bool); }
+
+        /// <summary>
+        /// Indicates whether storage connectors are allowed to created or managed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? DataCollaborationPolicyPropertyAllowStorageConnector { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowStorageConnector; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowStorageConnector = value ?? default(bool); }
+
+        /// <summary>
+        /// Indicates whether data shares are allowed to be created or managed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? DataCollaborationPolicyPropertyAllowStorageDataShare { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowStorageDataShare; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyPropertyAllowStorageDataShare = value ?? default(bool); }
 
         /// <summary>
         /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false
@@ -218,6 +240,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public bool? FailoverInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FailoverInProgress; }
+
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? FileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FileEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).FileEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
@@ -416,6 +442,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for AccountMigrationInProgress</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AccountMigrationInProgress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AccountMigrationInProgress = value ?? default(bool); }
 
+        /// <summary>Internal Acessors for AllowSharedKeyAccessForService</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSharedKeyAccessProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AllowSharedKeyAccessForService { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForService; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForService = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AllowSharedKeyAccessForServiceBlob</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AllowSharedKeyAccessForServiceBlob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceBlob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceBlob = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AllowSharedKeyAccessForServiceFile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AllowSharedKeyAccessForServiceFile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceFile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceFile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AllowSharedKeyAccessForServiceQueue</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AllowSharedKeyAccessForServiceQueue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceQueue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceQueue = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AllowSharedKeyAccessForServiceTable</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.AllowSharedKeyAccessForServiceTable { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceTable; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).AllowSharedKeyAccessForServiceTable = value ?? null /* model class */; }
+
         /// <summary>
         /// Internal Acessors for AzureFileIdentityBasedAuthenticationActiveDirectoryProperty
         /// </summary>
@@ -447,6 +488,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Internal Acessors for CustomDomainUseSubDomainName</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.CustomDomainUseSubDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).CustomDomainUseSubDomainName = value ?? default(bool); }
+
+        /// <summary>Internal Acessors for DataCollaborationPolicyProperty</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.DataCollaborationPolicyProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DataCollaborationPolicyProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for DualStackEndpointPreference</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IDualStackEndpointPreference Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountInternal.DualStackEndpointPreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DualStackEndpointPreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).DualStackEndpointPreference = value ?? null /* model class */; }
@@ -621,6 +665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// Minimum TLS version 1.3 version is not supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string MinimumTlsVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).MinimumTlsVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).MinimumTlsVersion = value ?? null; }
@@ -715,6 +760,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).PublicNetworkAccess = value ?? null; }
+
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? QueueEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).QueueEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).QueueEnabled = value ?? default(bool); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
@@ -846,6 +895,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? TableEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).TableEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal)Property).TableEnabled = value ?? default(bool); }
+
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
@@ -900,7 +953,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.",
         SerializedName = @"accessTier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold", "Smart")]
         string AccessTier { get;  }
         /// <summary>
         /// If customer initiated account migration is in progress, the value will be true else it will be null.
@@ -1091,7 +1144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.",
         SerializedName = @"allowedCopyScope",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("PrivateLink", "AAD")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("PrivateLink", "AAD", "All")]
         string AllowedCopyScope { get; set; }
         /// <summary>
         /// Default share permission for users using Kerberos authentication if RBAC role is not assigned.
@@ -1121,6 +1174,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("None", "AADDS", "AD", "AADKERB")]
         string AzureFileIdentityBasedAuthenticationDirectoryServiceOption { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether shared key access is enabled for the service.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? BlobEnabled { get; set; }
         /// <summary>Failure reason when blob restore is failed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -1180,6 +1244,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"useSubDomainName",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CustomDomainUseSubDomainName { get;  }
+        /// <summary>
+        /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether cross-entra tenant data sharing is allowed on the storage account.",
+        SerializedName = @"allowCrossTenantDataSharing",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DataCollaborationPolicyPropertyAllowCrossTenantDataSharing { get; set; }
+        /// <summary>
+        /// Indicates whether storage connectors are allowed to created or managed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether storage connectors are allowed to created or managed on the storage account.",
+        SerializedName = @"allowStorageConnectors",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DataCollaborationPolicyPropertyAllowStorageConnector { get; set; }
+        /// <summary>
+        /// Indicates whether data shares are allowed to be created or managed on the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether data shares are allowed to be created or managed on the storage account.",
+        SerializedName = @"allowStorageDataShares",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DataCollaborationPolicyPropertyAllowStorageDataShare { get; set; }
         /// <summary>
         /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false
         /// for this property.
@@ -1304,6 +1407,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"failoverInProgress",
         PossibleTypes = new [] { typeof(bool) })]
         bool? FailoverInProgress { get;  }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether shared key access is enabled for the service.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? FileEnabled { get; set; }
         /// <summary>
         /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
         /// </summary>
@@ -1631,6 +1745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         global::System.DateTime? LastGeoFailoverTime { get;  }
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// Minimum TLS version 1.3 version is not supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -1638,7 +1753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.",
+        Description = @"Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3")]
@@ -1827,6 +1942,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether shared key access is enabled for the service.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? QueueEnabled { get; set; }
         /// <summary>
         /// A boolean flag which indicates whether internet routing storage endpoints are to be published
         /// </summary>
@@ -2036,6 +2162,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("available", "unavailable")]
         string StatusOfSecondary { get;  }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether shared key access is enabled for the service.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? TableEnabled { get; set; }
         /// <summary>The availability zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -2058,7 +2195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs
         /// storage account type.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Hot", "Cool", "Premium", "Cold", "Smart")]
         string AccessTier { get; set; }
         /// <summary>
         /// If customer initiated account migration is in progress, the value will be true else it will be null.
@@ -2129,10 +2266,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// The default value is null, which is equivalent to true.
         /// </summary>
         bool? AllowSharedKeyAccess { get; set; }
+        /// <summary>Indicate shared key access properties at service level</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountSharedKeyAccessProperties AllowSharedKeyAccessForService { get; set; }
+        /// <summary>Shared key access settings for Blob service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties AllowSharedKeyAccessForServiceBlob { get; set; }
+        /// <summary>Shared key access settings for File service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties AllowSharedKeyAccessForServiceFile { get; set; }
+        /// <summary>Shared key access settings for Queue service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties AllowSharedKeyAccessForServiceQueue { get; set; }
+        /// <summary>Shared key access settings for Table service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSharedKeyAccessProperties AllowSharedKeyAccessForServiceTable { get; set; }
         /// <summary>
         /// Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("PrivateLink", "AAD")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("PrivateLink", "AAD", "All")]
         string AllowedCopyScope { get; set; }
         /// <summary>
         /// Additional information about the directory service. Required if directoryServiceOptions is AD (AD DS authentication).
@@ -2153,6 +2300,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISmbOAuthSettings AzureFileIdentityBasedAuthenticationSmbOAuthSetting { get; set; }
         /// <summary>Provides the identity based authentication settings for Azure Files.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuthentication { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        bool? BlobEnabled { get; set; }
         /// <summary>Failure reason when blob restore is failed.</summary>
         string BlobRestoreStatusFailureReason { get; set; }
         /// <summary>Blob restore request parameters.</summary>
@@ -2171,6 +2320,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
         /// </summary>
         bool? CustomDomainUseSubDomainName { get; set; }
+        /// <summary>Data Collaboration policy for the storage account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageDataCollaborationPolicyProperties DataCollaborationPolicyProperty { get; set; }
+        /// <summary>
+        /// Indicates whether cross-entra tenant data sharing is allowed on the storage account.
+        /// </summary>
+        bool? DataCollaborationPolicyPropertyAllowCrossTenantDataSharing { get; set; }
+        /// <summary>
+        /// Indicates whether storage connectors are allowed to created or managed on the storage account.
+        /// </summary>
+        bool? DataCollaborationPolicyPropertyAllowStorageConnector { get; set; }
+        /// <summary>
+        /// Indicates whether data shares are allowed to be created or managed on the storage account.
+        /// </summary>
+        bool? DataCollaborationPolicyPropertyAllowStorageDataShare { get; set; }
         /// <summary>
         /// A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false
         /// for this property.
@@ -2209,6 +2372,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// If the failover is in progress, the value will be true, otherwise, it will be null.
         /// </summary>
         bool? FailoverInProgress { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        bool? FileEnabled { get; set; }
         /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
         /// <summary>
@@ -2332,6 +2497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         global::System.DateTime? LastGeoFailoverTime { get; set; }
         /// <summary>
         /// Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+        /// Minimum TLS version 1.3 version is not supported.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3")]
         string MinimumTlsVersion { get; set; }
@@ -2392,6 +2558,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        bool? QueueEnabled { get; set; }
         /// <summary>
         /// Maintains information about the network routing choice opted by the user for data transfer
         /// </summary>
@@ -2469,6 +2637,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("available", "unavailable")]
         string StatusOfSecondary { get; set; }
+        /// <summary>Indicates whether shared key access is enabled for the service.</summary>
+        bool? TableEnabled { get; set; }
         /// <summary>The availability zones.</summary>
         System.Collections.Generic.List<string> Zone { get; set; }
 

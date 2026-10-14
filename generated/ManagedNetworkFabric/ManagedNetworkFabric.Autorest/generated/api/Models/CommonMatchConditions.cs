@@ -56,11 +56,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition VlanMatchCondition { get => (this._vlanMatchCondition = this._vlanMatchCondition ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.VlanMatchCondition()); set => this._vlanMatchCondition = value; }
 
-        /// <summary>List of inner vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> VlanMatchConditionInnerVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchConditionInternal)VlanMatchCondition).InnerVlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchConditionInternal)VlanMatchCondition).InnerVlan = value ?? null /* arrayOf */; }
 
-        /// <summary>List of vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> VlanMatchConditionVlan { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchConditionInternal)VlanMatchCondition).Vlan; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchConditionInternal)VlanMatchCondition).Vlan = value ?? null /* arrayOf */; }
 
@@ -122,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         Description = @"IP Address type that needs to be matched.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP", "Bidirectional")]
         string IPConditionType { get; set; }
         /// <summary>List of the protocols that need to be matched.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
@@ -135,25 +139,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         SerializedName = @"protocolTypes",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ProtocolType { get; set; }
-        /// <summary>List of inner vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of inner vlans that need to be matched.",
+        Description = @"List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.",
         SerializedName = @"innerVlans",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> VlanMatchConditionInnerVlan { get; set; }
-        /// <summary>List of vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of vlans that need to be matched.",
+        Description = @"List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.",
         SerializedName = @"vlans",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> VlanMatchConditionVlan { get; set; }
@@ -184,15 +192,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("Prefix", "LongestPrefix")]
         string IPConditionPrefixType { get; set; }
         /// <summary>IP Address type that needs to be matched.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.PSArgumentCompleterAttribute("SourceIP", "DestinationIP", "Bidirectional")]
         string IPConditionType { get; set; }
         /// <summary>List of the protocols that need to be matched.</summary>
         System.Collections.Generic.List<string> ProtocolType { get; set; }
         /// <summary>Vlan match condition that needs to be matched.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IVlanMatchCondition VlanMatchCondition { get; set; }
-        /// <summary>List of inner vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans.
+        /// </summary>
         System.Collections.Generic.List<string> VlanMatchConditionInnerVlan { get; set; }
-        /// <summary>List of vlans that need to be matched.</summary>
+        /// <summary>
+        /// List of vlans that need to be matched. Inputs can be single vlan or the range of vlans.
+        /// </summary>
         System.Collections.Generic.List<string> VlanMatchConditionVlan { get; set; }
         /// <summary>List of vlan group names that need to be matched.</summary>
         System.Collections.Generic.List<string> VlanMatchConditionVlanGroupName { get; set; }

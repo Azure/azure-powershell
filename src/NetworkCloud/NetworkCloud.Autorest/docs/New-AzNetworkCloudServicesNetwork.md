@@ -17,8 +17,9 @@ Create a new cloud services network or create the properties of the existing clo
 New-AzNetworkCloudServicesNetwork -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>] [-IfMatch <String>]
  [-IfNoneMatch <String>] [-AdditionalEgressEndpoint <IEgressEndpoint[]>]
- [-EnableDefaultEgressEndpoint <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableDefaultEgressEndpoint <String>] [-StorageOptionMode <String>] [-StorageOptionSizeMiB <Int64>]
+ [-StorageOptionStorageApplianceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -270,6 +271,52 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionMode
+The indicator to enable shared storage on the cloud services network.
+If not specified, the allocation will align with the standard storage enablement.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionSizeMiB
+The requested storage allocation for the volume in Mebibytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageOptionStorageApplianceId
+The resource ID of the storage appliance that hosts the storage.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

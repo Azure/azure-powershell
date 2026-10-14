@@ -13,165 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NatGatewaysOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified nat gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        public static void Delete(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName)
-        {
-                ((INatGatewaysOperations)operations).DeleteAsync(resourceGroupName, natGatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified nat gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, natGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified nat gateway in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static NatGateway Get(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, string expand = default(string))
-        {
-                return ((INatGatewaysOperations)operations).GetAsync(resourceGroupName, natGatewayName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified nat gateway in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NatGateway> GetAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, natGatewayName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a nat gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        public static NatGateway CreateOrUpdate(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, NatGateway parameters)
-        {
-                return ((INatGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, natGatewayName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a nat gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NatGateway> CreateOrUpdateAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, NatGateway parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, natGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates nat gateway tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        public static NatGateway UpdateTags(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters)
-        {
-                return ((INatGatewaysOperations)operations).UpdateTagsAsync(resourceGroupName, natGatewayName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates nat gateway tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='natGatewayName'>
-        /// The name of the nat gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NatGateway> UpdateTagsAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, natGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the Nat Gateways in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -205,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<NatGateway> List(this INatGatewaysOperations operations, string resourceGroupName)
         {
@@ -219,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -232,20 +73,143 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified nat gateway in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static NatGateway Get(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, string expand = default(string))
+        {
+                return ((INatGatewaysOperations)operations).GetAsync(resourceGroupName, natGatewayName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified nat gateway in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NatGateway> GetAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, natGatewayName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a nat gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        public static NatGateway CreateOrUpdate(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, NatGateway parameters)
+        {
+                return ((INatGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, natGatewayName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a nat gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NatGateway> CreateOrUpdateAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, NatGateway parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, natGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates nat gateway tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        public static NatGateway UpdateTags(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters)
+        {
+                return ((INatGatewaysOperations)operations).UpdateTagsAsync(resourceGroupName, natGatewayName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates nat gateway tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NatGateway> UpdateTagsAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, natGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified nat gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='natGatewayName'>
         /// The name of the nat gateway.
         /// </param>
-        public static void BeginDelete(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName)
+        public static void Delete(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName)
         {
-                ((INatGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, natGatewayName).GetAwaiter().GetResult();
+                ((INatGatewaysOperations)operations).DeleteAsync(resourceGroupName, natGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,7 +219,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='natGatewayName'>
         /// The name of the nat gateway.
@@ -263,9 +227,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, natGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, natGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a nat gateway.
@@ -274,7 +238,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='natGatewayName'>
         /// The name of the nat gateway.
@@ -291,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='natGatewayName'>
         /// The name of the nat gateway.
@@ -305,6 +269,42 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Deletes the specified nat gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        public static void BeginDelete(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName)
+        {
+                ((INatGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, natGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified nat gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='natGatewayName'>
+        /// The name of the nat gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, natGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the Nat Gateways in a subscription.

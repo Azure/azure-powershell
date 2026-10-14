@@ -70,6 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             {_associatedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject>("associatedIdentity"), out var __jsonAssociatedIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IdentitySelector.FromJson(__jsonAssociatedIdentity) : _associatedIdentity;}
             {_containerUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("containerUrl"), out var __jsonContainerUrl) ? (string)__jsonContainerUrl : (string)_containerUrl;}
+            {_override = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("overrides"), out var __jsonOverrides) ? If( __jsonOverrides as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride) (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.CommandOutputOverride.FromJson(__u) )) ))() : null : _override;}
             AfterFromJson(json);
         }
 
@@ -106,6 +107,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             }
             AddIf( null != this._associatedIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) this._associatedIdentity.ToJson(null,serializationMode) : null, "associatedIdentity" ,container.Add );
             AddIf( null != (((object)this._containerUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._containerUrl.ToString()) : null, "containerUrl" ,container.Add );
+            if (null != this._override)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                foreach( var __x in this._override )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("overrides",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

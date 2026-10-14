@@ -32,9 +32,10 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
  -ResolveConflict <RestoreFSResolveConflictOption> [-SourceFilePath <String>]
  [-SourceFileType <SourceFileType>] [-TargetStorageAccountName <String>] [-TargetFileShareName <String>]
- [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-RestoreToSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-SecureToken <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetFolder <String>] [-MultipleSourceFilePath <String[]>] [-IsSystemAssignedIdentity]
+ [-UserAssignedIdentityArmUrl <String>] [-TargetSubscriptionId <String>] [-RestoreToSecondaryRegion]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
+ [-SecureToken <SecureString>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMRestoreManagedAsUnmanaged
@@ -109,6 +110,8 @@ Please refer to different possible parameter sets and parameter text for more in
 **For Azure File share backup**
 
 You can restore an entire file share or specific/multiple files/folders on the share. You can restore to the original location or to an alternate location.
+
+For Cross Region Restore (`-RestoreToSecondaryRegion`), Azure File Share supports only full-share restore to an alternate location. Item-level restore (`-SourceFilePath`/`-MultipleSourceFilePath`) and restore to the original location are not supported from the secondary region.
 
 **For Azure Workloads**
 
@@ -359,6 +362,56 @@ WorkloadName    Operation       Status          StartTime              EndTime
 
 In this example, we use DiskAccessOption parameter to trigger a restore to new VM with private access enabled for all disks. DiskAccessOption parameter can be used to specify the disk access option for target disks. The acceptable values for this parameter are: SameAsOnSourceDisks, EnablePrivateAccessForAllDisks, EnablePublicAccessForAllDisks. TargetDiskAccessId parameter is used to specify the disk access id for the target disks. This parameter is required when DiskAccessOption is set to EnablePrivateAccessForAllDisks.
 
+### Example 14: Restore disks of a Cross Subscription Backup protected VM to its original location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -Name "V2VM" -VaultId $vault.ID
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $BackupItem
+$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -StorageAccountName "DestStorageAccount" -StorageAccountResourceGroupName "DestStorageAccRG" -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+In this example, the backed up VM resides in a subscription different from the Recovery Services vault (Cross Subscription Backup). Original Location Recovery (OLR) is triggered by omitting the target location parameters (**-TargetResourceGroupName**, **-TargetVMName**, **-TargetVNetName**, **-TargetVNetResourceGroup**, **-TargetSubnetName**, **-TargetSubscriptionId**). The VM's subscription is derived automatically from the recovery point, and the target storage account is resolved in that subscription.
+
+### Example 15: Cross Region Restore of an Azure File share to an alternate location
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$BackupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID -UseSecondaryRegion
+$RestoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -ResolveConflict Overwrite -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+```output
+WorkloadName    Operation       Status          StartTime              EndTime
+    ------------    ---------       ------          ---------              -------
+    fileshareitem   CrossRegionRestore  InProgress  26-Apr-16 1:14:01 PM   01-Jan-01 12:00:00 AM
+```
+
+This example triggers a Cross Region Restore for an Azure File share. The first command gets the vault. The second command gets the backup item from the secondary region using `-UseSecondaryRegion`. The third command gets the secondary region recovery points. The last command restores the entire file share to an alternate location in the secondary region using `-RestoreToSecondaryRegion`. Cross Region Restore for Azure File shares supports only full-share restore to an alternate location; item-level restore and original-location restore are not supported.
+
+### Example 16: Cross Region Restore of an Azure file share to another subscription
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$backupItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "fileShareName" -UseSecondaryRegion
+$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupItem -VaultId $vault.ID -UseSecondaryRegion | Select-Object -First 1
+$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $recoveryPoint -ResolveConflict Overwrite -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetStorageAccountName "targetStorageAccount" -TargetFileShareName "targetFileShare" -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+This example restores a secondary-region Azure File Share recovery point to a storage account in another subscription. The target storage account must be in the vault's secondary region, Cross Subscription Restore must be enabled on the vault, and the target file share must exist.
+
+### Example 17: Restore an Azure file share by using a managed identity
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "vaultResourceGroup" -Name "vaultName"
+$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureStorage -WorkloadType AzureFiles -Name "fileShareName" -VaultId $vault.ID
+$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item -VaultId $vault.ID | Select-Object -First 1
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $recoveryPoint -ResolveConflict Overwrite -IsSystemAssignedIdentity -VaultId $vault.ID
+```
+
+This example restores an Azure file share using the Recovery Services vault's system-assigned managed identity. Use **-UserAssignedIdentityArmUrl** instead to select a user-assigned managed identity associated with the vault.
+
 ## PARAMETERS
 
 ### -CVMOsDiskEncryptionSetId
@@ -435,6 +488,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsSystemAssignedIdentity
+Indicates that the restore operation uses the Recovery Services vault's system-assigned managed identity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureFileShareParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -782,11 +850,26 @@ Accept wildcard characters: False
 ```
 
 ### -TargetSubscriptionId
-ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore
+ID of the target subscription to which the resource should be restored. For Azure File Share, use this parameter for Cross Subscription Restore to a storage account in another subscription. It can be combined with **-RestoreToSecondaryRegion** when the target storage account is in the vault's secondary region.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureManagedVMCreateNewParameterSet
+Parameter Sets: AzureManagedVMCreateNewParameterSet, AzureFileShareParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityArmUrl
+Specifies the ARM resource ID of the user-assigned managed identity used for the Azure File Share restore operation.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureFileShareParameterSet
 Aliases:
 
 Required: False

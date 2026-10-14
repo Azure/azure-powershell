@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// The list of available upgrades for compute pools.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ManagedClusterUpgradeProfile
+    public partial class ManagedClusterUpgradeProfile : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedClusterUpgradeProfile class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterUpgradeProfile class.
         /// </summary>
 
-        /// <param name="id">The ID of the upgrade profile.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the upgrade profile.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the upgrade profile.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="controlPlaneProfile">The list of available upgrade versions for the control plane.
@@ -39,12 +45,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="agentPoolProfiles">The list of available upgrade versions for agent pools.
         /// </param>
-        public ManagedClusterUpgradeProfile(ManagedClusterPoolUpgradeProfile controlPlaneProfile, System.Collections.Generic.IList<ManagedClusterPoolUpgradeProfile> agentPoolProfiles, string id = default(string), string name = default(string), string type = default(string))
+        public ManagedClusterUpgradeProfile(ManagedClusterPoolUpgradeProfile controlPlaneProfile, System.Collections.Generic.IList<ManagedClusterPoolUpgradeProfile> agentPoolProfiles, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.ControlPlaneProfile = controlPlaneProfile;
             this.AgentPoolProfiles = agentPoolProfiles;
             CustomInit();
@@ -55,24 +59,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the ID of the upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the type of the upgrade profile.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the list of available upgrade versions for the control plane.
@@ -101,9 +87,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AgentPoolProfiles");
             }
-
-
-
             if (this.ControlPlaneProfile != null)
             {
                 this.ControlPlaneProfile.Validate();

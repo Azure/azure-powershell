@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateProject
 
 ## NOTES
 

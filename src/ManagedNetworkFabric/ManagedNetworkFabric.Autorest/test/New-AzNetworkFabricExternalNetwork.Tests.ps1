@@ -34,15 +34,12 @@ Describe 'New-AzNetworkFabricExternalNetwork' {
             $optionBProperty = @{
                 RouteTarget = $routeTarget
             }
-
-            $optionAPropertyBfdConfiguration = @{
-                IntervalInMilliSecond = 300
-                Multiplier = 3
-            }
+            $optionAPropertyBfdConfigurationInterval = 300
+            $optionAPropertyBfdConfigurationMultiplier = 3
 
             New-AzNetworkFabricExternalNetwork -SubscriptionId $global:config.common.subscriptionId -L3IsolationDomainName $global:config.externalnetwork.l3domainName -Name $global:config.externalnetwork.name -ResourceGroupName $global:config.common.resourceGroupName -PeeringOption $global:config.externalnetwork.peeringOption -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionBProperty $optionBProperty
 
-            New-AzNetworkFabricExternalNetwork -SubscriptionId $global:config.common.subscriptionId -L3IsolationDomainName $global:config.externalnetwork.l3domainName -Name $global:config.externalnetwork.name1 -ResourceGroupName $global:config.common.resourceGroupName -PeeringOption $global:config.externalnetwork.peeringOption1 -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionAPropertyBfdConfiguration $optionAPropertyBfdConfiguration -OptionAPropertyEgressAclId $global:config.externalnetwork.egressAclId -OptionAPropertyIngressAclId $global:config.externalnetwork.ingressAclId -OptionAPropertyMtu $global:config.externalnetwork.mtu -OptionAPropertyPeerAsn $global:config.externalnetwork.peerAsn -OptionAPropertyPrimaryIpv4Prefix $global:config.externalnetwork.primaryIpv4Prefix -OptionAPropertySecondaryIpv4Prefix $global:config.externalnetwork.secondaryIpv4Prefix -OptionAPropertyVlanId $global:config.externalnetwork.vlanId
+            New-AzNetworkFabricExternalNetwork -SubscriptionId $global:config.common.subscriptionId -L3IsolationDomainName $global:config.externalnetwork.l3domainName -Name $global:config.externalnetwork.name1 -ResourceGroupName $global:config.common.resourceGroupName -PeeringOption $global:config.externalnetwork.peeringOption1 -ExportRoutePolicy $exportRoutePolicy -ImportRoutePolicy $importRoutePolicy -OptionAPropertyBfdConfigurationInterval $optionAPropertyBfdConfigurationInterval -OptionAPropertyBfdConfigurationMultiplier $optionAPropertyBfdConfigurationMultiplier -OptionAPropertyEgressAclId $global:config.externalnetwork.egressAclId -OptionAPropertyIngressAclId $global:config.externalnetwork.ingressAclId -OptionAPropertyMtu $global:config.externalnetwork.mtu -OptionAPropertyPeerAsn $global:config.externalnetwork.peerAsn -OptionAPropertyPrimaryIpv4Prefix $global:config.externalnetwork.primaryIpv4Prefix -OptionAPropertySecondaryIpv4Prefix $global:config.externalnetwork.secondaryIpv4Prefix -OptionAPropertyVlanId $global:config.externalnetwork.vlanId
 
         } | Should -Not -Throw
     }

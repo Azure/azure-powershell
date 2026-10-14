@@ -633,7 +633,28 @@ function Test-StorageBlobServiceProperties
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
 
-        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+		# Test StaticWebsite with DefaultIndexDocumentPath
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableStaticWebsite $true -StaticWebsiteDefaultIndexDocumentPath "default/index.html" -StaticWebsiteErrorDocument404Path "error.html"
+		Assert-AreEqual $true $property.StaticWebsite.Enabled
+		Assert-AreEqual "default/index.html" $property.StaticWebsite.DefaultIndexDocumentPath
+		Assert-AreEqual "error.html" $property.StaticWebsite.ErrorDocument404Path
+
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual $true $property.StaticWebsite.Enabled
+		Assert-AreEqual "default/index.html" $property.StaticWebsite.DefaultIndexDocumentPath
+		Assert-AreEqual "error.html" $property.StaticWebsite.ErrorDocument404Path
+
+		# Test StaticWebsite with IndexDocument
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableStaticWebsite $true -StaticWebsiteIndexDocument "index.html" -StaticWebsiteErrorDocument404Path "error.html"
+		Assert-AreEqual $true $property.StaticWebsite.Enabled
+		Assert-AreEqual "index.html" $property.StaticWebsite.IndexDocument
+		Assert-AreEqual "error.html" $property.StaticWebsite.ErrorDocument404Path
+
+		# Disable StaticWebsite
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableStaticWebsite $false
+		Assert-AreEqual $false $property.StaticWebsite.Enabled
+
+		Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {
@@ -754,9 +775,9 @@ function Test-StorageBlobORS
 		$rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 		$rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime $minCreationTime -PrefixMatch a,abc,dd #-Tag t1,t2,t3 
 
-        # set policy to dest account
-        $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $true -EnablePriorityReplication $true
-        $policyID = $destPolicy.PolicyId
+		# set policy to dest account
+		$destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId default -SourceAccount $sto1.Id  -Rule $rule1,$rule2 -EnableMetric $true -EnablePriorityReplication $true -EnableTagsReplication $true
+		$policyID = $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount
 		Assert-AreEqual $sto2.Id $destPolicy.DestinationAccount
 		Assert-AreEqual 2 $destPolicy.Rules.Count
@@ -769,6 +790,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		Assert-AreEqual $true $destPolicy.Metrics.Enabled
 		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
+		Assert-AreEqual $true $destPolicy.TagsReplication.Enabled
 		$destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname2 -PolicyId $destPolicy.PolicyId
 		Assert-AreEqual $policyID $destPolicy.PolicyId
 		Assert-AreEqual $sto1.Id $destPolicy.SourceAccount
@@ -783,6 +805,7 @@ function Test-StorageBlobORS
 		Assert-AreEqual $minCreationTime ($destPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		Assert-AreEqual $true $destPolicy.Metrics.Enabled
 		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
+		Assert-AreEqual $true $destPolicy.TagsReplication.Enabled
 
 		#Set policy to source account
 		Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname -StorageAccountName $stoname1 -InputObject $destPolicy
@@ -800,7 +823,8 @@ function Test-StorageBlobORS
 		Assert-AreEqual $minCreationTime ($srcPolicy.Rules[1].Filters.MinCreationTime.ToUniversalTime().ToString("s")+"Z")
 		Assert-AreEqual $true $srcPolicy.Metrics.Enabled
 		Assert-AreEqual $true $destPolicy.PriorityReplication.Enabled
-		$destPolicy | Remove-AzStorageObjectReplicationPolicy 
+		Assert-AreEqual $true $srcPolicy.TagsReplication.Enabled
+		$destPolicy | Remove-AzStorageObjectReplicationPolicy
 		$srcPolicy | Remove-AzStorageObjectReplicationPolicy 
 
 		# disable AllowCrossTenantReplication

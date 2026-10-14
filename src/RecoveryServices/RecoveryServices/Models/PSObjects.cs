@@ -131,8 +131,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.Properties.PrivateEndpointConnections.Add(pec);
                 }                
             }
-            
-            if(vault.Properties.MonitoringSettings != null)
+
+            if(vault.Properties.CostManagementSettings != null)
+            {
+                this.Properties.CostManagementSettings = new CostManagementSettings();
+                this.Properties.CostManagementSettings.GranularityLevel = vault.Properties.CostManagementSettings.GranularityLevel;
+            }
+
+            if (vault.Properties.MonitoringSettings != null)
             {
                 this.Properties.AlertSettings = new AlertSettings();
 
@@ -186,6 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.Properties.SoftDeleteSettings = vault.Properties.SecuritySettings.SoftDeleteSettings;
                 this.Properties.MultiUserAuthorization = vault.Properties.SecuritySettings.MultiUserAuthorization;
+                this.Properties.SourceScanConfiguration = vault.Properties.SecuritySettings.SourceScanConfiguration;
             }
         }
 
@@ -284,6 +291,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public VaultPropertiesRedundancySettings RedundancySettings { get; set; }
         public SoftDeleteSettings SoftDeleteSettings {get; set; }
         public string MultiUserAuthorization { get; set; }
+
+        /// <summary>
+        /// Gets or sets SourceScanConfiguration.
+        /// </summary>
+        public SourceScanConfiguration SourceScanConfiguration { get; set; }
+        public CostManagementSettings CostManagementSettings { get; set; }
 
         public string SecureScore { get; set; }
         public string BcdrSecurityLevel { get; set; }
@@ -488,6 +501,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// Enum to define the Cost management granularity.
+    /// </summary>
+    public enum CostManagementGranularity
+    {
+        /// <summary>
+        /// Costs rolled up to vault resource (default)
+        /// </summary>
+        VaultLevel = 1,
+
+        /// <summary>
+        /// Costs shown per backup instance inside vault
+        /// </summary>
+        ProtectedItemLevel = 2,
+
+        /// <summary>
+        /// Costs shown per backup instance with parent resource tag
+        /// </summary>
+        ProtectedItemWithParentTag = 3
+    }
+
+    /// <summary>
     /// Enum to define the cross subscription restore state of the vault.
     /// </summary>
     public enum CrossSubscriptionRestoreState
@@ -498,6 +532,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     public enum PublicNetworkAccess
+    {
+        Enabled = 1,
+        Disabled
+    }
+
+    /// <summary>
+    /// Enum to define the vault Source Scan state.
+    /// </summary>
+    public enum SourceScanState
     {
         Enabled = 1,
         Disabled

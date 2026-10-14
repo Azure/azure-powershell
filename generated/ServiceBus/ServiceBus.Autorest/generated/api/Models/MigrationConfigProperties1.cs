@@ -50,7 +50,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
-        /// <summary>Provisioning state of Migration Configuration</summary>
+        /// <summary>
+        /// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
 
@@ -109,14 +111,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"postMigrationName",
         PossibleTypes = new [] { typeof(string) })]
         string PostMigrationName { get; set; }
-        /// <summary>Provisioning state of Migration Configuration</summary>
+        /// <summary>
+        /// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Provisioning state of Migration Configuration ",
+        Description = @"Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         string ProvisioningState { get;  }
@@ -148,7 +152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         long? PendingReplicationOperationsCount { get; set; }
         /// <summary>Name to access Standard Namespace after migration</summary>
         string PostMigrationName { get; set; }
-        /// <summary>Provisioning state of Migration Configuration</summary>
+        /// <summary>
+        /// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
+        /// </summary>
         string ProvisioningState { get; set; }
         /// <summary>
         /// Existing premium Namespace ARM Id name which has no entities, will be used for migration

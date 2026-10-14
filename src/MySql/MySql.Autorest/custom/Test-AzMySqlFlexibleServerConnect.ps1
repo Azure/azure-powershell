@@ -148,8 +148,18 @@ function Test-AzMySqlFlexibleServerConnect {
             $AdministratorUserName = $PSBoundParameters.AdministratorUserName
             $null = $PSBoundParameters.Remove('AdministratorUserName')
         }
-
-        $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
+        
+        if ($PSBoundParameters.ContainsKey('InputObject')) {
+            Write-Host $PSBoundParameters
+            $Server = Az.MySql.private\Get-AzMySqlFlexibleServer_GetViaIdentity @PSBoundParameters
+        }
+        else {
+            $SubscriptionId = (Get-AzContext).Subscription.Id
+            $PSBoundParameters['SubscriptionId'] = $SubscriptionId
+            Write-Host $PSBoundParameters
+            $Server = Az.MySql.private\Get-AzMySqlFlexibleServer_Get @PSBoundParameters
+        }
+        # $Server = Az.MySql\Get-AzMySqlFlexibleServer @PSBoundParameters
         $HostAddr = $Server.FullyQualifiedDomainName
 
         if ($Server.NetworkPublicNetworkAccess -eq 'Disabled') {
@@ -175,15 +185,17 @@ function Test-AzMySqlFlexibleServerConnect {
             if ($TimeoutValue -gt 0) {
                 $OpenConnParams['CommandTimeout'] = $TimeoutValue
             }
+            Write-Host "Trying to connect to server $HostAddr ..."
             Open-MySqlConnection @OpenConnParams
         }
         catch {
             Write-Host $_.Exception.GetType().FullName
             Write-Host $_.Exception.Message
-            exit
+            throw
         }
 
         if (![string]::IsNullOrEmpty($Query)) {
+            Write-Host "Connection to $HostAddr was successful! Now executing query..."
             Invoke-SqlQuery -Query $Query -WarningAction 'silentlycontinue'           
         }
         else {

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeter
 
 ## SYNOPSIS
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ## EXAMPLES
 
@@ -184,6 +184,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -198,8 +199,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

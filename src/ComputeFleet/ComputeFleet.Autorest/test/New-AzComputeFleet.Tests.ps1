@@ -15,21 +15,232 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzComputeFleet'))
 }
 
 Describe 'New-AzComputeFleet' {
-    It 'Create' {
+
+    BeforeAll {
+        $resourceGroupName = "fleet-create-test-rg"
+        $vnetName = "vnet"
+        $nsgName = "nsg"
+        $vmNamePrefix = "fleetvm"
+        $launchFleetName = "launch-fleet"
+        $launchFleetJsonName = "launch-fleet-json"
+        $launchFleetJsonStrName = "launch-fleet-jsonstr"
+        $managedFleetName = "managed-fleet"
+        $managedFleetJsonName = "managed-fleet-json"
+        $managedFleetJsonStrName = "managed-fleet-jsonstr"
+
+        if ($TestMode -ne 'playback') {
+            $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+            $subnetId = $result.SubnetId
+            $nsgId = $result.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+        }
+    }
+
+    It 'CreateLaunchModeFleet' {
         {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-            $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-            $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName "testFleet5" -Resource $fleet
-            $fleet.Name | Should -Be "testFleet5"
+            $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
+
+            $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+            $vmSize1.Name = "Standard_D2s_v3"
+            $vmSize2 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+            $vmSize2.Name = "Standard_D4s_v3"
+
+            $fleet = New-AzComputeFleet -Name $launchFleetName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -Location $env.Location `
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
+                -VMSizesProfile @($vmSize1, $vmSize2) `
+                -RegularPriorityProfileCapacity 2 `
+                -RegularPriorityProfileMinCapacity 1 `
+                -RegularPriorityProfileAllocationStrategy "LowestPrice" `
+                -Mode "Launch" `
+                -VMNamePrefix $vmNamePrefix `
+                -Tag @{ environment = "test" }
+
+            $fleet.Name | Should -Be $launchFleetName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+            $fleet.Mode | Should -Be "Launch"
         } | Should -Not -Throw
     }
-    
-    It 'CreateViaIdentity' {
+
+    It 'CreateLaunchModeFleetViaJsonFilePath' {
         {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $fleet = New-AzComputeFleet -InputObject $fleet -Resource $fleet
-            $fleet.Name | Should -Be $env.FleetName
+            $jsonBody = @{
+                location   = $env.Location
+                properties = @{
+                    computeProfile = @{
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
+                        computeApiVersion = "2024-03-01"
+                    }
+                    vmSizesProfile = @(
+                        @{ name = "Standard_D2s_v3" }
+                        @{ name = "Standard_D4s_v3" }
+                    )
+                    regularPriorityProfile = @{
+                        capacity           = 2
+                        minCapacity        = 1
+                        allocationStrategy = "LowestPrice"
+                    }
+                    mode         = "Launch"
+                    vmNamePrefix = $vmNamePrefix
+                }
+                tags = @{ environment = "test" }
+            }
+
+            $jsonFilePath = Join-Path $PSScriptRoot "launch-fleet.json"
+            $jsonBody | ConvertTo-Json -Depth 15 | Set-Content -Path $jsonFilePath
+
+            $fleet = New-AzComputeFleet -Name $launchFleetJsonName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -JsonFilePath $jsonFilePath
+
+            $fleet.Name | Should -Be $launchFleetJsonName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+            $fleet.Mode | Should -Be "Launch"
+
+            Remove-Item -Path $jsonFilePath -ErrorAction SilentlyContinue
         } | Should -Not -Throw
+    }
+
+    It 'CreateLaunchModeFleetViaJsonString' {
+        {
+            $jsonBody = @{
+                location   = $env.Location
+                properties = @{
+                    computeProfile = @{
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
+                        computeApiVersion = "2024-03-01"
+                    }
+                    vmSizesProfile = @(
+                        @{ name = "Standard_D2s_v3" }
+                        @{ name = "Standard_D4s_v3" }
+                    )
+                    regularPriorityProfile = @{
+                        capacity           = 2
+                        minCapacity        = 1
+                        allocationStrategy = "LowestPrice"
+                    }
+                    mode         = "Launch"
+                    vmNamePrefix = $vmNamePrefix
+                }
+                tags = @{ environment = "test" }
+            }
+
+            $jsonString = $jsonBody | ConvertTo-Json -Depth 15
+
+            $fleet = New-AzComputeFleet -Name $launchFleetJsonStrName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -JsonString $jsonString
+
+            $fleet.Name | Should -Be $launchFleetJsonStrName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+            $fleet.Mode | Should -Be "Launch"
+        } | Should -Not -Throw
+    }
+
+    It 'CreateManagedModeFleet' {
+        {
+            $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
+
+            $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+            $vmSize1.Name = "Standard_D2s_v3"
+
+            $fleet = New-AzComputeFleet -Name $managedFleetName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -Location $env.Location `
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
+                -VMSizesProfile @($vmSize1) `
+                -SpotPriorityProfileCapacity 2 `
+                -SpotPriorityProfileAllocationStrategy "PriceCapacityOptimized" `
+                -SpotPriorityProfileEvictionPolicy "Delete" `
+                -Tag @{ environment = "test" }
+
+            $fleet.Name | Should -Be $managedFleetName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
+    }
+
+    It 'CreateManagedModeFleetViaJsonFilePath' {
+        {
+            $jsonBody = @{
+                location   = $env.Location
+                properties = @{
+                    computeProfile = @{
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
+                        computeApiVersion = "2024-03-01"
+                    }
+                    vmSizesProfile = @(
+                        @{ name = "Standard_D2s_v3" }
+                    )
+                    spotPriorityProfile = @{
+                        capacity           = 2
+                        allocationStrategy = "PriceCapacityOptimized"
+                        evictionPolicy     = "Delete"
+                    }
+                }
+                tags = @{ environment = "test" }
+            }
+
+            $jsonFilePath = Join-Path $PSScriptRoot "managed-fleet.json"
+            $jsonBody | ConvertTo-Json -Depth 15 | Set-Content -Path $jsonFilePath
+
+            $fleet = New-AzComputeFleet -Name $managedFleetJsonName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -JsonFilePath $jsonFilePath
+
+            $fleet.Name | Should -Be $managedFleetJsonName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+
+            Remove-Item -Path $jsonFilePath -ErrorAction SilentlyContinue
+        } | Should -Not -Throw
+    }
+
+    It 'CreateManagedModeFleetViaJsonString' {
+        {
+            $jsonBody = @{
+                location   = $env.Location
+                properties = @{
+                    computeProfile = @{
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
+                        computeApiVersion = "2024-03-01"
+                    }
+                    vmSizesProfile = @(
+                        @{ name = "Standard_D2s_v3" }
+                    )
+                    spotPriorityProfile = @{
+                        capacity           = 2
+                        allocationStrategy = "PriceCapacityOptimized"
+                        evictionPolicy     = "Delete"
+                    }
+                }
+                tags = @{ environment = "test" }
+            }
+
+            $jsonString = $jsonBody | ConvertTo-Json -Depth 15
+
+            $fleet = New-AzComputeFleet -Name $managedFleetJsonStrName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -JsonString $jsonString
+
+            $fleet.Name | Should -Be $managedFleetJsonStrName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
+    }
+
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        }
     }
 }

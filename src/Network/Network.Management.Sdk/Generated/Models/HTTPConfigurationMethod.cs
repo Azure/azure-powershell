@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class HttpConfigurationMethod
     {
+        /// <summary>
+        /// Get
+        /// </summary>
         public const string Get = "Get";
+        /// <summary>
+        /// Post
+        /// </summary>
         public const string Post = "Post";
     }
 }

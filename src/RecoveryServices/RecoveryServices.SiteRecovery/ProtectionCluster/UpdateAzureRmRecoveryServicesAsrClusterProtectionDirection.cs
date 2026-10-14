@@ -324,20 +324,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             foreach (ASRAzuretoAzureDiskReplicationConfig disk in rpi.AzureToAzureDiskReplicationConfiguration)
                             {
-                                diskInput.Add(new A2AVmManagedDiskInputDetails
-                                {
-                                    DiskId = disk.DiskId,
-                                    RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                                    RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                                    RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                                    PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                                    RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
-                                    DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
-                                    disk.DiskEncryptionSecretUrl,
-                                    disk.DiskEncryptionVaultId,
-                                    disk.KeyEncryptionKeyUrl,
-                                    disk.KeyEncryptionVaultId)
-                                });
+                                diskInput.Add(
+                                    Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true));
                             }
                         }
                         else

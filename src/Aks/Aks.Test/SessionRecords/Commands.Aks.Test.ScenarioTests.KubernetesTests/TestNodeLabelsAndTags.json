@@ -76,8 +76,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -142,8 +142,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -208,8 +208,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -277,8 +277,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -346,8 +346,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -415,8 +415,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -481,8 +481,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -550,8 +550,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -619,8 +619,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -688,8 +688,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -757,8 +757,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -823,8 +823,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -892,8 +892,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1099,8 +1099,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1180,8 +1180,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1261,8 +1261,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1825,8 +1825,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1893,12 +1893,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"9999\",\r\n          \"dept\": \"IT\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"someId\": \"123\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2025-08-01&skipToken=12450764\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"9999\",\r\n          \"dept\": \"IT\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"someId\": \"123\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2026-03-01&skipToken=12450764\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -1965,12 +1965,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2025-08-01&skipToken=12450764\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2026-03-01&skipToken=12450764\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2037,12 +2037,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Alice\",\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"someId\": \"125\",\r\n          \"tier\": \"frontend\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Alice\",\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"someId\": \"125\",\r\n          \"tier\": \"frontend\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2109,12 +2109,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Bruce\",\r\n          \"costcenter\": \"6666\",\r\n          \"dept\": \"HR\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"126\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"costcenter\": \"8888\",\r\n          \"dept\": \"Finance\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"dev\",\r\n          \"someId\": \"124\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Bruce\",\r\n          \"costcenter\": \"6666\",\r\n          \"dept\": \"HR\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"126\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2181,12 +2181,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Cindy\",\r\n          \"costcenter\": \"7777\",\r\n          \"dept\": \"MM\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"127\",\r\n          \"tier\": \"frontend\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Bruce\",\r\n          \"costcenter\": \"6666\",\r\n          \"dept\": \"HR\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"126\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"standard_a2_v2\",\r\n        \"osDiskSizeGB\": 128,\r\n        \"osDiskType\": \"Managed\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Cindy\",\r\n          \"costcenter\": \"7777\",\r\n          \"dept\": \"MM\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"127\",\r\n          \"tier\": \"frontend\"\r\n        },\r\n        \"mode\": \"System\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourcegroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2\",\r\n      \"name\": \"pool2\",\r\n      \"type\": \"Microsoft.ContainerService/managedClusters/agentPools\",\r\n      \"properties\": {\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D4d_v4\",\r\n        \"osDiskSizeGB\": 150,\r\n        \"osDiskType\": \"Ephemeral\",\r\n        \"kubeletDiskType\": \"OS\",\r\n        \"maxPods\": 30,\r\n        \"type\": \"VirtualMachineScaleSets\",\r\n        \"enableAutoScaling\": false,\r\n        \"scaleDownMode\": \"Delete\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"powerState\": {\r\n          \"code\": \"Running\"\r\n        },\r\n        \"orchestratorVersion\": \"1.32\",\r\n        \"currentOrchestratorVersion\": \"1.32.7\",\r\n        \"enableNodePublicIP\": false,\r\n        \"tags\": {\r\n          \"Admin\": \"Bruce\",\r\n          \"costcenter\": \"6666\",\r\n          \"dept\": \"HR\"\r\n        },\r\n        \"nodeLabels\": {\r\n          \"app\": \"test\",\r\n          \"environment\": \"qa\",\r\n          \"someId\": \"126\"\r\n        },\r\n        \"mode\": \"User\",\r\n        \"osType\": \"Linux\",\r\n        \"osSKU\": \"Ubuntu\",\r\n        \"nodeImageVersion\": \"AKSUbuntu-2204gen2containerd-202510.03.0\",\r\n        \"upgradeSettings\": {\r\n          \"maxSurge\": \"10%\",\r\n          \"maxUnavailable\": \"0\"\r\n        },\r\n        \"enableFIPS\": false,\r\n        \"securityProfile\": {\r\n          \"sshAccess\": \"LocalUser\",\r\n          \"enableVTPM\": false,\r\n          \"enableSecureBoot\": false\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2025-08-01&skipToken=12450764",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwNzY0JmFwaS12ZXJzaW9uPTIwMjUtMDgtMDEmc2tpcFRva2VuPTEyNDUwNzY0",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2026-03-01&skipToken=12450764",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwNzY0JmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmc2tpcFRva2VuPTEyNDUwNzY0",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2257,8 +2257,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2025-08-01&skipToken=12450764",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwNzY0JmFwaS12ZXJzaW9uPTIwMjUtMDgtMDEmc2tpcFRva2VuPTEyNDUwNzY0",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450764&api-version=2026-03-01&skipToken=12450764",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwNzY0JmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmc2tpcFRva2VuPTEyNDUwNzY0",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2605,8 +2605,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -2677,8 +2677,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -2746,8 +2746,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/pool2?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvcG9vbDI/YXBpLXZlcnNpb249MjAyNi0wMy0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -3172,8 +3172,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjUtMDgtMDEmc2tpcFRva2VuPTEyNDUwODIz",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmc2tpcFRva2VuPTEyNDUwODIz",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -3244,8 +3244,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjUtMDgtMDEmc2tpcFRva2VuPTEyNDUwODIz",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmc2tpcFRva2VuPTEyNDUwODIz",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -3316,8 +3316,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2025-08-01&skipToken=12450823",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjUtMDgtMDEmc2tpcFRva2VuPTEyNDUwODIz",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools?%24skipToken=12450823&api-version=2026-03-01&skipToken=12450823",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHM/JTI0c2tpcFRva2VuPTEyNDUwODIzJmFwaS12ZXJzaW9uPTIwMjYtMDMtMDEmc2tpcFRva2VuPTEyNDUwODIz",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -3733,8 +3733,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI2LTAzLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
@@ -3805,8 +3805,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI2LTAzLTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -3874,8 +3874,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743/agentPools/default?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzL2FnZW50UG9vbHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDI2LTAzLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
@@ -4024,8 +4024,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2025-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps374/providers/Microsoft.ContainerService/managedClusters/kubeps1743?api-version=2026-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHMzNzQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db250YWluZXJTZXJ2aWNlL21hbmFnZWRDbHVzdGVycy9rdWJlcHMxNzQzP2FwaS12ZXJzaW9uPTIwMjYtMDMtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [

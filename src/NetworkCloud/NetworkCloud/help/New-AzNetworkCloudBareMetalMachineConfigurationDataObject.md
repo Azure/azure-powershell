@@ -15,8 +15,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 ```
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword <SecureString>
  -BmcCredentialsUsername <String> -BmcMacAddress <String> -BootMacAddress <String> -RackSlot <Int64>
- -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>]
- [<CommonParameters>]
+ -SerialNumber <String> [-MachineDetail <String>] [-MachineName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 
 ### -MachineName
 The user-provided name for the bare metal machine created from this specification.
-        If not provided, the machine name will be generated programmatically.
+If not provided, the machine name will be generated programmatically.
 
 ```yaml
 Type: System.String

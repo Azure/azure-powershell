@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -83,13 +83,10 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerFirewallRuleModel UpsertFirewallRule(AzureSqlServerFirewallRuleModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, new FirewallRuleCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, new Management.Sql.Models.FirewallRule()
             {
-                Properties = new FirewallRuleCreateOrUpdateProperties()
-                {
-                    EndIpAddress = model.EndIpAddress,
-                    StartIpAddress = model.StartIpAddress
-                }
+                EndIPAddress = model.EndIpAddress,
+                StartIPAddress = model.StartIpAddress
             });
 
             return CreateFirewallRuleModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -113,12 +110,12 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.FirewallRule resp)
+        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.FirewallRule resp)
         {
             AzureSqlServerFirewallRuleModel firewallRule = new AzureSqlServerFirewallRuleModel();
 
-            firewallRule.StartIpAddress = resp.Properties.StartIpAddress;
-            firewallRule.EndIpAddress = resp.Properties.EndIpAddress;
+            firewallRule.StartIpAddress = resp.StartIPAddress;
+            firewallRule.EndIpAddress = resp.EndIPAddress;
             firewallRule.FirewallRuleName = resp.Name;
             firewallRule.ResourceGroupName = resourceGroup;
             firewallRule.ServerName = serverName;

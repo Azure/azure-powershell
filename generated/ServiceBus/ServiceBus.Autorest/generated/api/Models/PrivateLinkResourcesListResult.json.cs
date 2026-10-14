@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>Result of the List private link resources operation.</summary>
+    /// <summary>The response of a PrivateLinkResource list operation.</summary>
     public partial class PrivateLinkResourcesListResult
     {
 

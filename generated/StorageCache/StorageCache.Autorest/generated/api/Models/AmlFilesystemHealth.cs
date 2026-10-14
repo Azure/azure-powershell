@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         Description = @"List of AML file system health states.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance", "Expanding")]
         string State { get; set; }
         /// <summary>Server-defined error code for the AML file system health</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
 
     {
         /// <summary>List of AML file system health states.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance", "Expanding")]
         string State { get; set; }
         /// <summary>Server-defined error code for the AML file system health</summary>
         string StatusCode { get; set; }

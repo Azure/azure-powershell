@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// more information about planned maintenance.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MaintenanceConfiguration : SubResource
+    public partial class MaintenanceConfiguration : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the MaintenanceConfiguration class.
@@ -28,17 +28,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the MaintenanceConfiguration class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">The system metadata relating to this resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="maintenanceWindow">Maintenance window for the maintenance configuration.
@@ -53,9 +55,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </param>
         public MaintenanceConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), MaintenanceWindow maintenanceWindow = default(MaintenanceWindow), System.Collections.Generic.IList<TimeInWeek> timeInWeek = default(System.Collections.Generic.IList<TimeInWeek>), System.Collections.Generic.IList<TimeSpan> notAllowedTime = default(System.Collections.Generic.IList<TimeSpan>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.MaintenanceWindow = maintenanceWindow;
             this.TimeInWeek = timeInWeek;
             this.NotAllowedTime = notAllowedTime;
@@ -67,12 +68,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the system metadata relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets maintenance window for the maintenance configuration.
@@ -101,7 +96,6 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
-
             if (this.MaintenanceWindow != null)
             {
                 this.MaintenanceWindow.Validate();
