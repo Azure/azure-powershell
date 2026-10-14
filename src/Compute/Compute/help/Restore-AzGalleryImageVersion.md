@@ -19,7 +19,7 @@ Restore-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <Stri
 ```
 
 ## DESCRIPTION
-Restores a gallery image version while it remains soft-deleted and within its retention period. `-Location` must be the version's original home region.
+Restores a soft-deleted gallery image version during both the retention and grace periods, until `HardDeletionTargetTime`. After permanent deletion, the version can no longer be restored. `-Location` must be the version's original home region.
 
 ## EXAMPLES
 

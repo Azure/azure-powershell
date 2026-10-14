@@ -101,10 +101,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGallerySoftDeletePolicy()
         {
             TestRunner.RunTestScript("Test-GallerySoftDeletePolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestGalleryImageVersionRestore()
+        {
+            TestRunner.RunTestScript("Test-GalleryImageVersionRestore");
         }
 
         [Fact]
