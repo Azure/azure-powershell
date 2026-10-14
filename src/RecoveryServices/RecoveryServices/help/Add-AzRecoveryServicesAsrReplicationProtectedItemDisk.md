@@ -37,6 +37,41 @@ $ReplicationProtectedItem |Add-AzRecoveryServicesAsrReplicationProtectedItemDisk
 
 Start the operation to add specified disk configuration for protection.Piping input replication protected item.
 
+### Example 3: Add a confidential customer-managed-key encrypted data disk to replication
+
+```powershell
+$rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectionContainer $protectionContainer -Name $rpiName
+
+$newDataDiskConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
+    -ManagedDisk -DiskId $newDataDiskId `
+    -LogStorageAccountId $cacheStorageAccountId `
+    -RecoveryResourceGroupId $recoveryResourceGroupId `
+    -RecoveryReplicaDiskAccountType StandardSSD_LRS `
+    -RecoveryTargetDiskAccountType StandardSSD_LRS `
+    -ReplicaConfidentialDiskEncryptionSetId $replicaDataConfidentialDesId `
+    -TargetConfidentialDiskEncryptionSetId $targetDataConfidentialDesId
+
+$job = Add-AzRecoveryServicesAsrReplicationProtectedItemDisk `
+    -InputObject $rpi `
+    -AzureToAzureDiskReplicationConfiguration $newDataDiskConfig
+```
+
+Starts protection for an existing confidential data disk already attached to the protected source VM.
+This command does not create or attach a VM disk.
+Authenticate, select the subscription, and set the ASR vault context before running the example.
+The service and installed module must support confidential VM replication.
+`$protectionContainer` and `$rpiName` identify the current protected item; `$newDataDiskId` is the ARM resource ID of the attached data disk that is not yet protected.
+The cache account is in the current source region, and `$recoveryResourceGroupId` identifies the existing recovery resource group.
+Choose supported disk account types and supply the replica and target confidential DES ARM resource IDs for this data disk, rather than copying the OS disk's settings.
+
+The protected item must already have the appropriate `RecoveryConfidentialDataDiskEncryptionIdentity` configured with the required encryption permissions.
+If necessary, configure that identity using `Set-AzRecoveryServicesAsrReplicationProtectedItem` and wait for its job to succeed before adding the disk.
+The add-disk cmdlet does not accept an identity parameter.
+
+Monitor the returned job with `Get-AzRecoveryServicesAsrJob -Name $job.Name`.
+After the job succeeds, retrieve the protected item again to inspect the new disk's settings and replication progress.
+
 ## PARAMETERS
 
 ### -AzureToAzureDiskReplicationConfiguration

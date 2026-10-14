@@ -125,6 +125,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confidential disk encryption sets (ReplicaConfidentialDiskEncryptionSetId, TargetConfidentialDiskEncryptionSetId) are not supported when switching replication protection cluster direction. Remove them from the disk replication configuration..
+        /// </summary>
+        internal static string ClusterConfidentialDiskEncryptionNotSupported {
+            get {
+                return ResourceManager.GetString("ClusterConfidentialDiskEncryptionNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cluster Recovery Point not available for {0}..
         /// </summary>
         internal static string ClusterRecoveryPointNotAvailable {
@@ -923,6 +932,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string RemoveVaultWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ReplicaConfidentialDiskEncryptionSetId cannot be updated on a protected item. Only TargetConfidentialDiskEncryptionSetId is supported for update; remove ReplicaConfidentialDiskEncryptionSetId from the disk replication configuration..
+        /// </summary>
+        internal static string ReplicaConfidentialDiskEncryptionSetNotUpdatable {
+            get {
+                return ResourceManager.GetString("ReplicaConfidentialDiskEncryptionSetNotUpdatable", resourceCulture);
             }
         }
         

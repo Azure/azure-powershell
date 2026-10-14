@@ -57,6 +57,32 @@ Gets the properties of an Azure Site Recovery Replication Protected Items. (auto
 Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName XXXXXXXXXX -ProtectionContainer $PrimaryContainer
 ```
 
+### Example 3: Inspect a confidential VM's recovery identity and disk encryption settings
+
+```powershell
+$rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectionContainer $protectionContainer -Name $rpiName
+
+$rpi.ProviderSpecificDetails |
+    Select-Object RecoveryConfidentialDataDiskEncryptionIdentity
+
+$rpi.ProviderSpecificDetails.A2ADiskDetails |
+    Select-Object DiskName, DiskType,
+        ReplicaConfidentialDiskEncryptionSetId,
+        TargetConfidentialDiskEncryptionSetId
+```
+
+Reads the saved recovery confidential data disk encryption identity and per-disk replica and target confidential DES ARM resource IDs for an Azure-to-Azure protected item.
+Authenticate, select the subscription, and set the ASR vault context before running the example.
+Use a module and service version that expose confidential VM settings.
+`$protectionContainer` is the item's current ASR protection container, and `$rpiName` is its replication protected item name.
+
+After enable, add-disk, update, or reprotect operations, monitor the returned ASR job with `Get-AzRecoveryServicesAsrJob -Name $job.Name` and wait for it to succeed before retrieving the item again.
+Refreshing the item avoids inspecting stale settings from an earlier object.
+`A2ADiskDetails` identifies disks using `DiskName` and `DiskType`; it does not expose the source disk's `DiskId`.
+Confidential encryption properties can be empty when they are not configured or do not apply.
+These values describe saved recovery settings, not proof of completed replication or a successful failover.
+
 ## PARAMETERS
 
 ### -DefaultProfile

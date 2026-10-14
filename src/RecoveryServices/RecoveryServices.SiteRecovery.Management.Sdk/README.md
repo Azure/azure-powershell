@@ -4,8 +4,7 @@ This directory contains management plane service clients of Az.RecoveryServices 
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --version=3.10.9 --use:@autorest/powershell@4.0.754
 ```
 
 ### AutoRest Configuration
@@ -23,10 +22,10 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 00677addbec2520127aada73ce8ec5f9788a405e
+commit: c0dbc0940a76df3eb4b2747d66ac41944b427d61
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-02-01/service.json
-  
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2026-11-01/service.json
+
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.RecoveryServices.SiteRecovery
