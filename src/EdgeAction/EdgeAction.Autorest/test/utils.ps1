@@ -339,7 +339,12 @@ function Invoke-EdgeActionTestCommand {
     # Generated cmdlets can discard HTTP status when converting a service error to ErrorRecord.
     # Observe outside the recorder so live and playback responses use the same 404 check.
     if (-not ('EdgeActionTestResponse' -as [type])) {
-        Add-Type -TypeDefinition @'
+        $compilerParameters = @{}
+        if ($PSVersionTable.PSEdition -eq 'Desktop') {
+            Add-Type -AssemblyName System.Net.Http
+            $compilerParameters.ReferencedAssemblies = @([System.Net.Http.HttpResponseMessage].Assembly.Location)
+        }
+        Add-Type @compilerParameters -TypeDefinition @'
 using System.Net.Http;
 using System.Threading.Tasks;
 public sealed class EdgeActionTestResponse {
