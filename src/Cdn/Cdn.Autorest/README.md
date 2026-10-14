@@ -31,8 +31,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-# Use the stable API without the standalone preview EdgeAction resources.
+# Use the stable CDN API and retain the existing standalone EdgeAction API for compatibility.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-07-01/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 

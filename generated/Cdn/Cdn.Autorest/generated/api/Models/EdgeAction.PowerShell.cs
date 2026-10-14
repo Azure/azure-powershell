@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>Defines the edge action for the delivery rule.</summary>
+    /// <summary>
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionTypeConverter))]
     public partial class EdgeAction
     {
@@ -102,29 +104,77 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Parameter"))
+            if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleEdgeActionParameters) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Parameter, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeActionParametersTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleActionInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("ParameterInvocationPoint"))
+            if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterInvocationPoint = (string) content.GetValueForProperty("ParameterInvocationPoint",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterInvocationPoint, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ParameterTypeName"))
+            if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterTypeName = (string) content.GetValueForProperty("ParameterTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ParameterEdgeActionReference"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterEdgeActionReference = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("ParameterEdgeActionReference",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterEdgeActionReference, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("ReferenceId"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ReferenceId = (string) content.GetValueForProperty("ReferenceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ReferenceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("Attachment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Attachment = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment>) content.GetValueForProperty("Attachment",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Attachment, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionAttachmentTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuTier, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -143,29 +193,77 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Parameter"))
+            if (content.Contains("Property"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleEdgeActionParameters) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Parameter, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeActionParametersTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleActionInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
-            if (content.Contains("ParameterInvocationPoint"))
+            if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterInvocationPoint = (string) content.GetValueForProperty("ParameterInvocationPoint",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterInvocationPoint, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("ParameterTypeName"))
+            if (content.Contains("Tag"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterTypeName = (string) content.GetValueForProperty("ParameterTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ParameterEdgeActionReference"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterEdgeActionReference = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("ParameterEdgeActionReference",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ParameterEdgeActionReference, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("ReferenceId"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ReferenceId = (string) content.GetValueForProperty("ReferenceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ReferenceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("Attachment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Attachment = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment>) content.GetValueForProperty("Attachment",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Attachment, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionAttachmentTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).SkuTier, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -194,7 +292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Defines the edge action for the delivery rule.
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
     [System.ComponentModel.TypeConverter(typeof(EdgeActionTypeConverter))]
     public partial interface IEdgeAction
 

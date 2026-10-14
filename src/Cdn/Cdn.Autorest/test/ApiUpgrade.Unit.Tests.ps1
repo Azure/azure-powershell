@@ -73,7 +73,29 @@ Describe 'ApiUpgrade.Unit' {
         }
     }
 
-    It 'Does not export the removed standalone EdgeAction cmdlets in the stable module' {
-        @(Get-Command -Module Az.Cdn | Where-Object Name -Match '-AzCdnEdgeAction').Count | Should Be 0
+    It 'Retains all existing standalone EdgeAction cmdlets in the stable module' {
+        $expected = @(
+            'Add-AzCdnEdgeActionAttachment',
+            'Deploy-AzCdnEdgeActionVersionCode',
+            'Get-AzCdnEdgeAction',
+            'Get-AzCdnEdgeActionExecutionFilter',
+            'Get-AzCdnEdgeActionVersion',
+            'Get-AzCdnEdgeActionVersionCode',
+            'New-AzCdnEdgeAction',
+            'New-AzCdnEdgeActionExecutionFilter',
+            'New-AzCdnEdgeActionVersion',
+            'Remove-AzCdnEdgeAction',
+            'Remove-AzCdnEdgeActionAttachment',
+            'Remove-AzCdnEdgeActionExecutionFilter',
+            'Remove-AzCdnEdgeActionVersion',
+            'Update-AzCdnEdgeAction',
+            'Update-AzCdnEdgeActionExecutionFilter',
+            'Update-AzCdnEdgeActionVersion'
+        )
+        $actual = @(Get-Command -Module Az.Cdn | Where-Object Name -Match '-AzCdnEdgeAction')
+        $actual.Count | Should Be $expected.Count
+        foreach ($name in $expected) {
+            $actual.Name | Should Contain $name
+        }
     }
 }

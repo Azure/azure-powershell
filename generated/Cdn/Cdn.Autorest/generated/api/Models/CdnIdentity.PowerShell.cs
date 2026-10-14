@@ -127,6 +127,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
             }
+            if (content.Contains("EdgeActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName = (string) content.GetValueForProperty("EdgeActionName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter = (string) content.GetValueForProperty("ExecutionFilter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -199,6 +211,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("SecurityPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName = (string) content.GetValueForProperty("SecurityPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).SecurityPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EdgeActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName = (string) content.GetValueForProperty("EdgeActionName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).EdgeActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionFilter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter = (string) content.GetValueForProperty("ExecutionFilter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).ExecutionFilter, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).Version, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
