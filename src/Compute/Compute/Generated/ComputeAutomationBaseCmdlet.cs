@@ -364,6 +364,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ISharedVMExtensionVersionOperations SharedVMExtensionVersionClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SharedVMExtensionVersion;
+            }
+        }
+
+        /// <summary>
+        /// Parses a shared VM extension version resource id into its resource group name, shared VM
+        /// extension name, and version components.
+        /// </summary>
+        public static void ParseSharedVMExtensionVersionResourceId(
+            string resourceId,
+            out string resourceGroupName,
+            out string sharedVMExtensionName,
+            out string version)
+        {
+            resourceGroupName = GetResourceGroupName(resourceId);
+            sharedVMExtensionName = GetResourceName(resourceId, "Microsoft.Compute/sharedVMExtensions", "versions");
+            version = GetInstanceId(resourceId, "Microsoft.Compute/sharedVMExtensions", "versions");
+        }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();

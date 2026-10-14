@@ -272,6 +272,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.RestorePoint, TO.PSRestorePoint>()
                     .ForMember(dest => dest.InstantAccessDurationInMinutes, opt => opt.MapFrom(src => src.InstantAccessDurationMinutes));
                 cfg.CreateMap<FROM.RestorePointCollection, TO.PSRestorePointCollection>();
+                cfg.CreateMap<FROM.SharedVMExtensionVersion, TO.PSSharedVMExtensionVersion>();
             });
             _mapper = config.CreateMapper();
         }

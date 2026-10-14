@@ -173,6 +173,9 @@ Command to get the Restore Point
 ### [Get-AzRestorePointCollection](Get-AzRestorePointCollection.md)
 Get a Restore Point Collection
 
+### [Get-AzSharedVMExtensionVersion](Get-AzSharedVMExtensionVersion.md)
+Gets a Shared VM Extension Version
+
 ### [Get-AzSnapshot](Get-AzSnapshot.md)
 Gets the properties of a snapshot
 
@@ -640,6 +643,9 @@ Sets the key encryption key properties on a disk update object.
 
 ### [Set-AzImageOsDisk](Set-AzImageOsDisk.md)
 Sets the operating system disk properties on an image object.
+
+### [Set-AzSharedVMExtensionVersionDeprecation](Set-AzSharedVMExtensionVersionDeprecation.md)
+Schedules deprecation for a Shared VM Extension Version
 
 ### [Set-AzSnapshotDiskEncryptionKey](Set-AzSnapshotDiskEncryptionKey.md)
 Sets the disk encryption key properties on a snapshot object.
