@@ -1,0 +1,63 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/DurableTask/DurableTask.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.2.0
+    prefix: "Az"
+    subject-prefix: "DurableTask"
+    service-name: "DurableTask"
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    api-version: "2026-02-01"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          verb: Update
+          subject: TaskHub
+        remove: true
+      - where:
+          subject: RetentionPolicy|SchedulerPrivateEndpointConnection|SchedulerPrivateLink
+        remove: true
+      - where:
+          subject: Operation|TransparentDataEncryption
+        remove: true
+      - where:
+          verb: Restart
+          subject: Scheduler
+        remove: true
+      - where:
+          subject: Scheduler
+          variant: List
+        set:
+          variant: TemporaryList
+      - where:
+          subject: Scheduler
+          variant: List1
+        set:
+          variant: List
+      - where:
+          subject: Scheduler
+          variant: TemporaryList
+        set:
+          variant: List1
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
