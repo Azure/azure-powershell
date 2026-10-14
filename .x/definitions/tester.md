@@ -74,15 +74,49 @@ tests scoped to changed `<Service>.Test` files. Do not apply Azure CLI's
 5. **Read state ONCE and never wait:**
    ```python
    from x_engineering_agent.tools.live_tests.workflows import get_workflow_run
-   result = get_workflow_run(run["id"])
+   result = get_workflow_run(
+       run["id"], expected_head_sha=run["pr_head_sha"],
+       pr_number=run["pr_number"], pr_repo=run["pr_repo"],
+   )
+   # With pr_repo, a completed run's live-test-summary.md is written to the
+   # "Live test" section of the PR's single Agent report comment.
    # result["status"] is "queued" | "in_progress" | "completed"
-   # result["conclusion"] is "success" | "failure" | "cancelled" | "timed_out" | None
+   # result["conclusion"] is "success" | "failure" | "unverified" |
+   #   "cancelled" | "timed_out" | None
    ```
+   `success` is reported only after the run's title proves it tested
+   `expected_head_sha` and its results artifact (`results.xml` / `*.trx`)
+   shows at least one executed test and no failures or errors. A green
+   workflow that ran 0 tests, skipped every test, uploaded no results or
+   tested another SHA becomes `unverified` (`verification_reason` says why);
+   never describe it as a pass.
    - `status != "completed"` → return `{"ran": True, "pending": True, "run_url": ...}`. The loop must stop the round here; the next round will re-read.
    - `status == "completed"` → return `{"ran": True, "conclusion": result["conclusion"], "run_url": ...}`.
 
 6. **No skip branch for "no new tests"**
    Always dispatch once per PR head SHA and return pending/completed state.
+   For a source-only PR (no runnable changed test file) the dispatcher
+   derives the changed command module(s)/extension(s)/service(s) from the
+   source paths and dispatches a module-scoped run (`test_scope=module`,
+   `module=<names>`) when the workflow declares the `test_scope` input. If
+   the workflow lacks that input, or more than three modules changed, it
+   returns a skip whose reason names the untested modules; that is not a
+   passing result.
+7. **Never drop the head SHA.** A `422` from `workflow_dispatch` is raised as
+   an error; the dispatcher never retries without `pr_head_sha`.
+
+8. **Missing recordings (`pr["needs_recording"]`).** Foundry validation
+   replays the touched module's `ScenarioTest`s offline from the committed
+   recordings, which jobs ship read-only and may not edit. A new or changed
+   scenario test without a matching recording sets `needs_recording` on the
+   job; the in-flight PR exposes it as `pr["needs_recording"]`. Resolve it
+   here: dispatch with `commit_recordings=True` so the workflow records live,
+   verifies the cassette in playback and commits it to the Agent branch. The
+   recording commit is a new head SHA, so the next round tests that head
+   normally. Until a run for the PR has committed the recording, report the
+   live test as not yet resolving the missing recording; never describe the
+   scenario as covered. PowerShell `SessionRecords` are also read-only, but
+   there is no local PowerShell playback; their `Record` runs stay as above.
 
 ## Where the live tests actually run
 

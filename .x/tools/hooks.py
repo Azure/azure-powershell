@@ -6,7 +6,7 @@
 
 """Azure PowerShell implementations of the X Engineering Agent engine hooks."""
 
-from repository_tools.fixer.azure_powershell import guidance, targets
+from repository_tools.fixer.azure_powershell import guidance, prepublication, targets
 from repository_tools.fixer.formatting import guidance as formatting
 from repository_tools.fixer.title_gate import title_repair
 from repository_tools.reviewer.policy import analysis
@@ -62,6 +62,10 @@ def live_test_plan(pr_files):
     return live_tests._live_test_plan(pr_files)
 
 
+def live_test_source_targets(pr_files):
+    return live_tests._live_test_source_targets(pr_files)
+
+
 def analyze_review(pr, file_changes, head_repo=None, head_sha=None, generation_source_prs=None):
     return analysis.analyze_review_tools(
         REPOSITORY, pr, file_changes, head_repo=head_repo, head_sha=head_sha,
@@ -89,3 +93,23 @@ def _ownership_block(pr, file_changes):
         "reason": "codegen ownership preflight failed",
         "findings": [finding["summary"] for finding in findings],
     }
+
+
+def generated_paths(paths):
+    return prepublication.generated_paths(paths)
+
+
+def generated_ownership_findings(pr, changes):
+    return prepublication.generated_ownership_findings(pr, changes)
+
+
+def release_artifact_findings(pr, changes, read_file):
+    return prepublication.release_artifact_findings(pr, changes, read_file)
+
+
+def command_help_findings(changes, base, read_file):
+    return prepublication.command_help_findings(changes, base, read_file)
+
+
+def title_findings(title, component, rest, changed_paths):
+    return prepublication.title_findings(title, component, rest, changed_paths)

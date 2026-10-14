@@ -55,3 +55,13 @@ def test_readiness_is_ownership_only():
 
 def test_definitions_reference_existing_engine_helpers_and_tools():
     assert testing.definition_problems(testing.local(PACKAGE, REPOSITORY)) == []
+
+
+@pytest.mark.parametrize(("files", "expected"), [
+    (["src/Storage/Storage.Management/Cmdlets/NewAzStorageAccount.cs"], ("psmodule", ["Storage"])),
+    (["src/Storage/Storage.Management.Test/ScenarioTests/StorageTests.ps1"], (None, [])),
+    (["documentation/index.md"], (None, [])),
+], ids=["service-source", "tests-only", "docs"])
+def test_source_only_changes_resolve_service_live_test_scope(files, expected):
+    kind, names = hook("live_test_source_targets", files)
+    assert (kind, list(names)) == expected
