@@ -108,12 +108,12 @@ Start the update operation for the specified replication protected item to use t
 $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem `
     -ProtectionContainer $protectionContainer -Name $rpiName
 
-$diskDetails = @($rpi.ProviderSpecificDetails.A2ADiskDetails |
+$matchingDisks = @($rpi.ProviderSpecificDetails.A2ADiskDetails |
     Where-Object DiskName -eq $protectedDataDiskName)
-if ($diskDetails.Count -ne 1) {
+if ($matchingDisks.Count -ne 1) {
     throw "Expected exactly one protected disk named '$protectedDataDiskName'."
 }
-$diskDetails = $diskDetails[0]
+$diskDetails = $matchingDisks[0]
 
 $dataDiskUpdate = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig `
     -ManagedDisk -DiskId $protectedDataDiskId `
