@@ -155,7 +155,12 @@ function Resume-EdgeActionTestCleanup {
     $path = Join-Path $PSScriptRoot $file
     $env = Get-Content $path -Raw -ErrorAction Stop | ConvertFrom-Json -ErrorAction Stop
     if ($ResourceGroup) {
-        if ($env.ResourceGroupState -eq 'Cleaned' -and $env.ResourceGroupName -ceq 'powershellsdk-edgeaction-tests-rgname') { return }
+        if ($env.ResourceGroupState -eq 'Cleaned' -and $env.ResourceGroupName -ceq 'powershellsdk-edgeaction-tests-rgname') {
+            if ($Mode -eq 'record' -and $PSCmdlet.ShouldProcess('completed EdgeAction recordings', 'Sanitize polling URLs')) {
+                Complete-EdgeActionTestRecording
+            }
+            return
+        }
         Assert-EdgeActionTestResourceGroup
         if ($PSCmdlet.ShouldProcess($env.ResourceGroupName, 'Delete the saved run-owned resource group and its remaining resources')) {
             Remove-EdgeActionTestResourceGroup
@@ -223,25 +228,91 @@ function Remove-EdgeActionTestResourceGroup {
     Save-EdgeActionTestEnvironment
 }
 
+function Protect-EdgeActionTestPollingUrl {
+    param([string]$Url)
+    $uri = $null
+    if (-not [uri]::TryCreate($Url, [UriKind]::Absolute, [ref]$uri)) {
+        throw 'A recording contains an invalid request or polling URL; review it before sanitization.'
+    }
+    if ($uri.AbsolutePath -notmatch '(?i)/providers/Microsoft\.Cdn/edgeactionoperations/[^/]+$' -or -not $uri.Query) {
+        return $Url
+    }
+    $queryStart = $Url.IndexOf('?')
+    $fragmentStart = $Url.IndexOf('#', $queryStart)
+    if ($fragmentStart -lt 0) { $fragmentStart = $Url.Length }
+    $query = $Url.Substring($queryStart, $fragmentStart - $queryStart)
+    $sanitized = [regex]::Replace($query, '(?i)([?&][tcsh]=)[^&#]*', '${1}Sanitized')
+    $Url.Substring(0, $queryStart) + $sanitized + $Url.Substring($fragmentStart)
+}
+
+function Protect-EdgeActionTestRecording {
+    param([string]$Content)
+    $recording = ConvertFrom-Json -InputObject $Content -AsHashtable -ErrorAction Stop
+    $keys = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $replacements = [System.Collections.Generic.Dictionary[string, string]]::new([StringComparer]::Ordinal)
+    foreach ($key in $recording.Keys) {
+        $entry = $recording[$key]
+        $newKey = $key
+        if ($entry.Request.RequestUri) {
+            $url = [string]$entry.Request.RequestUri
+            $newUrl = Protect-EdgeActionTestPollingUrl $url
+            if ($newUrl -cne $url) {
+                if (-not $key.Contains($url)) {
+                    throw 'A recording lookup key does not contain its request URL; no files were changed.'
+                }
+                $newKey = $key.Replace($url, $newUrl)
+                $replacements[$key] = $newKey
+                $replacements[$url] = $newUrl
+            }
+        }
+        foreach ($header in @($entry.Response.Headers.Keys)) {
+            if ($header -notin 'Azure-AsyncOperation', 'Location') { continue }
+            foreach ($url in $entry.Response.Headers[$header]) {
+                $newUrl = Protect-EdgeActionTestPollingUrl $url
+                if ($newUrl -cne $url) { $replacements[$url] = $newUrl }
+            }
+        }
+        if (-not $keys.Add($newKey)) {
+            throw 'Polling URL sanitization would create duplicate recording lookup keys; no files were changed.'
+        }
+    }
+    if (-not $replacements.Count) { return $Content }
+    # Replace whole JSON string tokens, preserving formatting and embedded code/payload strings.
+    [regex]::Replace($Content, '"(?:\\.|[^"\\])*"', [System.Text.RegularExpressions.MatchEvaluator]{
+        param($match)
+        if ($match.Value -notmatch '\?|\\u003f') { return $match.Value }
+        $value = ConvertFrom-Json -InputObject $match.Value -ErrorAction Stop
+        $replacement = $null
+        if ($replacements.TryGetValue($value, [ref]$replacement)) {
+            return ConvertTo-Json -InputObject $replacement -Compress
+        }
+        $match.Value
+    })
+}
+
 function Complete-EdgeActionTestRecording {
     if ($TestMode -ne 'record') { return }
     if ($env.ResourceGroupState -ne 'Cleaned') {
         throw 'Verify resource-group cleanup before replacing the live name in recordings and environment metadata.'
     }
     $placeholder = 'powershellsdk-edgeaction-tests-rgname'
-    if ($env.ResourceGroupName -ceq $placeholder) { return }
-    Assert-EdgeActionTestResourceGroup
-    $pattern = [regex]::Escape($env.ResourceGroupName)
+    $pattern = $null
+    if ($env.ResourceGroupName -cne $placeholder) {
+        Assert-EdgeActionTestResourceGroup
+        $pattern = [regex]::Escape($env.ResourceGroupName)
+    }
     $updates = @(
         foreach ($file in Get-ChildItem -LiteralPath $PSScriptRoot -Filter '*.Recording.json' -File) {
             $text = [System.IO.File]::ReadAllText($file.FullName)
-            if ($text -notmatch $pattern) { continue }
-            if ($text -match [regex]::Escape($placeholder)) {
-                throw "Recording '$($file.Name)' mixes live and placeholder resource-group names; review it before normalization."
+            $updated = $text
+            if ($pattern -and $text -match $pattern) {
+                if ($text -match [regex]::Escape($placeholder)) {
+                    throw "Recording '$($file.Name)' mixes live and placeholder resource-group names; review it before normalization."
+                }
+                $updated = [regex]::Replace($text, $pattern, $placeholder, [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
             }
-            $updated = [regex]::Replace($text, $pattern, $placeholder, [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)
-            $null = ConvertFrom-Json -InputObject $updated -ErrorAction Stop
-            @{ Path = $file.FullName; Content = $updated }
+            $updated = Protect-EdgeActionTestRecording $updated
+            if ($updated -cne $text) { @{ Path = $file.FullName; Content = $updated } }
         }
     )
     foreach ($update in $updates) {
@@ -250,8 +321,10 @@ function Complete-EdgeActionTestRecording {
         Move-Item -LiteralPath $temporaryPath -Destination $update.Path -Force -ErrorAction Stop
     }
     # Keep the live name recoverable on disk until every recording has been normalized.
-    $env.ResourceGroupName = $placeholder
-    Save-EdgeActionTestEnvironment
+    if ($pattern) {
+        $env.ResourceGroupName = $placeholder
+        Save-EdgeActionTestEnvironment
+    }
 }
 
 function Invoke-EdgeActionTestCommand {
