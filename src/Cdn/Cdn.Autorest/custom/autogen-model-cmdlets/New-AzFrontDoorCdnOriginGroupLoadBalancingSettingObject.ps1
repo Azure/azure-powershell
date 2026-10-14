@@ -34,6 +34,9 @@ function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
         [Parameter(HelpMessage="The additional latency in milliseconds for probes to fall into the lowest latency bucket.")]
         [int]
         $AdditionalLatencyInMillisecond,
+        [Parameter(HelpMessage="Capacity based round-robin load balancing settings.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters]
+        $CapacityDistributionSetting,
         [Parameter(HelpMessage="The number of samples to consider for load balancing decisions.")]
         [int]
         $SampleSize,
@@ -47,6 +50,9 @@ function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
 
         if ($PSBoundParameters.ContainsKey('AdditionalLatencyInMillisecond')) {
             $Object.AdditionalLatencyInMillisecond = $AdditionalLatencyInMillisecond
+        }
+        if ($PSBoundParameters.ContainsKey('CapacityDistributionSetting')) {
+            $Object.CapacityDistributionSetting = $CapacityDistributionSetting
         }
         if ($PSBoundParameters.ContainsKey('SampleSize')) {
             $Object.SampleSize = $SampleSize

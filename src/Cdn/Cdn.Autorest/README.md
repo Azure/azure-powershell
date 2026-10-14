@@ -31,8 +31,8 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-# You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
+# Keep standalone EdgeAction resources available in the independent preview module.
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-08-01-preview/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
@@ -45,7 +45,8 @@ title: Cdn
 subject-prefix: $(service-name)
 # Change Safety: opt in -AcquirePolicyToken / -ChangeReference on write cmdlets
 enable-change-safety: true
-commit: 9e9079a5d235e0c804e7fbb188258a84b4221571
+# Pin the Swagger revision for reproducible generation.
+commit: b1e7325f0722352d57f2408b35b038e9896844a8
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs

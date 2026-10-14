@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+* Upgraded the CDN and Azure Front Door preview API version to 2026-08-01-preview.
+    - Added server TLS group configuration, including post-quantum key exchange groups, and origin certificate subject name validation settings.
+    - Added gRPC route and health probe settings and capacity-based origin group load balancing.
+    - Retained standalone EdgeAction resource cmdlets, mTLS, profile/domain/route WAF associations, origin authentication token destination headers, and URL signing in the preview module.
 * Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
 * Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
 

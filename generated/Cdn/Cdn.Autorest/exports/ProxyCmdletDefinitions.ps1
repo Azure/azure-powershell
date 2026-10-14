@@ -11630,6 +11630,8 @@ CUSTOMDOMAIN <IAfdDomain>: Friendly domain name mapping to the endpoint hostname
     [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
     [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
       [Id <String>]: Resource ID.
+    [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+    [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
@@ -11659,6 +11661,8 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
+  [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+  [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
@@ -12333,6 +12337,9 @@ HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
   [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+    [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+    [DistributionType <String>]: Type of distribution used in capacity based load balancing.
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 
@@ -12347,6 +12354,9 @@ ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for
     [ProbeRequestType <String>]: The type of health probe request that is made.
   [LoadBalancingSetting <ILoadBalancingSettingsParameters>]: Load balancing settings for a backend pool
     [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+    [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+      [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+      [DistributionType <String>]: Type of distribution used in capacity based load balancing.
     [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
     [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
   [SessionAffinityState <String>]: Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
@@ -12711,6 +12721,8 @@ To create the parameters described below, construct a hash table containing the 
 
 ORIGIN <IAfdOrigin>: Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
   [AzureOriginId <String>]: Resource ID.
+  [CertificateNameCheckValidationMode <String>]: The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+  [CustomCertificateSubject <List<String>>]: The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.
   [EnabledState <String>]: Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
   [EnforceCertificateNameCheck <Boolean?>]: Whether to enable certificate name check at origin level
   [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -12833,6 +12845,27 @@ param(
     [System.String]
     # Resource ID.
     ${AzureOriginId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The validation mode for certificate name check.
+    # Only applicable when enforceCertificateNameCheck is true.
+    ${CertificateNameCheckValidationMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # The list of custom certificate subjects to validate against.
+    # Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+    # Must contain 1 or 2 entries.
+    ${CustomCertificateSubject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
@@ -24428,6 +24461,8 @@ CUSTOMDOMAINUPDATEPROPERTY <IAfdDomainUpdateParameters>: The domain JSON object 
     [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
     [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
       [Id <String>]: Resource ID.
+    [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+    [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
@@ -24476,6 +24511,8 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
+  [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+  [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 #>
@@ -25195,6 +25232,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
   [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+    [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+    [DistributionType <String>]: Type of distribution used in capacity based load balancing.
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 
@@ -25209,6 +25249,9 @@ ORIGINGROUPUPDATEPROPERTY <IAfdOriginGroupUpdateParameters>: AFDOrigin group pro
     [ProbeRequestType <String>]: The type of health probe request that is made.
   [LoadBalancingSetting <ILoadBalancingSettingsParameters>]: Load balancing settings for a backend pool
     [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+    [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+      [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+      [DistributionType <String>]: Type of distribution used in capacity based load balancing.
     [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
     [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
   [SessionAffinityState <String>]: Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
@@ -25635,6 +25678,8 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
 
 ORIGINUPDATEPROPERTY <IAfdOriginUpdateParameters>: AFDOrigin properties needed for origin update.
   [AzureOriginId <String>]: Resource ID.
+  [CertificateNameCheckValidationMode <String>]: The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+  [CustomCertificateSubject <List<String>>]: The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.
   [EnabledState <String>]: Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
   [EnforceCertificateNameCheck <Boolean?>]: Whether to enable certificate name check at origin level
   [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -25751,6 +25796,29 @@ param(
     [System.String]
     # Resource ID.
     ${AzureOriginId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The validation mode for certificate name check.
+    # Only applicable when enforceCertificateNameCheck is true.
+    ${CertificateNameCheckValidationMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # The list of custom certificate subjects to validate against.
+    # Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+    # Must contain 1 or 2 entries.
+    ${CustomCertificateSubject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -26188,6 +26256,7 @@ ROUTEUPDATEPROPERTY <IRouteUpdateParameters>: The domain JSON object required fo
     [Id <String>]: Resource ID.
   [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
+  [GrpcState <String>]: Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
   [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
   [OriginGroupId <String>]: Resource ID.
@@ -26349,6 +26418,17 @@ param(
     [System.String]
     # Protocol this rule will use when forwarding traffic to backends.
     ${ForwardingProtocol},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Whether or not gRPC is enabled on this route.
+    # Permitted values are 'Enabled' or 'Disabled'
+    ${GrpcState},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityAfdEndpointExpanded')]
@@ -31871,7 +31951,7 @@ param(
     ${ProbePath},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https", "Grpc")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Protocol to use for health probe.
@@ -33675,7 +33755,21 @@ param(
     # Resource reference to the secret.
     # ie.
     # subs/rg/profile/secret.
-    ${Secret}
+    ${Secret},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SecP256r1MLKEM768", "SecP384r1MLKEM1024", "X25519MLKEM768", "prime256v1", "X25519", "secp384r1", "secp521r1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+    ${ServerTlsGroup},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard", "Enhanced", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Server TLS group policy that will be used for Https.
+    ${ServerTlsGroupPolicy}
 )
 
 begin {
@@ -34042,7 +34136,7 @@ param(
     ${ProbePath},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https", "Grpc")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Protocol to use for health probe.
@@ -34150,6 +34244,14 @@ New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMill
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CAPACITYDISTRIBUTIONSETTING <ICapacityDistributionSettingsParameters>: Capacity based round-robin load balancing settings.
+  [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+  [DistributionType <String>]: Type of distribution used in capacity based load balancing.
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnorigingrouploadbalancingsettingobject
 #>
@@ -34162,6 +34264,12 @@ param(
     [System.Int32]
     # The additional latency in milliseconds for probes to fall into the lowest latency bucket.
     ${AdditionalLatencyInMillisecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters]
+    # Capacity based round-robin load balancing settings.
+    ${CapacityDistributionSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -35356,6 +35464,7 @@ ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related
     [Id <String>]: Resource ID.
   [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
+  [GrpcState <String>]: Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
   [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
   [OriginGroupId <String>]: Resource ID.
@@ -35496,6 +35605,15 @@ param(
     [System.String]
     # Protocol this rule will use when forwarding traffic to backends.
     ${ForwardingProtocol},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Whether gRPC is enabled on this route.
+    ${GrpcState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]

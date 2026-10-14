@@ -80,6 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_sampleSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("sampleSize"), out var __jsonSampleSize) ? (int?)__jsonSampleSize : _sampleSize;}
             {_successfulSamplesRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("successfulSamplesRequired"), out var __jsonSuccessfulSamplesRequired) ? (int?)__jsonSuccessfulSamplesRequired : _successfulSamplesRequired;}
             {_additionalLatencyInMillisecond = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("additionalLatencyInMilliseconds"), out var __jsonAdditionalLatencyInMilliseconds) ? (int?)__jsonAdditionalLatencyInMilliseconds : _additionalLatencyInMillisecond;}
+            {_capacityDistributionSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("capacityDistributionSettings"), out var __jsonCapacityDistributionSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParameters.FromJson(__jsonCapacityDistributionSettings) : _capacityDistributionSetting;}
             AfterFromJson(json);
         }
 
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != this._sampleSize ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._sampleSize) : null, "sampleSize" ,container.Add );
             AddIf( null != this._successfulSamplesRequired ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._successfulSamplesRequired) : null, "successfulSamplesRequired" ,container.Add );
             AddIf( null != this._additionalLatencyInMillisecond ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._additionalLatencyInMillisecond) : null, "additionalLatencyInMilliseconds" ,container.Add );
+            AddIf( null != this._capacityDistributionSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._capacityDistributionSetting.ToJson(null,serializationMode) : null, "capacityDistributionSettings" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

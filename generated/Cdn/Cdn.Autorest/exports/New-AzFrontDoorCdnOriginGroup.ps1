@@ -43,6 +43,9 @@ HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
   [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+    [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+    [DistributionType <String>]: Type of distribution used in capacity based load balancing.
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 
@@ -57,6 +60,9 @@ ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for
     [ProbeRequestType <String>]: The type of health probe request that is made.
   [LoadBalancingSetting <ILoadBalancingSettingsParameters>]: Load balancing settings for a backend pool
     [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+    [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+      [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+      [DistributionType <String>]: Type of distribution used in capacity based load balancing.
     [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
     [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
   [SessionAffinityState <String>]: Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'

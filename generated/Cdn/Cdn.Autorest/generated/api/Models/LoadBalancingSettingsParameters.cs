@@ -22,6 +22,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public int? AdditionalLatencyInMillisecond { get => this._additionalLatencyInMillisecond; set => this._additionalLatencyInMillisecond = value; }
 
+        /// <summary>Backing field for <see cref="CapacityDistributionSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters _capacityDistributionSetting;
+
+        /// <summary>Capacity based round-robin load balancing settings</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters CapacityDistributionSetting { get => (this._capacityDistributionSetting = this._capacityDistributionSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParameters()); set => this._capacityDistributionSetting = value; }
+
         /// <summary>Backing field for <see cref="SampleSize" /> property.</summary>
         private int? _sampleSize;
 
@@ -59,6 +66,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"additionalLatencyInMilliseconds",
         PossibleTypes = new [] { typeof(int) })]
         int? AdditionalLatencyInMillisecond { get; set; }
+        /// <summary>Capacity based round-robin load balancing settings</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Capacity based round-robin load balancing settings",
+        SerializedName = @"capacityDistributionSettings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters CapacityDistributionSetting { get; set; }
         /// <summary>The number of samples to consider for load balancing decisions</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -91,6 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// The additional latency in milliseconds for probes to fall into the lowest latency bucket
         /// </summary>
         int? AdditionalLatencyInMillisecond { get; set; }
+        /// <summary>Capacity based round-robin load balancing settings</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters CapacityDistributionSetting { get; set; }
         /// <summary>The number of samples to consider for load balancing decisions</summary>
         int? SampleSize { get; set; }
         /// <summary>The number of samples within the sample period that must succeed</summary>

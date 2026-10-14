@@ -19,9 +19,10 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
  [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -29,14 +30,16 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
 ```
 Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfileExpanded
@@ -45,9 +48,10 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileInputOb
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -55,7 +59,8 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileInputOb
 ```
 Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileInputObject <ICdnIdentity>
  -RouteUpdateProperty <IRouteUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAfdEndpointExpanded
@@ -64,9 +69,10 @@ Update-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -74,7 +80,8 @@ Update-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
 ```
 Update-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
  -RouteUpdateProperty <IRouteUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -83,9 +90,10 @@ Update-AzFrontDoorCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQuery
  [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -134,6 +142,21 @@ route001 testps-rg-da16jm
 Update an AzureFrontDoor route under the AzureFrontDoor profile, enable content compression
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AfdEndpointInputObject
 Identity Parameter
@@ -187,6 +210,21 @@ You can ignore any query strings when caching, ignore specific query strings, ca
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityAfdEndpointExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -294,6 +332,22 @@ Accept wildcard characters: False
 
 ### -ForwardingProtocol
 Protocol this rule will use when forwarding traffic to backends.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityAfdEndpointExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GrpcState
+Whether or not gRPC is enabled on this route.
+Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
 Type: System.String

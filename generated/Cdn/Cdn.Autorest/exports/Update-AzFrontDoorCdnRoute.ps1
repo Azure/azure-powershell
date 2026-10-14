@@ -106,6 +106,7 @@ ROUTEUPDATEPROPERTY <IRouteUpdateParameters>: The domain JSON object required fo
     [Id <String>]: Resource ID.
   [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
+  [GrpcState <String>]: Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
   [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
   [OriginGroupId <String>]: Resource ID.
@@ -267,6 +268,17 @@ param(
     [System.String]
     # Protocol this rule will use when forwarding traffic to backends.
     ${ForwardingProtocol},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAfdEndpointExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Whether or not gRPC is enabled on this route.
+    # Permitted values are 'Enabled' or 'Disabled'
+    ${GrpcState},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityAfdEndpointExpanded')]
