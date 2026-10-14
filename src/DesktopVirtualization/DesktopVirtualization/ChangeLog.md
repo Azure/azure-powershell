@@ -20,6 +20,8 @@
 ## Upcoming Release
 
 * Upgraded API version to 2026-09-01-preview.
+    - Added support for NVMe (Non-Volatile Memory Express) ephemeral operating system disk placement in `New-AzWvdSessionHostConfiguration` and `Update-AzWvdSessionHostConfiguration` using `-DiffDiskSettingOption Local` and `-DiffDiskSettingPlacement NvmeDisk`.
+    - Supported `Standard_LRS`, `StandardSSD_LRS`, and `Premium_LRS` values for `-ManagedDiskType` with ephemeral operating system disks on compatible virtual machine sizes.
 
 ## Version 6.0.1
 * Upgraded API version to 2026-04-01-preview

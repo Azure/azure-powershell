@@ -45,7 +45,6 @@ In this directory, run AutoRest:
 
 ``` yaml
 commit: aa343158d0e3c074267a6bda5cf0715586f25e4b
-repo: https://github.com/AVD-RDDAM/avd-rest-api-specs/blob/$(commit)
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
