@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionExecutionFilt
 
 Describe 'Get-AzEdgeActionExecutionFilter' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eagetfilterdec02"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Get-AzEdgeActionExecutionFilter'
         $script:version = "v1"
         $script:filterName = "filterget"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'

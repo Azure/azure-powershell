@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzEdgeActionVersionDef
 
 Describe 'Switch-AzEdgeActionVersionDefault' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "easwapdec01"
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Switch-AzEdgeActionVersionDefault'
         $script:version1 = "v1"
         $script:version2 = "v2"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'

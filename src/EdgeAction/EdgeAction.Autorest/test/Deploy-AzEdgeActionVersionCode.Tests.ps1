@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzEdgeActionVersionCod
 
 Describe 'Deploy-AzEdgeActionVersionCode' {
     BeforeAll { Initialize-EdgeActionTestScenario {
-        $script:EdgeActionName = "eaptdeploydec02"
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Deploy-AzEdgeActionVersionCode'
         $script:TestResourceGroup = $env.ResourceGroupName
         $script:TestFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         New-EdgeActionTestResource -ResourceGroupName $script:TestResourceGroup -Name $script:EdgeActionName

@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Update the properties and tags of an Edge Action execution filter.
 Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags; the current expanded serializer omits `-Tag @{}`.
 Null tags are rejected.
 
 ## SYNTAX
@@ -63,6 +64,7 @@ Update-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity>
 ## DESCRIPTION
 Update the properties and tags of an Edge Action execution filter.
 Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags. The current expanded serializer omits `-Tag @{}`, so an expanded update does not send the empty tags object required for clearing.
 Null tags are rejected.
 
 ## EXAMPLES
@@ -79,6 +81,13 @@ myFilter global   Succeeded
 ```
 
 Updates the specified execution filter with the provided tags.
+
+### Example 2: Clear all tags with an explicit JSON body
+```powershell
+Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ExecutionFilter "myFilter" -JsonString '{"tags":{}}'
+```
+
+Removes all tags without changing the execution filter properties. Use the JSON parameter set because the expanded serializer omits an empty `-Tag @{}` object.
 
 ## PARAMETERS
 

@@ -183,7 +183,17 @@ Omit `-TestName` to run all groups. Missing request keys require compatible reco
 
 ### Authorized Record runs, including Brazilus
 
-Record and Live create/delete resources. Use only the authorized test subscription and the existing dedicated `powershelltests` resource group. The 15 scenario groups use distinct fixed parent names, but repeated runs reuse those names and each group's cases share its fixture. Setup can pre-clean those exact fixtures. Do not use these names for unrelated resources or run multiple harnesses/builds concurrently against the same fixtures/output directories.
+Record and Live create/delete resources. Use only an authorized test subscription with permission to create and delete resource groups. Setup creates one run-owned resource group named `rgps-powershellsdk-edgeaction-tests-<12 random hex characters>` and saves randomized parent names for the 15 scenario groups in `EdgeActionFixtures`. Creation refuses existing resources instead of pre-cleaning them. Each scenario cleans its own fixture; the harness's final `cleanupEnv` deletes the confirmed run-owned resource group and any remaining resources inside it. It never deletes the shared `powershelltests` group or discovers groups by prefix. Do not run multiple harnesses/builds concurrently against the same environment files or output directories.
+
+The naming follows the Python test pattern selected for these scenarios; it is not a repository-wide PowerShell prefix standard.
+
+| Phase | Resource-group name and behavior |
+| --- | --- |
+| Azure during Record/Live | `rgps-powershellsdk-edgeaction-tests-<random suffix>`; created for this run and deleted during final cleanup |
+| Saved Record output after cleanup | `powershellsdk-edgeaction-tests-rgname`; the module test helper substitutes the live RG name in recording keys, URLs, payloads, and `env.json` |
+| Playback | Uses the saved placeholder and HTTP responses; no Azure RG, live login, or resource-group setup/cleanup is needed |
+
+The RG metadata location defaults to `westus`, independently of EdgeActions' `global` location. To use another approved region, set `EDGEACTION_TEST_RESOURCE_GROUP_LOCATION` in the recording shell before running the harness.
 
 The harness's `check-dependencies.ps1` checks Pester and, for Record/Live, prepares Resources test support if missing. That preparation can download packages and invoke native build tools. Have the prerequisites/feed configuration above ready before starting; Playback does not require live Resources support.
 
@@ -211,11 +221,32 @@ Set-Location .\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest
 
 If Brazilus is not registered, obtain approval before registering its ARM endpoint with `Add-AzEnvironment`; verify the resulting endpoint and audience rather than accepting an environment name alone. For Azure public cloud, explicitly select and verify `AzureCloud` instead. The direct harness does not enforce these boundaries for you.
 
-`setupEnv` lives in maintained `src\EdgeAction\EdgeAction.Autorest\test\utils.ps1` and executes from the copied artifact file. It obtains subscription/tenant from the current context and uses `powershelltests`. Record writes artifact `test\env.json`; Live uses `test\localEnv.json`. `-UsePreviousConfigForRecord` loads earlier values before setup, but is not authentication or permission to use another subscription.
+`setupEnv` lives in maintained `src\EdgeAction\EdgeAction.Autorest\test\utils.ps1` and executes from the copied artifact file. It saves subscription/tenant/environment from the current context; later fixture operations reject a context mismatch. This does not replace verifying that the initial context is authorized. Record writes artifact `test\env.json`; Live uses `test\localEnv.json`. Resource-group provisioning runs outside HTTP scenario recording. `-UsePreviousConfigForRecord` loads earlier values before setup, but does not reuse the live RG or randomized fixture names, or override unfinished cleanup.
 
 After a successful Record, open another fresh terminal and run the Playback command above. Do not rebuild between Record and that first Playback. For all three Update groups, pass `-TestName 'Update-AzEdgeAction','Update-AzEdgeActionVersion','Update-AzEdgeActionExecutionFilter'`, or omit the filter for a complete run.
 
+Execution-filter update setup requires creation to return a resource with an ID and `ProvisioningState = Succeeded`; create errors stop setup. The create cmdlet already polls the asynchronous operation without `-NoWait`. If Playback requests a missing poll after a recorded `Running` response, preserve the recording and live error output, then obtain a fresh successful Record and Playback. An added sleep or an edited terminal response does not repair that missing exchange; a passing Record test summary alone is not sufficient.
+
+**Record all 15 groups without `-TestName` before publishing fixtures for this change.** Existing fixed-name recordings are not compatible with the new environment mapping. A filtered Record is useful for debugging but generates a new mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
+
 Parent Update coverage uses nonempty expanded tags for replacement and the public `-JsonString '{"tags":{}}'` path for clearing. The current expanded serializer omits empty objects; `-Tag @{}` is not equivalent to the required tag-clear body. Version tag updates verify default/deployment-type preservation; changing the default requires `Switch-AzEdgeActionVersionDefault`. Filter updates cover `VersionId`, headers and tags, including preservation during a header-only PATCH. Skipped JSON/identity stubs are not coverage.
+
+### Recover failed cleanup
+
+The environment file records `ResourceGroupState` and each fixture as `NotCreated`, `Creating`, `Created`, or `Cleaned`. `Creating` is saved before the create request, so a timeout or interrupted process leaves a visible, uncertain outcome. Cleanup retains the real RG name and outstanding entries on failure, and new Record/Live setup refuses to overwrite either environment file while `Creating` or `Created` entries remain. Preserve these files before rebuilding. Older unfinished fixtures in the shared `powershelltests` group require exact-resource manual recovery; this helper will not delete that group.
+
+Use `-ResourceGroup` to retry cleanup of the saved run-owned group and all its remaining resources after verifying/authenticating to the saved context. Alternatively, `-Name '<saved-fixture-name>'` retries one parent's child/default-last cleanup; final RG cleanup is still required. The recovery helper checks subscription, tenant, and environment and supports `-WhatIf`. For `Creating`, it marks an entry cleaned only on an observed 404; if the resource exists, it stops for ownership inspection and manual recovery. After manual recovery, verify absence before marking that entry `Cleaned`.
+
+**Run from: the built artifact module directory, `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest`, in a fresh authenticated shell.** Dot-source the artifact helper so recovery updates the same artifact environment file. The example previews cleanup; remove `-WhatIf` only after reviewing the saved fixture.
+
+```powershell
+Import-Module .\Az.EdgeAction.psd1
+Import-Module (Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psd1') -ErrorAction Stop
+. .\test\utils.ps1
+Resume-EdgeActionTestCleanup -Mode record -ResourceGroup -WhatIf
+```
+
+Use `-Mode live` for `localEnv.json`. Recovery sends live requests when `-WhatIf` is removed; it does not record a new scenario. Successful Record RG recovery also finishes RG-name substitution in existing recordings and `env.json`. If substitution failed after cleanup, retry this same command against the retained live-name metadata; it will not recreate or delete the already-cleaned group.
 
 ## Results and recording review
 
@@ -223,7 +254,9 @@ The harness prints normal Pester output and writes `test\Az.EdgeAction-TestResul
 
 Record saves HTTP requests/responses in artifact `test\*.Recording.json`, including failed responses. A public cmdlet can display only a generic status if its generated error model cannot deserialize the service's error shape. Inspect the relevant response locally; do not publish full headers, URLs, IDs or payloads in logs. Playback reuses recordings and does not create new service responses.
 
-There is **no automatic recording handoff or sanitization** in these direct steps. Preserve failed/uncopied outputs before another Record/build. After successful Record and Playback, review identifiers, credentials, polling URLs and embedded code/archives, preserving consistent request/response keys needed by Playback. Then copy only the reviewed recording(s) and compatible environment metadata back to source.
+Async-operation URL query-value redaction is deferred for this change. Retain polling response headers, subsequent request URIs, and recording lookup keys consistently as recorded. Continue reviewing recordings for credentials and other sensitive content before publication.
+
+The module test helper automatically substitutes only the run-owned RG name after confirmed cleanup. This is module-local behavior in `test\utils.ps1`, not the Python sanitizer or a new shared PowerShell recorder feature. It leaves async query tokens unchanged and is not a general secret sanitizer. There is **no automatic recording handoff**. Preserve failed/uncopied outputs before another Record/build. After successful Record and Playback, review identifiers, credentials, polling URLs and embedded code/archives, preserving consistent request/response keys needed by Playback. Then copy only the reviewed recording(s) and compatible environment metadata back to source.
 
 **Run from: repository root**, in a new shell after completing the recording review. This example copies only the parent Update recording.
 
