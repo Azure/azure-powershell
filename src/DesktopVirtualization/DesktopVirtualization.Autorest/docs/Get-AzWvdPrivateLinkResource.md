@@ -8,24 +8,24 @@ schema: 2.0.0
 # Get-AzWvdPrivateLinkResource
 
 ## SYNOPSIS
-List the private link resources available for this workspace.
+List the private link resources available for this hostpool.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWvdPrivateLinkResource -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
+Get-AzWvdPrivateLinkResource -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzWvdPrivateLinkResource -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzWvdPrivateLinkResource -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the private link resources available for this workspace.
+List the private link resources available for this hostpool.
 
 ## EXAMPLES
 
@@ -79,7 +79,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -171,7 +171,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List1
 Aliases:
 
 Required: True
