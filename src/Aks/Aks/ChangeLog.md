@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Get-AzAksCluster -Id` ignoring the subscription embedded in the resource ID and using the current context subscription instead
+    - The cmdlet now correctly uses the subscription from the provided resource ID
+    - Fixed issue [#29928]
 
 ## Version 7.2.1
 * Added support for `AzureContainerLinux` OS SKU in `New-AzAksCluster` (`-NodeOsSKU`) and `New-AzAksNodePool` (`-OsSKU`)
