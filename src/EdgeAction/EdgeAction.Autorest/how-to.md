@@ -9,7 +9,8 @@ Use the repository's existing preparation/build scripts, platyPS commands, and t
 | AutoRest `README.md`, `custom`, `examples`, scenario scripts and `test\utils.ps1` | Maintained inputs; commit intentional changes. |
 | `EdgeAction.Autorest\docs` and `EdgeAction\help` | Review meaningful generated help changes for the feature commit. |
 | `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
-| `Properties\AssemblyInfo.cs`, generation IDs and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
+| `generate-info.json` | Refresh the source generation ID when generation inputs change, and commit it so CI regenerates the module. |
+| `Properties\AssemblyInfo.cs` and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
 | `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
 | `artifacts` and `EdgeAction.Autorest\tools` | Local outputs/tools, not feature-commit content. The module's existing ignore rule covers its `tools` directory. |
 
@@ -84,7 +85,16 @@ input-file:
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 ```
 
-Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes; do not invent replacement IDs or discard intentional edits.
+Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes.
+
+When the specification pin or other generation inputs change, refresh the source generation ID with the repository helper below and include `src\EdgeAction\EdgeAction.Autorest\generate-info.json` in the PR. CI compares source and generated IDs rather than inspecting the Swagger pin. Equal IDs cause CI to reuse the committed generated client, even when local `-ForceRegenerate` builds and Playback pass. Do not restore the old source ID after an intentional refresh or commit the generated copy.
+
+**Run from: repository root**, with `$source` initialized above.
+
+```powershell
+Import-Module .\tools\BuildScripts\BuildScripts.psm1
+New-GenerateInfoJson -GeneratedDirectory $source
+```
 
 Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing.
 
