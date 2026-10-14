@@ -1,6 +1,6 @@
 # Developing Az.EdgeAction
 
-Use the repository's existing preparation/build scripts, platyPS commands, and the generated artifact test harness. No EdgeAction-specific development wrapper is required or included in the feature change.
+Use the optional EdgeAction development helpers in `src\EdgeAction\tools`, or run the repository's preparation/build scripts, platyPS commands, and generated artifact test harness directly. The helpers automate the same repository workflow; they do not replace the native prerequisites or install a separate development environment.
 
 ## Workflow and commit boundaries
 
@@ -11,7 +11,9 @@ Use the repository's existing preparation/build scripts, platyPS commands, and t
 | `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
 | `Properties\AssemblyInfo.cs`, generation IDs and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
 | `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
-| `artifacts` and `EdgeAction.Autorest\tools` | Local outputs/tools, not feature-commit content. The module's existing ignore rule covers its `tools` directory. |
+| `src\EdgeAction\tools` | Reusable generation/test helpers and offline tests, maintained in this developer-tools draft. |
+| `tools\**\*.local.psd1` and `tools\**\*.local.ps1` | Personal configuration/scripts, ignored by `src\EdgeAction\tools\.gitignore`; never commit credentials or local settings. |
+| `artifacts` and `EdgeAction.Autorest\tools` | Local build and generated Resources-support outputs, not feature-commit content. These are separate from the reusable helpers in `src\EdgeAction\tools`. |
 
 Inspect both the working tree and index before and after generation. Do not collect generated output with `git add -A`, and do not discard local outputs merely to clean Git status. Already-staged files still require review. The [archive pipeline](../../../.azure-pipelines/azure-powershell-ci.yml) owns the separate generated-code archive PR; HTTP scenario recordings are different test inputs.
 
@@ -73,6 +75,50 @@ $env:RestoreSources = @(
 ```
 
 These values do not modify global npm configuration or `NuGet.Config`. Close the shell afterward to discard them. If restore reports an unreachable feed or `NU1900` while retrieving vulnerability data, fix network/feed access rather than disabling TLS or NuGet auditing.
+
+## Optional developer helpers
+
+The helpers resolve the repository from their own location, so they work from either the repository root or the module source directory. They require native PowerShell 7.3+ and the prerequisites above. They do not create branches, stage changes, commit, or push.
+
+**Run from: `src\EdgeAction\EdgeAction.Autorest`.**
+
+```powershell
+..\tools\GenerationScripts\Update-EdgeActionGeneratedFiles.ps1
+```
+
+The generation helper runs in an isolated process, checks prerequisites and known Windows assembly locks, applies process-local feeds, prepares/builds EdgeAction, and refreshes parent Markdown/MAML help. It preserves this guide and reports the specification pin from `README.md`. It does not back up or roll back replaced outputs, install prerequisites, or terminate processes holding assemblies.
+
+For scenario-only edits, use the test helper without regenerating:
+
+```powershell
+..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
+```
+
+Before each mode, this helper refreshes maintained `test\*.Tests.ps1` and `test\utils.ps1` into existing artifacts and verifies their hashes. It refuses missing artifacts and orphan artifact scenarios instead of silently rebuilding or running stale tests. Recordings, environment files, binaries, and other fixtures are not refreshed.
+
+Shared settings in `..\tools\TestScripts\TestSettings.psd1` select AzureCloud and leave the subscription empty. For personal AzureCloud settings, copy that file to `TestSettings.local.psd1` beside it and edit only the copy. For an approved Brazilus environment, copy `TestSettings.local.example.psd1` instead. The local file overrides shared defaults; `-ConfigPath` selects a different data file, and `-SubscriptionId` overrides its subscription. `PesterPath` may identify an installed Pester 4.10.1 manifest.
+
+The runner reads PowerShell data files, not `.env` files, and does not execute ignored `*.local.ps1` scripts automatically. Do not put credentials or tokens in shared settings or examples. Legacy `ResourceGroupName` settings are ignored with a warning: the maintained scenario helper owns randomized group creation and cleanup.
+
+**Run from: `src\EdgeAction\EdgeAction.Autorest`, with an authorized subscription configured.**
+
+```powershell
+..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Record -AllowResourceChanges -Login
+```
+
+`-Login` authenticates inside the same isolated process as the harness. Record/Live require mutation consent and an explicit authorized subscription; the helper verifies the cloud, ARM endpoint, audience, and resulting context. Missing generated Resources test support may be prepared/built using the existing dependency tooling. The helper does not install Pester.
+
+Omit `-TestName` for a complete matching recording set. After Record and cleanup succeed, run the Playback command in a fresh terminal without rebuilding. Results remain in artifacts: the helper does not automatically run Playback or copy recordings to source. Follow the recording review and copy-back steps below. RG-name normalization is automatic after confirmed cleanup; async polling query values remain unchanged.
+
+The reusable tools also include offline regression suites. Run them in a disposable PowerShell process; these suites exercise command doubles and temporary fixtures, not live Azure resources:
+
+```powershell
+Import-Module Pester -RequiredVersion 4.10.1
+Invoke-Pester -Script @(
+    '..\tools\TestScripts\tests'
+    '..\tools\GenerationScripts\tests'
+) -EnableExit
+```
 
 ## Prepare and build in the repository
 
@@ -151,7 +197,7 @@ Standalone `build-module.ps1`/`test-module.ps1` instructions apply only to a com
 
 The artifact harness supports `-Record`, `-Playback`, `-Live`, `-NotIsolated`, `-UsePreviousConfigForRecord`, `-RegenerateSupportModule`, and `-TestName`. Use one mode at a time. Playback is the default.
 
-**Use a disposable PowerShell terminal.** With `-NotIsolated`, Pester's `-EnableExit` can close that process. Omitting `-NotIsolated` launches another process; a process-only Azure login in the caller is not inherited. Direct execution does not read the former wrapper's local settings, refresh test scripts, validate the intended cloud/subscription, enforce mutation consent, summarize failures beyond Pester, or copy recordings back.
+**Use a disposable PowerShell terminal.** With `-NotIsolated`, Pester's `-EnableExit` can close that process. Omitting `-NotIsolated` launches another process; a process-only Azure login in the caller is not inherited. Unlike the optional test helper, direct execution does not read local settings, refresh test scripts, validate the intended cloud/subscription, enforce mutation consent, or summarize failures beyond Pester. Neither path automatically copies recordings back.
 
 ### Refresh scenario-only edits
 
