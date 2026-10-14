@@ -86,7 +86,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "The scope of deprecation, indicating which set of versions are affected.")]
-        [ValidateSet(DeprecationType.Hotfix, DeprecationType.Patch, DeprecationType.Minor, DeprecationType.Major, IgnoreCase = true)]
+        [ValidateSet(
+            Microsoft.Azure.Management.Compute.Models.DeprecationType.Hotfix,
+            Microsoft.Azure.Management.Compute.Models.DeprecationType.Patch,
+            Microsoft.Azure.Management.Compute.Models.DeprecationType.Minor,
+            Microsoft.Azure.Management.Compute.Models.DeprecationType.Major,
+            IgnoreCase = true)]
         public string DeprecationType { get; set; }
 
         public override void ExecuteCmdlet()
