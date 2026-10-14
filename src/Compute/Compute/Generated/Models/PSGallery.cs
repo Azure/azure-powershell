@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IDictionary<string, string> Tags { get; set; }
         public SharingProfile SharingProfile { get; set; }
         public GalleryIdentity Identity { get; set; }
+        public SoftDeletePolicy SoftDeletePolicy { get; set; }
 
     }
 }
