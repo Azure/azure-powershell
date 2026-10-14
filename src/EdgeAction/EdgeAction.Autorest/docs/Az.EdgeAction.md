@@ -63,4 +63,4 @@ Update the tags of an Edge Action version.
 Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
 Null tags are rejected.
 Version properties are not changed.
-If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use `Switch-AzEdgeActionVersionDefault` to change the default version.
