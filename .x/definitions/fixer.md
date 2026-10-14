@@ -336,6 +336,11 @@ if profile["kind"] == "powershell":
 - Fill out the PR template completely (PRs are not reviewed otherwise)
 - Add a ChangeLog.md entry under `## Upcoming Release` in `src/{name}/{name}/ChangeLog.md`
 - Add/adjust test coverage (no hardcoded values; keep tests re-recordable)
+- For public cmdlet changes, include matching help and design-review evidence
+- New cmdlets need PowerShell live/scenario tests and playback recordings, not only C# mocks or `-WhatIf` tests
+- Use the affected project's TestFx or AutoRest/Pester layout and cover successful service calls
+- Do not require regeneration for handwritten custom-only or test-only AutoRest changes
+- Escalate Codegen migration or missing design/owner approval instead of treating it as an ordinary code correction
 - Keep the change scoped to this module (`src/{name}/`)
 
 {codegen_guidance}
