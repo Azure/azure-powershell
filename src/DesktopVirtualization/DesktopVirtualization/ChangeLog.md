@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Upgraded API version to 2026-09-01-preview.
+
 ## Version 6.0.1
 * Upgraded API version to 2026-04-01-preview
     - Replaced the `ResourceDisk` allowed value with `TempDisk` for `DiffDiskSettingPlacement` in `SessionHostConfiguration`.

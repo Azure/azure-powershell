@@ -10851,13 +10851,13 @@ param(
     ${DiffDiskSettingOption},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk", "NvmeDisk")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise TempDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'TempDisk'.
+    # Possible values include: 'CacheDisk', 'TempDisk', 'NvmeDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -19229,13 +19229,13 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("CacheDisk", "TempDisk", "NvmeDisk")]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Gets or sets specifies the ephemeral disk placement for operating system disk.
     # The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise TempDisk is used.
     # Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-    # Possible values include: 'CacheDisk', 'TempDisk'.
+    # Possible values include: 'CacheDisk', 'TempDisk', 'NvmeDisk'.
     ${DiffDiskSettingPlacement},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
