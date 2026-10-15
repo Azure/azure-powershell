@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
 * Added `-BaseSnapshotRecoveryPointId`, `-BaseRecoveryPointDatasourceId`, and `-RecoveryMode` parameters to `Get-AzRecoveryServicesBackupRecoveryLogChain` to list the point-in-time log ranges available on top of a SQL (MSSQL) Instance snapshot recovery point (for snapshot point-in-time restore).
 * Added support for stopping protection of SQL (MSSQL) Instance protected items via `Disable-AzRecoveryServicesBackupProtection` (both retain-data and `-RemoveRecoveryPoints` delete-data). Previously these failed because the instance protected item was cast to a SQL database item.
 * Added support for snapshot restore of individual SQL (MSSQL) databases (in addition to SQL Instances). When `-RecoveryMode` is supplied to `Get-AzRecoveryServicesBackupWorkloadRecoveryConfig` for a SQL database recovery point, the restore is built as a snapshot restore (recovery mode, target resource group, user-assigned managed identity, and customer-supplied drive remapping). The drive remapping uses mapping type `DiskDrives` for point-in-time restore and `Data` otherwise, with the SQL instance name as the source logical name. `-TargetResourceGroupName` and `-UserAssignedIdentityId` are required for snapshot restore (both original and alternate location). Added a `-TargetDirectoryMapping` parameter (a hashtable, for example `@{ all = 'C:/temp' }`) applied to the restore target info for SnapshotAttach restores.

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.0
 * Added cmdlets to create and manage Azure Monitor health models.
     - Create health models with their entities, relationships and settings.
     - Query entity history, signal history, and signal recommendations.
