@@ -9,6 +9,18 @@ Preview modules are not included in this list. Read more about [module version t
 
 ## Az.Cdn
 
+### Azure Front Door (AFD) URL signing
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The following cmdlet will be removed from the stable Az.Cdn module:
+    - `New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject`
+- Parameter breaking-change will happen to all parameter sets
+  - `New-AzFrontDoorCdnSecret` and `Update-AzFrontDoorCdnSecret` will no longer accept URL signing key parameters in the stable Az.Cdn module.
+  - `New-AzFrontDoorCdnRule` and `Update-AzFrontDoorCdnRule` will no longer accept the `AfdUrlSigning` action in the stable Az.Cdn module.
+- Change description : AFD URL signing is being removed from the stable Az.Cdn module. Support is planned to continue in the separately released Az.Cdn preview module. Preview modules are not included in the Az rollup module and must be installed separately.
+- This change will take effect on '11/15/2026'- The change is expected to take effect from Az version : '17.0.0'
+- The change is expected to take effect in 'Az.Cdn' from version : '7.0.0'
+
 ### `New-AzFrontDoorCdnSecretCustomerCertificateParametersObject`
 
 - Parameter breaking-change will happen to all parameter sets
