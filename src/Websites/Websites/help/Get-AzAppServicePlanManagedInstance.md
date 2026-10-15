@@ -174,3 +174,5 @@ This cmdlet supports the common parameters. For more information, see [about_Com
 ## RELATED LINKS
 
 [Get-AzAppServicePlan](./Get-AzAppServicePlan.md)
+
+[Restart-AzAppServicePlanManagedInstance](./Restart-AzAppServicePlanManagedInstance.md)
