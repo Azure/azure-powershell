@@ -19,9 +19,10 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <Stri
  [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -29,7 +30,7 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <Stri
 ```
 New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObject <ICdnIdentity>
  -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfileExpanded
@@ -38,9 +39,10 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObjec
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -48,21 +50,23 @@ New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileInputObjec
 ```
 New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzFrontDoorCdnRoute -Name <String> -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityAfdEndpoint
 ```
 New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity> -Route <IRoute>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityAfdEndpointExpanded
@@ -71,9 +75,10 @@ New-AzFrontDoorCdnRoute -Name <String> -AfdEndpointInputObject <ICdnIdentity>
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -103,6 +108,21 @@ route001 testps-rg-da16jm
 Create an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AfdEndpointInputObject
 Identity Parameter
@@ -156,6 +176,21 @@ You can ignore any query strings when caching, ignore specific query strings, ca
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityAfdEndpointExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,6 +298,21 @@ Accept wildcard characters: False
 
 ### -ForwardingProtocol
 Protocol this rule will use when forwarding traffic to backends.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityAfdEndpointExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GrpcState
+Whether gRPC is enabled on this route.
 
 ```yaml
 Type: System.String

@@ -407,6 +407,9 @@
           <TableColumnHeader>
             <Label>MinimumTlsVersion</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServerTlsGroupPolicy</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -419,6 +422,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MinimumTlsVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServerTlsGroupPolicy</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -861,6 +867,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CertificateNameCheckValidationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DeploymentStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -897,6 +906,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateNameCheckValidationMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeploymentStatus</PropertyName>
               </TableColumnItem>
@@ -943,6 +955,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CertificateNameCheckValidationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnabledState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -973,6 +988,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateNameCheckValidationMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnabledState</PropertyName>
               </TableColumnItem>
@@ -1133,6 +1151,208 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TypeName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyAssociation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyAssociation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsProfileLevel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsProfileLevel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyConfig#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IdentityProvider</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityProvider</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyEntraIdConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyEntraIdConfig#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IdentityProvider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AuthLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AuthLocationSelector</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Issuer</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityProvider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AuthLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AuthLocationSelector</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Issuer</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeploymentStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForwardTokenToOrigin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeploymentStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForwardTokenToOrigin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyUpdatePropertiesParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyUpdatePropertiesParameters#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForwardTokenToOrigin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForwardTokenToOrigin</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1402,6 +1622,34 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParameters#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CapacityConsciousThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DistributionType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CapacityConsciousThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DistributionType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnCertificateSourceParameters</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnCertificateSourceParameters#Multiple</TypeName>
@@ -1436,6 +1684,9 @@
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AuthPolicyName</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>CustomDomainName</Label>
           </TableColumnHeader>
@@ -1488,6 +1739,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AuthPolicyName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CustomDomainName</PropertyName>
               </TableColumnItem>
@@ -6761,6 +7015,9 @@
             <Label>ForwardingProtocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>GrpcState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>HttpsRedirect</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6787,6 +7044,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ForwardingProtocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GrpcState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>
@@ -6822,6 +7082,9 @@
             <Label>ForwardingProtocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>GrpcState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>HttpsRedirect</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6842,6 +7105,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ForwardingProtocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GrpcState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>

@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AuthPolicyName" /> property.</summary>
+        private string _authPolicyName;
+
+        /// <summary>Name of the authorization policy under the profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string AuthPolicyName { get => this._authPolicyName; set => this._authPolicyName = value; }
+
         /// <summary>Backing field for <see cref="CustomDomainName" /> property.</summary>
         private string _customDomainName;
 
@@ -142,6 +149,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface ICdnIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
+        /// <summary>Name of the authorization policy under the profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the authorization policy under the profile.",
+        SerializedName = @"authPolicyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AuthPolicyName { get; set; }
         /// <summary>Name of the domain under the profile which is unique globally.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -336,6 +354,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     internal partial interface ICdnIdentityInternal
 
     {
+        /// <summary>Name of the authorization policy under the profile.</summary>
+        string AuthPolicyName { get; set; }
         /// <summary>Name of the domain under the profile which is unique globally.</summary>
         string CustomDomainName { get; set; }
         /// <summary>The name of the Edge Action</summary>

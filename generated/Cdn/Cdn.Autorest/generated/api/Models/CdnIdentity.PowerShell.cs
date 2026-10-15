@@ -99,6 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
             }
+            if (content.Contains("AuthPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).AuthPolicyName = (string) content.GetValueForProperty("AuthPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).AuthPolicyName, global::System.Convert.ToString);
+            }
             if (content.Contains("CustomDomainName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName = (string) content.GetValueForProperty("CustomDomainName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).CustomDomainName, global::System.Convert.ToString);
@@ -183,6 +187,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("RouteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName = (string) content.GetValueForProperty("RouteName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).RouteName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).AuthPolicyName = (string) content.GetValueForProperty("AuthPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal)this).AuthPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("CustomDomainName"))
             {

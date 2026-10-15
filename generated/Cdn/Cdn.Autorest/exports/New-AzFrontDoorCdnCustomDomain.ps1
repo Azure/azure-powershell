@@ -52,8 +52,11 @@ CUSTOMDOMAIN <IAfdDomain>: Friendly domain name mapping to the endpoint hostname
     [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
     [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
       [Id <String>]: Resource ID.
+    [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+    [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
@@ -81,6 +84,8 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [MinimumTlsVersion <String>]: TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
+  [ServerTlsGroup <List<String>>]: Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
+  [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
