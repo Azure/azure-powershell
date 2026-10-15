@@ -8,7 +8,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet('AzureKubernetesService', 'AzureElasticSAN')]
+        [ValidateSet('AzureKubernetesService', 'AzureElasticSAN', 'AzureCosmosDB')]
         ${DatasourceType},
         
         [Parameter(Mandatory=$false, HelpMessage='List of resource types to be excluded for restore')]
@@ -67,7 +67,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/([A-z0-9\-]+)/providers/Microsoft.Storage/storageAccounts/([A-z0-9\-]+)")]
         ${StagingStorageAccountId},
 
-        [Parameter(Mandatory=$false, HelpMessage='List of source volume names to be restored. Use this parameter for DatasourceType AzureElasticSAN. The service currently supports exactly one volume per restore request.')]
+        [Parameter(Mandatory=$false, HelpMessage='Resources to restore. For AzureCosmosDB, provide case-sensitive database or database/container names, with at most 50 entries and no duplicate or overlapping database/container selections. For AzureElasticSAN, provide exactly one source volume name.')]
         [System.String[]]
         ${ResourceIdentifier},
 
@@ -77,6 +77,23 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
     )
 
     process {
+
+        if ($DatasourceType.ToString() -eq "AzureCosmosDB") {
+            $foreignParameters = @('ExcludedResourceType', 'IncludedResourceType', 'ExcludedNamespace', 'IncludedNamespace', 'LabelSelector', 'IncludeClusterScopeResource', 'ConflictPolicy', 'NamespaceMapping', 'PersistentVolumeRestoreMode', 'RestoreHookReference', 'ResourceModifierReference', 'StagingResourceGroupId', 'StagingStorageAccountId', 'ResourceNameOverride')
+            foreach ($parameter in $foreignParameters) {
+                if ($PSBoundParameters.ContainsKey($parameter)) {
+                    throw "Parameter $parameter is not supported for AzureCosmosDB. Only ResourceIdentifier is supported."
+                }
+            }
+            Test-CosmosDbRestoreResourceIdentifier -ResourceIdentifier $ResourceIdentifier
+
+            $resourceListCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria]::new()
+            $resourceListCriteria.ObjectType = "ResourceListSelectionCriteria"
+            $resourceListCriteria.ResourceIdentifier = [System.Collections.Generic.List[string]]$ResourceIdentifier
+            $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
+            $restoreCriteria.ResourceSelector = $resourceListCriteria
+            return $restoreCriteria
+        }
 
         if($DatasourceType.ToString() -eq "AzureElasticSAN"){
 

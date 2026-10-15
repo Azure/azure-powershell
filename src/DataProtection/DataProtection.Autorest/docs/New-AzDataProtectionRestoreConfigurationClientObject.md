@@ -17,10 +17,10 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-ConflictPolicy <String>] [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>]
  [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
  [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
- [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
+ [-PersistentVolumeRestoreMode <String>] [-ResourceIdentifier <String[]>]
+ [-ResourceModifierReference <NamespacedNameResource>] [-ResourceNameOverride <Hashtable>]
  [-RestoreHookReference <NamespacedNameResource[]>] [-StagingResourceGroupId <String>]
- [-StagingStorageAccountId <String>] [-ResourceIdentifier <String[]>] [-ResourceNameOverride <Hashtable>]
- [<CommonParameters>]
+ [-StagingStorageAccountId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,28 @@ GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtec
 ```
 
 This command creates a restore configuration client object that restores the source volume into a renamed target volume using ResourceNameOverride.
+
+### Example 4: Select Azure Cosmos DB databases and containers for item-level recovery
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
+```
+
+This command creates a restore configuration for Azure Cosmos DB item-level recovery (ILR).
+It selects containers `col1` and `col2` in database `db1`, and the whole database `db2`.
+Database-only and database/container selections can be mixed in one request.
+Pass this object to `Initialize-AzDataProtectionRestoreRequest` with `-SourceDataStore VaultStore -RestoreType AlternateLocation -ItemLevelRecovery -RestoreConfiguration $restoreConfig`.
+
+Provide between 1 and 50 resource identifiers.
+Each identifier is a literal database name or a database/container name, not an Azure Resource Manager resource ID.
+Names are case-sensitive and their case is preserved; use the exact names from the backup.
+Exact duplicates, such as two `db1/col1` entries, and parent-child overlaps, such as `db1` together with `db1/col1`, are rejected.
+
+These are literal names, not wildcard patterns or comma-separated lists.
+Punctuation allowed in Cosmos DB names, including braces, commas, and `*`, is not globally rejected or expanded.
+Quote each identifier as a separate string in the array; `/` separates the database and container names.
+
+The target must be a pre-existing empty Azure Cosmos DB for NoSQL account different from the source account.
+Recovery uses `FailIfExists`; renaming with `-ResourceNameOverride` or `-RenameTo` is not supported for AzureCosmosDB.
 
 ## PARAMETERS
 
@@ -226,11 +248,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceIdentifier
+Resources to restore.
+For AzureCosmosDB, provide case-sensitive database or database/container names, with at most 50 entries and no duplicate or overlapping database/container selections.
+For AzureElasticSAN, provide exactly one source volume name.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceModifierReference
 Resource modifier reference to be executed during restore.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceNameOverride
+Map of source volume name to target volume name to restore into.
+Use this parameter for DatasourceType AzureElasticSAN.
+Any source name not included will be restored with a default naming format.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -276,40 +332,6 @@ Staging storage account Id for restore.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceIdentifier
-List of source Azure Elastic SAN volume names to restore.
-Use this parameter for DatasourceType AzureElasticSAN.
-The service currently supports exactly one volume per restore request.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceNameOverride
-Map of source Azure Elastic SAN volume names to target volume names.
-Use this parameter for DatasourceType AzureElasticSAN.
-Any source volume not included in the map is restored using the default naming format.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

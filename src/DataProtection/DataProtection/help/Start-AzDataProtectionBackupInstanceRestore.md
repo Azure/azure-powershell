@@ -14,21 +14,22 @@ Triggers restore for a BackupInstance
 
 ### Trigger (Default)
 ```
-Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
- [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-SecureToken <SecureString>]
- [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
+ -Parameter <IAzureBackupRestoreRequest> -ResourceGroupName <String> -VaultName <String> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ResourceGuardOperationRequest <String[]>]
+ [-RestoreToSecondaryRegion] [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
 ```
-Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <String>
- [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity]
- [-SourceResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <String>
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
+ [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
+ [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -296,6 +297,39 @@ Next, we fetch the backup vault, the backup instance for the source Cosmos DB ac
 We then initialize the restore request object for an AzureCosmosDB alternate location restore.
 After that, we assign the required permissions to the backup vault and the target Cosmos DB account to enable the restore operation.
 Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for AzureCosmosDB.
+
+### Example 13: Validate and trigger Azure Cosmos DB item-level recovery
+```powershell
+$subscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+$resourceGroupName = 'backup-resource-group'
+$vaultName = 'backup-vault'
+$backupInstanceName = 'cosmos-backup-instance'
+$targetCosmosAccountId = "/subscriptions/$subscriptionId/resourceGroups/target-resource-group/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
+$restoreLocation = 'eastasia'
+
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
+$restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $restoreLocation -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId -ItemLevelRecovery -RestoreConfiguration $restoreConfig -UseSystemAssignedIdentity $true
+
+Set-AzDataProtectionMSIPermission -SubscriptionId $subscriptionId -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope Resource -DatasourceType AzureCosmosDB -RestoreRequest $restoreRequest
+Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $backupInstanceName -RestoreRequest $restoreRequest -ErrorAction Stop
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName -Parameter $restoreRequest
+```
+
+Replace the placeholders, select the required recovery point, and ensure the target is a pre-existing empty Azure Cosmos DB for NoSQL account different from the source account.
+Set `RestoreLocation` to the target account's location.
+The configuration selects two containers in `db1` and the whole database `db2` for item-level recovery (ILR).
+It accepts up to 50 case-sensitive literal identifiers, preserves their case, and rejects exact duplicates and parent-child overlaps.
+Valid punctuation in resource names, including braces, commas, and `*`, is literal, not a wildcard or list separator.
+Restore uses `FailIfExists`, with no renaming support.
+
+The example explicitly selects the vault's system-assigned managed identity, assigns the required permissions, validates the request using `-Name` and `-RestoreRequest`, then submits it using `-BackupInstanceName` and `-Parameter`.
+To preview permission changes without applying them, add `-WhatIf` to `Set-AzDataProtectionMSIPermission`; a preview does not grant permissions needed for validation or restore.
+Run the final command only after validation succeeds.
+Submission does not establish that the restore job completed successfully.
+
+For a user-assigned managed identity, initialize the request with `-UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId`, where the variable contains the resource ID of an identity attached to the vault.
+Pass the same ID to `Set-AzDataProtectionMSIPermission` with its existing `-UserAssignedIdentityARMId` parameter before validating and submitting that request.
 
 ## PARAMETERS
 
