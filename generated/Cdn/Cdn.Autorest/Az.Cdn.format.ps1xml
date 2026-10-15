@@ -407,6 +407,9 @@
           <TableColumnHeader>
             <Label>MinimumTlsVersion</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServerTlsGroupPolicy</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -419,6 +422,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MinimumTlsVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServerTlsGroupPolicy</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -861,6 +867,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CertificateNameCheckValidationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DeploymentStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -897,6 +906,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateNameCheckValidationMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeploymentStatus</PropertyName>
               </TableColumnItem>
@@ -943,6 +955,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CertificateNameCheckValidationMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnabledState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -973,6 +988,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CertificateNameCheckValidationMode</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnabledState</PropertyName>
               </TableColumnItem>
