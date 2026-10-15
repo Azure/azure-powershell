@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
+* Removed `Microsoft.Extensions.Options.dll`, `Microsoft.Extensions.Primitives.dll` and `Microsoft.Extensions.DependencyInjection.Abstractions.dll` from required assemblies and now rely on the shared copies provided by `Az.Accounts`.
 
 ## Version 10.2.1
 * Aligned deployment stack WhatIfResult tag preservation with deployment stack cmdlets when `-Tag` is omitted or explicitly given a null value.
