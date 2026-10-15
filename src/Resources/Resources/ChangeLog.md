@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed `Update-AzPolicyAssignment` removing the existing overrides and resource selectors of a policy assignment when `-Override` or `-ResourceSelector` is not specified.
+* Fixed `Update-AzPolicyExemption` removing the existing resource selectors of a policy exemption when `-ResourceSelector` is not specified.
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 
 ## Version 10.2.1
