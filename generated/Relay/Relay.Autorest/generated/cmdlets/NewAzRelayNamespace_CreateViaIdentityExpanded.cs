@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"create Azure Relay namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}", ApiVersion = "2026-07-01-preview")]
     public partial class NewAzRelayNamespace_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext
@@ -59,6 +59,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Relay.Relay Client => Microsoft.Azure.PowerShell.Cmdlets.Relay.Module.Instance.ClientAPI;
 
+        /// <summary>Cluster ARM ID of the Namespace.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Cluster ARM ID of the Namespace.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relay.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Cluster ARM ID of the Namespace.",
+        SerializedName = @"clusterArmId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ClusterArmId { get => _parametersBody.ClusterArmId ?? null; set => _parametersBody.ClusterArmId = value; }
+
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
@@ -95,13 +106,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Resource location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location.")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relay.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Resource location.",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
@@ -113,6 +124,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// The minimum TLS version for the namespace.Supported values are 1.2 and 1.3.The service defaults to 1.2 when the property
+        /// is omitted.Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minimum TLS version for the namespace.Supported values are 1.2 and 1.3.The service defaults to 1.2 when the property is omitted.Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relay.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The minimum TLS version for the namespace.Supported values are 1.2 and 1.3.The service defaults to 1.2 when the property is omitted.Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.",
+        SerializedName = @"minimumTlsVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("1.2", "1.3")]
+        public string MinimumTlsVersion { get => _parametersBody.MinimumTlsVersion ?? null; set => _parametersBody.MinimumTlsVersion = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
