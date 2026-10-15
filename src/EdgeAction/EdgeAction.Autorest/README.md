@@ -21,6 +21,13 @@ AutoRest does not generate authentication code for the module. Authentication is
 
 ## Development
 For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md).
+
+Use the existing repository preparation/build scripts, platyPS help commands, and
+the built artifact's `test-module.ps1` harness as described in the
+[development steps](how-to.md). No module-specific development wrapper is required.
+Commit maintained inputs, meaningful help changes, and reviewed scenario recordings.
+Do not include development tools, build artifacts, or changes under `generated`;
+the repository pipeline archives generated output through a separate bot PR.
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -29,13 +36,13 @@ For information on how to develop for `Az.EdgeAction`, see [how-to.md](how-to.md
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 77a92c31e7758e299d1cfc05bccb136d7f9a201a
+commit: 65eb9311d304dcf9874d05fdec39ea65baae8db8
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/preview/2025-12-01-preview/openapi.json 
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.1
@@ -51,6 +58,14 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  # Generated help must name the public PowerShell cmdlet, not the REST operation.
+  - from: swagger-document
+    where: $..description
+    transform: |
+      if (typeof $ === 'string') {
+        $ = $.replace(/\bswapDefault\b/g, 'Switch-AzEdgeActionVersionDefault');
+      }
+
   # ARM POST operations require an empty body for ASP.NET pipeline compatibility
   # The getVersionCode and swapDefault operations need {} body even though swagger doesn't define request body
   - from: source-file-csharp
@@ -68,6 +83,13 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Patch$|^PatchViaIdentity$
     remove: true
   
+  # Parent updates support only tags; properties are empty and any supplied SKU is rejected.
+  - from: swagger-document
+    where: $.definitions.EdgeActionUpdate.properties
+    transform: |
+      delete $.properties;
+      delete $.sku;
+
   # Remove the set-* cmdlet
   - where:
       verb: Set

@@ -1,0 +1,3 @@
+# Personal overrides and scripts must not be published with reusable tooling.
+*.local.psd1
+*.local.ps1
