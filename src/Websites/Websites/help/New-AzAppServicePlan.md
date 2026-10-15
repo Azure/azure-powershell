@@ -393,6 +393,7 @@ Accept wildcard characters: False
 
 ### -RdpEnabled
 Enable or disable Remote Desktop Protocol (RDP) access to the Managed Instance plan.
+Use **Get-AzAppServicePlanManagedInstance** to retrieve worker IP addresses.
 
 ```yaml
 Type: System.Boolean

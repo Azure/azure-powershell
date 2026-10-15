@@ -1,6 +1,7 @@
 ## Upcoming Release
 #### Az.Websites
 * Added Managed Instance support to `New-AzAppServicePlan` and `Set-AzAppServicePlan`.
+* Added `Get-AzAppServicePlanManagedInstance` to list Managed Instance workers and their IP addresses and status.
 
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
