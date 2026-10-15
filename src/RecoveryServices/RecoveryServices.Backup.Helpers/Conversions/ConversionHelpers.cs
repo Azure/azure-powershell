@@ -376,7 +376,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             policyModel = new AzureVmWorkloadPolicy();
             AzureVmWorkloadPolicy azureVmWorkloadPolicyModel = policyModel as AzureVmWorkloadPolicy;
-            azureVmWorkloadPolicyModel.WorkloadType = WorkloadType.MSSQL;
+            string serviceWorkLoadType = ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).WorkLoadType;
+            azureVmWorkloadPolicyModel.WorkloadType =
+                (serviceWorkLoadType == ServiceClientModel.WorkloadType.SQLInstance) ? WorkloadType.MSSQLInstance : WorkloadType.MSSQL;
             azureVmWorkloadPolicyModel.BackupManagementType = BackupManagementType.AzureWorkload;
             azureVmWorkloadPolicyModel.IsCompression =
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.IsCompression;
@@ -511,6 +513,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     itemModel = GetAzureVmWorkloadItemModel(protectedItem);
                 }
 
+                if (protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureVmWorkloadSQLInstanceProtectedItem))
+                {
+                    itemModel = GetAzureVmWorkloadSQLInstanceItemModel(protectedItem);
+                }
+
                 if (protectedItem.Properties.GetType() == 
                     typeof(ServiceClientModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem))
                 {
@@ -586,6 +594,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 protectedItem.Id);
 
             itemModel = new AzureWorkloadSQLDatabaseProtectedItem(
+                protectedItem,
+                containerUri,
+                ContainerType.AzureVMAppContainer,
+                policyName);
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureVmWorkloadSQLInstanceItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((ServiceClientModel.AzureVmWorkloadSQLInstanceProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureWorkloadSQLInstanceProtectedItem(
                 protectedItem,
                 containerUri,
                 ContainerType.AzureVMAppContainer,
@@ -874,7 +906,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             foreach (var subProtectionPolicy in
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).SubProtectionPolicy)
             {
-                if (string.Compare(subProtectionPolicy.PolicyType, "Full") == 0)
+                if (string.Compare(subProtectionPolicy.PolicyType, "Full") == 0 ||
+                    string.Compare(subProtectionPolicy.PolicyType, "SnapshotFull") == 0)
                 {
                     azureVmWorkloadPolicyModel.FullBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
                         (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,

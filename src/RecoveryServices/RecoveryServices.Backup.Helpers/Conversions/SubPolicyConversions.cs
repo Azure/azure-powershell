@@ -27,19 +27,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static List<ServiceClientModel.SubProtectionPolicy> GetServiceClientSubProtectionPolicy(
             SQLRetentionPolicy retentionPolicy,
             SQLSchedulePolicy schedulePolicy, 
-            TieringPolicy tieringPolicy, bool isSmartTieringEnabled = false)
+            TieringPolicy tieringPolicy, bool isSmartTieringEnabled = false, bool isSnapshotInstancePolicy = false)
         {
             List<ServiceClientModel.SubProtectionPolicy> subProtectionPolicy =
                 new List<ServiceClientModel.SubProtectionPolicy>();
             if (schedulePolicy.FullBackupSchedulePolicy != null &&
                 retentionPolicy.FullBackupRetentionPolicy != null)
             {
-                subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy("Full",
+                // SnapshotFull sub-policies (SQL Instance snapshot / SnapshotV2 policies) do not support
+                // tiering; emitting a tieringPolicy (even DoNotTier) is rejected by the service. Only the
+                // standard "Full" sub-policy carries a tiering policy.
+                subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy(
+                    isSnapshotInstancePolicy ? "SnapshotFull" : "Full",
                     GetServiceClientSimpleSchedulePolicy(schedulePolicy.FullBackupSchedulePolicy),
                     GetServiceClientLongTermRetentionPolicy(retentionPolicy.FullBackupRetentionPolicy),
-                    GetServiceClientTieringPolicy(tieringPolicy, isSmartTieringEnabled)));
+                    isSnapshotInstancePolicy ? null : GetServiceClientTieringPolicy(tieringPolicy, isSmartTieringEnabled)));
             }
-            if (schedulePolicy.DifferentialBackupSchedulePolicy != null &&
+
+            // Snapshot instance policies support SnapshotFull + Log, but not Differential.
+            if (!isSnapshotInstancePolicy &&
+                schedulePolicy.DifferentialBackupSchedulePolicy != null &&
                 retentionPolicy.DifferentialBackupRetentionPolicy != null &&
                 schedulePolicy.IsDifferentialBackupEnabled)
             {

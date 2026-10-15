@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Gets Service Client Recovery Point Tier
         /// </summary>
-        public static ServiceClientModel.RecoveryPointTierType GetServiceClientRecoveryPointTier(RecoveryPointTier rpTier)
+        public static string GetServiceClientRecoveryPointTier(RecoveryPointTier rpTier)
         {
-            ServiceClientModel.RecoveryPointTierType recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.Invalid;
+            string recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.Invalid;
 
             switch (rpTier)
             {
@@ -567,7 +567,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (item.WorkloadType == WorkloadType.MSSQL)
             {
-                rpBase.DataDirectoryPaths = ((ServiceClientModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint).ExtendedInfo != null ? ((ServiceClientModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint).ExtendedInfo.DataDirectoryPaths : null;
+                var sqlExtendedInfo = ((ServiceClientModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint).ExtendedInfo;
+                rpBase.DataDirectoryPaths = sqlExtendedInfo != null ? sqlExtendedInfo.DataDirectoryPaths : null;
+                rpBase.IncludedDatabases = sqlExtendedInfo != null ? sqlExtendedInfo.IncludedDatabases : null;
+                rpBase.SnapshotRecoveryPointInfo = sqlExtendedInfo != null ? sqlExtendedInfo.SnapshotRecoveryPointInfo : null;
             }
 
             if (recoveryPoint.RecoveryPointTierDetails != null)
