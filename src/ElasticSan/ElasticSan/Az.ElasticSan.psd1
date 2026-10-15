@@ -78,6 +78,7 @@ FunctionsToExport = 'Add-AzElasticSanVolumeGroupNetworkRule', 'Get-AzElasticSan'
                'Remove-AzElasticSanVolume', 'Remove-AzElasticSanVolumeGroup', 
                'Remove-AzElasticSanVolumeGroupNetworkRule', 
                'Remove-AzElasticSanVolumeSnapshot', 
+               'Restore-AzElasticSanVolume',
                'Test-AzElasticSanVolumeBackup', 'Test-AzElasticSanVolumeRestore', 
                'Update-AzElasticSan', 'Update-AzElasticSanVolume', 
                'Update-AzElasticSanVolumeGroup'
@@ -145,4 +146,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
