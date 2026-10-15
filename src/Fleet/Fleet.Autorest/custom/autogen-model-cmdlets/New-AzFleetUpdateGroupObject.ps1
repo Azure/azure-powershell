@@ -26,10 +26,32 @@ Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup
 https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject
 #>
 function New-AzFleetUpdateGroupObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="A list of Gates that will be created after this Group is executed.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IGateConfiguration[]]
+        $AfterGate,
+        [Parameter(HelpMessage="A list of Gates that will be created before this Group is executed.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IGateConfiguration[]]
+        $BeforeGate,
+        [Parameter(HelpMessage="The max number of upgrades that can run concurrently in this specific group.
+        Acts as a ceiling (and not a quota) for the number of concurrent upgrades within the group you want to tolerate at a time.
+        Actual concurrency may be lower depending on stage-level concurrency limits or individual member conditions.
+        Group maxConcurrency has a min value of `"1`". The max value is min(number of clusters in the group, the stage maxConcurrency).
+        If no value is provided, defaults to 1.
+        Accepts either:
+            • A fixed count, e.g. `"3`"
+            • A percentage, e.g. `"25%`" (range 1–100). Percentage is of the number of clusters in the group.
+              Fractional results are rounded down. A minimum of 1 upgrade is enforced.
+        Examples:
+            • `"3`" --> up to 3 members from this group upgrade at once.
+            • `"100%`" --> `"all at once`", up to all members for this group upgrade at the same time.
+            • `"25%`" --> up to 25% of the members in the group will be upgraded at the same time.")]
+        [string]
+        $MaxConcurrency,
         [Parameter(Mandatory, HelpMessage="Name of the group.
         It must match a group name of an existing fleet member. .")]
         [string]
@@ -39,6 +61,15 @@ function New-AzFleetUpdateGroupObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup]::New()
 
+        if ($PSBoundParameters.ContainsKey('AfterGate')) {
+            $Object.AfterGate = $AfterGate
+        }
+        if ($PSBoundParameters.ContainsKey('BeforeGate')) {
+            $Object.BeforeGate = $BeforeGate
+        }
+        if ($PSBoundParameters.ContainsKey('MaxConcurrency')) {
+            $Object.MaxConcurrency = $MaxConcurrency
+        }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
