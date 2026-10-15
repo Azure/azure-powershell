@@ -3,6 +3,7 @@
 * Added Managed Instance support to `New-AzAppServicePlan` and `Set-AzAppServicePlan`.
 * Added `Get-AzAppServicePlanManagedInstance` to list Managed Instance workers and their IP addresses and status.
 * Added `Restart-AzAppServicePlanManagedInstance` to recycle individual Managed Instance workers.
+* Added `Get-AzAppServicePlanRdpCredential` to retrieve secure Remote Desktop Protocol (RDP) credentials for Managed Instance plans.
 
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0

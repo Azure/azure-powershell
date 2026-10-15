@@ -291,6 +291,7 @@ Accept wildcard characters: False
 ### -RdpEnabled
 Enable or disable Remote Desktop Protocol (RDP) access to the Managed Instance plan.
 Pass false to disable access; omit the parameter to preserve the current setting.
+Use **Get-AzAppServicePlanRdpCredential** to retrieve credentials when RDP is enabled.
 
 ```yaml
 Type: System.Boolean
