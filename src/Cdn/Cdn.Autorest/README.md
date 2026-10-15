@@ -32,7 +32,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # Keep standalone EdgeAction resources available in the independent preview module.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-08-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-09-01-preview/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
@@ -46,7 +46,7 @@ subject-prefix: $(service-name)
 # Change Safety: opt in -AcquirePolicyToken / -ChangeReference on write cmdlets
 enable-change-safety: true
 # Pin the Swagger revision for reproducible generation.
-commit: b1e7325f0722352d57f2408b35b038e9896844a8
+commit: dad386cfa12e742067b181a446f44ab55bd0fd7c
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -67,6 +67,8 @@ directive:
     - SecurityPolicyPropertiesParameters
     - SecretParameters
     - AFDDomainHttpsParameters
+    - AuthPolicyConfig
+    - AuthPolicyAssociation
     - LoadBalancingSettingsParameters
     # CDN
     - CustomDomainHttpsParameters
@@ -180,6 +182,10 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
     - model-name: SecurityPolicyWebApplicationFirewallParameters
       cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject
+    - model-name: AuthPolicyEntraIDConfig
+      cmdlet-name: New-AzFrontDoorCdnAuthPolicyEntraIdConfigObject
+    - model-name: AuthPolicyAssociation
+      cmdlet-name: New-AzFrontDoorCdnAuthPolicyAssociationObject
 
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
@@ -397,6 +403,10 @@ directive:
     set:
       subject-prefix: FrontDoorCdn
       subject: SecurityPolicy  
+  - where:
+      subject: AuthPolicy
+    set:
+      subject-prefix: FrontDoorCdn
   - where:
       subject: EndpointNameAvailability
     set:

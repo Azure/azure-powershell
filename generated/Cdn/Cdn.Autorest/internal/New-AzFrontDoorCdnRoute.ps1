@@ -42,6 +42,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
@@ -64,6 +65,7 @@ CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoin
   [Id <String>]: Resource ID.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.

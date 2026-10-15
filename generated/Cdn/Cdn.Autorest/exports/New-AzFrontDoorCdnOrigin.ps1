@@ -52,6 +52,7 @@ ORIGIN <IAfdOrigin>: Azure Front Door origin is the source of the content being 
   [Weight <Int32?>]: Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 
 ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
@@ -71,6 +72,7 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Version <String>]: The name of the Edge Action version
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.

@@ -20,7 +20,9 @@
 
 ## Upcoming Release
 
-* Upgraded the CDN and Azure Front Door preview API version to 2026-08-01-preview.
+* Upgraded the CDN and Azure Front Door preview API version to 2026-09-01-preview.
+    - Added Azure Front Door authorization policy cmdlets and object helpers for Microsoft Entra ID configurations and profile, domain, or route associations.
+    - Added ClientResponse invocation point support for EdgeAction delivery-rule actions.
     - Added server TLS group configuration, including post-quantum key exchange groups, and origin certificate subject name validation settings.
     - Added gRPC route and health probe settings and capacity-based origin group load balancing.
     - Retained standalone EdgeAction resource cmdlets, mTLS, profile/domain/route WAF associations, origin authentication token destination headers, and URL signing in the preview module.
@@ -163,4 +165,3 @@ Fixed enabling CDN custom domain HTTPS for Microsoft and Akamai SKU's
 
 ## Version 1.0.0
 * General availability of `Az.Cdn` module
-

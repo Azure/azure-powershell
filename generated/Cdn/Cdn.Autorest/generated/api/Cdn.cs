@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsCreate(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsDelete(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsGet(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1026,7 +1026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1083,7 +1083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1144,7 +1144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1330,7 +1330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1372,7 +1372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1424,7 +1424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainListResult> AfdCustomDomainsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1479,7 +1479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainListResult> AfdCustomDomainsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1665,7 +1665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationToken(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1709,7 +1709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationTokenViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1947,7 +1947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1996,7 +1996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2056,7 +2056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2121,7 +2121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2171,7 +2171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2222,7 +2222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomain> AfdCustomDomainsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2605,7 +2605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2657,7 +2657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2720,7 +2720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2788,7 +2788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2841,7 +2841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2895,7 +2895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3277,7 +3277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3324,7 +3324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3567,7 +3567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3613,7 +3613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3670,7 +3670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3731,7 +3731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3917,7 +3917,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3959,7 +3959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4011,7 +4011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResult> AfdEndpointsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4066,7 +4066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointListResult> AfdEndpointsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4254,7 +4254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4300,7 +4300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4357,7 +4357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdEndpointsListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4418,7 +4418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdEndpointsListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4612,7 +4612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4664,7 +4664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4730,7 +4730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContentViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4966,7 +4966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsUpdate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5019,7 +5019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5083,7 +5083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5152,7 +5152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5206,7 +5206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5261,7 +5261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpoint> AfdEndpointsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5643,7 +5643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5695,7 +5695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5758,7 +5758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> AfdEndpointsValidateCustomDomainViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5826,7 +5826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomainViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5879,7 +5879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> AfdEndpointsValidateCustomDomainViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5933,7 +5933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> AfdEndpointsValidateCustomDomainWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6132,7 +6132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsCreate(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6181,7 +6181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6241,7 +6241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6306,7 +6306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6356,7 +6356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6407,7 +6407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6786,7 +6786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsDelete(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6830,7 +6830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7070,7 +7070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsGet(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7113,7 +7113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7167,7 +7167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7225,7 +7225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7411,7 +7411,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7453,7 +7453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7505,7 +7505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResult> AfdOriginGroupsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7560,7 +7560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupListResult> AfdOriginGroupsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7748,7 +7748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7794,7 +7794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7851,7 +7851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdOriginGroupsListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7912,7 +7912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdOriginGroupsListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8104,7 +8104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8153,7 +8153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8213,7 +8213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8278,7 +8278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8328,7 +8328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8379,7 +8379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup> AfdOriginGroupsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8760,7 +8760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsCreate(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8811,7 +8811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8874,7 +8874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8943,7 +8943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8996,7 +8996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9050,7 +9050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9434,7 +9434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsDelete(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9480,7 +9480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9726,7 +9726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsGet(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9771,7 +9771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9828,7 +9828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9890,7 +9890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10081,7 +10081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroup(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10125,7 +10125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10180,7 +10180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginListResult> AfdOriginsListByOriginGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10239,7 +10239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginListResult> AfdOriginsListByOriginGroupWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10432,7 +10432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsUpdate(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10483,7 +10483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10546,7 +10546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10615,7 +10615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdOriginsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10668,7 +10668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10722,7 +10722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin> AfdOriginsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string originGroupName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11105,7 +11105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11153,7 +11153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfileSkuUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11211,7 +11211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> AfdProfileSkuUpgradeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11273,7 +11273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfileSkuUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11321,7 +11321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> AfdProfileSkuUpgradeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11370,7 +11370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> AfdProfileSkuUpgradeWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpgradeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11748,7 +11748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11798,7 +11798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11858,7 +11858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> AfdProfilesCheckEndpointNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11922,7 +11922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailabilityViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11972,7 +11972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> AfdProfilesCheckEndpointNameAvailabilityViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12023,7 +12023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> AfdProfilesCheckEndpointNameAvailabilityWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12221,7 +12221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12271,7 +12271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12331,7 +12331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> AfdProfilesCheckHostNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckHostNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12395,7 +12395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailabilityViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12445,7 +12445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> AfdProfilesCheckHostNameAvailabilityViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12496,7 +12496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> AfdProfilesCheckHostNameAvailabilityWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckHostNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12692,7 +12692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12736,7 +12736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12790,7 +12790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdProfilesListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12847,7 +12847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> AfdProfilesListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13034,7 +13034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesValidateSecret(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13082,7 +13082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesValidateSecretViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13140,7 +13140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput> AfdProfilesValidateSecretViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13202,7 +13202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task AfdProfilesValidateSecretViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13250,7 +13250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput> AfdProfilesValidateSecretViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13299,7 +13299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput> AfdProfilesValidateSecretWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13476,6 +13476,2291 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
             }
         }
 
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">The authorization policy properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesCreate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesCreate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The authorization policy properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesCreate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The authorization policy properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="jsonString">Json string supplied to the AuthPoliciesCreate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesCreate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="jsonString">Json string supplied to the AuthPoliciesCreate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create an authorization policy within the specified profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">The authorization policy properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesCreateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesCreateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesCreateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: original-uri
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesCreate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: original-uri
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AuthPoliciesCreate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">The authorization policy properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesCreate_Validate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(profileName),profileName);
+                await eventListener.AssertMinimumLength(nameof(profileName),profileName,1);
+                await eventListener.AssertMaximumLength(nameof(profileName),profileName,260);
+                await eventListener.AssertRegEx(nameof(profileName), profileName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(authPolicyName),authPolicyName);
+                await eventListener.AssertMinimumLength(nameof(authPolicyName),authPolicyName,1);
+                await eventListener.AssertMaximumLength(nameof(authPolicyName),authPolicyName,260);
+                await eventListener.AssertRegEx(nameof(authPolicyName), authPolicyName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesDelete(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes an existing authorization policy within a profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AuthPoliciesDelete" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesDelete_Validate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(profileName),profileName);
+                await eventListener.AssertMinimumLength(nameof(profileName),profileName,1);
+                await eventListener.AssertMaximumLength(nameof(profileName),profileName,260);
+                await eventListener.AssertRegEx(nameof(profileName), profileName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(authPolicyName),authPolicyName);
+                await eventListener.AssertMinimumLength(nameof(authPolicyName),authPolicyName,1);
+                await eventListener.AssertMaximumLength(nameof(authPolicyName),authPolicyName,260);
+                await eventListener.AssertRegEx(nameof(authPolicyName), authPolicyName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+            }
+        }
+
+        /// <summary>Gets an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesGet(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets an existing authorization policy within a profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets an existing authorization policy within a profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AuthPoliciesGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesGet_Validate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(profileName),profileName);
+                await eventListener.AssertMinimumLength(nameof(profileName),profileName,1);
+                await eventListener.AssertMaximumLength(nameof(profileName),profileName,260);
+                await eventListener.AssertRegEx(nameof(profileName), profileName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(authPolicyName),authPolicyName);
+                await eventListener.AssertMinimumLength(nameof(authPolicyName),authPolicyName,1);
+                await eventListener.AssertMaximumLength(nameof(authPolicyName),authPolicyName,260);
+                await eventListener.AssertRegEx(nameof(authPolicyName), authPolicyName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+            }
+        }
+
+        /// <summary>Lists authorization policies associated with the profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesListByProfile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists authorization policies associated with the profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesListByProfile_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists authorization policies associated with the profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult> AuthPoliciesListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesListByProfileWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists authorization policies associated with the profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult> AuthPoliciesListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesListByProfileWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AuthPoliciesListByProfileWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult> AuthPoliciesListByProfileWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesListByProfile" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AuthPoliciesListByProfile" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesListByProfile_Validate(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(profileName),profileName);
+                await eventListener.AssertMinimumLength(nameof(profileName),profileName,1);
+                await eventListener.AssertMaximumLength(nameof(profileName),profileName,260);
+                await eventListener.AssertRegEx(nameof(profileName), profileName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">Authorization policy update properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesUpdate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Authorization policy update properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Authorization policy update properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Cdn/profiles/(?<profileName>[^/]+)/authPolicies/(?<authPolicyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/authPolicies/{authPolicyName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var profileName = _match.Groups["profileName"].Value;
+                var authPolicyName = _match.Groups["authPolicyName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + profileName
+                        + "/authPolicies/"
+                        + authPolicyName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="jsonString">Json string supplied to the AuthPoliciesUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AuthPoliciesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AuthPoliciesUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="jsonString">Json string supplied to the AuthPoliciesUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update an existing authorization policy within a profile.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">Authorization policy update properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Cdn/profiles/"
+                        + global::System.Uri.EscapeDataString(profileName)
+                        + "/authPolicies/"
+                        + global::System.Uri.EscapeDataString(authPolicyName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AuthPoliciesUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy> AuthPoliciesUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AuthPoliciesUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="AuthPoliciesUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="profileName">Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique
+        /// within the resource group.</param>
+        /// <param name="authPolicyName">Name of the authorization policy under the profile.</param>
+        /// <param name="body">Authorization policy update properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AuthPoliciesUpdate_Validate(string subscriptionId, string resourceGroupName, string profileName, string authPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAuthPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(profileName),profileName);
+                await eventListener.AssertMinimumLength(nameof(profileName),profileName,1);
+                await eventListener.AssertMaximumLength(nameof(profileName),profileName,260);
+                await eventListener.AssertRegEx(nameof(profileName), profileName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(authPolicyName),authPolicyName);
+                await eventListener.AssertMinimumLength(nameof(authPolicyName),authPolicyName,1);
+                await eventListener.AssertMaximumLength(nameof(authPolicyName),authPolicyName,260);
+                await eventListener.AssertRegEx(nameof(authPolicyName), authPolicyName, @"^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>
         /// Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. This step prepares the profile for migration and
         /// will be followed by Commit to finalize the migration.
@@ -13496,7 +15781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CdnProfilesToAfdCdnMigrateToAfd(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13547,7 +15832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CdnProfilesToAfdCdnMigrateToAfdViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13608,7 +15893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> CdnProfilesToAfdCdnMigrateToAfdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13673,7 +15958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CdnProfilesToAfdCdnMigrateToAfdViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13724,7 +16009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> CdnProfilesToAfdCdnMigrateToAfdViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13776,7 +16061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> CdnProfilesToAfdCdnMigrateToAfdWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnMigrationToAfdParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14155,7 +16440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14204,7 +16489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14262,7 +16547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> CheckEndpointNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14322,7 +16607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckEndpointNameAvailabilityViaJsonString(string subscriptionId, string resourceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14369,7 +16654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> CheckEndpointNameAvailabilityViaJsonStringWithResult(string subscriptionId, string resourceGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14417,7 +16702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityOutput> CheckEndpointNameAvailabilityWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14601,7 +16886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailability(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14645,7 +16930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14696,7 +16981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14747,7 +17032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityViaJsonString(global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14787,7 +17072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityViaJsonStringWithResult(global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14828,7 +17113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityWithResult(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14932,7 +17217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14978,7 +17263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscriptionViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15032,7 +17317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityWithSubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15087,7 +17372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscriptionViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15130,7 +17415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityWithSubscriptionViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15174,7 +17459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityOutput> CheckNameAvailabilityWithSubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15426,7 +17711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15477,7 +17762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15540,7 +17825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15609,7 +17894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15662,7 +17947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15716,7 +18001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16100,7 +18385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16146,7 +18431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16392,7 +18677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttps(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16438,7 +18723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttpsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16496,7 +18781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsDisableCustomHttpsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16559,7 +18844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsDisableCustomHttpsWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16941,7 +19226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16994,7 +19279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttpsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17059,7 +19344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsEnableCustomHttpsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17129,7 +19414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttpsViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17183,7 +19468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsEnableCustomHttpsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17239,7 +19524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsEnableCustomHttpsWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainHttpsParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17626,7 +19911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17671,7 +19956,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17728,7 +20013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17790,7 +20075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain> CustomDomainsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string customDomainName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17981,7 +20266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsListByEndpoint(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18025,7 +20310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task CustomDomainsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18080,7 +20365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainListResult> CustomDomainsListByEndpointViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18139,7 +20424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainListResult> CustomDomainsListByEndpointWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27944,7 +30229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeNodesList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27982,7 +30267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EdgeNodesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28027,7 +30312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgenodeResult> EdgeNodesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28071,7 +30356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgenodeResult> EdgeNodesListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28241,7 +30526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28292,7 +30577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28354,7 +30639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28421,7 +30706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28473,7 +30758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28526,7 +30811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28908,7 +31193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -28955,7 +31240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29197,7 +31482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29242,7 +31527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29298,7 +31583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29358,7 +31643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29544,7 +31829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29586,7 +31871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29638,7 +31923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointListResult> EndpointsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29693,7 +31978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointListResult> EndpointsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29879,7 +32164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29925,7 +32210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -29982,7 +32267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> EndpointsListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30043,7 +32328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> EndpointsListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30236,7 +32521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsLoadContent(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30287,7 +32572,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsLoadContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30353,7 +32638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsLoadContentViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30585,7 +32870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContent(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30636,7 +32921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30702,7 +32987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30931,7 +33216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsStart(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -30975,7 +33260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31030,7 +33315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsStartViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31089,7 +33374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsStartWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31463,7 +33748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsStop(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31507,7 +33792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31562,7 +33847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsStopViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -31621,7 +33906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsStopWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32001,7 +34286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32054,7 +34339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32118,7 +34403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32187,7 +34472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32241,7 +34526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32296,7 +34581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpoint> EndpointsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32678,7 +34963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32730,7 +35015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32793,7 +35078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> EndpointsValidateCustomDomainViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32861,7 +35146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomainViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32914,7 +35199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> EndpointsValidateCustomDomainViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -32968,7 +35253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainOutput> EndpointsValidateCustomDomainWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33164,7 +35449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocations(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33206,7 +35491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33258,7 +35543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IContinentsResponse> LogAnalyticsGetLogAnalyticsLocationsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33313,7 +35598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IContinentsResponse> LogAnalyticsGetLogAnalyticsLocationsWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33509,7 +35794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> continents, System.Collections.Generic.List<string> countryOrRegions, System.Collections.Generic.List<string> customDomains, System.Collections.Generic.List<string> protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33578,7 +35863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> continents, System.Collections.Generic.List<string> countryOrRegions, System.Collections.Generic.List<string> customDomains, System.Collections.Generic.List<string> protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33657,7 +35942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMetricsResponse> LogAnalyticsGetLogAnalyticsMetricsViaIdentityWithResult(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> continents, System.Collections.Generic.List<string> countryOrRegions, System.Collections.Generic.List<string> customDomains, System.Collections.Generic.List<string> protocols, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33739,7 +36024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMetricsResponse> LogAnalyticsGetLogAnalyticsMetricsWithResult(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> continents, System.Collections.Generic.List<string> countryOrRegions, System.Collections.Generic.List<string> customDomains, System.Collections.Generic.List<string> protocols, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -33961,7 +36246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, System.Collections.Generic.List<string> customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34021,7 +36306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, System.Collections.Generic.List<string> customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34091,7 +36376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRankingsResponse> LogAnalyticsGetLogAnalyticsRankingsViaIdentityWithResult(global::System.String viaIdentity, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, System.Collections.Generic.List<string> customDomains, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34164,7 +36449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRankingsResponse> LogAnalyticsGetLogAnalyticsRankingsWithResult(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, System.Collections.Generic.List<string> customDomains, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34371,7 +36656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResources(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34413,7 +36698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34465,7 +36750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourcesResponse> LogAnalyticsGetLogAnalyticsResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34520,7 +36805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourcesResponse> LogAnalyticsGetLogAnalyticsResourcesWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34714,7 +36999,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34777,7 +37062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34850,7 +37135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse> LogAnalyticsGetWafLogAnalyticsMetricsViaIdentityWithResult(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> ruleTypes, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -34926,7 +37211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafMetricsResponse> LogAnalyticsGetWafLogAnalyticsMetricsWithResult(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string granularity, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> groupBy, System.Collections.Generic.List<string> ruleTypes, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35143,7 +37428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35206,7 +37491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35279,7 +37564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafRankingsResponse> LogAnalyticsGetWafLogAnalyticsRankingsViaIdentityWithResult(global::System.String viaIdentity, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> ruleTypes, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35355,7 +37640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IWafRankingsResponse> LogAnalyticsGetWafLogAnalyticsRankingsWithResult(string subscriptionId, string resourceGroupName, string profileName, System.Collections.Generic.List<string> metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, System.Collections.Generic.List<string> rankings, System.Collections.Generic.List<string> actions, System.Collections.Generic.List<string> ruleTypes, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35562,7 +37847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedRuleSetsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35600,7 +37885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ManagedRuleSetsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35646,7 +37931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinitionList> ManagedRuleSetsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35692,7 +37977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedRuleSetDefinitionList> ManagedRuleSetsListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35857,7 +38142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35893,7 +38178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35936,7 +38221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationsListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -35978,7 +38263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOperationsListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36147,7 +38432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36198,7 +38483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36261,7 +38546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36330,7 +38615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36383,7 +38668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36437,7 +38722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36821,7 +39106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -36867,7 +39152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37113,7 +39398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37158,7 +39443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37215,7 +39500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37277,7 +39562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37468,7 +39753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsListByEndpoint(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37512,7 +39797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37567,7 +39852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupListResult> OriginGroupsListByEndpointViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37626,7 +39911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupListResult> OriginGroupsListByEndpointWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37819,7 +40104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsUpdate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37870,7 +40155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -37933,7 +40218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38002,7 +40287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginGroupsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38055,7 +40340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38109,7 +40394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup> OriginGroupsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38494,7 +40779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38545,7 +40830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38608,7 +40893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38677,7 +40962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38730,7 +41015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -38784,7 +41069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39168,7 +41453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39214,7 +41499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39460,7 +41745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39505,7 +41790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39562,7 +41847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39624,7 +41909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39815,7 +42100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsListByEndpoint(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39859,7 +42144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39914,7 +42199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginListResult> OriginsListByEndpointViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -39973,7 +42258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginListResult> OriginsListByEndpointWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40164,7 +42449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsUpdate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40215,7 +42500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40278,7 +42563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40347,7 +42632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task OriginsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40400,7 +42685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40454,7 +42739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOrigin> OriginsUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string originName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40836,7 +43121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40883,7 +43168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -40940,7 +43225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41000,7 +43285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41046,7 +43331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41093,7 +43378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41463,7 +43748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesDelete(string subscriptionId, string resourceGroupName, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41505,7 +43790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41642,7 +43927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesGet(string subscriptionId, string resourceGroupName, string policyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41683,7 +43968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41734,7 +44019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41787,7 +44072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesGetWithResult(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41964,7 +44249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42004,7 +44289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42053,7 +44338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyList> PoliciesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42103,7 +44388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyList> PoliciesListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42282,7 +44567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesUpdate(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42332,7 +44617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42392,7 +44677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42455,7 +44740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task PoliciesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42504,7 +44789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string policyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42554,7 +44839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicy> PoliciesUpdateWithResult(string subscriptionId, string resourceGroupName, string policyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnWebApplicationFirewallPolicyPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42926,7 +45211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCanMigrate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -42974,7 +45259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCanMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43031,7 +45316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult> ProfilesCanMigrateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43090,7 +45375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCanMigrateViaJsonString(string subscriptionId, string resourceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43136,7 +45421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult> ProfilesCanMigrateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43183,7 +45468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult> ProfilesCanMigrateWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43551,7 +45836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCdnCanMigrateToAfd(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43595,7 +45880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCdnCanMigrateToAfdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43649,7 +45934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult> ProfilesCdnCanMigrateToAfdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -43706,7 +45991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICanMigrateResult> ProfilesCdnCanMigrateToAfdWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44080,7 +46365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreate(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44130,7 +46415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44190,7 +46475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44254,7 +46539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44304,7 +46589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44355,7 +46640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44732,7 +47017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesDelete(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -44777,7 +47062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45016,7 +47301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUri(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45063,7 +47348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUriViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45120,7 +47405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISsoUri> ProfilesGenerateSsoUriViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45180,7 +47465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISsoUri> ProfilesGenerateSsoUriWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45366,7 +47651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGet(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45410,7 +47695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45464,7 +47749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45521,7 +47806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesGetWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45702,7 +47987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45743,7 +48028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45785,7 +48070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45836,7 +48121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult> ProfilesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -45888,7 +48173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult> ProfilesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46068,7 +48353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46113,7 +48398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46168,7 +48453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> ProfilesListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46226,7 +48511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> ProfilesListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46414,7 +48699,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypes(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46459,7 +48744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46514,7 +48799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult> ProfilesListSupportedOptimizationTypesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46572,7 +48857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult> ProfilesListSupportedOptimizationTypesWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46758,7 +49043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46806,7 +49091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult> ProfilesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -46854,7 +49139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileListResult> ProfilesListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47025,7 +49310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47073,7 +49358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47130,7 +49415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> ProfilesMigrateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47189,7 +49474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrateViaJsonString(string subscriptionId, string resourceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47235,7 +49520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> ProfilesMigrateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47282,7 +49567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult> ProfilesMigrateWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrationParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47648,7 +49933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrationAbort(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilesMigrationAbortOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47690,7 +49975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrationAbortViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfilesMigrationAbortOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47917,7 +50202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrationCommit(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -47959,7 +50244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesMigrationCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48192,7 +50477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdate(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48242,7 +50527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48302,7 +50587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48366,7 +50651,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48416,7 +50701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48467,7 +50752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile> ProfilesUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48839,7 +51124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceUsageList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48879,7 +51164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ResourceUsageListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48927,7 +51212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> ResourceUsageListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -48975,7 +51260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceUsageListResult> ResourceUsageListWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49151,7 +51436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesCreate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49205,7 +51490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49271,7 +51556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49343,7 +51628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49399,7 +51684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49456,7 +51741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49843,7 +52128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesDelete(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -49892,7 +52177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50141,7 +52426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesGet(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50189,7 +52474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50249,7 +52534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50314,7 +52599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50505,7 +52790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesListByEndpoint(string subscriptionId, string resourceGroupName, string profileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50549,7 +52834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50604,7 +52889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResult> RoutesListByEndpointViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50663,7 +52948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResult> RoutesListByEndpointWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50857,7 +53142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesUpdate(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50911,7 +53196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -50977,7 +53262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51049,7 +53334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RoutesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51105,7 +53390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51162,7 +53447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> RoutesUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string endpointName, string routeName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51548,7 +53833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsCreate(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51599,7 +53884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51661,7 +53946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet> RuleSetsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51728,7 +54013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51780,7 +54065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet> RuleSetsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -51833,7 +54118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet> RuleSetsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52215,7 +54500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsDelete(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52262,7 +54547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52505,7 +54790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsGet(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52551,7 +54836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52608,7 +54893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet> RuleSetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52669,7 +54954,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet> RuleSetsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52855,7 +55140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52897,7 +55182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -52949,7 +55234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetListResult> RuleSetsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53004,7 +55289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetListResult> RuleSetsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53190,7 +55475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsListResourceUsage(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53236,7 +55521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RuleSetsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53293,7 +55578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> RuleSetsListResourceUsageViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53354,7 +55639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUsagesListResult> RuleSetsListResourceUsageWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53547,7 +55832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreate(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53598,7 +55883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53661,7 +55946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53730,7 +56015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53783,7 +56068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -53837,7 +56122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54221,7 +56506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesDelete(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54267,7 +56552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54513,7 +56798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesGet(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54558,7 +56843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54615,7 +56900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54677,7 +56962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54868,7 +57153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesListByRuleSet(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54912,7 +57197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesListByRuleSetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -54967,7 +57252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResult> RulesListByRuleSetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55026,7 +57311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleListResult> RulesListByRuleSetWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55217,7 +57502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesUpdate(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55268,7 +57553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55331,7 +57616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55400,7 +57685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task RulesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55453,7 +57738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55507,7 +57792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRule> RulesUpdateWithResult(string subscriptionId, string resourceGroupName, string profileName, string ruleSetName, string ruleName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55891,7 +58176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsCreate(string subscriptionId, string resourceGroupName, string profileName, string secretName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55940,7 +58225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56000,7 +58285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret> SecretsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56065,7 +58350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string secretName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56115,7 +58400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret> SecretsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string secretName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56166,7 +58451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret> SecretsCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string secretName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56545,7 +58830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsDelete(string subscriptionId, string resourceGroupName, string profileName, string secretName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56589,7 +58874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56829,7 +59114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsGet(string subscriptionId, string resourceGroupName, string profileName, string secretName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56872,7 +59157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56926,7 +59211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret> SecretsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -56984,7 +59269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecret> SecretsGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string secretName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57170,7 +59455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57212,7 +59497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecretsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57264,7 +59549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretListResult> SecretsListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57319,7 +59604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecretListResult> SecretsListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57505,7 +59790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesCreate(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57554,7 +59839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57614,7 +59899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57679,7 +59964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesCreateViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57729,7 +60014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57780,7 +60065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesCreateWithResult(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58159,7 +60444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesDelete(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58203,7 +60488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58443,7 +60728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesGet(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58486,7 +60771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58540,7 +60825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58598,7 +60883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58784,7 +61069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfile(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58826,7 +61111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58878,7 +61163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResult> SecurityPoliciesListByProfileViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -58933,7 +61218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyListResult> SecurityPoliciesListByProfileWithResult(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59121,7 +61406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesPatch(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59170,7 +61455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59230,7 +61515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesPatchViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59295,7 +61580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task SecurityPoliciesPatchViaJsonString(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59345,7 +61630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesPatchViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59396,7 +61681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy> SecurityPoliciesPatchWithResult(string subscriptionId, string resourceGroupName, string profileName, string securityPolicyName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59776,7 +62061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ValidateProbe(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59824,7 +62109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ValidateProbeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59880,7 +62165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput> ValidateProbeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59937,7 +62222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task ValidateProbeViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -59982,7 +62267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput> ValidateProbeViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -60028,7 +62313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeOutput> ValidateProbeWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateProbeInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-08-01-preview";
+            var apiVersion = @"2026-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

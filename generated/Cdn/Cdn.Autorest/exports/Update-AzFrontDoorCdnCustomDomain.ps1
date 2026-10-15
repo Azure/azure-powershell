@@ -58,6 +58,7 @@ CUSTOMDOMAINUPDATEPROPERTY <IAfdDomainUpdateParameters>: The domain JSON object 
     [ServerTlsGroupPolicy <String>]: Server TLS group policy that will be used for Https.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
@@ -77,6 +78,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [Version <String>]: The name of the Edge Action version
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
