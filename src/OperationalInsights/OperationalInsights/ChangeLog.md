@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.OperationalInsights" Version "0.25.0-preview" PackageReference.
 
 ## Version 3.4.1
 * Updated `PSIdentity` conversions to explicitly use the Operational Insights SDK `Identity` model.
