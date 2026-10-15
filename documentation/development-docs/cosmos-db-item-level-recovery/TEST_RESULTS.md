@@ -2,7 +2,7 @@
 
 **Evidence date: 2026-10-15.** Results use the locally built `Az.DataProtection`
 module and tracked API **2026-06-01**, not an installed module or stale generated
-models. This is an interim acceptance report; update pending statuses before PR.
+models. All seven positive native restore scenarios completed and passed data verification.
 No new public cmdlets or parameters are introduced.
 
 ## Local verification
@@ -58,7 +58,7 @@ Selector names below are synthetic fixture names, not account identifiers.
 | Mixed: `db1/col1`, `db1/col2`, `db2` | PASS: COMPLETED + DOCUMENT/EXCLUSION VERIFIED | 2 databases, 4 containers, 8 documents; excludes the other 3 baseline containers and post-backup churn. |
 | Two containers | PASS: COMPLETED + DOCUMENT/EXCLUSION VERIFIED | 1 database, 2 containers, 4 documents. |
 | Multiple whole databases | PASS: COMPLETED + DOCUMENT/EXCLUSION VERIFIED | 2 databases, 6 containers, 12 documents; excludes the unselected database and post-backup `afterBackup`. |
-| Restore-specific UAMI | PENDING | Native job `InProgress`; completion and restored-data verification remain pending. |
+| Restore-specific UAMI | PASS: COMPLETED + DOCUMENT/EXCLUSION VERIFIED | 1 database, 1 container, 2 documents; explicit attached identity, exact content, and exclusions verified. |
 
 The exact documentation sample `@('DB1/col1', 'Db1/col2', 'db2')` has offline
 case/order and serialization proof. Live mixed selection used the lowercase fixture;
@@ -69,25 +69,27 @@ The final PowerShell client-list change preserves the same payload, proved offli
 Those restores were not repeated live after the narrow typed-list fix; the earlier
 job/data evidence is retained, not represented as a new post-fix execution.
 
-All six completed cases above used the system-assigned managed identity (SAMI).
+The first six completed cases above used the system-assigned managed identity (SAMI).
 Native UAMI `WhatIf` passed without assigning a role. An already attached existing
 identity was selected successfully, and its actual principal mapping worked.
-These identity-selection and no-assignment checks do not establish a completed
-UAMI restore; that native job remains `InProgress`.
+The seventh native restore then completed using that explicit UAMI, and independent
+document, partition-key, inventory, and exclusion checks passed. The run's final
+all-cases-verified checkpoint is true. Source post-backup inventory remained unchanged.
 
 ## Formal benchmark observations
 
 These nine report rows separate positive restore evidence from negative validation.
-Positive G-label associations below are report-local; equivalence to an external
-benchmark definition has not been verified. B15 denotes the nonexistent selector
+The G labels follow the supplied benchmark's selector categories; the same single-container
+alternate-location execution supports G1 and G13 rather than being counted as two runs.
+B15 denotes the nonexistent selector
 observation (named `Nonexistent` by the negative runner).
 
 | Label | Case | Client / offline evidence | Native evidence and status |
 | --- | --- | --- | --- |
-| G1 | Full account | Full request regression proof | PASS: completed; 3 databases / 7 containers / 14 documents. |
-| G3 | Single container | Selector and transport proof | PASS: completed; 1 database / 1 container / 2 documents. |
+| G1 | Single container | Selector and transport proof | PASS: completed; 1 database / 1 container / 2 documents. |
+| G3 | Mixed selection | Ordered mixed criterion proof | PASS: completed; 2 databases / 4 containers / 8 documents; exclusions verified. |
 | G4 | Database selection | Database-only criterion proof | PASS: completed; 1 database / 2 containers / 4 documents; churn excluded. |
-| G13 | Mixed selection | Ordered mixed criterion proof | PASS: completed; 2 databases / 4 containers / 8 documents; exclusions verified. |
+| G13 | Single-container alternate-location restore | Existing ALR request and target proof | PASS: same completed single-container run as G1; no duplicate execution count. |
 | B1 | Missing restore criteria | Deliberate service-model mutation | OBSERVED EXPECTED ARM 400: HTTP 400, `UserErrorInvalidRequestParameter`; no restore submitted. |
 | B2 | Empty selectors | PASS: client fail-fast | `VALIDATION_GAP`: service validation accepted; no restore submitted. |
 | B11 | Malformed three-segment selector | PASS: client fail-fast | `VALIDATION_GAP`: service validation accepted; no restore submitted. |
@@ -106,6 +108,10 @@ it `UnexpectedError`. The sanitizer was corrected to extract `ErrorId`; the meas
 service response is the expected ARM HTTP 400 `UserErrorInvalidRequestParameter`,
 not an unknown service failure. The other four `VALIDATION_GAP` observations remain
 unchanged. No negative restore execution was performed.
+
+Additional native validation correctly rejected an owned nonempty target with
+`RequestNotSupportedOnNonEmptyCosmosDBAccountUserError` and a nonexistent target
+with `ResourceNotFound`. These checks submitted no restore jobs.
 
 The 50-accepted/51-rejected boundary is **offline only**. The live source had seven
 containers; no 51-identifier live test was executed. This finite coverage is not
@@ -127,8 +133,8 @@ only an in-memory module-name correction: 56 pages, 0 issues. It is not a pass o
 the unmodified gate and does not clear that repository blocker. Fresh-process
 MAML generation passed independently; it does not override either gate result.
 
-Remaining acceptance work is UAMI native completion plus document/exclusion
-verification, and resolution or explicit disposition of the known static-analysis
+All seven positive native scenarios and data/exclusion verification are complete.
+Remaining release work is resolution or explicit disposition of the known static-analysis
 and repository Markdown environment/path blockers. Keep the PR **draft** while
 these gates remain pending or incomplete: this report does **not** establish
 readiness to ship. Do not promote an in-progress restore or partial analysis to PASS.

@@ -6,10 +6,10 @@ selecting databases and containers, not individual documents or query results.
 The implementation reuses existing cmdlets, parameters, and generated models;
 it introduces no new cmdlet or parameter and does not bump the API version.
 
-**Validation status:** live acceptance and the final results report remain pending.
-A `Completed` job alone is not proof of restored inventory or document correctness.
-Keep final offline counts, observed service negatives, and job/data-verification
-evidence in a separate results report; this guide makes no live acceptance claim.
+**Validation status:** seven native restore scenarios completed with exact data and
+exclusion verification. See [test results](TEST_RESULTS.md) for runtime test counts,
+service-validation gaps, and repository-tool blockers; a full repository-gate pass
+is not claimed.
 
 ## Scope and prerequisites
 
