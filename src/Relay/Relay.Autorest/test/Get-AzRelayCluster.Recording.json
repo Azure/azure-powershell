@@ -1,0 +1,234 @@
+{
+  "Get-AzRelayCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "122a275c-8ce5-40f4-b6fd-29429a65f356" ],
+        "CommandName": [ "Get-AzRelayCluster" ],
+        "FullCommandName": [ "Get-AzRelayCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "08209348-33ad-4f28-8525-19463c14e172" ],
+        "x-ms-client-request-id": [ "122a275c-8ce5-40f4-b6fd-29429a65f356_RP" ],
+        "x-ms-messaging-activity-id": [ "1daa925b-5b60-4b7a-bb5d-8498fead0a58" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS2EUAP|EASTUS2EUAP|G14|2026-10-13T11:57:38" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "08209348-33ad-4f28-8525-19463c14e172" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261013T115738Z:08209348-33ad-4f28-8525-19463c14e172" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB9168F962DF4716B252F7ADE40358F9 Ref B: SG2AA1040520029 Ref C: 2026-10-13T11:57:38Z" ],
+        "Date": [ "Tue, 13 Oct 2026 11:57:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026\",\"name\":\"RelayClusterTestE2E2026\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"xxXXxXXXXXXXXXXXXXXXXXXXXZdas\":\"dasdxaxadasdSsadasdasdczx\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-09-10T10:01:26.5043563Z\",\"updatedAt\":\"2026-10-13T11:19:00.2550312Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-VAZR00002\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelayCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters?api-version=2026-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters?api-version=2026-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "25266674-f2b0-45f5-a5a2-f53fc85ee2bf" ],
+        "CommandName": [ "Get-AzRelayCluster" ],
+        "FullCommandName": [ "Get-AzRelayCluster_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "x-ms-correlation-request-id": [ "35d63346-335d-4db9-8c8b-1907ac55528f" ],
+        "x-ms-client-request-id": [ "25266674-f2b0-45f5-a5a2-f53fc85ee2bf_RP" ],
+        "x-ms-messaging-activity-id": [ "aec2aa01-ce6c-48f6-8e2e-1088ff388727" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS2EUAP|EASTUS2EUAP|G7|2026-10-13T11:57:38" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "35d63346-335d-4db9-8c8b-1907ac55528f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261013T115738Z:35d63346-335d-4db9-8c8b-1907ac55528f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 434942C89ECE4BAAA13FFB926DE1C86F Ref B: SG2AA1040520029 Ref C: 2026-10-13T11:57:38Z" ],
+        "Date": [ "Tue, 13 Oct 2026 11:57:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "559" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026\",\"name\":\"RelayClusterTestE2E2026\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"xxXXxXXXXXXXXXXXXXXXXXXXXZdas\":\"dasdxaxadasdSsadasdasdczx\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-09-10T10:01:26.5043563Z\",\"updatedAt\":\"2026-10-13T11:19:00.2550312Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-VAZR00002\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelayCluster+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.Relay/clusters?api-version=2026-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.Relay/clusters?api-version=2026-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "acf4b25f-b3c1-4879-929f-01371e5ac9a2" ],
+        "CommandName": [ "Get-AzRelayCluster" ],
+        "FullCommandName": [ "Get-AzRelayCluster_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "" ],
+        "x-ms-correlation-request-id": [ "559ce0b2-2d56-40fb-a455-e9e1f977ffb1" ],
+        "x-ms-client-request-id": [ "acf4b25f-b3c1-4879-929f-01371e5ac9a2_RP" ],
+        "x-ms-messaging-activity-id": [ "afb468cb-49ee-400b-9c80-b73c4879aefd" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS2EUAP|EASTUS2EUAP|G9|2026-10-13T11:57:41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "559ce0b2-2d56-40fb-a455-e9e1f977ffb1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20261013T115741Z:559ce0b2-2d56-40fb-a455-e9e1f977ffb1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B30689D5A72949A6BCF3B47E24A621CD Ref B: SG2AA1040520029 Ref C: 2026-10-13T11:57:39Z" ],
+        "Date": [ "Tue, 13 Oct 2026 11:57:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2475" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/prod-cbn04-503-533-rg/providers/Microsoft.EventHub/clusters/CBN04-503\",\"name\":\"CBN04-503\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"properties\":{\"zoneRedundant\":false,\"createdAt\":\"2021-02-09T20:32:22.417Z\",\"updatedAt\":\"2021-02-09T20:32:22.417Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN04-503\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":4}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/taabtest/providers/Microsoft.EventHub/clusters/taabtestcbncluster\",\"name\":\"taabtestcbncluster\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"abc\":\"pqr\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-05-15T15:35:15.2089282Z\",\"updatedAt\":\"2026-07-13T12:19:05.4560717Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-V51013\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026\",\"name\":\"RelayClusterTestE2E2026\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"xxXXxXXXXXXXXXXXXXXXXXXXXZdas\":\"dasdxaxadasdSsadasdasdczx\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-09-10T10:01:26.5043563Z\",\"updatedAt\":\"2026-10-13T11:19:00.2550312Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-VAZR00002\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/srthupil/providers/Microsoft.EventHub/clusters/srthupilmounttest\",\"name\":\"srthupilmounttest\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"zoneRedundant\":false,\"createdAt\":\"2026-05-05T20:50:42.8531993Z\",\"updatedAt\":\"2026-05-05T20:50:42.8531993Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-V51017\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":1}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/srthupil/providers/Microsoft.EventHub/clusters/eventhubfabricshortcut\",\"name\":\"eventhubfabricshortcut\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{},\"properties\":{\"zoneRedundant\":false,\"createdAt\":\"2026-07-31T01:06:04.7325283Z\",\"updatedAt\":\"2026-07-31T01:06:04.7325283Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-V51026\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":1}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelayCluster+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "5d1c4966-532a-4de4-8dff-12b17f438e88" ],
+        "CommandName": [ "Get-AzRelayCluster" ],
+        "FullCommandName": [ "Get-AzRelayCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "73831157-f5e3-41c7-ba21-515ccc3f11f1" ],
+        "x-ms-client-request-id": [ "5d1c4966-532a-4de4-8dff-12b17f438e88_RP" ],
+        "x-ms-messaging-activity-id": [ "34e70264-9ac8-4a00-a50b-1fd39bc4befe" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS2EUAP|EASTUS2EUAP|G9|2026-10-13T11:57:41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "73831157-f5e3-41c7-ba21-515ccc3f11f1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261013T115741Z:73831157-f5e3-41c7-ba21-515ccc3f11f1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4A0766FE3FD843AA84680F9465D7A316 Ref B: SG2AA1040520029 Ref C: 2026-10-13T11:57:41Z" ],
+        "Date": [ "Tue, 13 Oct 2026 11:57:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026\",\"name\":\"RelayClusterTestE2E2026\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"xxXXxXXXXXXXXXXXXXXXXXXXXZdas\":\"dasdxaxadasdSsadasdasdczx\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-09-10T10:01:26.5043563Z\",\"updatedAt\":\"2026-10-13T11:19:00.2550312Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-VAZR00002\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelayCluster+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026?api-version=2026-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "ea72be52-dc94-4cb4-8e83-ca025b692ff0" ],
+        "CommandName": [ "Get-AzRelayCluster" ],
+        "FullCommandName": [ "Get-AzRelayCluster_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "bdf18ffe-6ff0-44cd-8f36-6ee340f46079" ],
+        "x-ms-client-request-id": [ "ea72be52-dc94-4cb4-8e83-ca025b692ff0_RP" ],
+        "x-ms-messaging-activity-id": [ "b7d4b484-9aa9-4069-8a97-1481d91735ed" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS2EUAP|EASTUS2EUAP|G10|2026-10-13T11:57:42" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "bdf18ffe-6ff0-44cd-8f36-6ee340f46079" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261013T115742Z:bdf18ffe-6ff0-44cd-8f36-6ee340f46079" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0EC3A081F188464E80268E5A563E2635 Ref B: SG2AA1040520029 Ref C: 2026-10-13T11:57:41Z" ],
+        "Date": [ "Tue, 13 Oct 2026 11:57:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/PPGTest/providers/Microsoft.Relay/clusters/RelayClusterTestE2E2026\",\"name\":\"RelayClusterTestE2E2026\",\"type\":\"microsoft.relay/clusters\",\"location\":\"eastus2euap\",\"tags\":{\"xxXXxXXXXXXXXXXXXXXXXXXXXZdas\":\"dasdxaxadasdSsadasdasdczx\"},\"properties\":{\"zoneRedundant\":true,\"createdAt\":\"2026-09-10T10:01:26.5043563Z\",\"updatedAt\":\"2026-10-13T11:19:00.2550312Z\",\"provisioningState\":\"Succeeded\",\"status\":\"Active\",\"metricId\":\"PROD-CBN-VAZR00002\"},\"sku\":{\"name\":\"Dedicated\",\"capacity\":3}}",
+      "isContentBase64": false
+    }
+  }
+}
