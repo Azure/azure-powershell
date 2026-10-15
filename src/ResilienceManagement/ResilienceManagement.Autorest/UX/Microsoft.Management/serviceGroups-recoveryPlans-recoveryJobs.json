@@ -1,0 +1,85 @@
+{
+  "resourceType": "serviceGroups/recoveryPlans/recoveryJobs",
+  "apiVersion": "2026-08-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResilienceManagementRecoveryJob",
+      "description": "Get a RecoveryJob",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/recoveryJobs/{recoveryJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/get-azresiliencemanagementrecoveryjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-RecoveryPlanName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a RecoveryJob",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.recoveryJobName]"
+            },
+            {
+              "name": "-RecoveryPlanName",
+              "value": "[Path.recoveryPlanName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzResilienceManagementRetryRecoveryJob",
+      "description": "This action retries the ongoing recovery orchestration job for resources that failed in previous attempts.",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.AzureResilienceManagement/recoveryPlans/{recoveryPlanName}/recoveryJobs/{recoveryJobName}/retry",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resiliencemanagement/invoke-azresiliencemanagementretryrecoveryjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-RecoveryJobName <String>",
+              "-RecoveryPlanName <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "This action retries the ongoing recovery orchestration job for resources that failed in previous attempts.",
+          "parameters": [
+            {
+              "name": "-RecoveryJobName",
+              "value": "[Path.recoveryJobName]"
+            },
+            {
+              "name": "-RecoveryPlanName",
+              "value": "[Path.recoveryPlanName]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
