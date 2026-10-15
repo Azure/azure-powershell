@@ -41,7 +41,8 @@ Delete subscriptions being monitored by the Elastic monitor resource, removing t
 Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012"
 ```
 
-This command removes the specified subscription from being monitored by the Elastic monitor. No output is returned upon successful completion.
+This command removes the specified subscription from being monitored by the Elastic monitor.
+No output is returned upon successful completion.
 
 ### Example 2: Remove monitored subscription with confirmation prompt
 ```powershell
@@ -54,6 +55,8 @@ This command removes the monitored subscription but prompts for confirmation bef
 ```powershell
 Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" | Remove-AzElasticMonitoredSubscription
 ```
+
+This command gets a specific monitored subscription and pipes it to Remove-AzElasticMonitoredSubscription to remove it from monitoring.
 
 ## PARAMETERS
 
