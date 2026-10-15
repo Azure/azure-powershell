@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 bool isInstance = false;
                 string instanceName = "";
-                if (ParameterSetName == RpParameterSet)
+                if (RecoveryPoint != null)
                 {
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
                     string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
@@ -275,6 +275,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
+                    // The classic SQL Database path computes targetPhysicalPath from the recovery point's
+                    // DataDirectoryPaths. Snapshot restore uses whole-volume remapping built later from the
+                    // snapshot's SourceFilesystemInfo, so skip this (DataDirectoryPaths is null for snapshot
+                    // recovery points and would otherwise throw).
+                    if (!isSnapshotRestore)
+                    {
                     //Get target workload item
                     ODataQuery<BMSWorkloadItemQueryObject> queryParams = null;
                     string backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
@@ -350,7 +356,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             break;
                         }
                     }
-                    
+                    } // end if (!isSnapshotRestore)
+
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
                 }
@@ -362,6 +369,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
 
+                    // The classic SQL Database path computes targetPhysicalPath from the recovery point's
+                    // DataDirectoryPaths. Snapshot restore uses whole-volume remapping built later from the
+                    // snapshot's SourceFilesystemInfo, so skip this (DataDirectoryPaths is null for snapshot
+                    // recovery points and would otherwise throw).
+                    if (!isSnapshotRestore)
+                    {
                     //Get target workload item
                     ODataQuery<BMSWorkloadItemQueryObject> queryParams = null;
                     string backupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
@@ -434,6 +447,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             break;
                         }
                     }
+                    } // end if (!isSnapshotRestore)
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
                 }
@@ -489,7 +503,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // location restore) before piping the config to Restore-AzRecoveryServicesBackupItem.
                     // The recovery point set carries the snapshot RP directly; the point-in-time (log chain)
                     // set fetches it by time from the source item.
-                    SnapshotRecoveryPointInfo snapshotRecoveryPointInfo = ParameterSetName == RpParameterSet ?
+                    SnapshotRecoveryPointInfo snapshotRecoveryPointInfo = RecoveryPoint != null ?
                         GetSnapshotRecoveryPointInfo(vaultName, resourceGroupName) :
                         GetSnapshotRecoveryPointInfoByTime(vaultName, resourceGroupName, Item.Id, PointInTime);
                     if (snapshotRecoveryPointInfo != null && snapshotRecoveryPointInfo.SourceFilesystemInfo != null)
@@ -651,6 +665,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
             {
                 RestorePointQueryType = RestorePointQueryType.Snapshot,
+                GetLatestRpOnly = true,
                 ExtendedInfo = true
             });
 
@@ -667,9 +682,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             foreach (var rp in rpResponse)
             {
                 AzureWorkloadSQLRecoveryPoint sqlRp = rp.Properties as AzureWorkloadSQLRecoveryPoint;
-                if (sqlRp != null && sqlRp.ExtendedInfo != null && sqlRp.ExtendedInfo.SnapshotRecoveryPointInfo != null)
+                if (sqlRp == null)
+                {
+                    continue;
+                }
+
+                // The snapshot info (SourceFilesystemInfo) is only populated when a specific recovery point
+                // is fetched by id, not in a list query, so GET the recovery point detail here.
+                if (sqlRp.ExtendedInfo != null && sqlRp.ExtendedInfo.SnapshotRecoveryPointInfo != null)
                 {
                     return sqlRp.ExtendedInfo.SnapshotRecoveryPointInfo;
+                }
+
+                var rpDetailResponse = ServiceClientAdapter.GetRecoveryPointDetails(
+                    containerUri,
+                    protectedItemName,
+                    rp.Name,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+                AzureWorkloadSQLRecoveryPoint detailRp = rpDetailResponse.Properties as AzureWorkloadSQLRecoveryPoint;
+                if (detailRp != null && detailRp.ExtendedInfo != null && detailRp.ExtendedInfo.SnapshotRecoveryPointInfo != null)
+                {
+                    return detailRp.ExtendedInfo.SnapshotRecoveryPointInfo;
                 }
             }
             return null;
@@ -791,7 +825,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             RecoveryPointBase recoveryPoint = RecoveryPoint;
             DateTime pointInTime = PointInTime;
 
-            if (ParameterSetName == RpParameterSet)
+            if (RecoveryPoint != null)
             {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
                 string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
