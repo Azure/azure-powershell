@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed module generation from newer TypeSpec specifications while retaining the existing generation toolchain.
 
 ## Version 0.2.0
 
@@ -35,4 +36,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.ComputeFleet
-

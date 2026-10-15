@@ -27,9 +27,7 @@ Update-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
  [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -46,9 +44,7 @@ Update-AzComputeFleet -InputObject <IComputeFleetIdentity> [-AdditionalLocationP
  [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
  [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +67,9 @@ Tag               : {
 ProvisioningState : Succeeded
 ```
 
-Updates the tags on a Managed mode Compute Fleet. The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back. This means unspecified properties retain their existing values.
+Updates the tags on a Managed mode Compute Fleet.
+The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back.
+This means unspecified properties retain their existing values.
 
 ### Example 2: Update Spot capacity via pipeline input
 ```powershell
@@ -85,7 +83,9 @@ SpotPriorityProfileCapacity : 8
 ProvisioningState           : Succeeded
 ```
 
-Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set. Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet. Note that `computeProfile` is immutable and cannot be changed after fleet creation.
+Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set.
+Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet.
+Note that `computeProfile` is immutable and cannot be changed after fleet creation.
 
 ## PARAMETERS
 
@@ -634,36 +634,6 @@ Zones in which the Compute Fleet is available
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyDistributionStrategy
-Distribution strategy used for zone allocation policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyZonePreference
-Zone preferences, required when zone distribution strategy is Prioritized.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]
 Parameter Sets: (All)
 Aliases:
 

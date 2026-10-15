@@ -27,9 +27,7 @@ New-AzComputeFleet -Name <String> -ResourceGroupName <String> -Location <String>
  [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
  [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -131,7 +129,8 @@ Name    Location    ProvisioningState
 fleet1  eastus      Succeeded
 ```
 
-Creates a Compute Fleet named "fleet1" in Launch mode with a VM name prefix, using Ubuntu 24.04 LTS with TrustedLaunch security, Premium managed disks, and a regular priority profile targeting 5 VMs with LowestPrice allocation strategy. The fleet is configured with a network interface connected to an existing VNet subnet and NSG.
+Creates a Compute Fleet named "fleet1" in Launch mode with a VM name prefix, using Ubuntu 24.04 LTS with TrustedLaunch security, Premium managed disks, and a regular priority profile targeting 5 VMs with LowestPrice allocation strategy.
+The fleet is configured with a network interface connected to an existing VNet subnet and NSG.
 
 ### Example 2: Create a Compute Fleet with a JSON file
 ```powershell
@@ -144,7 +143,8 @@ Name        Location    ProvisioningState
 spotfleet1  eastus      Succeeded
 ```
 
-Creates a Compute Fleet using a JSON configuration file that contains the full fleet specification including compute profile, VM sizes, and priority settings. This approach is useful for complex configurations or when reusing fleet definitions across deployments.
+Creates a Compute Fleet using a JSON configuration file that contains the full fleet specification including compute profile, VM sizes, and priority settings.
+This approach is useful for complex configurations or when reusing fleet definitions across deployments.
 
 ## PARAMETERS
 
@@ -723,36 +723,6 @@ Zones in which the Compute Fleet is available
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyDistributionStrategy
-Distribution strategy used for zone allocation policy.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyZonePreference
-Zone preferences, required when zone distribution strategy is Prioritized.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]
 Parameter Sets: CreateExpanded
 Aliases:
 

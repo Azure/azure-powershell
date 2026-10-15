@@ -34,7 +34,9 @@ Delete a Fleet
 Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
 ```
 
-Deletes the specified Compute Fleet and all its associated resources. The command does not produce output by default. After deletion, attempting to retrieve the fleet with `Get-AzComputeFleet` will return a "resource not found" error.
+Deletes the specified Compute Fleet and all its associated resources.
+The command does not produce output by default.
+After deletion, attempting to retrieve the fleet with `Get-AzComputeFleet` will return a "resource not found" error.
 
 ### Example 2: Delete a Compute Fleet with PassThru
 ```powershell

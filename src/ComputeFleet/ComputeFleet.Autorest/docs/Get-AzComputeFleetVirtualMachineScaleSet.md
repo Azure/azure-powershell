@@ -33,7 +33,9 @@ Name                    OperationStatus
 fleet5-001_44ad8d96     Failed
 ```
 
-Lists all Virtual Machine Scale Set resources managed by the specified Compute Fleet. This cmdlet is only supported for fleets in Managed mode. Each VMSS is named with the fleet name followed by a unique identifier.
+Lists all Virtual Machine Scale Set resources managed by the specified Compute Fleet.
+This cmdlet is only supported for fleets in Managed mode.
+Each VMSS is named with the fleet name followed by a unique identifier.
 
 ### Example 2: Get detailed properties of Virtual Machine Scale Sets in a fleet
 ```powershell
@@ -46,7 +48,8 @@ Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/re
 OperationStatus         : Failed
 ```
 
-Retrieves the Virtual Machine Scale Sets in the fleet and displays their name, full ARM resource ID, and operation status. The OperationStatus indicates whether the VMSS was provisioned successfully.
+Retrieves the Virtual Machine Scale Sets in the fleet and displays their name, full ARM resource ID, and operation status.
+The OperationStatus indicates whether the VMSS was provisioned successfully.
 
 ## PARAMETERS
 

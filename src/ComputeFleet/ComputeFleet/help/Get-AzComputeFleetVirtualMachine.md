@@ -38,7 +38,8 @@ fleet1prefix_b223f9c1_3      Succeeded
 fleet1prefix_b223f9c1_4      Succeeded
 ```
 
-Lists all virtual machines belonging to the specified Launch mode Compute Fleet. Each VM is named with the fleet's VM name prefix followed by a unique identifier.
+Lists all virtual machines belonging to the specified Launch mode Compute Fleet.
+Each VM is named with the fleet's VM name prefix followed by a unique identifier.
 
 ### Example 2: Get full details of virtual machines in a fleet
 ```powershell
