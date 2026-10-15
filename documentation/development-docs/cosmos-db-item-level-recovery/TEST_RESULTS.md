@@ -76,7 +76,9 @@ The separate review finding for explicitly bound null Cosmos identity selection
 is also fixed: full and ILR Cosmos requests reject it before the generated setter
 can coerce null to false. Unbound/SAMI/UAMI cases and the previous non-Cosmos
 null/false construction behavior remain covered. No Azure operations were rerun
-for this CI follow-up.
+as part of those guarded offline/playback runs. A separate incorrectly initialized
+legacy baseline diagnostic is excluded from this test evidence; it does not prove
+that the broader Desktop failures are pre-existing or add live Cosmos acceptance.
 
 ## Native lifecycle and restored data
 
