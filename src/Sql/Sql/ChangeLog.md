@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added short-term backup immutability support to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`.
+    - Added the `LockImmutability` parameter and `ImmutabilityStatus` output property.
+    - Restricted `LockImmutability` to live Managed Instance databases.
+    - Added an irreversible-action confirmation prompt when locking immutability, which can be bypassed with `-Force`.
 * Added immutability support for Azure SQL Managed Instance long-term retention backups.
     - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
     - Exposed immutability state in managed database long-term retention policy and backup output.

@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// </summary>
         public int? DiffBackupIntervalInHours { get; set; }
 
+        internal bool? LockImmutability { get; set; }
+
+        /// <summary>
+        /// Gets the current backup immutability status.
+        /// </summary>
+        public string ImmutabilityStatus { get; set; }
+
         /// <summary>
         /// Construct AzureSqlDatabaseBackupShortTermRetentionPolicyModel from Management.Sql.BackupShortTermRetentionPolicy object
         /// </summary>
@@ -61,7 +68,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
             ServerName = serverName;
             DatabaseName = databaseName;
             RetentionDays = policy.RetentionDays;
-            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours;
+            DiffBackupIntervalInHours = policy.DiffBackupIntervalInHours.HasValue ? Convert.ToInt32(policy.DiffBackupIntervalInHours.Value) : (int?)null;
+            LockImmutability = policy.LockImmutability;
+            ImmutabilityStatus = policy.ImmutabilityStatus;
         }
     }
 }

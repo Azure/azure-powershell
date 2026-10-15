@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         OutputType(typeof(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureSqlManagedDatabaseBackupShortTermRetentionPolicy : AzureSqlManagedDatabaseBackupCmdletBase<AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel>
     {
+        private bool _operationCancelled;
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -109,11 +111,32 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int RetentionDays { get; set; }
 
         /// <summary>
+        /// Gets or sets whether to lock backup immutability.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether to lock the immutability of backups governed by this policy. This parameter is supported only for live managed databases.")]
+        public bool? LockImmutability { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to skip confirmation when locking backup immutability.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Skip confirmation when locking backup immutability.")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel GetEntity()
         {
+            if (this.DeletionDate.HasValue && this.IsParameterBound(c => c.LockImmutability))
+            {
+                throw new PSArgumentException(
+                    "LockImmutability is not supported for restorable dropped managed databases.",
+                    nameof(LockImmutability));
+            }
+
             if (this.DeletionDate.HasValue)
             {
                 return ModelAdapter.ManagedBackupShortTermRetentionPoliciesDropped(
@@ -138,7 +161,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel ApplyUserInputToModel(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel model)
         {
+            _operationCancelled = false;
             model.RetentionDays = RetentionDays;
+            model.LockImmutability = this.IsParameterBound(c => c.LockImmutability) ? LockImmutability : null;
             return model;
         }
 
@@ -149,15 +174,28 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The input entity</returns>
         protected override AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel PersistChanges(AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel entity)
         {
+            if (LockImmutability == true && !Force.IsPresent && !ShouldContinue(
+                "Locking backup immutability cannot be reverted.",
+                "Confirm locking backup immutability"))
+            {
+                _operationCancelled = true;
+                return null;
+            }
+
             if (this.DeletionDate.HasValue)
             {
-                ModelAdapter.UpsertDeletedManagedDatabaseRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName + "," + this.DeletionDate.Value.ToFileTimeUtc(), entity);
+                return ModelAdapter.UpsertDeletedManagedDatabaseRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName + "," + this.DeletionDate.Value.ToFileTimeUtc(), entity);
             }
-            else
-            {
-                ModelAdapter.UpsertManagedDatabaseRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName, entity);
-            }
-            return entity;
+
+            return ModelAdapter.UpsertManagedDatabaseRetentionPolicy(this.ResourceGroupName, this.InstanceName, this.DatabaseName, entity);
+        }
+
+        /// <summary>
+        /// Returns whether the updated policy should be written to the pipeline.
+        /// </summary>
+        protected override bool WriteResult()
+        {
+            return base.WriteResult() && !_operationCancelled;
         }
     }
 }
