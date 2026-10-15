@@ -14,11 +14,11 @@ The operation to create a license.
 
 ### CreateExpanded (Default)
 ```
-New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
- [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
- [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Location <String>]
- [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzConnectedLicense -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>]
+ [-LicenseDetailState <String>] [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
+ [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,11 +45,11 @@ New-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-Subscription
 
 ### CreateViaIdentityExpanded
 ```
-New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> [-LicenseDetailEdition <String>]
- [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>] [-LicenseDetailTarget <String>]
- [-LicenseDetailType <String>] [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>]
- [-LicenseType <String>] [-Location <String>] [-Tag <Hashtable>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Location <String>
+ [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
+ [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
+ [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -292,7 +292,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -61,6 +61,8 @@ directive:
       var trackedProps = { "tags": {"type": "object", "description": "Resource tags.", "additionalProperties": {"type": "string"}}, "location": {"type": "string", "description": "The geo-location where the resource lives", "x-ms-mutability": ["read", "create"]} };
       if (!$.properties.tags) { $.properties.tags = trackedProps.tags; }
       if (!$.properties.location) { $.properties.location = trackedProps.location; }
+      $.required = $.required || [];
+      if ($.required.indexOf("location") < 0) { $.required.push("location"); }
       $.allOf = [{"$ref": "../../../../../../common-types/resource-management/v6/types.json#/definitions/Resource"}];
       return $;
 
