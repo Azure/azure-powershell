@@ -140,8 +140,7 @@ function Test-Gallery
         $description2 = "Updated Description";
 
         # Gallery
-        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc `
-            -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
 
         $wildcardRgQuery = ($rgname -replace ".$") + "*"
         $wildcardNameQuery = ($galleryName -replace ".$") + "*"
@@ -160,9 +159,6 @@ function Test-Gallery
 
         $gallery = Get-AzGallery -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
-        Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
-        Assert-AreEqual 30 $gallery.SoftDeletePolicy.RetentionPeriodInDays;
-        Assert-AreEqual 7 $gallery.SoftDeletePolicy.GracePeriodInDays;
         $output = $gallery | Out-String;
 
         $gallery = Get-AzGallery -Name $wildcardNameQuery;
@@ -351,94 +347,7 @@ function Test-Gallery
                                    $image.Id 1 $endOfLifeDate $targetRegions;
         $output = $version | Out-String;
 
-        # Step 1: Confirm bypass deletion honors WhatIf without deleting the active version
-        Remove-AzGalleryImageVersion -ResourceId $version.Id -BypassSoftDelete -Force -WhatIf;
-        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $galleryImageVersionName $version.Name;
-
-        # Step 2: Soft-delete the version and discover it through each input form
-        Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Force -WhatIf;
-        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $galleryImageVersionName $version.Name;
-
-        $deleteJob = Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Force -AsJob;
-        $deleteJob | Wait-Job;
-        $deleteJob | Receive-Job;
-        $softDeletedVersion = Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                                                                    -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual "PSGallerySoftDeletedImageVersion" $softDeletedVersion.GetType().Name;
-        Assert-AreEqual $galleryImageVersionName $softDeletedVersion.Name;
-        Assert-NotNull $softDeletedVersion.SoftDeletedTime;
-        Assert-NotNull $softDeletedVersion.ConsumptionEndTime;
-        Assert-NotNull $softDeletedVersion.HardDeletionTargetTime;
-
-        $allSoftDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName);
-        Assert-AreEqual 1 $allSoftDeletedVersions.Count;
-        Assert-AreEqual $galleryImageVersionName $allSoftDeletedVersions[0].Name;
-
-        $softDeletedByResourceId = Get-AzGallerySoftDeletedImageVersion `
-            -GalleryImageDefinitionResourceId $definition.Id -Name $galleryImageVersionName;
-        Assert-AreEqual $softDeletedVersion.Id $softDeletedByResourceId.Id;
-        $softDeletedByObject = @($definition | Get-AzGallerySoftDeletedImageVersion);
-        Assert-AreEqual 1 $softDeletedByObject.Count;
-        Assert-AreEqual $softDeletedVersion.Name $softDeletedByObject[0].Name;
-        $namedSoftDeletedByObject = @($definition | Get-AzGallerySoftDeletedImageVersion -Name $galleryImageVersionName);
-        Assert-AreEqual 1 $namedSoftDeletedByObject.Count;
-        Assert-AreEqual $softDeletedVersion.Name $namedSoftDeletedByObject[0].Name;
-
-        # Step 3: Restore the version and verify it is active and absent from the recycle bin
-        Assert-Throws {
-            Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location 'eastus2';
-        }
-        $restoredVersion = Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc;
-        Assert-AreEqual "PSGalleryImageVersion" $restoredVersion.GetType().Name;
-        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $galleryImageVersionName $version.Name;
-        Assert-Throws {
-            Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-                -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc;
-        }
-        $softDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName);
-        Assert-AreEqual 0 $softDeletedVersions.Count;
-
-        # Step 4: Verify restore works as a job and returns the public model type
-        $deleteJob = Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Force -AsJob;
-        $deleteJob | Wait-Job;
-        $deleteJob | Receive-Job;
-        $restoreJob = Restore-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -Location $loc -AsJob;
-        $restoreJob | Wait-Job;
-        $restoredFromJob = @($restoreJob | Receive-Job);
-        Assert-AreEqual 1 $restoredFromJob.Count;
-        Assert-AreEqual "PSGalleryImageVersion" $restoredFromJob[0].GetType().Name;
-        $restoredVersion = $restoredFromJob[0];
-        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $galleryImageVersionName $version.Name;
-
-        # Step 5: Exercise the pipeline-input and name-based bypass-delete parameter sets
-        Remove-AzGalleryImageVersion -InputObject $restoredVersion -BypassSoftDelete -Force -WhatIf;
-        Remove-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName -BypassSoftDelete -Force -WhatIf;
-        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
-        Assert-AreEqual $galleryImageVersionName $version.Name;
-        $deleteJob = $restoredVersion | Remove-AzGalleryImageVersion -BypassSoftDelete -Force -AsJob;
-        $deleteJob | Wait-Job;
-        $deleteJob | Receive-Job;
-        $softDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
-            -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName);
-        Assert-AreEqual 0 $softDeletedVersions.Count;
+        $version | Remove-AzGalleryImageVersion -Force;
         Wait-Seconds 300;
         $definition | Remove-AzGalleryImageDefinition -Force;
         Wait-Seconds 300;
@@ -511,6 +420,117 @@ function Test-GallerySoftDeletePolicy
     finally
     {
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
+
+<#
+.SYNOPSIS
+Restore a soft-deleted gallery image version synchronously and as a job.
+#>
+function Test-GalleryImageVersionRestore
+{
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $galleryImageName = 'galleryimage' + $rgname;
+    $galleryImageVersionName = '1.0.0';
+    $loc = (Get-ComputeVMLocation).Replace(' ', '');
+    $gallery = $null;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc `
+            -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7;
+        Assert-True { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
+
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+            -Location $loc -Publisher 'Contoso' -Offer 'RestoreTest' -Sku 'Windows' `
+            -OsState Generalized -OsType Windows -HyperVGeneration V1;
+
+        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS `
+            -OsType Windows -CreateOption Empty -HyperVGeneration V1;
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName ('ossnapshot' + $rgname) -Snapshot $snapshotConfig;
+        $versionParameters = @{
+            ResourceGroupName = $rgname
+            GalleryName = $galleryName
+            GalleryImageDefinitionName = $galleryImageName
+            Name = $galleryImageVersionName
+        };
+        $version = New-AzGalleryImageVersion @versionParameters -Location $loc -ReplicaCount 1 `
+            -StorageAccountType Standard_LRS -TargetRegion @{ Name = $loc; ReplicaCount = 1 } `
+            -OSDiskImage @{ Source = @{ Id = $snapshot.Id } };
+        Assert-AreEqual 'Succeeded' $version.ProvisioningState;
+
+        Remove-AzGalleryImageVersion @versionParameters -Force;
+        $softDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion @versionParameters);
+        Assert-AreEqual 1 $softDeletedVersions.Count;
+        $softDeletedVersion = $softDeletedVersions[0];
+        Assert-AreEqual 'PSGallerySoftDeletedImageVersion' $softDeletedVersion.GetType().Name;
+        Assert-AreEqual $galleryImageVersionName $softDeletedVersion.Name;
+        Assert-AreEqual $version.Location $softDeletedVersion.Location;
+        Assert-NotNull $softDeletedVersion.SoftDeletedTime;
+
+        Restore-AzGalleryImageVersion @versionParameters -Location $softDeletedVersion.Location -WhatIf;
+        Assert-AreEqual 1 @(Get-AzGallerySoftDeletedImageVersion @versionParameters).Count;
+
+        $restoredVersion = Restore-AzGalleryImageVersion @versionParameters -Location $softDeletedVersion.Location;
+        Assert-AreEqual 'PSGalleryImageVersion' $restoredVersion.GetType().Name;
+        Assert-AreEqual $version.Id $restoredVersion.Id;
+        Assert-AreEqual $galleryImageVersionName $restoredVersion.Name;
+        Assert-AreEqual $version.Location $restoredVersion.Location;
+        Assert-AreEqual 'Succeeded' $restoredVersion.ProvisioningState;
+        $activeVersion = Get-AzGalleryImageVersion @versionParameters;
+        Assert-AreEqual $version.Id $activeVersion.Id;
+        Assert-AreEqual 'Succeeded' $activeVersion.ProvisioningState;
+        Assert-AreEqual $snapshot.Id $activeVersion.StorageProfile.OSDiskImage.Source.Id;
+        Assert-AreEqual 0 @(Get-AzGallerySoftDeletedImageVersion @versionParameters).Count;
+
+        Remove-AzGalleryImageVersion @versionParameters -Force;
+        $softDeletedVersions = @(Get-AzGallerySoftDeletedImageVersion @versionParameters);
+        Assert-AreEqual 1 $softDeletedVersions.Count;
+        $restoreJob = Restore-AzGalleryImageVersion @versionParameters -Location $softDeletedVersions[0].Location -AsJob;
+        $restoreJob | Wait-Job | Out-Null;
+        Assert-AreEqual 'Completed' $restoreJob.State;
+        $restoredFromJob = @($restoreJob | Receive-Job -ErrorAction Stop);
+        Assert-AreEqual 1 $restoredFromJob.Count;
+        Assert-AreEqual 'PSGalleryImageVersion' $restoredFromJob[0].GetType().Name;
+        Assert-AreEqual $version.Id $restoredFromJob[0].Id;
+        Assert-AreEqual 'Succeeded' $restoredFromJob[0].ProvisioningState;
+        $activeVersion = Get-AzGalleryImageVersion @versionParameters;
+        Assert-AreEqual $version.Id $activeVersion.Id;
+        Assert-AreEqual 'Succeeded' $activeVersion.ProvisioningState;
+        Assert-AreEqual 0 @(Get-AzGallerySoftDeletedImageVersion @versionParameters).Count;
+
+        # -WhatIf must not invoke the irreversible delete
+        Remove-AzGalleryImageVersion @versionParameters -BypassSoftDelete -WhatIf;
+        $activeVersion = Get-AzGalleryImageVersion @versionParameters;
+        Assert-AreEqual $version.Id $activeVersion.Id;
+
+        # Permanent delete skips the recycle bin
+        Remove-AzGalleryImageVersion @versionParameters -BypassSoftDelete -Force;
+        Assert-AreEqual 0 @(Get-AzGallerySoftDeletedImageVersion @versionParameters).Count;
+        Assert-ThrowsContains { Get-AzGalleryImageVersion @versionParameters -ErrorAction Stop } 'NotFound';
+
+        # Disable soft delete for future deletions
+        Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSoftDelete | Out-Null;
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-False { $gallery.SoftDeletePolicy.IsSoftDeleteEnabled };
+        Assert-AreEqual 30 $gallery.SoftDeletePolicy.RetentionPeriodInDays;
+        Assert-AreEqual 7 $gallery.SoftDeletePolicy.GracePeriodInDays;
+    }
+    finally
+    {
+        try
+        {
+            if ($null -ne $gallery)
+            {
+                Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSoftDelete | Out-Null;
+            }
+        }
+        finally
+        {
+            Clean-ResourceGroup $rgname;
+        }
     }
 }
 
