@@ -102,7 +102,7 @@ Describe 'Get-AzWvdHostPool' {
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `
+                                | Where-Object { $_.Name -in @($env.HostPool, $env.HostPool2) } `
                                 | Sort-Object -Property Name
                 $hostPools[0].Name | Should -Be $env.HostPool
                 $hostPools[0].Location | Should -Be $env.Location
@@ -172,7 +172,7 @@ Describe 'Get-AzWvdHostPool' {
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'HostPoolPowershellContained2' `
+                                -Name $env.HostPool2 `
                                 -Location $env.Location `
                                 -HostPoolType 'Pooled' `
                                 -LoadBalancerType 'DepthFirst' `
@@ -190,7 +190,7 @@ Describe 'Get-AzWvdHostPool' {
                                 -ManagementType 'Standard'
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                                | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `
+                                | Where-Object { $_.Name -in @($env.HostPool, $env.HostPool2) } `
                                 | Sort-Object -Property Name
                 $hostPools[0].Name | Should -Be $env.HostPool
                 $hostPools[0].Location | Should -Be $env.Location
@@ -209,7 +209,7 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPools[0].StartVMOnConnect | Should -Be $false
 
-                $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
+                $hostPools[1].Name | Should -Be $env.HostPool2
                 $hostPools[1].Location | Should -Be $env.Location
                 $hostPools[1].HostPoolType | Should -Be 'Pooled'              
                 $hostPools[1].LoadBalancerType | Should -Be 'DepthFirst'
@@ -233,7 +233,7 @@ Describe 'Get-AzWvdHostPool' {
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                         -ResourceGroupName $env.ResourceGroup `
-                        -Name 'HostPoolPowershellContained2'
+                        -Name $env.HostPool2
         }
     }
 }
