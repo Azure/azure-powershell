@@ -4,7 +4,7 @@
 # Pester 4.10.1, offline only. Exercise the artifact's exported initializer and
 # native internal model proxy. Do not dot-source a replacement initializer, load
 # recordings, obtain a context, or call Azure. Run in a fresh process through the
-# unit-test runner after the main workflow builds/copies the current source.
+# standard Invoke-Pester command after the main workflow builds/copies the current source.
 Describe 'CosmosRestoreSharedIdentity' -Tag 'Unit', 'CosmosRestore' {
     BeforeAll {
         if ((Get-Module Pester).Version -ne [version]'4.10.1') {

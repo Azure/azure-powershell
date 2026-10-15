@@ -1,8 +1,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
-# Pester 4.10.1, offline only. Run with Invoke-CosmosRestoreUnitTests.ps1 and
-# -TestName CosmosRestoreTransport in a fresh process. Do not dot-source custom
+# Pester 4.10.1, offline only. Select this file with Invoke-Pester in a fresh
+# process after importing the built artifact. Do not dot-source custom
 # functions or load loadEnv/HttpPipelineMocking: recording playback matches URLs,
 # not request bodies. These tests exercise the artifact's exported public commands,
 # native internal cmdlets and generated HTTP serializer, not a hand-made ToJson call.

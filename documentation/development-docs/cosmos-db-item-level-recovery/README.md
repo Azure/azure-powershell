@@ -146,16 +146,11 @@ and [trigger](../../../src/DataProtection/DataProtection.Autorest/custom/Cmdlets
 
 ## Local tests
 
-Build the tracked DataProtection module before testing. In a fresh process, run
-the [offline test runner](../../../tools/Test/Invoke-CosmosRestoreUnitTests.ps1):
-
-```powershell
-pwsh -NoProfile -File ./tools/Test/Invoke-CosmosRestoreUnitTests.ps1
-```
-
-The runner imports the local artifact, checks the loaded model assembly, uses
-Pester 4.10.1, and rejects zero tests, failures, skips, or pending cases. Azure
-boundaries are mocked; no live provisioning or recording is needed.
+Build the tracked DataProtection module before testing. Use standard Pester 4.10.1
+with explicit source-test file selection and the built artifact imported in a fresh
+process. No separate Cosmos unit-test runner is required. The exact command and
+test-placement rationale are in the [command-level test matrix](test-matrix/README.md).
+Azure boundaries are mocked; no live provisioning or recording is needed.
 
 | Suite | Coverage |
 | --- | --- |
@@ -164,8 +159,9 @@ boundaries are mocked; no live provisioning or recording is needed.
 | [CosmosRestorePermission](../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestorePermission.Tests.ps1) | Identity resolution, permission scope, and mocked write-safety checks. |
 | [CosmosRestoreTransport](../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreTransport.Tests.ps1) | Generated wire JSON and native validation/trigger dispatch assertions. |
 | [CosmosRestoreHarness](../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreHarness.Tests.ps1) | Offline scenario/negative harness guards, identity handling, and sanitized failure reporting. |
+| [CosmosRestoreSharedIdentity](../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreSharedIdentity.Tests.ps1) | Exported initializer compatibility across Disk, PostgreSQL, PG Flex, MySQL, and ADLS. |
 
-Read current counts from the runner's NUnit output and separate results report.
+Read current counts from Pester's NUnit output and the separate results report.
 Offline success is not live acceptance; playback alone does not certify serialization.
 
 ## Opt-in live scenario

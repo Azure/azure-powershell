@@ -70,7 +70,7 @@ Those restores were not repeated live after the narrow typed-list fix; the earli
 job/data evidence is retained, not represented as a new post-fix execution.
 
 The first six completed cases above used the system-assigned managed identity (SAMI).
-Native UAMI `WhatIf` passed without assigning a role. An already attached existing
+Native UAMI restore-permission `WhatIf` passed without assigning a role. An already attached existing
 identity was selected successfully, and its actual principal mapping worked.
 The seventh native restore then completed using that explicit UAMI, and independent
 document, partition-key, inventory, and exclusion checks passed. The run's final
@@ -141,8 +141,8 @@ readiness to ship. Do not promote an in-progress restore or partial analysis to 
 
 ## Reproduction and evidence handling
 
-From the repository root, use the [offline runner](../../../tools/Test/Invoke-CosmosRestoreUnitTests.ps1),
-[native scenario runner](../../../tools/Test/Invoke-CosmosRestoreScenario.ps1), and
+Use the standard Pester invocation in the [command-level test matrix](test-matrix/README.md),
+the [native scenario runner](../../../tools/Test/Invoke-CosmosRestoreScenario.ps1), and
 [negative validation runner](../../../tools/Test/Invoke-CosmosRestoreNegativeTests.ps1).
 See the [development guide](README.md) for prerequisites, opt-in phases, identity,
 selector contracts, and the validation-versus-restore distinction; the
