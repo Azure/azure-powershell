@@ -76,6 +76,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SwitchParameter UseSecondaryRegion { get; set; }
 
+        /// <summary>
+        /// Id of the base snapshot recovery point. Used to list the point-in-time log ranges available on
+        /// top of a SQL (MSSQL) Instance snapshot.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseSnapshotRecoveryPointId)]
+        [ValidateNotNullOrEmpty]
+        public string BaseSnapshotRecoveryPointId { get; set; }
+
+        /// <summary>
+        /// Id of the datasource of the base snapshot recovery point.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPoint.BaseRecoveryPointDatasourceId)]
+        [ValidateNotNullOrEmpty]
+        public string BaseRecoveryPointDatasourceId { get; set; }
+
+        /// <summary>
+        /// Recovery mode to filter the log ranges (e.g. SnapshotAttachAndRecover) for SQL (MSSQL) items.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RecoveryPoint.RecoveryMode)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("SnapshotAttachAndRecover", "SnapshotAttach", "RecoveryUsingSnapshot")]
+        public string RecoveryMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -142,6 +165,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(RecoveryPointParams.StartDate, rangeStart);
                     providerParameters.Add(RecoveryPointParams.EndDate, rangeEnd);
                     providerParameters.Add(RecoveryPointParams.RestorePointQueryType, "Log");
+                    if (!string.IsNullOrEmpty(BaseSnapshotRecoveryPointId))
+                    {
+                        providerParameters.Add(RecoveryPointParams.BaseSnapshotRPId, BaseSnapshotRecoveryPointId);
+                    }
+                    if (!string.IsNullOrEmpty(BaseRecoveryPointDatasourceId))
+                    {
+                        providerParameters.Add(RecoveryPointParams.BaseRPDatasourceId, BaseRecoveryPointDatasourceId);
+                    }
+                    if (!string.IsNullOrEmpty(RecoveryMode))
+                    {
+                        providerParameters.Add(RecoveryPointParams.RecoveryMode, RecoveryMode);
+                    }
 
                     PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(providerParameters, ServiceClientAdapter);

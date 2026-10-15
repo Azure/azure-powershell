@@ -1090,6 +1090,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
             bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            string baseSnapshotRpId = ProviderData.ContainsKey(RecoveryPointParams.BaseSnapshotRPId) ?
+                (string)ProviderData[RecoveryPointParams.BaseSnapshotRPId] : null;
+            string baseRpDatasourceId = ProviderData.ContainsKey(RecoveryPointParams.BaseRPDatasourceId) ?
+                (string)ProviderData[RecoveryPointParams.BaseRPDatasourceId] : null;
+            string recoveryModeFilter = ProviderData.ContainsKey(RecoveryPointParams.RecoveryMode) ?
+                (string)ProviderData[RecoveryPointParams.RecoveryMode] : null;
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
@@ -1103,7 +1109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ExtendedInfo = true,
                 StartDate = startDate,
                 EndDate = endDate,
-                RestorePointQueryType = restorePointQueryType
+                RestorePointQueryType = restorePointQueryType,
+                BaseSnapshotRpId = baseSnapshotRpId,
+                BaseRpDatasourceId = baseRpDatasourceId,
+                RecoveryMode = recoveryModeFilter
             });
 
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();

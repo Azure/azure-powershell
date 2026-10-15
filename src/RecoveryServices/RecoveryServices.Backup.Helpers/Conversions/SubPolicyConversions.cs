@@ -34,11 +34,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (schedulePolicy.FullBackupSchedulePolicy != null &&
                 retentionPolicy.FullBackupRetentionPolicy != null)
             {
+                // SnapshotFull sub-policies (SQL Instance snapshot / SnapshotV2 policies) do not support
+                // tiering; emitting a tieringPolicy (even DoNotTier) is rejected by the service. Only the
+                // standard "Full" sub-policy carries a tiering policy.
                 subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy(
                     isSnapshotInstancePolicy ? "SnapshotFull" : "Full",
                     GetServiceClientSimpleSchedulePolicy(schedulePolicy.FullBackupSchedulePolicy),
                     GetServiceClientLongTermRetentionPolicy(retentionPolicy.FullBackupRetentionPolicy),
-                    GetServiceClientTieringPolicy(tieringPolicy, isSmartTieringEnabled)));
+                    isSnapshotInstancePolicy ? null : GetServiceClientTieringPolicy(tieringPolicy, isSmartTieringEnabled)));
             }
 
             // Snapshot instance policies support SnapshotFull + Log, but not Differential.
