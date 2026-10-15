@@ -503,7 +503,7 @@ Describe 'CosmosRestoreRegression' -Tag 'Unit', 'CosmosRestore' {
         $invalidIdentityCases = foreach ($workload in @('CosmosILR', 'CosmosFull', 'Blob', 'AKS', 'ElasticSAN')) {
             $kinds = @('TrueAndUami', 'TrueAndEmptyUami', 'TrueAndNullUami', 'UamiOnly', 'EmptyUamiOnly', 'NullUamiOnly')
             if ($workload -in @('CosmosILR', 'CosmosFull')) {
-                $kinds += @('FalseOnly', 'FalseNull', 'FalseEmpty', 'FalseWhitespace', 'FalseInvalidId', 'FalseWrongProvider', 'FalseChildId', 'FalseQuery', 'FalseFragment')
+                $kinds += @('FalseOnly', 'FalseNull', 'FalseEmpty', 'FalseWhitespace', 'FalseInvalidId', 'FalseWrongProvider', 'FalseChildId', 'FalseQuery', 'FalseFragment', 'NullOnly', 'NullWithUami')
             }
             foreach ($kind in $kinds) {
                 @{ Workload = $workload; Kind = $kind }
@@ -522,6 +522,8 @@ Describe 'CosmosRestoreRegression' -Tag 'Unit', 'CosmosRestore' {
                 'FalseChildId' { @{ UseSystemAssignedIdentity = $false; UserAssignedIdentityArmId = "$uamiId/child" } }
                 'FalseQuery' { @{ UseSystemAssignedIdentity = $false; UserAssignedIdentityArmId = "${uamiId}?query=1" } }
                 'FalseFragment' { @{ UseSystemAssignedIdentity = $false; UserAssignedIdentityArmId = "${uamiId}#fragment" } }
+                'NullOnly' { @{ UseSystemAssignedIdentity = $null } }
+                'NullWithUami' { @{ UseSystemAssignedIdentity = $null; UserAssignedIdentityArmId = $uamiId } }
                 'TrueAndUami' { @{ UseSystemAssignedIdentity = $true; UserAssignedIdentityArmId = $uamiId } }
                 'TrueAndEmptyUami' { @{ UseSystemAssignedIdentity = $true; UserAssignedIdentityArmId = '' } }
                 'TrueAndNullUami' { @{ UseSystemAssignedIdentity = $true; UserAssignedIdentityArmId = $null } }
@@ -533,7 +535,7 @@ Describe 'CosmosRestoreRegression' -Tag 'Unit', 'CosmosRestore' {
         }
 
         $legacyIdentityCases = foreach ($workload in @('Blob', 'AKS', 'ElasticSAN')) {
-            foreach ($kind in @('FalseOnly', 'FalseNull', 'FalseEmpty', 'FalseWhitespace', 'FalseInvalidId', 'FalseWrongProvider')) {
+            foreach ($kind in @('FalseOnly', 'FalseNull', 'FalseEmpty', 'FalseWhitespace', 'FalseInvalidId', 'FalseWrongProvider', 'NullOnly', 'NullWithUami')) {
                 @{ Workload = $workload; Kind = $kind }
             }
         }
@@ -546,6 +548,8 @@ Describe 'CosmosRestoreRegression' -Tag 'Unit', 'CosmosRestore' {
                 'FalseWhitespace' { $identity.UserAssignedIdentityArmId = '  ' }
                 'FalseInvalidId' { $identity.UserAssignedIdentityArmId = 'identity-name' }
                 'FalseWrongProvider' { $identity.UserAssignedIdentityArmId = $cosmosAccountId }
+                'NullOnly' { $identity.UseSystemAssignedIdentity = $null }
+                'NullWithUami' { $identity.UseSystemAssignedIdentity = $null; $identity.UserAssignedIdentityArmId = Get-TestRestoreUamiId }
             }
             $request = New-TestRestoreRequest -Workload $Workload -Identity $identity
             $request.IdentityDetailUseSystemAssignedIdentity | Should -Be $false

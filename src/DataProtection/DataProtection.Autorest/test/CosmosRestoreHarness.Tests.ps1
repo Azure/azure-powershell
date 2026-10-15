@@ -4,8 +4,8 @@
 # Pester 4, offline only. The tooling under test requires PowerShell 7.2, but this
 # test file deliberately uses no PowerShell 7-only syntax. No built/cloud module
 # is needed when running this file alone. Never dot-source either live entrypoint.
-$harnessRepoRoot = $PSScriptRoot
-foreach ($level in 1..4) { $harnessRepoRoot = Split-Path -Parent $harnessRepoRoot }
+. (Join-Path $PSScriptRoot 'CosmosRestoreTestHelpers.ps1')
+$harnessRepoRoot = (Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot).RepoRoot
 $harnessSources = @{}
 foreach ($sourceName in @('Invoke-CosmosRestoreScenario', 'Invoke-CosmosRestoreNegativeTests')) {
     $sourcePath = Join-Path $harnessRepoRoot "tools/Test/$sourceName.ps1"

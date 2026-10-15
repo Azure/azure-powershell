@@ -5,14 +5,15 @@
 # native internal model proxy. Do not dot-source a replacement initializer, load
 # recordings, obtain a context, or call Azure. Run in a fresh process through the
 # standard Invoke-Pester command after the main workflow builds/copies the current source.
+. (Join-Path $PSScriptRoot 'CosmosRestoreTestHelpers.ps1')
 Describe 'CosmosRestoreSharedIdentity' -Tag 'Unit', 'CosmosRestore' {
     BeforeAll {
         if ((Get-Module Pester).Version -ne [version]'4.10.1') {
             throw 'CosmosRestoreSharedIdentity requires Pester 4.10.1.'
         }
-        $sourceRoot = Split-Path -Parent $PSScriptRoot
-        $repoRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $sourceRoot))
-        $artifactRoot = Join-Path $repoRoot 'artifacts/Debug/Az.DataProtection/DataProtection.Autorest'
+        $paths = Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot
+        $sourceRoot = $paths.SourceRoot
+        $artifactRoot = $paths.ArtifactRoot
         $module = Get-Module Az.DataProtection
         if ($null -eq $module -or [IO.Path]::GetFullPath($module.Path) -ne [IO.Path]::GetFullPath((Join-Path $artifactRoot 'Az.DataProtection.psm1'))) {
             throw 'Import the locally built Az.DataProtection artifact in a fresh process before running these tests.'

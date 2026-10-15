@@ -6,13 +6,15 @@
 # functions or load loadEnv/HttpPipelineMocking: recording playback matches URLs,
 # not request bodies. These tests exercise the artifact's exported public commands,
 # native internal cmdlets and generated HTTP serializer, not a hand-made ToJson call.
+. (Join-Path $PSScriptRoot 'CosmosRestoreTestHelpers.ps1')
 Describe 'CosmosRestoreTransport' -Tag 'Unit', 'CosmosRestore' {
     BeforeAll {
         if ((Get-Module Pester).Version -ne [version]'4.10.1') {
             throw 'CosmosRestoreTransport requires Pester 4.10.1.'
         }
-        $repoRoot = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))
-        $artifactRoot = Join-Path $repoRoot 'artifacts/Debug/Az.DataProtection/DataProtection.Autorest'
+        $paths = Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot
+        $repoRoot = $paths.RepoRoot
+        $artifactRoot = $paths.ArtifactRoot
         $artifactManifest = Join-Path $artifactRoot 'Az.DataProtection.psd1'
         $module = Get-Module Az.DataProtection
         if ($null -eq $module) {
@@ -201,8 +203,20 @@ namespace CosmosRestoreTransportTests {
     }
 
     Context 'Existing public surface from the local artifact' {
+        It 'resolves identical checkout, canonical source and artifact paths from either test layout' {
+            $sourcePaths = Get-CosmosRestoreTestPaths -TestRoot (Join-Path $paths.SourceRoot 'test')
+            $artifactPaths = Get-CosmosRestoreTestPaths -TestRoot (Join-Path $artifactRoot 'test')
+            foreach ($property in @('RepoRoot', 'SourceRoot', 'GeneratedRoot', 'ArtifactRoot')) {
+                $sourcePaths.$property | Should -BeExactly $artifactPaths.$property
+            }
+            $sourcePaths.SourceRoot | Should -BeExactly (Join-Path $repoRoot 'src/DataProtection/DataProtection.Autorest')
+            $sourcePaths.GeneratedRoot | Should -BeExactly (Join-Path $repoRoot 'generated/DataProtection/DataProtection.Autorest')
+            $sourcePaths.SourceRoot | Should -Not -Be $artifactRoot
+            { Get-CosmosRestoreTestPaths -TestRoot ([IO.Path]::GetPathRoot($repoRoot)) } | Should -Throw 'Cannot find'
+        }
+
         It 'exports only the existing manifest command surface, with no Cosmos-specific public command' {
-            $sourceManifest = Join-Path (Split-Path -Parent $PSScriptRoot) 'Az.DataProtection.psd1'
+            $sourceManifest = Join-Path $paths.GeneratedRoot 'Az.DataProtection.psd1'
             $expected = Import-PowerShellDataFile $sourceManifest
             $exported = @((Get-Module Az.DataProtection).ExportedCommands.Keys | Sort-Object)
             $exported.Count | Should -BeGreaterThan 0
@@ -213,6 +227,29 @@ namespace CosmosRestoreTransportTests {
                 $command.ModuleName | Should -BeExactly 'Az.DataProtection'
                 $command.Module.ModuleBase | Should -BeExactly $artifactRoot
             }
+        }
+    }
+
+    Context 'Exported Cosmos initializer rejects explicitly null identity selection' {
+        It 'rejects null identity with ItemLevelRecovery=<ILR> and UAMI=<UAMI>' -TestCases @(
+            @{ ILR = $false; UAMI = $false }
+            @{ ILR = $false; UAMI = $true }
+            @{ ILR = $true; UAMI = $false }
+            @{ ILR = $true; UAMI = $true }
+        ) {
+            param($ILR, $UAMI)
+            $parameters = @{
+                DatasourceType = 'AzureCosmosDB'; SourceDataStore = 'VaultStore'
+                RestoreLocation = 'eastus'; RestoreType = 'AlternateLocation'
+                RecoveryPoint = 'offline-recovery-point'; TargetResourceId = $targetId
+                UseSystemAssignedIdentity = $null; ErrorAction = 'Stop'
+            }
+            if ($ILR) {
+                $parameters.ItemLevelRecovery = $true
+                $parameters.RestoreConfiguration = Az.DataProtection\New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1')
+            }
+            if ($UAMI) { $parameters.UserAssignedIdentityArmId = "/subscriptions/$subscription/resourceGroups/restore-tests/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity" }
+            { Az.DataProtection\Initialize-AzDataProtectionRestoreRequest @parameters } | Should -Throw 'UseSystemAssignedIdentity cannot be null'
         }
     }
 

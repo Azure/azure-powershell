@@ -147,7 +147,7 @@ and [trigger](../../../src/DataProtection/DataProtection.Autorest/custom/Cmdlets
 ## Local tests
 
 Build the tracked DataProtection module before testing. Use standard Pester 4.10.1
-with explicit source-test file selection and the built artifact imported in a fresh
+with explicit artifact-test file selection and the built artifact imported in a fresh
 process. No separate Cosmos unit-test runner is required. The exact command and
 test-placement rationale are in the [command-level test matrix](test-matrix/README.md).
 Azure boundaries are mocked; no live provisioning or recording is needed.

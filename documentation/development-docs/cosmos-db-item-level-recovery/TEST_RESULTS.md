@@ -10,8 +10,11 @@ No new public cmdlets or parameters are introduced.
 | Check | Observed result |
 | --- | --- |
 | Tracked module and parent builds | PASS: each completed with 0 warnings and 0 errors. |
-| PowerShell 7.6.6 | PASS: 849 passed, 0 failed, 0 skipped, 0 errors. |
-| Windows PowerShell 5.1 | PASS: 817 passed, 0 failed, 0 skipped, 0 errors. |
+| PowerShell 7.6.6, artifact-selected suites | PASS: 864 passed, 0 failed, 0 skipped, 0 errors; Az.Resources absent. |
+| Windows PowerShell 5.1, artifact-selected suites | PASS: 832 passed, 0 failed, 0 skipped, 0 errors; signed Accounts dependency and Az.Resources absent. |
+| Separate tracked-input sandbox, source and artifact selection | PASS: 864 tests in each PowerShell 7 run; no ignored source-generation cache or installed Az.Resources dependency. |
+| Complete unchanged generated artifact playback, PowerShell 7 | PASS: 928 passed, 0 failed, 241 existing skipped placeholders/live-only cases; no temporary Resources module leakage. |
+| Additional complete playback, actual Windows PowerShell 5.1 | NOT GREEN: 886 passed, 10 failed, 241 skipped; failures occur in existing recorded workflows/collection assignments outside the six-suite gate. Not one of the four failed Core CI jobs. |
 | Unchanged existing tests | PASS: 35 total: eSAN configuration 14; Blob/ADLS auto-protection 5; policy retention 16. |
 | Fresh-process MAML generation | PASS: 56 cmdlet pages; generated XML approximately 1.4 MB. |
 | Unmodified full repository Markdown gate | FAIL: module-name extraction path bug produces `//`. |
@@ -19,8 +22,8 @@ No new public cmdlets or parameters are introduced.
 | Script analyzer | 0 errors. |
 | Affected generated examples | 0 analysis errors; 71 existing warnings retained. |
 
-The PowerShell 7 total comprises 809 product tests and 40 behavioral harness tests.
-The Windows PowerShell total comprises the same 809 product tests and 8 AST checks
+The PowerShell 7 total comprises 824 product/layout tests and 40 behavioral harness tests.
+The Windows PowerShell total comprises the same 824 product/layout tests and 8 AST checks
 for the PowerShell-7-only tooling; it does not claim execution of that harness on 5.1.
 The 35 unchanged tests above are a separate regression run, not additional cases
 within either total. Shared identity regression coverage includes Disk, Postgres,
@@ -33,9 +36,47 @@ The shared offline suite list contains six suites: `CosmosRestoreConfiguration`,
 The final typed-list compatibility fix preserves AKS/eSAN single-element arrays
 and locally flattens the two AKS configuration paths. All 6 targeted compatibility
 cases passed on both runtimes; they are included in the product totals above.
-The six added legacy-array cases increased the shared product count from 803 to
-809, not 815: PowerShell 7 is 849 minus 40 harness tests, and Windows PowerShell
-is 817 minus 8 AST checks. The prior PowerShell 7 total was 843 (803 plus 40).
+The earlier source-selected totals were 849 on PowerShell 7 and 817 on Windows
+PowerShell, containing 809 product cases. This CI follow-up adds 15 cases: ten
+null-identity rejection/legacy-compatibility cases, four exported Cosmos
+null-identity cases, and one source/artifact path-resolution case. No existing
+assertions were removed and no skips were added to these six suites.
+
+## CI failure analysis and artifact-layout follow-up
+
+The initial four PR test jobs each reported **790 passed, 41 failed and 241
+skipped**. Their compilation and analysis jobs succeeded; the parent build status
+was red because the test stage failed. The 41 failures were:
+
+- One harness bootstrap failure: a fixed parent traversal looked for tools under
+	the artifacts directory instead of the checkout root.
+- One shared-identity and one transport bootstrap failure: the same source-only
+	path assumption duplicated the artifacts segment and rejected the actual module.
+- Thirty-eight permission setup failures: Pester could not mock the qualified
+	Resources role command because playback does not install that unrelated module.
+
+The suites now resolve the checkout independently of source/artifact test depth.
+Shared-identity freshness checks still compare canonical source against artifacts,
+and export checks read the tracked generated manifest, never an ignored local
+source-generation manifest. The permission suite creates a temporary, throwing
+offline boundary only when Resources is missing and removes only that boundary
+afterward. Native command/assembly checks and HTTP interception remain intact.
+
+All six suites were executed from CI-style artifact copies with Resources absent,
+and from both layouts in an independent tracked-input sandbox. The complete,
+unfiltered generated runner also passed as recorded above. These are local Windows
+Core/Desktop results, not newly executed Linux/macOS jobs. The pipeline named
+windows-powershell itself used PowerShell Core for these AutoRest tests; the
+separate actual Windows PowerShell 5.1 run above establishes Desktop compatibility.
+This compatibility claim is limited to the six-suite gate: the broader Desktop
+playback result is recorded separately above and is not represented as passing.
+The remote platform checks must rerun on the fix commit before claiming green CI.
+
+The separate review finding for explicitly bound null Cosmos identity selection
+is also fixed: full and ILR Cosmos requests reject it before the generated setter
+can coerce null to false. Unbound/SAMI/UAMI cases and the previous non-Cosmos
+null/false construction behavior remain covered. No Azure operations were rerun
+for this CI follow-up.
 
 ## Native lifecycle and restored data
 
@@ -117,9 +158,9 @@ The 50-accepted/51-rejected boundary is **offline only**. The live source had se
 containers; no 51-identifier live test was executed. This finite coverage is not
 exhaustive and does not establish behavior for every possible input or environment.
 
-## Static-analysis limitations and PR gates
+## Local static-analysis limitations and PR gates
 
-**Overall repository static analysis: INCOMPLETE, not PASS.** The full run was
+**Earlier local full repository static analysis: INCOMPLETE, not PASS.** The full run was
 blocked by baseline `Api20260301` type-mismatch and cmdlet-diff issues.
 An isolated, filtered signature/help/UX/check-error run returned native analyzer
 exit code 0 with 50 existing style warnings, but its wrapper failed with loader
@@ -133,11 +174,13 @@ only an in-memory module-name correction: 56 pages, 0 issues. It is not a pass o
 the unmodified gate and does not clear that repository blocker. Fresh-process
 MAML generation passed independently; it does not override either gate result.
 
-All seven positive native scenarios and data/exclusion verification are complete.
-Remaining release work is resolution or explicit disposition of the known static-analysis
-and repository Markdown environment/path blockers. Keep the PR **draft** while
-these gates remain pending or incomplete: this report does **not** establish
-readiness to ship. Do not promote an in-progress restore or partial analysis to PASS.
+The initial remote PR compilation and analysis jobs did succeed on both pipeline
+definitions; the CI failures investigated above were test failures, not those
+earlier local tooling blockers. Do not reinterpret a local diagnostic as a remote
+gate result. All seven positive native scenarios and data/exclusion verification
+are complete, but current-commit remote checks and review are still required.
+Keep the PR **draft** until they are complete: this report does **not** establish
+readiness to ship. Do not promote a pending remote check or partial analysis to PASS.
 
 ## Reproduction and evidence handling
 

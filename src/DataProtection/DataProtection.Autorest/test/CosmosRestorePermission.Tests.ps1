@@ -4,6 +4,22 @@
 # Local Pester 4 tests: the standard module runner imports the locally built module.
 # Do not load recording/live environment fixtures or use the current Azure context.
 # Exercise private helpers in their native module, with every Azure boundary mocked.
+$cosmosPermissionResourcesBoundary = $null
+if (-not (Get-Command 'Az.Resources\Get-AzRoleAssignment' -ErrorAction SilentlyContinue)) {
+    # Playback does not install Az.Resources. Pester 4 still needs the qualified
+    # command's parameter metadata before it can mock the production boundary.
+    # This temporary module throws if any call escapes the mock; it cannot use Azure.
+    $cosmosPermissionResourcesBoundary = New-Module -Name Az.Resources -ScriptBlock {
+        function Get-AzRoleAssignment {
+            [CmdletBinding()]
+            param([string] $ObjectId)
+            throw 'Unexpected offline role lookup; the Az.Resources boundary must be mocked.'
+        }
+        Export-ModuleMember -Function Get-AzRoleAssignment
+    }
+    Import-Module $cosmosPermissionResourcesBoundary -Global -ErrorAction Stop
+}
+try {
 InModuleScope Az.DataProtection.custom {
     Describe 'CosmosRestorePermission' {
         # Derive model types from the native parameter contract rather than pinning an API
@@ -355,5 +371,10 @@ InModuleScope Az.DataProtection.custom {
                 Assert-MockCalled Start-Sleep -Times 0 -Exactly -Scope It
             }
         }
+    }
+}
+} finally {
+    if ($null -ne $cosmosPermissionResourcesBoundary) {
+        Remove-Module -ModuleInfo $cosmosPermissionResourcesBoundary -ErrorAction Stop
     }
 }

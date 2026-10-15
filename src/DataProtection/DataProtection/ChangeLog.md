@@ -22,6 +22,7 @@
     - Restore up to 50 case-sensitive database or database/container selections from VaultStore to an existing empty Azure Cosmos DB for NoSQL account in an alternate location, without renaming
     - Reject exact duplicate selections and overlapping database and child-container selections while preserving literal resource names and their case
 * Fixed explicit system-assigned and user-assigned managed identity selection in `Initialize-AzDataProtectionRestoreRequest` so the selected restore identity is retained in the request
+    - Reject explicitly null identity selection for Azure Cosmos DB instead of creating a request without a usable identity
 * Fixed user-assigned managed identity permission assignment in `Set-AzDataProtectionMSIPermission` and prevented restore datasource permission changes when using `-WhatIf`
 
 ## Version 3.1.0

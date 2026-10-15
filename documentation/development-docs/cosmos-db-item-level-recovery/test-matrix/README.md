@@ -20,37 +20,38 @@ cmdlet-named files contain skipped placeholders or recorded service workflows.
 Moving these tests into those files would mix execution layers or duplicate their
 fixtures; it is not necessary just to use the existing Pester infrastructure.
 
-The [existing module runner](../../../../src/DataProtection/DataProtection.Autorest/test-module.ps1)
-is retained unchanged. Its `-TestName` filters outer `Describe` names, not files;
-other discovered files can still run top-level recording/environment setup. For
-the isolated offline result below, explicitly select **source test files** and
-import the **built module**. Do not substitute the entire test directory, run
-record/live setup, or assume this is proof that the full module test run passed.
-Source/artifact layout checks in these suites are another reason not to silently
-substitute copied artifact test files for this invocation.
+The [tracked generated module runner](../../../../generated/DataProtection/DataProtection.Autorest/test-module.ps1)
+is retained unchanged. CI copies it and the source tests into the artifact module.
+Its `-TestName` filters outer `Describe` names, not files; other discovered files
+can still run top-level recording/environment setup. For the isolated offline
+command below, explicitly select the six **artifact test files** and import the
+**built module**, matching CI's directory layout. The suites also support source
+test selection, but that alone does not establish CI discovery compatibility.
+Canonical source freshness and generated-manifest checks remain separate from the
+artifact path. Permission tests provide a throwing offline command boundary when
+Az.Resources is absent, rather than depending on that unrelated module being built.
 
 ### Standard offline invocation
 
 Run from the repository root in a **fresh PowerShell process** after building.
-The local Pester module must already be available; this command does not install
-dependencies or sign in to Azure. Windows PowerShell must be able to discover the
-same compatible Accounts/Resources modules on its process module path.
+Pester 4.10.1 must already be installed on the process module path from an approved
+source; do not import it from an ignored source-generation cache. This command
+does not install dependencies or sign in to Azure. The built Accounts module or
+another compatible Accounts dependency must be discoverable; Az.Resources is not
+required by these isolated offline suites.
 
 ```powershell
 $ErrorActionPreference = 'Stop'
-$source = Join-Path $PWD 'src/DataProtection/DataProtection.Autorest'
+$env:PSModulePath = (Join-Path $PWD 'artifacts/Debug') + [IO.Path]::PathSeparator + $env:PSModulePath
 $artifact = Join-Path $PWD 'artifacts/Debug/Az.DataProtection/DataProtection.Autorest'
 
-Import-Module (Join-Path $source 'generated/modules/Pester/4.10.1/Pester.psd1') `
-    -RequiredVersion 4.10.1
-Import-Module Az.Accounts -MinimumVersion 5.5.3
-Import-Module Az.Resources
+Import-Module Pester -RequiredVersion 4.10.1
 Import-Module (Join-Path $artifact 'Az.DataProtection.psd1')
 
-$files = @(Get-ChildItem (Join-Path $source 'test') `
+$files = @(Get-ChildItem (Join-Path $artifact 'test') `
     -Filter 'CosmosRestore*.Tests.ps1' -File)
 if ($files.Count -ne 6) { throw 'Expected all six Cosmos restore suites.' }
-$output = Join-Path $PWD 'artifacts/CosmosRestoreTests/DirectPester'
+$output = Join-Path $PWD 'artifacts/CosmosRestoreTests/ArtifactPester'
 $null = New-Item -ItemType Directory -Path $output -Force
 $result = Invoke-Pester -Script $files.FullName -PassThru `
     -OutputFile (Join-Path $output 'UnitTests.xml') -OutputFormat NUnitXml
@@ -64,6 +65,19 @@ if ($result.TotalCount -eq 0 -or $result.FailedCount -gt 0 -or
 This is ordinary `Invoke-Pester`, not another runner or test framework. The public
 transport and shared-identity suites verify the loaded artifact's module/assembly
 location; they do not replace the public commands with test-scope functions.
+
+### Standard complete module playback
+
+In another fresh process with Pester 4.10.1 and Accounts available, run the same
+generated artifact runner used by CI. This discovers the complete module test
+directory, not only the Cosmos suites. Existing unrelated placeholder/live-only
+skips are expected in this broader run; a failure is not acceptable.
+
+```powershell
+$env:PSModulePath = (Join-Path $PWD 'artifacts/Debug') + [IO.Path]::PathSeparator + $env:PSModulePath
+& ./artifacts/Debug/Az.DataProtection/DataProtection.Autorest/test-module.ps1 -Playback
+if ($LASTEXITCODE -ne 0) { throw 'Complete DataProtection playback failed.' }
+```
 
 ## 2. Evidence levels
 
@@ -196,14 +210,18 @@ the attached principal and performed no assignment on the tested restore path.
 
 | Runtime / group | Executed result |
 | --- | --- |
-| PowerShell 7.6.6, six suites | 849 passed, no failures/skips/pending cases |
-| Windows PowerShell 5.1, six files | 817 passed, no failures/skips/pending cases |
+| PowerShell 7.6.6, six artifact-selected suites | 864 passed, no failures/skips/pending cases; Resources absent |
+| Windows PowerShell 5.1, six artifact-selected files | 832 passed, no failures/skips/pending cases; Resources absent |
+| Independent tracked-input sandbox, source and artifact layouts | 864 passed in each PowerShell 7 run, no source-generation cache |
+| Complete standard generated artifact playback, PowerShell 7 | 928 passed, 0 failed, 241 existing skips outside the six-suite gate |
 | Existing three suites | 35 passed separately, no failures/skips/pending cases |
 
-Both runtime totals contain the same **809 product cases**; PowerShell 7 adds
+Both six-suite runtime totals contain the same **824 product/layout cases**; PowerShell 7 adds
 40 behavioral tool cases and Desktop adds eight explicitly AST-only contracts.
 Those runtime totals are not unique live scenarios and must not be added to the
-seven live restores. No new live AKS/Blob/eSAN/Disk/database-resource restore was
+seven live restores. The 15 added CI-follow-up cases cover source/artifact path
+resolution and null-identity handling, including unchanged non-Cosmos behavior.
+No existing six-suite assertions were removed or skipped. No new live AKS/Blob/eSAN/Disk/database-resource restore was
 performed to claim cross-workload compatibility; the coverage above is offline.
 
 ## 7. Limitations and reproduction safety
