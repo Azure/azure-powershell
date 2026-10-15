@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added support for restoring soft-deleted volumes.
     - `Restore-AzElasticSanVolume`
+    - Supported identity-based restore operations running as background jobs.
 * Preserved the `ManagedByResourceId` volume property alongside `ManagedBy`.
     - Reading returns the first resource ID. Setting replaces the managed owners with a single resource ID.
     - Setting a null or empty value clears the managed owners.

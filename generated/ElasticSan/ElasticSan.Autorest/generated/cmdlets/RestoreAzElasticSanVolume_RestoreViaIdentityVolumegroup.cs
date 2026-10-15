@@ -199,6 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
             clone.InvocationInformation = this.InvocationInformation;
             clone.Proxy = this.Proxy;
             clone.Pipeline = this.Pipeline;
+            clone.VolumegroupInputObject = this.VolumegroupInputObject;
             clone.AsJob = this.AsJob;
             clone.Break = this.Break;
             clone.ProxyCredential = this.ProxyCredential;

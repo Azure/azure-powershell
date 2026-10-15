@@ -198,4 +198,16 @@ directive:
   - from: IdentityUserAssignedIdentities.dictionary.cs
     where: $
     transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
+  # Preserve volume identity when Restore is cloned for background jobs.
+  - from: RestoreAzElasticSanVolume_RestoreViaIdentity.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.InputObject = this.InputObject;');
+  # Preserve the parent Elastic SAN identity when Restore runs as a background job.
+  - from: RestoreAzElasticSanVolume_RestoreViaIdentityElasticSan.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.ElasticSanInputObject = this.ElasticSanInputObject;');
+  # Preserve the parent volume group identity when Restore runs as a background job.
+  - from: RestoreAzElasticSanVolume_RestoreViaIdentityVolumegroup.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.VolumegroupInputObject = this.VolumegroupInputObject;');
 ```
