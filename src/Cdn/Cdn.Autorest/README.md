@@ -32,7 +32,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # Use the stable CDN API and retain the existing standalone EdgeAction API for compatibility.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-07-01/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-10-01/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
@@ -46,7 +46,7 @@ subject-prefix: $(service-name)
 # Change Safety: opt in -AcquirePolicyToken / -ChangeReference on write cmdlets
 enable-change-safety: true
 # Pin the Swagger revision for reproducible generation.
-commit: b1e7325f0722352d57f2408b35b038e9896844a8
+commit: 77c5c1cbdaefb13ec55c83302b6aaccfee33fd62
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -59,6 +59,65 @@ disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:
+  # Retain previously published URL signing model/serialization surfaces, not a new October feature.
+  # Removing these compatibility shapes requires a separately approved breaking-change release.
+  - from: swagger-document
+    where: $.definitions
+    transform: |
+      if (!$.DeliveryRuleActionName || $.AfdUrlSigningAction) {
+        return $;
+      }
+      $.AfdUrlSigningAction = {
+        type: "object",
+        description: "Defines the url signing action for the delivery rule.",
+        properties: {
+          parameters: {
+            $ref: "#/definitions/AfdUrlSigningActionParameters",
+            description: "Defines the parameters for the action."
+          }
+        },
+        required: ["parameters"],
+        allOf: [{ $ref: "#/definitions/DeliveryRuleAction" }],
+        "x-ms-discriminator-value": "AfdUrlSigning"
+      };
+      $.AfdUrlSigningActionParameters = {
+        type: "object",
+        description: "Defines the parameters for the Url Signing action.",
+        properties: {
+          typeName: { $ref: "#/definitions/TypeName" },
+          keyGroupReference: {
+            $ref: "#/definitions/ResourceReference",
+            description: "Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/keyGroups/{keyGroupName}"
+          },
+          algorithm: {
+            $ref: "#/definitions/Algorithm",
+            description: "Algorithm to use for URL signing"
+          },
+          parameterNameOverride: {
+            type: "array",
+            description: "Defines which query string parameters in the url to be considered for expires, key id etc.",
+            items: { $ref: "#/definitions/UrlSigningParamIdentifier" },
+            "x-ms-identifiers": ["paramName"]
+          }
+        },
+        required: ["typeName", "keyGroupReference"]
+      };
+      $.TypeName = {
+        type: "string",
+        enum: ["DeliveryRuleAfdUrlSigningActionParameters"],
+        "x-ms-enum": {
+          name: "TypeName",
+          modelAsString: true,
+          values: [{
+            name: "DeliveryRuleAfdUrlSigningActionParameters",
+            value: "DeliveryRuleAfdUrlSigningActionParameters"
+          }]
+        }
+      };
+      $.DeliveryRuleActionName.enum.push("AfdUrlSigning");
+      $.DeliveryRuleActionName["x-ms-enum"].values.push({
+        name: "AfdUrlSigning", value: "AfdUrlSigning"
+      });
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
