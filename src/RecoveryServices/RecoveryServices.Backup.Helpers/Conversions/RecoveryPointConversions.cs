@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Gets Service Client Recovery Point Tier
         /// </summary>
-        public static ServiceClientModel.RecoveryPointTierType GetServiceClientRecoveryPointTier(RecoveryPointTier rpTier)
+        public static string GetServiceClientRecoveryPointTier(RecoveryPointTier rpTier)
         {
-            ServiceClientModel.RecoveryPointTierType recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.Invalid;
+            string recoveryPointTierType = ServiceClientModel.RecoveryPointTierType.Invalid;
 
             switch (rpTier)
             {

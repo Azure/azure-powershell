@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="restorePointQueryType">RestorePoint type
         /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;,
         /// &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;,
-        /// &#39;SnapshotCopyOnlyFull&#39;</param>
+        /// &#39;SnapshotCopyOnlyFull&#39;, &#39;Snapshot&#39;, &#39;FullDifferentialAndSnapshot&#39;</param>
 
         /// <param name="extendedInfo">In Get Recovery Point, it tells whether extended information about recovery
         /// point is asked.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public System.DateTime? EndDate {get; set; }
 
         /// <summary>
-        /// Gets or sets restorePoint type Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;, &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;
+        /// Gets or sets restorePoint type Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;, &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;, &#39;Snapshot&#39;, &#39;FullDifferentialAndSnapshot&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restorePointQueryType")]
         public string RestorePointQueryType {get; set; }
@@ -126,15 +126,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string BaseRpDatasourceId {get; set; }
 
         /// <summary>
-        /// Gets or sets flag to indicate whether to get only the latest recovery point.
+        /// Gets or sets flag to indicate whether to get only the latest recovery
+        /// point.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "getLatestRPOnly")]
         public bool? GetLatestRpOnly {get; set; }
-
-        /// <summary>
-        /// Gets or sets recovery mode to filter the recovery points (e.g. 'SnapshotAttachAndRecover').
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryMode")]
-        public string RecoveryMode {get; set; }
     }
 }

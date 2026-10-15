@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public System.Collections.Generic.IList<string> AccessPaths {get; set; }
 
         /// <summary>
-        /// Gets or sets true when this volume sits on a Windows Storage Spaces virtual disk.
+        /// Gets or sets true when this volume sits on a Windows Storage Spaces virtual
+        /// disk.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isOnStorageSpace")]
         public bool? IsOnStorageSpace {get; set; }

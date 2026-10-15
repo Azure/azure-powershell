@@ -25,8 +25,8 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-# Spec source: merged Azure/azure-rest-api-specs PR #46044 (RecoveryServicesBackup 2026-10-01 API version), merged 2026-10-08.
-commit: 3d87fd4a88462f3a3d0e8aaa96949c789ef8260d
+# Spec source: merged Azure/azure-rest-api-specs PR #47153 (RecoveryServicesBackup 2026-10-01 API version, SQL Instance snapshot backup/restore), merged 2026-10-14.
+commit: 6f8edbbe9c190be0e4d61c0018503a406dccbd11
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/RecoveryServicesBackup/stable/2026-10-01/bms.json
 

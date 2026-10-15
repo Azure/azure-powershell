@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string SAPHanaDatabase = "SAPHanaDatabase";
         public const string SAPAseDatabase = "SAPAseDatabase";
         public const string SAPHanaDBInstance = "SAPHanaDBInstance";
+        /// <summary>
+        /// A SQL Server instance.
+        /// </summary>
         public const string SQLInstance = "SQLInstance";
     }
 }

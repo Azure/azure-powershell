@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 bool isSnapshotInstancePolicy = workloadType == CmdletModel.WorkloadType.MSSQLInstance;
                 if (isSnapshotInstancePolicy)
                 {
-                    azureVmWorkloadProtectionPolicy.VmWorkloadPolicyType = VMWorkloadPolicyType.SnapshotV2;
+                    azureVmWorkloadProtectionPolicy.VMWorkloadPolicyType = VMWorkloadPolicyType.SnapshotV2;
                 }
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy(

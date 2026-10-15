@@ -25,6 +25,121 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureVmWorkloadSQLInstanceProtectedItem class.
         /// </summary>
 
+        /// <param name="backupManagementType">Type of backup management for the backed up item.
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
+
+        /// <param name="workloadType">Type of workload this item represents.
+        /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
+        /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
+        /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;</param>
+
+        /// <param name="containerName">Unique name of container
+        /// </param>
+
+        /// <param name="sourceResourceId">ARM ID of the resource to be backed up.
+        /// </param>
+
+        /// <param name="policyId">ID of the backup policy with which this item is backed up.
+        /// </param>
+
+        /// <param name="lastRecoveryPoint">Timestamp when the last (latest) backup copy was created for this backup
+        /// item.
+        /// </param>
+
+        /// <param name="backupSetName">Name of the backup set the backup item belongs to
+        /// </param>
+
+        /// <param name="createMode">Create mode to indicate recovery of existing soft deleted data source or
+        /// creation of new data source.
+        /// Possible values include: &#39;Invalid&#39;, &#39;Default&#39;, &#39;Recover&#39;</param>
+
+        /// <param name="deferredDeleteTimeInUtc">Time for deferred deletion in UTC
+        /// </param>
+
+        /// <param name="isScheduledForDeferredDelete">Flag to identify whether the DS is scheduled for deferred delete
+        /// </param>
+
+        /// <param name="deferredDeleteTimeRemaining">Time remaining before the DS marked for deferred delete is permanently
+        /// deleted
+        /// </param>
+
+        /// <param name="isDeferredDeleteScheduleUpcoming">Flag to identify whether the deferred deleted DS is to be purged soon
+        /// </param>
+
+        /// <param name="isRehydrate">Flag to identify that deferred deleted DS is to be moved into Pause state
+        /// </param>
+
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
+        /// <param name="isArchiveEnabled">Flag to identify whether datasource is protected in archive
+        /// </param>
+
+        /// <param name="policyName">Name of the policy used for protection
+        /// </param>
+
+        /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
+        /// </param>
+
+        /// <param name="sourceLocation">Source location of the protected item datasource.
+        /// </param>
+
+        /// <param name="vaultId">ID of the vault which protects this item
+        /// </param>
+
+        /// <param name="sourceSideScanInfo">Source side threat information
+        /// </param>
+
+        /// <param name="friendlyName">Friendly name of the DB represented by this backup item.
+        /// </param>
+
+        /// <param name="serverName">Host/Cluster Name for instance or AG
+        /// </param>
+
+        /// <param name="parentName">Parent name of the DB such as Instance or Availability Group.
+        /// </param>
+
+        /// <param name="parentType">Parent type of protected item, example: for a DB, standalone server or
+        /// distributed
+        /// </param>
+
+        /// <param name="protectionStatus">Backup status of this backup item.
+        /// </param>
+
+        /// <param name="protectionState">Backup state of this backup item.
+        /// Possible values include: &#39;Invalid&#39;, &#39;IRPending&#39;, &#39;Protected&#39;,
+        /// &#39;ProtectionError&#39;, &#39;ProtectionStopped&#39;, &#39;ProtectionPaused&#39;,
+        /// &#39;BackupsSuspended&#39;</param>
+
+        /// <param name="lastBackupStatus">Last backup operation status. Possible values: Healthy, Unhealthy.
+        /// Possible values include: &#39;Invalid&#39;, &#39;Healthy&#39;, &#39;Unhealthy&#39;, &#39;IRPending&#39;</param>
+
+        /// <param name="lastBackupTime">Timestamp of the last backup operation on this backup item.
+        /// </param>
+
+        /// <param name="lastBackupErrorDetail">Error details in last backup
+        /// </param>
+
+        /// <param name="protectedItemDataSourceId">Data ID of the protected item.
+        /// </param>
+
+        /// <param name="protectedItemHealthStatus">Health status of the backup item, evaluated based on last heartbeat
+        /// received
+        /// Possible values include: &#39;Invalid&#39;, &#39;Healthy&#39;, &#39;Unhealthy&#39;, &#39;NotReachable&#39;,
+        /// &#39;IRPending&#39;</param>
+
+        /// <param name="extendedInfo">Additional information for this backup item.
+        /// </param>
+
+        /// <param name="kpisHealths">Health details of different KPIs
+        /// </param>
+
+        /// <param name="nodesList">List of the nodes in case of distributed container.
+        /// </param>
+
         /// <param name="childDatabaseNameList">Name of Child Dbs protected under this parent.
         /// </param>
 
@@ -45,6 +160,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         partial void CustomInit();
 
+
         /// <summary>
         /// Gets or sets name of Child Dbs protected under this parent.
         /// </summary>
@@ -56,6 +172,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "instanceProtectionReadiness")]
         public string InstanceProtectionReadiness {get; set; }
-
     }
 }

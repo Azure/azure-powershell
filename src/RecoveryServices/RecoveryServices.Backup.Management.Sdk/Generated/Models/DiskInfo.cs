@@ -8,9 +8,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Metadata for a physical disk that backs a filesystem volume or Storage Spaces pool.
-    /// Unlike DiskInformation, this model describes storage topology; DiskInformation only
-    /// identifies disks included in or excluded from a virtual machine recovery point.
+    /// Metadata for a physical disk that backs a filesystem volume or Storage
+    /// Spaces pool.
+    /// Unlike DiskInformation, this model describes storage topology;
+    /// DiskInformation only identifies disks included in or excluded from a
+    /// virtual machine recovery point.
     /// </summary>
     public partial class DiskInfo
     {
