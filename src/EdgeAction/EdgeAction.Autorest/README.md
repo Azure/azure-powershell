@@ -36,7 +36,7 @@ the repository pipeline archives generated output through a separate bot PR.
 
 ``` yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 65eb9311d304dcf9874d05fdec39ea65baae8db8
+commit: 2e2b290fd446b03bbddcdc31098ff97e7218f0cf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
