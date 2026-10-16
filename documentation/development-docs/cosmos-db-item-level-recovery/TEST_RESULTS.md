@@ -10,9 +10,11 @@ No new public cmdlets or parameters are introduced.
 | Check | Observed result |
 | --- | --- |
 | Tracked module and parent builds | PASS: each completed with 0 warnings and 0 errors. |
-| PowerShell 7.6.6 on Windows, artifact-selected suites | PASS: 876 passed, 0 failed, 0 skipped, 0 errors; Az.Resources absent. |
-| Windows PowerShell 5.1, artifact-selected suites | PASS: 844 passed, 0 failed, 0 skipped, 0 errors; signed Accounts dependency and Az.Resources absent. |
-| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | PASS: 876 passed, 0 failed, 0 skipped, 0 pending; all six artifact-selected suites, no installed Resources or persisted context, live HTTP blocked. |
+| PowerShell 7.6.6 on Windows, artifact-selected suites | PASS: 908 passed, 0 failed, 0 skipped, 0 errors; Az.Resources absent. |
+| Windows PowerShell 5.1, artifact-selected suites | PASS: 876 passed, 0 failed, 0 skipped, 0 errors; signed Accounts dependency and Az.Resources absent. |
+| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | PASS: 908 passed, 0 failed, 0 skipped, 0 pending; all six artifact-selected suites, no installed Resources or persisted context, live HTTP blocked. |
+| Remote CI at 4c282a54bf0, builds 361715 / 361716 | PASS: build and analysis; all four module playback jobs passed 940 tests each, 0 failed, 241 existing skips. Core Windows/Linux/macOS plus the second Windows pipeline. |
+| Complete guarded local Linux playback at 4c282a54bf0 | PASS: 940 passed, 0 failed, 241 existing skips; no persisted context, live HTTP blocked. Predates the 32 reviewer-follow-up cases below. |
 | Separate tracked-input sandbox, source and artifact selection | PASS: 864 tests in each PowerShell 7 run; no ignored source-generation cache or installed Az.Resources dependency. |
 | Complete unchanged generated artifact playback, PowerShell 7 | PASS: 928 passed, 0 failed, 241 existing skipped placeholders/live-only cases; no temporary Resources module leakage. |
 | Additional complete playback, actual Windows PowerShell 5.1 | NOT GREEN: 886 passed, 10 failed, 241 skipped; failures occur in existing recorded workflows/collection assignments outside the six-suite gate. Not one of the four failed Core CI jobs. |
@@ -23,8 +25,8 @@ No new public cmdlets or parameters are introduced.
 | Script analyzer | 0 errors. |
 | Affected generated examples | 0 analysis errors; 71 existing warnings retained. |
 
-The current six-suite PowerShell 7 total comprises 836 product/layout tests and 40 behavioral harness tests.
-The Windows PowerShell total comprises the same 836 product/layout tests and 8 AST checks
+The current six-suite PowerShell 7 total comprises 868 product/layout tests and 40 behavioral harness tests.
+The Windows PowerShell total comprises the same 868 product/layout tests and 8 AST checks
 for the PowerShell-7-only tooling; it does not claim execution of that harness on 5.1.
 The 35 unchanged tests above are a separate regression run, not additional cases
 within either total. Shared identity regression coverage includes Disk, Postgres,
@@ -44,7 +46,9 @@ null-identity cases, and one source/artifact path-resolution case. No existing
 assertions were removed and no skips were added to these six suites.
 The subsequent Unix line-ending correction adds 12 freshness regression cases,
 raising those totals from 864/832 to 876/844. Historical sandbox and full-playback
-counts are identified separately in the table.
+counts are identified separately in the table. The reviewer follow-up adds 32
+offline permission-caller/identity-precedence cases, raising targeted totals to
+908/876 without any production change or removal of existing assertions.
 
 ## CI failure analysis and artifact-layout follow-up
 
@@ -107,6 +111,60 @@ The fixed six-suite Windows Core/Desktop runs also passed as recorded above.
 Independent macOS execution and refreshed remote checks remain pending; the
 Windows pass from the prior commit is not a green-CI claim for a newer commit.
 No live tests or Azure resource operations were performed for this correction.
+
+### Reviewer disposition and shared-flow compatibility
+
+At the subsequent review, all five inline Copilot findings were already resolved.
+The repeated overview comments retained historical counts and requested human
+review of shared code; they were not five additional open defects. Each fix was
+checked against the implementation and targeted coverage:
+
+| Finding | Disposition and compatibility reasoning |
+| --- | --- |
+| Bound-null Cosmos identity | Rejected only for Cosmos before flattened assignment. Unbound, SAMI and explicit UAMI paths remain covered; permissive non-Cosmos null/false construction remains unchanged. |
+| Export manifest source | Reads the tracked generated manifest; no new public command, parameter, or export was introduced. |
+| Source-cache Pester dependency | Redundant runner removed; documented standard Pester import uses the process module path, not ignored generation caches. |
+| Shared-identity artifact paths | Checkout/source/artifact locations resolved independently; source freshness still compares canonical source rather than artifact-to-itself. |
+| Transport artifact paths | Same location correction; module/assembly origin checks and generated HTTP-body assertions remain enforced. |
+
+The remote runs for the reviewed commit are now confirmed: [Core build 361715](https://dev.azure.com/azclitools/5147fa83-336e-44ef-bbe0-c86b8ae86cbb/_build/results?buildId=361715)
+and [Windows pipeline 361716](https://dev.azure.com/azclitools/5147fa83-336e-44ef-bbe0-c86b8ae86cbb/_build/results?buildId=361716)
+passed build, analysis and every platform test job. Each module playback job
+reported 940 passed, 0 failed and 241 existing skips. The guarded supplementary
+local Linux full run also completed with those counts. These resolve the earlier
+unconfirmed-platform concern **for that commit**, not the separate security check
+or human-approval requirement.
+
+Two independent read-only audits found no demonstrated new compatibility defect
+in the shared restore initializer/criteria construction or vault identity lookup.
+Rather than broaden production validation or change unrelated permission branches,
+32 additional offline cases strengthen the remaining caller-level coverage:
+
+- Public versus conflicting nested UAMI maps, and legacy SAMI fallback for null,
+	empty and whitespace-only public principal values: four cases.
+- Blob, ADLS, PGFlex and MySQL backup permission calls, both selected identities
+	and existing/missing roles: 16 cases; exact principal, role, resource/RG scope,
+	inherited roles and propagation-wait behavior are asserted.
+- AKS and eSAN restore datasource grants, both identities and preview/normal
+	execution: eight cases; AKS cluster scope and eSAN parent-SAN scope are retained.
+- PGFlex/MySQL restore-as-files requests constructed by the real initializer,
+	both identities and a cross-subscription target storage account: four cases;
+	account rather than container scope is asserted.
+
+All six suites including those additions passed on Linux, Windows Core and actual
+Windows PowerShell 5.1 as recorded above. They mock role reads, grants and waits;
+they prove request/control-flow arguments, **not real RBAC propagation or new live
+restores**. The zero-assignment/no-wait `WhatIf` claim remains limited to the restore
+datasource loop. Unchanged snapshot-RG, storage-file and backup permission branches
+are not represented as a universal preview-safety fix. No new production defect
+was demonstrated that justifies altering their behavior in this PR.
+
+This reviewer-follow-up changes tests/documentation only; it does not change the
+already validated runtime, module version, API, public surface or package payload.
+New-commit remote checks and human sign-off remain required, and `security-tools`
+was still pending at the time of this evidence snapshot. The broader actual-Desktop
+full-run limitation above remains recorded; its failures were not silently skipped
+or reclassified as proven pre-existing defects.
 
 ## Native lifecycle and restored data
 

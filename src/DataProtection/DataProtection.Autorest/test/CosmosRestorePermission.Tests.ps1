@@ -35,23 +35,40 @@ InModuleScope Az.DataProtection.custom {
         }
 
         function New-CosmosPermissionTestRequest {
+            param(
+                [string] $ResourceId = $script:cosmosPermissionTarget,
+                [string] $ResourceType = 'Microsoft.DocumentDB/databaseAccounts'
+            )
             $targetType = $script:cosmosPermissionAssembly.GetType("$($script:cosmosPermissionNamespace).RestoreTargetInfo", $true)
             $requestType = $script:cosmosPermissionAssembly.GetType("$($script:cosmosPermissionNamespace).AzureBackupRecoveryPointBasedRestoreRequest", $true)
             $target = [System.Management.Automation.LanguagePrimitives]::ConvertTo(@{
                 ObjectType = 'RestoreTargetInfo'
                 DatasourceInfo = @{
                     ObjectType = 'Datasource'
-                    ResourceId = $script:cosmosPermissionTarget
-                    ResourceUri = $script:cosmosPermissionTarget
-                    Type = 'Microsoft.DocumentDB/databaseAccounts'
-                    ResourceType = 'Microsoft.DocumentDB/databaseAccounts'
-                    ResourceName = 'cosmos-target'
+                    ResourceId = $ResourceId
+                    ResourceUri = $ResourceId
+                    Type = $ResourceType
+                    ResourceType = $ResourceType
+                    ResourceName = $ResourceId.Split('/')[-1]
                     ResourceLocation = 'eastus'
                 }
             }, $targetType)
             $request = [System.Activator]::CreateInstance($requestType)
             $request.RestoreTargetInfo = $target
             $request
+        }
+
+        function New-SharedPermissionBackupInstance {
+            param([string] $ResourceId, [string] $DatasourceType)
+            $modelType = $script:cosmosPermissionAssembly.GetType("$($script:cosmosPermissionNamespace).BackupInstanceResource", $true)
+            [System.Management.Automation.LanguagePrimitives]::ConvertTo(@{
+                Property = @{
+                    DatasourceInfo = @{
+                        ObjectType = 'Datasource'; ResourceId = $ResourceId
+                        ResourceType = $DatasourceType; Type = $DatasourceType
+                    }
+                }
+            }, $modelType)
         }
 
         BeforeEach {
@@ -256,6 +273,28 @@ InModuleScope Az.DataProtection.custom {
                 Get-VaultIdentity -vault $vault | Should -Be $script:cosmosPermissionSamiPrincipal
             }
 
+            It 'prefers a populated public UAMI map over a conflicting legacy nested map' {
+                $vault = [pscustomobject]@{
+                    IdentityUserAssignedIdentity = @{ $script:cosmosPermissionUami = @{ PrincipalId = $script:cosmosPermissionUamiPrincipal } }
+                    Identity = @{ UserAssignedIdentity = @{ $script:cosmosPermissionUami = @{ PrincipalId = $script:cosmosPermissionOtherPrincipal } } }
+                }
+                Get-VaultIdentity -vault $vault -UserAssignedIdentityARMId $script:cosmosPermissionUamiDifferentCase |
+                    Should -Be $script:cosmosPermissionUamiPrincipal
+            }
+
+            It 'retains legacy SAMI fallback when the public principal is <Shape>' -TestCases @(
+                @{ Shape = 'null'; Principal = $null }
+                @{ Shape = 'empty'; Principal = '' }
+                @{ Shape = 'whitespace'; Principal = ' ' }
+            ) {
+                param($Shape, $Principal)
+                $vault = [pscustomobject]@{
+                    IdentityPrincipalId = $Principal
+                    Identity = @{ PrincipalId = $script:cosmosPermissionSamiPrincipal }
+                }
+                Get-VaultIdentity -vault $vault | Should -Be $script:cosmosPermissionSamiPrincipal
+            }
+
             It 'rejects a whitespace-only UAMI principal' {
                 $vault = [pscustomobject]@{ IdentityUserAssignedIdentity = @{ $script:cosmosPermissionUami = @{ PrincipalId = ' ' } } }
                 { Get-VaultIdentity -vault $vault -UserAssignedIdentityARMId $script:cosmosPermissionUami } | Should -Throw 'has no principal ID'
@@ -369,6 +408,145 @@ InModuleScope Az.DataProtection.custom {
                 Assert-MockCalled 'Az.Resources\Get-AzRoleAssignment' -Times 0 -Exactly -Scope It
                 Assert-MockCalled AssignMissingRoles -Times 0 -Exactly -Scope It
                 Assert-MockCalled Start-Sleep -Times 0 -Exactly -Scope It
+            }
+        }
+
+        Context 'Shared identity selection preserves existing non-Cosmos permission callers' {
+            $backupCases = foreach ($workload in @(
+                @{ Workload = 'Blob'; ResourceType = 'Microsoft.Storage/storageAccounts/blobServices'; Path = 'Microsoft.Storage/storageAccounts/blobsource'; Role = 'Storage Account Backup Contributor'; RGReader = $false }
+                @{ Workload = 'ADLS'; ResourceType = 'Microsoft.Storage/storageAccounts/adlsBlobServices'; Path = 'Microsoft.Storage/storageAccounts/adlssource'; Role = 'Storage Account Backup Contributor'; RGReader = $false }
+                @{ Workload = 'PGFlex'; ResourceType = 'Microsoft.DBforPostgreSQL/flexibleServers'; Path = 'Microsoft.DBforPostgreSQL/flexibleServers/pgsource'; Role = 'PostgreSQL Flexible Server Long Term Retention Backup Role'; RGReader = $true }
+                @{ Workload = 'MySQL'; ResourceType = 'Microsoft.DBforMySQL/flexibleServers'; Path = 'Microsoft.DBforMySQL/flexibleServers/mysqlsource'; Role = 'MySQL Backup And Export Operator'; RGReader = $true }
+            )) {
+                foreach ($identity in @('SAMI', 'UAMI')) {
+                    foreach ($existing in @($false, $true)) {
+                        @{ Workload = $workload.Workload; ResourceType = $workload.ResourceType; Path = $workload.Path; Role = $workload.Role; RGReader = $workload.RGReader; Identity = $identity; Existing = $existing }
+                    }
+                }
+            }
+            It '<Workload> backup preserves <Identity> principal, roles and scopes with Existing=<Existing>' -TestCases $backupCases {
+                param($Workload, $ResourceType, $Path, $Role, $RGReader, $Identity, $Existing)
+                $script:sharedPermissionTarget = "$script:cosmosPermissionResourceGroup/providers/$Path"
+                $script:sharedPermissionRole = $Role
+                $script:sharedPermissionPrincipal = $script:cosmosPermissionSamiPrincipal
+                $identityArguments = @{}
+                if ($Identity -eq 'UAMI') {
+                    $identityArguments.UserAssignedIdentityARMId = $script:cosmosPermissionUamiDifferentCase
+                    $script:sharedPermissionPrincipal = $script:cosmosPermissionUamiPrincipal
+                }
+                if ($Existing) {
+                    $script:cosmosPermissionRoles = @([pscustomobject]@{ Scope = $script:sharedPermissionTarget; RoleDefinitionName = $Role })
+                    if ($RGReader) { $script:cosmosPermissionRoles += [pscustomobject]@{ Scope = $script:cosmosPermissionResourceGroup; RoleDefinitionName = 'Reader' } }
+                }
+                $instance = New-SharedPermissionBackupInstance -ResourceId $script:sharedPermissionTarget -DatasourceType $ResourceType
+                Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup 'restore-tests' -VaultName 'test-vault' -PermissionsScope Resource @identityArguments -Confirm:$false
+                Assert-MockCalled 'Az.Resources\Get-AzRoleAssignment' -Times 0 -Exactly -Scope It -ParameterFilter { $ObjectId -ne $script:sharedPermissionPrincipal }
+                if ($Existing) {
+                    Assert-MockCalled AssignMissingRoles -Times 0 -Exactly -Scope It
+                    Assert-MockCalled Start-Sleep -Times 0 -Exactly -Scope It
+                } else {
+                    $expectedCount = 1
+                    if ($RGReader) { $expectedCount++ }
+                    Assert-MockCalled AssignMissingRoles -Times $expectedCount -Exactly -Scope It
+                    Assert-MockCalled AssignMissingRoles -Times 1 -Exactly -Scope It -ParameterFilter {
+                        $ObjectId -eq $script:sharedPermissionPrincipal -and $Permission -eq $script:sharedPermissionRole -and
+                        $Resource -eq $script:sharedPermissionTarget -and $PermissionsScope -eq 'Resource' -and
+                        $ResourceGroup -eq $script:cosmosPermissionResourceGroup -and $Subscription -eq $script:cosmosPermissionSubscription
+                    }
+                    if ($RGReader) {
+                        Assert-MockCalled AssignMissingRoles -Times 1 -Exactly -Scope It -ParameterFilter {
+                            $ObjectId -eq $script:sharedPermissionPrincipal -and $Permission -eq 'Reader' -and
+                            $PermissionsScope -eq 'ResourceGroup' -and $ResourceGroup -eq $script:cosmosPermissionResourceGroup
+                        }
+                    }
+                    Assert-MockCalled Start-Sleep -Times 1 -Exactly -Scope It -ParameterFilter { $Seconds -eq 60 }
+                }
+            }
+
+            $restoreCases = foreach ($workload in @(
+                @{ Workload = 'AzureKubernetesService'; ResourceType = 'Microsoft.ContainerService/managedclusters'; Path = 'Microsoft.ContainerService/managedClusters/aks-target'; ScopePath = 'Microsoft.ContainerService/managedClusters/aks-target'; Role = 'Reader' }
+                @{ Workload = 'AzureElasticSAN'; ResourceType = 'Microsoft.ElasticSan/elasticSans/volumeGroups'; Path = 'Microsoft.ElasticSan/elasticSans/test-san/volumeGroups/target-group'; ScopePath = 'Microsoft.ElasticSan/elasticSans/test-san'; Role = 'Elastic SAN Volume Importer' }
+            )) {
+                foreach ($identity in @('SAMI', 'UAMI')) {
+                    foreach ($preview in @($false, $true)) {
+                        @{ Workload = $workload.Workload; ResourceType = $workload.ResourceType; Path = $workload.Path; ScopePath = $workload.ScopePath; Role = $workload.Role; Identity = $identity; Preview = $preview }
+                    }
+                }
+            }
+            It '<Workload> datasource restore retains <Identity> target scope with WhatIf=<Preview>' -TestCases $restoreCases {
+                param($Workload, $ResourceType, $Path, $ScopePath, $Role, $Identity, $Preview)
+                $script:sharedPermissionTarget = "$script:cosmosPermissionResourceGroup/providers/$Path"
+                $script:sharedPermissionScope = "$script:cosmosPermissionResourceGroup/providers/$ScopePath"
+                $script:sharedPermissionRole = $Role
+                $script:sharedPermissionPrincipal = $script:cosmosPermissionSamiPrincipal
+                $arguments = @{
+                    SubscriptionId = $script:cosmosPermissionSubscription.Split('/')[-1]
+                    VaultResourceGroup = 'restore-tests'; VaultName = 'test-vault'; PermissionsScope = 'Resource'
+                    DatasourceType = $Workload
+                    RestoreRequest = New-CosmosPermissionTestRequest -ResourceId $script:sharedPermissionTarget -ResourceType $ResourceType
+                    # Deliberately omit snapshot RG: this test covers the shared
+                    # datasource loop only, not unchanged snapshot/cluster grants.
+                    WhatIf = $Preview; Confirm = $false
+                }
+                if ($Identity -eq 'UAMI') {
+                    $arguments.UserAssignedIdentityARMId = $script:cosmosPermissionUamiDifferentCase
+                    $script:sharedPermissionPrincipal = $script:cosmosPermissionUamiPrincipal
+                }
+                Set-AzDataProtectionMSIPermission @arguments
+                Assert-MockCalled 'Az.Resources\Get-AzRoleAssignment' -Times 1 -Exactly -Scope It -ParameterFilter { $ObjectId -eq $script:sharedPermissionPrincipal }
+                if ($Preview) {
+                    Assert-MockCalled AssignMissingRoles -Times 0 -Exactly -Scope It
+                    Assert-MockCalled Start-Sleep -Times 0 -Exactly -Scope It
+                } else {
+                    Assert-MockCalled AssignMissingRoles -Times 1 -Exactly -Scope It -ParameterFilter {
+                        $ObjectId -eq $script:sharedPermissionPrincipal -and $Permission -eq $script:sharedPermissionRole -and
+                        $PermissionsScope -eq 'Resource' -and $Resource -eq $script:sharedPermissionScope -and
+                        $ResourceGroup -eq $script:cosmosPermissionResourceGroup -and $Subscription -eq $script:cosmosPermissionSubscription
+                    }
+                    Assert-MockCalled Start-Sleep -Times 1 -Exactly -Scope It -ParameterFilter { $Seconds -eq 60 }
+                }
+            }
+
+            It '<Workload> file restore retains <Identity> and cross-subscription storage-account scope' -TestCases @(
+                @{ Workload = 'AzureDatabaseForPGFlexServer'; Identity = 'SAMI' }
+                @{ Workload = 'AzureDatabaseForPGFlexServer'; Identity = 'UAMI' }
+                @{ Workload = 'AzureDatabaseForMySQL'; Identity = 'SAMI' }
+                @{ Workload = 'AzureDatabaseForMySQL'; Identity = 'UAMI' }
+            ) {
+                param($Workload, $Identity)
+                $script:sharedStorageSubscription = '/subscriptions/00000000-0000-0000-0000-000000000099'
+                $script:sharedStorageRG = "$script:sharedStorageSubscription/resourceGroups/file-targets"
+                $script:sharedStorageAccount = "$script:sharedStorageRG/providers/Microsoft.Storage/storageAccounts/restoredfiles"
+                $script:sharedPermissionPrincipal = $script:cosmosPermissionSamiPrincipal
+                $requestIdentity = @{ UseSystemAssignedIdentity = $true }
+                if ($Identity -eq 'UAMI') {
+                    $requestIdentity = @{ UseSystemAssignedIdentity = $false; UserAssignedIdentityArmId = $script:cosmosPermissionUamiDifferentCase }
+                }
+                # Use the real initializer so this fixture preserves the concrete
+                # RestoreFilesTargetInfo rather than converting a polymorphic base.
+                $request = Az.DataProtection\Initialize-AzDataProtectionRestoreRequest -DatasourceType $Workload `
+                    -RestoreType RestoreAsFiles -SourceDataStore VaultStore -RestoreLocation eastus -RecoveryPoint 'offline-point' `
+                    -TargetContainerURI 'https://restoredfiles.blob.core.windows.net/target' `
+                    -TargetResourceIdForRestoreAsFile "$script:sharedStorageAccount/blobServices/default/containers/target" @requestIdentity
+                $request.RestoreTargetInfo.ObjectType | Should -BeExactly 'RestoreFilesTargetInfo'
+                $request.RestoreTargetInfo.TargetDetail.TargetResourceArmId | Should -BeExactly "$script:sharedStorageAccount/blobServices/default/containers/target"
+                $arguments = @{
+                    SubscriptionId = $script:cosmosPermissionSubscription.Split('/')[-1]
+                    VaultResourceGroup = 'restore-tests'; VaultName = 'test-vault'; PermissionsScope = 'Resource'
+                    DatasourceType = $Workload; RestoreRequest = $request; Confirm = $false
+                }
+                if ($Identity -eq 'UAMI') {
+                    $arguments.UserAssignedIdentityARMId = $script:cosmosPermissionUamiDifferentCase
+                    $script:sharedPermissionPrincipal = $script:cosmosPermissionUamiPrincipal
+                }
+                Set-AzDataProtectionMSIPermission @arguments
+                Assert-MockCalled AssignMissingRoles -Times 1 -Exactly -Scope It -ParameterFilter {
+                    $ObjectId -eq $script:sharedPermissionPrincipal -and $Permission -eq 'Storage Blob Data Contributor' -and
+                    $PermissionsScope -eq 'Resource' -and $Resource -eq $script:sharedStorageAccount -and
+                    $ResourceGroup -eq $script:sharedStorageRG -and $Subscription -eq $script:sharedStorageSubscription
+                }
+                Assert-MockCalled 'Az.Resources\Get-AzRoleAssignment' -Times 1 -Exactly -Scope It -ParameterFilter { $ObjectId -eq $script:sharedPermissionPrincipal }
+                Assert-MockCalled Start-Sleep -Times 1 -Exactly -Scope It -ParameterFilter { $Seconds -eq 60 }
             }
         }
     }

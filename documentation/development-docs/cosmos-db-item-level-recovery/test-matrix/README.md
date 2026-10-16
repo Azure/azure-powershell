@@ -200,7 +200,7 @@ the attached principal and performed no assignment on the tested restore path.
 | --- | --- | --- |
 | [CosmosRestoreConfiguration](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreConfiguration.Tests.ps1) | Configuration helper, initializer, manifest, private selector validation; grammar, punctuation, case/order, counts, duplicates, overlap, malformed/mutated configurations, target/mode and identity combinations | Current source functions with real built models; no Azure calls |
 | [CosmosRestoreRegression](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreRegression.Tests.ps1) | Full and ILR requests, roundtrips, optional-object inspection/reference stability, AKS/eSAN scalar/array configuration, Blob prefix/range/rename paths | Generated serializer and local construction; no Azure calls |
-| [CosmosRestorePermission](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestorePermission.Tests.ps1) | `Set-AzDataProtectionMSIPermission`, explicit SAMI/UAMI lookup, ARM-ID casing, missing/ambiguous principals, scope, inherited/existing role, idempotence, WhatIf | Native custom module with Azure boundaries mocked |
+| [CosmosRestorePermission](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestorePermission.Tests.ps1) | `Set-AzDataProtectionMSIPermission`, SAMI/UAMI lookup, public/legacy precedence, ARM-ID casing, missing/ambiguous principals, scopes, existing roles, idempotence; Blob/ADLS/PGFlex/MySQL backup callers, AKS/eSAN restore datasource preview and PGFlex/MySQL cross-subscription file-target grants | Native custom module with Azure boundaries mocked; no universal WhatIf or live RBAC claim |
 | [CosmosRestoreTransport](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreTransport.Tests.ps1) | Exported helper/initializer, public validate/start; one validation wrapper versus raw trigger, API/JSON casing, selectors, identities, no new exports, zero HTTP sends under WhatIf | Actual generated HTTP requests intercepted before network; not recording playback |
 | [CosmosRestoreSharedIdentity](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreSharedIdentity.Tests.ps1) | Exported initializer for Disk, PostgreSQL, PG Flex, MySQL and ADLS; full/files/ADLS ILR and existing non-Cosmos identity behavior | Local exported commands and generated JSON; not live workload restores |
 | [CosmosRestoreHarness](../../../../src/DataProtection/DataProtection.Autorest/test/CosmosRestoreHarness.Tests.ps1) | Owned-resource guards, checkpoints/no duplicate submission, identity, pending jobs, expected-inventory union, safe diagnostics, no destructive entrypoints | PowerShell 7.2+ mocked tooling behavior; Desktop AST contracts only |
@@ -210,23 +210,27 @@ the attached principal and performed no assignment on the tested restore path.
 
 | Runtime / group | Executed result |
 | --- | --- |
-| PowerShell 7.6.6 on Windows, six artifact-selected suites | 876 passed, no failures/skips/pending cases; Resources absent |
-| Windows PowerShell 5.1, six artifact-selected files | 844 passed, no failures/skips/pending cases; Resources absent |
-| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | 876 passed, no failures/skips/pending cases; Resources absent, no persisted context, live HTTP blocked |
+| PowerShell 7.6.6 on Windows, six artifact-selected suites | 908 passed, no failures/skips/pending cases; Resources absent |
+| Windows PowerShell 5.1, six artifact-selected files | 876 passed, no failures/skips/pending cases; Resources absent |
+| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | 908 passed, no failures/skips/pending cases; Resources absent, no persisted context, live HTTP blocked |
+| Remote builds 361715/361716 at 4c282a54bf0 | All four platform module playback jobs: 940 passed / 0 failed / 241 existing skips; build and analysis passed |
+| Guarded complete local Linux playback at 4c282a54bf0 | 940 passed / 0 failed / 241 existing skips; predates 32 new reviewer-follow-up cases |
 | Independent tracked-input sandbox, source and artifact layouts | 864 passed in each PowerShell 7 run, no source-generation cache |
 | Complete standard generated artifact playback, PowerShell 7 | 928 passed, 0 failed, 241 existing skips outside the six-suite gate |
 | Existing three suites | 35 passed separately, no failures/skips/pending cases |
 
-Current six-suite runtime totals contain the same **836 product/layout cases**; PowerShell 7 adds
+Current six-suite runtime totals contain the same **868 product/layout cases**; PowerShell 7 adds
 40 behavioral tool cases and Desktop adds eight explicitly AST-only contracts.
 Those runtime totals are not unique live scenarios and must not be added to the
 seven live restores. The 15 added CI-follow-up cases cover source/artifact path
 resolution and null-identity handling, including unchanged non-Cosmos behavior.
 The next 12 cases verify LF/CRLF freshness equivalence without hiding real stale
 content. The original Unix setup failure was reproduced under Linux before the
-fix; the repaired suites now execute all shared-identity cases there. macOS and
-fresh remote CI results still require verification. Historical sandbox/full-run
-counts above predate these 12 additions and are not claimed as rerun totals.
+fix; the repaired suites execute all shared-identity cases there. The subsequent
+remote runs at 4c282a54bf0 confirmed every platform as passing. This review then
+added 32 permission-caller/identity-precedence cases without changing production;
+their new-commit remote checks still require verification. Historical sandbox and
+928-case full-run counts predate the later additions and are not claimed as new totals.
 No existing six-suite assertions were removed or skipped. No new live AKS/Blob/eSAN/Disk/database-resource restore was
 performed to claim cross-workload compatibility; the coverage above is offline.
 
