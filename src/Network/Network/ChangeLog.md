@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added cmdlets to manage ExpressRoute link aggregation group (LAG) authorizations and retrieve their authorization keys.
+    - Use `Add-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorizationKey`, and `Remove-AzExpressRouteLagAuthorization`.
 * Added IPv6 / dual-stack (IPv4 + IPv6) support for Managed Network Virtual Appliances (NVA).
     - Use `-AddressFamily "IPv4","IPv6"` with `New-AzNetworkVirtualAppliance` to create a dual-stack appliance; omitting the parameter defaults to IPv4-only.
     - Use `-AddressFamily` with `Update-AzNetworkVirtualAppliance` to upgrade or downgrade an existing appliance; omitting the parameter leaves the address family unchanged.
