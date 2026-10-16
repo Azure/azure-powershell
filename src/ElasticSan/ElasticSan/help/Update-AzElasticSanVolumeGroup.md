@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 schema: 2.0.0
@@ -15,31 +15,31 @@ Update an VolumeGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityElasticSanExpanded
 ```
-Update-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity>
- [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +74,7 @@ Type                                   : Microsoft.ElasticSan/ElasticSans
 
 This example updates the protocol type and virtual network rules of a volume group
 
-### Example 2: Update a volume group virtual network rule with JSON input
+### Example 2: Update a volume group virtual network rule with JSON input 
 ```powershell
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi'`
             -NetworkAclsVirtualNetworkRule (
@@ -104,7 +104,7 @@ Type                                   : Microsoft.ElasticSan/ElasticSans
 This example updates the protocol type, virtual network rules, and tag of a volume group.
 It takes in the virtual network rules in JSON format.
 
-### Example 3: Update a volume group from CMK to PMK
+### Example 3: Update a volume group from CMK to PMK 
 ```powershell
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -Encryption EncryptionAtRestWithPlatformKey
 ```
@@ -562,3 +562,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

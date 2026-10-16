@@ -1,6 +1,6 @@
 {
   "resourceType": "elasticSans/volumegroups/volumes",
-  "apiVersion": "2025-09-01",
+  "apiVersion": "2026-05-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.elasticsan"
   },
@@ -76,6 +76,54 @@
       "examples": [
         {
           "description": "Delete an Volume.",
+          "parameters": [
+            {
+              "name": "-ElasticSanName",
+              "value": "[Path.elasticSanName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.volumeName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeGroupName",
+              "value": "[Path.volumeGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Restore-AzElasticSanVolume",
+      "description": "Restore Soft Deleted Volumes.\nThe volume name is obtained by using the API to list soft deleted volumes by volume group",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}/restore",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/restore-azelasticsanvolume"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ElasticSanName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VolumeGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Restore Soft Deleted Volumes. The volume name is obtained by using the API to list soft deleted volumes by volume group",
           "parameters": [
             {
               "name": "-ElasticSanName",

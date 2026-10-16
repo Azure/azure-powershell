@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolume
 schema: 2.0.0
@@ -14,34 +14,32 @@ Get either a list of all volumes from a volume group or get a single volume from
 
 ### List (Default)
 ```
-Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VolumeGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
+ [-SubscriptionId <String[]>] [-XmsAccessSoftDeletedResource <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -VolumeGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityElasticSan
+```
+Get-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String> -VolumeGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVolumegroup
 ```
 Get-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityElasticSan
-```
-Get-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +96,7 @@ VolumeId                       : cdcdcdcd-cdcd-cdcd-cdcd-cdcdcdcdcdcd
 
 This command gets all the volumes in a volume group.
 
-### Example 2: Get a specific volume
+### Example 2: Get a specific volume 
 ```powershell
 Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
 ```
@@ -165,7 +163,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -195,7 +193,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityVolumegroup, GetViaIdentityElasticSan
+Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
 Aliases: VolumeName
 
 Required: True
@@ -211,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -226,7 +224,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -256,10 +254,26 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetViaIdentityElasticSan
+Parameter Sets: Get, GetViaIdentityElasticSan, List
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -XmsAccessSoftDeletedResource
+Optional, returns only soft deleted volumes if set to true.
+If set to false or if not specified, returns only active volumes.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -280,3 +294,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

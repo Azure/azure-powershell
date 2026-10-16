@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumesnapshot
 schema: 2.0.0
@@ -15,29 +15,27 @@ Create a Volume Snapshot.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> -CreationDataSourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityVolumegroupExpanded
-```
-New-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VolumeGroupName <String> -CreationDataSourceId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityElasticSanExpanded
 ```
-New-AzElasticSanVolumeSnapshot -Name <String> -VolumeGroupName <String>
- -ElasticSanInputObject <IElasticSanIdentity> -CreationDataSourceId <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> -CreationDataSourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityVolumegroupExpanded
+```
+New-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -46,9 +44,9 @@ Create a Volume Snapshot.
 
 ## EXAMPLES
 
-### Example 1: Create a volume snapshot
+### Example 1: Create a volume snapshot 
 ```powershell
-$volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
+ $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
  New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -Name mysnapshot
 ```
 
@@ -171,7 +169,7 @@ The name of the volume snapshot within the given volume group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVolumegroupExpanded, CreateViaIdentityElasticSanExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityElasticSanExpanded, CreateViaIdentityVolumegroupExpanded
 Aliases:
 
 Required: True
@@ -302,3 +300,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

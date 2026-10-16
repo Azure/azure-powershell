@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
 schema: 2.0.0
@@ -15,31 +15,31 @@ Create a Volume.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VolumeGroupName <String> -SizeGiB <Int64> [-CreationDataCreateSource <String>]
- [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityVolumegroupExpanded
-```
-New-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> -SizeGiB <Int64>
- [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VolumeGroupName <String> -SizeGiB <Int64> [-SubscriptionId <String>] [-CreationDataCreateSource <String>]
+ [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityElasticSanExpanded
 ```
-New-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
+New-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String> -VolumeGroupName <String>
  -SizeGiB <Int64> [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-ManagedBy <IManagedByResources[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSanVolume -InputObject <IElasticSanIdentity> -SizeGiB <Int64> [-CreationDataCreateSource <String>]
- [-CreationDataSourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticSanVolume -InputObject <IElasticSanIdentity> -SizeGiB <Int64>
+ [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityVolumegroupExpanded
+```
+New-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity> -SizeGiB <Int64>
+ [-CreationDataCreateSource <String>] [-CreationDataSourceId <String>] [-ManagedBy <IManagedByResources[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,12 +185,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedBy
+Information about Azure services owning the ElasticSan volume resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVolumegroupExpanded, CreateViaIdentityElasticSanExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityElasticSanExpanded, CreateViaIdentityVolumegroupExpanded
 Aliases: VolumeName
 
 Required: True
@@ -336,3 +351,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
