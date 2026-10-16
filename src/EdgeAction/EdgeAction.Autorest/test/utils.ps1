@@ -327,15 +327,7 @@ function Complete-EdgeActionTestRecording {
     }
 }
 
-function Invoke-EdgeActionTestCommand {
-    param(
-        [string]$Command,
-        [hashtable]$Parameters,
-        [string]$Resource,
-        [switch]$AllowNotFound,
-        [switch]$WithoutRecorder
-    )
-
+function New-EdgeActionTestResponse {
     # Generated cmdlets can discard HTTP status when converting a service error to ErrorRecord.
     # Observe outside the recorder so live and playback responses use the same 404 check.
     if (-not ('EdgeActionTestResponse' -as [type])) {
@@ -347,9 +339,34 @@ function Invoke-EdgeActionTestCommand {
         Add-Type @compilerParameters -TypeDefinition @'
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+public sealed class EdgeActionTestExchange {
+    public string Method;
+    public System.Uri Uri;
+    public int StatusCode;
+    public string AsyncOperation;
+    public string Location;
+    public string Content;
+}
 public sealed class EdgeActionTestResponse {
     public int? StatusCode { get; private set; }
     public string ErrorBody { get; private set; }
+    public List<EdgeActionTestExchange> Exchanges = new List<EdgeActionTestExchange>();
+    public async Task<HttpResponseMessage> Capture(HttpRequestMessage request, Task<HttpResponseMessage> pending) {
+        var response = await pending.ConfigureAwait(false);
+        IEnumerable<string> asyncOperation;
+        var exchange = new EdgeActionTestExchange {
+            Method = request.Method.Method,
+            Uri = request.RequestUri,
+            StatusCode = (int)response.StatusCode,
+            AsyncOperation = response.Headers.TryGetValues("Azure-AsyncOperation", out asyncOperation)
+                ? string.Join(",", asyncOperation) : null,
+            Location = response.Headers.Location == null ? null : response.Headers.Location.OriginalString,
+            Content = response.Content == null ? null : await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+        };
+        Exchanges.Add(exchange);
+        return response;
+    }
     public async Task<HttpResponseMessage> Observe(Task<HttpResponseMessage> pending) {
         var response = await pending.ConfigureAwait(false);
         StatusCode = (int)response.StatusCode;
@@ -360,7 +377,19 @@ public sealed class EdgeActionTestResponse {
 }
 '@
     }
-    $observation = New-Object EdgeActionTestResponse
+    New-Object EdgeActionTestResponse
+}
+
+function Invoke-EdgeActionTestCommand {
+    param(
+        [string]$Command,
+        [hashtable]$Parameters,
+        [string]$Resource,
+        [switch]$AllowNotFound,
+        [switch]$WithoutRecorder
+    )
+
+    $observation = New-EdgeActionTestResponse
     $observer = {
         param($request, $eventListener, $next)
         $observation.Observe($next.SendAsync($request, $eventListener))
@@ -404,6 +433,211 @@ public sealed class EdgeActionTestResponse {
     }
 }
 
+function Assert-EdgeActionTestJsonProperty {
+    param($Object, [string]$Name, [string]$Type, [switch]$Required)
+    $property = @($Object.PSObject.Properties | Where-Object Name -CEQ $Name)
+    if (-not $property.Count) {
+        if ($Required) { throw "Location final response is missing required '$Name' ($Type)." }
+        return
+    }
+    $value = $property[0].Value
+    $valid = switch ($Type) {
+        # ConvertFrom-Json materializes ISO date strings as DateTime on some runtimes.
+        'string' { $value -is [string] -or $value -is [datetime] -or $value -is [datetimeoffset] }
+        'object' { $value -is [System.Management.Automation.PSCustomObject] }
+        'array' { $value -is [array] }
+        default { throw "Unknown Location response assertion type '$Type'." }
+    }
+    if (-not $valid) { throw "Location final response '$Name' must be a JSON $Type." }
+}
+
+function Assert-EdgeActionTestResponseShape {
+    param([string]$Content, [string]$Schema)
+    # Stable 2026-10-01 response definitions and common-types/v6 TrackedResource.
+    # Check raw JSON, before generated model conversion can hide a mismatched envelope.
+    if (-not $Content -or -not $Content.TrimStart().StartsWith('{')) {
+        throw "Location final response must be a JSON object matching $Schema."
+    }
+    try { $body = ConvertFrom-Json -InputObject $Content -ErrorAction Stop } catch {
+        throw "Location final response is not valid JSON for $Schema; response body withheld."
+    }
+    if ($Schema -eq 'VersionCode') {
+        foreach ($name in 'name', 'content') {
+            Assert-EdgeActionTestJsonProperty $body $name 'string' -Required
+        }
+        return
+    }
+    if ($Schema -notin 'EdgeAction', 'EdgeActionVersion', 'EdgeActionExecutionFilter') {
+        throw "Unknown Location response schema '$Schema'."
+    }
+    Assert-EdgeActionTestJsonProperty $body 'location' 'string' -Required
+    foreach ($name in 'id', 'name', 'type') {
+        Assert-EdgeActionTestJsonProperty $body $name 'string'
+    }
+    Assert-EdgeActionTestJsonProperty $body 'tags' 'object'
+    Assert-EdgeActionTestJsonProperty $body 'properties' 'object'
+    if ($Schema -eq 'EdgeAction') {
+        Assert-EdgeActionTestJsonProperty $body 'sku' 'object' -Required
+        foreach ($name in 'name', 'tier') {
+            Assert-EdgeActionTestJsonProperty $body.sku $name 'string' -Required
+        }
+    }
+    if ($null -ne $body.properties) {
+        Assert-EdgeActionTestJsonProperty $body.properties 'provisioningState' 'string'
+        if ($null -ne $body.properties.provisioningState -and $body.properties.provisioningState -ne 'Succeeded') {
+            throw 'Location final resource provisioningState must be Succeeded when present.'
+        }
+        switch ($Schema) {
+            'EdgeAction' {
+                Assert-EdgeActionTestJsonProperty $body.properties 'attachments' 'array' -Required
+            }
+            'EdgeActionVersion' {
+                foreach ($name in 'deploymentType', 'isDefaultVersion') {
+                    Assert-EdgeActionTestJsonProperty $body.properties $name 'string' -Required
+                }
+                foreach ($name in 'validationStatus', 'lastPackageUpdateTime') {
+                    Assert-EdgeActionTestJsonProperty $body.properties $name 'string'
+                }
+            }
+            'EdgeActionExecutionFilter' {
+                foreach ($name in 'versionId', 'executionFilterIdentifierHeaderName', 'executionFilterIdentifierHeaderValue') {
+                    Assert-EdgeActionTestJsonProperty $body.properties $name 'string' -Required
+                }
+                Assert-EdgeActionTestJsonProperty $body.properties 'lastUpdateTime' 'string'
+            }
+        }
+    }
+}
+
+function Assert-EdgeActionTestAsyncResponses {
+    param([object[]]$Exchanges)
+    # ARM RPC async-api-reference.md: monitor GETs return 200 with a required status.
+    # Provider-defined intermediate states are allowed, but these scenarios expect success.
+    for ($index = 0; $index -lt $Exchanges.Count; $index++) {
+        $start = $Exchanges[$index]
+        if ($start.Method -notin 'PUT', 'PATCH', 'POST', 'DELETE' -or
+            $start.Uri.AbsolutePath -notmatch '(?i)/providers/Microsoft\.Cdn/edgeActions/[^/]+' -or
+            $null -eq $start.AsyncOperation) { continue }
+        $statuses = if ($start.Method -eq 'PUT') { @(200, 201) } else { @(202) }
+        if ($start.StatusCode -notin $statuses) {
+            throw "Asynchronous $($start.Method) returned HTTP $($start.StatusCode); expected $($statuses -join ' or ') per the stable API specification."
+        }
+        $monitor = $null
+        if (-not [uri]::TryCreate($start.AsyncOperation, [UriKind]::Absolute, [ref]$monitor) -or
+            $monitor.Scheme -notin 'http', 'https') {
+            throw 'Azure-AsyncOperation must be an absolute HTTP(S) URL.'
+        }
+        $succeeded = $false
+        for ($next = $index + 1; $next -lt $Exchanges.Count; $next++) {
+            $candidate = $Exchanges[$next]
+            if ($candidate.Method -ne 'GET') { break }
+            if ($candidate.Uri -eq $monitor) {
+                if ($candidate.StatusCode -ne 200) {
+                    throw "Azure-AsyncOperation GET returned HTTP $($candidate.StatusCode); expected 200."
+                }
+                if (-not $candidate.Content -or -not $candidate.Content.TrimStart().StartsWith('{')) {
+                    throw 'Azure-AsyncOperation response must be a JSON status object.'
+                }
+                try { $body = ConvertFrom-Json -InputObject $candidate.Content -ErrorAction Stop } catch {
+                    throw 'Azure-AsyncOperation response is not valid JSON; response body withheld.'
+                }
+                $status = @($body.PSObject.Properties | Where-Object Name -CEQ 'status')
+                if ($status.Count -ne 1 -or $status[0].Value -isnot [string] -or
+                    [string]::IsNullOrWhiteSpace($status[0].Value)) {
+                    throw 'Azure-AsyncOperation response requires a nonempty string status.'
+                }
+                if ($status[0].Value -in 'Failed', 'Canceled') {
+                    throw 'Azure-AsyncOperation reached a failed or canceled terminal state; this scenario requires Succeeded.'
+                }
+                if ($succeeded -and $status[0].Value -ne 'Succeeded') {
+                    throw 'Azure-AsyncOperation status regressed after Succeeded.'
+                }
+                $succeeded = $status[0].Value -eq 'Succeeded'
+                if ($null -ne $body.error) {
+                    throw 'Azure-AsyncOperation returned an error in a non-failed status response.'
+                }
+                if (-not $succeeded -and $null -ne $body.properties) {
+                    throw 'Azure-AsyncOperation properties must only be returned with Succeeded.'
+                }
+            } elseif (($start.Location -and $candidate.Uri -eq $start.Location -and $candidate.StatusCode -ne 202) -or
+                ($start.Method -eq 'PUT' -and $candidate.Uri -eq $start.Uri)) {
+                if (-not $succeeded) {
+                    throw 'Final resource/Location GET was observed before Azure-AsyncOperation reached Succeeded.'
+                }
+                break
+            }
+        }
+        if (-not $succeeded) {
+            throw 'No Succeeded terminal response was observed at the Azure-AsyncOperation URL.'
+        }
+    }
+}
+
+function Assert-EdgeActionTestLocationResponses {
+    param([object[]]$Exchanges)
+    for ($index = 0; $index -lt $Exchanges.Count; $index++) {
+        $start = $Exchanges[$index]
+        $isPut = $start.Method -eq 'PUT' -and $start.StatusCode -in 200, 201
+        if (-not $isPut -and $start.StatusCode -ne 202) { continue }
+        $path = $start.Uri.AbsolutePath
+        if ($path -notmatch '(?i)/providers/Microsoft\.Cdn/edgeActions/[^/]+') { continue }
+        $schema = $null
+        $statuses = @(200)
+        if ($start.Method -eq 'PATCH' -or $isPut) {
+            $schema = if ($path -match '/versions/[^/]+$') { 'EdgeActionVersion' }
+                elseif ($path -match '/executionFilters/[^/]+$') { 'EdgeActionExecutionFilter' }
+                elseif ($path -match '/edgeActions/[^/]+$') { 'EdgeAction' }
+        } elseif ($start.Method -eq 'POST') {
+            $schema = if ($path -match '/deployVersionCode$') { 'EdgeActionVersion' }
+                elseif ($path -match '/getVersionCode$') { 'VersionCode' }
+                elseif ($path -match '/swapDefault$') { 'NoContent'; $statuses = @(204) }
+        } elseif ($start.Method -eq 'DELETE') {
+            $schema = 'NoContent'
+            $statuses = @(200, 204)
+        }
+        if (-not $schema) { continue }
+        # PUT may finish with a resource GET rather than a Location GET.
+        # Validate an observed result without requiring that extra request.
+        if (-not $isPut -and -not [string]::IsNullOrWhiteSpace($start.Content)) {
+            throw 'Accepted HTTP 202 response must be empty per the stable API specification.'
+        }
+        $location = $null
+        if ($isPut -and -not $start.Location) {
+            $location = $start.Uri
+        } elseif (-not [uri]::TryCreate($start.Location, [UriKind]::Absolute, [ref]$location) -or
+            $location.Scheme -notin 'http', 'https') {
+            throw "Accepted $($start.Method) operation requires an absolute HTTP(S) Location URL for its $schema final response."
+        }
+        $final = $null
+        for ($next = $index + 1; $next -lt $Exchanges.Count; $next++) {
+            $candidate = $Exchanges[$next]
+            if ($candidate.Method -ne 'GET') { break }
+            if ($candidate.Uri -eq $location -and $candidate.StatusCode -eq 202) {
+                if (-not [string]::IsNullOrWhiteSpace($candidate.Content)) {
+                    throw 'Pending Location HTTP 202 response must be empty.'
+                }
+            } elseif ($candidate.Uri -eq $location) {
+                $final = $candidate
+                break
+            }
+        }
+        if ($null -eq $final) {
+            if ($isPut) { continue }
+            throw "No terminal GET response was observed at the Location URL for $schema; the status monitor alone does not verify the final response."
+        }
+        if ($final.StatusCode -notin $statuses) {
+            throw "Location final response for $schema returned HTTP $($final.StatusCode); expected $($statuses -join ' or ') per the stable API specification."
+        }
+        if ($schema -eq 'NoContent') {
+            if (-not [string]::IsNullOrWhiteSpace($final.Content)) {
+                throw 'Location final response must be empty for this operation per the stable API specification.'
+            }
+        } else {
+            Assert-EdgeActionTestResponseShape $final.Content $schema
+        }
+    }
+}
+
 function Assert-EdgeActionTestFixture {
     param([string]$ResourceGroupName, [string]$Name)
     $prefixes = Get-EdgeActionTestFixturePrefixes
@@ -431,6 +665,15 @@ function Initialize-EdgeActionTestScenario {
     # Separate hook contexts prevent teardown from overwriting setup recordings.
     $recorder = $PSDefaultParameterValues['*:HttpPipelinePrepend']
     if ($recorder) { $recorder.PushContext('EdgeActionFixtureSetup') }
+    $script:edgeActionLocationObserver = New-EdgeActionTestResponse
+    $observer = $script:edgeActionLocationObserver
+    $capture = {
+        param($request, $eventListener, $next)
+        $observer.Capture($request, $next.SendAsync($request, $eventListener))
+    }.GetNewClosure()
+    if ($recorder) {
+        $PSDefaultParameterValues['*:HttpPipelinePrepend'] = @($recorder, $capture)
+    }
     try { & $Setup } catch {
         $script:edgeActionSetupFailure = $_
         throw
@@ -442,7 +685,7 @@ function Initialize-EdgeActionTestScenario {
 function Complete-EdgeActionTestScenario {
     param([string]$ResourceGroupName, [string]$Name)
     if (-not $Name -and $script:edgeActionSetupFailure) { return }
-    $recorder = $PSDefaultParameterValues['*:HttpPipelinePrepend']
+    $recorder = @($PSDefaultParameterValues['*:HttpPipelinePrepend'])[0]
     if ($recorder) { $recorder.PushContext('EdgeActionFixtureCleanup') }
     try { Remove-EdgeActionTestResource $ResourceGroupName $Name } catch {
         # Pester 4 otherwise replaces a BeforeAll failure with the AfterAll exception.
@@ -452,6 +695,11 @@ function Complete-EdgeActionTestScenario {
         throw
     } finally {
         if ($recorder) { $recorder.PopContext() }
+        $PSDefaultParameterValues['*:HttpPipelinePrepend'] = $recorder
+    }
+    if (-not $script:edgeActionSetupFailure) {
+        Assert-EdgeActionTestAsyncResponses $script:edgeActionLocationObserver.Exchanges
+        Assert-EdgeActionTestLocationResponses $script:edgeActionLocationObserver.Exchanges
     }
 }
 
