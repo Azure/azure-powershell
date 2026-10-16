@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the Compute Fleet API from 2026-04-01-preview to 2026-08-01 (general availability).
+* [Breaking change] Removed 'ZoneAllocationPolicyDistributionStrategy' and 'ZoneAllocationPolicyZonePreference' from 'New-AzComputeFleet', 'Set-AzComputeFleet', and 'Update-AzComputeFleet' to match the 2026-08-01 API.
+    - Scripts using these parameters must be updated before upgrading. The 'Zone' parameter remains supported but does not replace the removed zone-allocation policy settings.
 * Fixed module generation from newer TypeSpec specifications while retaining the existing generation toolchain.
 * Updated Compute Fleet examples for API version 2026-08-01, including Launch mode creation, fleet identity input, and partial updates.
 

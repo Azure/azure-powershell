@@ -69,8 +69,8 @@ Tag               : {
 ProvisioningState : Succeeded
 ```
 
-Sends a PATCH request using the `2026-08-01` Compute Fleet API.
-This request supplies the tag collection without resending the fleet's immutable compute profile.
+Retrieves the fleet with GET using the `2026-08-01` Compute Fleet API, updates its tags, and sends the modified configuration with PUT.
+The existing compute profile is included in the PUT request.
 Tags supplied here replace the tag collection; include any existing tags you want to retain.
 
 ### Example 2: Update Spot capacity via pipeline input
@@ -86,8 +86,8 @@ SpotPriorityProfileCapacity : 3
 ProvisioningState           : Succeeded
 ```
 
-Uses the existing fleet object's identity to PATCH its Spot capacity.
-The input object identifies the fleet; it is not sent as a complete replacement configuration.
+Uses the piped fleet object's identity to retrieve the current configuration with GET, updates its Spot capacity, and sends the modified configuration with PUT, including the existing compute profile.
+Pipeline input supplies the identity, not the configuration sent in the PUT request.
 Increasing capacity can incur additional charges.
 
 ## PARAMETERS
