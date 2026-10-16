@@ -1,6 +1,6 @@
 # Developing Az.EdgeAction
 
-Use the repository's existing preparation/build scripts, platyPS commands, and the generated artifact test harness. No EdgeAction-specific development wrapper is required or included in the feature change.
+Use the repository's existing preparation/build scripts, platyPS commands, and the generated artifact test harness.
 
 ## Workflow and commit boundaries
 
@@ -11,8 +11,8 @@ Use the repository's existing preparation/build scripts, platyPS commands, and t
 | `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
 | `generate-info.json` | Refresh the source generation ID when generation inputs change, and commit it so CI regenerates the module. |
 | `Properties\AssemblyInfo.cs` and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
-| `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
-| `artifacts` and `EdgeAction.Autorest\tools` | Local outputs/tools, not feature-commit content. The module's existing ignore rule covers its `tools` directory. |
+| `generated\EdgeAction` | Required local build input. Repository automation archives generated output separately from maintained source changes. |
+| `artifacts` and `EdgeAction.Autorest\tools` | Local outputs/tools, not source-commit content. The module's existing ignore rule covers its `tools` directory. |
 
 Inspect both the working tree and index before and after generation. Do not collect generated output with `git add -A`, and do not discard local outputs merely to clean Git status. Already-staged files still require review. The [archive pipeline](../../../.azure-pipelines/azure-powershell-ci.yml) owns the separate generated-code archive PR; HTTP scenario recordings are different test inputs.
 
@@ -30,9 +30,9 @@ git diff --cached --stat
 
 Generation/build can replace local files. Preserve uncommitted inputs and recordings first; none of these commands provides automatic backup or rollback. Close PowerShell sessions holding built assemblies before rebuilding. On Windows, Process Explorer's **Find Handle or DLL** can identify an owner; opening another terminal or using `Remove-Module` does not unload DLLs held by an existing process.
 
-## Prerequisites and process-local feeds
+## Prerequisites and package access
 
-Use native PowerShell, .NET and Node.js executables, not npm PowerShell/.NET shims. This development workflow uses PowerShell 7.3+, .NET SDK 8+, and Node.js 20+. The development environment used PowerShell 7.6.6, .NET SDK 10.0.401, Node.js 20.20.2 and npm 10.8.2; these are observations, not repository-wide requirements.
+Use native PowerShell, .NET and Node.js executables, not npm PowerShell/.NET shims. Generation uses PowerShell 7.3+, .NET SDK 8+, and Node.js 20+. Response-contract tests use the existing PowerShell/Pester harness and add no npm dependencies.
 
 Install missing native runtimes using the [PowerShell instructions](https://learn.microsoft.com/powershell/scripting/install/installing-powershell), [.NET downloads](https://dotnet.microsoft.com/download/dotnet) and [Node.js releases](https://nodejs.org/download/release/). Reopen PowerShell after installation, and verify executable resolution.
 
@@ -51,36 +51,30 @@ Install missing pinned developer dependencies. platyPS is needed for parent Mark
 **Run from: any directory** (npm installs globally; PowerShell modules install for the current user).
 
 ```powershell
-npm install --global autorest@3.8.0 @autorest/core@3.10.9 --registry=https://packagefeedproxy.microsoft.io/npm/
+npm install --global autorest@3.8.0 @autorest/core@3.10.9
 Install-Module platyPS -RequiredVersion 0.14.2 -Scope CurrentUser -Repository PSGallery
 Install-Module Pester -RequiredVersion 4.10.1 -Scope CurrentUser -Repository PSGallery -Force
 ```
 
 Do not silently bypass a PowerShell module publisher/signature failure. Verify the intended PSGallery package and publisher before choosing a publisher-check exception. Other Pester versions may coexist, but explicitly import 4.10.1 in the disposable test process below; the harness imports Pester by name.
 
-For the Microsoft development environment, set approved feeds **in this disposable shell only** before generation/build.
+Use the repository's `NuGet.Config` for package restore and the configured npm registry for generation dependencies. If your network requires a proxy or package mirror, follow your organization's package-access instructions and apply any overrides only to the build shell. Do not commit environment-specific feed settings.
 
-**Run from: repository root**, after initializing `$repo` above, in the shell that will perform preparation/build.
+**Run from: repository root**, in the shell that will perform preparation/build.
 
 ```powershell
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $true
-$env:autorest_registry = 'https://packagefeedproxy.microsoft.io/npm/'
-$env:RestoreSources = @(
-    (Join-Path $repo 'tools\LocalFeed')
-    'https://pkgs.dev.azure.com/azclitools/public/_packaging/azure-powershell/nuget/v3/index.json'
-    'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
-) -join ';'
 ```
 
-These values do not modify global npm configuration or `NuGet.Config`. Close the shell afterward to discard them. If restore reports an unreachable feed or `NU1900` while retrieving vulnerability data, fix network/feed access rather than disabling TLS or NuGet auditing.
+If restore reports an unreachable feed or `NU1900` while retrieving vulnerability data, fix network/feed access rather than disabling TLS or NuGet auditing.
 
 ## Prepare and build in the repository
 
 The AutoRest YAML in `README.md` owns the specification pin. Keep an immutable commit SHA, not a branch name. The stable input is:
 
 ```yaml
-commit: 65eb9311d304dcf9874d05fdec39ea65baae8db8
+commit: 2e2b290fd446b03bbddcdc31098ff97e7218f0cf
 input-file:
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 ```
@@ -98,7 +92,7 @@ New-GenerateInfoJson -GeneratedDirectory $source
 
 Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing.
 
-**Run from: repository root**, in the same shell with `$repo`, `$source`, and the feed configuration initialized.
+**Run from: repository root**, in the same shell with `$repo` and `$source` initialized and package access configured.
 
 ```powershell
 $guidePath = Join-Path $source 'how-to.md'
@@ -161,7 +155,7 @@ Standalone `build-module.ps1`/`test-module.ps1` instructions apply only to a com
 
 The artifact harness supports `-Record`, `-Playback`, `-Live`, `-NotIsolated`, `-UsePreviousConfigForRecord`, `-RegenerateSupportModule`, and `-TestName`. Use one mode at a time. Playback is the default.
 
-**Use a disposable PowerShell terminal.** With `-NotIsolated`, Pester's `-EnableExit` can close that process. Omitting `-NotIsolated` launches another process; a process-only Azure login in the caller is not inherited. Direct execution does not read the former wrapper's local settings, refresh test scripts, validate the intended cloud/subscription, enforce mutation consent, summarize failures beyond Pester, or copy recordings back.
+**Use a disposable PowerShell terminal.** With `-NotIsolated`, Pester's `-EnableExit` can close that process. Omitting `-NotIsolated` launches another process; a process-only Azure login in the caller is not inherited. Before direct execution, refresh test scripts and verify the intended cloud/subscription and authorization. Review Pester results and copy reviewed recordings back separately.
 
 ### Refresh scenario-only edits
 
@@ -191,11 +185,9 @@ Set-Location .\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest
 
 Omit `-TestName` to run all groups. Missing request keys require compatible recordings, not regeneration alone. API-version changes, changed request sequences and separate fixture setup/cleanup recording contexts can all invalidate older recordings.
 
-### Authorized Record runs, including Brazilus
+### Authorized Record runs
 
 Record and Live create/delete resources. Use only an authorized test subscription with permission to create and delete resource groups. Setup creates one run-owned resource group named `rgps-powershellsdk-edgeaction-tests-<12 random hex characters>` and saves randomized parent names for the 15 scenario groups in `EdgeActionFixtures`. Creation refuses existing resources instead of pre-cleaning them. Each scenario cleans its own fixture; the harness's final `cleanupEnv` deletes the confirmed run-owned resource group and any remaining resources inside it. It never deletes the shared `powershelltests` group or discovers groups by prefix. Do not run multiple harnesses/builds concurrently against the same environment files or output directories.
-
-The naming follows the Python test pattern selected for these scenarios; it is not a repository-wide PowerShell prefix standard.
 
 | Phase | Resource-group name and behavior |
 | --- | --- |
@@ -205,9 +197,9 @@ The naming follows the Python test pattern selected for these scenarios; it is n
 
 The RG metadata location defaults to `westus`, independently of EdgeActions' `global` location. To use another approved region, set `EDGEACTION_TEST_RESOURCE_GROUP_LOCATION` in the recording shell before running the harness.
 
-The harness's `check-dependencies.ps1` checks Pester and, for Record/Live, prepares Resources test support if missing. That preparation can download packages and invoke native build tools. Have the prerequisites/feed configuration above ready before starting; Playback does not require live Resources support.
+The harness's `check-dependencies.ps1` checks Pester and, for Record/Live, prepares Resources test support if missing. That preparation can download packages and invoke native build tools. Have the prerequisites and package access above ready before starting; Playback does not require live Resources support.
 
-For an already registered Brazilus environment, explicitly authenticate and verify the context **in the same fresh terminal** that will execute the harness.
+Explicitly authenticate and verify the context **in the same fresh terminal** that will execute the harness. This example uses Azure public cloud.
 
 **Start from: repository root.** The block changes to `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest` after authentication and runs `test-module.ps1` there.
 
@@ -215,21 +207,22 @@ For an already registered Brazilus environment, explicitly authenticate and veri
 Import-Module .\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 Import-Module Pester -RequiredVersion 4.10.1
 $subscription = '<authorized-test-subscription-id>'
-$environment = Get-AzEnvironment -Name Brazilus
-if (-not $environment -or $environment.ResourceManagerUrl.TrimEnd('/') -ne 'https://brazilus.management.azure.com') {
-    throw 'Register and verify the approved Brazilus environment before recording.'
+$environmentName = 'AzureCloud'
+$environment = Get-AzEnvironment -Name $environmentName
+if (-not $environment -or $environment.ResourceManagerUrl.TrimEnd('/') -ne 'https://management.azure.com') {
+    throw 'Verify the Azure public cloud environment before recording.'
 }
 Disable-AzContextAutosave -Scope Process
-Connect-AzAccount -Environment Brazilus -Subscription $subscription -Scope Process
+Connect-AzAccount -Environment $environmentName -Subscription $subscription -Scope Process
 $context = Get-AzContext
-if ($context.Subscription.Id -ne $subscription -or $context.Environment.Name -ne 'Brazilus') {
+if ($context.Subscription.Id -ne $subscription -or $context.Environment.Name -ne $environmentName) {
     throw 'Unexpected test subscription or environment.'
 }
 Set-Location .\artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest
 .\test-module.ps1 -NotIsolated -Record -TestName 'Update-AzEdgeAction'
 ```
 
-If Brazilus is not registered, obtain approval before registering its ARM endpoint with `Add-AzEnvironment`; verify the resulting endpoint and audience rather than accepting an environment name alone. For Azure public cloud, explicitly select and verify `AzureCloud` instead. The direct harness does not enforce these boundaries for you.
+For another supported Azure cloud, select the appropriate environment and verify its resource-management endpoint and authentication audience before recording. The direct harness does not enforce these boundaries for you.
 
 `setupEnv` lives in maintained `src\EdgeAction\EdgeAction.Autorest\test\utils.ps1` and executes from the copied artifact file. It saves subscription/tenant/environment from the current context; later fixture operations reject a context mismatch. This does not replace verifying that the initial context is authorized. Record writes artifact `test\env.json`; Live uses `test\localEnv.json`. Resource-group provisioning runs outside HTTP scenario recording. `-UsePreviousConfigForRecord` loads earlier values before setup, but does not reuse the live RG or randomized fixture names, or override unfinished cleanup.
 
@@ -237,11 +230,39 @@ After a successful Record, open another fresh terminal and run the Playback comm
 
 Execution-filter update setup requires creation to return a resource with an ID and `ProvisioningState = Succeeded`; create errors stop setup. The create cmdlet already polls the asynchronous operation without `-NoWait`. If Playback requests a missing poll after a recorded `Running` response, preserve the recording and live error output, then obtain a fresh successful Record and Playback. An added sleep or an edited terminal response does not repair that missing exchange; a passing Record test summary alone is not sufficient.
 
-Scenarios capture raw HTTP exchanges outside the recorder and check both asynchronous response contracts after fixture cleanup. Following the [ARM asynchronous API contract](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md), a supplied `Azure-AsyncOperation` URL must be absolute HTTP(S); its GET responses must return HTTP 200 and a nonempty string `status`, ending in `Succeeded` before the final result is read. Provider-specific intermediate states are allowed. A failed/canceled monitor, unfinished polling, or contradictory error payload fails the successful scenario.
+Scenarios capture raw HTTP exchanges outside the recorder and check both asynchronous response contracts after fixture cleanup. Following the [ARM asynchronous API contract](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md), a supplied `Azure-AsyncOperation` URL must be absolute HTTP(S); its GET responses must return HTTP 200 and a nonempty string `status`, ending in `Succeeded` before the final result is read. Provider-specific intermediate states are allowed. A failed/canceled monitor, unfinished polling, or status regression fails the successful scenario.
 
-For accepted PATCH, DELETE, and action POST operations, the `Location` GET must return the declared final HTTP status and resource/code JSON shape (or empty response), including required fields and their JSON types. Accepted and pending HTTP 202 responses must be empty. A final resource's `provisioningState`, when present, must be `Succeeded`; absence is allowed by the specification and ARM contract. PUT uses `azure-async-operation` final-state semantics: an additional GET at the `Location` URL (or original resource URL without that header) is checked when observed, but neither that header nor an extra GET is required. A successful status-monitor envelope alone is not a resource response. These focused assertions follow the stable `2026-10-01` response definitions; they are not a complete Swagger validator and must be reviewed when the specification changes. They run in Record, Live, and Playback without issuing extra requests or rewriting recordings. The `Location response contract` tests exercise malformed headers, wrong success envelopes, terminal-state disagreements, and response-shape mismatches without Azure access. A mismatch in an existing recording remains a failure until the service/specification is reconciled; do not fabricate a conforming response.
+Only `status` is validated within the `Azure-AsyncOperation` response body; other body fields are outside the current assertion scope. HTTP/URL and polling-order checks remain enabled. This boundary does not apply to the separate final `Location` response or ordinary resource responses.
 
-**Record all 15 groups without `-TestName` before publishing fixtures for this change.** Existing fixed-name recordings are not compatible with the new environment mapping. A filtered Record is useful for debugging but generates a new mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
+PowerShell scenarios also check that accepted/pending HTTP 202 responses are empty, the final `Location` GET is observed with the operation's declared final status/body, and a supplied final resource `provisioningState` is `Succeeded`. PUT does not require an extra Location GET. Swap-default checks successful completion without enforcing the exact final Location status/body; its command execution, async monitor, and Location URL checks remain enabled. Synchronous swap responses and subsequent ordinary GETs are not exempt. These checks issue no additional requests and do not rewrite recordings.
+
+### Response-contract checks in Pester
+
+The maintained `test\utils.ps1` checks raw successful API responses before generated model conversion can hide a mismatched envelope. The checks run during scenario teardown in both Record and Playback, including pipelines that select this module. Local wrappers invoke the same maintained tests; there is no separate local-only schema gate, OAV installation, schema download, or pipeline dependency.
+
+The focused schema subset follows the stable `2026-10-01` Swagger pinned in the source README and its common resource definitions:
+
+| Covered | Boundary |
+| --- | --- |
+| Successful HTTP status, JSON object/list envelope, declared empty bodies | Covers ordinary API responses and correlated Location results using the initiating operation's contract. |
+| Required fields and known field types | Includes parent SKU/attachments, version properties, execution-filter properties, code results, list items, tags, and system metadata. |
+| Optional fields | Checked optional fields may be omitted, but explicit null values fail. Parent EdgeActions do not require version-only fields. |
+| Compatibility exception | `EdgeActionVersion.properties.validationStatus: null` produces a warning instead of failing. The expected shape is an omitted field or a JSON string. This exception applies to version GET/list and final Location results, not other fields or wrong non-null types. |
+| Extensible enums | String type is checked; the Swagger's `modelAsString` enums are not restricted to today's values. Completed provisioning still requires `Succeeded`. |
+
+This is not a general OpenAPI validator. It does not validate request schemas, error-body schemas, every string format/pattern, or unknown properties. Keep these assertions aligned when updating the Swagger pin. `test\LocationResponse.Tests.ps1` exercises the assertions with valid and invalid responses through the same Pester harness.
+
+For a fast assertion-only run without a module build, **run from the repository root**:
+
+```powershell
+Import-Module Pester -RequiredVersion 4.10.1 -Force
+$result = Invoke-Pester -Script '.\src\EdgeAction\EdgeAction.Autorest\test\LocationResponse.Tests.ps1' -PassThru
+if ($result.FailedCount) { throw 'Response-contract regression tests failed.' }
+```
+
+This focused run does not replace full scenario Playback against reviewed recordings.
+
+**Record all groups without `-TestName` before publishing a replacement fixture set.** A filtered Record is useful for debugging but generates a new environment mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
 
 Parent Update coverage uses nonempty expanded tags for replacement and the public `-JsonString '{"tags":{}}'` path for clearing. The current expanded serializer omits empty objects; `-Tag @{}` is not equivalent to the required tag-clear body. Version tag updates verify default/deployment-type preservation; changing the default requires `Switch-AzEdgeActionVersionDefault`. Filter updates cover `VersionId`, headers and tags, including preservation during a header-only PATCH. Skipped JSON/identity stubs are not coverage.
 
@@ -270,7 +291,7 @@ Record saves HTTP requests/responses in artifact `test\*.Recording.json`, includ
 
 After confirmed Record cleanup, the helper replaces the `t`, `c`, `s`, and `h` query values in EdgeAction operation-polling URLs with `Sanitized`. It updates polling response headers, subsequent request URIs, and recording lookup keys together, preserving operation IDs, API versions, other query parameters, and payloads. Duplicate lookup keys stop normalization before any recording is written.
 
-The module test helper also substitutes the run-owned RG name after confirmed cleanup. This is module-local behavior in `test\utils.ps1`, not the Python sanitizer or a new shared PowerShell recorder feature, and is not a general secret sanitizer. There is **no automatic recording handoff**. Preserve failed/uncopied outputs before another Record/build. After successful Record and Playback, review identifiers, credentials, polling URLs and embedded code/archives, preserving consistent request/response keys needed by Playback. Then copy only the reviewed recording(s) and compatible environment metadata back to source.
+The module test helper also substitutes the run-owned RG name after confirmed cleanup. This is module-local behavior in `test\utils.ps1`, not a general secret sanitizer. There is **no automatic recording handoff**. Preserve failed/uncopied outputs before another Record/build. After successful Record and Playback, review identifiers, credentials, polling URLs and embedded code/archives, preserving consistent request/response keys needed by Playback. Then copy only the reviewed recording(s) and compatible environment metadata back to source.
 
 Existing complete recordings can be sanitized without another live Record. With the current helper loaded and `env.json` confirming `Cleaned` ownership state, `Resume-EdgeActionTestCleanup -Mode record -ResourceGroup -Confirm:$false` finishes normalization; an already-normalized, cleaned group requires no Azure calls. Run offline Playback afterward to verify lookup consistency. This operation does not invent missing responses or repair incomplete recordings.
 
