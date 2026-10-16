@@ -23,7 +23,7 @@
     - Refreshed update parameters and documented tag replacement, clearing, and immutable-property behavior.
     - Version tag updates preserve the default version; use `Switch-AzEdgeActionVersionDefault` to change it.
     - Clarified the JSON parameter path for clearing tags on EdgeActions, versions, and execution filters when expanded parameters omit empty objects.
-    - Expanded scenario coverage for asynchronous operation status, final response shape, and successful resource provisioning state.
+    - Expanded test coverage for asynchronous operations and resource responses.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
