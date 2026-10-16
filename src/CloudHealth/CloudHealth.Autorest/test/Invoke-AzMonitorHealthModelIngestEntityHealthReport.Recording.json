@@ -1,37 +1,70 @@
 {
-  "Invoke-AzMonitorHealthModelIngestEntityHealthReport+[NoContext]+IngestExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/ingestHealthReport?api-version=2026-09-01-preview+1": {
+  "Invoke-AzMonitorHealthModelIngestEntityHealthReport+[NoContext]+IngestExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-a9skjo/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-a9skjo/entities/azps-ent-shared-a9skjo/ingestHealthReport?api-version=2026-09-01-preview",
-      "Content": "{\n  \"signalName\": \"azps-sig-shared-a9skjo\",\n  \"healthState\": \"Healthy\",\n  \"value\": 88.8,\n  \"expiresInMinutes\": 60\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-r3wz6p\",\n  \"healthState\": \"Healthy\",\n  \"value\": 88.8,\n  \"expiresInMinutes\": 60\n}",
       "isContentBase64": false,
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "115" ]
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "115"
+        ]
       }
     },
     "Response": {
       "StatusCode": 204,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "00000000-0000-4000-8000-000000000079" ],
-        "x-ms-operation-identifier": [ "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000003/centralus/00000000-0000-4000-8000-000000000080" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "197" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2997" ],
-        "x-ms-correlation-request-id": [ "00000000-0000-4000-8000-000000000081" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260910T052015Z:00000000-0000-4000-8000-000000000081" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A33120DB85FB48CDBC4B5086E12921A2 Ref B: GVA201070812029 Ref C: 2026-09-10T05:20:15Z" ],
-        "Date": [ "Thu, 10 Sep 2026 05:20:14 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000066"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000273"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "198"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000022"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151729Z:00000000-0000-4000-8000-000000000022"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A08678EE8B27448CA03BF688C2BB204A Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:29Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:28 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ]
+        "Expires": [
+          "-1"
+        ]
       },
       "Content": null,
       "isContentBase64": false
