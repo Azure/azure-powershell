@@ -15,11 +15,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     {
 
         /// <summary>Backing field for <see cref="ManagedBy" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> _managedBy;
+        private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo _managedBy;
 
-        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+        /// <summary>Parent resource information.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get => this._managedBy; set => this._managedBy = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo ManagedBy { get => (this._managedBy = this._managedBy ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo()); set => this._managedBy = value; }
+
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
+        public string ManagedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)ManagedBy).ResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfoInternal)ManagedBy).ResourceId = value ?? null; }
+
+        /// <summary>Internal Acessors for ManagedBy</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal.ManagedBy { get => (this._managedBy = this._managedBy ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo()); set { {_managedBy = value;} } }
 
         /// <summary>Backing field for <see cref="SizeGiB" /> property.</summary>
         private long? _sizeGiB;
@@ -38,17 +47,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     public partial interface IVolumeUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
-        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Information about Azure services owning the ElasticSan volume resource.",
-        SerializedName = @"managedBy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get; set; }
+        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagedByResourceId { get; set; }
         /// <summary>Volume size.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -66,8 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface IVolumeUpdatePropertiesInternal
 
     {
-        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get; set; }
+        /// <summary>Parent resource information.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo ManagedBy { get; set; }
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
+        string ManagedByResourceId { get; set; }
         /// <summary>Volume size.</summary>
         long? SizeGiB { get; set; }
 

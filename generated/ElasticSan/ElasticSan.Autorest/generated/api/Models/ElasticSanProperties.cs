@@ -69,17 +69,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Sku()); set { {_sku = value;} } }
 
-        /// <summary>Internal Acessors for TotalReservedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalReservedIop { get => this._totalReservedIop; set { {_totalReservedIop = value;} } }
+        /// <summary>Internal Acessors for TotalIops</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalIops { get => this._totalIops; set { {_totalIops = value;} } }
 
-        /// <summary>Internal Acessors for TotalReservedMBps</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalReservedMBps { get => this._totalReservedMBps; set { {_totalReservedMBps = value;} } }
+        /// <summary>Internal Acessors for TotalMBps</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalMBps { get => this._totalMBps; set { {_totalMBps = value;} } }
+
+        /// <summary>Internal Acessors for TotalSizeTiB</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalSizeTiB { get => this._totalSizeTiB; set { {_totalSizeTiB = value;} } }
 
         /// <summary>Internal Acessors for TotalVolumeSizeGiB</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.TotalVolumeSizeGiB { get => this._totalVolumeSizeGiB; set { {_totalVolumeSizeGiB = value;} } }
-
-        /// <summary>Internal Acessors for UsedCapacityGiB</summary>
-        long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.UsedCapacityGiB { get => this._usedCapacityGiB; set { {_usedCapacityGiB = value;} } }
 
         /// <summary>Internal Acessors for VolumeGroupCount</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanPropertiesInternal.VolumeGroupCount { get => this._volumeGroupCount; set { {_volumeGroupCount = value;} } }
@@ -125,46 +125,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Backing field for <see cref="TotalIops" /> property.</summary>
         private long? _totalIops;
 
-        /// <summary>
-        /// Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total Provisioned IOPS of the Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public long? TotalIops { get => this._totalIops; set => this._totalIops = value; }
+        public long? TotalIops { get => this._totalIops; }
 
         /// <summary>Backing field for <see cref="TotalMBps" /> property.</summary>
         private long? _totalMBps;
 
-        /// <summary>
-        /// Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total Provisioned MBps Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public long? TotalMBps { get => this._totalMBps; set => this._totalMBps = value; }
-
-        /// <summary>Backing field for <see cref="TotalReservedIop" /> property.</summary>
-        private int? _totalReservedIop;
-
-        /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public int? TotalReservedIop { get => this._totalReservedIop; }
-
-        /// <summary>Backing field for <see cref="TotalReservedMBps" /> property.</summary>
-        private int? _totalReservedMBps;
-
-        /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public int? TotalReservedMBps { get => this._totalReservedMBps; }
+        public long? TotalMBps { get => this._totalMBps; }
 
         /// <summary>Backing field for <see cref="TotalSizeTiB" /> property.</summary>
         private long? _totalSizeTiB;
 
-        /// <summary>
-        /// Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total size of the Elastic San appliance in TB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public long? TotalSizeTiB { get => this._totalSizeTiB; set => this._totalSizeTiB = value; }
+        public long? TotalSizeTiB { get => this._totalSizeTiB; }
 
         /// <summary>Backing field for <see cref="TotalVolumeSizeGiB" /> property.</summary>
         private long? _totalVolumeSizeGiB;
@@ -176,20 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public long? UnusedSizeTiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScalePropertiesInternal)AutoScaleProperty).UnusedSizeTiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IAutoScalePropertiesInternal)AutoScaleProperty).UnusedSizeTiB = value ?? default(long); }
-
-        /// <summary>Backing field for <see cref="UsedCapacityGiB" /> property.</summary>
-        private long? _usedCapacityGiB;
-
-        /// <summary>Used capacity in GiB.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public long? UsedCapacityGiB { get => this._usedCapacityGiB; }
-
-        /// <summary>Backing field for <see cref="Version" /> property.</summary>
-        private string _version;
-
-        /// <summary>Elastic San appliance version. Defaults to V1 if not specified.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
-        public string Version { get => this._version; set => this._version = value; }
 
         /// <summary>Backing field for <see cref="VolumeGroupCount" /> property.</summary>
         private long? _volumeGroupCount;
@@ -296,7 +259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get;  }
         /// <summary>
         /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
@@ -322,7 +285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"The sku name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
         string SkuName { get; set; }
         /// <summary>The sku tier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -336,70 +299,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium")]
         string SkuTier { get; set; }
-        /// <summary>
-        /// Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total Provisioned IOPS of the Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
+        Create = false,
         Update = false,
-        Description = @"Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        Description = @"Total Provisioned IOPS of the Elastic San appliance.",
         SerializedName = @"totalIops",
         PossibleTypes = new [] { typeof(long) })]
-        long? TotalIops { get; set; }
-        /// <summary>
-        /// Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        long? TotalIops { get;  }
+        /// <summary>Total Provisioned MBps Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
+        Create = false,
         Update = false,
-        Description = @"Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        Description = @"Total Provisioned MBps Elastic San appliance.",
         SerializedName = @"totalMBps",
         PossibleTypes = new [] { typeof(long) })]
-        long? TotalMBps { get; set; }
-        /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
+        long? TotalMBps { get;  }
+        /// <summary>Total size of the Elastic San appliance in TB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Total IOPS reserved by all the volume groups under an ElasticSan",
-        SerializedName = @"totalReservedIops",
-        PossibleTypes = new [] { typeof(int) })]
-        int? TotalReservedIop { get;  }
-        /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Total MBps reserved by all the volume groups under an ElasticSan",
-        SerializedName = @"totalReservedMBps",
-        PossibleTypes = new [] { typeof(int) })]
-        int? TotalReservedMBps { get;  }
-        /// <summary>
-        /// Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        Description = @"Total size of the Elastic San appliance in TB.",
         SerializedName = @"totalSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
-        long? TotalSizeTiB { get; set; }
+        long? TotalSizeTiB { get;  }
         /// <summary>Total size of the provisioned Volumes in GiB.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -422,29 +354,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"unusedSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
         long? UnusedSizeTiB { get; set; }
-        /// <summary>Used capacity in GiB.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Used capacity in GiB.",
-        SerializedName = @"usedCapacityGiB",
-        PossibleTypes = new [] { typeof(long) })]
-        long? UsedCapacityGiB { get;  }
-        /// <summary>Elastic San appliance version. Defaults to V1 if not specified.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"Elastic San appliance version. Defaults to V1 if not specified.",
-        SerializedName = @"version",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
-        string Version { get; set; }
         /// <summary>Total number of volume groups in this Elastic San appliance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -482,7 +391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>The list of Private Endpoint Connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
@@ -492,39 +401,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>resource sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISku Sku { get; set; }
         /// <summary>The sku name.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
         string SkuName { get; set; }
         /// <summary>The sku tier.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium")]
         string SkuTier { get; set; }
-        /// <summary>
-        /// Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total Provisioned IOPS of the Elastic San appliance.</summary>
         long? TotalIops { get; set; }
-        /// <summary>
-        /// Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total Provisioned MBps Elastic San appliance.</summary>
         long? TotalMBps { get; set; }
-        /// <summary>Total IOPS reserved by all the volume groups under an ElasticSan</summary>
-        int? TotalReservedIop { get; set; }
-        /// <summary>Total MBps reserved by all the volume groups under an ElasticSan</summary>
-        int? TotalReservedMBps { get; set; }
-        /// <summary>
-        /// Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only
-        /// for V1.
-        /// </summary>
+        /// <summary>Total size of the Elastic San appliance in TB.</summary>
         long? TotalSizeTiB { get; set; }
         /// <summary>Total size of the provisioned Volumes in GiB.</summary>
         long? TotalVolumeSizeGiB { get; set; }
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         long? UnusedSizeTiB { get; set; }
-        /// <summary>Used capacity in GiB.</summary>
-        long? UsedCapacityGiB { get; set; }
-        /// <summary>Elastic San appliance version. Defaults to V1 if not specified.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
-        string Version { get; set; }
         /// <summary>Total number of volume groups in this Elastic San appliance.</summary>
         long? VolumeGroupCount { get; set; }
 

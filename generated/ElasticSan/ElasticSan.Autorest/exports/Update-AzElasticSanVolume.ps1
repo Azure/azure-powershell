@@ -51,11 +51,6 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 
-MANAGEDBY <IManagedByResources[]>: Information about Azure services owning the ElasticSan volume resource.
-  [ClientId <String>]: ClientId of the application managing the resource
-  [ResourceId <List<String>>]: ARM Resource IDs of the resources managing the volume
-  [Version <Int32?>]: Version number to keep track of resources using the Volume
-
 VOLUMEGROUPINPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
@@ -125,13 +120,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
     ${VolumegroupInputObject},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources[]]
-    # Information about Azure services owning the ElasticSan volume resource.
-    ${ManagedBy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]

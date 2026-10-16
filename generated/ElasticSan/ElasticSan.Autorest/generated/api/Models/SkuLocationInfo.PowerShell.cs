@@ -117,10 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("ZoneDetail"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).ZoneDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails>) content.GetValueForProperty("ZoneDetail",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).ZoneDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SkuZoneDetailsTypeConverter.ConvertFrom));
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -145,10 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("Zone"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).Zone = (System.Collections.Generic.List<string>) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).Zone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("ZoneDetail"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).ZoneDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails>) content.GetValueForProperty("ZoneDetail",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfoInternal)this).ZoneDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SkuZoneDetailsTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -120,19 +120,6 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int32]
-    # The number of days to retain the resources after deletion.
-    ${DeleteRetentionPolicyRetentionPeriodDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.String]
-    # .
-    ${DeleteRetentionPolicyState},
-
-    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
@@ -192,23 +179,11 @@ param(
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of storage target
     ${ProtocolType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int32]
-    # Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
-    ${ReservedIop},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int32]
-    # Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
-    ${ReservedMBps},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
