@@ -39,11 +39,8 @@ Describe 'CosmosRestoreSharedIdentity' -Tag 'Unit', 'CosmosRestore' {
             $freshPaths += "custom/manifests/$workload.json"
         }
         foreach ($relativePath in $freshPaths) {
-            $sourceText = Get-Content -LiteralPath (Join-Path $sourceRoot $relativePath) -Raw -ErrorAction Stop
-            $artifactText = Get-Content -LiteralPath (Join-Path $artifactRoot $relativePath) -Raw -ErrorAction Stop
-            if ($sourceText -cne $artifactText) {
-                throw "Stale artifact source copy: $relativePath. Refresh it in the main workflow before running this suite."
-            }
+            Assert-CosmosRestoreSourceCopy -SourcePath (Join-Path $sourceRoot $relativePath) `
+                -ArtifactPath (Join-Path $artifactRoot $relativePath) -RelativePath $relativePath
         }
 
         $resourceGroupId = '/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/shared-identity-tests'
@@ -199,6 +196,41 @@ Describe 'CosmosRestoreSharedIdentity' -Tag 'Unit', 'CosmosRestore' {
             $roundtrip = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureBackupRecoveryPointBasedRestoreRequest]::FromJsonString($Request.ToJsonString())
             $roundtrip.RestoreTargetInfo.GetType().FullName | Should -BeExactly $Request.RestoreTargetInfo.GetType().FullName
             Assert-SharedRestoreSnapshot (ConvertTo-SharedRestoreWire $roundtrip) $expected
+        }
+    }
+
+    Context 'Cross-platform freshness retains exact content checks' {
+        It 'accepts equivalent source/artifact text with <Layout> line endings' -TestCases @(
+            @{ Layout = 'LF/LF'; SourceText = "first`nsecond`n"; ArtifactText = "first`nsecond`n" }
+            @{ Layout = 'CRLF/CRLF'; SourceText = "first`r`nsecond`r`n"; ArtifactText = "first`r`nsecond`r`n" }
+            @{ Layout = 'LF/CRLF'; SourceText = "first`nsecond`n"; ArtifactText = "first`r`nsecond`r`n" }
+            @{ Layout = 'CRLF/LF'; SourceText = "first`r`nsecond`r`n"; ArtifactText = "first`nsecond`n" }
+            @{ Layout = 'mixed'; SourceText = "first`nsecond`r`n"; ArtifactText = "first`r`nsecond`n" }
+        ) {
+            param($Layout, $SourceText, $ArtifactText)
+            $sourcePath = Join-Path $TestDrive 'source.txt'
+            $artifactPath = Join-Path $TestDrive 'artifact.txt'
+            [IO.File]::WriteAllText($sourcePath, $SourceText)
+            [IO.File]::WriteAllText($artifactPath, $ArtifactText)
+            @(Assert-CosmosRestoreSourceCopy -SourcePath $sourcePath -ArtifactPath $artifactPath -RelativePath 'fixture').Count | Should -Be 0
+        }
+
+        It 'still rejects a genuinely changed artifact: <Change>' -TestCases @(
+            @{ Change = 'content'; ArtifactText = "first`r`nchanged`r`n" }
+            @{ Change = 'case'; ArtifactText = "First`r`nsecond`r`n" }
+            @{ Change = 'indentation'; ArtifactText = " first`r`nsecond`r`n" }
+            @{ Change = 'trailing space'; ArtifactText = "first `r`nsecond`r`n" }
+            @{ Change = 'missing final newline'; ArtifactText = "first`r`nsecond" }
+            @{ Change = 'extra blank line'; ArtifactText = "first`r`nsecond`r`n`r`n" }
+            @{ Change = 'bare CR'; ArtifactText = "first`rsecond`r" }
+        ) {
+            param($Change, $ArtifactText)
+            $sourcePath = Join-Path $TestDrive 'source.txt'
+            $artifactPath = Join-Path $TestDrive 'artifact.txt'
+            [IO.File]::WriteAllText($sourcePath, "first`nsecond`n")
+            [IO.File]::WriteAllText($artifactPath, $ArtifactText)
+            { Assert-CosmosRestoreSourceCopy -SourcePath $sourcePath -ArtifactPath $artifactPath -RelativePath 'fixture' } |
+                Should -Throw 'Stale artifact source copy: fixture'
         }
     }
 

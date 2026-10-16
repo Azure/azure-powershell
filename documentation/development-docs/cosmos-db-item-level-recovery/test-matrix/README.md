@@ -1,6 +1,6 @@
 # Cosmos DB recovery: executed cmdlet test matrix
 
-**Execution date: 2026-10-15.** This matrix records what was actually exercised
+**Execution dates: 2026-10-15; offline Unix follow-up 2026-10-16.** This matrix records what was actually exercised
 using the locally built `Az.DataProtection` module and API `2026-06-01`.
 It is not a claim that every possible input, workload, or service environment was tested.
 See the [results and release limitations](../TEST_RESULTS.md) and [feature guide](../README.md).
@@ -210,17 +210,23 @@ the attached principal and performed no assignment on the tested restore path.
 
 | Runtime / group | Executed result |
 | --- | --- |
-| PowerShell 7.6.6, six artifact-selected suites | 864 passed, no failures/skips/pending cases; Resources absent |
-| Windows PowerShell 5.1, six artifact-selected files | 832 passed, no failures/skips/pending cases; Resources absent |
+| PowerShell 7.6.6 on Windows, six artifact-selected suites | 876 passed, no failures/skips/pending cases; Resources absent |
+| Windows PowerShell 5.1, six artifact-selected files | 844 passed, no failures/skips/pending cases; Resources absent |
+| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | 876 passed, no failures/skips/pending cases; Resources absent, no persisted context, live HTTP blocked |
 | Independent tracked-input sandbox, source and artifact layouts | 864 passed in each PowerShell 7 run, no source-generation cache |
 | Complete standard generated artifact playback, PowerShell 7 | 928 passed, 0 failed, 241 existing skips outside the six-suite gate |
 | Existing three suites | 35 passed separately, no failures/skips/pending cases |
 
-Both six-suite runtime totals contain the same **824 product/layout cases**; PowerShell 7 adds
+Current six-suite runtime totals contain the same **836 product/layout cases**; PowerShell 7 adds
 40 behavioral tool cases and Desktop adds eight explicitly AST-only contracts.
 Those runtime totals are not unique live scenarios and must not be added to the
 seven live restores. The 15 added CI-follow-up cases cover source/artifact path
 resolution and null-identity handling, including unchanged non-Cosmos behavior.
+The next 12 cases verify LF/CRLF freshness equivalence without hiding real stale
+content. The original Unix setup failure was reproduced under Linux before the
+fix; the repaired suites now execute all shared-identity cases there. macOS and
+fresh remote CI results still require verification. Historical sandbox/full-run
+counts above predate these 12 additions and are not claimed as rerun totals.
 No existing six-suite assertions were removed or skipped. No new live AKS/Blob/eSAN/Disk/database-resource restore was
 performed to claim cross-workload compatibility; the coverage above is offline.
 

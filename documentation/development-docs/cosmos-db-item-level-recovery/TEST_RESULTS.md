@@ -1,6 +1,6 @@
 # Cosmos DB item-level recovery: test results
 
-**Evidence date: 2026-10-15.** Results use the locally built `Az.DataProtection`
+**Evidence date: 2026-10-16 (native acceptance: 2026-10-15).** Results use the locally built `Az.DataProtection`
 module and tracked API **2026-06-01**, not an installed module or stale generated
 models. All seven positive native restore scenarios completed and passed data verification.
 No new public cmdlets or parameters are introduced.
@@ -10,8 +10,9 @@ No new public cmdlets or parameters are introduced.
 | Check | Observed result |
 | --- | --- |
 | Tracked module and parent builds | PASS: each completed with 0 warnings and 0 errors. |
-| PowerShell 7.6.6, artifact-selected suites | PASS: 864 passed, 0 failed, 0 skipped, 0 errors; Az.Resources absent. |
-| Windows PowerShell 5.1, artifact-selected suites | PASS: 832 passed, 0 failed, 0 skipped, 0 errors; signed Accounts dependency and Az.Resources absent. |
+| PowerShell 7.6.6 on Windows, artifact-selected suites | PASS: 876 passed, 0 failed, 0 skipped, 0 errors; Az.Resources absent. |
+| Windows PowerShell 5.1, artifact-selected suites | PASS: 844 passed, 0 failed, 0 skipped, 0 errors; signed Accounts dependency and Az.Resources absent. |
+| PowerShell 7.6.7 on Linux, LF source / CRLF artifact | PASS: 876 passed, 0 failed, 0 skipped, 0 pending; all six artifact-selected suites, no installed Resources or persisted context, live HTTP blocked. |
 | Separate tracked-input sandbox, source and artifact selection | PASS: 864 tests in each PowerShell 7 run; no ignored source-generation cache or installed Az.Resources dependency. |
 | Complete unchanged generated artifact playback, PowerShell 7 | PASS: 928 passed, 0 failed, 241 existing skipped placeholders/live-only cases; no temporary Resources module leakage. |
 | Additional complete playback, actual Windows PowerShell 5.1 | NOT GREEN: 886 passed, 10 failed, 241 skipped; failures occur in existing recorded workflows/collection assignments outside the six-suite gate. Not one of the four failed Core CI jobs. |
@@ -22,8 +23,8 @@ No new public cmdlets or parameters are introduced.
 | Script analyzer | 0 errors. |
 | Affected generated examples | 0 analysis errors; 71 existing warnings retained. |
 
-The PowerShell 7 total comprises 824 product/layout tests and 40 behavioral harness tests.
-The Windows PowerShell total comprises the same 824 product/layout tests and 8 AST checks
+The current six-suite PowerShell 7 total comprises 836 product/layout tests and 40 behavioral harness tests.
+The Windows PowerShell total comprises the same 836 product/layout tests and 8 AST checks
 for the PowerShell-7-only tooling; it does not claim execution of that harness on 5.1.
 The 35 unchanged tests above are a separate regression run, not additional cases
 within either total. Shared identity regression coverage includes Disk, Postgres,
@@ -41,6 +42,9 @@ PowerShell, containing 809 product cases. This CI follow-up adds 15 cases: ten
 null-identity rejection/legacy-compatibility cases, four exported Cosmos
 null-identity cases, and one source/artifact path-resolution case. No existing
 assertions were removed and no skips were added to these six suites.
+The subsequent Unix line-ending correction adds 12 freshness regression cases,
+raising those totals from 864/832 to 876/844. Historical sandbox and full-playback
+counts are identified separately in the table.
 
 ## CI failure analysis and artifact-layout follow-up
 
@@ -79,6 +83,30 @@ null/false construction behavior remain covered. No Azure operations were rerun
 as part of those guarded offline/playback runs. A separate incorrectly initialized
 legacy baseline diagnostic is excluded from this test evidence; it does not prove
 that the broader Desktop failures are pre-existing or add live Cosmos acceptance.
+
+### Remaining Unix-only freshness failure
+
+The next remote run passed compilation, analysis and Windows tests on both pipeline
+definitions. Linux and macOS each reported **898 passed, 1 failed and 241 skipped**.
+Both failures were the same shared-identity setup guard: the Windows-built
+artifact's CRLF JSON text was compared byte-for-character with LF checkout text.
+The three red statuses were those two jobs plus their aggregate pipeline status,
+not three distinct product failures.
+
+The exact failure was reproduced offline under Linux with canonical LF checkout
+files and the Windows-built artifact. The original six-suite run had 834 passed
+and one setup failure, so the 30 shared-identity cases never ran. After normalizing
+**only CRLF versus LF** for freshness comparison, all 876 cases passed. Real content,
+case, indentation, trailing spaces, bare CR, and final-newline differences still
+fail; the 12 added tests check both accepted newline layouts and these rejections.
+Source/assembly guards remain intact. No production script, manifest, API, module
+version or public command surface changed in this correction.
+
+The local Linux run used Ubuntu 22.04 under WSL and portable PowerShell 7.6.7.
+The fixed six-suite Windows Core/Desktop runs also passed as recorded above.
+Independent macOS execution and refreshed remote checks remain pending; the
+Windows pass from the prior commit is not a green-CI claim for a newer commit.
+No live tests or Azure resource operations were performed for this correction.
 
 ## Native lifecycle and restored data
 

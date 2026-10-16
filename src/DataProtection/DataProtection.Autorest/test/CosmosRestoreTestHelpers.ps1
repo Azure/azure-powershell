@@ -26,3 +26,21 @@ function Get-CosmosRestoreTestPaths {
     }
     throw 'Cannot find the Azure PowerShell checkout containing the canonical DataProtection source and generated manifest.'
 }
+
+function Assert-CosmosRestoreSourceCopy {
+    param(
+        [Parameter(Mandatory)][string] $SourcePath,
+        [Parameter(Mandatory)][string] $ArtifactPath,
+        [Parameter(Mandatory)][string] $RelativePath
+    )
+
+    $sourceText = [string](Get-Content -LiteralPath $SourcePath -Raw -ErrorAction Stop)
+    $artifactText = [string](Get-Content -LiteralPath $ArtifactPath -Raw -ErrorAction Stop)
+    # CI builds on Windows and reuses that artifact on Unix checkouts. JSON has
+    # platform-native EOLs, unlike the explicit CRLF rule for PowerShell scripts.
+    # Ignore CRLF versus LF only: retain case, whitespace and final-newline checks
+    # so a genuinely stale script or manifest still fails before any assertions.
+    if ($sourceText.Replace("`r`n", "`n") -cne $artifactText.Replace("`r`n", "`n")) {
+        throw "Stale artifact source copy: $RelativePath. Refresh it in the main workflow before running this suite."
+    }
+}
