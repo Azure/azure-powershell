@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed module generation from newer TypeSpec specifications while retaining the existing generation toolchain.
+* Updated Compute Fleet examples for API version 2026-08-01, including Launch mode creation, fleet identity input, and partial updates.
 
 ## Version 0.2.0
 

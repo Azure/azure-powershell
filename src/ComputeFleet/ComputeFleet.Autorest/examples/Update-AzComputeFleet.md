@@ -1,30 +1,31 @@
 ### Example 1: Update tags on a Compute Fleet using Update
 ```powershell
-Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
+Update-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Tag @{ environment = "staging" } |
+    Select-Object Name, Tag, ProvisioningState
 ```
 
 ```output
-Name              : fleet5-001
+Name              : managedFleet1
 Tag               : {
-                      "EnableVMManagementPolicy": "true",
                       "environment": "staging"
                     }
 ProvisioningState : Succeeded
 ```
 
-Updates the tags on a Managed mode Compute Fleet. The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back. This means unspecified properties retain their existing values.
+Sends a PATCH request using the `2026-08-01` Compute Fleet API. This request supplies the tag collection without resending the fleet's immutable compute profile. Tags supplied here replace the tag collection; include any existing tags you want to retain.
 
 ### Example 2: Update Spot capacity via pipeline input
 ```powershell
-Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
-    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+Get-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Update-AzComputeFleet -SpotPriorityProfileCapacity 3 |
+    Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 ```
 
 ```output
-Name                        : fleet5-001
-SpotPriorityProfileCapacity : 8
+Name                        : managedFleet1
+SpotPriorityProfileCapacity : 3
 ProvisioningState           : Succeeded
 ```
 
-Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set. Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet. Note that `computeProfile` is immutable and cannot be changed after fleet creation.
+Uses the existing fleet object's identity to PATCH its Spot capacity. The input object identifies the fleet; it is not sent as a complete replacement configuration. Increasing capacity can incur additional charges.
