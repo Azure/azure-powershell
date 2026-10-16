@@ -169,6 +169,21 @@ Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultN
 $validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $cosmosRestoreRequest -Name $instance.BackupInstanceName
 
 $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $cosmosRestoreRequest
+.Example
+$subscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+$resourceGroupName = 'backup-resource-group'
+$vaultName = 'backup-vault'
+$backupInstanceName = 'cosmos-backup-instance'
+$targetCosmosAccountId = "/subscriptions/$subscriptionId/resourceGroups/target-resource-group/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
+$restoreLocation = 'eastasia'
+
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
+$restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $restoreLocation -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId -ItemLevelRecovery -RestoreConfiguration $restoreConfig -UseSystemAssignedIdentity $true
+
+Set-AzDataProtectionMSIPermission -SubscriptionId $subscriptionId -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope Resource -DatasourceType AzureCosmosDB -RestoreRequest $restoreRequest
+Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $backupInstanceName -RestoreRequest $restoreRequest -ErrorAction Stop
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName -Parameter $restoreRequest
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest

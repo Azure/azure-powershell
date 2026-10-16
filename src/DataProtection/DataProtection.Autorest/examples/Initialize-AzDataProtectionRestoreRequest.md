@@ -161,3 +161,62 @@ The third command retrieves the list of containers that are protected under the 
 The fourth through sixth commands build a RenameTo hashtable that maps each original container name to a new container name for the restore.
 The seventh command sets the target storage account ARM ID for the alternate location restore.
 The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
+
+### Example 9: Get restore request object for alternate location item level restore for AzureElasticSAN
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "volumeGroupName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
+$targetVolumeGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ElasticSan/elasticSans/elasticSanName/volumeGroups/targetVolumeGroup"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureElasticSAN -SourceDataStore OperationalStore -RestoreLocation "vaultLocation" -RestoreType AlternateLocation -RecoveryPoint $rp[0].Name -TargetResourceId $targetVolumeGroupId -RestoreConfiguration $restoreConfig -ItemLevelRecovery
+```
+
+```output
+ObjectType                                  RestoreTargetInfoObjectType  RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
+----------                                  ---------------------------  ------------------------------- -------------------------------- ------------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest  itemLevelRestoreTargetInfo   FailIfExists                    vaultLocation                    OperationalStore
+```
+
+The first and second commands fetch the backup instance and recovery points for the protected Elastic SAN volume group.
+The third command builds the restore configuration selecting the source volume and optionally renaming it on the target volume group.
+The fourth command sets the target volume group ARM ID.
+The last command initializes the restore request for an alternate-location item-level restore of the selected Elastic SAN volume.
+
+### Example 10: Initialize Azure Cosmos DB item-level recovery with a system-assigned managed identity
+```powershell
+$subscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+$resourceGroupName = 'backup-resource-group'
+$vaultName = 'backup-vault'
+$backupInstanceName = 'cosmos-backup-instance'
+$targetCosmosAccountId = "/subscriptions/$subscriptionId/resourceGroups/target-resource-group/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
+$restoreLocation = 'eastasia'
+
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
+$restoreParameters = @{
+    DatasourceType = 'AzureCosmosDB'
+    SourceDataStore = 'VaultStore'
+    RestoreLocation = $restoreLocation
+    RestoreType = 'AlternateLocation'
+    RecoveryPoint = $rp[0].Property.RecoveryPointId
+    TargetResourceId = $targetCosmosAccountId
+    ItemLevelRecovery = $true
+    RestoreConfiguration = $restoreConfig
+}
+$restoreRequest = Initialize-AzDataProtectionRestoreRequest @restoreParameters -UseSystemAssignedIdentity $true
+```
+
+Replace the placeholders with your resources and select the required recovery point. The target must already exist as an empty Azure Cosmos DB for NoSQL account different from the source account; set `RestoreLocation` to its location. This example initializes a VaultStore alternate-location restore request for item-level recovery (ILR) of two containers in `db1` and the whole database `db2`. It does not submit a restore or create the target account.
+
+The configuration accepts at most 50 literal, case-sensitive database or database/container identifiers and preserves their case. Exact duplicates and parent-child overlaps are rejected. Valid name punctuation, such as braces, commas, or `*`, is treated literally, not as a pattern. Restore uses `FailIfExists` and does not support renaming. Use `-RestoreConfiguration`, not the blob-specific `-ContainersList`, `-PrefixMatch`, or `-RenameTo` parameters.
+
+Passing `-UseSystemAssignedIdentity $true` explicitly selects the backup vault's system-assigned managed identity. The request retains this choice in `IdentityDetailUseSystemAssignedIdentity`. The selected identity must have the required restore permissions.
+
+### Example 11: Initialize Azure Cosmos DB item-level recovery with a user-assigned managed identity
+```powershell
+# Reuse the restore parameters from Example 10, choosing this identity instead.
+$userAssignedIdentityArmId = "/subscriptions/$subscriptionId/resourceGroups/identity-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity"
+$restoreRequest = Initialize-AzDataProtectionRestoreRequest @restoreParameters -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
+```
+
+The user-assigned managed identity must be attached to the backup vault and have the required restore permissions. Specify both `-UseSystemAssignedIdentity $false` and `-UserAssignedIdentityArmId`; do not combine the identity ID with `$true`. The request retains the explicit false value in `IdentityDetailUseSystemAssignedIdentity` and the identity resource ID in `IdentityDetailUserAssignedIdentityArmUrl`.
