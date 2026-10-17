@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>EdgeAction version code deployment object</summary>
+    /// <summary>Version code information for edge action</summary>
     public partial class VersionCode :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCodeInternal
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// EdgeAction version code deployment object
+    /// Version code information for edge action
     public partial interface IVersionCode :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Name { get; set; }
 
     }
-    /// EdgeAction version code deployment object
+    /// Version code information for edge action
     internal partial interface IVersionCodeInternal
 
     {

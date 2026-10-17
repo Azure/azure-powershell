@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete EdgeActionExecutionFilter resource</summary>
+    /// <summary>Delete a EdgeActionExecutionFilter</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzCdnEdgeActionExecutionFilter_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Delete EdgeActionExecutionFilter resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Delete a EdgeActionExecutionFilter")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     public partial class RemoveAzCdnEdgeActionExecutionFilter_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.EdgeActionExecutionFiltersDelete(SubscriptionId, ResourceGroupName, EdgeActionName, ExecutionFilter, onNoContent, onOk, onDefault, this, Pipeline);
+                    await this.Client.EdgeActionExecutionFiltersDelete(SubscriptionId, ResourceGroupName, EdgeActionName, ExecutionFilter, onOk, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.UndeclaredResponseException urexception)

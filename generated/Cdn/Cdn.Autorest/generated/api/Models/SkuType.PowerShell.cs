@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>Sku of edge actions.</summary>
+    /// <summary>The SKU type for the edge action</summary>
     [System.ComponentModel.TypeConverter(typeof(SkuTypeTypeConverter))]
     public partial class SkuType
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Sku of edge actions.
+    /// The SKU type for the edge action
     [System.ComponentModel.TypeConverter(typeof(SkuTypeTypeConverter))]
     public partial interface ISkuType
 

@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create EdgeAction resource</summary>
+    /// <summary>create a EdgeAction</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnEdgeAction_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create EdgeAction resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create a EdgeAction")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.NotSuggestDefaultParameterSet]
     public partial class NewAzCdnEdgeAction_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,

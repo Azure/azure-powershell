@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-A long-running operation to deploy versioncode to EdgeActionVersion resource.
+A long-running resource action.
 .Description
-A long-running operation to deploy versioncode to EdgeActionVersion resource.
+A long-running resource action.
 .Example
 Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
 
@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IVersionCode>: EdgeAction version code deployment object
+BODY <IVersionCode>: Version code information for edge action
   Content <String>: The version code deployment content 
   Name <String>: The version code name
 
@@ -141,7 +141,7 @@ param(
     [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode]
-    # EdgeAction version code deployment object
+    # Version code information for edge action
     ${Body},
 
     [Parameter(ParameterSetName='DeployExpanded', Mandatory)]

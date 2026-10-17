@@ -21,7 +21,7 @@ Removes a content from CDN.
 Removes a content from AzureFrontDoor.
 
 ### [Deploy-AzCdnEdgeActionVersionCode](Deploy-AzCdnEdgeActionVersionCode.md)
-A long-running operation to deploy versioncode to EdgeActionVersion resource.
+A long-running resource action.
 
 ### [Disable-AzCdnCustomDomainCustomHttps](Disable-AzCdnCustomDomainCustomHttps.md)
 Disable https delivery of the custom domain.
@@ -36,16 +36,16 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 Gets an existing custom domain within an endpoint.
 
 ### [Get-AzCdnEdgeAction](Get-AzCdnEdgeAction.md)
-Get EdgeAction resource
+Get a EdgeAction
 
 ### [Get-AzCdnEdgeActionExecutionFilter](Get-AzCdnEdgeActionExecutionFilter.md)
-Get EdgeActionExecutionFilter resource
+Get a EdgeActionExecutionFilter
 
 ### [Get-AzCdnEdgeActionVersion](Get-AzCdnEdgeActionVersion.md)
-Get EdgeActionVersion resource
+Get a EdgeActionVersion
 
 ### [Get-AzCdnEdgeActionVersionCode](Get-AzCdnEdgeActionVersionCode.md)
-A long-running operation to get versioncode deployed to EdgeActionVersion resource.
+Get the version code for the edge action version.
 
 ### [Get-AzCdnEdgeNode](Get-AzCdnEdgeNode.md)
 Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.
@@ -195,13 +195,13 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 Create an in-memory object for DeliveryRuleUrlPathCondition.
 
 ### [New-AzCdnEdgeAction](New-AzCdnEdgeAction.md)
-Create EdgeAction resource
+Create a EdgeAction
 
 ### [New-AzCdnEdgeActionExecutionFilter](New-AzCdnEdgeActionExecutionFilter.md)
-Create EdgeActionExecutionFilter resource
+Create a EdgeActionExecutionFilter
 
 ### [New-AzCdnEdgeActionVersion](New-AzCdnEdgeActionVersion.md)
-Create EdgeActionVersion version
+Create a EdgeActionVersion
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Create a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -411,16 +411,16 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 Deletes an existing custom domain within an endpoint.
 
 ### [Remove-AzCdnEdgeAction](Remove-AzCdnEdgeAction.md)
-Delete EdgeAction resource
+Delete a EdgeAction
 
 ### [Remove-AzCdnEdgeActionAttachment](Remove-AzCdnEdgeActionAttachment.md)
 A long-running operation for deleting an EdgeAction attachment that returns no content.
 
 ### [Remove-AzCdnEdgeActionExecutionFilter](Remove-AzCdnEdgeActionExecutionFilter.md)
-Delete EdgeActionExecutionFilter resource
+Delete a EdgeActionExecutionFilter
 
 ### [Remove-AzCdnEdgeActionVersion](Remove-AzCdnEdgeActionVersion.md)
-Delete EdgeActionVersion resource
+Delete a EdgeActionVersion
 
 ### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -483,6 +483,9 @@ Abort classic cdn migrate to AFDx.
 Your new Front Door Profile will be deleted and your existing profile will remain active.
 WAF policies will not be deleted.
 
+### [Switch-AzCdnEdgeActionVersionDefault](Switch-AzCdnEdgeActionVersionDefault.md)
+Swap the default version for the edge action.
+
 ### [Test-AzCdnEndpointCustomDomain](Test-AzCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
@@ -512,13 +515,22 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
 ### [Update-AzCdnEdgeAction](Update-AzCdnEdgeAction.md)
-Update EdgeAction resource
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ### [Update-AzCdnEdgeActionExecutionFilter](Update-AzCdnEdgeActionExecutionFilter.md)
-Update EdgeActionExecutionFilter resource
+Update the properties and tags of an Edge Action execution filter.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ### [Update-AzCdnEdgeActionVersion](Update-AzCdnEdgeActionVersion.md)
-Update EdgeActionVersion resource
+Update the tags of an Edge Action version.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Version properties are not changed.
+If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
 
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.

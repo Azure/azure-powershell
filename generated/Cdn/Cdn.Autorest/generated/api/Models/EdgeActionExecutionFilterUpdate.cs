@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateProperties _property;
 
-        /// <summary>The updatable properties of the EdgeActionExecutionFilter.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionExecutionFilterUpdateProperties()); set => this._property = value; }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionExecutionFilterUpdateTags()); set => this._tag = value; }
 
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string VersionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdatePropertiesInternal)Property).VersionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdatePropertiesInternal)Property).VersionId = value ?? null; }
 
@@ -85,14 +85,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags Tag { get; set; }
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The referenced versionId of the edgeAction version",
+        Description = @"The referenced versionId of the edgeaction version",
         SerializedName = @"versionId",
         PossibleTypes = new [] { typeof(string) })]
         string VersionId { get; set; }
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string ExecutionFilterIdentifierHeaderName { get; set; }
         /// <summary>Custom Header Value associated with the execution filter</summary>
         string ExecutionFilterIdentifierHeaderValue { get; set; }
-        /// <summary>The updatable properties of the EdgeActionExecutionFilter.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateProperties Property { get; set; }
         /// <summary>Resource tags.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags Tag { get; set; }
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         string VersionId { get; set; }
 
     }

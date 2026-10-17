@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>create EdgeAction resource</summary>
+    /// <summary>create a EdgeAction</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCdnEdgeAction_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create EdgeAction resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create a EdgeAction")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2026-10-01")]
     public partial class NewAzCdnEdgeAction_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
@@ -137,16 +137,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline Pipeline { get; set; }
 
-        /// <summary>The provisioning state of the edge action</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioning state of the edge action")]
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The provisioning state of the edge action",
+        Description = @"The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         public string ProvisioningState { get => _resourceBody.ProvisioningState ?? null; set => _resourceBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
@@ -179,24 +182,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the SKU for the EdgeAction.")]
+        /// <summary>The name of the SKU</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the SKU")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the SKU for the EdgeAction.",
+        Description = @"The name of the SKU",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _resourceBody.SkuName ?? null; set => _resourceBody.SkuName = value; }
 
-        /// <summary>The pricing tier associated with the SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The pricing tier associated with the SKU.")]
+        /// <summary>The tier of the SKU</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The tier of the SKU")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The pricing tier associated with the SKU.",
+        Description = @"The tier of the SKU",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuTier { get => _resourceBody.SkuTier ?? null; set => _resourceBody.SkuTier = value; }
@@ -459,6 +462,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
+            if (this.MyInvocation.BoundParameters.ContainsKey("ProvisioningState"))
+            {
+                WriteWarning("ProvisioningState is server-managed and is ignored by API version 2026-10-01.");
+            }
             ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletProcessRecordStart).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
             __processRecordId = System.Guid.NewGuid().ToString();
             try

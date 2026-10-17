@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"List EdgeAction resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/edgeActions", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/edgeActions", ApiVersion = "2026-10-01")]
     public partial class GetAzCdnEdgeAction_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext

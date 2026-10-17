@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>EdgeAction version code deployment object</summary>
+    /// <summary>Version code information for edge action</summary>
     [System.ComponentModel.TypeConverter(typeof(VersionCodeTypeConverter))]
     public partial class VersionCode
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// EdgeAction version code deployment object
+    /// Version code information for edge action
     [System.ComponentModel.TypeConverter(typeof(VersionCodeTypeConverter))]
     public partial interface IVersionCode
 

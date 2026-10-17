@@ -84,7 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionProperties()); set => this._property = value; }
 
-        /// <summary>The provisioning state of the edge action</summary>
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
@@ -100,11 +103,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuType()); set => this._sku = value; }
 
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeInternal)Sku).Name = value ; }
 
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeInternal)Sku).Tier = value ; }
 
@@ -189,37 +192,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"attachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment> Attachment { get;  }
-        /// <summary>The provisioning state of the edge action</summary>
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The provisioning state of the edge action",
+        Description = @"The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the SKU for the EdgeAction.",
+        Description = @"The name of the SKU",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The pricing tier associated with the SKU.",
+        Description = @"The tier of the SKU",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         string SkuTier { get; set; }
@@ -233,14 +239,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment> Attachment { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionProperties Property { get; set; }
-        /// <summary>The provisioning state of the edge action</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>The sku type of the edge action</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType Sku { get; set; }
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         string SkuName { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         string SkuTier { get; set; }
 
     }

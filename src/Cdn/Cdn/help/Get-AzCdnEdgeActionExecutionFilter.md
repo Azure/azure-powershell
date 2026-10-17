@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnEdgeActionExecutionFilter
 
 ## SYNOPSIS
-Get EdgeActionExecutionFilter resource
+Get a EdgeActionExecutionFilter
 
 ## SYNTAX
 
@@ -21,13 +21,25 @@ Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <
 
 ### Get
 ```
-Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <String>
- -ExecutionFilter <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeAction
+```
+Get-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <ICdnIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCdnEdgeActionExecutionFilter -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get EdgeActionExecutionFilter resource
+Get a EdgeActionExecutionFilter
 
 ## EXAMPLES
 
@@ -63,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -83,7 +110,7 @@ The name of the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -93,13 +120,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,7 +157,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -129,6 +171,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 

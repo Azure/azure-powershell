@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnEdgeAction
 
 ## SYNOPSIS
-Create EdgeAction resource
+Create a EdgeAction
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId 
 ```
 
 ## DESCRIPTION
-Create EdgeAction resource
+Create a EdgeAction
 
 ## EXAMPLES
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningState
-The provisioning state of the edge action
+The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.
 
 ```yaml
 Type: System.String
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The name of the SKU for the EdgeAction.
+The name of the SKU
 
 ```yaml
 Type: System.String
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The pricing tier associated with the SKU.
+The tier of the SKU
 
 ```yaml
 Type: System.String

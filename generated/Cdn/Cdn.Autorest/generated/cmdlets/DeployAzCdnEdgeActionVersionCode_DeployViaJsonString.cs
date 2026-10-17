@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>A long-running operation to deploy versioncode to EdgeActionVersion resource.</summary>
+    /// <summary>A long-running resource action.</summary>
     /// <remarks>
     /// [OpenAPI] DeployVersionCode=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet("Deploy", @"AzCdnEdgeActionVersionCode_DeployViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running operation to deploy versioncode to EdgeActionVersion resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running resource action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.NotSuggestDefaultParameterSet]
     public partial class DeployAzCdnEdgeActionVersionCode_DeployViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,

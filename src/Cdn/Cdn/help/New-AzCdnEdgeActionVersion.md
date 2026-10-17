@@ -8,37 +8,53 @@ schema: 2.0.0
 # New-AzCdnEdgeActionVersion
 
 ## SYNOPSIS
-Create EdgeActionVersion version
+Create a EdgeActionVersion
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+New-AzCdnEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> [-DeploymentType <String>] [-IsDefaultVersion <String>]
  [-ProvisioningState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
-```
-
 ### CreateViaJsonString
 ```
-New-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+New-AzCdnEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzCdnEdgeActionVersion -Version <String> -EdgeActionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeActionExpanded
+```
+New-AzCdnEdgeActionVersion -Version <String> -EdgeActionInputObject <ICdnIdentity> -Location <String>
+ [-DeploymentType <String>] [-IsDefaultVersion <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeAction
+```
+New-AzCdnEdgeActionVersion -Version <String> -EdgeActionInputObject <ICdnIdentity>
+ -Resource <IEdgeActionVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create EdgeActionVersion version
+Create a EdgeActionVersion
 
 ## EXAMPLES
 
@@ -113,11 +129,13 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentType
-The deployment type
+The deployment type for the Edge Action version.
+Set this value when creating the version.
+When updating an existing version, any supplied value must match the existing value.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -127,12 +145,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -143,11 +176,15 @@ Accept wildcard characters: False
 ```
 
 ### -IsDefaultVersion
-The active state
+Indicates whether this is the default version.
+When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+If another default version exists, supplying true is rejected.
+When updating an existing version, any supplied value must match the existing value.
+Use swapDefault to change the default version.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -192,7 +229,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: True
@@ -218,11 +255,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningState
-The provisioning state
+The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -232,13 +269,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+Concrete tracked resource types can be created by aliasing this type using a specific property type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
+Parameter Sets: CreateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -254,7 +306,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -269,7 +321,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -329,6 +381,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
 
 ## OUTPUTS
 

@@ -16,14 +16,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="DeploymentType" /> property.</summary>
         private string _deploymentType;
 
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string DeploymentType { get => this._deploymentType; set => this._deploymentType = value; }
 
         /// <summary>Backing field for <see cref="IsDefaultVersion" /> property.</summary>
         private string _isDefaultVersion;
 
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string IsDefaultVersion { get => this._isDefaultVersion; set => this._isDefaultVersion = value; }
 
@@ -43,7 +51,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
-        /// <summary>The provisioning state</summary>
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
 
@@ -64,26 +74,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface IEdgeActionVersionProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The deployment type",
+        Description = @"The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.",
         SerializedName = @"deploymentType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The active state",
+        Description = @"Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.",
         SerializedName = @"isDefaultVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("True", "False")]
@@ -99,17 +117,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"lastPackageUpdateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastPackageUpdateTime { get;  }
-        /// <summary>The provisioning state</summary>
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The provisioning state",
+        Description = @"The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>The validation status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -129,16 +149,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     internal partial interface IEdgeActionVersionPropertiesInternal
 
     {
-        /// <summary>The deployment type</summary>
+        /// <summary>
+        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
+        /// any supplied value must match the existing value.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>The active state</summary>
+        /// <summary>
+        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
+        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
+        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
+        /// the default version.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("True", "False")]
         string IsDefaultVersion { get; set; }
         /// <summary>The last update time in UTC for package update</summary>
         global::System.DateTime? LastPackageUpdateTime { get; set; }
-        /// <summary>The provisioning state</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>The validation status</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed")]

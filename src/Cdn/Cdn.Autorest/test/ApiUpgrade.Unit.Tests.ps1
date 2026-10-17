@@ -184,6 +184,7 @@ Describe 'ApiUpgrade.Unit' {
             'Remove-AzCdnEdgeActionAttachment',
             'Remove-AzCdnEdgeActionExecutionFilter',
             'Remove-AzCdnEdgeActionVersion',
+            'Switch-AzCdnEdgeActionVersionDefault',
             'Update-AzCdnEdgeAction',
             'Update-AzCdnEdgeActionExecutionFilter',
             'Update-AzCdnEdgeActionVersion'

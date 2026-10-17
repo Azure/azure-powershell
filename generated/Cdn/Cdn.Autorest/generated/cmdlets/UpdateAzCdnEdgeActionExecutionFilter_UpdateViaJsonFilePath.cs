@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update EdgeActionExecutionFilter resource</summary>
+    /// <summary>
+    /// update the properties and tags of an Edge Action execution filter. Omitted tags are preserved, an empty tags object clears
+    /// all tags, and supplied tags replace the entire tag collection. Null tags are rejected.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCdnEdgeActionExecutionFilter_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update EdgeActionExecutionFilter resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update the properties and tags of an Edge Action execution filter. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.NotSuggestDefaultParameterSet]
     public partial class UpdateAzCdnEdgeActionExecutionFilter_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,

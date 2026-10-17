@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The response of EdgeActionExecutionFilter resource list operation.</summary>
+    /// <summary>The response of a EdgeActionExecutionFilter list operation.</summary>
     public partial class EdgeActionExecutionFilterListResult
     {
 

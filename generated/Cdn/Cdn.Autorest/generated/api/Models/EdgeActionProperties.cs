@@ -26,7 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
-        /// <summary>The provisioning state of the edge action</summary>
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
 
@@ -51,17 +54,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"attachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment> Attachment { get;  }
-        /// <summary>The provisioning state of the edge action</summary>
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The provisioning state of the edge action",
+        Description = @"The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
 
     }
@@ -71,8 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     {
         /// <summary>A list of attachments for the edge action</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment> Attachment { get; set; }
-        /// <summary>The provisioning state of the edge action</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        /// <summary>
+        /// The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in
+        /// requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
 
     }

@@ -89,7 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionExecutionFilterProperties()); set => this._property = value; }
 
-        /// <summary>The provisioning state</summary>
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
@@ -145,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__trackedResource).Type; }
 
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string VersionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterPropertiesInternal)Property).VersionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterPropertiesInternal)Property).VersionId = value ?? null; }
 
@@ -205,26 +207,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"lastUpdateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastUpdateTime { get;  }
-        /// <summary>The provisioning state</summary>
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The provisioning state",
+        Description = @"The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The referenced versionId of the edgeAction version",
+        Description = @"The referenced versionId of the edgeaction version",
         SerializedName = @"versionId",
         PossibleTypes = new [] { typeof(string) })]
         string VersionId { get; set; }
@@ -242,10 +246,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         global::System.DateTime? LastUpdateTime { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterProperties Property { get; set; }
-        /// <summary>The provisioning state</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+        /// <summary>
+        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
         string ProvisioningState { get; set; }
-        /// <summary>The referenced versionId of the edgeAction version</summary>
+        /// <summary>The referenced versionId of the edgeaction version</summary>
         string VersionId { get; set; }
 
     }

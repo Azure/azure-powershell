@@ -10,17 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// A long-running operation to get versioncode deployed to EdgeActionVersion resource.
-    /// </summary>
+    /// <summary>Get the version code for the edge action version.</summary>
     /// <remarks>
     /// [OpenAPI] GetVersionCode=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCdnEdgeActionVersionCode_GetViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running operation to get versioncode deployed to EdgeActionVersion resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Get the version code for the edge action version.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/getVersionCode", ApiVersion = "2026-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.NotSuggestDefaultParameterSet]
     public partial class GetAzCdnEdgeActionVersionCode_GetViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
@@ -414,6 +412,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
+            if (this.MyInvocation.BoundParameters.ContainsKey("Body") || this.MyInvocation.BoundParameters.ContainsKey("JsonString") || this.MyInvocation.BoundParameters.ContainsKey("JsonFilePath"))
+            {
+                WriteWarning("Body, JsonString and JsonFilePath are retained for compatibility but are not sent by API version 2026-10-01.");
+            }
             ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.CmdletProcessRecordStart).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
             __processRecordId = System.Guid.NewGuid().ToString();
             try

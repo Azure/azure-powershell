@@ -16,14 +16,49 @@
 
 <#
 .Synopsis
-Create EdgeActionVersion version
+Create a EdgeActionVersion
 .Description
-Create EdgeActionVersion version
+Create a EdgeActionVersion
 .Example
 New-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Location global -DeploymentType zip -IsDefaultVersion True
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
+  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
+  [Id <String>]: Resource identity path
+  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RouteName <String>]: Name of the routing rule.
+  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
+  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
+  [SecretName <String>]: Name of the Secret under the profile.
+  [SecurityPolicyName <String>]: Name of the security policy under the profile.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
+
+RESOURCE <IEdgeActionVersion>: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
+  [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
+  [ProvisioningState <String>]: The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnedgeactionversion
 #>
@@ -34,23 +69,29 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
+    # The name of the Edge Action version
+    ${Version},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the Edge Action version
-    ${Version},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -58,39 +99,63 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${EdgeActionInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("zip", "file", "others")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The deployment type
+    # The deployment type for the Edge Action version.
+    # Set this value when creating the version.
+    # When updating an existing version, any supplied value must match the existing value.
     ${DeploymentType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The active state
+    # Indicates whether this is the default version.
+    # When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
+    # If another default version exists, supplying true is rejected.
+    # When updating an existing version, any supplied value must match the existing value.
+    # Use swapDefault to change the default version.
     ${IsDefaultVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The provisioning state
+    # The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
     ${ProvisioningState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeActionExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion]
+    # Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    ${Resource},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -169,6 +234,8 @@ dynamicparam {
     $parameterSet = $PSCmdlet.ParameterSetName
     $mapping = @{
         CreateExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateExpanded';
+        CreateViaIdentityEdgeAction = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaIdentityEdgeAction';
+        CreateViaIdentityEdgeActionExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaIdentityEdgeActionExpanded';
         CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonFilePath';
         CreateViaJsonString = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonString';
     }
@@ -227,6 +294,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateExpanded';
+            CreateViaIdentityEdgeAction = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaIdentityEdgeAction';
+            CreateViaIdentityEdgeActionExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaIdentityEdgeActionExpanded';
             CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonString';
         }

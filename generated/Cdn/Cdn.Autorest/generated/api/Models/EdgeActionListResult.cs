@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The response of EdgeAction resource list operation.</summary>
+    /// <summary>The response of a EdgeAction list operation.</summary>
     public partial class EdgeActionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionListResultInternal
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// The response of EdgeAction resource list operation.
+    /// The response of a EdgeAction list operation.
     public partial interface IEdgeActionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction> Value { get; set; }
 
     }
-    /// The response of EdgeAction resource list operation.
+    /// The response of a EdgeAction list operation.
     internal partial interface IEdgeActionListResultInternal
 
     {

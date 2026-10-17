@@ -23,7 +23,8 @@
 * Upgraded the CDN and Azure Front Door API version to 2026-10-01.
     - Added server TLS group configuration, including post-quantum key exchange groups, and origin certificate subject name validation settings.
     - Retained mTLS, profile/domain/route WAF associations, origin authentication token destination headers, and URL signing.
-    - Retained all existing standalone EdgeAction resource cmdlets on API version 2024-07-22-preview for compatibility.
+    - Upgraded standalone EdgeAction resource cmdlets to API version 2026-10-01 and added default-version swapping.
+    - Retained Add-AzCdnEdgeActionAttachment and Remove-AzCdnEdgeActionAttachment on API version 2024-07-22-preview for compatibility.
     - Added the ClientResponse invocation point for EdgeAction delivery-rule actions.
     - Retained previously published AFD URL signing models and serialization for client compatibility; these are not newly supported October API features.
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.

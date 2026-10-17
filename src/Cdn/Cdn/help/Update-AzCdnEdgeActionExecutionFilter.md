@@ -8,7 +8,9 @@ schema: 2.0.0
 # Update-AzCdnEdgeActionExecutionFilter
 
 ## SYNOPSIS
-Update EdgeActionExecutionFilter resource
+Update the properties and tags of an Edge Action execution filter.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ## SYNTAX
 
@@ -21,14 +23,6 @@ Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter 
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
-```
-Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
-```
-
 ### UpdateViaJsonString
 ```
 Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
@@ -37,8 +31,44 @@ Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter 
  [-ChangeReference <String>] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### UpdateViaIdentityEdgeActionExpanded
+```
+Update-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <ICdnIdentity>
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityEdgeAction
+```
+Update-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <ICdnIdentity>
+ -Property <IEdgeActionExecutionFilterUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzCdnEdgeActionExecutionFilter -InputObject <ICdnIdentity>
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Update EdgeActionExecutionFilter resource
+Update the properties and tags of an Edge Action execution filter.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ## EXAMPLES
 
@@ -112,12 +142,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -132,7 +177,7 @@ The name of the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -147,7 +192,7 @@ Custom Header Key associated with the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -162,13 +207,28 @@ Custom Header Value associated with the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -217,13 +277,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Property
+The type used for update operations of the EdgeActionExecutionFilter.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdate
+Parameter Sets: UpdateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -239,7 +314,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -254,7 +329,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -265,11 +340,11 @@ Accept wildcard characters: False
 ```
 
 ### -VersionId
-The referenced versionId of the edgeAction version
+The referenced versionId of the edgeaction version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -314,6 +389,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdate
 
 ## OUTPUTS
 

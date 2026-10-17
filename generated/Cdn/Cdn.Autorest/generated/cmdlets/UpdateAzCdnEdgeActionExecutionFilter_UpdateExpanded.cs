@@ -10,15 +10,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update EdgeActionExecutionFilter resource</summary>
+    /// <summary>
+    /// update the properties and tags of an Edge Action execution filter. Omitted tags are preserved, an empty tags object clears
+    /// all tags, and supplied tags replace the entire tag collection. Null tags are rejected.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCdnEdgeActionExecutionFilter_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update EdgeActionExecutionFilter resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update the properties and tags of an Edge Action execution filter. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzCdnEdgeActionExecutionFilter_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
@@ -220,13 +223,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilterUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
-        /// <summary>The referenced versionId of the edgeAction version</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The referenced versionId of the edgeAction version")]
+        /// <summary>The referenced versionId of the edgeaction version</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The referenced versionId of the edgeaction version")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The referenced versionId of the edgeAction version",
+        Description = @"The referenced versionId of the edgeaction version",
         SerializedName = @"versionId",
         PossibleTypes = new [] { typeof(string) })]
         public string VersionId { get => _propertiesBody.VersionId ?? null; set => _propertiesBody.VersionId = value; }

@@ -208,7 +208,8 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Update-AzFrontDoorCdnProfileSku', 'Update-AzFrontDoorCdnRoute', 
                'Update-AzFrontDoorCdnRule', 'Update-AzFrontDoorCdnRuleSet', 
                'Update-AzFrontDoorCdnSecret', 
-               'Update-AzFrontDoorCdnSecurityPolicy'
+               'Update-AzFrontDoorCdnSecurityPolicy',
+               'Switch-AzCdnEdgeActionVersionDefault'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -268,4 +269,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>Sku of edge actions.</summary>
+    /// <summary>The SKU type for the edge action</summary>
     public partial class SkuType :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="Tier" /> property.</summary>
         private string _tier;
 
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Tier { get => this._tier; set => this._tier = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Sku of edge actions.
+    /// The SKU type for the edge action
     public partial interface ISkuType :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the SKU for the EdgeAction.",
+        Description = @"The name of the SKU",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The pricing tier associated with the SKU.",
+        Description = @"The tier of the SKU",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         string Tier { get; set; }
 
     }
-    /// Sku of edge actions.
+    /// The SKU type for the edge action
     internal partial interface ISkuTypeInternal
 
     {
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         string Name { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         string Tier { get; set; }
 
     }

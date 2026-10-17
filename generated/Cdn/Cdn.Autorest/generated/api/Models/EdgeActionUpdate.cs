@@ -16,25 +16,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for Sku</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeUpdate()); set { {_sku = value;} } }
 
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny _property;
+
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Any()); set => this._property = value; }
+
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate _sku;
 
-        /// <summary>The sku type of the edge action</summary>
+        /// <summary>
+        /// The SKU of the Edge Action. Do not include sku in PATCH requests; any supplied sku, including null or the existing value,
+        /// is rejected.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeUpdate()); set => this._sku = value; }
 
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdateInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdateInternal)Sku).Name = value ?? null; }
 
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdateInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdateInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags _tag;
 
-        /// <summary>Resource tags.</summary>
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+        /// replace the entire tag collection. Null tags are rejected.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionUpdateTags()); set => this._tag = value; }
 
@@ -48,36 +61,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface IEdgeActionUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the SKU for the EdgeAction.",
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny Property { get; set; }
+        /// <summary>The name of the SKU</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the SKU",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The pricing tier associated with the SKU.",
+        Description = @"The tier of the SKU",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         string SkuTier { get; set; }
-        /// <summary>Resource tags.</summary>
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+        /// replace the entire tag collection. Null tags are rejected.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Resource tags.",
+        Description = @"Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags Tag { get; set; }
@@ -87,13 +114,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     internal partial interface IEdgeActionUpdateInternal
 
     {
-        /// <summary>The sku type of the edge action</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny Property { get; set; }
+        /// <summary>
+        /// The SKU of the Edge Action. Do not include sku in PATCH requests; any supplied sku, including null or the existing value,
+        /// is rejected.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate Sku { get; set; }
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
+        /// <summary>The name of the SKU</summary>
         string SkuName { get; set; }
-        /// <summary>The pricing tier associated with the SKU.</summary>
+        /// <summary>The tier of the SKU</summary>
         string SkuTier { get; set; }
-        /// <summary>Resource tags.</summary>
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+        /// replace the entire tag collection. Null tags are rejected.
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags Tag { get; set; }
 
     }

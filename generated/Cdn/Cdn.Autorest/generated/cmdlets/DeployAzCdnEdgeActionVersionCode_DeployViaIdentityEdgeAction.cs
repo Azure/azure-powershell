@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>A long-running operation to deploy versioncode to EdgeActionVersion resource.</summary>
+    /// <summary>A long-running resource action.</summary>
     /// <remarks>
     /// [OpenAPI] DeployVersionCode=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet("Deploy", @"AzCdnEdgeActionVersionCode_DeployViaIdentityEdgeAction", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running operation to deploy versioncode to EdgeActionVersion resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running resource action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/deployVersionCode", ApiVersion = "2026-10-01")]
     public partial class DeployAzCdnEdgeActionVersionCode_DeployViaIdentityEdgeAction : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Backing field for <see cref="Body" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode _body;
 
-        /// <summary>EdgeAction version code deployment object</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "EdgeAction version code deployment object", ValueFromPipeline = true)]
+        /// <summary>Version code information for edge action</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Version code information for edge action", ValueFromPipeline = true)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"EdgeAction version code deployment object",
+        Description = @"Version code information for edge action",
         SerializedName = @"body",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]

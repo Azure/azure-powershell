@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
+    /// <summary>Edge action attachment information</summary>
     public partial class EdgeActionAttachment :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachmentInternal
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
+    /// Edge action attachment information
     public partial interface IEdgeActionAttachment :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Id { get;  }
 
     }
+    /// Edge action attachment information
     internal partial interface IEdgeActionAttachmentInternal
 
     {

@@ -10,15 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update EdgeAction resource</summary>
+    /// <summary>
+    /// update the tags of an Edge Action. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+    /// replace the entire tag collection. Null tags are rejected. Do not include sku in PATCH requests; any supplied sku, including
+    /// null or the existing value, is rejected.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCdnEdgeAction_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update EdgeAction resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update the tags of an Edge Action. Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected. Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2024-07-22-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzCdnEdgeAction_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
@@ -124,6 +128,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>The resource-specific properties for this resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource-specific properties for this resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource-specific properties for this resource.",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny Property { get => _propertiesBody.Property ?? null /* object */; set => _propertiesBody.Property = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
@@ -154,24 +169,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The name of the SKU for the EdgeAction.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU for the EdgeAction.")]
+        /// <summary>The name of the SKU</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the SKU for the EdgeAction.",
+        Description = @"The name of the SKU",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _propertiesBody.SkuName ?? null; set => _propertiesBody.SkuName = value; }
 
-        /// <summary>The pricing tier associated with the SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The pricing tier associated with the SKU.")]
+        /// <summary>The tier of the SKU</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tier of the SKU")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The pricing tier associated with the SKU.",
+        Description = @"The tier of the SKU",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuTier { get => _propertiesBody.SkuTier ?? null; set => _propertiesBody.SkuTier = value; }
@@ -195,14 +210,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Resource tags.</summary>
+        /// <summary>
+        /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
+        /// replace the entire tag collection. Null tags are rejected.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags.",
+        Description = @"Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection. Null tags are rejected.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }

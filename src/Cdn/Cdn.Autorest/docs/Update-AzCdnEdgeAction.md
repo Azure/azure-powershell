@@ -8,15 +8,24 @@ schema: 2.0.0
 # Update-AzCdnEdgeAction
 
 ## SYNOPSIS
-Update EdgeAction resource
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Property <IAny>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzCdnEdgeAction -InputObject <ICdnIdentity> [-Property <IAny>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -34,7 +43,10 @@ Update-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-Update EdgeAction resource
+Update the tags of an Edge Action.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
+Do not include sku in PATCH requests; any supplied sku, including null or the existing value, is rejected.
 
 ## EXAMPLES
 
@@ -78,6 +90,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Update operation
 
@@ -113,7 +140,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: EdgeActionName
 
 Required: True
@@ -138,13 +165,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Property
+The resource-specific properties for this resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -155,11 +197,11 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The name of the SKU for the EdgeAction.
+The name of the SKU
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -170,11 +212,11 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The pricing tier associated with the SKU.
+The tier of the SKU
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,7 +232,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -202,10 +244,12 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Null tags are rejected.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -250,6 +294,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 

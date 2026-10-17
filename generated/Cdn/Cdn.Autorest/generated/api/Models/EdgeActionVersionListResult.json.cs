@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The response of EdgeActionVersion resource list operation.</summary>
+    /// <summary>The response of a EdgeActionVersion list operation.</summary>
     public partial class EdgeActionVersionListResult
     {
 

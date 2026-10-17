@@ -8,13 +8,13 @@ schema: 2.0.0
 # New-AzCdnEdgeActionExecutionFilter
 
 ## SYNOPSIS
-Create EdgeActionExecutionFilter resource
+Create a EdgeActionExecutionFilter
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
+New-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
  [-ProvisioningState <String>] [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -22,24 +22,41 @@ New-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <St
  [-ChangeReference <String>] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
- [-ChangeReference <String>] [<CommonParameters>]
-```
-
 ### CreateViaJsonString
 ```
-New-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
+New-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
  [-ChangeReference <String>] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeActionExpanded
+```
+New-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <ICdnIdentity>
+ -Location <String> [-ExecutionFilterIdentifierHeaderName <String>]
+ [-ExecutionFilterIdentifierHeaderValue <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### CreateViaIdentityEdgeAction
+```
+New-AzCdnEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <ICdnIdentity>
+ -Resource <IEdgeActionExecutionFilter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create EdgeActionExecutionFilter resource
+Create a EdgeActionExecutionFilter
 
 ## EXAMPLES
 
@@ -113,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeActionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: CreateViaIdentityEdgeActionExpanded, CreateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -148,7 +180,7 @@ Custom Header Key associated with the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -163,7 +195,7 @@ Custom Header Value associated with the execution filter
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -208,7 +240,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: True
@@ -234,11 +266,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningState
-The provisioning state
+The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -248,13 +280,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+Concrete tracked resource types can be created by aliasing this type using a specific property type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
+Parameter Sets: CreateViaIdentityEdgeAction
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -270,7 +317,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -285,7 +332,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -296,11 +343,11 @@ Accept wildcard characters: False
 ```
 
 ### -VersionId
-The referenced versionId of the edgeAction version
+The referenced versionId of the edgeaction version
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: False
@@ -345,6 +392,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
 
 ## OUTPUTS
 
