@@ -15,6 +15,7 @@ Update a StorageDiscoveryWorkspace
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageDiscoveryWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AzureBlobStoragePrefixConfiguration <IPrefixConfigurationUpdate[]>] [-CapacityDetailStatus <String>]
  [-Description <String>] [-Scope <IStorageDiscoveryScope[]>] [-Sku <String>] [-Tag <Hashtable>]
  [-WorkspaceRoot <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -36,7 +37,9 @@ Update-AzStorageDiscoveryWorkspace -Name <String> -ResourceGroupName <String> [-
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStorageDiscoveryWorkspace -InputObject <IStorageDiscoveryIdentity> [-Description <String>]
+Update-AzStorageDiscoveryWorkspace -InputObject <IStorageDiscoveryIdentity>
+ [-AzureBlobStoragePrefixConfiguration <IPrefixConfigurationUpdate[]>] [-CapacityDetailStatus <String>]
+ [-Description <String>]
  [-Scope <IStorageDiscoveryScope[]>] [-Sku <String>] [-Tag <Hashtable>] [-WorkspaceRoot <String[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -83,7 +86,56 @@ WorkspaceRoot                : {/subscriptions/00000000-0000-0000-0000-000000000
 
 The first command creates a discovery scope object, then the second command updates a workSpace properties.
 
+### Example 2: Update the capacity details configuration of a workspace
+```powershell
+$prefix2 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "data/" }
+Update-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $RGName -CapacityDetailStatus Disabled -AzureBlobStoragePrefixConfiguration $prefix2
+```
+
+```output
+AzureBlobStoragePrefixConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration}
+CapacityDetailStatus                : Disabled
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/myworkspace
+Location                            : eastus2euap
+Name                                : myworkspace
+ProvisioningState                   : Succeeded
+ResourceGroupName                   : myresourcegroup
+Type                                : microsoft.storagediscovery/storagediscoveryworkspaces
+```
+
+This command updates a workspace to set capacity details to `Disabled` and replaces the Azure Blob Storage prefix configuration.
+
 ## PARAMETERS
+
+### -AzureBlobStoragePrefixConfiguration
+The prefix configurations to update for Azure Blob Storage.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityDetailStatus
+The enablement status to update for the capacity details capability.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
