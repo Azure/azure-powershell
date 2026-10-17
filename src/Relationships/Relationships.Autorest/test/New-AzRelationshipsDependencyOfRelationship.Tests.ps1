@@ -52,6 +52,6 @@ Describe 'New-AzRelationshipsDependencyOfRelationship' {
 
     # Error: source and target cannot be the same resource
     It 'CreateExpanded_SameSourceAndTarget_ShouldFail' {
-        { New-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameForSameTarget -TargetId $env.DepResourceGroupResourceUri } | Should -Throw
+        { New-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameForSameTarget -TargetId $env.DepResourceGroupResourceUri -ErrorAction Stop } | Should -Throw
     }
 }
