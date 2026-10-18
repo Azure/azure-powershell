@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.15.1
 * Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
 
 ## Version 7.15.0
