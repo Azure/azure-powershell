@@ -7,9 +7,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>Tags assigned to the key vault resource.</summary>
-    [System.ComponentModel.TypeConverter(typeof(ResourceTagsTypeConverter))]
-    public partial class ResourceTags
+    /// <summary>
+    /// A rule governing the accessibility of a managed hsm pool from a specific service tags.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(MhsmServiceTagRuleTypeConverter))]
+    public partial class MhsmServiceTagRule
     {
 
         /// <summary>
@@ -63,44 +65,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRule"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new ResourceTags(content);
+            return new MhsmServiceTagRule(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRule"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new ResourceTags(content);
+            return new MhsmServiceTagRule(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ResourceTags" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="MhsmServiceTagRule" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="ResourceTags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="MhsmServiceTagRule" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRule"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ResourceTags(global::System.Collections.IDictionary content)
+        internal MhsmServiceTagRule(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -109,17 +111,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRuleInternal)this).Tag = (string) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRuleInternal)this).Tag, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmServiceTagRule"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ResourceTags(global::System.Management.Automation.PSObject content)
+        internal MhsmServiceTagRule(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -128,8 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRuleInternal)this).Tag = (string) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRuleInternal)this).Tag, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -150,9 +156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// Tags assigned to the key vault resource.
-    [System.ComponentModel.TypeConverter(typeof(ResourceTagsTypeConverter))]
-    public partial interface IResourceTags
+    /// A rule governing the accessibility of a managed hsm pool from a specific service tags.
+    [System.ComponentModel.TypeConverter(typeof(MhsmServiceTagRuleTypeConverter))]
+    public partial interface IMhsmServiceTagRule
 
     {
 
