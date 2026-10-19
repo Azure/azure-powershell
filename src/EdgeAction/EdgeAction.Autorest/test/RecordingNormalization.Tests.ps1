@@ -6,9 +6,9 @@ Describe 'Recording normalization' {
         $work = Join-Path $TestDrive ([guid]::NewGuid().ToString('N'))
         $null = New-Item -ItemType Directory -Path $work
         Copy-Item (Join-Path $PSScriptRoot 'utils.ps1') $work
+        $UsePreviousConfigForRecord = $false
         . (Join-Path $work 'utils.ps1')
         $TestMode = 'record'
-        $UsePreviousConfigForRecord = $false
         $script:edgeActionEnvironmentStarted = $true
         $group = 'rgps-powershellsdk-edgeaction-tests-012345abcdef'
         $env = @{
