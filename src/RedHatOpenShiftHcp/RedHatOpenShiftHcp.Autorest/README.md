@@ -28,11 +28,12 @@ For information on how to develop for `Az.RedHatOpenShiftHcp`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ```yaml
-commit: dfe87dc096ec04b9b521a8de69feb197608d55ea
+# Track the PREVIEW API (merged + deployed to dev) so cmdlets send api-version=2026-09-01-preview.
+commit: d218330c5a3b727df9504ba852e97259479e8fef
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/hcpopenshiftclusters/stable/2026-10-01/openapi.json
+  - $(repo)/specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/hcpopenshiftclusters/preview/2026-09-01-preview/openapi.json
 # For a new RP, the version is 0.1.0
 module-version: 0.1.0
 title: RedHatOpenShiftHcp

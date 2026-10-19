@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClaimValidationRule
-The claim validation rules.
+The claim validation rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.ITokenClaimValidationRule[]
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupPrefix
-Prefix for the claim external profile.If this is specified, prefixPolicy will be set to "Prefix" by default.
+Prefix for the claim external profileIf this is specified prefixPolicy will be set to "Prefix" by default
 
 ```yaml
 Type: System.String
@@ -211,7 +211,8 @@ Accept wildcard characters: False
 ```
 
 ### -IssuerAudience
-This configures the acceptable audiences for JWT tokens issued by the identity provider.At least one of the entries must match the 'aud' claim in the JWT token.Audiences must contain at least one entry and must not exceed ten entries.
+This configures the acceptable audiences the JWT token, issued by the identityprovider, must be issued to.
+At least one of the entries must match the'aud' claim in the JWT token.audiences must contain at least one entry and must not exceed ten entries.
 
 ```yaml
 Type: System.String[]
@@ -226,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -IssuerCa
-The issuer of the token.Certificate bundle to use to validate server certificates for the configured URL.It must be PEM encoded and when not specified, the system trust is used.
+The issuer of the tokenCertificate bundle to use to validate server certificates for the configured URL.It must be PEM encoded and when not specified, the system trust is used.
 
 ```yaml
 Type: System.String
@@ -378,7 +379,7 @@ Accept wildcard characters: False
 ```
 
 ### -UsernamePrefix
-Prefix for the claim external profile.Must be set when the prefixPolicy field is set to 'Prefix' and must be unsetotherwise.
+Prefix for the claim external profileMust be set when the prefixPolicy field is set to 'Prefix' and must be unsetotherwise.
 
 ```yaml
 Type: System.String

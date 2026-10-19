@@ -18,10 +18,9 @@ New-AzRedHatOpenShiftHcpCluster -Name <String> -ResourceGroupName <String> [-Sub
  -Location <String> [-ActiveKeyName <String>] [-ActiveKeyVersion <String>] [-ApiAuthorizedCidR <String[]>]
  [-ApiVisibility <String>] [-AutoscalingMaxNodeProvisionTimeSecond <Int32>] [-AutoscalingMaxNodesTotal <Int32>]
  [-AutoscalingMaxPodGracePeriodSecond <Int32>] [-AutoscalingPodPriorityThreshold <Int32>]
- [-ClusterImageRegistryState <String>] [-ContainerRegistryManagedIdentity <String>]
- [-CryptoRestriction <String>] [-CustomerManagedEncryptionType <String>] [-DnsBaseDomainPrefix <String>]
- [-EnableSystemAssignedIdentity] [-ImageDigestMirror <IImageDigestMirror[]>] [-IngressType <String>]
- [-KmKeyVaultType <String>] [-KmVaultName <String>] [-KmVisibility <String>] [-NetworkHostPrefix <Int32>]
+ [-ClusterImageRegistryState <String>] [-CryptoRestriction <String>] [-CustomerManagedEncryptionType <String>]
+ [-DnsBaseDomainPrefix <String>] [-EnableSystemAssignedIdentity] [-ImageDigestMirror <IImageDigestMirror[]>]
+ [-IngressType <String>] [-KmVaultName <String>] [-KmVisibility <String>] [-NetworkHostPrefix <Int32>]
  [-NetworkMachineCidr <String>] [-NetworkPodCidr <String>] [-NetworkServiceCidr <String>]
  [-NetworkType <String>] [-NodeDrainTimeoutMinute <Int32>] [-PlatformManagedResourceGroup <String>]
  [-PlatformNetworkSecurityGroupId <String>] [-PlatformOutboundType <String>] [-PlatformSubnetId <String>]
@@ -175,8 +174,8 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxNodesTotal
-maxNodesTotal is the maximum allowable number of nodes.
-The autoscaler will not grow the cluster beyond this number.If omitted, the autoscaler will not have a maximum limit.
+maxNodesTotal is the maximum allowable number of nodes for the Autoscaler scale out to be operational.The autoscaler will not grow the cluster beyond this number.
+If omitted, the autoscaler will not have a maximum limit.
 
 ```yaml
 Type: System.Int32
@@ -191,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxPodGracePeriodSecond
-maxPodGracePeriodSeconds is the maximum amount of time in seconds to wait for graceful pod termination before scaling down a NodePool.The default is 600 seconds.
+maxPodGracePeriod is the maximum seconds to wait for graceful pod termination before scaling down a NodePool.The default is 600 seconds.
 
 ```yaml
 Type: System.Int32
@@ -225,21 +224,6 @@ Accept wildcard characters: False
 state indicates the desired ImageStream-backed cluster image registry installation mode.This can only be set during cluster creation and cannot be changed after cluster creation.Enabled means the ImageStream-backed image registry will be run as pods on worker nodes inthe cluster.
 Disabled means the ImageStream-backed image registry will not be present inthe cluster.
 The default is Enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryManagedIdentity
-The user-assigned managed identity used for container registry image pulls.
 
 ```yaml
 Type: System.String
@@ -300,8 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -DnsBaseDomainPrefix
-BaseDomainPrefix is the base domain prefix for the cluster ingress.
-It will be used toconfigure ingress in the cluster through the subdomain "BaseDomainPrefix.BaseDomain".
+BaseDomainPrefix is the unique name of the cluster representing the OpenShift's cluster name.BaseDomainPrefix is the name that will appear in the cluster's DNS, provisioned cloud providers resources
 
 ```yaml
 Type: System.String
@@ -384,22 +367,6 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KmKeyVaultType
-The type of keyvault used for KMS encryption.
-Defaults to KeyVault when absent.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -544,7 +511,7 @@ Accept wildcard characters: False
 ### -NodeDrainTimeoutMinute
 nodeDrainTimeoutMinutes is the grace period for how long Pod Disruption Budget-protected workloads will berespected during any node draining operation.
 After this grace period, any workloads protected by Pod DisruptionBudgets that have not been successfully drained from a node will be forcibly evicted.
-This isespecially relevant to cluster upgrades.Valid values are in minutes and from 0 to 10080 minutes (1 week).0 means that the MachinePool can be drained without any time limitation.This value is used as a default for all NodePools.
+This isespecially relevant to cluster upgrades.Valid values are in minutes and from 0 to 10080 minutes (1 week).0 means that the MachinePool can be drained without any time limitation.This is the value is used a default for all NodePools.
 It can be overriddenby specifying nodeDrainTimeoutMinutes for a given NodePool
 
 ```yaml
@@ -575,7 +542,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlatformManagedResourceGroup
-The name of the resource group to put cluster resources in.If not specified then a unique name is generated from thefollowing pattern"aro-hcp-" + clusterName + "-" + UUIDwhere clusterName means the hcpOpenShiftClusters resource name(up to 45 characters) followed by a 16-byte universally uniqueidentifier per RFC 4122.
+Resource group name to put cluster resourcesIf not specified then a unique name is generated from thefollowing pattern"aro-hcp-" + clusterName + "-" + UUIDwhere clusterName means the hcpOpenShiftClusters resource name(up to 45 characters) followed by a 16-byte universally uniqueidentifier per RFC 4122.
 
 ```yaml
 Type: System.String
@@ -620,7 +587,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlatformSubnetId
-The Azure resource ID of the worker subnet.Note that a subnet cannot be reused between ARO-HCP Clusters.
+The Azure resource ID of the worker subnetNote that a subnet cannot be reused between ARO-HCP Clusters.
 
 ```yaml
 Type: System.String
@@ -776,8 +743,7 @@ Accept wildcard characters: False
 ```
 
 ### -VersionChannelGroup
-ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.This property is intended to be updateable, but that support is not yetcomplete.
-Until then, changing this value after cluster creation is rejected.
+ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.
 
 ```yaml
 Type: System.String

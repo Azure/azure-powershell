@@ -15,15 +15,14 @@ Update a HcpOpenShiftCluster
 ### UpdateExpanded (Default)
 ```
 Update-AzRedHatOpenShiftHcpCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ActiveKeyVersion <String>] [-ApiAuthorizedCidR <String[]>] [-AutoscalingMaxNodeProvisionTimeSecond <Int32>]
+ [-ActiveKeyVersion <String>] [-AutoscalingMaxNodeProvisionTimeSecond <Int32>]
  [-AutoscalingMaxNodesTotal <Int32>] [-AutoscalingMaxPodGracePeriodSecond <Int32>]
- [-AutoscalingPodPriorityThreshold <Int32>] [-ContainerRegistryManagedIdentity <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-ImageDigestMirror <IImageDigestMirror[]>]
- [-NodeDrainTimeoutMinute <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-UserAssignedIdentityControlPlaneOperator <Hashtable>] [-UserAssignedIdentityDataPlaneOperator <Hashtable>]
- [-UserAssignedIdentityServiceManagedIdentity <String>] [-VersionChannelGroup <String>] [-VersionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AutoscalingPodPriorityThreshold <Int32>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-ImageDigestMirror <IImageDigestMirror[]>] [-NodeDrainTimeoutMinute <Int32>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-UserAssignedIdentityControlPlaneOperator <Hashtable>]
+ [-UserAssignedIdentityDataPlaneOperator <Hashtable>] [-UserAssignedIdentityServiceManagedIdentity <String>]
+ [-VersionChannelGroup <String>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
@@ -36,9 +35,8 @@ Update-AzRedHatOpenShiftHcpCluster -Name <String> -ResourceGroupName <String> [-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedHatOpenShiftHcpCluster -InputObject <IRedHatOpenShiftHcpIdentity> [-ActiveKeyVersion <String>]
- [-ApiAuthorizedCidR <String[]>] [-AutoscalingMaxNodeProvisionTimeSecond <Int32>]
- [-AutoscalingMaxNodesTotal <Int32>] [-AutoscalingMaxPodGracePeriodSecond <Int32>]
- [-AutoscalingPodPriorityThreshold <Int32>] [-ContainerRegistryManagedIdentity <String>]
+ [-AutoscalingMaxNodeProvisionTimeSecond <Int32>] [-AutoscalingMaxNodesTotal <Int32>]
+ [-AutoscalingMaxPodGracePeriodSecond <Int32>] [-AutoscalingPodPriorityThreshold <Int32>]
  [-EnableSystemAssignedIdentity <Boolean>] [-ImageDigestMirror <IImageDigestMirror[]>]
  [-NodeDrainTimeoutMinute <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserAssignedIdentityControlPlaneOperator <Hashtable>] [-UserAssignedIdentityDataPlaneOperator <Hashtable>]
@@ -98,22 +96,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiAuthorizedCidR
-The list of authorized IPv4 CIDR blocks allowed to access the API server.
-Maximum 500 entries.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -146,8 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxNodesTotal
-maxNodesTotal is the maximum allowable number of nodes.
-The autoscaler will not grow the cluster beyond this number.If omitted, the autoscaler will not have a maximum limit.
+maxNodesTotal is the maximum allowable number of nodes for the Autoscaler scale out to be operational.The autoscaler will not grow the cluster beyond this number.
+If omitted, the autoscaler will not have a maximum limit.
 
 ```yaml
 Type: System.Int32
@@ -162,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxPodGracePeriodSecond
-maxPodGracePeriodSeconds is the maximum amount of time in seconds to wait for graceful pod termination before scaling down a NodePool.The default is 600 seconds.
+maxPodGracePeriod is the maximum seconds to wait for graceful pod termination before scaling down a NodePool.The default is 600 seconds.
 
 ```yaml
 Type: System.Int32
@@ -182,21 +164,6 @@ The default is -10.See the following for more details:https://github.com/kuberne
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryManagedIdentity
-The user-assigned managed identity used for container registry image pulls.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -286,7 +253,7 @@ Accept wildcard characters: False
 ### -NodeDrainTimeoutMinute
 nodeDrainTimeoutMinutes is the grace period for how long Pod Disruption Budget-protected workloads will berespected during any node draining operation.
 After this grace period, any workloads protected by Pod DisruptionBudgets that have not been successfully drained from a node will be forcibly evicted.
-This isespecially relevant to cluster upgrades.Valid values are in minutes and from 0 to 10080 minutes (1 week).0 means that the MachinePool can be drained without any time limitation.This value is used as a default for all NodePools.
+This isespecially relevant to cluster upgrades.Valid values are in minutes and from 0 to 10080 minutes (1 week).0 means that the MachinePool can be drained without any time limitation.This is the value is used a default for all NodePools.
 It can be overriddenby specifying nodeDrainTimeoutMinutes for a given NodePool
 
 ```yaml
@@ -442,8 +409,7 @@ Accept wildcard characters: False
 ```
 
 ### -VersionChannelGroup
-ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.This property is intended to be updateable, but that support is not yetcomplete.
-Until then, changing this value after cluster creation is rejected.
+ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.
 
 ```yaml
 Type: System.String
