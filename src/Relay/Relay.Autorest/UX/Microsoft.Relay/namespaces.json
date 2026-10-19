@@ -1,6 +1,6 @@
 {
   "resourceType": "namespaces",
-  "apiVersion": "2021-11-01",
+  "apiVersion": "2026-07-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.relay"
   },

@@ -69,10 +69,8 @@ function setupEnv() {
     $env['ServiceGroupNameToDeleteViaIdentity'] = 'testsgdeletevi' + $env.RandomString
     New-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity -DisplayName 'Az PS SG To Delete Via Identity' -ParentResourceId $env.TenantParentId
 
-    # --- Resources for Ancestor tests (child under ServiceGroupNameForGet) ---
+    # --- Parent for child service group tests ---
     $env['ParentServiceGroupId'] = "/providers/Microsoft.Management/serviceGroups/$($env.ServiceGroupNameForGet)"
-    $env['ChildServiceGroupName'] = 'testsgchild' + $env.RandomString
-    New-AzServiceGroup -Name $env.ChildServiceGroupName -DisplayName 'Az PS Child Service Group' -ParentResourceId $env.ParentServiceGroupId
 
     # Write env file
     $envFile = 'env.json'
@@ -85,7 +83,6 @@ function setupEnv() {
 function cleanupEnv() {
     Write-Host -ForegroundColor Magenta "Cleaning up test environment"
     # Delete children before parents
-    Remove-AzServiceGroup -Name $env.ChildServiceGroupName -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ChildServiceGroupNameForNew -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ServiceGroupNameForNewJsonFile -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ServiceGroupNameForNewJson -ErrorAction SilentlyContinue

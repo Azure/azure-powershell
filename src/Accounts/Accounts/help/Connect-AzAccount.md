@@ -109,7 +109,7 @@ Connect-AzAccount
 ```
 
 ```Output
-Please select the account you want to login with.
+Please select the account you want to log in with.
 
 Retrieving subscriptions for the selection...
 [Tenant and subscription selection]
@@ -253,7 +253,7 @@ Environment      : AzureCloud
 
 ### Example 8: Connect with AuthScope
 AuthScope is used to support scenario that data plane resources have enhanced authentication than ARM resources, e.g. storage needs MFA but ARM does not.
-Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first login with storage scope `https://storage.azure.com/`, then silently require token for ARM.
+Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first log in with storage scope `https://storage.azure.com/`, then silently require token for ARM.
 
 ```powershell
 Connect-AzAccount -AuthScope Storage
@@ -576,7 +576,7 @@ Accept wildcard characters: False
 
 ### -Identity
 
-Login using a Managed Service Identity.
+Log in using a Managed Service Identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

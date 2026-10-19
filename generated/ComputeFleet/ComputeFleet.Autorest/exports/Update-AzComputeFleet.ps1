@@ -20,11 +20,13 @@ Update a Fleet
 .Description
 Update a Fleet
 .Example
-Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
+Update-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Tag @{ environment = "staging" } |
+    Select-Object Name, Tag, ProvisioningState
 .Example
-Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
-    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+Get-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Update-AzComputeFleet -SpotPriorityProfileCapacity 3 |
+    Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
@@ -402,10 +404,6 @@ VMATTRIBUTE <IVMAttributes>: Attribute based Fleet.
 VMSIZESPROFILE <IVMSizeProfile[]>: List of VM sizes supported for Compute Fleet
   Name <String>: The Sku name (e.g. 'Standard_DS1_v2')
   [Rank <Int32?>]: The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'         The lower the number, the higher the priority. Starting with 0.
-
-ZONEALLOCATIONPOLICYZONEPREFERENCE <IZonePreference[]>: Zone preferences, required when zone distribution strategy is Prioritized.
-  Zone <String>: Name of the zone.
-  [Rank <Int32?>]: The rank of the zone. This is used with 'Prioritized' ZoneDistributionStrategy.         The lower the number, the higher the priority, starting with 0.         0 is the highest rank. If not specified, defaults to lowest rank.
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleet
 #>
@@ -636,20 +634,6 @@ param(
     [System.String[]]
     # Zones in which the Compute Fleet is available
     ${Zone},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Distribution strategy used for zone allocation policy.
-    ${ZoneAllocationPolicyDistributionStrategy},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]]
-    # Zone preferences, required when zone distribution strategy is Prioritized.
-    ${ZoneAllocationPolicyZonePreference},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

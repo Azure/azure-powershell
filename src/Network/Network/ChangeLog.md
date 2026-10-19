@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added `Get-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicyDetectionRule` to retrieve and update detection rules on a DDoS custom policy object.
+    - Extends the DDoS custom policy support for API version 2025-07-01 introduced in [#29387].
 
 ## Version 8.3.0
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
