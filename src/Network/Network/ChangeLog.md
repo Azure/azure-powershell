@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
+    - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
 * Added cmdlets to manage ExpressRoute link aggregation group (LAG) authorizations and retrieve their authorization keys.
     - Use `Add-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorizationKey`, and `Remove-AzExpressRouteLagAuthorization`.
 * Added IPv6 / dual-stack (IPv4 + IPv6) support for Managed Network Virtual Appliances (NVA).
