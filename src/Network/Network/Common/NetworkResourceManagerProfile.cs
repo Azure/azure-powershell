@@ -1196,6 +1196,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMember>()
                     .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
                 cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMemberPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagAuthorization, MNM.ExpressRouteLagAuthorization>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagAuthorization, MNM.ExpressRouteLagAuthorizationPropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteLag, CNM.PSExpressRouteLag>()
@@ -1207,6 +1210,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteLagMember, CNM.PSExpressRouteLagMember>()
                     .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
                 cfg.CreateMap<MNM.ExpressRouteLagMemberPropertiesFormat, CNM.PSExpressRouteLagMember>();
+                cfg.CreateMap<MNM.ExpressRouteLagAuthorization, CNM.PSExpressRouteLagAuthorization>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagAuthorizationPropertiesFormat, CNM.PSExpressRouteLagAuthorization>();
 
                 // ExpressRouteCircuit
                 // CNM to MNM
