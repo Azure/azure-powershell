@@ -27,4 +27,11 @@ Describe 'New-AzStorageMoverAzStorageContainerEndpoint' {
         $endpoint.Property.endpointType | Should -Be "AzureStorageBlobContainer"
         $endpoint.Property.blobContainerName | Should -Be $env.ContainerName
     }
+
+    It 'CreateExpandedCrossTenant' {
+        $endpoint = New-AzStorageMoverAzStorageContainerEndpoint -Name "blobxt" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -BlobContainerName $env.EndpointContainerName -EndpointKind Target -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId
+        $endpoint.Property.EndpointKind | Should -Be "Target"
+        $endpoint.Property.EnableCrossTenantTransfer | Should -Be $true
+        $endpoint.Property.AllowedStorageAccount | Should -Be $env.PartnerStorageAccountId
+    }
 }

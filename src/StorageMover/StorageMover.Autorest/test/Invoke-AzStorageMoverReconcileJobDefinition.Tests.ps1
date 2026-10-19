@@ -30,4 +30,12 @@ Describe 'Invoke-AzStorageMoverReconcileJobDefinition' {
     It 'ReconcileViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
+    It 'ParameterSets' {
+        $command = Get-Command Invoke-AzStorageMoverReconcileJobDefinition
+        foreach ($parameterSet in @('Reconcile', 'ReconcileViaIdentity', 'ReconcileViaIdentityProject', 'ReconcileViaIdentityStorageMover')) {
+            $command.ParameterSets.Name | Should -Contain $parameterSet
+        }
+        $command.OutputType.Name | Should -Contain "Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunResourceId"
+    }
 }
