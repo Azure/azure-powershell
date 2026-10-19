@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsCreateOrUpdate(string subscriptionId, string resourceGroupName, string fleetName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet body, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string fleetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string fleetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string fleetName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet body, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsDelete(string subscriptionId, string resourceGroupName, string fleetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsGet(string subscriptionId, string resourceGroupName, string fleetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsGetWithResult(string subscriptionId, string resourceGroupName, string fleetName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1340,7 +1340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult> FleetsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult> FleetsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1565,7 +1565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1603,7 +1603,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1649,7 +1649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult> FleetsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1695,7 +1695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetListResult> FleetsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListVirtualMachineScaleSets(string subscriptionId, string resourceGroupName, string name, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1905,7 +1905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListVirtualMachineScaleSetsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1957,7 +1957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetListResult> FleetsListVirtualMachineScaleSetsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2011,7 +2011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSetListResult> FleetsListVirtualMachineScaleSetsWithResult(string subscriptionId, string resourceGroupName, string name, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2195,7 +2195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListVirtualMachines(string subscriptionId, string resourceGroupName, string name, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2243,7 +2243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsListVirtualMachinesViaIdentity(global::System.String viaIdentity, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2301,7 +2301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineListResult> FleetsListVirtualMachinesViaIdentityWithResult(global::System.String viaIdentity, string Filter, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2361,7 +2361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineListResult> FleetsListVirtualMachinesWithResult(string subscriptionId, string resourceGroupName, string name, string Filter, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2553,7 +2553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsUpdate(string subscriptionId, string resourceGroupName, string fleetName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2600,7 +2600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2657,7 +2657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2717,7 +2717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task FleetsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string fleetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2763,7 +2763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string fleetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2810,7 +2810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet> FleetsUpdateWithResult(string subscriptionId, string resourceGroupName, string fleetName, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3179,7 +3179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3215,7 +3215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3258,7 +3258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3300,7 +3300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-04-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
