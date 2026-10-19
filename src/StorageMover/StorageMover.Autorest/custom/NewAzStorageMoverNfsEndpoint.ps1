@@ -67,7 +67,7 @@ function New-AzStorageMoverNfsEndpoint {
 
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(HelpMessage="The NFS protocol version.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4", "NFSv4_1")]
         [System.String]
         ${NfsVersion},
     
@@ -80,6 +80,16 @@ function New-AzStorageMoverNfsEndpoint {
         [Parameter(HelpMessage="A description for the endpoint.")]
         [string]
         ${Description},
+
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="The kind of the endpoint, either Source or Target. Cannot be changed after the endpoint is created.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+        [System.String]
+        ${EndpointKind},
+
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="The source type of the NFS mount endpoint, either NfsMount or FSX-EFS. Defaults to NfsMount.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NfsMount", "FSX-EFS")]
+        [System.String]
+        ${SourceType},
 
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
@@ -153,6 +163,14 @@ function New-AzStorageMoverNfsEndpoint {
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
             $null = $PSBoundParameters.Remove("Description")
+        }
+        if ($PSBoundParameters.ContainsKey('EndpointKind')) {
+            $Properties.EndpointKind = $EndpointKind
+            $null = $PSBoundParameters.Remove("EndpointKind")
+        }
+        if ($PSBoundParameters.ContainsKey('SourceType')) {
+            $Properties.SourceType = $SourceType
+            $null = $PSBoundParameters.Remove("SourceType")
         }
 
         $PSBoundParameters.Add("Property", $Properties)

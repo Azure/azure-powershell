@@ -88,6 +88,11 @@ function New-AzStorageMoverS3WithHmacEndpoint {
         [string]
         ${Description},
 
+        [Parameter(ParameterSetName = 'CreateExpanded', HelpMessage="The kind of the endpoint, either Source or Target. Cannot be changed after the endpoint is created.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+        [System.String]
+        ${EndpointKind},
+
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -169,6 +174,10 @@ function New-AzStorageMoverS3WithHmacEndpoint {
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
             $null = $PSBoundParameters.Remove("Description")
+        }
+        if ($PSBoundParameters.ContainsKey('EndpointKind')) {
+            $Properties.EndpointKind = $EndpointKind
+            $null = $PSBoundParameters.Remove("EndpointKind")
         }
 
         $PSBoundParameters.Add("Property", $Properties)
