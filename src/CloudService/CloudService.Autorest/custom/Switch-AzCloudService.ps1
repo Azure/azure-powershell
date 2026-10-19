@@ -77,6 +77,19 @@ function Switch-AzCloudService {
         ${Break}
     )
     
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.Accounts\Invoke-AzRestMethod' -ErrorAction Stop
+        if ([System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            $instance.Method = 'POST'
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                $dynamicParameters.Add($entry.Key, $entry.Value)
+            }
+        }
+        return $dynamicParameters
+    }
+
     process {
         $ApiVersion = "2020-06-01"
         if (-not $PSBoundParameters.ContainsKey("SubscriptionId")) {
@@ -155,7 +168,13 @@ $requestBody"
 
         # Invoke the VIP swap API
         if ($PSCmdlet.ShouldProcess($SourceCloudService.Name + " <=> " + $TargetCloudService.Name,'VIP swap')) {
-            $result = Invoke-AzRestMethod -Method POST -Path $uriToInvoke -Payload $requestBody 
+            $RestParameters = @{}
+            foreach ($parameterName in $dynamicParameters.Keys) {
+                if ($PSBoundParameters.ContainsKey($parameterName)) {
+                    $RestParameters[$parameterName] = $PSBoundParameters[$parameterName]
+                }
+            }
+            $result = Invoke-AzRestMethod -Method POST -Path $uriToInvoke -Payload $requestBody @RestParameters
 
             if ($Async.IsPresent) {
                 Write-Host "Query the Azure-AsyncOperation URI from the response for operation progress"
@@ -258,4 +277,3 @@ function GetVIPSwapRequestBody() {
 }
 "@
 }
-

@@ -30,6 +30,7 @@ For information on how to develop for `Az.DataBoundary`, see [how-to.md](how-to.
 root-module-name: $(prefix).Resources
 title: DataBoundary
 module-version: 0.1.1
+enable-change-safety: true
 
 # pin the swagger version by using the commit id instead of branch name
 commit: a6074b7654c388dec49c9969d0136cfeb03575c9
