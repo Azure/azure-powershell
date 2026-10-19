@@ -18,12 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added Azure Cosmos DB item-level recovery (ILR) for selected databases and containers using `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`
-    - Restore up to 50 case-sensitive database or database/container selections from VaultStore to an existing empty Azure Cosmos DB for NoSQL account in an alternate location, without renaming
-    - Reject exact duplicate selections and overlapping database and child-container selections while preserving literal resource names and their case
-* Fixed explicit system-assigned and user-assigned managed identity selection in `Initialize-AzDataProtectionRestoreRequest` so the selected restore identity is retained in the request
-    - Reject explicitly null identity selection for Azure Cosmos DB instead of creating a request without a usable identity
-* Fixed user-assigned managed identity permission assignment in `Set-AzDataProtectionMSIPermission` and prevented restore datasource permission changes when using `-WhatIf`
+* Added support for Azure Cosmos DB item level restore in `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`
+    - Use `-ResourceIdentifier` with database names or database/container names to select the resources to restore
+* Fixed an error in `Initialize-AzDataProtectionRestoreRequest` when `-UseSystemAssignedIdentity` or `-UserAssignedIdentityArmId` is specified
 
 ## Version 3.1.0
 * Upgraded the DataProtection API version to `2026-06-01` (general availability), which natively models the Azure Elastic SAN (Storage Area Network) backup and restore types

@@ -230,29 +230,6 @@ namespace CosmosRestoreTransportTests {
         }
     }
 
-    Context 'Exported Cosmos initializer rejects explicitly null identity selection' {
-        It 'rejects null identity with ItemLevelRecovery=<ILR> and UAMI=<UAMI>' -TestCases @(
-            @{ ILR = $false; UAMI = $false }
-            @{ ILR = $false; UAMI = $true }
-            @{ ILR = $true; UAMI = $false }
-            @{ ILR = $true; UAMI = $true }
-        ) {
-            param($ILR, $UAMI)
-            $parameters = @{
-                DatasourceType = 'AzureCosmosDB'; SourceDataStore = 'VaultStore'
-                RestoreLocation = 'eastus'; RestoreType = 'AlternateLocation'
-                RecoveryPoint = 'offline-recovery-point'; TargetResourceId = $targetId
-                UseSystemAssignedIdentity = $null; ErrorAction = 'Stop'
-            }
-            if ($ILR) {
-                $parameters.ItemLevelRecovery = $true
-                $parameters.RestoreConfiguration = Az.DataProtection\New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1')
-            }
-            if ($UAMI) { $parameters.UserAssignedIdentityArmId = "/subscriptions/$subscription/resourceGroups/restore-tests/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity" }
-            { Az.DataProtection\Initialize-AzDataProtectionRestoreRequest @parameters } | Should -Throw 'UseSystemAssignedIdentity cannot be null'
-        }
-    }
-
     Context 'Actual generated HTTP bodies via public commands (no internal dispatch mocks)' {
         $cases = @(
             @{ Scenario = 'full'; Selectors = @(); Identity = 'None' }

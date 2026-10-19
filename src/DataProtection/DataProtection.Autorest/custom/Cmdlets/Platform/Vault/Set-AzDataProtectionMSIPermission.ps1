@@ -11,61 +11,16 @@ function Get-VaultIdentity {
 
     #Determine the vault MSI to be used
     $vaultIdentity = $null
-    if ($UserAssignedIdentityARMId) {
-        # Generated vaults expose the identity map publicly, not the nested Identity model.
-        # Only use the nested shape for older models/mocks without the public property.
-        $identityMapProperty = $vault.PSObject.Properties['IdentityUserAssignedIdentity']
-        if ($null -ne $identityMapProperty) {
-            $identityMap = $identityMapProperty.Value
-        } else {
-            $identityMap = $vault.Identity.UserAssignedIdentity
-        }
-
-        $selectedIdentity = $null
-        if ($null -ne $identityMap) {
-            $isDictionary = ($null -ne $identityMap.PSObject.Methods['ContainsKey']) -or
-                ($identityMap -is [System.Collections.IDictionary])
-            $identityKeys = @()
-            if ($isDictionary) {
-                $identityKeys = @($identityMap.Keys)
-            } elseif ($identityMap -is [System.Management.Automation.PSCustomObject]) {
-                $identityKeys = @($identityMap.PSObject.Properties.Name)
-            }
-
-            # ARM IDs are case-insensitive even when the model's dictionary is not.
-            # Retrieve by the stored key and reject ambiguous model data, including exact matches.
-            $matchingKeys = @(foreach ($identityKey in $identityKeys) {
-                if ([System.StringComparer]::OrdinalIgnoreCase.Equals($identityKey, $UserAssignedIdentityARMId)) {
-                    $identityKey
-                }
-            })
-            if ($matchingKeys.Count -gt 1) {
-                throw "User assigned identity '$UserAssignedIdentityARMId' matches multiple attached identity keys on the backup vault and is ambiguous."
-            }
-            if ($matchingKeys.Count -eq 1) {
-                if ($isDictionary) {
-                    $selectedIdentity = $identityMap[$matchingKeys[0]]
-                } else {
-                    $selectedIdentity = $identityMap.PSObject.Properties[$matchingKeys[0]].Value
-                }
-            }
-        }
-
-        if ($null -eq $selectedIdentity) {
-            throw "User assigned identity '$UserAssignedIdentityARMId' is not attached to the backup vault."
-        }
-        $vaultIdentity = $selectedIdentity.PrincipalId
-        if ([string]::IsNullOrWhiteSpace($vaultIdentity)) {
-            throw "User assigned identity '$UserAssignedIdentityARMId' attached to the backup vault has no principal ID."
-        }
+    if ($UserAssignedIdentityARMId) {        
+        $vaultIdentity = $vault.Identity.UserAssignedIdentity[$UserAssignedIdentityARMId].PrincipalID
         Write-Host "Using Vault UAMI with ARMId: $UserAssignedIdentityARMId with Principal ID: $vaultIdentity"
     } else {
-        $vaultIdentity = $vault.IdentityPrincipalId
-        if ([string]::IsNullOrWhiteSpace($vaultIdentity)) { $vaultIdentity = $vault.Identity.PrincipalId }
+        $vaultIdentity = $vault.Identity.PrincipalId
+        if (-not $vaultIdentity) { $vaultIdentity = $vault.IdentityPrincipalId }
         Write-Host "Using system-assigned identity with Principal ID: $vaultIdentity"
     }
 
-    if ([string]::IsNullOrWhiteSpace($vaultIdentity)) {
+    if (-not $vaultIdentity) {
         throw "Vault identity could not be determined. Please check the UserAssignedIdentityARMId or the vault configuration."
     }
 
@@ -278,14 +233,11 @@ function Set-AzDataProtectionMSIPermission {
 
                   else
                   {
-                      if ($PSCmdlet.ShouldProcess("$($DatasourceRoleScope)","Allow $($Permission) permission to the backup vault"))
-                      {
-                          $MissingRolesInitially = $true
+                      $MissingRolesInitially = $true
+                   
+                      AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DatasourceRoleScope -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
-                          AssignMissingRoles -ObjectId $vaultIdentity -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DatasourceRoleScope -ResourceGroup $ResourceRG -Subscription $SubscriptionName
-
-                          Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DatasourceRoleScope)"
-                      }
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DatasourceRoleScope)"
                   }
               }
 
