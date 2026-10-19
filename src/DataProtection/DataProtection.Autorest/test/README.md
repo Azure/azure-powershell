@@ -24,6 +24,7 @@ module runner, with distinct execution layers:
 | [Permissions](CosmosRestorePermission.Tests.ps1) | Native permission helper with role reads, writes and waits mocked | No live grants to record |
 | [Transport](CosmosRestoreTransport.Tests.ps1) | Public commands through the actual generated serializer, captured by a terminating local HTTP interceptor | No live HTTP; exact body assertions supplement recording playback |
 | [Scenario-tool contracts](CosmosRestoreHarness.Tests.ps1) | Isolated function/AST checks for ownership, state, identity, sanitization and no duplicate submissions | No live entrypoint execution |
+| [Cosmos recorded service](CosmosRecordedService.Tests.ps1) | Actual full, single-container, database-only and mixed validation/restore/job responses | 55 genuine sanitized exchanges from four completed, independently data-verified SAMI restores |
 | Existing recorded module scenarios | Native service operations captured through the standard recorder | Real record-mode capture followed by playback |
 
 Use a fresh process after building the tracked DataProtection project. To select
@@ -61,7 +62,58 @@ alone prevents every possible outbound request.
 tests and mocked calls do not produce service evidence. Do not create empty or
 synthetic recording files merely for those suites. Existing native Cosmos restore
 reports are not recording files and cannot retrospectively be presented as such.
-Cosmos ILR recorded service coverage must be separately captured and replayed.
+Cosmos ILR now has separate genuine recorded service coverage, described below.
+
+### Cosmos recorded service coverage
+
+[CosmosRecordedService.Tests.ps1](CosmosRecordedService.Tests.ps1) replays the
+[recording](CosmosRecordedService.Recording.json) using its own sanitized
+[fixture](CosmosRecordedService.Fixture.json), never the shared environment or a
+cached live context. Standard module Playback discovers its five cases. For an
+exact-file run after importing the built module and Pester 4.10.1:
+
+```powershell
+$TestMode = 'playback'
+$result = Invoke-Pester -Script (Join-Path $artifact 'test/CosmosRecordedService.Tests.ps1') -PassThru
+if ($result.PassedCount -ne 5 -or $result.FailedCount -gt 0 -or
+	$result.SkippedCount -gt 0 -or $result.PendingCount -gt 0) {
+	throw 'All five recorded-service tests must pass.'
+}
+```
+
+On 2026-10-19, an explicitly approved, exact-operation capture used the existing
+test BI and original committed RP with four new owned, completely empty targets.
+The native generated `PipelineMock.SetRecord()` captured validation, submission
+and job snapshots in separate private fragments, without unfiltered test discovery,
+recording bootstrap erasure or shared setup/cleanup. Each accepted submission was
+checkpointed and never repeated. Only real responses were merged; terminal
+`Completed` and job identity were checked against the captured bodies.
+
+| Case | Selection | Independently verified databases / containers / documents |
+| --- | --- | --- |
+| Full | No ILR configuration | 3 / 7 / 14 |
+| Single | `db1/cont1` | 1 / 1 / 2 |
+| Database | `db2` | 1 / 2 / 4 |
+| Mixed | `db1/col1`, `db1/col2`, `db2` | 2 / 4 / 8 |
+
+Private native verification compared complete inventory, partition keys and exact
+application documents with the frozen backup baseline, excluded post-backup data,
+and confirmed the source remained unchanged. Data-plane documents are not published
+in these management-plane recordings. Playback proves the captured native protocol,
+not a fresh data comparison. UAMI and malformed-selector service cases are not part
+of this new recording.
+
+Identifiers are consistently pseudonymized across fixture inputs, recording keys,
+URIs, headers and embedded bodies; methods, API versions, selectors and actual
+response statuses remain intact. Tests additionally compare both captured POST
+bodies against current generated JSON, because recorder matching alone ignores the
+body. Credential-free, outbound-blocked replay passed on Core, Desktop and Linux.
+All 18 pre-existing recording/environment files retained their original hashes.
+
+The suite returns without work for absent, live or generic-record modes, and fails
+closed for missing playback evidence. Re-recording requires a separately approved
+fixture and exact-operation scope; do not remove the guard or interpret the public
+sanitized fixture as a live resource configuration. No cleanup is automatic.
 
 The current runner's `-TestName` filters Pester `Describe` blocks, not file
 discovery. Other files can still execute top-level setup; in record mode the

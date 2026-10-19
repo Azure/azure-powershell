@@ -1,0 +1,123 @@
+{
+  "SchemaVersion": 1,
+  "Location": "eastasia",
+  "SubscriptionId": "00000000-0000-0000-0000-000000000001",
+  "VaultName": "cosmos-recorded-vault",
+  "VaultResourceGroup": "cosmos-recorded-rg",
+  "VaultId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DataProtection/backupVaults/cosmos-recorded-vault",
+  "BackupInstanceName": "cosmos-recorded-source-instance",
+  "BackupInstanceId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DataProtection/backupVaults/cosmos-recorded-vault/backupInstances/cosmos-recorded-source-instance",
+  "SourceId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-recorded-source",
+  "RecoveryPointId": "11111111111111111111111111111111",
+  "SourceUnchanged": true,
+  "Cases": [
+    {
+      "Name": "full",
+      "TargetId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-recorded-full",
+      "Selectors": [],
+      "JobId": "00000000-0000-0000-0000-000000001104",
+      "Polls": [
+        {
+          "Step": "poll-000001",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000002",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000003",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000004",
+          "Status": "Completed"
+        }
+      ],
+      "VerifiedCounts": {
+        "Documents": 14,
+        "Databases": 3,
+        "Containers": 7,
+        "Exact": true
+      }
+    },
+    {
+      "Name": "single",
+      "TargetId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-recorded-single",
+      "Selectors": [
+        "db1/cont1"
+      ],
+      "JobId": "00000000-0000-0000-0000-000000001063",
+      "Polls": [
+        {
+          "Step": "poll-000001",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000002",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000003",
+          "Status": "Completed"
+        }
+      ],
+      "VerifiedCounts": {
+        "Documents": 2,
+        "Exact": true,
+        "Containers": 1,
+        "Databases": 1
+      }
+    },
+    {
+      "Name": "database",
+      "TargetId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-recorded-database",
+      "Selectors": [
+        "db2"
+      ],
+      "JobId": "00000000-0000-0000-0000-000000001080",
+      "Polls": [
+        {
+          "Step": "poll-000001",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000002",
+          "Status": "Completed"
+        }
+      ],
+      "VerifiedCounts": {
+        "Documents": 4,
+        "Exact": true,
+        "Databases": 1,
+        "Containers": 2
+      }
+    },
+    {
+      "Name": "mixed",
+      "TargetId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/cosmos-recorded-rg/providers/Microsoft.DocumentDB/databaseAccounts/cosmos-recorded-mixed",
+      "Selectors": [
+        "db1/col1",
+        "db1/col2",
+        "db2"
+      ],
+      "JobId": "00000000-0000-0000-0000-000000001020",
+      "Polls": [
+        {
+          "Step": "poll-000001",
+          "Status": "InProgress"
+        },
+        {
+          "Step": "poll-000002",
+          "Status": "Completed"
+        }
+      ],
+      "VerifiedCounts": {
+        "Exact": true,
+        "Databases": 2,
+        "Documents": 8,
+        "Containers": 4
+      }
+    }
+  ]
+}
