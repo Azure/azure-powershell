@@ -14,14 +14,12 @@ Get the details of the serviceGroup
 
 ### Get (Default)
 ```
-Get-AzServiceGroup -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceGroup -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceGroup -InputObject <IServiceGroupsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceGroup -InputObject <IServiceGroupsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ResourceUrlParameterSet,
             Mandatory = true,
-            HelpMessage = "Resource url for that you're requesting token, e.g. 'http://graph.windows.net/'.")]
+            HelpMessage = "Resource URL for which you're requesting a token, e.g. 'https://graph.microsoft.com/'.")]
         [ValidateNotNullOrEmpty]
         [Alias("Resource", "ResourceUri")]
         public string ResourceUrl { get; set; }

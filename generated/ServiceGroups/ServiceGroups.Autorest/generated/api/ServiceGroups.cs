@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateOrUpdateServiceGroup(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateOrUpdateServiceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> CreateOrUpdateServiceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateOrUpdateServiceGroupViaJsonString(string serviceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> CreateOrUpdateServiceGroupViaJsonStringWithResult(string serviceGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> CreateOrUpdateServiceGroupWithResult(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteServiceGroup(string serviceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteServiceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -857,6 +857,296 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
             }
         }
 
+        /// <summary>
+        /// Lists all available REST API operations for the Microsoft.Management resource provider.
+        /// </summary>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-08-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Management/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OperationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all available REST API operations for the Microsoft.Management resource provider.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-08-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Management/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Management/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Management/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.OperationsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all available REST API operations for the Microsoft.Management resource provider.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-08-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Management/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Management/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Management/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OperationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all available REST API operations for the Microsoft.Management resource provider.
+        /// </summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-08-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.Management/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OperationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OperationsListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult> OperationsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OperationsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="OperationsList" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task OperationsList_Validate(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+
+            }
+        }
+
         /// <summary>Get the details of the serviceGroup</summary>
         /// <param name="serviceGroupName">ServiceGroup Name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -869,7 +1159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task ServiceGroupsGet(string serviceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -906,7 +1196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task ServiceGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -951,7 +1241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> ServiceGroupsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -996,7 +1286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> ServiceGroupsGetWithResult(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1149,304 +1439,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
             }
         }
 
-        /// <summary>Get the details of the serviceGroup's ancestors</summary>
-        /// <param name="serviceGroupName">ServiceGroup Name.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceGroupsListAncestors(string serviceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-02-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.Management/serviceGroups/"
-                        + global::System.Uri.EscapeDataString(serviceGroupName)
-                        + "/listAncestors"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServiceGroupsListAncestors_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Get the details of the serviceGroup's ancestors</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task ServiceGroupsListAncestorsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-02-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Management/serviceGroups/(?<serviceGroupName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Management/serviceGroups/{serviceGroupName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var serviceGroupName = _match.Groups["serviceGroupName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.Management/serviceGroups/"
-                        + serviceGroupName
-                        + "/listAncestors"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.ServiceGroupsListAncestors_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Get the details of the serviceGroup's ancestors</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse> ServiceGroupsListAncestorsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-02-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Management/serviceGroups/(?<serviceGroupName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Management/serviceGroups/{serviceGroupName}'");
-                }
-
-                // replace URI parameters with values from identity
-                var serviceGroupName = _match.Groups["serviceGroupName"].Value;
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.Management/serviceGroups/"
-                        + serviceGroupName
-                        + "/listAncestors"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.ServiceGroupsListAncestorsWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>Get the details of the serviceGroup's ancestors</summary>
-        /// <param name="serviceGroupName">ServiceGroup Name.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse> ServiceGroupsListAncestorsWithResult(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2024-02-01-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.Management/serviceGroups/"
-                        + global::System.Uri.EscapeDataString(serviceGroupName)
-                        + "/listAncestors"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.ServiceGroupsListAncestorsWithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>
-        /// Actual wire call for <see cref= "ServiceGroupsListAncestorsWithResult" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse> ServiceGroupsListAncestorsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            // Error Response : default
-                            var code = (await _result)?.Code;
-                            var message = (await _result)?.Message;
-                            if ((null == code || null == message))
-                            {
-                                // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>(_response, await _result);
-                                throw ex;
-                            }
-                            else
-                            {
-                                throw new global::System.Exception($"[{code}] : {message}");
-                            }
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "ServiceGroupsListAncestors" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceGroupsListAncestors_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupCollectionResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ServiceGroupCollectionResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="ServiceGroupsListAncestors" /> method. Call this like the actual call, but you will get
-        /// validation events back.
-        /// </summary>
-        /// <param name="serviceGroupName">ServiceGroup Name.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task ServiceGroupsListAncestors_Validate(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-                await eventListener.AssertNotNull(nameof(serviceGroupName),serviceGroupName);
-                await eventListener.AssertRegEx(nameof(serviceGroupName), serviceGroupName, @"^[a-zA-Z0-9\-_().]{1,90}$");
-            }
-        }
-
         /// <summary>update a serviceGroup</summary>
         /// <param name="serviceGroupName">ServiceGroup Name.</param>
         /// <param name="body">ServiceGroup update parameters</param>
@@ -1461,7 +1453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateServiceGroup(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1504,7 +1496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateServiceGroupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1555,7 +1547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> UpdateServiceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1607,7 +1599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateServiceGroupViaJsonString(string serviceGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1647,7 +1639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> UpdateServiceGroupViaJsonStringWithResult(string serviceGroupName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1688,7 +1680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup> UpdateServiceGroupWithResult(string serviceGroupName, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroup body, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-02-01-preview";
+            var apiVersion = @"2026-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1739,8 +1731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -1819,7 +1810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -1894,8 +1885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -1974,7 +1964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();

@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Change Safety support for additional cmdlets.
+* Fixed Key Vault name availability and Managed HSM region cmdlets to use API version `2026-02-01`.
 
 ## Version 6.6.1
 * Upgraded the Key Vault control plane API version to '2026-02-01'.

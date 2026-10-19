@@ -27,8 +27,7 @@ Update-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
  [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,8 +45,7 @@ Update-AzComputeFleet -InputObject <IComputeFleetIdentity> [-AdditionalLocationP
  [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
  [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,34 +56,39 @@ Update a Fleet
 
 ### Example 1: Update tags on a Compute Fleet using Update
 ```powershell
-Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
+Update-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" `
+    -Tag @{ environment = "staging" } |
+    Select-Object Name, Tag, ProvisioningState
 ```
 
 ```output
-Name              : fleet5-001
+Name              : managedFleet1
 Tag               : {
-                      "EnableVMManagementPolicy": "true",
                       "environment": "staging"
                     }
 ProvisioningState : Succeeded
 ```
 
-Updates the tags on a Managed mode Compute Fleet. The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back. This means unspecified properties retain their existing values.
+Retrieves the fleet with GET using the `2026-08-01` Compute Fleet API, updates its tags, and sends the modified configuration with PUT.
+The existing compute profile is included in the PUT request.
+Tags supplied here replace the tag collection; include any existing tags you want to retain.
 
 ### Example 2: Update Spot capacity via pipeline input
 ```powershell
-Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
-    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+Get-AzComputeFleet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Update-AzComputeFleet -SpotPriorityProfileCapacity 3 |
+    Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 ```
 
 ```output
-Name                        : fleet5-001
-SpotPriorityProfileCapacity : 8
+Name                        : managedFleet1
+SpotPriorityProfileCapacity : 3
 ProvisioningState           : Succeeded
 ```
 
-Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set. Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet. Note that `computeProfile` is immutable and cannot be changed after fleet creation.
+Uses the piped fleet object's identity to retrieve the current configuration with GET, updates its Spot capacity, and sends the modified configuration with PUT, including the existing compute profile.
+Pipeline input supplies the identity, not the configuration sent in the PUT request.
+Increasing capacity can incur additional charges.
 
 ## PARAMETERS
 
@@ -381,6 +384,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegularPriorityProfileAllocationStrategy
 Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
 
@@ -634,36 +652,6 @@ Zones in which the Compute Fleet is available
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyDistributionStrategy
-Distribution strategy used for zone allocation policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ZoneAllocationPolicyZonePreference
-Zone preferences, required when zone distribution strategy is Prioritized.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]
 Parameter Sets: (All)
 Aliases:
 

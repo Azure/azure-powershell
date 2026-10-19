@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PowerShell;
 
-    /// <summary>The response from the list namespace operation.</summary>
+    /// <summary>The response of a AuthorizationRule list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(AuthorizationRuleListResultTypeConverter))]
     public partial class AuthorizationRuleListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             return ToJsonString();
         }
     }
-    /// The response from the list namespace operation.
+    /// The response of a AuthorizationRule list operation.
     [System.ComponentModel.TypeConverter(typeof(AuthorizationRuleListResultTypeConverter))]
     public partial interface IAuthorizationRuleListResult
 

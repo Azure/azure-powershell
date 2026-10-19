@@ -81,6 +81,10 @@ ResourceId           : /subscriptions/f46521f3-5bb0-4eea-a3c2-c2d5987df96b/resou
 ManagedInstanceName  : testInstance
 InstanceCreateTime   : 10/17/2019 4:52:10 PM
 ResourceGroupName    : testResourceGroup
+IsBackupImmutable    : True
+TimeBasedImmutability     : Enabled
+TimeBasedImmutabilityMode : Unlocked
+LegalHoldImmutability     : Disabled
 ```
 
 Gets all long term retention backups for a particular database.  Resource Group is optional. 
