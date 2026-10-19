@@ -262,6 +262,8 @@ if ($result.FailedCount) { throw 'Response-contract regression tests failed.' }
 
 This focused run does not replace full scenario Playback against reviewed recordings.
 
+`test\RecordingNormalization.Tests.ps1` exercises Record cleanup and normalization recovery offline, including case-sensitive lookup keys and collision detection. Run it with Pester 4.10.1 on both Windows PowerShell 5.1 and PowerShell 7 when changing recording normalization; Playback alone does not exercise this path.
+
 **Record all groups without `-TestName` before publishing a replacement fixture set.** A filtered Record is useful for debugging but generates a new environment mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
 
 Parent Update coverage uses nonempty expanded tags for replacement and the public `-JsonString '{"tags":{}}'` path for clearing. The current expanded serializer omits empty objects; `-Tag @{}` is not equivalent to the required tag-clear body. Version tag updates verify default/deployment-type preservation; changing the default requires `Switch-AzEdgeActionVersionDefault`. Filter updates cover `VersionId`, headers and tags, including preservation during a header-only PATCH. Skipped JSON/identity stubs are not coverage.

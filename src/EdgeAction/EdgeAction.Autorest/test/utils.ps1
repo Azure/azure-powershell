@@ -247,14 +247,27 @@ function Protect-EdgeActionTestPollingUrl {
 
 function Protect-EdgeActionTestRecording {
     param([string]$Content)
-    $recording = ConvertFrom-Json -InputObject $Content -AsHashtable -ErrorAction Stop
+    # The framework JSON reader preserves case-sensitive keys on both Desktop and Core.
+    Add-Type -AssemblyName System.Runtime.Serialization
+    $reader = [System.Runtime.Serialization.Json.JsonReaderWriterFactory]::CreateJsonReader(
+        [System.Text.Encoding]::UTF8.GetBytes($Content), [System.Xml.XmlDictionaryReaderQuotas]::Max)
+    $recording = New-Object System.Xml.XmlDocument
+    try {
+        $recording.Load($reader)
+    } finally {
+        $reader.Dispose()
+    }
+    if ($recording.DocumentElement.GetAttribute('type') -ne 'object') {
+        throw 'A recording must contain a JSON object of request lookup keys; no files were changed.'
+    }
     $keys = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
     $replacements = [System.Collections.Generic.Dictionary[string, string]]::new([StringComparer]::Ordinal)
-    foreach ($key in $recording.Keys) {
-        $entry = $recording[$key]
+    foreach ($entry in $recording.DocumentElement.ChildNodes) {
+        $key = if ($entry.HasAttribute('item')) { $entry.GetAttribute('item') } else { $entry.LocalName }
         $newKey = $key
-        if ($entry.Request.RequestUri) {
-            $url = [string]$entry.Request.RequestUri
+        $requestUri = $entry.SelectSingleNode('Request/RequestUri')
+        if ($requestUri -and $requestUri.InnerText) {
+            $url = $requestUri.InnerText
             $newUrl = Protect-EdgeActionTestPollingUrl $url
             if ($newUrl -cne $url) {
                 if (-not $key.Contains($url)) {
@@ -265,9 +278,12 @@ function Protect-EdgeActionTestRecording {
                 $replacements[$url] = $newUrl
             }
         }
-        foreach ($header in @($entry.Response.Headers.Keys)) {
-            if ($header -notin 'Azure-AsyncOperation', 'Location') { continue }
-            foreach ($url in $entry.Response.Headers[$header]) {
+        foreach ($header in $entry.SelectNodes('Response/Headers/*')) {
+            $headerName = if ($header.HasAttribute('item')) { $header.GetAttribute('item') } else { $header.LocalName }
+            if ($headerName -notin 'Azure-AsyncOperation', 'Location') { continue }
+            $urls = if ($header.GetAttribute('type') -eq 'array') { $header.ChildNodes } else { $header }
+            foreach ($value in $urls) {
+                $url = $value.InnerText
                 $newUrl = Protect-EdgeActionTestPollingUrl $url
                 if ($newUrl -cne $url) { $replacements[$url] = $newUrl }
             }

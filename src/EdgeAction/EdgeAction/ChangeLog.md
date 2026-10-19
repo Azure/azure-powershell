@@ -24,6 +24,7 @@
     - Version tag updates preserve the default version; use `Switch-AzEdgeActionVersionDefault` to change it.
     - Clarified the JSON parameter path for clearing tags on EdgeActions, versions, and execution filters when expanded parameters omit empty objects.
     - Expanded test coverage for asynchronous operations and resource responses.
+    - Fixed test recording normalization compatibility with Windows PowerShell 5.1.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
