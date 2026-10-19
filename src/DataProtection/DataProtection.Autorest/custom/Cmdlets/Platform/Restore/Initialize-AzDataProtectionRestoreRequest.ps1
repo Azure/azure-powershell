@@ -81,8 +81,8 @@ function Initialize-AzDataProtectionRestoreRequest
         ${BackupInstance},
 
         # this is applicable to all workloads wherever ALR supported.
-        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL. For AzureCosmosDB, provide the target Azure Cosmos DB account ARM ID.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL. For AzureCosmosDB, provide the target Azure Cosmos DB account ARM ID.')]
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Specify the target resource ID for restoring backup data in an alternate location. For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.')]
         [System.String]
         ${TargetResourceId},
 
@@ -127,10 +127,10 @@ function Initialize-AzDataProtectionRestoreRequest
         [System.String[]]
         ${ToPrefixPattern},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN. For AzureCosmosDB, use it with ItemLevelRecovery.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN. For AzureCosmosDB, use it with ItemLevelRecovery.')]
-        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN. For AzureCosmosDB, use it with ItemLevelRecovery.')]
-        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN. For AzureCosmosDB, use it with ItemLevelRecovery.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.')]
+        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.')]
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.')]
         [PSObject]
         ${RestoreConfiguration},
 

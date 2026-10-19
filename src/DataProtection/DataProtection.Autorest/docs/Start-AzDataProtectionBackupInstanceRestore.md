@@ -302,31 +302,6 @@ We then initialize the restore request object for an AzureCosmosDB alternate loc
 After that, we assign the required permissions to the backup vault and the target Cosmos DB account to enable the restore operation.
 Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for AzureCosmosDB.
 
-### Example 13: Trigger alternate location item level restore for AzureCosmosDB
-```powershell
-$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-$resourceGroupName = "resourceGroupName"
-$vaultName = "vaultName"
-$targetCosmosAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
-
-$vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "source-cosmos-account" }
-$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
-
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
-$cosmosRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId -ItemLevelRecovery -RestoreConfiguration $restoreConfig
-
-Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $cosmosRestoreRequest
-
-$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $cosmosRestoreRequest -Name $instance.BackupInstanceName
-
-$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $cosmosRestoreRequest
-```
-
-This example follows the same steps as the previous example, but restores only the selected databases and containers.
-The restore configuration selects containers col1 and col2 in database db1, and the whole database db2.
-The restore request is initialized with ItemLevelRecovery and RestoreConfiguration, and the Test command validates it before the restore is triggered.
-
 ## PARAMETERS
 
 ### -AsJob

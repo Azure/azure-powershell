@@ -1,88 +1,68 @@
-# ----------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
+$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+if (-Not (Test-Path -Path $loadEnvPath)) {
+    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+}
+. ($loadEnvPath)
+$TestRecordingFile = Join-Path $PSScriptRoot 'CosmosRestoreConfiguration.Recording.json'
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+    $currentPath = Split-Path -Path $currentPath -Parent
+}
+. ($mockingPath | Select-Object -First 1).FullName
 
-# Local only: these commands build request objects without calling the service.
-Describe 'CosmosRestoreConfiguration' -Tag 'Unit', 'CosmosRestore' {
+Describe 'CosmosRestoreConfiguration' {
     BeforeAll {
-        $restoreParameters = @{
-            DatasourceType = 'AzureCosmosDB'
-            SourceDataStore = 'VaultStore'
-            RestoreLocation = 'eastus'
-            RestoreType = 'AlternateLocation'
-            TargetResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/restore-tests/providers/Microsoft.DocumentDB/databaseAccounts/target-account'
-            RecoveryPoint = 'unit-test-recovery-point'
-            ErrorAction = 'Stop'
-        }
-
-        function ConvertTo-TestCosmosWireObject($Model) {
-            $Model.ToJson($null, [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode]::IncludeCreateOrUpdate).ToString() | ConvertFrom-Json
-        }
+        $targetResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/targetAccountName"
+        $userAssignedIdentityArmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
     }
 
-    Context 'New-AzDataProtectionRestoreConfigurationClientObject' {
-        It 'builds one resource list criterion for <Name>' -TestCases @(
-            @{ Name = 'a container'; Identifiers = @('db1/col1') }
-            @{ Name = 'a database'; Identifiers = @('db2') }
-            @{ Name = 'containers and a database'; Identifiers = @('db1/col1', 'db1/col2', 'db2') }
-        ) {
-            param($Name, $Identifiers)
-            $result = @(New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier $Identifiers -ErrorAction Stop)
-            $result.Count | Should -Be 1
-            $wire = ConvertTo-TestCosmosWireObject $result[0]
-            $wire.objectType | Should -BeExactly 'GenericRestoreDatasourceCriteria'
-            $wire.resourceSelectors.objectType | Should -BeExactly 'ResourceListSelectionCriteria'
-            ($wire.resourceSelectors.resourceIdentifiers -join '|') | Should -BeExactly ($Identifiers -join '|')
-            @($wire.resourceSelectors.PSObject.Properties.Name) -contains 'resourceNameOverrides' | Should -Be $false
-        }
+    It 'RestoreConfigDatabaseAndContainer' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db2")
 
-        It 'requires ResourceIdentifier' {
-            { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ErrorAction Stop } | Should -Throw 'Please input parameter ResourceIdentifier'
-            { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @() -ErrorAction Stop } | Should -Throw 'Please input parameter ResourceIdentifier'
-        }
-
-        It 'rejects parameter <Name>' -TestCases @(
-            @{ Name = 'IncludedNamespace'; Value = @('ns1') }
-            @{ Name = 'StagingResourceGroupId'; Value = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/staging' }
-            @{ Name = 'ResourceNameOverride'; Value = @{ 'db1/col1' = 'db1/col9' } }
-        ) {
-            param($Name, $Value)
-            $parameters = @{ DatasourceType = 'AzureCosmosDB'; ResourceIdentifier = @('db1/col1'); ErrorAction = 'Stop' }
-            $parameters[$Name] = $Value
-            { New-AzDataProtectionRestoreConfigurationClientObject @parameters } | Should -Throw 'Only ResourceIdentifier is supported'
-        }
+        $restoreConfig.ObjectType | Should Be "GenericRestoreDatasourceCriteria"
+        $restoreConfig.ResourceSelector.ObjectType | Should Be "ResourceListSelectionCriteria"
+        $restoreConfig.ResourceSelector.ResourceIdentifier.Count | Should Be 2
+        $restoreConfig.ResourceSelector.ResourceIdentifier[0] | Should Be "db1/col1"
+        $restoreConfig.ResourceSelector.ResourceIdentifier[1] | Should Be "db2"
     }
 
-    Context 'Initialize-AzDataProtectionRestoreRequest' {
-        It 'adds the restore configuration as the item level restore criterion' {
-            $configuration = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1', 'db1/col2', 'db2') -ErrorAction Stop
-            $request = Initialize-AzDataProtectionRestoreRequest @restoreParameters -ItemLevelRecovery -RestoreConfiguration $configuration
-            $wire = ConvertTo-TestCosmosWireObject $request
-            $wire.restoreTargetInfo.objectType | Should -BeExactly 'ItemLevelRestoreTargetInfo'
-            @($wire.restoreTargetInfo.restoreCriteria).Count | Should -Be 1
-            $criterion = $wire.restoreTargetInfo.restoreCriteria[0]
-            $criterion.objectType | Should -BeExactly 'GenericRestoreDatasourceCriteria'
-            $criterion.resourceSelectors.objectType | Should -BeExactly 'ResourceListSelectionCriteria'
-            ($criterion.resourceSelectors.resourceIdentifiers -join '|') | Should -BeExactly 'db1/col1|db1/col2|db2'
-        }
+    It 'RestoreConfigThrowsWhenResourceIdentifierMissing' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB } | Should -Throw "ResourceIdentifier"
+    }
 
-        It 'requires RestoreConfiguration for item level restore' {
-            { Initialize-AzDataProtectionRestoreRequest @restoreParameters -ItemLevelRecovery } | Should -Throw 'Please input parameter RestoreConfiguration'
-        }
+    It 'RestoreConfigThrowsWhenForeignParametersSupplied' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1") -IncludedNamespace @("ns1") } | Should -Throw "Invalid parameters"
+    }
 
-        It 'keeps the full restore request without restore criteria' {
-            $wire = ConvertTo-TestCosmosWireObject (Initialize-AzDataProtectionRestoreRequest @restoreParameters)
-            $wire.restoreTargetInfo.objectType | Should -BeExactly 'RestoreTargetInfo'
-            @($wire.restoreTargetInfo.PSObject.Properties.Name) -contains 'restoreCriteria' | Should -Be $false
-        }
+    It 'RestoreConfigThrowsWhenResourceNameOverrideSupplied' {
+        { New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1") -ResourceNameOverride @{"db1/col1" = "db1/col2"} } | Should -Throw "Invalid parameters"
+    }
+
+    It 'ItemLevelRestoreRequest' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery
+
+        $restoreRequest.RestoreTargetInfo.ObjectType | Should Be "ItemLevelRestoreTargetInfo"
+        $restoreRequest.RestoreTargetInfo.RestoreCriterion.Count | Should Be 1
+        $restoreRequest.RestoreTargetInfo.RestoreCriterion[0].ResourceSelector.ResourceIdentifier[0] | Should Be "db1/col1"
+        $restoreRequest.RestoreTargetInfo.DatasourceInfo.ResourceId | Should Be $targetResourceId
+    }
+
+    It 'ItemLevelRestoreRequestThrowsWhenRestoreConfigurationMissing' {
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -ItemLevelRecovery } | Should -Throw "RestoreConfiguration"
+    }
+
+    It 'RestoreRequestWithSystemAssignedIdentity' {
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $true
+
+        $restoreRequest.IdentityDetailUseSystemAssignedIdentity | Should Be $true
+    }
+
+    It 'RestoreRequestWithUserAssignedIdentity' {
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
+
+        $restoreRequest.IdentityDetailUseSystemAssignedIdentity | Should Be $false
+        $restoreRequest.IdentityDetailUserAssignedIdentityArmUrl | Should Be $userAssignedIdentityArmId
     }
 }

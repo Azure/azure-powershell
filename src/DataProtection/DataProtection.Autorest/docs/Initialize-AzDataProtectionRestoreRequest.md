@@ -467,7 +467,6 @@ Accept wildcard characters: False
 ### -RestoreConfiguration
 Restore configuration for restore.
 Use this parameter to restore with AzureKubernetesService.
-For AzureCosmosDB, use it with ItemLevelRecovery.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -576,7 +575,6 @@ Accept wildcard characters: False
 ### -TargetResourceId
 Specify the target resource ID for restoring backup data in an alternate location.
 For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.
-For AzureCosmosDB, provide the target Azure Cosmos DB account ARM ID.
 
 ```yaml
 Type: System.String
