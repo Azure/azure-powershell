@@ -273,8 +273,8 @@ readiness to ship. Do not promote a pending remote check or partial analysis to 
 ## Reproduction and evidence handling
 
 Use the standard Pester invocation in the [command-level test matrix](test-matrix/README.md),
-the [native scenario runner](../../../tools/Test/Invoke-CosmosRestoreScenario.ps1), and
-[negative validation runner](../../../tools/Test/Invoke-CosmosRestoreNegativeTests.ps1).
+the [native scenario runner](../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreScenario.ps1), and
+[negative validation runner](../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreNegativeTests.ps1).
 See the [development guide](README.md) for prerequisites, opt-in phases, identity,
 selector contracts, and the validation-versus-restore distinction; the
 [repository overview](../../../README.md) describes the workspace.

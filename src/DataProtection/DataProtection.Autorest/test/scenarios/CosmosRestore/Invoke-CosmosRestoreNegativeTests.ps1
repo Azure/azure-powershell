@@ -47,7 +47,7 @@ Only allowlisted error fields and correlation IDs are saved, never HTTP bodies,
 headers, tokens, source documents, or request/response objects. Reports are written
 to the supplied ignored OutputDirectory, never to positive state or module artifacts.
 .EXAMPLE
-./tools/Test/Invoke-CosmosRestoreNegativeTests.ps1 -EnableLive -ModulePath $builtManifest -StatePath $positiveState -OutputDirectory $ignoredNegativeDirectory
+./src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreNegativeTests.ps1 -EnableLive -ModulePath $builtManifest -StatePath $positiveState -OutputDirectory $ignoredNegativeDirectory
 .EXAMPLE
 Add -ServiceValidation -TargetAccountId $explicitOwnedEmptyAccountId to authorize
 native read-only inventory and validation calls. No restore jobs are submitted.
@@ -450,7 +450,8 @@ if ($PSBoundParameters.ContainsKey('Debug') -or $PSBoundParameters.ContainsKey('
 if (-not $ServiceValidation -and ($TargetAccountId -or $WrongRecoveryPointId)) { throw 'TargetAccountId/WrongRecoveryPointId require explicit -ServiceValidation.' }
 $loadedAssemblyNames = @([AppDomain]::CurrentDomain.GetAssemblies() | ForEach-Object { $_.GetName().Name })
 if ((Get-Module Az.DataProtection) -or ($loadedAssemblyNames -match '^Az\.DataProtection\.')) { throw 'Use a fresh pwsh -NoProfile process without DataProtection assemblies already loaded.' }
-$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+. (Join-Path $PSScriptRoot '../../CosmosRestoreTestHelpers.ps1')
+$repoRoot = (Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot).RepoRoot
 $ModulePath = (Resolve-Path -LiteralPath $ModulePath).Path
 $StatePath = (Resolve-Path -LiteralPath $StatePath).Path
 $moduleRoot = Split-Path -Parent $ModulePath

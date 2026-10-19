@@ -5,10 +5,15 @@
 # test file deliberately uses no PowerShell 7-only syntax. No built/cloud module
 # is needed when running this file alone. Never dot-source either live entrypoint.
 . (Join-Path $PSScriptRoot 'CosmosRestoreTestHelpers.ps1')
-$harnessRepoRoot = (Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot).RepoRoot
+$harnessPaths = Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot
+$harnessScenarioRoot = Join-Path $harnessPaths.SourceRoot 'test/scenarios/CosmosRestore'
 $harnessSources = @{}
 foreach ($sourceName in @('Invoke-CosmosRestoreScenario', 'Invoke-CosmosRestoreNegativeTests')) {
-    $sourcePath = Join-Path $harnessRepoRoot "tools/Test/$sourceName.ps1"
+    $sourcePath = Join-Path $harnessScenarioRoot "$sourceName.ps1"
+    if ([IO.Path]::GetFullPath($PSScriptRoot) -eq [IO.Path]::GetFullPath((Join-Path $harnessPaths.ArtifactRoot 'test'))) {
+        $artifactPath = Join-Path $PSScriptRoot "scenarios/CosmosRestore/$sourceName.ps1"
+        Assert-CosmosRestoreSourceCopy -SourcePath $sourcePath -ArtifactPath $artifactPath -RelativePath "test/scenarios/CosmosRestore/$sourceName.ps1"
+    }
     $sourceTokens = $null
     $sourceErrors = $null
     $sourceText = [System.IO.File]::ReadAllText($sourcePath, [System.Text.Encoding]::UTF8)
@@ -49,6 +54,7 @@ if ($PSVersionTable.PSVersion -lt [version]'7.2') {
                 @($ast.ScriptRequirements.RequiredPSEditions).Count | Should -Be 0
                 $ast.ParamBlock.Parameters.Name.VariablePath.UserPath | Should -Contain 'EnableLive'
                 $ast.Extent.Text | Should -Match 'if \(-not \$EnableLive\) \{ throw'
+                @(Get-DesktopCommands $ast) | Should -Contain 'Get-CosmosRestoreTestPaths'
             }
         }
 
@@ -586,6 +592,19 @@ try {
             }
 
             Context 'Targets phase and negative entrypoint AST safety only' {
+                It 'keeps both module-local tools opt-in and outside Pester discovery' {
+                    foreach ($source in $script:HarnessSources.Values) {
+                        $source.Extent.File | Should -Match '[\\/]test[\\/]scenarios[\\/]CosmosRestore[\\/]Invoke-CosmosRestore'
+                        $source.Extent.File | Should -Not -Match '\.Tests\.ps1$'
+                        $source.ParamBlock.Parameters.Name.VariablePath.UserPath | Should -Contain 'EnableLive'
+                        $source.Extent.Text | Should -Match 'if \(-not \$EnableLive\) \{ throw'
+                        $commands = @($source.FindAll({ param($node) $node -is [System.Management.Automation.Language.CommandAst] }, $true) | ForEach-Object { $_.GetCommandName() })
+                        $commands | Should -Contain 'Get-CosmosRestoreTestPaths'
+                        $commands | Should -Not -Contain 'Describe'
+                        $commands | Should -Not -Contain 'Invoke-Pester'
+                    }
+                }
+
                 It 'limits Targets to account/role provisioning and empty inventory with a submitted-job guard' {
                     $switches = @($script:HarnessSources['Invoke-CosmosRestoreScenario'].FindAll({
                         param($node) $node -is [System.Management.Automation.Language.SwitchStatementAst] -and $node.Condition.Extent.Text -eq '$Phase'

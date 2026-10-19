@@ -80,37 +80,6 @@ $renameTo[$backedUpContainers[0]] = "newContainerName1"
 $renameTo[$backedUpContainers[1]] = "newContainerName2"
 $targetStorageAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/targetStorageAccount"
 $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccountId -ContainersList $backedUpContainers[0,1] -RenameTo $renameTo
-.Example
-$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "volumeGroupName" }
-$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
-$targetVolumeGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ElasticSan/elasticSans/elasticSanName/volumeGroups/targetVolumeGroup"
-$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureElasticSAN -SourceDataStore OperationalStore -RestoreLocation "vaultLocation" -RestoreType AlternateLocation -RecoveryPoint $rp[0].Name -TargetResourceId $targetVolumeGroupId -RestoreConfiguration $restoreConfig -ItemLevelRecovery
-.Example
-$subscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-$resourceGroupName = 'backup-resource-group'
-$vaultName = 'backup-vault'
-$backupInstanceName = 'cosmos-backup-instance'
-$targetCosmosAccountId = "/subscriptions/$subscriptionId/resourceGroups/target-resource-group/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
-$restoreLocation = 'eastasia'
-
-$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $backupInstanceName
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
-$restoreParameters = @{
-    DatasourceType = 'AzureCosmosDB'
-    SourceDataStore = 'VaultStore'
-    RestoreLocation = $restoreLocation
-    RestoreType = 'AlternateLocation'
-    RecoveryPoint = $rp[0].Property.RecoveryPointId
-    TargetResourceId = $targetCosmosAccountId
-    ItemLevelRecovery = $true
-    RestoreConfiguration = $restoreConfig
-}
-$restoreRequest = Initialize-AzDataProtectionRestoreRequest @restoreParameters -UseSystemAssignedIdentity $true
-.Example
-# Reuse the restore parameters from Example 10, choosing this identity instead.
-$userAssignedIdentityArmId = "/subscriptions/$subscriptionId/resourceGroups/identity-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity"
-$restoreRequest = Initialize-AzDataProtectionRestoreRequest @restoreParameters -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
@@ -191,8 +160,8 @@ param(
     [Parameter(ParameterSetName='AlternateLocationILR', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # Specify the target resource ARM ID for alternate-location restore, such as a database ARM ID for AzureDatabaseForPostgreSQL, a managed cluster ARM ID for AzureKubernetesService, or a volume group ARM ID for AzureElasticSAN.
-    # For AzureCosmosDB, specify the target account ARM ID, not a database or container ARM ID.
+    # Specify the target resource ID for restoring backup data in an alternate location.
+    # For instance, provide the target database ARM ID that you want to restore to, for workloadType AzureDatabaseForPostgreSQL.
     ${TargetResourceId},
 
     [Parameter()]
@@ -234,9 +203,8 @@ param(
     [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.PSObject]
-    # Restore configuration created by New-AzDataProtectionRestoreConfigurationClientObject.
-    # Required for AzureKubernetesService and AzureElasticSAN restore, and for AzureCosmosDB alternate-location item-level recovery (ILR).
-    # For AzureCosmosDB full-account recovery, omit RestoreConfiguration and ItemLevelRecovery.
+    # Restore configuration for restore.
+    # Use this parameter to restore with AzureKubernetesService, AzureElasticSAN.
     ${RestoreConfiguration},
 
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
@@ -262,17 +230,14 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Specify true to select the backup vault system-assigned managed identity.
-    # To select a user-assigned managed identity, specify false together with UserAssignedIdentityArmId.
-    # The selected identity must have the required restore permissions.
+    # Use system assigned identity
     ${UseSystemAssignedIdentity},
 
     [Parameter()]
     [Alias('AssignUserIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
-    # ARM ID of a user-assigned managed identity attached to the backup vault with the required restore permissions.
-    # Specify UseSystemAssignedIdentity as false with this parameter; do not combine it with true.
+    # User assigned identity ARM Id
     ${UserAssignedIdentityArmId},
 
     [Parameter(ParameterSetName='AlternateLocationILR', Mandatory)]

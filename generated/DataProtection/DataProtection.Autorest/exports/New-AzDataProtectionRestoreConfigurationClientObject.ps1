@@ -21,12 +21,6 @@ Creates new restore configuration object
 Creates new restore configuration object
 .Example
 $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -NamespaceMapping  @{"sourcenamespace1"="targetnamespace1";"sourcenamespace2"="targetnamespace2"} -ExcludedNamespace "excludeNS1","excludeNS2" -RestoreHookReference @(@{name='restorehookname';namespace='default'},@{name='restorehookname1';namespace='hrweb'})
-.Example
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1")
-.Example
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
-.Example
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @('db1/col1','db1/col2','db2')
 
 .Outputs
 System.Management.Automation.PSObject
@@ -144,9 +138,9 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # Resources to restore.
-    # For AzureCosmosDB, provide case-sensitive database or database/container names, with at most 50 entries and no duplicate or overlapping database/container selections.
-    # For AzureElasticSAN, provide exactly one source volume name.
+    # List of source volume names to be restored.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # The service currently supports exactly one volume per restore request.
     ${ResourceIdentifier},
 
     [Parameter()]

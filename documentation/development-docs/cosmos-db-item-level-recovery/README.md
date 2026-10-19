@@ -166,7 +166,7 @@ Offline success is not live acceptance; playback alone does not certify serializ
 
 ## Opt-in live scenario
 
-The [scenario runner](../../../tools/Test/Invoke-CosmosRestoreScenario.ps1) requires
+The [scenario runner](../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreScenario.ps1) requires
 PowerShell 7.2+, an authenticated Entra user, existing subscription/resource group/
 vault, appropriate permissions, and explicit `-EnableLive`. Every invocation must
 be a **fresh `pwsh -NoProfile -File` process**, using the same six required arguments
@@ -174,7 +174,7 @@ and local manifest. Replace all placeholders; the prefix needs eight random lowe
 hex digits, and the output directory must be git-ignored.
 
 ```powershell
-pwsh -NoProfile -File ./tools/Test/Invoke-CosmosRestoreScenario.ps1 `
+pwsh -NoProfile -File ./src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreScenario.ps1 `
   -EnableLive -Phase Prepare `
   -SubscriptionId '<subscription-id>' `
   -ResourceGroupName '<existing-resource-group>' -VaultName '<existing-vault>' `
@@ -208,7 +208,7 @@ for the intended environment; provisioning alone does not establish restore supp
 
 ## Native negative validation
 
-The [negative runner](../../../tools/Test/Invoke-CosmosRestoreNegativeTests.ps1)
+The [negative runner](../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreNegativeTests.ps1)
 requires `-EnableLive`, the local `-ModulePath`, trusted positive-run `-StatePath`,
 and a separate ignored `-OutputDirectory` outside the positive run directory.
 Without `-ServiceValidation`, it tests only public local object helpers: no Azure

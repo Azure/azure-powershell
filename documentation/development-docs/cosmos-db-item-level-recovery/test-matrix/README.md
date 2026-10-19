@@ -242,8 +242,8 @@ rename, restore-as-files, negative restore execution, cleanup, or performance SL
 is certified. The [results report](../TEST_RESULTS.md) records repository static-analysis
 and Markdown-validator blockers separately; this matrix is not a green-CI claim.
 
-The [opt-in native scenario tool](../../../../tools/Test/Invoke-CosmosRestoreScenario.ps1)
-and [validation-only negative tool](../../../../tools/Test/Invoke-CosmosRestoreNegativeTests.ps1)
+The [opt-in native scenario tool](../../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreScenario.ps1)
+and [validation-only negative tool](../../../../src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreNegativeTests.ps1)
 remain distinct from offline Pester tests because they perform authorized live
 operations and preserve run ownership/submission state. Use the feature guide's
 explicit opt-in procedure rather than replaying example commands blindly.

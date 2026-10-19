@@ -69,7 +69,7 @@ submission but before its job ID is saved, the script fails closed: inspect the 
 jobs and reconcile that intent in state after review; do not blindly reset it.
 State must be treated as trusted run metadata, not edited to adopt existing resources.
 .EXAMPLE
-pwsh -NoProfile -File ./tools/Test/Invoke-CosmosRestoreScenario.ps1 -EnableLive -Phase Prepare -SubscriptionId $sub -ResourceGroupName $rg -VaultName $vault -ModulePath $builtManifest -TestPrefix $uniquePrefix -OutputDirectory $ignoredRunDirectory
+pwsh -NoProfile -File ./src/DataProtection/DataProtection.Autorest/test/scenarios/CosmosRestore/Invoke-CosmosRestoreScenario.ps1 -EnableLive -Phase Prepare -SubscriptionId $sub -ResourceGroupName $rg -VaultName $vault -ModulePath $builtManifest -TestPrefix $uniquePrefix -OutputDirectory $ignoredRunDirectory
 .EXAMPLE
 Use the same invocation with Phase Backup, Poll, Restore, Poll, then Verify.
 Repeat Poll later while Pending is true; All is also resumable and never waits on jobs.
@@ -979,7 +979,8 @@ try {
     if ($PSBoundParameters.ContainsKey('Debug') -or $PSBoundParameters.ContainsKey('Verbose')) { throw 'Debug/Verbose are not permitted for this live script.' }
     if (Get-Module Az.DataProtection) { throw 'Use a fresh pwsh -NoProfile -File process; Az.DataProtection is already imported.' }
     if ([AppDomain]::CurrentDomain.GetAssemblies().GetName().Name -match '^Az\.DataProtection\.') { throw 'A DataProtection assembly is already loaded; use a fresh process.' }
-    $repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+    . (Join-Path $PSScriptRoot '../../CosmosRestoreTestHelpers.ps1')
+    $repoRoot = (Get-CosmosRestoreTestPaths -TestRoot $PSScriptRoot).RepoRoot
     $ModulePath = (Resolve-Path -LiteralPath $ModulePath).Path
     $moduleRoot = Split-Path -Parent $ModulePath
     $artifactRoot = [IO.Path]::GetFullPath((Join-Path $repoRoot 'artifacts')) + [IO.Path]::DirectorySeparatorChar
