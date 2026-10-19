@@ -7,27 +7,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>Resource tags</summary>
-    public partial class ManagedHsmResourceTags :
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags,
-        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTagsInternal
+    /// <summary>Tags assigned to the key vault resource.</summary>
+    public partial class PrivateLinkResourceTags :
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceTags,
+        Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateLinkResourceTagsInternal
     {
 
-        /// <summary>Creates an new <see cref="ManagedHsmResourceTags" /> instance.</summary>
-        public ManagedHsmResourceTags()
+        /// <summary>Creates an new <see cref="PrivateLinkResourceTags" /> instance.</summary>
+        public PrivateLinkResourceTags()
         {
 
         }
     }
-    /// Resource tags
-    public partial interface IManagedHsmResourceTags :
+    /// Tags assigned to the key vault resource.
+    public partial interface IPrivateLinkResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Resource tags
-    internal partial interface IManagedHsmResourceTagsInternal
+    /// Tags assigned to the key vault resource.
+    internal partial interface IPrivateLinkResourceTagsInternal
 
     {
 

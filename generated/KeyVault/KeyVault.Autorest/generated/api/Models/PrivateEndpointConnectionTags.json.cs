@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>Resource tags</summary>
-    public partial class ManagedHsmResourceTags
+    /// <summary>Tags assigned to the key vault resource.</summary>
+    public partial class PrivateEndpointConnectionTags
     {
 
         /// <summary>
@@ -54,23 +54,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json ? new ManagedHsmResourceTags(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json ? new PrivateEndpointConnectionTags(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject into a new instance of <see cref="ManagedHsmResourceTags" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject into a new instance of <see cref="PrivateEndpointConnectionTags" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject instance to deserialize from.</param>
         /// <param name="exclusions"></param>
-        internal ManagedHsmResourceTags(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal PrivateEndpointConnectionTags(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedHsmResourceTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="PrivateEndpointConnectionTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedHsmResourceTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="PrivateEndpointConnectionTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.SerializationMode serializationMode)
         {

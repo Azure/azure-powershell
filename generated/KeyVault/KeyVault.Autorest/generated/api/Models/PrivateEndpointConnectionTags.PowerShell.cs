@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell;
 
-    /// <summary>Resource tags</summary>
-    [System.ComponentModel.TypeConverter(typeof(ManagedHsmResourceTagsTypeConverter))]
-    public partial class ManagedHsmResourceTags
+    /// <summary>Tags assigned to the key vault resource.</summary>
+    [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionTagsTypeConverter))]
+    public partial class PrivateEndpointConnectionTags
     {
 
         /// <summary>
@@ -63,44 +63,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new ManagedHsmResourceTags(content);
+            return new PrivateEndpointConnectionTags(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new ManagedHsmResourceTags(content);
+            return new PrivateEndpointConnectionTags(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ManagedHsmResourceTags" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="PrivateEndpointConnectionTags" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="ManagedHsmResourceTags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="PrivateEndpointConnectionTags" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IPrivateEndpointConnectionTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ManagedHsmResourceTags(global::System.Collections.IDictionary content)
+        internal PrivateEndpointConnectionTags(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpointConnectionTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ManagedHsmResourceTags(global::System.Management.Automation.PSObject content)
+        internal PrivateEndpointConnectionTags(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             return ToJsonString();
         }
     }
-    /// Resource tags
-    [System.ComponentModel.TypeConverter(typeof(ManagedHsmResourceTagsTypeConverter))]
-    public partial interface IManagedHsmResourceTags
+    /// Tags assigned to the key vault resource.
+    [System.ComponentModel.TypeConverter(typeof(PrivateEndpointConnectionTagsTypeConverter))]
+    public partial interface IPrivateEndpointConnectionTags
 
     {
 

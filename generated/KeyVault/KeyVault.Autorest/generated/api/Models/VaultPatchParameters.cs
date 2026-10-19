@@ -378,7 +378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The tags that will be assigned to the key vault. ",
+        Description = @"The tags that will be assigned to the key vault.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersTags) })]
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IVaultPatchParametersTags Tag { get; set; }
