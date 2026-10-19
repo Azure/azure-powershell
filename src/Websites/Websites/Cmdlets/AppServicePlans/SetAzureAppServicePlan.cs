@@ -94,6 +94,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
             }
 
+            if (AppServicePlan.IsCustomMode && AppServicePlan.PerSiteScaling)
+            {
+                throw new System.ArgumentException("Managed Instance plans do not support per-site scaling.", nameof(PerSiteScaling));
+            }
+
             ApplyManagedInstanceConfiguration(AppServicePlan);
 
             WriteObject(new PSAppServicePlan(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, AppServicePlan)), true);

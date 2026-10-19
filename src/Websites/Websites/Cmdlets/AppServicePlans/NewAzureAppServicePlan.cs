@@ -85,6 +85,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 throw new ArgumentException("Managed Instance plans do not support Linux or Windows containers.", nameof(ManagedInstance));
             }
 
+            if (ManagedInstance.IsPresent && PerSiteScaling)
+            {
+                throw new ArgumentException("Managed Instance plans do not support per-site scaling.", nameof(PerSiteScaling));
+            }
+
             if (HyperV.IsPresent &&
                 (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3" && Tier != "IsolatedV4" && Tier != "IsolatedMV4"))
             {
