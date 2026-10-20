@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PowerShell;
 
-    /// <summary>The response from the list namespace operation.</summary>
+    /// <summary>The response of a RelayNamespace list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(RelayNamespaceListResultTypeConverter))]
     public partial class RelayNamespaceListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             return ToJsonString();
         }
     }
-    /// The response from the list namespace operation.
+    /// The response of a RelayNamespace list operation.
     [System.ComponentModel.TypeConverter(typeof(RelayNamespaceListResultTypeConverter))]
     public partial interface IRelayNamespaceListResult
 

@@ -15,25 +15,25 @@ Get a Fleet
 ### List1 (Default)
 ```
 Get-AzComputeFleet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzComputeFleet -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzComputeFleet -InputObject <IComputeFleetIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,15 +43,16 @@ Get a Fleet
 
 ### Example 1: Get a specific Compute Fleet by name
 ```powershell
-Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
+Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
 ```
 
 ```output
 Name                                     : fleet1
-Location                                 : EastUS2EUAP
+Location                                 : centralus
 ProvisioningState                        : Succeeded
 Mode                                     : Launch
-RegularPriorityProfileCapacity           : 5
+RegularPriorityProfileCapacity           : 1
 RegularPriorityProfileAllocationStrategy : LowestPrice
 ```
 
@@ -59,12 +60,13 @@ Retrieves a specific Compute Fleet by name and resource group, returning its ful
 
 ### Example 2: List all Compute Fleets in a resource group
 ```powershell
-Get-AzComputeFleet -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode
+Get-AzComputeFleet -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode
 ```
 
 ```output
 Name              : fleet1
-Location          : EastUS2EUAP
+Location          : centralus
 ProvisioningState : Succeeded
 Mode              : Launch
 ```
@@ -73,24 +75,34 @@ Lists all Compute Fleets within the specified resource group.
 
 ### Example 3: List all Compute Fleets in the current subscription
 ```powershell
-Get-AzComputeFleet | Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
+Get-AzComputeFleet -SubscriptionId (Get-AzContext).Subscription.Id |
+    Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
 ```
 
 ```output
 Name              : fleet1
-Location          : EastUS2EUAP
-ResourceGroupName : FLEET-PS-TST
+Location          : centralus
+ResourceGroupName : myResourceGroup
 ProvisioningState : Succeeded
 Mode              : Launch
 
-Name              : fleet5-001
-Location          : eastus2euap
-ResourceGroupName : MY-FLEET-RG-001
+Name              : managedFleet1
+Location          : centralus
+ResourceGroupName : myResourceGroup
 ProvisioningState : Succeeded
 Mode              : Managed
 ```
 
 Lists all Compute Fleets across all resource groups in the current subscription.
+
+### Example 4: Get a fleet using its identity
+```powershell
+$fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
+Get-AzComputeFleet -InputObject $fleet |
+    Select-Object Name, Mode, ProvisioningState
+```
+
+Retrieves the same fleet using the identity contained in an existing fleet object.
 
 ## PARAMETERS
 
@@ -134,6 +146,21 @@ Parameter Sets: Get
 Aliases: FleetName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

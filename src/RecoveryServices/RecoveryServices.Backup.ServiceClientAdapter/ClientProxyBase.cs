@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Net;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -48,9 +47,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             Context = context;
 
             RefreshClientRequestId();
-
-            // Temp code to be able to test internal env.
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; }; // CodeQL [SM02184] Settings on ServicePointManager no longer affect SslStream or HttpClient: https://learn.microsoft.com/en-us/dotnet/api/system.net.servicepointmanager?view=net-10.0
         }
 
         /// <summary>
