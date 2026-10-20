@@ -24,7 +24,7 @@ Get a NodePool
 List installable HCP OpenShift versions, with optional control-plane / node-pool views.
 
 ### [New-AzRedHatOpenShiftHcpCluster](New-AzRedHatOpenShiftHcpCluster.md)
-Create a HcpOpenShiftCluster
+Create an ARO-HCP cluster, auto-wiring the identity list and etcd KMS encryption type.
 
 ### [New-AzRedHatOpenShiftHcpExternalAuth](New-AzRedHatOpenShiftHcpExternalAuth.md)
 Create a ExternalAuth

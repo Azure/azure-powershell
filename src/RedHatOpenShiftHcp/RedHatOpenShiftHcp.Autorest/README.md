@@ -99,6 +99,15 @@ directive:
       subject: HcpOpenShiftVersion
     hide: true
 
+  # --- C2 customization: hide the generated cluster-create cmdlet so a custom
+  #     custom/New-AzRedHatOpenShiftHcpCluster.ps1 wrapper replaces it (auto-derives the
+  #     flat identity list from the operator maps + hardcodes the etcd KMS encryption type).
+  #     Pre-rename subject, anchored + verb New so it matches ONLY the cluster create.
+  - where:
+      verb: New
+      subject: ^HcpOpenShiftCluster$
+    hide: true
+
   # --- Brand the nouns via subject renames (NOT via subject-prefix) ---
   # kindly refer to "empty subject-prefix" comment above
   # ORDER MATTERS: the two credential subjects start with "HcpOpenShiftCluster",
