@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Change Safety support.
 * Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
 
 ## Version 11.10.0

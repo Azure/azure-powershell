@@ -228,7 +228,11 @@ function Update-AzGalleryApplicationVersion {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
+
+    dynamicparam {
+        Get-AzComputeDynamicParameters -CommandName "Az.Compute.private\Update-AzGalleryApplicationVersion_$($PSCmdlet.ParameterSetName)"
+    }
+
     process {
         Az.Compute.internal\Update-AzGalleryApplicationVersion @PSBoundParameters
     }

@@ -271,6 +271,11 @@ function New-AzGalleryApplicationVersion {
         # Identity Parameter
         ${GalleryInputObject}
     )
+
+    dynamicparam {
+        Get-AzComputeDynamicParameters -CommandName "Az.Compute.private\New-AzGalleryApplicationVersion_$($PSCmdlet.ParameterSetName)"
+    }
+
     process {
         Az.Compute.internal\New-AzGalleryApplicationVersion @PSBoundParameters
     }

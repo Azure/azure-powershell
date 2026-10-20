@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support for Authorization and Data Boundary cmdlets.
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 
 ## Version 10.2.1

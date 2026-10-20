@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Change Safety support.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified

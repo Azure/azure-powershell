@@ -41,6 +41,7 @@ module-version: 0.3.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
+enable-change-safety: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
