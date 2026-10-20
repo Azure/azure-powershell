@@ -47,6 +47,10 @@ Update a StorageDiscoveryWorkspace
 
 ### Example 1: Update a workspace
 ```powershell
+$workSpaceName = "myworkspace"
+$RGName = "myresourcegroup"
+$DiscoveryScopeLevel1 = "/subscriptions/00000000-0000-0000-0000-000000000000"
+$DiscoveryScopeLevel2 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup"
 $scope2 =  New-AzStorageDiscoveryScopeObject -DisplayName "scope2" -ResourceType "Microsoft.Storage/storageAccounts"  -TagKeysOnly "test2" -Tag @{"tag3" = "value3" }
 Update-AzStorageDiscoveryWorkspace -Name $workSpaceName  -ResourceGroupName $RGName -Description "test workSpace2" -Sku Free -Scope $scope2 -WorkspaceRoot $DiscoveryScopeLevel1,$DiscoveryScopeLevel2 -Tag @{"tag4" = "value4"} 
 ```
@@ -84,6 +88,8 @@ The first command creates a discovery scope object, then the second command upda
 
 ### Example 2: Update the capacity details configuration of a workspace
 ```powershell
+$workSpaceName = "myworkspace"
+$RGName = "myresourcegroup"
 $prefix2 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "data/" }
 Update-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $RGName -CapacityDetailStatus Disabled -AzureBlobStoragePrefixConfiguration $prefix2
 ```

@@ -1,5 +1,9 @@
 ### Example 1: Create a workspace
 ```powershell
+$workSpaceName = "myworkspace"
+$ResourceGroupName = "myresourcegroup"
+$location = "eastus2"
+$DiscoveryScopeLevel = "/subscriptions/00000000-0000-0000-0000-000000000000"
 $scope1 =  New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts"  -TagKeysOnly "key1" -Tag @{"tag1" = "value1"; "tag2" = "value2" }
 New-AzStorageDiscoveryWorkspace -Name $workSpaceName  -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -Description "test workSpace" 
 ```
@@ -37,6 +41,10 @@ The first command creates a discovery scope object, then the second command crea
 
 ### Example 2: Create a workspace with capacity details enabled for specific blob prefixes
 ```powershell
+$workSpaceName = "myworkspace"
+$ResourceGroupName = "myresourcegroup"
+$location = "eastus2"
+$DiscoveryScopeLevel = "/subscriptions/00000000-0000-0000-0000-000000000000"
 $scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"}
 $prefix1 = @{ StorageAccountName = "mystorageaccount"; ContainerName = "mycontainer"; Prefix = "logs/" }
 New-AzStorageDiscoveryWorkspace -Name $workSpaceName -ResourceGroupName $ResourceGroupName -Location $location -WorkspaceRoot $DiscoveryScopeLevel -Sku Standard -Scope $scope1 -CapacityDetailStatus Enabled -AzureBlobStoragePrefixConfiguration $prefix1
