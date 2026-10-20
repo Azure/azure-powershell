@@ -27,7 +27,7 @@ Partially updates a Scheduled.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminschedule
 #>
 function Update-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
@@ -99,16 +99,16 @@ function Update-AzDevCenterAdminSchedule {
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [System.String]
     # Indicates whether or not this scheduled task is enabled.
     ${State},
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -130,9 +130,9 @@ function Update-AzDevCenterAdminSchedule {
   
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("StopDevBox")]
+    [System.String]
     # Supported type this scheduled task represents.
     ${Type},
 
