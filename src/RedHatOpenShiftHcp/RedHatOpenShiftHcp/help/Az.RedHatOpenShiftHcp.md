@@ -48,7 +48,7 @@ Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
 Revoke all credentials issued by requestAdminCredential
 
 ### [Update-AzRedHatOpenShiftHcpCluster](Update-AzRedHatOpenShiftHcpCluster.md)
-Update a HcpOpenShiftCluster
+Update an ARO-HCP cluster, auto-wiring the identity list when operator identities change.
 
 ### [Update-AzRedHatOpenShiftHcpExternalAuth](Update-AzRedHatOpenShiftHcpExternalAuth.md)
 Update a ExternalAuth

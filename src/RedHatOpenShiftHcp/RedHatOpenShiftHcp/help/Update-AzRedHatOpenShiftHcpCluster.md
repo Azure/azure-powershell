@@ -8,52 +8,35 @@ schema: 2.0.0
 # Update-AzRedHatOpenShiftHcpCluster
 
 ## SYNOPSIS
-Update a HcpOpenShiftCluster
+Update an ARO-HCP cluster, auto-wiring the identity list when operator identities change.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzRedHatOpenShiftHcpCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ActiveKeyVersion <String>] [-AutoscalingMaxNodeProvisionTimeSecond <Int32>]
  [-AutoscalingMaxNodesTotal <Int32>] [-AutoscalingMaxPodGracePeriodSecond <Int32>]
  [-AutoscalingPodPriorityThreshold <Int32>] [-EnableSystemAssignedIdentity <Boolean>]
  [-ImageDigestMirror <IImageDigestMirror[]>] [-NodeDrainTimeoutMinute <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-UserAssignedIdentityControlPlaneOperator <Hashtable>]
- [-UserAssignedIdentityDataPlaneOperator <Hashtable>] [-UserAssignedIdentityServiceManagedIdentity <String>]
- [-VersionChannelGroup <String>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzRedHatOpenShiftHcpCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Resource <IHcpOpenShiftCluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzRedHatOpenShiftHcpCluster -InputObject <IRedHatOpenShiftHcpIdentity> [-ActiveKeyVersion <String>]
- [-AutoscalingMaxNodeProvisionTimeSecond <Int32>] [-AutoscalingMaxNodesTotal <Int32>]
- [-AutoscalingMaxPodGracePeriodSecond <Int32>] [-AutoscalingPodPriorityThreshold <Int32>]
- [-EnableSystemAssignedIdentity <Boolean>] [-ImageDigestMirror <IImageDigestMirror[]>]
- [-NodeDrainTimeoutMinute <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserAssignedIdentityControlPlaneOperator <Hashtable>] [-UserAssignedIdentityDataPlaneOperator <Hashtable>]
  [-UserAssignedIdentityServiceManagedIdentity <String>] [-VersionChannelGroup <String>] [-VersionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
-```
-Update-AzRedHatOpenShiftHcpCluster -InputObject <IRedHatOpenShiftHcpIdentity> -Resource <IHcpOpenShiftCluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Update a HcpOpenShiftCluster
+Wraps the generated cluster-update cmdlet (hidden via the README directive; still callable as
+Az.RedHatOpenShiftHcp.internal\Update-AzRedHatOpenShiftHcpCluster, which also exposes the raw -InputObject
+/ -Resource paths).
+When you change operator identities, this cmdlet GET-merges them with the current
+cluster so you can rotate a single operator without re-listing all of them:
+  * fetches the current cluster and merges your -UserAssignedIdentity*Operator maps into its existing ones,
+  * resolves bare identity names to full resource IDs (using the cluster's subnet), and
+  * recomputes -UserAssignedIdentity = control-plane operators + service MI (data-plane excluded, matching
+    create).
+`-UserAssignedIdentity` is therefore not exposed here.
+If no identity parameter is supplied, the request is
+forwarded unchanged (no GET).
 
 ## EXAMPLES
 
@@ -86,7 +69,7 @@ version contains the version of the key to use.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -97,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run the command as a job
+Run the command as a job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -112,12 +95,12 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxNodeProvisionTimeSecond
-maxNodeProvisionTimeSeconds is the maximum time to wait for node provisioning before considering theprovisioning to be unsuccessful.
-The default is 900 seconds, or 15 minutes.
+maxNodeProvisionTimeSeconds.
+Default 900s.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,12 +111,11 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxNodesTotal
-maxNodesTotal is the maximum allowable number of nodes for the Autoscaler scale out to be operational.The autoscaler will not grow the cluster beyond this number.
-If omitted, the autoscaler will not have a maximum limit.
+maxNodesTotal.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,11 +126,12 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingMaxPodGracePeriodSecond
-maxPodGracePeriod is the maximum seconds to wait for graceful pod termination before scaling down a NodePool.The default is 600 seconds.
+maxPodGracePeriod.
+Default 600s.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -159,12 +142,12 @@ Accept wildcard characters: False
 ```
 
 ### -AutoscalingPodPriorityThreshold
-podPriorityThreshold enables users to schedule "best-effort" pods, which shouldn't trigger autoscaler actions,but only run when there are spare resources available.
-The default is -10.See the following for more details:https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-does-cluster-autoscaler-work-with-pod-priority-and-preemption
+podPriorityThreshold.
+Default -10.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -176,7 +159,7 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+Use SubscriptionId instead.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -195,7 +178,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -206,11 +189,11 @@ Accept wildcard characters: False
 ```
 
 ### -ImageDigestMirror
-imageDigestMirrors is a set of rules to allow pulling images from amirrored registry by using digest specifications.WARNING: Updating this array will redeploy all node pools in the cluster.
+imageDigestMirrors rules.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IImageDigestMirror[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,27 +203,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the HcpOpenShiftCluster
+The name of the HcpOpenShiftCluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases: HcpOpenShiftClusterName
 
 Required: True
@@ -251,14 +219,11 @@ Accept wildcard characters: False
 ```
 
 ### -NodeDrainTimeoutMinute
-nodeDrainTimeoutMinutes is the grace period for how long Pod Disruption Budget-protected workloads will berespected during any node draining operation.
-After this grace period, any workloads protected by Pod DisruptionBudgets that have not been successfully drained from a node will be forcibly evicted.
-This isespecially relevant to cluster upgrades.Valid values are in minutes and from 0 to 10080 minutes (1 week).0 means that the MachinePool can be drained without any time limitation.This is the value is used a default for all NodePools.
-It can be overriddenby specifying nodeDrainTimeoutMinutes for a given NodePool
+nodeDrainTimeoutMinutes default for all NodePools.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -269,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Run the command asynchronously.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -283,28 +248,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-HCP cluster resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftCluster
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -320,7 +270,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,23 +285,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -362,12 +296,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityControlPlaneOperator
-The set of Azure User-Assigned Managed Identities leveraged for the Control Planeoperators of the cluster.
-The set of required managed identities is dependent on theCluster's OpenShift version.
+Control-plane operator identities to set/rotate: @{ '\<operator-name\>' = '\<resource-id-or-bare-name\>' }.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -378,12 +311,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityDataPlaneOperator
-The set of Azure User-Assigned Managed Identities leveraged for the Data Planeoperators of the cluster.
-The set of required managed identities is dependent on theCluster's OpenShift version.
+Data-plane operator identities to set/rotate: @{ '\<operator-name\>' = '\<resource-id-or-bare-name\>' }.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -394,11 +326,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityServiceManagedIdentity
-Represents the information associated to an Azure User-Assigned Managed Identity whosepurpose is to perform service level actions.
+The service managed identity (resource ID or bare name).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -409,11 +341,12 @@ Accept wildcard characters: False
 ```
 
 ### -VersionChannelGroup
-ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.
+ChannelGroup (e.g.
+stable / fast).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -428,7 +361,7 @@ ID is the desired X.Y version of the cluster control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -473,10 +406,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftCluster
-
-### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
 
 ## OUTPUTS
 

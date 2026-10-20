@@ -108,6 +108,14 @@ directive:
       subject: ^HcpOpenShiftCluster$
     hide: true
 
+  # --- C3 customization: hide the generated cluster-update cmdlet so a custom
+  #     custom/Update-AzRedHatOpenShiftHcpCluster.ps1 wrapper replaces it (GET-merge the operator
+  #     identity maps, resolve bare names, recompute the flat identity list = control-plane + service).
+  - where:
+      verb: Update
+      subject: ^HcpOpenShiftCluster$
+    hide: true
+
   # --- Brand the nouns via subject renames (NOT via subject-prefix) ---
   # kindly refer to "empty subject-prefix" comment above
   # ORDER MATTERS: the two credential subjects start with "HcpOpenShiftCluster",
