@@ -90,6 +90,15 @@ directive:
       subject: HcpOpenShiftClusterAdminCredential
     hide: true
 
+  # --- C4 customization: hide the generated version-list cmdlet so a custom
+  #     custom/Get-AzRedHatOpenShiftHcpVersion.ps1 wrapper replaces it, adding
+  #     -ControlPlane (distinct MAJOR.MINOR) and -NodePool (full X.Y.Z) views.
+  #     Pre-rename subject (before the brand renames), like the C1 hide above.
+  - where:
+      verb: Get
+      subject: HcpOpenShiftVersion
+    hide: true
+
   # --- Brand the nouns via subject renames (NOT via subject-prefix) ---
   # kindly refer to "empty subject-prefix" comment above
   # ORDER MATTERS: the two credential subjects start with "HcpOpenShiftCluster",

@@ -8,36 +8,46 @@ schema: 2.0.0
 # Get-AzRedHatOpenShiftHcpVersion
 
 ## SYNOPSIS
-Get a HcpOpenShiftVersion
+List installable HCP OpenShift versions, with optional control-plane / node-pool views.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzRedHatOpenShiftHcpVersion -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzRedHatOpenShiftHcpVersion -Location <String> [-SubscriptionId <String[]>] [-ControlPlane] [-NodePool]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRedHatOpenShiftHcpVersion -Location <String> -Name <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedHatOpenShiftHcpVersion -Location <String> -Name <String> [-SubscriptionId <String[]>] [-ControlPlane]
+ [-NodePool] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzRedHatOpenShiftHcpVersion -InputObject <IRedHatOpenShiftHcpIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzRedHatOpenShiftHcpVersion -InputObject <IRedHatOpenShiftHcpIdentity> [-ControlPlane] [-NodePool]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityLocation
 ```
 Get-AzRedHatOpenShiftHcpVersion -LocationInputObject <IRedHatOpenShiftHcpIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ControlPlane] [-NodePool] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a HcpOpenShiftVersion
+Wraps the generated version-list cmdlet (hidden via the README directive; still callable as
+Az.RedHatOpenShiftHcp.internal\Get-AzRedHatOpenShiftHcpVersion).
+For CLI parity (az aro hcp
+get-versions), the list output is filtered to **enabled** versions and sorted ascending by semver —
+disabled versions are hidden.
+`-ControlPlane` returns the distinct **MAJOR.MINOR** versions a CLUSTER
+accepts; `-NodePool` (and the default list) returns the full **X.Y.Z** patch versions a NODE POOL
+requires.
+The two switches are mutually exclusive.
+A single lookup by `-Name` is returned as-is
+(explicit requests are not filtered).
 
 ## EXAMPLES
 
@@ -65,9 +75,25 @@ Get a HcpOpenShiftVersion
 
 ## PARAMETERS
 
+### -ControlPlane
+Return the distinct MAJOR.MINOR versions a cluster accepts (enabled only, sorted).
+For -VersionId on New/Update-Cluster.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+Use SubscriptionId instead.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -82,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
+Identity Parameter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
@@ -112,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocationInputObject
-Identity Parameter
+Identity Parameter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
@@ -127,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the HcpOpenShiftVersion
+The name of the HcpOpenShiftVersion.
 
 ```yaml
 Type: System.String
@@ -141,9 +167,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodePool
+Return the full X.Y.Z patch versions a node pool requires (enabled only, sorted).
+For -VersionId on New-NodePool.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
+Defaults to the current Az context subscription.
 
 ```yaml
 Type: System.String[]
@@ -152,7 +194,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

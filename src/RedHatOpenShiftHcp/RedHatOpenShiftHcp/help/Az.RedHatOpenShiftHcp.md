@@ -21,7 +21,7 @@ Get a ExternalAuth
 Get a NodePool
 
 ### [Get-AzRedHatOpenShiftHcpVersion](Get-AzRedHatOpenShiftHcpVersion.md)
-Get a HcpOpenShiftVersion
+List installable HCP OpenShift versions, with optional control-plane / node-pool views.
 
 ### [New-AzRedHatOpenShiftHcpCluster](New-AzRedHatOpenShiftHcpCluster.md)
 Create a HcpOpenShiftCluster
