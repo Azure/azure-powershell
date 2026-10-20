@@ -136,4 +136,58 @@ directive:
       parameter-name: Client
     set:
       parameter-name: ClientProfile
+
+  # --- C5 customization: default table views. The generated default shows the (empty)
+  #     SystemData* columns; these surface the useful flattened properties instead.
+  #     Keyed on model-name (unaffected by the subject renames above).
+  - where:
+      model-name: HcpOpenShiftCluster
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ResourceGroupName
+          - VersionId
+          - ProvisioningState
+          - ApiUrl
+        labels:
+          ResourceGroupName: Resource Group
+          VersionId: Version
+          ApiUrl: API Server
+  - where:
+      model-name: NodePool
+    set:
+      format-table:
+        properties:
+          - Name
+          - VersionId
+          - PlatformVMSize
+          - Replica
+          - ProvisioningState
+        labels:
+          VersionId: Version
+          PlatformVMSize: VM Size
+  - where:
+      model-name: HcpOpenShiftVersion
+    set:
+      format-table:
+        properties:
+          - Name
+          - ChannelGroup
+          - Enabled
+          - EndOfLifeTimestamp
+        labels:
+          ChannelGroup: Channel
+          EndOfLifeTimestamp: End Of Life
+  - where:
+      model-name: ExternalAuth
+    set:
+      format-table:
+        properties:
+          - Name
+          - IssuerUrl
+          - ProvisioningState
+        labels:
+          IssuerUrl: Issuer
 ```
