@@ -12,10 +12,56 @@ permissions:
   contents: read
 
 jobs:
+  # Building the entire repository in a single job (even with a 4h timeout) is too slow once the
+  # CodeQL C# extractor is attached, because it traces every csc.exe invocation across 200+
+  # modules. Instead, split the module list into shards so each shard builds (and is analyzed)
+  # in its own parallel job with a much smaller build surface.
+  prepare:
+    name: Prepare module shards
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.shard.outputs.matrix }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compute module shards
+        id: shard
+        shell: pwsh
+        run: |
+          $shardCount = 10
+          $excludedDirs = @('lib', 'shared', 'helpers')
+          $modules = Get-ChildItem -Path (Join-Path $PWD 'src') -Directory |
+            Where-Object { $_.Name -notin $excludedDirs } |
+            Select-Object -ExpandProperty Name |
+            Sort-Object
+
+          $groups = [System.Collections.ArrayList]::new()
+          for ($i = 0; $i -lt $shardCount; $i++) {
+            [void]$groups.Add([System.Collections.ArrayList]::new())
+          }
+          for ($i = 0; $i -lt $modules.Count; $i++) {
+            [void]$groups[$i % $shardCount].Add($modules[$i])
+          }
+
+          $matrix = for ($i = 0; $i -lt $shardCount; $i++) {
+            if ($groups[$i].Count -gt 0) {
+              [PSCustomObject]@{ id = $i; modules = ($groups[$i] -join ':') }
+            }
+          }
+
+          $json = ConvertTo-Json -InputObject @($matrix) -Compress
+          "matrix=$json" >> $env:GITHUB_OUTPUT
+
   analyze:
-    name: Analyze C#
+    name: Analyze C# (shard ${{ matrix.shard.id }})
+    needs: prepare
     runs-on: windows-latest
-    timeout-minutes: 240
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJson(needs.prepare.outputs.matrix) }}
     permissions:
       actions: read
       contents: read
@@ -36,9 +82,19 @@ jobs:
           languages: csharp
 
       - name: Build
-        run: dotnet msbuild build.proj
+        # NOTE: build.proj's default "Build" target ignores TargetModule (always builds every
+        # module), and its "BuildNormalModules" target forwards -CoreTests/-RepoArtifacts
+        # parameters that BuildModules.ps1 doesn't define, so neither can be used here. Call
+        # BuildModules.ps1 directly instead, splitting the colon-delimited shard value into a
+        # real array so -TargetModule binds to individual module names rather than one string.
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $true
+          $modules = "${{ matrix.shard.modules }}" -split ':'
+          ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule $modules
 
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
-          category: /language:csharp
+          category: /language:csharp-shard${{ matrix.shard.id }}

@@ -16,21 +16,21 @@ Gets migration status and port health for a provider-owned ExpressRoute cross-co
 ```
 Get-AzExpressRouteCrossConnectionMigrationInfo -TargetPeeringLocation <String>
  -TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]> -Name <String> -ResourceGroupName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Get-AzExpressRouteCrossConnectionMigrationInfo -TargetPeeringLocation <String>
  -TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]> -InputObject <PSExpressRouteCrossConnection>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzExpressRouteCrossConnectionMigrationInfo -TargetPeeringLocation <String>
  -TargetPortMapping <PSExpressRouteCrossConnectionPortMapping[]> -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,21 +177,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

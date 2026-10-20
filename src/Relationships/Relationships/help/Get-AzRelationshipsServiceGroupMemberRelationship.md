@@ -12,7 +12,13 @@ Get a ServiceGroupMemberRelationship
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -97,7 +103,7 @@ The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

@@ -11,17 +11,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     using System;
 
     /// <summary>
-    /// The List operation gets information about the managed HSM Pools associated with the subscription.
+    /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified
+    /// resource group.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/managedHSMs"
+    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzKeyVaultManagedHsm_List1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"The List operation gets information about the managed HSM Pools associated with the subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/managedHSMs", ApiVersion = "2024-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs", ApiVersion = "2026-02-01")]
     public partial class GetAzKeyVaultManagedHsm_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IContext
@@ -126,18 +127,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
-        private string[] _subscriptionId;
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Path)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string[] _subscriptionId;
+
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(
@@ -378,13 +390,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.ManagedHsmsListBySubscription(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), onOk, onDefault, this, Pipeline);
+                        await this.Client.ManagedHsmsListByResourceGroup(SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?)})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?)})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -516,7 +528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.ManagedHsmsListBySubscription_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.ManagedHsmsListByResourceGroup_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

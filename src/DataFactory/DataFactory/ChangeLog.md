@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.20.2
 * Updated the `Update-AzDataFactoryV2IntegrationRuntime` example output to use a public service URL.
 
 ## Version 1.20.1

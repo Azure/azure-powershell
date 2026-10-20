@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please log in again using Connect-AzAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The context is invalid. Please login using Connect-AzAccount..
+        ///   Looks up a localized string similar to The context is invalid. Please log in using Connect-AzAccount..
         /// </summary>
         internal static string InvalidAzureContext {
             get {
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username + Password authentication is not supported in PowerShell Core.  Please use device code authentication for interactive log in, or Service Principal authentication for script log in..
+        ///   Looks up a localized string similar to Username + Password authentication is not supported in PowerShell Core.  Please use device code authentication for interactive login, or Service Principal authentication for script login..
         /// </summary>
         internal static string PasswordNotSupported {
             get {
@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select the account you want to login with..
+        ///   Looks up a localized string similar to Please select the account you want to log in with..
         /// </summary>
         internal static string PleaseSelectAccount {
             get {
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run Connect-AzAccount to login..
+        ///   Looks up a localized string similar to Run Connect-AzAccount to log in..
         /// </summary>
         internal static string RunLoginCmdlet {
             get {
@@ -1501,7 +1501,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzAccount to view the subscriptions in this tenant..
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please log in again using Connect-AzAccount to view the subscriptions in this tenant..
         /// </summary>
         internal static string UnableToLogin {
             get {
