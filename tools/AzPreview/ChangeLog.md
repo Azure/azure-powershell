@@ -1,3 +1,121 @@
+## 16.5.0 - November 2026
+#### Az.Accounts 5.5.4
+* Updated the '-ResourceUrl' help text of 'Get-AzAccessToken' to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
+* Updated the '-AzureKeyVaultDnsSuffix' help text of 'Add-AzEnvironment' and 'Set-AzEnvironment' to describe the expected format instead of a specific host name.
+* Fixed incorrect usage of 'log in' and 'login'.
+
+#### Az.ApiManagement 4.2.1
+* Updated the 'Get-AzApiManagementNetworkStatus' example output to remove non-public service endpoints.
+
+#### Az.Cdn 6.2.1
+* Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
+* Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
+* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
+
+#### Az.Chaos 0.2.0
+* Re-targeted 'Az.Chaos' to the Chaos Studio V2 'Microsoft.Chaos' '2026-05-01-preview' API.
+    - Removed the V1 experiment cmdlets: 'Get/New/Update/Remove-AzChaosExperiment', 'Start/Stop-AzChaosExperiment', 'Get-AzChaosExperimentExecution', 'Get-AzChaosExecutionExperimentDetail', 'Get/New/Update/Remove-AzChaosCapability', 'Get-AzChaosCapabilityType', 'Get/New/Update/Remove-AzChaosTarget', 'Get-AzChaosTargetType'.
+    - Removed the V1 model helper cmdlets: 'New-AzChaosActionObject', 'New-AzChaosBranchObject', 'New-AzChaosSelectorObject', 'New-AzChaosStepObject'.
+* Added the V2 workspace cmdlets: 'Get/New/Update/Remove-AzChaosWorkspace' and 'Update-AzChaosWorkspaceRecommendation'.
+* Added the V2 scenario cmdlets: 'Get/New/Remove-AzChaosScenario'.
+* Added the V2 scenario configuration cmdlets: 'Get/New/Remove-AzChaosScenarioConfiguration', 'Test-AzChaosScenarioConfiguration', 'Invoke-AzChaosScenarioConfigurationExecution', 'Repair-AzChaosScenarioConfigurationResourcePermission', 'Get-AzChaosScenarioConfigurationValidation', and 'Get-AzChaosScenarioConfigurationResourcePermission'.
+* Added the V2 scenario run cmdlets: 'Get/Stop-AzChaosScenarioRun'.
+* Added 'Get-AzChaosDiscoveredResource' to list the resources a workspace discovers.
+* Added 'Get-AzChaosWorkspaceEvaluation' to read the latest workspace evaluation result that a recommendation refresh produces.
+* Added the V2 model helper cmdlets: 'New-AzChaosScenarioActionObject', 'New-AzChaosScenarioParameterObject', 'New-AzChaosActionDependencyObject', and 'New-AzChaosKeyValuePairObject'.
+* Added three workflow cmdlets that wrap the multi-step V2 operations:
+    - 'Start-AzChaosScenarioRun' validates a scenario configuration before it starts the run and guards catalog scenarios that the workspace has not evaluated.
+    - 'Invoke-AzChaosWorkspaceScenarioEvaluation' discovers and evaluates a workspace in one step.
+    - 'Initialize-AzChaosWorkspace' stands up a ready-to-use workspace end to end.
+* Exposed the server-side 'whatIf' field on 'Repair-AzChaosScenarioConfigurationResourcePermission' as '-WhatIfMode', distinct from the common '-WhatIf' switch.
+* Updated examples to use only scenario action identifiers verified against the scenario create path.
+* Updated workspace creation examples to show managed identity on every create path and direct users to 'Initialize-AzChaosWorkspace' for identity-safe setup.
+* Updated the Az.Accounts dependency floor from 5.0.2 to 5.5.1 to align with the current Azure PowerShell module baseline.
+
+#### Az.Compute 11.10.1
+* Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
+
+#### Az.ComputeFleet 0.3.0
+* Upgraded the Compute Fleet API from 2026-04-01-preview to 2026-08-01 (general availability).
+* [Breaking change] Removed 'ZoneAllocationPolicyDistributionStrategy' and 'ZoneAllocationPolicyZonePreference' from 'New-AzComputeFleet', 'Set-AzComputeFleet', and 'Update-AzComputeFleet' to match the 2026-08-01 API.
+    - Scripts using these parameters must be updated before upgrading. The 'Zone' parameter remains supported but does not replace the removed zone-allocation policy settings.
+* Fixed module generation from newer TypeSpec specifications while retaining the existing generation toolchain.
+* Updated Compute Fleet examples for API version 2026-08-01, including Launch mode creation, fleet identity input, and partial updates.
+
+#### Az.DocumentDB 0.1.0
+* First preview release for module Az.DocumentDB
+
+#### Az.EventHub 5.8.0
+* Updated the default API version to '2026-07-01-preview'
+* Added new cmdlets for Fabric Shortcuts on Event Hubs: 'Get-AzEventHubFabricShortcut', 'New-AzEventHubFabricShortcut', 'Remove-AzEventHubFabricShortcut', 'Approve-AzEventHubFabricShortcut' and 'Invoke-AzEventHubRejectFabricShortcut'
+* Added new cmdlets for Cluster upgrade preferences: 'Get-AzEventHubUpgradePreferencesOperation' and 'New-AzEventHubUpgradePreferencesOperation'
+
+#### Az.KeyVault 6.6.2
+* Fixed Key Vault name availability and Managed HSM region cmdlets to use API version '2026-02-01'.
+
+#### Az.Marketplace 1.0.0
+* General availability for module Az.Marketplace
+
+#### Az.Migrate 3.2.0
+* Added 'TargetVMSecurityOption' and 'EnableSecureBoot' parameters to 'New-AzMigrateLocalServerReplication' and 'Set-AzMigrateLocalServerReplication' to configure Secure Boot and Trusted Launch on the target virtual machine (VM). 'TargetVMSecurityOption' accepts 'Standard' or 'TrustedLaunch', where 'TrustedLaunch' enables both Secure Boot and virtual Trusted Platform Module (vTPM). Trusted Launch and enabling Secure Boot require a Generation 2 target VM
+* Added a client-side check that rejects '-EnableSecureBoot false' when the source server has Secure Boot enabled, replacing an opaque service-side failure with an actionable error. The check is skipped when the source Secure Boot state cannot be determined
+* Updated 'Initialize-AzMigrateLocalReplicationInfrastructure' to grant the 'Storage Account Contributor' role instead of 'Contributor' on the cache storage account to the replication vault managed identity and to the source and target appliance applications
+
+#### Az.Network 8.4.0
+* Added 'Get-AzDdosCustomPolicyDetectionRule' and 'Set-AzDdosCustomPolicyDetectionRule' to retrieve and update detection rules on a DDoS custom policy object.
+    - Extends the DDoS custom policy support for API version 2025-07-01 introduced in [#29387].
+
+#### Az.RecoveryServices 7.15.1
+* Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
+
+#### Az.Relationships 0.1.1
+* Updated Az.Relationships to use API version 2026-08-01
+    - Added support for listing relationship resources and managing dependency relationships scoped to service groups
+    - Added support for listing contains relationships by subscription and resource group
+    - Updated service group member relationship commands to accept the source service group ID while deriving the target from the scoped resource
+
+#### Az.Relay 3.1.0
+* Upgraded API version to 2026-07-01-preview.
+* Added support for Relay dedicated clusters.
+    - Added cmdlets 'Get-AzRelayCluster', 'New-AzRelayCluster', 'Set-AzRelayCluster' and 'Remove-AzRelayCluster'.
+    - Added cmdlets 'Get-AzRelayClusterNamespace', 'Get-AzRelayClusterSku' and 'Get-AzRelayClusterAvailableClusterRegion'.
+    - 'Set-AzRelayCluster' now reads the existing cluster before updating so that tags or capacity can be updated without re-specifying '-Location' and '-SkuCapacity'.
+* Added 'ClusterArmId' parameter to 'New-AzRelayNamespace' and 'Update-AzRelayNamespace' to assign a namespace to a dedicated cluster.
+* Added 'MinimumTlsVersion' parameter to 'New-AzRelayNamespace' and 'Update-AzRelayNamespace'.
+* Fixed 'Update-AzRelayNamespace' failing with 'The server responded with an unrecognized response, Status: Accepted' by handling the namespace update (PATCH) as a long-running operation.
+
+#### Az.Resources 10.2.2
+* Updated 'Microsoft.Extensions.Caching.Memory' dependency from '2.2.0' to '10.0.3'.
+
+#### Az.ServiceBus 4.4.1
+* Updated the default API version to '2026-07-01-preview'
+
+#### Az.ServiceGroups 0.1.1
+* Updated the Service Groups API version to 2026-08-01
+    - Added the 'AttributeCriticality' parameter to 'New-AzServiceGroup' and 'Update-AzServiceGroup'
+    - Removed 'Get-AzServiceGroupAncestor' because the operation is not available in API version 2026-08-01
+
+#### Az.Sql 7.3.0
+* Added immutability support for Azure SQL Managed Instance long-term retention backups.
+    - Added time-based immutability settings to 'Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy'.
+    - Exposed immutability state in managed database long-term retention policy and backup output.
+    - Added 'Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability' and 'Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability' to manage time-based immutability.
+    - Added 'Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold' and 'Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold' to manage legal holds.
+
+#### Az.StorageSync 2.7.1
+* Improved 'Set-AzStorageSyncServer' managed identity troubleshooting
+    - The cmdlet now preserves managed identity token acquisition errors and provides guidance based on the local server type
+    - Help now includes 'ServerId' in the example and explains the elevated session requirement for Azure Arc-enabled servers
+
+#### Az.TrafficManager 1.6.0
+* Added support for the 'RecordType' property on Traffic Manager profiles [#29711]
+    - Added '-RecordType' parameter to 'New-AzTrafficManagerProfile' to allow specifying the DNS record type ('A', 'AAAA', or 'CNAME') used for the profile's synthesized DNS records
+    - 'RecordType' is now returned on the profile object from 'Get-AzTrafficManagerProfile', 'New-AzTrafficManagerProfile', and 'Set-AzTrafficManagerProfile'
+    - Upgraded TrafficManager SDK to API version 2026-09-01
+
+#### Az.Websites 4.3.0
+* Removed the unsupported identity and JSON parameter sets from 'New-AzStaticWebApp'.
+
 ## 16.4.0 - October 2026
 #### Az.ArtifactSigning 0.2.2
 * Fixed token audience mismatch causing '401 Unauthorized' on Artifact Signing endpoints by removing the trailing slash in the authentication resource URL. [#30138]

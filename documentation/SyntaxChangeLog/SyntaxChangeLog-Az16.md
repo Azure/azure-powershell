@@ -1,3 +1,31 @@
+## 16.5.0 - November 2026
+#### Az.Automation 1.12.1 
+* Added cmdlet `Get-AzAutomationRuntimeEnvironment`, `Get-AzAutomationRuntimeEnvironmentPackage`, `New-AzAutomationRuntimeEnvironment`, `New-AzAutomationRuntimeEnvironmentPackage`, `Remove-AzAutomationRuntimeEnvironment`, `Remove-AzAutomationRuntimeEnvironmentPackage`, `Set-AzAutomationRuntimeEnvironment`, `Set-AzAutomationRuntimeEnvironmentPackage`#### Az.EventHub 5.8.0 
+, `Approve-AzEventHubFabricShortcut`, `Get-AzEventHubFabricShortcut`, `Get-AzEventHubUpgradePreferencesOperation`, `Invoke-AzEventHubRejectFabricShortcut`, `New-AzEventHubFabricShortcut`, `New-AzEventHubUpgradePreferencesOperation`, `Remove-AzEventHubFabricShortcut`
+#### Az.Migrate 3.2.0 
+* Modified cmdlet `New-AzMigrateLocalServerReplication`
+   - Added parameters `-TargetVMSecurityOption`, `-EnableSecureBoot`
+* Modified cmdlet `Set-AzMigrateLocalServerReplication`
+   - Added parameters `-TargetVMSecurityOption`, `-EnableSecureBoot`
+#### Az.Network 8.4.0 
+* Added cmdlet `Get-AzDdosCustomPolicyDetectionRule`, `Set-AzDdosCustomPolicyDetectionRule`
+#### Az.Relay 3.1.0 
+* Modified cmdlet `New-AzRelayNamespace`
+   - Added parameters `-ClusterArmId`, `-MinimumTlsVersion`
+* Modified cmdlet `Update-AzRelayNamespace`
+   - Added parameters `-ClusterArmId`, `-MinimumTlsVersion`, `-AsJob`, `-NoWait`
+* Added cmdlet `Get-AzRelayCluster`, `Get-AzRelayClusterAvailableClusterRegion`, `Get-AzRelayClusterNamespace`, `Get-AzRelayClusterSku`, `New-AzRelayCluster`, `Remove-AzRelayCluster`, `Set-AzRelayCluster`
+#### Az.Sql 7.3.0 
+* Modified cmdlet `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`
+   - Added parameters `-TimeBasedImmutability`, `-TimeBasedImmutabilityMode`
+* Added cmdlet `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability`, `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability`, `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold`, `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold`
+#### Az.TrafficManager 1.6.0 
+* Modified cmdlet `New-AzTrafficManagerProfile`
+   - Added parameter `-RecordType`
+#### Az.Websites 4.3.0 
+* Modified cmdlet `New-AzStaticWebApp`
+   - Removed parameters `-InputObject`, `-JsonString`, `-JsonFilePath`
+
 ## 16.4.0 - October 2026
 #### Az.Automation 1.12.1 
 * Added cmdlet `Get-AzAutomationRuntimeEnvironment`, `Get-AzAutomationRuntimeEnvironmentPackage`, `New-AzAutomationRuntimeEnvironment`, `New-AzAutomationRuntimeEnvironmentPackage`, `Remove-AzAutomationRuntimeEnvironment`, `Remove-AzAutomationRuntimeEnvironmentPackage`, `Set-AzAutomationRuntimeEnvironment`, `Set-AzAutomationRuntimeEnvironmentPackage`
@@ -7898,6 +7926,7 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
 
 
 

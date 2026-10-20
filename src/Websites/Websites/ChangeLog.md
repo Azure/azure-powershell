@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Removed the unsupported identity and JSON parameter sets from `New-AzStaticWebApp`.
 
 ## Version 4.2.0

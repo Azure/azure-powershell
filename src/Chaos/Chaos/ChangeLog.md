@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Re-targeted `Az.Chaos` to the Chaos Studio V2 `Microsoft.Chaos` `2026-05-01-preview` API.
     - Removed the V1 experiment cmdlets: `Get/New/Update/Remove-AzChaosExperiment`, `Start/Stop-AzChaosExperiment`, `Get-AzChaosExperimentExecution`, `Get-AzChaosExecutionExperimentDetail`, `Get/New/Update/Remove-AzChaosCapability`, `Get-AzChaosCapabilityType`, `Get/New/Update/Remove-AzChaosTarget`, `Get-AzChaosTargetType`.
     - Removed the V1 model helper cmdlets: `New-AzChaosActionObject`, `New-AzChaosBranchObject`, `New-AzChaosSelectorObject`, `New-AzChaosStepObject`.
