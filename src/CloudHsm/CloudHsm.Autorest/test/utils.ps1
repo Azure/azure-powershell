@@ -41,14 +41,20 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
-    
-    $rgName = "PS-Test"
-    $cloudHsmName = "TestPSResource"
+    # Run with -UsePreviousConfigForRecord to keep values from env.json when re-recording a subset of tests.
+    $null = $env.AddWithCache('SubscriptionId', (Get-AzContext).Subscription.Id, $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('Tenant', (Get-AzContext).Tenant.Id, $UsePreviousConfigForRecord)
 
-    $env.Add("rgName", $rgName)
-    $env.Add("cloudHsmName", $cloudHsmName)
+    # Cloud HSM created and deleted by the New/Remove tests (mock HFC)
+    $null = $env.AddWithCache('rgName', 'PS-Test', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('cloudHsmName', 'TestPSResource', $UsePreviousConfigForRecord)
+
+    # Existing activated Cloud HSM in West Europe used by the Get/Update/Backup tests.
+    # Its user-assigned identity has Storage Blob Data Contributor on backupContainerUri.
+    $null = $env.AddWithCache('existingSubscriptionId', (Get-AzContext).Subscription.Id, $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('existingRgName', 'ngangwar', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('existingCloudHsmName', 'test-pw-chsm', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('backupContainerUri', 'https://chsme2estorageaccountcs.blob.core.windows.net/teste2eblobcontainer', $UsePreviousConfigForRecord)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

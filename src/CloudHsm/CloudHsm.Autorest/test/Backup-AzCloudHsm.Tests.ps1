@@ -29,7 +29,7 @@ Describe 'Backup-AzCloudHsm' {
 
     It 'Backup' -skip {
         #We must skip this test because we need activated resource. The resource must be activated manually be the dev, so we cannot run these test as part of the pipeline. Run this test locally and then skip. 
-        $backup = Backup-AzCloudHsm -ClusterName chsm1 -ResourceGroupName ps-test -BlobContainerUri "https://pstestbackup.blob.core.windows.net/testbackup"
+        $backup = Backup-AzCloudHsm -SubscriptionId $env.existingSubscriptionId -ClusterName $env.existingCloudHsmName -ResourceGroupName $env.existingRgName -BlobContainerUri $env.backupContainerUri
         $backup.status.Contains("Succeeded") | Should -Be $true
     }
 

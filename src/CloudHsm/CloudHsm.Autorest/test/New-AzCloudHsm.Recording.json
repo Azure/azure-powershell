@@ -1,8 +1,8 @@
 {
-  "New-AzCloudHsm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31+1": {
+  "New-AzCloudHsm+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31",
+      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"UseMockHfc\": \"true\",\r\n    \"MockHfcDelayInMs\": \"1\"\r\n  },\r\n  \"location\": \"ukwest\",\r\n  \"sku\": {\r\n    \"family\": \"B\",\r\n    \"name\": \"Standard_B1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31+2": {
+  "New-AzCloudHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31",
+      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31+3": {
+  "New-AzCloudHsm+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-03-31",
+      "RequestUri": "https://management.azure.com/subscriptions/75e96d09-a291-40e1-a5e6-cda78233d867/resourceGroups/PS-Test/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/TestPSResource?api-version=2025-12-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

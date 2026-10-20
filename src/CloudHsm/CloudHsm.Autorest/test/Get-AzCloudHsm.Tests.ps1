@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCloudHsm'))
 
 Describe 'Get-AzCloudHsm' {
     It 'List1' {
-        $cloudHsm = Get-AzCloudHsm -Subscription $env.subscriptionId
-        $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
-        $cloudHsm.location.Contains("ukwest") | Should -Be $true
+        $cloudHsm = Get-AzCloudHsm -Subscription $env.existingSubscriptionId
+        $cloudHsm.name -contains $env.existingCloudHsmName | Should -Be $true
+        $cloudHsm.location -contains "westeurope" | Should -Be $true
     }
 
     It 'Get2' -skip {
@@ -30,15 +30,15 @@ Describe 'Get-AzCloudHsm' {
     }
 
     It 'Get' {
-        $cloudHsm = Get-AzCloudHsm -Subscription $env.subscriptionId -ResourceGroupName $env.rgName
-        $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
-        $cloudHsm.location.Contains("ukwest") | Should -Be $true
+        $cloudHsm = Get-AzCloudHsm -Subscription $env.existingSubscriptionId -ResourceGroupName $env.existingRgName
+        $cloudHsm.name -contains $env.existingCloudHsmName | Should -Be $true
+        $cloudHsm.location -contains "westeurope" | Should -Be $true
     }
 
     It 'List' {
-        $cloudHsm = Get-AzCloudHsm -Subscription $env.subscriptionId -ResourceGroupName $env.rgName -Name $env.cloudHsmName
-        $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
-        $cloudHsm.location.Contains("ukwest") | Should -Be $true
+        $cloudHsm = Get-AzCloudHsm -Subscription $env.existingSubscriptionId -ResourceGroupName $env.existingRgName -Name $env.existingCloudHsmName
+        $cloudHsm.name | Should -Be $env.existingCloudHsmName
+        $cloudHsm.location | Should -Be "westeurope"
     }
 
     It 'GetViaIdentityCloudHsmCluster1' -skip {
