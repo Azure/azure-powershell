@@ -42,7 +42,7 @@ Delete a ExternalAuth
 Delete a NodePool
 
 ### [Request-AzRedHatOpenShiftHcpClusterAdminCredential](Request-AzRedHatOpenShiftHcpClusterAdminCredential.md)
-Request a temporary admin kubeconfig for the cluster
+Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
 
 ### [Revoke-AzRedHatOpenShiftHcpClusterCredentials](Revoke-AzRedHatOpenShiftHcpClusterCredentials.md)
 Revoke all credentials issued by requestAdminCredential

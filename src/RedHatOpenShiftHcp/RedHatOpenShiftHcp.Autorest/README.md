@@ -78,6 +78,17 @@ directive:
   - where:
       subject: HcpOperatorIdentityRoleSet
     remove: true
+  # --- C1 customization: hide the generated admin-credential cmdlet so a hand-written
+  #     custom/Request-AzRedHatOpenShiftHcpClusterAdminCredential.ps1 replaces it.
+  #     The custom cmdlet generates the keypair+CSR locally, calls this hidden cmdlet via
+  #     Az.RedHatOpenShiftHcp.internal\Request-..., then splices the private key into the
+  #     returned kubeconfig and merges it into the user's kubeconfig (AKS-style).
+  #     Placed BEFORE the brand renames (like directive #4), so it MUST match the ORIGINAL
+  #     pre-rename subject (HcpOpenShiftClusterAdminCredential), not the branded name.
+  - where:
+      verb: Request
+      subject: HcpOpenShiftClusterAdminCredential
+    hide: true
 
   # --- Brand the nouns via subject renames (NOT via subject-prefix) ---
   # kindly refer to "empty subject-prefix" comment above

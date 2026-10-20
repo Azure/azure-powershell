@@ -8,56 +8,32 @@ schema: 2.0.0
 # Request-AzRedHatOpenShiftHcpClusterAdminCredential
 
 ## SYNOPSIS
-Request a temporary admin kubeconfig for the cluster
+Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
 
 ## SYNTAX
 
 ### RequestExpanded (Default)
 ```
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -HcpOpenShiftClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-CertificateSigningRequest <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### RequestViaJsonString
-```
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -HcpOpenShiftClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RequestViaJsonFilePath
-```
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -HcpOpenShiftClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Request
-```
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -HcpOpenShiftClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Body <IHcpOpenShiftClusterAdminCredentialRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-OutFile <String>] [-Context <String>] [-Force]
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RequestViaIdentityExpanded
 ```
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -InputObject <IRedHatOpenShiftHcpIdentity>
- [-CertificateSigningRequest <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RequestViaIdentity
-```
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -InputObject <IRedHatOpenShiftHcpIdentity>
- -Body <IHcpOpenShiftClusterAdminCredentialRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-OutFile <String>] [-Context <String>] [-Force] [-PassThru] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Request a temporary admin kubeconfig for the cluster
+One-shot admin credential: generates an RSA-4096 key + CSR locally, sends only the CSR (the private key
+never leaves this machine), splices the signed key back into the returned kubeconfig, names the context
+'\<cluster\>-admin', and merges it into your kubeconfig (AKS-style).
+Replaces the generated cmdlet of the
+same name (hidden via the README directive; still callable as
+Az.RedHatOpenShiftHcp.internal\Request-AzRedHatOpenShiftHcpClusterAdminCredential).
 
 ## EXAMPLES
 
@@ -85,42 +61,13 @@ Request a temporary admin kubeconfig for the cluster
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-HCP cluster admin credential request body
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftClusterAdminCredentialRequest
-Parameter Sets: Request, RequestViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CertificateSigningRequest
-PEM encoded certificate request
+### -Context
+Context name to assign.
+Defaults to '\<cluster\>-admin'.
 
 ```yaml
 Type: System.String
-Parameter Sets: RequestExpanded, RequestViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +79,7 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+Use SubscriptionId instead.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -146,12 +93,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Replace the target kubeconfig file entirely instead of merging into it.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: OverwriteExisting
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HcpOpenShiftClusterName
-The name of the HcpOpenShiftCluster
+The name of the HcpOpenShiftCluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: RequestExpanded, RequestViaJsonString, RequestViaJsonFilePath, Request
+Parameter Sets: RequestExpanded
 Aliases:
 
 Required: True
@@ -162,11 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
+Identity Parameter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
-Parameter Sets: RequestViaIdentityExpanded, RequestViaIdentity
+Parameter Sets: RequestViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -176,38 +138,25 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Request operation
+### -OutFile
+Path to write the kubeconfig to.
+Defaults to $env:KUBECONFIG (first entry) or ~/.kube/config.
+Use '-' to print the kubeconfig to stdout instead of writing a file.
 
 ```yaml
 Type: System.String
-Parameter Sets: RequestViaJsonFilePath
-Aliases:
+Parameter Sets: (All)
+Aliases: f
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Request operation
-
-```yaml
-Type: System.String
-Parameter Sets: RequestViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Also emit the raw credential object (includes ExpirationTimestamp).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -227,7 +176,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RequestExpanded, RequestViaJsonString, RequestViaJsonFilePath, Request
+Parameter Sets: RequestExpanded
 Aliases:
 
 Required: True
@@ -239,16 +188,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
+Defaults to the current Az context subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RequestExpanded, RequestViaJsonString, RequestViaJsonFilePath, Request
+Parameter Sets: RequestExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -289,13 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftClusterAdminCredentialRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IRedHatOpenShiftHcpIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftClusterAdminCredential
+### System.String
 
 ## NOTES
 
