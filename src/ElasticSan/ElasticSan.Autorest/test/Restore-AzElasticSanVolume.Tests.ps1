@@ -25,19 +25,38 @@ namespace ElasticSan
     public class RestoreTestResponder
     {
         public string ExpectedPath { get; set; }
+        public bool LongRunning { get; set; }
         private int requestCount;
         public int RequestCount { get { return requestCount; } }
         public SendAsyncStep Step { get { return Respond; } }
 
         private Task<HttpResponseMessage> Respond(HttpRequestMessage request, IEventListener callback, ISendAsync next)
         {
-            if (request.Method != HttpMethod.Post ||
-                request.RequestUri.AbsolutePath != ExpectedPath ||
+            var requestNumber = Interlocked.Increment(ref requestCount);
+            var polling = LongRunning && requestNumber > 1;
+            if (requestNumber > (LongRunning ? 4 : 1) ||
+                request.Method != (polling ? HttpMethod.Get : HttpMethod.Post) ||
+                request.RequestUri.AbsolutePath != (polling ? ExpectedPath + "/operations/restore" : ExpectedPath) ||
                 request.RequestUri.Query != "?api-version=2026-05-01-preview")
             {
                 throw new InvalidOperationException("Unexpected restore request: " + request.Method + " " + request.RequestUri);
             }
-            Interlocked.Increment(ref requestCount);
+            if (LongRunning && requestNumber <= 2)
+            {
+                var accepted = new HttpResponseMessage(HttpStatusCode.Accepted);
+                accepted.Headers.Location = new Uri(request.RequestUri.GetLeftPart(UriPartial.Authority) +
+                    ExpectedPath + "/operations/restore?api-version=2026-05-01-preview");
+                accepted.Headers.TryAddWithoutValidation("Retry-After", "0");
+                accepted.Content = new StringContent("{}", Encoding.UTF8, "application/json");
+                return Task.FromResult(accepted);
+            }
+            if (LongRunning && requestNumber == 3)
+            {
+                // Require a separate GET to retrieve the final volume.
+                var completed = new HttpResponseMessage(HttpStatusCode.OK);
+                completed.Content = new StringContent("{\"status\":\"Succeeded\"}", Encoding.UTF8, "application/json");
+                return Task.FromResult(completed);
+            }
             var volumeId = ExpectedPath.Substring(0, ExpectedPath.Length - "/restore".Length);
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             response.Content = new StringContent(
@@ -57,15 +76,18 @@ Describe 'Restore-AzElasticSanVolume' {
     $groupId = "$sanId/volumegroups/group"
     $volumeId = "$groupId/volumes/volume"
     $cases = foreach ($variant in @('Restore', 'RestoreViaIdentityVolumegroup', 'RestoreViaIdentityElasticSan', 'RestoreViaIdentity', 'RestoreViaIdentityComponents')) {
-        @{ Variant = $variant; AsJob = $false }
-        @{ Variant = $variant; AsJob = $true }
+        foreach ($longRunning in @($false, $true)) {
+            @{ Variant = $variant; AsJob = $false; LongRunning = $longRunning }
+            @{ Variant = $variant; AsJob = $true; LongRunning = $longRunning }
+        }
     }
 
-    It '<Variant> AsJob=<AsJob> sends the restore request and returns the volume' -TestCases $cases {
-        param($Variant, $AsJob)
+    It '<Variant> AsJob=<AsJob> LongRunning=<LongRunning> sends the restore request and returns the volume' -TestCases $cases {
+        param($Variant, $AsJob, $LongRunning)
 
         $responder = [ElasticSan.RestoreTestResponder]::new()
         $responder.ExpectedPath = "$volumeId/restore"
+        $responder.LongRunning = $LongRunning
         # The playback mock satisfies the proxy's authentication gate but must never
         # read a recording: the responder is the outermost step and answers directly.
         $mock = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock]::new(
@@ -121,7 +143,8 @@ Describe 'Restore-AzElasticSanVolume' {
         } else {
             $volume = @(Restore-AzElasticSanVolume @parameters)
         }
-        $responder.RequestCount | Should -Be 1
+        $expectedRequestCount = if ($LongRunning) { 4 } else { 1 }
+        $responder.RequestCount | Should -Be $expectedRequestCount
         $volume.Count | Should -Be 1
         $volume[0].Id | Should -Be $volumeId
         $volume[0].Name | Should -Be 'volume'
