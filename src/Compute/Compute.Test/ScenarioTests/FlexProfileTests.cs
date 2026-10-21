@@ -410,12 +410,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [InlineData(true, "OperationNotAllowed", "Standard_D2s_v5")]
         [InlineData(false, "RequiredParameterMissing", "")]
         [InlineData(true, "RequiredParameterMissing", "")]
+        [InlineData(false, "SubscriptionNotRegisteredForFeature", "Standard_D2s_v5")]
+        [InlineData(true, "SubscriptionNotRegisteredForFeature", "Standard_D2s_v5")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateForwardsPreferredSizeServiceErrors(bool noWait, string errorCode, string preferredSize)
         {
-            var message = errorCode == "RequiredParameterMissing"
-                ? "Required parameter 'flexProfile.preferredVMSize' is missing."
-                : "The requested flexProfile.preferredVMSize is not allowed.";
+            var message = errorCode == "SubscriptionNotRegisteredForFeature"
+                ? "The subscription is not registered for the requested Microsoft.Compute preview feature."
+                : errorCode == "RequiredParameterMissing"
+                    ? "Required parameter 'flexProfile.preferredVMSize' is missing."
+                    : "The requested flexProfile.preferredVMSize is not allowed.";
             var serviceError = new CloudException(message)
             {
                 Body = new CloudError

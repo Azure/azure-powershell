@@ -73,6 +73,14 @@ function Test-FlexProfileConfigBinding
     Assert-NotNull $empty.FlexProfile
     Assert-AreEqual '' $empty.FlexProfile.PreferredVMSize
     Assert-Null $empty.HardwareProfile.VmSize
+    $nullPreferred = New-AzVMConfig -VMName 'null-preferred' -PreferredVMSize $null
+    Assert-NotNull $nullPreferred.FlexProfile
+    Assert-AreEqual '' $nullPreferred.FlexProfile.PreferredVMSize
+    Assert-Null $nullPreferred.HardwareProfile.VmSize
+    $nullPipeline = [PSCustomObject]@{ VMName = 'null-pipeline'; PreferredVMSize = $null } | New-AzVMConfig
+    Assert-NotNull $nullPipeline.FlexProfile
+    Assert-AreEqual '' $nullPipeline.FlexProfile.PreferredVMSize
+    Assert-Null $nullPipeline.HardwareProfile.VmSize
 }
 
 <#
@@ -121,9 +129,12 @@ function Assert-FlexProfileRoundTrip
 
 <#
 .SYNOPSIS
-Records simple/config creation, conversion, preferred resize, tag/NoWait preservation and opt-out.
+Records creation, GET-to-New roundtrip, conversion, preferred resize, tag preservation and opt-out.
 .DESCRIPTION
 Requires FlexProfile support and Dsv5 quota in the selected Compute test region.
+Live unregistered-subscription coverage is unavailable without a separate subscription.
+Shared feature registration must not be changed; SubscriptionNotRegisteredForFeature
+propagation is covered by mocked SDK request tests instead.
 #>
 function Test-FlexProfileLifecycle
 {
@@ -139,7 +150,10 @@ function Test-FlexProfileLifecycle
         New-AzResourceGroup -Name $rgname -Location $loc -Force
         $simpleName = 'flexsimple'
         $simple = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $simpleName `
-            -PreferredVMSize $size -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard
+            -PreferredVMSize $size -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard `
+            -InformationVariable creationInformation
+        $defaultSizeMessages = @($creationInformation | Where-Object { $_.MessageData -like 'No Size value has been provided*' })
+        Assert-AreEqual 0 $defaultSizeMessages.Count
         Assert-FlexProfileRoundTrip -VM $simple -PreferredSize $size
         Assert-FlexProfileRoundTrip -VM (Get-AzVM -ResourceGroupName $rgname -Name $simpleName) -PreferredSize $size
         $listed = Get-AzVM -ResourceGroupName $rgname | Where-Object { $_.Name -eq $simpleName }
@@ -153,24 +167,20 @@ function Test-FlexProfileLifecycle
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
 
-        # Step 2: Preserve FlexProfile on synchronous and asynchronous tag-only updates.
+        # Step 2: Re-submit an existing Flow VM through New-AzVM without losing either profile.
+        $roundTripActualSize = $vm.HardwareProfile.VmSize
+        New-AzVM -VM $vm -ResourceGroupName $rgname -Location $loc
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
+        Assert-AreEqual $roundTripActualSize $vm.HardwareProfile.VmSize
+
+        # Step 3: Preserve FlexProfile on tag-only updates; mocked requests cover NoWait parity.
         $vm | Update-AzVM -ResourceGroupName $rgname -Tag @{ purpose = 'flex-profile' }
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
         Assert-AreEqual 'flex-profile' $vm.Tags['purpose']
-        $vm | Update-AzVM -ResourceGroupName $rgname -Tag @{ purpose = 'no-wait' } -NoWait
-        for ($attempt = 0; $attempt -lt 60; $attempt++)
-        {
-            $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
-            if ($vm.ProvisioningState -eq 'Failed') { break }
-            if ($vm.ProvisioningState -eq 'Succeeded' -and $vm.Tags['purpose'] -eq 'no-wait') { break }
-            Start-Sleep -Seconds 5
-        }
-        Assert-AreEqual 'Succeeded' $vm.ProvisioningState
-        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $size
-        Assert-AreEqual 'no-wait' $vm.Tags['purpose']
 
-        # Step 3: Resize through PreferredVMSize without mutating the supplied VM.
+        # Step 4: Resize through PreferredVMSize without mutating the supplied VM.
         Stop-AzVM -ResourceGroupName $rgname -Name $name -Force
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         $actualSize = $vm.HardwareProfile.VmSize
@@ -180,18 +190,34 @@ function Test-FlexProfileLifecycle
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $nextSize
 
-        # Step 4: Forward invalid size, empty preferred size and conflicting fixed-size errors.
-        Assert-ThrowsLike {
-            Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize 'Not_A_Real_VM_Size'
-        } '*InvalidParameter*'
-        Assert-ThrowsLike {
-            Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize ''
-        } '*RequiredParameterMissing*'
+        # Step 5: Reject invalid changes and verify that each rejection leaves service state unchanged.
+        $stableActualSize = $vm.HardwareProfile.VmSize
         $invalid = Get-AzVM -ResourceGroupName $rgname -Name $name
-        $invalid.HardwareProfile.VmSize = 'Standard_D8s_v5'
-        Assert-ThrowsLike { Update-AzVM -ResourceGroupName $rgname -VM $invalid } '*InvalidParameter*'
+        $invalid.HardwareProfile.VmSize = if ($stableActualSize -eq 'Standard_D8s_v5') { $size } else { 'Standard_D8s_v5' }
+        Assert-False { $invalid.HardwareProfile.VmSize -eq $stableActualSize }
+        $invalidRequests = @(
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize 'Not_A_Real_VM_Size' }
+                ErrorCode = 'InvalidParameter'
+            },
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize '' }
+                ErrorCode = 'RequiredParameterMissing'
+            },
+            @{
+                Action = { Update-AzVM -ResourceGroupName $rgname -VM $invalid }
+                ErrorCode = 'InvalidParameter'
+            }
+        )
+        foreach ($request in $invalidRequests)
+        {
+            Assert-ThrowsContains $request.Action $request.ErrorCode
+            $unchanged = Get-AzVM -ResourceGroupName $rgname -Name $name
+            Assert-AreEqual $nextSize $unchanged.FlexProfile.PreferredVMSize
+            Assert-AreEqual $stableActualSize $unchanged.HardwareProfile.VmSize
+        }
 
-        # Step 5: Opt out by explicitly removing FlexProfile and selecting a fixed size.
+        # Step 6: Opt out by explicitly removing FlexProfile and selecting a fixed size.
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         $vm.FlexProfile = $null
         $vm.HardwareProfile.VmSize = $size
@@ -200,13 +226,16 @@ function Test-FlexProfileLifecycle
         Assert-Null $fixed.FlexProfile
         Assert-AreEqual $size $fixed.HardwareProfile.VmSize
 
-        # Step 6: A direct fixed-to-Flow switch must not retain hardwareProfile.vmSize.
+        # Step 7: A direct fixed-to-Flow switch must not retain hardwareProfile.vmSize.
         $direct = Get-AzVM -ResourceGroupName $rgname -Name $name
         $direct.FlexProfile = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.FlexProfile -ArgumentList $nextSize
         Assert-AreEqual $size $direct.HardwareProfile.VmSize
-        Assert-ThrowsLike { Update-AzVM -ResourceGroupName $rgname -VM $direct } '*InvalidParameter*'
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $direct } 'InvalidParameter'
+        $unchanged = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-Null $unchanged.FlexProfile
+        Assert-AreEqual $size $unchanged.HardwareProfile.VmSize
 
-        # Step 7: The PreferredVMSize parameter performs the valid fixed-to-Flow conversion.
+        # Step 8: The PreferredVMSize parameter performs the valid fixed-to-Flow conversion.
         Update-AzVM -ResourceGroupName $rgname -VM $fixed -PreferredVMSize $size
         Assert-Null $fixed.FlexProfile
         Assert-AreEqual $size $fixed.HardwareProfile.VmSize
@@ -214,7 +243,7 @@ function Test-FlexProfileLifecycle
     }
     finally
     {
-        # Step 8: Remove every resource created by this scenario.
+        # Step 9: Remove every resource created by this scenario.
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
     }
 }
@@ -245,7 +274,8 @@ function Test-FlexProfileUnsupportedPlacement
         $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $size `
             -OrchestrationMode Flexible -PlatformFaultDomainCount 1 -SecurityType Standard
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName 'flex-vmss' -VirtualMachineScaleSet $vmssConfig
-        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name 'flex-hg' -Location $loc -PlatformFaultDomain 1
+        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name 'flex-hg' -Location $loc `
+            -PlatformFaultDomain 1 -SupportAutomaticPlacement $true
         $hostResource = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroup.Name `
             -Name 'flex-host' -Location $loc -Sku DSv5-Type1
 
@@ -264,23 +294,27 @@ function Test-FlexProfileUnsupportedPlacement
             $parameters = @{ VMName = "placement$index"; PreferredVMSize = $size }
             foreach ($key in $placement.Keys) { $parameters[$key] = $placement[$key] }
             $config = New-FlexProfileTestConfig -Parameters $parameters -NicId $nic.Id -Credential $cred
-            Assert-ThrowsLike { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $config } '*InvalidParameter*'
+            Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $config } 'InvalidParameter'
         }
 
         # Step 3: Cover the simple-path HostGroupId placement using the real host group.
-        Assert-ThrowsLike {
+        Assert-ThrowsContains {
             New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'hostgroup-vm' `
                 -PreferredVMSize $size -HostGroupId $hostGroup.Id -Credential $cred `
                 -Image Win2022AzureEditionCore -SecurityType Standard
-        } '*InvalidParameter*'
+        } 'InvalidParameter'
 
         # Step 4: Preserve service validation for empty and invalid preferred sizes.
         $empty = New-FlexProfileTestConfig -Parameters @{ VMName = 'empty-create'; PreferredVMSize = '' } `
             -NicId $nic.Id -Credential $cred
-        Assert-ThrowsLike { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $empty } '*RequiredParameterMissing*'
+        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $empty } 'RequiredParameterMissing'
         $invalid = New-FlexProfileTestConfig -Parameters @{ VMName = 'invalid-create'; PreferredVMSize = 'Not_A_Real_VM_Size' } `
             -NicId $nic.Id -Credential $cred
-        Assert-ThrowsLike { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $invalid } '*InvalidParameter*'
+        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $invalid } 'InvalidParameter'
+        Assert-ThrowsContains {
+            New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'nullpreferred' `
+                -PreferredVMSize $null -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard
+        } 'RequiredParameterMissing'
     }
     finally
     {
