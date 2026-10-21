@@ -27,7 +27,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="diskRestorePoints">The disk restore points information.
         /// </param>
 
-        /// <param name="statuses">The resource status information.
+        /// <param name="statuses">The aggregate status information for the restore point. The list may
+        /// include separate aggregate entries for replication and, in supported API
+        /// versions, Instant Access, as applicable. For more information about Instant
+        /// Access, see [Use virtual machine restore
+        /// points](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-create-restore-points#instant-access).
         /// </param>
         public RestorePointInstanceView(System.Collections.Generic.IList<DiskRestorePointInstanceView> diskRestorePoints = default(System.Collections.Generic.IList<DiskRestorePointInstanceView>), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>))
 
@@ -50,7 +54,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         public System.Collections.Generic.IList<DiskRestorePointInstanceView> DiskRestorePoints {get; set; }
 
         /// <summary>
-        /// Gets or sets the resource status information.
+        /// Gets or sets the aggregate status information for the restore point. The
+        /// list may include separate aggregate entries for replication and, in
+        /// supported API versions, Instant Access, as applicable. For more information
+        /// about Instant Access, see [Use virtual machine restore
+        /// points](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-create-restore-points#instant-access).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "statuses")]
         public System.Collections.Generic.IList<InstanceViewStatus> Statuses {get; set; }
