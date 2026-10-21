@@ -15,19 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeActionExecutionFilt
 }
 
 Describe 'Get-AzEdgeActionExecutionFilter' {
-    BeforeAll {
-        $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eagetfilterdec02"
+    BeforeAll { Initialize-EdgeActionTestScenario {
+        $script:resourceGroupName = $env.ResourceGroupName
+        $script:edgeActionName = Get-EdgeActionTestFixtureName 'Get-AzEdgeActionExecutionFilter'
         $script:version = "v1"
         $script:filterName = "filterget"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
         # Create edge action, version, and filter for testing
-        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName `
-            -SkuName "Standard" `
-            -SkuTier "Standard" `
-            -Location "global"
+        New-EdgeActionTestResource -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
         
         New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
@@ -61,12 +57,11 @@ Describe 'Get-AzEdgeActionExecutionFilter' {
             -Location "global" `
             -ExecutionFilterIdentifierHeaderName "X-Filter-Id" `
             -ExecutionFilterIdentifierHeaderValue "test-filter-value"
-    }
+    } }
 
     AfterAll {
         # Clean up test edge action
-        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
-            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+        Complete-EdgeActionTestScenario -ResourceGroupName $script:resourceGroupName -Name $script:edgeActionName
     }
 
     It 'List' {
