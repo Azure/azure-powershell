@@ -459,6 +459,9 @@
             <Label>IsActive</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>RepeatInterval</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>StartDate</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -476,6 +479,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsActive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RepeatInterval</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StartDate</PropertyName>
