@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>The SKU type for the edge action</summary>
+    /// <summary>
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
+    /// </summary>
     public partial class SkuTypeUpdate
     {
 

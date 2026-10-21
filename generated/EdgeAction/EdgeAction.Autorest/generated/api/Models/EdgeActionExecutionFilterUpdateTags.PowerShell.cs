@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.PowerShell;
 
     /// <summary>Resource tags.</summary>
-    [System.ComponentModel.TypeConverter(typeof(AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter))]
-    public partial class AzureResourceManagerCommonTypesTrackedResourceUpdateTags
+    [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterUpdateTagsTypeConverter))]
+    public partial class EdgeActionExecutionFilterUpdateTags
     {
 
         /// <summary>
@@ -63,11 +63,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdateTags(global::System.Collections.IDictionary content)
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        {
+            return new EdgeActionExecutionFilterUpdateTags(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdateTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
+        /// <returns>
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags" />.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        {
+            return new EdgeActionExecutionFilterUpdateTags(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdateTags"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal EdgeActionExecutionFilterUpdateTags(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -82,11 +108,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.EdgeActionExecutionFilterUpdateTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal AzureResourceManagerCommonTypesTrackedResourceUpdateTags(global::System.Management.Automation.PSObject content)
+        internal EdgeActionExecutionFilterUpdateTags(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -101,42 +127,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new AzureResourceManagerCommonTypesTrackedResourceUpdateTags(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.AzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new AzureResourceManagerCommonTypesTrackedResourceUpdateTags(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" />, deserializing the content
-        /// from a json string.
+        /// Creates a new instance of <see cref="EdgeActionExecutionFilterUpdateTags" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>
-        /// an instance of the <see cref="AzureResourceManagerCommonTypesTrackedResourceUpdateTags" /> model class.
+        /// an instance of the <see cref="EdgeActionExecutionFilterUpdateTags" /> model class.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(jsonText));
+        public static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdateTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -156,8 +153,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         }
     }
     /// Resource tags.
-    [System.ComponentModel.TypeConverter(typeof(AzureResourceManagerCommonTypesTrackedResourceUpdateTagsTypeConverter))]
-    public partial interface IAzureResourceManagerCommonTypesTrackedResourceUpdateTags
+    [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterUpdateTagsTypeConverter))]
+    public partial interface IEdgeActionExecutionFilterUpdateTags
 
     {
 
