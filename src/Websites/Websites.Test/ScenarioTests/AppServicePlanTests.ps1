@@ -159,6 +159,56 @@ function Test-CreateNewAppServicePlanLinux
 
 <#
 .SYNOPSIS
+Tests Managed Instance plan validation, creation, and updates.
+#>
+function Test-AppServicePlanManagedInstance
+{
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = "northeurope"
+	$parameters = @{
+		ResourceGroupName = $rgname
+		Name = $whpName
+	}
+
+	Assert-ThrowsContains { New-AzAppServicePlan @parameters -Location $location -ManagedInstance -Linux -ErrorAction Stop } "Managed Instance plans do not support Linux or Windows containers."
+	Assert-ThrowsContains { New-AzAppServicePlan @parameters -Location $location -ManagedInstance -HyperV -ErrorAction Stop } "Managed Instance plans do not support Linux or Windows containers."
+	Assert-ThrowsContains { New-AzAppServicePlan @parameters -Location $location -ManagedInstance -PerSiteScaling $true -ErrorAction Stop } "Managed Instance plans do not support per-site scaling."
+
+	New-AzResourceGroup -Name $rgname -Location $location
+	try
+	{
+		$delegation = New-AzDelegation -Name "appservice" -ServiceName "Microsoft.Web/serverFarms"
+		$subnet = New-AzVirtualNetworkSubnetConfig -Name "managedinstance" -AddressPrefix "10.0.0.0/24" -Delegation $delegation
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgname -Name $whpName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+		$plan = New-AzAppServicePlan @parameters -Location $location -Tier PremiumV4 -ManagedInstance -AssignIdentity $true -DefaultIdentity "[system]" -RdpEnabled $true -VirtualNetworkSubnetId $vnet.Subnets[0].Id
+		Assert-AreEqual $whpName $plan.Name
+		Assert-AreEqual $true $plan.IsCustomMode
+
+		$result = Set-AzAppServicePlan @parameters -Tag @{ "TagKey" = "TagValue" }
+		Assert-AreEqual $true $result.RdpEnabled
+		Assert-AreEqual "SystemAssigned" $result.Identity.Type
+		Assert-AreEqual $plan.Identity.PrincipalId $result.Identity.PrincipalId
+		Assert-AreEqual "SystemAssigned" $result.PlanDefaultIdentity.IdentityType
+		Assert-AreEqual $vnet.Subnets[0].Id $result.Network.VirtualNetworkSubnetId
+		Assert-AreEqual "TagValue" $result.Tags["TagKey"]
+
+		$result | Set-AzAppServicePlan -AssignIdentity $false -DefaultIdentity "" -RdpEnabled $false
+		$result = Get-AzAppServicePlan @parameters
+		Assert-AreEqual $true $result.IsCustomMode
+		Assert-AreEqual $false $result.RdpEnabled
+		Assert-AreEqual $false $result.PerSiteScaling
+		Assert-True ($null -eq $result.Identity -or $result.Identity.Type -eq "None")
+		Assert-AreEqual "None" $result.PlanDefaultIdentity.IdentityType
+	}
+	finally
+	{
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
 function Test-SetAppServicePlan
