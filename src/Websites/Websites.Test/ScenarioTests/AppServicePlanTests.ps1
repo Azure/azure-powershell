@@ -165,7 +165,7 @@ function Test-AppServicePlanManagedInstance
 {
 	$rgname = Get-ResourceGroupName
 	$whpName = Get-WebHostPlanName
-	$location = "northeurope"
+	$location = "westcentralus"
 	$parameters = @{
 		ResourceGroupName = $rgname
 		Name = $whpName
@@ -181,7 +181,7 @@ function Test-AppServicePlanManagedInstance
 		$delegation = New-AzDelegation -Name "appservice" -ServiceName "Microsoft.Web/serverFarms"
 		$subnet = New-AzVirtualNetworkSubnetConfig -Name "managedinstance" -AddressPrefix "10.0.0.0/24" -Delegation $delegation
 		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgname -Name $whpName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
-		$plan = New-AzAppServicePlan @parameters -Location $location -Tier PremiumV4 -ManagedInstance -AssignIdentity $true -DefaultIdentity "[system]" -RdpEnabled $true -VirtualNetworkSubnetId $vnet.Subnets[0].Id
+		$plan = New-AzAppServicePlan @parameters -Location $location -Tier PremiumV4 -WorkerSize ExtraSmall -ManagedInstance -AssignIdentity $true -DefaultIdentity "[system]" -RdpEnabled $true -VirtualNetworkSubnetId $vnet.Subnets[0].Id
 		Assert-AreEqual $whpName $plan.Name
 		Assert-AreEqual $true $plan.IsCustomMode
 
@@ -198,8 +198,8 @@ function Test-AppServicePlanManagedInstance
 		Assert-AreEqual $true $result.IsCustomMode
 		Assert-AreEqual $false $result.RdpEnabled
 		Assert-AreEqual $false $result.PerSiteScaling
-		Assert-True ($null -eq $result.Identity -or $result.Identity.Type -eq "None")
-		Assert-AreEqual "None" $result.PlanDefaultIdentity.IdentityType
+		Assert-Null $result.Identity
+		Assert-Null $result.PlanDefaultIdentity
 	}
 	finally
 	{
