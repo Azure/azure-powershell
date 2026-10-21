@@ -21,6 +21,8 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 .Example
  New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
+.Example
+New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.5" -Export "/export" -SourceType FSX-EFS -EndpointKind Source
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -75,7 +77,7 @@ param(
     ${Export},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4", "NFSv4_1")]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
     [System.String]
     # The NFS protocol version.
@@ -86,6 +88,22 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NfsMount", "FSX-EFS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The source type of the NFS mount endpoint, either NfsMount or FSX-EFS.
+    # Defaults to NfsMount.
+    ${SourceType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
