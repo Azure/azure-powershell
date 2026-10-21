@@ -159,11 +159,11 @@ function Test-CreateNewAppServicePlanLinux
 
 <#
 .SYNOPSIS
-Tests Managed Instance plan validation, creation, and updates.
+Tests creating and updating a Managed Instance App Service plan.
 #>
 function Test-AppServicePlanManagedInstance
 {
-	$rgname = Get-ResourceGroupName
+	$rgname = getAssetName -prefix "azps-mi-$([Guid]::NewGuid().ToString('N'))"
 	$whpName = Get-WebHostPlanName
 	$location = "westcentralus"
 	$parameters = @{
@@ -175,7 +175,7 @@ function Test-AppServicePlanManagedInstance
 	Assert-ThrowsContains { New-AzAppServicePlan @parameters -Location $location -ManagedInstance -HyperV -ErrorAction Stop } "Managed Instance plans do not support Linux or Windows containers."
 	Assert-ThrowsContains { New-AzAppServicePlan @parameters -Location $location -ManagedInstance -PerSiteScaling $true -ErrorAction Stop } "Managed Instance plans do not support per-site scaling."
 
-	New-AzResourceGroup -Name $rgname -Location $location
+	New-AzResourceGroup -Name $rgname -Location $location -ErrorAction Stop
 	try
 	{
 		$delegation = New-AzDelegation -Name "appservice" -ServiceName "Microsoft.Web/serverFarms"
@@ -204,6 +204,102 @@ function Test-AppServicePlanManagedInstance
 	finally
 	{
 		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+function Invoke-ManagedInstanceAppServicePlanTest
+{
+	param([scriptblock] $Test)
+
+	$rgname = getAssetName -prefix "azps-mi-$([Guid]::NewGuid().ToString('N'))"
+	$location = "westcentralus"
+	$parameters = @{ ResourceGroupName = $rgname; Name = Get-WebHostPlanName }
+	New-AzResourceGroup -Name $rgname -Location $location -ErrorAction Stop
+	try
+	{
+		$delegation = New-AzDelegation -Name "appservice" -ServiceName "Microsoft.Web/serverFarms"
+		$subnet = New-AzVirtualNetworkSubnetConfig -Name "managedinstance" -AddressPrefix "10.0.0.0/24" -Delegation $delegation
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgname -Name $parameters.Name -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet -ErrorAction Stop
+		$plan = New-AzAppServicePlan @parameters -Location $location -Tier PremiumV4 -WorkerSize ExtraSmall -ManagedInstance -RdpEnabled $true -VirtualNetworkSubnetId $vnet.Subnets[0].Id -ErrorAction Stop
+		New-AzWebApp -ResourceGroupName $rgname -Name $rgname -Location $location -AppServicePlan $plan.Name -ErrorAction Stop
+		for ($attempt = 0; $attempt -lt 120; $attempt++)
+		{
+			$instances = @(Get-AzAppServicePlanManagedInstance @parameters -ErrorAction Stop)
+			if ($instances.Count -gt 0 -and $instances[0].Status -eq "Ready") { break }
+			Wait-Seconds 10
+		}
+		Assert-True { $instances.Count -gt 0 -and $instances[0].Status -eq "Ready" } "Managed Instance workers did not become ready after 120 polls."
+		& $Test $plan $parameters
+	}
+	finally
+	{
+		Remove-AzResourceGroup -Name $rgname -Force -ErrorAction Stop
+	}
+}
+
+<#
+.SYNOPSIS
+Tests retrieving Managed Instance workers.
+#>
+function Test-GetAppServicePlanManagedInstance
+{
+	Invoke-ManagedInstanceAppServicePlanTest {
+		param($plan, $parameters)
+
+		$instances = @(Get-AzAppServicePlanManagedInstance @parameters)
+		Assert-True { $instances.Count -gt 0 -and $instances[0] -is [Microsoft.Azure.Management.WebSites.Models.ServerFarmInstance] }
+		Assert-AreEqual "Ready" $instances[0].Status
+		$instanceName = $instances[0].InstanceName
+		Assert-AreEqual $instanceName ($plan | Get-AzAppServicePlanManagedInstance -InstanceName $instanceName.ToUpperInvariant()).InstanceName
+
+		$failure = try { Get-AzAppServicePlanManagedInstance @parameters -InstanceName "MissingWorker" -ErrorAction Continue } catch { $_ }
+		Assert-True { $failure -is [System.Management.Automation.ErrorRecord] -and $failure.FullyQualifiedErrorId -like "AppServicePlanManagedInstanceNotFound,*" }
+		Assert-AreEqual "ObjectNotFound" $failure.CategoryInfo.Category
+		Assert-AreEqual "MissingWorker" $failure.TargetObject
+	}
+}
+
+<#
+.SYNOPSIS
+Tests retrieving Managed Instance RDP credentials.
+#>
+function Test-GetAppServicePlanRdpCredential
+{
+	Invoke-ManagedInstanceAppServicePlanTest {
+		param($plan, $parameters)
+
+		$credential = $plan | Get-AzAppServicePlanRdpCredential
+		Assert-True { $credential -is [System.Management.Automation.PSCredential] -and $credential.Password -is [System.Security.SecureString] }
+		Assert-True { $credential.Password.Length -gt 0 }
+		Assert-AreEqual "Administrator" $credential.UserName
+
+		$emitted = @()
+		$failure = try { Get-AzAppServicePlanRdpCredential -ResourceGroupName $parameters.ResourceGroupName -Name "$($plan.Name)-missing" -ErrorAction Stop -OutVariable emitted } catch { $_ }
+		Assert-AreEqual 0 $emitted.Count
+		Assert-True { $failure -is [System.Management.Automation.ErrorRecord] -and $failure.Exception.Message -like "*NotFound*" }
+	}
+}
+
+<#
+.SYNOPSIS
+Tests restarting a Managed Instance worker.
+#>
+function Test-RestartAppServicePlanManagedInstance
+{
+	Invoke-ManagedInstanceAppServicePlanTest {
+		param($plan, $parameters)
+
+		$instanceName = (Get-AzAppServicePlanManagedInstance @parameters)[0].InstanceName
+		Assert-AreEqual 0 @(Restart-AzAppServicePlanManagedInstance @parameters -InstanceName $instanceName -WhatIf -PassThru -ErrorAction Stop).Count
+		Assert-AreEqual 0 @($plan | Restart-AzAppServicePlanManagedInstance -InstanceName $instanceName -WhatIf -PassThru -ErrorAction Stop).Count
+
+		$emitted = @()
+		$failure = try { Restart-AzAppServicePlanManagedInstance -ResourceGroupName $parameters.ResourceGroupName -Name "$($plan.Name)-missing" -InstanceName $instanceName -PassThru -Confirm:$false -ErrorAction Stop -OutVariable emitted } catch { $_ }
+		Assert-AreEqual 0 $emitted.Count
+		Assert-True { $failure -is [System.Management.Automation.ErrorRecord] -and $failure.Exception.Message -like "*NotFound*" }
+
+		$result = @($plan | Restart-AzAppServicePlanManagedInstance -InstanceName $instanceName -PassThru -Confirm:$false -ErrorAction Stop)
+		Assert-True { $result.Count -eq 1 -and $result[0] -is [bool] -and $result[0] }
 	}
 }
 
