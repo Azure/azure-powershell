@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var galleryImageVersion = new GalleryImageVersion
                     {
-                        Location = this.Location
+                        Location = this.Location,
+                        Restore = true
                     };
                     var result = GalleryImageVersionsClient.CreateOrUpdate(
                         this.ResourceGroupName,
