@@ -40,7 +40,7 @@ EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -56,9 +56,11 @@ RESOURCE <IEdgeActionVersion>: Concrete tracked resource types can be created by
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AzureAsyncOperation <String>]:
   [DeploymentType <String>]: The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.
   [IsDefaultVersion <String>]: Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.
   [ProvisioningState <String>]: The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+  [RetryAfter <Int32?>]:
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnedgeactionversion
 #>

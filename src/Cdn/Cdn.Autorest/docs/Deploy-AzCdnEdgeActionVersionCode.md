@@ -333,9 +333,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
 
 ## NOTES
 
 ## RELATED LINKS
-

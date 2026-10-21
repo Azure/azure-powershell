@@ -30,9 +30,15 @@ Describe 'Deploy-AzCdnEdgeActionVersionCode' {
 
         New-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version2 -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
         
-        Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Name $version2 -Version $version2 -Content "UEsDBBQACAAIAPx8xVoAAAAAAAAAAAAAAAAOACAAZWRnZV9hY3Rpb24uanN1eAsAAQQAAAAABAAAAABVVA0AB7wcQmjOHEJovBxCaF2PwQrCMBBE70L/YelFPdgqeCse/AVFEEQkJCOtyEaTjYrivxuNluJestl5M8vuA2tpLFOt2BzhBriAZUiPrEexLsqRwznAC83ooxXff9Ul/MmyRwdJgw7D9trK2rLgJkWcRSIxZUlLCE3HE1qxClJb19xhyIuS4ElbgwT+stslu7cWs6O1mzY3hmooA0diqWHTaCUgqdFedFU+9gdogfkLT06/6a9Hi0THN5H9bVyWiwvIq59LguN0XJX1ni9QSwcINUDKiL4AAABVAQAAUEsBAhQDFAAIAAgA/HzFWjVAyoi+AAAAVQEAAA4AGAAAAAAAAAAAALaBAAAAAGVkZ2VfYWN0aW9uLmpzdXgLAAEEAAAAAAQAAAAAVVQFAAG8HEJoUEsFBgAAAAABAAEAVAAAABoBAAAAAA=="
+        $deployed = Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Name $version2 -Version $version2 -Content "UEsDBBQACAAIAPx8xVoAAAAAAAAAAAAAAAAOACAAZWRnZV9hY3Rpb24uanN1eAsAAQQAAAAABAAAAABVVA0AB7wcQmjOHEJovBxCaF2PwQrCMBBE70L/YelFPdgqeCse/AVFEEQkJCOtyEaTjYrivxuNluJestl5M8vuA2tpLFOt2BzhBriAZUiPrEexLsqRwznAC83ooxXff9Ul/MmyRwdJgw7D9trK2rLgJkWcRSIxZUlLCE3HE1qxClJb19xhyIuS4ElbgwT+stslu7cWs6O1mzY3hmooA0diqWHTaCUgqdFedFU+9gdogfkLT06/6a9Hi0THN5H9bVyWiwvIq59LguN0XJX1ni9QSwcINUDKiL4AAABVAQAAUEsBAhQDFAAIAAgA/HzFWjVAyoi+AAAAVQEAAA4AGAAAAAAAAAAAALaBAAAAAGVkZ2VfYWN0aW9uLmpzdXgLAAEEAAAAAAQAAAAAVVQFAAG8HEJoUEsFBgAAAAABAAEAVAAAABoBAAAAAA==" -ErrorAction Stop
+        $deployed.ProvisioningState | Should -Be 'Succeeded'
         
-        Get-AzCdnEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version2
+        $code = Get-AzCdnEdgeActionVersionCode -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version2 -ErrorAction Stop
+        $code.Content | Should -Not -BeNullOrEmpty
+
+        Switch-AzCdnEdgeActionVersionDefault -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version2 -Confirm:$false -ErrorAction Stop
+        $defaultVersion = Get-AzCdnEdgeActionVersion -ResourceGroupName $script:TestResourceGroup -EdgeActionName $script:EdgeActionName -Version $version2 -ErrorAction Stop
+        $defaultVersion.IsDefaultVersion | Should -Be 'True'
     }
 
     It 'DeployViaJsonString' -skip {

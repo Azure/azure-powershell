@@ -33,7 +33,11 @@ Describe 'EdgeAction.Unit' {
             [string]$Operation,
             [string]$Form,
             [string]$Identity,
-            [switch]$LongRunning
+            [switch]$LongRunning,
+            [switch]$AsyncOnly,
+            [switch]$CaptureResult,
+            [ValidateSet('Succeeded', 'Failed')]
+            [string]$PollingState = 'Succeeded'
         )
 
         $isLongRunning = $LongRunning.IsPresent
@@ -51,9 +55,20 @@ Describe 'EdgeAction.Unit' {
                 [System.Net.HttpStatusCode]::OK
             }
             $response = [System.Net.Http.HttpResponseMessage]::new($status)
-            $json = '{"value":[],"properties":{"provisioningState":"Succeeded"}}'
+            $json = '{"name":"offline","value":[],"properties":{"provisioningState":"Succeeded","isDefaultVersion":"True"}}'
+            if ($AsyncOnly -and $requests.Count -gt 1 -and $request.RequestUri.AbsolutePath -eq '/operationStatuses/offline') {
+                $json = '{"status":"' + $PollingState + '","error":{"code":"OfflineFailure","message":"offline failure"}}'
+            }
             $response.Content = [System.Net.Http.StringContent]::new($json, [System.Text.Encoding]::UTF8, 'application/json')
-            $response.Headers.Location = $request.RequestUri
+            $response.Headers.RetryAfter = [System.Net.Http.Headers.RetryConditionHeaderValue]::new([TimeSpan]::Zero)
+            if ($AsyncOnly) {
+                if ($requests.Count -eq 1) {
+                    $null = $response.Headers.TryAddWithoutValidation('Azure-AsyncOperation',
+                        'https://management.azure.com/operationStatuses/offline?api-version=2026-10-01')
+                }
+            } else {
+                $response.Headers.Location = $request.RequestUri
+            }
             $response.RequestMessage = $request
             return [System.Threading.Tasks.Task]::FromResult[System.Net.Http.HttpResponseMessage]($response)
         }
@@ -107,7 +122,8 @@ Describe 'EdgeAction.Unit' {
             }
         }
         $task = $method.Invoke($client, [object[]]$arguments)
-        $null = $task.GetAwaiter().GetResult()
+        $result = $task.GetAwaiter().GetResult()
+        if ($CaptureResult) { return @{ Requests = $requests; Value = $result } }
         return ,$requests
     }
 
@@ -204,6 +220,83 @@ Describe 'EdgeAction.Unit' {
             $request.Uri.Query | Should Be '?api-version=2026-10-01'
             $request.Body | Should BeNullOrEmpty
         }
+    }
+
+    It 'Completes swapDefault using only Azure-AsyncOperation for <Form> requests' -TestCases @(
+        @{ Form = 'Named' }
+        @{ Form = 'Identity' }
+    ) {
+        param($Form)
+        $requests = Invoke-EdgeActionOfflineRequest -Operation EdgeActionVersionsSwapDefault `
+            -Form $Form -Identity $version -LongRunning -AsyncOnly
+        $requests.Count | Should Be 2
+        $requests[0].Method | Should Be 'POST'
+        $requests[1].Method | Should Be 'GET'
+        $requests[1].Uri.AbsolutePath | Should Be '/operationStatuses/offline'
+        $requests[1].Body | Should BeNullOrEmpty
+    }
+
+    It 'Surfaces a failed swapDefault operation instead of returning success' {
+        {
+            Invoke-EdgeActionOfflineRequest -Operation EdgeActionVersionsSwapDefault `
+                -Form Named -Identity $version -LongRunning -AsyncOnly -PollingState Failed
+        } | Should Throw
+    }
+
+    It 'Completes <Operation> without retrieving a deleted resource' -TestCases @(
+        @{ Operation = 'EdgeActionsDelete'; Identity = $action }
+        @{ Operation = 'EdgeActionVersionsDelete'; Identity = $version }
+        @{ Operation = 'EdgeActionExecutionFiltersDelete'; Identity = $filter }
+    ) {
+        param($Operation, $Identity)
+        $requests = Invoke-EdgeActionOfflineRequest -Operation $Operation `
+            -Form Named -Identity $Identity -LongRunning -AsyncOnly
+        $requests.Count | Should Be 2
+        $requests[0].Method | Should Be 'DELETE'
+        $requests[1].Uri.AbsolutePath | Should Be '/operationStatuses/offline'
+    }
+
+    It 'Returns the deployed version resource (LongRunning=<LongRunning>)' -TestCases @(
+        @{ LongRunning = $false }
+        @{ LongRunning = $true }
+    ) {
+        param($LongRunning)
+        $result = Invoke-EdgeActionOfflineRequest -Operation EdgeActionVersionsDeployVersionCode `
+            -Form Named -Identity $version -LongRunning:$LongRunning -AsyncOnly:$LongRunning -CaptureResult
+        $result.Value.Name | Should Be 'offline'
+        $result.Value.ProvisioningState | Should Be 'Succeeded'
+        $result.Value.IsDefaultVersion | Should Be 'True'
+        $result.Requests[0].Method | Should Be 'POST'
+        $result.Requests[0].Uri.AbsolutePath | Should Be "$version/deployVersionCode"
+        if ($LongRunning) {
+            $result.Requests.Count | Should Be 3
+            $result.Requests[1].Uri.AbsolutePath | Should Be '/operationStatuses/offline'
+            $result.Requests[2].Method | Should Be 'GET'
+            $result.Requests[2].Uri.AbsolutePath | Should Be $version
+            $result.Requests[2].Body | Should BeNullOrEmpty
+        } else {
+            $result.Requests.Count | Should Be 1
+        }
+    }
+
+    It 'Retrieves the resource result of <Operation> without Location' -TestCases @(
+        @{ Operation = 'EdgeActionsCreate'; Identity = $action }
+        @{ Operation = 'EdgeActionsUpdate'; Identity = $action }
+        @{ Operation = 'EdgeActionVersionsCreate'; Identity = $version }
+        @{ Operation = 'EdgeActionVersionsUpdate'; Identity = $version }
+        @{ Operation = 'EdgeActionExecutionFiltersCreate'; Identity = $filter }
+        @{ Operation = 'EdgeActionExecutionFiltersUpdate'; Identity = $filter }
+    ) {
+        param($Operation, $Identity)
+        $result = Invoke-EdgeActionOfflineRequest -Operation $Operation `
+            -Form Named -Identity $Identity -LongRunning -AsyncOnly -CaptureResult
+        $result.Value.Name | Should Be 'offline'
+        $result.Value.ProvisioningState | Should Be 'Succeeded'
+        $result.Requests.Count | Should Be 3
+        $result.Requests[1].Uri.AbsolutePath | Should Be '/operationStatuses/offline'
+        $result.Requests[2].Method | Should Be 'GET'
+        $result.Requests[2].Uri.AbsolutePath | Should Be $Identity
+        $result.Requests[2].Body | Should BeNullOrEmpty
     }
 
     It 'Preserves legacy code body parameter sets' {

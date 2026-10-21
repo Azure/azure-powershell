@@ -40,7 +40,7 @@ EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -56,9 +56,11 @@ RESOURCE <IEdgeActionExecutionFilter>: Concrete tracked resource types can be cr
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AzureAsyncOperation <String>]:
   [ExecutionFilterIdentifierHeaderName <String>]: Custom Header Key associated with the execution filter
   [ExecutionFilterIdentifierHeaderValue <String>]: Custom Header Value associated with the execution filter
   [ProvisioningState <String>]: The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
+  [RetryAfter <Int32?>]:
   [VersionId <String>]: The referenced versionId of the edgeaction version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnedgeactionexecutionfilter
