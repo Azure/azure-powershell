@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for CloudHealth API version 2026-11-01.
 
+## Version 0.1.0
 * Added cmdlets to create and manage Azure Monitor health models.
     - Create health models with their entities, relationships and settings.
     - Query entity history, signal history, and signal recommendations.

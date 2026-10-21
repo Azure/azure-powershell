@@ -15,7 +15,7 @@ Locks the time-based immutability policy for a Managed Instance LTR backup.
 ### Default (Default)
 ```
 Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability [-Location] <String>
- [-InstanceName] <String> [-DatabaseName] <String> [-BackupName] <String> -ResourceGroupName <String> [-Force]
+ [-InstanceName] <String> [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -176,7 +176,7 @@ Type: System.String
 Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

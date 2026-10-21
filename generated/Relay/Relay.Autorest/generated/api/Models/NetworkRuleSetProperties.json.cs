@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return;
             }
+            {_trustedServiceAccessEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonBoolean>("trustedServiceAccessEnabled"), out var __jsonTrustedServiceAccessEnabled) ? (bool?)__jsonTrustedServiceAccessEnabled : _trustedServiceAccessEnabled;}
             {_defaultAction = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("defaultAction"), out var __jsonDefaultAction) ? (string)__jsonDefaultAction : (string)_defaultAction;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
             {_iPRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonArray>("ipRules"), out var __jsonIPRules) ? If( __jsonIPRules as Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules) (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRules.FromJson(__u) )) ))() : null : _iPRule;}
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 return container;
             }
+            AddIf( null != this._trustedServiceAccessEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonBoolean((bool)this._trustedServiceAccessEnabled) : null, "trustedServiceAccessEnabled" ,container.Add );
             AddIf( null != (((object)this._defaultAction)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._defaultAction.ToString()) : null, "defaultAction" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             if (null != this._iPRule)

@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.TestFx
         internal TestEndpoints(TestEnvironmentName testEnvNames)
         {
             string defaultAADTokenAudienceUri = "https://management.core.windows.net/";
-            string defaultGraphTokenAudienceUri = "https://graph.windows.net/";
+            string defaultGraphTokenAudienceUri = "https://deprecated-graph.windows.net/";
             string defaultPPEGraphTokenAudienceUri = "https://graph.ppe.windows.net/";
 
             switch (testEnvNames)

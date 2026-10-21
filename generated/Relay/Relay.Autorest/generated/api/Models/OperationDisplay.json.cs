@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>Operation display payload</summary>
+    /// <summary>Localized display information for this particular operation.</summary>
     public partial class OperationDisplay
     {
 

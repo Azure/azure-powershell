@@ -144,6 +144,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).OperationStatus = (string) content.GetValueForProperty("OperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).OperationStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("VMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).VMSize = (string) content.GetValueForProperty("VMSize",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).VMSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Zone, global::System.Convert.ToString);
+            }
+            if (content.Contains("Priority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Priority = (string) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Priority, global::System.Convert.ToString);
+            }
             if (content.Contains("Innererror"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Innererror = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IInnerError) content.GetValueForProperty("Innererror",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Innererror, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.InnerErrorTypeConverter.ConvertFrom);
@@ -208,6 +220,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             if (content.Contains("OperationStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).OperationStatus = (string) content.GetValueForProperty("OperationStatus",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).OperationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).VMSize = (string) content.GetValueForProperty("VMSize",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).VMSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("Zone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Zone = (string) content.GetValueForProperty("Zone",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Zone, global::System.Convert.ToString);
+            }
+            if (content.Contains("Priority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Priority = (string) content.GetValueForProperty("Priority",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal)this).Priority, global::System.Convert.ToString);
             }
             if (content.Contains("Innererror"))
             {

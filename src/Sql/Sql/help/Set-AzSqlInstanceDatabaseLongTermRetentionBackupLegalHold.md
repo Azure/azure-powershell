@@ -15,7 +15,7 @@ Sets legal hold immutability on a Managed Instance LTR backup. (Public Preview)
 ### Default (Default)
 ```
 Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-BackupName] <String> -ResourceGroupName <String> [-Force] [-PassThru]
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -175,7 +175,7 @@ Type: System.String
 Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

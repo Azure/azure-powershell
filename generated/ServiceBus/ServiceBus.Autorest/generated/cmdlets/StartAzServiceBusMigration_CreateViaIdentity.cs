@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"create Migration configuration and starts migration of entities from Standard to Premium namespace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}", ApiVersion = "2026-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}", ApiVersion = "2026-07-01-preview")]
     public partial class StartAzServiceBusMigration_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IContext,

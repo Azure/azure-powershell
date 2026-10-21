@@ -20,9 +20,15 @@ List VirtualMachine resources of a Launch mode Fleet.
 .Description
 List VirtualMachine resources of a Launch mode Fleet.
 .Example
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, OperationStatus
 .Example
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Id, OperationStatus
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Id, OperationStatus
+.Example
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Where-Object OperationStatus -ne "Succeeded" |
+    Select-Object Name, OperationStatus
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachine

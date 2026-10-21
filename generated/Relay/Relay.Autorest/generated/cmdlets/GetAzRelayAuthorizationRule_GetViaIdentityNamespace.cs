@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"Authorization rule for a namespace by name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}", ApiVersion = "2026-07-01-preview")]
     public partial class GetAzRelayAuthorizationRule_GetViaIdentityNamespace : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext
