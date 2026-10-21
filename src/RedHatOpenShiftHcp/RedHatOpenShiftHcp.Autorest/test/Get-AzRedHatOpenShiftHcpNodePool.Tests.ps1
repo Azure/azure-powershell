@@ -15,19 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRedHatOpenShiftHcpNodeP
 }
 
 Describe 'Get-AzRedHatOpenShiftHcpNodePool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List (by cluster)' {
+        $list = @(Get-AzRedHatOpenShiftHcpNodePool -ResourceGroupName $env.ResourceGroupName -HcpOpenShiftClusterName $env.ClusterName)
+        $list.Count | Should -BeGreaterOrEqual 1
+        $list.Name | Should -Contain $env.NodePoolName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityHcpOpenShiftCluster' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get (by name)' {
+        $np = Get-AzRedHatOpenShiftHcpNodePool -ResourceGroupName $env.ResourceGroupName -HcpOpenShiftClusterName $env.ClusterName -Name $env.NodePoolName
+        $np.Name | Should -Be $env.NodePoolName
+        $np.ProvisioningState | Should -Be 'Succeeded'
     }
 }

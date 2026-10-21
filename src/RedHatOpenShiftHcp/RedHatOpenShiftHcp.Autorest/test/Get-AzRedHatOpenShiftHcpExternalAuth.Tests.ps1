@@ -15,19 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRedHatOpenShiftHcpExter
 }
 
 Describe 'Get-AzRedHatOpenShiftHcpExternalAuth' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List (by cluster)' {
+        $list = @(Get-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName -HcpOpenShiftClusterName $env.ClusterName)
+        $list.Count | Should -BeGreaterOrEqual 1
+        $list.Name | Should -Contain $env.ExternalAuthName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityHcpOpenShiftCluster' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get (by name)' {
+        $ea = Get-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName -HcpOpenShiftClusterName $env.ClusterName -Name $env.ExternalAuthName
+        $ea.Name | Should -Be $env.ExternalAuthName
+        $ea.ProvisioningState | Should -Be 'Succeeded'
     }
 }

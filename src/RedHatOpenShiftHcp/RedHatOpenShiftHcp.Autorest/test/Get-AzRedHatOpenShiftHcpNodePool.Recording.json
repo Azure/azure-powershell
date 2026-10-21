@@ -1,0 +1,91 @@
+{
+  "Get-AzRedHatOpenShiftHcpNodePool+[NoContext]+List (by cluster)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "782cf089-948f-44bb-9d21-88e534e79bf2" ],
+        "CommandName": [ "Get-AzRedHatOpenShiftHcpNodePool" ],
+        "FullCommandName": [ "Get-AzRedHatOpenShiftHcpNodePool_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "9b80ecd5-6b2c-4bac-9416-a920de521d21" ],
+        "x-envoy-upstream-service-time": [ "20" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-request-id": [ "7de320e9-bce8-4b04-9ad7-9e89101dc5de" ],
+        "x-ms-correlation-request-id": [ "7de320e9-bce8-4b04-9ad7-9e89101dc5de" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T001915Z:7de320e9-bce8-4b04-9ad7-9e89101dc5de" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1FC5DF0EDDEE418E9B3C7B3DFCA675C2 Ref B: YTO221090812027 Ref C: 2026-10-21T00:19:14Z" ],
+        "Date": [ "Wed, 21 Oct 2026 00:19:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1167" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools/nodepool-128GiB\",\"location\":\"westeurope\",\"name\":\"nodepool-128GiB\",\"properties\":{\"autoRepair\":true,\"platform\":{\"enableEncryptionAtHost\":false,\"osDisk\":{\"diskStorageAccountType\":\"StandardSSD_LRS\",\"diskType\":\"Managed\",\"sizeGiB\":128},\"subnetId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\"vmSize\":\"Standard_D8s_v3\"},\"provisioningState\":\"Succeeded\",\"replicas\":2,\"status\":{\"conditions\":[{\"lastTransitionTime\":\"2026-10-20T21:36:45Z\",\"message\":\"\",\"reason\":\"Valid\",\"status\":\"True\",\"type\":\"RequirementsValid\"}]},\"version\":{\"channelGroup\":\"stable\",\"id\":\"4.22.18\"}},\"systemData\":{\"createdAt\":\"2026-10-20T21:36:43.5928963Z\",\"createdBy\":\"nikthoma@redhat.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2026-10-20T21:36:43.5928963Z\",\"lastModifiedBy\":\"nikthoma@redhat.com\",\"lastModifiedByType\":\"User\"},\"type\":\"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nodePools\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRedHatOpenShiftHcpNodePool+[NoContext]+Get (by name)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools/nodepool-128GiB?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools/nodepool-128GiB?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6baab23c-0873-4b30-88f0-e42545c1b3e3" ],
+        "CommandName": [ "Get-AzRedHatOpenShiftHcpNodePool" ],
+        "FullCommandName": [ "Get-AzRedHatOpenShiftHcpNodePool_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3ad67be5-2b5b-4e81-93fe-5fa99dd4b4bb" ],
+        "x-envoy-upstream-service-time": [ "11" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "faeb5974-b55b-416a-943b-e53ab954df3b" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T001915Z:faeb5974-b55b-416a-943b-e53ab954df3b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9B7E876392014B1ABCA7BEFC1E07B04E Ref B: YTO221090812027 Ref C: 2026-10-21T00:19:15Z" ],
+        "Date": [ "Wed, 21 Oct 2026 00:19:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1671" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/nodePools/nodepool-128GiB\",\n    \"location\": \"westeurope\",\n    \"name\": \"nodepool-128GiB\",\n    \"properties\": {\n        \"autoRepair\": true,\n        \"platform\": {\n            \"enableEncryptionAtHost\": false,\n            \"osDisk\": {\n                \"diskStorageAccountType\": \"StandardSSD_LRS\",\n                \"diskType\": \"Managed\",\n                \"sizeGiB\": 128\n            },\n            \"subnetId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\n            \"vmSize\": \"Standard_D8s_v3\"\n        },\n        \"provisioningState\": \"Succeeded\",\n        \"replicas\": 2,\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-20T21:36:45Z\",\n                    \"message\": \"\",\n                    \"reason\": \"Valid\",\n                    \"status\": \"True\",\n                    \"type\": \"RequirementsValid\"\n                }\n            ]\n        },\n        \"version\": {\n            \"channelGroup\": \"stable\",\n            \"id\": \"4.22.18\"\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-20T21:36:43.5928963Z\",\n        \"createdBy\": \"nikthoma@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-20T21:36:43.5928963Z\",\n        \"lastModifiedBy\": \"nikthoma@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nodePools\"\n}",
+      "isContentBase64": false
+    }
+  }
+}
