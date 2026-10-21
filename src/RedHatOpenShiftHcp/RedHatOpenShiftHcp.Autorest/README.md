@@ -116,6 +116,19 @@ directive:
       subject: ^HcpOpenShiftCluster$
     hide: true
 
+  # --- C6 customization: the RP returns 204 (No Content) as the terminal response of the revokeCredentials
+  #     long-running POST, but the 2026-09-01-preview spec declares only 202 + default -- so the generated
+  #     cmdlet dispatches the successful 204 to onDefault and throws "The server responded with an
+  #     unrecognized response, Status: NoContent". Inject a 204 response (the DELETE operations correctly
+  #     declare 202 + 204 + default and work) so AutoRest emits an onNoContent success handler. This directive
+  #     transforms the swagger document before codegen.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}/revokeCredentials"].post.responses
+    transform: >-
+      $["204"] = {
+          "description": "No content"
+      }
+
   # --- Brand the nouns via subject renames (NOT via subject-prefix) ---
   # kindly refer to "empty subject-prefix" comment above
   # ORDER MATTERS: the two credential subjects start with "HcpOpenShiftCluster",
