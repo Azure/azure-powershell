@@ -2,6 +2,14 @@
 
 Use the repository's existing preparation/build scripts, platyPS commands, and the generated artifact test harness.
 
+## Module release status
+
+This update targets Az.EdgeAction **0.2.0**, continuing the pre-1.0 release line after 0.1.2; it does not promote the module to 1.0/GA. The stable `2026-10-01` REST API is independent of the module's release status. Future breaking changes remain possible while the module is pre-1.0.
+
+The unsuffixed `0.2.0` target follows the repository's [General release process](../../../CONTRIBUTING.md#target-release-types), which includes versions below 1.0.0. It does not use the separate `-preview` release process. `tools\VersionController\MinimalVersion.csv` sets the minimum release version; release automation determines the final version and updates manifests and assembly metadata. Do not manually synchronize those files for this version target.
+
+A version-target-only change does not require new HTTP recordings or regenerated cmdlet help. API, cmdlet, or scenario changes still require their corresponding generation and validation steps below.
+
 ## Workflow and commit boundaries
 
 | Files | Ownership |
