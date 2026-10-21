@@ -204,7 +204,13 @@ function Update-AzRedHatOpenShiftHcpCluster {
             $getParams = @{ ResourceGroupName = $ResourceGroupName; Name = $Name }
             if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $getParams['SubscriptionId'] = $SubscriptionId }
             if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $getParams['DefaultProfile'] = $DefaultProfile }
-            $current = Az.RedHatOpenShiftHcp.internal\Get-AzRedHatOpenShiftHcpCluster @getParams
+            # Forward any HTTP pipeline steps so caller-injected steps (and the test record/playback mock,
+            # attached via -HttpPipelinePrepend) propagate into this nested child-cmdlet call.
+            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) { $getParams['HttpPipelinePrepend'] = $HttpPipelinePrepend }
+            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) { $getParams['HttpPipelineAppend'] = $HttpPipelineAppend }
+            # Get-Cluster is NOT hidden (it lives in exports/, not the internal module), so call the exported
+            # cmdlet by plain name -- an 'internal\' qualifier does not resolve it.
+            $current = Get-AzRedHatOpenShiftHcpCluster @getParams
             if (-not $current) { throw "Cluster '$Name' not found in resource group '$ResourceGroupName'." }
 
             $cj = $current.ToJsonString() | ConvertFrom-Json
