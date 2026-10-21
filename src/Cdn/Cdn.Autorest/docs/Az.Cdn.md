@@ -285,7 +285,7 @@ Create a new origin within the specified origin group.
 Create a new origin group within the specified profile.
 
 ### [New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject](New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject.md)
-Create an in-memory object for AfdHealthProbeParameters.
+Create an in-memory object for HealthProbeParameters.
 
 ### [New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject](New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsParameters.

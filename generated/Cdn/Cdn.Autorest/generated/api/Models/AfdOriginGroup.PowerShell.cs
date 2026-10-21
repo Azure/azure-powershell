@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("HealthProbeSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters) content.GetValueForProperty("HealthProbeSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParametersTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) content.GetValueForProperty("HealthProbeSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParametersTypeConverter.ConvertFrom);
             }
             if (content.Contains("TrafficRestorationTimeToHealedOrNewEndpointsInMinute"))
             {
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("HealthProbeSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters) content.GetValueForProperty("HealthProbeSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParametersTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) content.GetValueForProperty("HealthProbeSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).HealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParametersTypeConverter.ConvertFrom);
             }
             if (content.Contains("TrafficRestorationTimeToHealedOrNewEndpointsInMinute"))
             {

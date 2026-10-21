@@ -103,25 +103,13 @@ directive:
         }
       }
       return $;
-  # Separate AFD probe capabilities so the classic model cannot acquire gRPC completion.
+  # Preserve the shared public probe type and classic completion metadata.
+  # The custom AFD object helper supplies gRPC completion without renaming the model.
   - from: swagger-document
     where: $
     transform: >-
       if (!$.info || $.info.version !== "2026-09-01-preview") { return $; }
-      $.definitions.AFDHealthProbeParameters = $.definitions.HealthProbeParameters;
-      delete $.definitions.HealthProbeParameters;
-      $.definitions.AFDProbeProtocol = JSON.parse(JSON.stringify($.definitions.ProbeProtocol));
-      $.definitions.AFDProbeProtocol["x-ms-enum"].name = "AFDProbeProtocol";
-      $.definitions.AFDHealthProbeParameters.properties.probeProtocol["$ref"] = "#/definitions/AFDProbeProtocol";
       $.definitions.ProbeProtocol.enum = $.definitions.ProbeProtocol.enum.filter(value => value !== "Grpc");
-      const updateReferences = value => {
-        if (!value || typeof value !== "object") { return; }
-        if (value["$ref"] === "#/definitions/HealthProbeParameters") {
-          value["$ref"] = "#/definitions/AFDHealthProbeParameters";
-        }
-        Object.values(value).forEach(updateReferences);
-      };
-      updateReferences($);
       return $;
   # Exclude unused schemas from each API version to avoid duplicate models changing public types.
   - from: swagger-document
@@ -179,7 +167,6 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-    - AFDHealthProbeParameters
   # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
@@ -293,8 +280,7 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnAuthPolicyAssociationObject
 
     # OriginGroup Parameters
-    - model-name: AfdHealthProbeParameters
-      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+    # The health probe helper is customized under custom/ for AFD-only gRPC completion.
     - model-name: LoadBalancingSettingsParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 
@@ -354,9 +340,6 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnProfileUpgradeParametersObject
     - model-name: ProfileChangeSkuWafMapping
       cmdlet-name: New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
-
-    - model-name: OriginGroupHealthProbeSetting
-      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
   # 
 

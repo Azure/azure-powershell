@@ -1,4 +1,43 @@
 Describe 'ApiUpgrade.Unit' {
+    BeforeAll {
+        if (-not ('CdnApiUpgradeTestTransport' -as [type])) {
+            # SDK continuations can invoke the transport on a thread without a PowerShell runspace.
+            $references = @(
+                [System.Net.Http.HttpResponseMessage].Assembly.Location,
+                [System.Net.HttpStatusCode].Assembly.Location
+            )
+            if ($PSVersionTable.PSEdition -eq 'Core') {
+                $references += 'System.Collections'
+            }
+            Add-Type -ReferencedAssemblies $references -TypeDefinition @'
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+public sealed class CdnApiUpgradeTestTransport
+{
+    public readonly List<Dictionary<string, object>> Requests = new List<Dictionary<string, object>>();
+    public string ResponseJson;
+
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, object listener)
+    {
+        Requests.Add(new Dictionary<string, object> {
+            { "Method", request.Method.Method },
+            { "Uri", request.RequestUri },
+            { "Body", request.Content == null ? null : request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
+        });
+        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(ResponseJson, Encoding.UTF8, "application/json");
+        response.RequestMessage = request;
+        return Task.FromResult(response);
+    }
+}
+'@
+        }
+    }
+
     It 'Keeps <Resource> requests on <ApiVersion>' -TestCases @(
         @{ Resource = 'ClassicProfile'; ApiVersion = '2026-04-01-preview' },
         @{ Resource = 'AfdProfile'; ApiVersion = '2026-09-01-preview' },
@@ -6,18 +45,12 @@ Describe 'ApiUpgrade.Unit' {
         @{ Resource = 'AfdEndpoint'; ApiVersion = '2026-09-01-preview' }
     ) {
         param($Resource, $ApiVersion)
-        $requests = [System.Collections.Generic.List[System.Uri]]::new()
-        $send = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync] {
-            param($request, $callback)
-            $callback.Token.ThrowIfCancellationRequested()
-            $requests.Add($request.RequestUri)
-            $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::OK)
-            $response.Content = [System.Net.Http.StringContent]::new(
-                '{"name":"offline","location":"Global","properties":{}}',
-                [System.Text.Encoding]::UTF8, 'application/json')
-            $response.RequestMessage = $request
-            return [System.Threading.Tasks.Task]::FromResult[System.Net.Http.HttpResponseMessage]($response)
-        }
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = '{"name":"offline","location":"Global","properties":{}}'
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
         $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
         $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
         $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
@@ -29,7 +62,7 @@ Describe 'ApiUpgrade.Unit' {
         }
         $null = $task.GetAwaiter().GetResult()
         $requests.Count | Should Be 1
-        $requests[0].Query | Should Be "?api-version=$ApiVersion"
+        $requests[0].Uri.Query | Should Be "?api-version=$ApiVersion"
     }
 
     It 'Adds canonical ClientResponse completion without removing existing invocation points' {
@@ -51,7 +84,8 @@ Describe 'ApiUpgrade.Unit' {
         $action.EdgeActionReferenceId = '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline'
         $rule = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
         $rule.Order = 1
-        $rule.Action = @($action)
+        $rule.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+        $rule.Action.Add($action)
         $json = $rule.ToJsonString()
         (($json | ConvertFrom-Json).properties.actions[0].parameters.invocationPoint -ceq 'ClientResponse') | Should Be $true
         $roundTrip = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::FromJsonString($json)
@@ -66,18 +100,13 @@ Describe 'ApiUpgrade.Unit' {
         @{ Operation = 'Get'; Method = 'GET' }
     ) {
         param($Operation, $Method)
-        $requests = [System.Collections.Generic.List[object]]::new()
         $responseJson = '{"properties":{"order":1,"actions":[{"name":"EdgeAction","parameters":{"typeName":"DeliveryRuleEdgeActionParameters","invocationPoint":"ClientResponse","edgeActionReference":{"id":"/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline"}}}]}}'
-        $send = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync] {
-            param($request, $callback)
-            $callback.Token.ThrowIfCancellationRequested()
-            $body = if ($request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
-            $requests.Add(@{ Method = $request.Method.Method; Uri = $request.RequestUri; Body = $body })
-            $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::OK)
-            $response.Content = [System.Net.Http.StringContent]::new($responseJson, [System.Text.Encoding]::UTF8, 'application/json')
-            $response.RequestMessage = $request
-            return [System.Threading.Tasks.Task]::FromResult[System.Net.Http.HttpResponseMessage]($response)
-        }
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = $responseJson
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
         $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
         $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
         $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
@@ -88,11 +117,13 @@ Describe 'ApiUpgrade.Unit' {
         if ($Operation -eq 'Create') {
             $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
             $body.Order = 1
-            $body.Action = @($action)
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
             $task = $client.RulesCreateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
         } elseif ($Operation -eq 'Update') {
             $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdateParameters]::new()
-            $body.Action = @($action)
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
             $task = $client.RulesUpdateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
         } else {
             $task = $client.RulesGetWithResult('offline', 'offline', 'offline', 'offline', 'offline', $listener, $terminal)
@@ -204,12 +235,81 @@ Describe 'ApiUpgrade.Unit' {
     It 'Serializes gRPC health probes through the AFD public object helper' {
         $probe = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject `
             -ProbeProtocol Grpc -ProbePath '/grpc.health.v1.Health/Check'
+        $probe.GetType().FullName | Should Be 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters'
+        ($probe -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters]) | Should Be $true
+        $command = Get-Command New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+        $command.OutputType.Count | Should Be 1
+        $command.OutputType[0].Name | Should Be 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters'
         $json = $probe.ToJsonString() | ConvertFrom-Json
         $json.probeProtocol | Should Be 'Grpc'
         $json.probePath | Should Be '/grpc.health.v1.Health/Check'
         $group = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroup]::new()
         $group.HealthProbeSetting = $probe
         ($group.ToJsonString() | ConvertFrom-Json).properties.healthProbeSettings.probeProtocol | Should Be 'Grpc'
+    }
+
+    It 'Preserves the health probe parameter type for <Command> <ParameterSet>' -TestCases @(
+        @{ Command = 'New-AzFrontDoorCdnOriginGroup'; ParameterSet = 'CreateExpanded' },
+        @{ Command = 'New-AzFrontDoorCdnOriginGroup'; ParameterSet = 'CreateViaIdentityProfileExpanded' },
+        @{ Command = 'Update-AzFrontDoorCdnOriginGroup'; ParameterSet = 'UpdateExpanded' },
+        @{ Command = 'Update-AzFrontDoorCdnOriginGroup'; ParameterSet = 'UpdateViaIdentityExpanded' },
+        @{ Command = 'Update-AzFrontDoorCdnOriginGroup'; ParameterSet = 'UpdateViaIdentityProfileExpanded' }
+    ) {
+        param($Command, $ParameterSet)
+        $set = (Get-Command $Command).ParameterSets | Where-Object Name -EQ $ParameterSet
+        $parameter = $set.Parameters | Where-Object Name -EQ 'HealthProbeSetting'
+        $parameter.ParameterType.FullName | Should Be 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters'
+    }
+
+    It 'Preserves the health probe property type on <Model>' -TestCases @(
+        @{ Model = 'IAfdOriginGroup' },
+        @{ Model = 'IAfdOriginGroupProperties' },
+        @{ Model = 'IAfdOriginGroupUpdateParameters' },
+        @{ Model = 'IAfdOriginGroupUpdatePropertiesParameters' }
+    ) {
+        param($Model)
+        $type = [type]"Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.$Model"
+        $type.GetProperty('HealthProbeSetting').PropertyType.FullName |
+            Should Be 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters'
+    }
+
+    It 'Round-trips legacy <Protocol> probes through origin group read-modify-write' -TestCases @(
+        @{ Protocol = 'Http' },
+        @{ Protocol = 'Https' },
+        @{ Protocol = 'Grpc' }
+    ) {
+        param($Protocol)
+        $probe = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters]::new()
+        $probe.ProbeProtocol = $Protocol
+        $probe.ProbePath = '/health'
+        $probe.ProbeRequestType = 'HEAD'
+        $probe.ProbeIntervalInSecond = 60
+        $group = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroup]::new()
+        $group.HealthProbeSetting = $probe
+        [object]::ReferenceEquals($group.HealthProbeSetting, $probe) | Should Be $true
+        $json = $group.ToJsonString()
+        ($json | ConvertFrom-Json).properties.healthProbeSettings.probeProtocol | Should Be $Protocol
+        $roundTrip = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroup]::FromJsonString($json)
+        $roundTrip.HealthProbeSetting.GetType().FullName | Should Be $probe.GetType().FullName
+        $roundTrip.HealthProbeSetting.ProbeIntervalInSecond | Should Be 60
+        $roundTrip.HealthProbeSetting.ProbeRequestType | Should Be 'HEAD'
+        $roundTrip.HealthProbeSetting.ProbePath = '/updated-health'
+        $update = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupUpdateParameters]::new()
+        $update.HealthProbeSetting = $roundTrip.HealthProbeSetting
+        [object]::ReferenceEquals($update.HealthProbeSetting, $roundTrip.HealthProbeSetting) | Should Be $true
+        $updated = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupUpdateParameters]::FromJsonString($update.ToJsonString())
+        $updated.HealthProbeSetting.GetType().FullName | Should Be $probe.GetType().FullName
+        $updated.HealthProbeSetting.ProbeProtocol | Should Be $Protocol
+        $updated.HealthProbeSetting.ProbePath | Should Be '/updated-health'
+    }
+
+    It 'Completes gRPC only on the AFD health probe helper' {
+        $parameter = (Get-Command New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject).Parameters['ProbeProtocol']
+        $completer = $parameter.Attributes |
+            Where-Object { $_ -is [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute] }
+        $values = @($completer.ScriptBlock.Invoke('', '', '', $null, @{}) |
+            ForEach-Object CompletionText)
+        (($values | Sort-Object) -join ',') | Should Be 'Grpc,Http,Https,NotSet'
     }
 
     It 'Preserves the classic health probe protocol completions' {

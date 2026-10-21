@@ -35,7 +35,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-HEALTHPROBESETTING <IAfdHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
   [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
   [ProbeProtocol <String>]: Protocol to use for health probe.
@@ -53,7 +53,7 @@ ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for
   [AuthenticationScope <String>]: The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
   [AuthenticationTokenDestinationHeader <String>]: The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.
   [AuthenticationType <String>]: The type of the authentication for the origin.
-  [HealthProbeSetting <IAfdHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
+  [HealthProbeSetting <IHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
     [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
     [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
     [ProbeProtocol <String>]: Protocol to use for health probe.
@@ -163,7 +163,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     ${HealthProbeSetting},
 

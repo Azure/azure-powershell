@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
 ## SYNOPSIS
-Create an in-memory object for AfdHealthProbeParameters.
+Create an in-memory object for HealthProbeParameters.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject [-ProbeIntervalInSecond <I
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AfdHealthProbeParameters.
+Create an in-memory object for HealthProbeParameters.
 
 ## EXAMPLES
 
@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
 
 ## NOTES
 
