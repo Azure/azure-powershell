@@ -33,7 +33,7 @@ https://learn.microsoft.com/powershell/module/az.cloudhsm/get-azcloudhsm
 #>
 function Get-AzCloudHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('CloudHsmClusterName')]
@@ -44,7 +44,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Category('Path')]
     [System.String]
     # The name of the resource group.

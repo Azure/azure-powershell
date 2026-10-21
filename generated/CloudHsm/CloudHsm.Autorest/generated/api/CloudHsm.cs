@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
 
     /// <summary>
     /// Low-level API implementation for the CloudHsm service.
-    /// The Azure management API provides a RESTful set of web services that interact with Azure Cloud HSM RP.
+    /// The Azure management API provides a RESTful set of web services that interact with Hardware Security Modules.
     /// </summary>
     public partial class CloudHsm
     {
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the backup operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterBackupStatusGet(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string jobId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterBackupStatusGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterBackupStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterBackupStatusGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClusterBackupStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the backup operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClusterBackupStatusGetWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string jobId, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.742\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\ngangwar\source\repos\azsdk-cloudhsm\.autorest-tools\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the backup operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsCreate(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> CloudHsmClusterPrivateEndpointConnectionsCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsCreateViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> CloudHsmClusterPrivateEndpointConnectionsCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> CloudHsmClusterPrivateEndpointConnectionsCreateWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1156,7 +1156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1199,7 +1199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> CloudHsmClusterPrivateEndpointConnectionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1311,7 +1311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> CloudHsmClusterPrivateEndpointConnectionsGetWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string peConnectionName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateLinkResourcesListByCloudHsmCluster(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1546,7 +1546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1598,7 +1598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateLinkResourceListResult> CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1653,7 +1653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateLinkResourceListResult> CloudHsmClusterPrivateLinkResourcesListByCloudHsmClusterWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1830,7 +1830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the restore operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterRestoreStatusGet(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string jobId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterRestoreStatusGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1886,7 +1886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClusterRestoreStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterRestoreStatusGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1940,7 +1940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClusterRestoreStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1989,7 +1989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the restore operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClusterRestoreStatusGetWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, string jobId, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2132,7 +2132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.742\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\ngangwar\source\repos\azsdk-cloudhsm\.autorest-tools\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -2161,7 +2161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="cloudHsmClusterName">The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster
         /// names must be between 3 and 23 characters in length.</param>
-        /// <param name="jobId">The id returned as part of the backup request</param>
+        /// <param name="jobId">Identifier for the restore operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -2200,7 +2200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersBackup(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2248,7 +2248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersBackupViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2306,7 +2306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersBackupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2368,7 +2368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersBackupViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2416,7 +2416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersBackupViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2465,7 +2465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersBackupWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersCreateOrUpdate(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2890,7 +2890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2947,7 +2947,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3008,7 +3008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3055,7 +3055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3103,7 +3103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3479,7 +3479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersDelete(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3521,7 +3521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3755,7 +3755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersGet(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3796,7 +3796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3847,7 +3847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3901,7 +3901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersGetWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4085,7 +4085,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersListByResourceGroup(string subscriptionId, string resourceGroupName, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4097,9 +4097,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + global::System.Uri.EscapeDataString(resourceGroupName)
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4131,7 +4131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersListByResourceGroupViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4154,9 +4154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + resourceGroupName
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4186,7 +4186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult> CloudHsmClustersListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4209,9 +4209,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + resourceGroupName
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4242,7 +4242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult> CloudHsmClustersListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4254,9 +4254,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + global::System.Uri.EscapeDataString(resourceGroupName)
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4425,7 +4425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersListBySubscription(string subscriptionId, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4435,9 +4435,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4468,7 +4468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersListBySubscriptionViaIdentity(global::System.String viaIdentity, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4488,9 +4488,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + subscriptionId
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4519,7 +4519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult> CloudHsmClustersListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4539,9 +4539,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + subscriptionId
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4570,7 +4570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult> CloudHsmClustersListBySubscriptionWithResult(string subscriptionId, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4580,9 +4580,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters"
                         + "?"
-                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4747,7 +4747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersRestore(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4795,7 +4795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersRestoreViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4853,7 +4853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersRestoreViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4915,7 +4915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersRestoreViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4963,7 +4963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersRestoreViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5012,7 +5012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersRestoreWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5390,7 +5390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersUpdate(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5437,7 +5437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5494,7 +5494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5555,7 +5555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersUpdateViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5602,7 +5602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5650,7 +5650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> CloudHsmClustersUpdateWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParameters body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6030,7 +6030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateBackupProperties(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6081,7 +6081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateBackupPropertiesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6142,7 +6142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersValidateBackupPropertiesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6207,7 +6207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateBackupPropertiesViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6258,7 +6258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersValidateBackupPropertiesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6310,7 +6310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupResult> CloudHsmClustersValidateBackupPropertiesWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6692,7 +6692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateRestoreProperties(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6740,7 +6740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateRestorePropertiesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6798,7 +6798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersValidateRestorePropertiesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6860,7 +6860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task CloudHsmClustersValidateRestorePropertiesViaJsonString(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6908,7 +6908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersValidateRestorePropertiesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6957,7 +6957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult> CloudHsmClustersValidateRestorePropertiesWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties body, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7339,7 +7339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByCloudHsmCluster(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7383,7 +7383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListByCloudHsmClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7437,7 +7437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByCloudHsmClusterViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7494,7 +7494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResult> PrivateEndpointConnectionsListByCloudHsmClusterWithResult(string subscriptionId, string resourceGroupName, string cloudHsmClusterName, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-03-31";
+            var apiVersion = @"2025-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

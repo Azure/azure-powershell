@@ -45,16 +45,14 @@ function setupEnv() {
     $null = $env.AddWithCache('SubscriptionId', (Get-AzContext).Subscription.Id, $UsePreviousConfigForRecord)
     $null = $env.AddWithCache('Tenant', (Get-AzContext).Tenant.Id, $UsePreviousConfigForRecord)
 
-    # Cloud HSM created and deleted by the New/Remove tests (mock HFC)
-    $null = $env.AddWithCache('rgName', 'PS-Test', $UsePreviousConfigForRecord)
-    $null = $env.AddWithCache('cloudHsmName', 'TestPSResource', $UsePreviousConfigForRecord)
-
-    # Existing activated Cloud HSM in West Europe used by the Get/Update/Backup tests.
-    # Its user-assigned identity has Storage Blob Data Contributor on backupContainerUri.
-    $null = $env.AddWithCache('existingSubscriptionId', (Get-AzContext).Subscription.Id, $UsePreviousConfigForRecord)
-    $null = $env.AddWithCache('existingRgName', 'ngangwar', $UsePreviousConfigForRecord)
-    $null = $env.AddWithCache('existingCloudHsmName', 'test-pw-chsm', $UsePreviousConfigForRecord)
+    # Cloud HSM created by New-AzCloudHsm, used by the Get/Update/Restore/Backup tests and deleted by Remove-AzCloudHsm.
+    # Restore activates it from an existing backup; its user-assigned identity needs Storage Blob Data Contributor on backupContainerUri.
+    $null = $env.AddWithCache('rgName', 'ps-test', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('cloudHsmName', 'ps-test-chsm', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('location', 'westeurope', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('userAssignedIdentityId', "/subscriptions/$($env.SubscriptionId)/resourceGroups/ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps-test-chsm-uami", $UsePreviousConfigForRecord)
     $null = $env.AddWithCache('backupContainerUri', 'https://chsme2estorageaccountcs.blob.core.windows.net/teste2eblobcontainer', $UsePreviousConfigForRecord)
+    $null = $env.AddWithCache('backupId', 'cloudhsm-c2c00b0e-50cc-479f-b9d1-30e3cd7fefcc-2026102019512385', $UsePreviousConfigForRecord)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

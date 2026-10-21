@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCloudHsm'))
 
 Describe 'Update-AzCloudHsm' {
     It 'UpdateExpanded' {
-        $cloudHsm = Update-AzCloudHsm -SubscriptionId $env.existingSubscriptionId -Name $env.existingCloudHsmName -ResourceGroupName $env.existingRgName -Tag @{ Department = "Accounting"; Purpose = "PSTest"}
-        $cloudHsm.name | Should -Be $env.existingCloudHsmName
+        $cloudHsm = Update-AzCloudHsm -SubscriptionId $env.SubscriptionId -Name $env.cloudHsmName -ResourceGroupName $env.rgName -Tag @{ Department = "Accounting"; Purpose = "PSTest"}
+        $cloudHsm.name | Should -Be $env.cloudHsmName
         $cloudHsm.tag.Count | Should -Be 2
         }
 
