@@ -14,7 +14,7 @@ Restore a soft-deleted gallery image version.
 
 ```
 Restore-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- [-GalleryImageDefinitionName] <String> [-Name] <String> [-Location] <String> [-AsJob]
+ [-GalleryImageDefinitionName] <String> [-Name] <String> -Location <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

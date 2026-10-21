@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("GalleryImageVersionName")]
         public string Name { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/Galleries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
