@@ -98,7 +98,7 @@ Import-Module .\tools\BuildScripts\BuildScripts.psm1
 New-GenerateInfoJson -GeneratedDirectory $source
 ```
 
-Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing.
+Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing. Preparation can also change the working directory; resolve script paths against `$repo` and return to the repository root in `finally`.
 
 **Run from: repository root**, in the same shell with `$repo` and `$source` initialized and package access configured.
 
@@ -106,12 +106,13 @@ Use the shared repository helpers. AutoRest can replace this guide with its scaf
 $guidePath = Join-Path $source 'how-to.md'
 $guide = [IO.File]::ReadAllBytes($guidePath)
 try {
-    & .\tools\BuildScripts\PrepareAutorestModule.ps1 -RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate
+    & (Join-Path $repo 'tools\BuildScripts\PrepareAutorestModule.ps1') -RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate
     if ($LASTEXITCODE -ne 0) { throw "Preparation failed (exit $LASTEXITCODE)." }
 } finally {
     [IO.File]::WriteAllBytes($guidePath, $guide)
+    Set-Location -LiteralPath $repo
 }
-& .\tools\BuildScripts\BuildModules.ps1 -RepoRoot $repo -Configuration Debug -TargetModule EdgeAction
+& (Join-Path $repo 'tools\BuildScripts\BuildModules.ps1') -RepoRoot $repo -Configuration Debug -TargetModule EdgeAction
 if ($LASTEXITCODE -ne 0) { throw "Build failed (exit $LASTEXITCODE)." }
 ```
 
