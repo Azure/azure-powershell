@@ -1,8 +1,8 @@
 {
-  "Get-AzStorageMoverConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections?api-version=2025-12-01+1": {
+  "Get-AzStorageMoverConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -45,10 +45,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01+1": {
+  "Get-AzStorageMoverConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -92,10 +92,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01+1": {
+  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -139,10 +139,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01+2": {
+  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -186,10 +186,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentityStorageMover+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x?api-version=2025-12-01+1": {
+  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentityStorageMover+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x?api-version=2026-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -231,10 +231,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentityStorageMover+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01+2": {
+  "Get-AzStorageMoverConnection+[NoContext]+GetViaIdentityStorageMover+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2025-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/connections/conny8nedf6x?api-version=2026-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
