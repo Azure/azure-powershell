@@ -19,10 +19,24 @@
 --->
 
 ## Upcoming Release
+* Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
+    - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
+* Added cmdlets to manage ExpressRoute link aggregation group (LAG) authorizations and retrieve their authorization keys.
+    - Use `Add-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorizationKey`, and `Remove-AzExpressRouteLagAuthorization`.
+* Added IPv6 / dual-stack (IPv4 + IPv6) support for Managed Network Virtual Appliances (NVA).
+    - Use `-AddressFamily "IPv4","IPv6"` with `New-AzNetworkVirtualAppliance` to create a dual-stack appliance; omitting the parameter defaults to IPv4-only.
+    - Use `-AddressFamily` with `Update-AzNetworkVirtualAppliance` to upgrade or downgrade an existing appliance; omitting the parameter leaves the address family unchanged.
+    - Exposed read-only `AddressFamily`, `AddressPrefixV6`, and `PrivateIpAddressV6` on the appliance and `PublicIpAddressV6`/`PrivateIpAddressV6` on virtual appliance NICs.
+* Upgraded Network SDK to API version `2026-03-01`.
+* Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
+    - Added cmdlets to create, get, add, update, and remove mitigation rules.
+    - Deny and Permit source matches can be configured directly with IP prefix and geographic match parameters.
+    - Added mitigation rule support to `New-AzDdosCustomPolicy`, `Get-AzDdosCustomPolicy`, and `Set-AzDdosCustomPolicy`.
+    - Implements [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
+* Added cmdlets to manage Virtual Network Appliance capabilities.
+    - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
 * Added `Get-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicyDetectionRule` to retrieve and update detection rules on a DDoS custom policy object.
     - Extends the DDoS custom policy support for API version 2025-07-01 introduced in [#29387].
-
-## Version 8.3.0
 * Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
 * Added provider-led ExpressRoute cross-connection migration commands.
 * Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
