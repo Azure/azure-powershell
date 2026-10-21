@@ -293,6 +293,9 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -332,7 +335,7 @@ namespace Microsoft.Azure.Management.KeyVault
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2026-02-01";
+            this.ApiVersion = "2026-05-15";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

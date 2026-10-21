@@ -23,9 +23,9 @@ use-extension:
 
 ###
 ``` yaml
-commit: 9f0ad696cc186c2d16cb522abc0fbd4aa3854ca5
+commit: 3d13a66faf3cdca3fc4178de005faab79c7bcdad
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/KeyVault/stable/2026-02-01/openapi.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/KeyVault/stable/2026-05-15/openapi.json
 
 ### Key Vault migrated its control plane specification to TypeSpec. The previous common.json /
 ### keyvault.json / managedHsm.json documents were replaced by a single emitted openapi.json under
@@ -89,6 +89,19 @@ directive:
         splitReason["x-ms-enum"] = Object.assign({}, sharedReason["x-ms-enum"], { name: "ReasonForCheckMhsmNameAvailabilityResult" });
         $["ReasonForCheckMhsmNameAvailabilityResult"] = splitReason;
         mhsmResult.properties.reason["$ref"] = "#/definitions/ReasonForCheckMhsmNameAvailabilityResult";
+      }
+  ### 2026-05-15 adds the Standard_B*v2 managed HSM SKUs and emits the SKU as an extensible enum named
+  ### ManagedHsmSkuNameV2. Keep the generated type as the closed ManagedHsmSkuName enum so the public SDK
+  ### type name and shape are unchanged; only the new members are added.
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      const sku = $["ManagedHsmSkuNameV2"];
+      if (sku) {
+        sku["x-ms-enum"] = { name: "ManagedHsmSkuName", modelAsString: false };
+        $["ManagedHsmSkuName"] = sku;
+        delete $["ManagedHsmSkuNameV2"];
+        $["ManagedHsmSku"].properties.name["$ref"] = "#/definitions/ManagedHsmSkuName";
       }
   ### The TypeSpec emitter drops x-ms-enum.name on the two constant query parameters of Vaults_List,
   ### which would otherwise regenerate them as Enum24 / Enum25. Restore the original names.
