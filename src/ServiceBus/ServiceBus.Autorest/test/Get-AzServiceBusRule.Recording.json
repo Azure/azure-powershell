@@ -1,17 +1,17 @@
 {
-  "Get-AzServiceBusRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-01-01+1": {
+  "Get-AzServiceBusRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "5446ae1b-03ef-4a8b-a0a7-c056a184ba96" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "c443ac33-995d-49cb-8350-ad0f3f2d7264" ],
         "CommandName": [ "Get-AzServiceBusRule" ],
         "FullCommandName": [ "Get-AzServiceBusRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.ServiceBus/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.ServiceBus/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,43 +22,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "dc1a2fb8-8c0d-4eb7-bc7f-e4d833b3850d" ],
-        "x-ms-client-request-id": [ "5446ae1b-03ef-4a8b-a0a7-c056a184ba96_RP" ],
-        "x-ms-messaging-activity-id": [ "400a9352-cc0e-490c-8581-55712b58154f" ],
-        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G10|2026-07-09T04:17:58" ],
+        "x-ms-correlation-request-id": [ "909a781a-d33b-45f8-bdb2-3ceb0c7a66f5" ],
+        "x-ms-client-request-id": [ "c443ac33-995d-49cb-8350-ad0f3f2d7264_RP" ],
+        "x-ms-messaging-activity-id": [ "b7c2947b-33cc-4069-8fcd-57f57e005213" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G8|2026-10-04T06:52:39" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/47b71d3c-528f-4183-9579-934a9d26f5de" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "dc1a2fb8-8c0d-4eb7-bc7f-e4d833b3850d" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260709T041758Z:dc1a2fb8-8c0d-4eb7-bc7f-e4d833b3850d" ],
+        "x-ms-operation-identifier": [ "appId=0f9842c9-ebf1-45a9-82a5-a5b9537489f7,tenantId=34fce7eb-25d4-426b-bf4d-c198aaf98f12,objectId=679de3be-8c5e-48c8-8d7c-1e3e9c35eb75/eastus/7822c3a9-a3d8-4144-ad11-6c7465d70305" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-request-id": [ "909a781a-d33b-45f8-bdb2-3ceb0c7a66f5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261004T065239Z:909a781a-d33b-45f8-bdb2-3ceb0c7a66f5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 03D58E6DA2544EE597AB7C0E568467FB Ref B: KUL201100111054 Ref C: 2026-07-09T04:17:57Z" ],
-        "Date": [ "Thu, 09 Jul 2026 04:17:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 41F717D7C58F4C3AA3122CCC4D06B191 Ref B: SG2AA1040513062 Ref C: 2026-10-04T06:52:39Z" ],
+        "Date": [ "Sun, 04 Oct 2026 06:52:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "458" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}",
+      "Content": "{\"id\":\"/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}",
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules?api-version=2026-01-01+1": {
+  "Get-AzServiceBusRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "779c892d-917a-4caf-8c16-4018d4746e34" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "ebb432cc-1ba4-4ddb-8efd-0cbdf966a759" ],
         "CommandName": [ "Get-AzServiceBusRule" ],
         "FullCommandName": [ "Get-AzServiceBusRule_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.ServiceBus/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.ServiceBus/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -70,43 +70,43 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-inline-count": [ "" ],
-        "x-ms-correlation-request-id": [ "c892a2d3-c9c0-4d0f-b822-df843128232b" ],
-        "x-ms-client-request-id": [ "779c892d-917a-4caf-8c16-4018d4746e34_RP" ],
-        "x-ms-messaging-activity-id": [ "d646746e-5296-4770-ac10-08ae18199419" ],
-        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G14|2026-07-09T04:17:59" ],
+        "x-ms-correlation-request-id": [ "2fb60f75-7df2-4a92-ba34-159bbd742ecb" ],
+        "x-ms-client-request-id": [ "ebb432cc-1ba4-4ddb-8efd-0cbdf966a759_RP" ],
+        "x-ms-messaging-activity-id": [ "01c0b17e-dbc3-4afc-8344-244457278b7f" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G1|2026-10-04T06:52:40" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/29480280-9ed7-4e50-b3f3-9bbc89989968" ],
+        "x-ms-operation-identifier": [ "appId=0f9842c9-ebf1-45a9-82a5-a5b9537489f7,tenantId=34fce7eb-25d4-426b-bf4d-c198aaf98f12,objectId=679de3be-8c5e-48c8-8d7c-1e3e9c35eb75/eastus/bfc3bd4f-812f-4021-8745-172f565f83f2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "c892a2d3-c9c0-4d0f-b822-df843128232b" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260709T041759Z:c892a2d3-c9c0-4d0f-b822-df843128232b" ],
+        "x-ms-request-id": [ "2fb60f75-7df2-4a92-ba34-159bbd742ecb" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261004T065240Z:2fb60f75-7df2-4a92-ba34-159bbd742ecb" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1D1B0D9FF121484ABF93A5FAF9A2CCD2 Ref B: KUL201100111054 Ref C: 2026-07-09T04:17:58Z" ],
-        "Date": [ "Thu, 09 Jul 2026 04:17:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 64D81F7F01A945968E03D354B2FDD533 Ref B: SG2AA1040513062 Ref C: 2026-10-04T06:52:40Z" ],
+        "Date": [ "Sun, 04 Oct 2026 06:52:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "470" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-01-01+1": {
+  "Get-AzServiceBusRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1?api-version=2026-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "083827fb-4f1b-4c33-8477-1bba9e7fdc3e" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "d9cf6e2c-0b41-41e0-b440-7cbc1f9755a5" ],
         "CommandName": [ "Get-AzServiceBusRule" ],
         "FullCommandName": [ "Get-AzServiceBusRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.ServiceBus/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.6", "Az.ServiceBus/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -117,27 +117,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "8c1f9ba0-ead7-405d-b454-fba5fe916a60" ],
-        "x-ms-client-request-id": [ "083827fb-4f1b-4c33-8477-1bba9e7fdc3e_RP" ],
-        "x-ms-messaging-activity-id": [ "db75cd4a-59f9-4bc1-bfc8-c24109761f9a" ],
-        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G2|2026-07-09T04:17:59" ],
+        "x-ms-correlation-request-id": [ "8733d922-76e7-409b-8ba0-34282b1263b4" ],
+        "x-ms-client-request-id": [ "d9cf6e2c-0b41-41e0-b440-7cbc1f9755a5_RP" ],
+        "x-ms-messaging-activity-id": [ "16aaa8c4-a574-45fe-b792-d5434edf9a31" ],
+        "x-ms-messaging-routing-id": [ "PROD|EASTUS|EASTUS|G9|2026-10-04T06:52:41" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "appId=0f98182a-623d-4582-bc19-4bb191e8975c,tenantId=b6e4a91b-ac12-41b2-bcaa-a758409685dd,objectId=5721d036-5297-4797-ad1a-64fb140edd40/eastus/26c10bcc-465a-439a-b041-82c3d888210b" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-request-id": [ "8c1f9ba0-ead7-405d-b454-fba5fe916a60" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260709T041759Z:8c1f9ba0-ead7-405d-b454-fba5fe916a60" ],
+        "x-ms-operation-identifier": [ "appId=0f9842c9-ebf1-45a9-82a5-a5b9537489f7,tenantId=34fce7eb-25d4-426b-bf4d-c198aaf98f12,objectId=679de3be-8c5e-48c8-8d7c-1e3e9c35eb75/eastus/0937acbf-4546-400e-80d4-8100c31a49fc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-request-id": [ "8733d922-76e7-409b-8ba0-34282b1263b4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261004T065241Z:8733d922-76e7-409b-8ba0-34282b1263b4" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 20EA010C1EDF4CD5967EC0A74AAF310B Ref B: KUL201100111054 Ref C: 2026-07-09T04:17:59Z" ],
-        "Date": [ "Thu, 09 Jul 2026 04:17:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FC96F5651AF14D60812338E1E74D1903 Ref B: SG2AA1040513062 Ref C: 2026-10-04T06:52:40Z" ],
+        "Date": [ "Sun, 04 Oct 2026 06:52:40 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "458" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/1f64c91d-2e06-42bc-97b6-7773dbff4f40/resourceGroups/Autorest-PS-ServiceBus-mult5b/providers/Microsoft.ServiceBus/namespaces/namespaceNameotfnhb/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}",
+      "Content": "{\"id\":\"/subscriptions/0c324d8a-48fd-4bf7-af95-c686eefae895/resourceGroups/Autorest-PS-ServiceBus-hzxo34/providers/Microsoft.ServiceBus/namespaces/namespaceNametjv1c5/topics/topic1/subscriptions/subscription1/rules/sqlRule1\",\"name\":\"sqlRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20,\"parameters\":{}}}}",
       "isContentBase64": false
     }
   }

@@ -16,16 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRelationshipsService
 
 Describe 'Remove-AzRelationshipsServiceGroupMemberRelationship' {
     It 'Delete' {
-        Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToDelete
-        { Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToDelete } | Should -Throw
+        Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToDelete
+        { Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToDelete -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $identity = @{
-            ResourceUri = $env.SgmResourceGroupResourceUri
+            ResourceUri = $env.SgmTargetResourceUri
             Name = $env.SgmRelNameToDeleteViaIdentity
         }
         Remove-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity
-        { Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmResourceGroupResourceUri -Name $env.SgmRelNameToDeleteViaIdentity } | Should -Throw
+        { Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri $env.SgmTargetResourceUri -Name $env.SgmRelNameToDeleteViaIdentity -ErrorAction Stop } | Should -Throw
     }
 }

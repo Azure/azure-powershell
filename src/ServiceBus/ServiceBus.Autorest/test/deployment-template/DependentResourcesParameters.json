@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resource_name_prefix": {
-      "value": "sb-ps-jwoknr"
+      "value": "sb-ps-lsivb6"
     },
     "useZoneRedundancy": {
       "value": true

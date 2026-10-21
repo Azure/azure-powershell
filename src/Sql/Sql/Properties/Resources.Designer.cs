@@ -790,6 +790,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("LockAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
             }
         }
+
+        internal static string LockAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("LockAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+
+        internal static string LockAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("LockAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to lock the time-based immutability for the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;? Once locked, the backup cannot be dropped until expiration. .
@@ -1393,6 +1405,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveImmutabilityAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
+
+        internal static string RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+
+        internal static string RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveImmutabilityAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure SQL Instance pool &apos;{0}&apos;?.
@@ -1427,6 +1451,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning {
             get {
                 return ResourceManager.GetString("RemoveLegalHoldAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+
+        internal static string RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+
+        internal static string RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupExpiredWarning {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupExpiredWarning", resourceCulture);
+            }
+        }
+
+        internal static string RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
         
@@ -1769,6 +1811,18 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription {
             get {
                 return ResourceManager.GetString("SetLegalHoldAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+
+        internal static string SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+
+        internal static string SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("SetLegalHoldAzureSqlInstanceDatabaseLongTermRetentionBackupWarning", resourceCulture);
             }
         }
         
