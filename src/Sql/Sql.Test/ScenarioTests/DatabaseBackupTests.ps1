@@ -654,7 +654,7 @@ function Test-ShortTermRetentionLockImmutability
 	$location = "centraluseuap"
 	$rgName = "dev-anehe-rg"
 	$serverName = "anehetestsvr"
-	$databaseName = "anehetestdb3"
+	$databaseName = "anehetesdb4"
 	$rg = Get-AzResourceGroup -ResourceGroupName $rgName
 	$server = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
 	$db = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
