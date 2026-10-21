@@ -75,13 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return;
             }
+            {_configuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("configuration"), out var __jsonConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.SignalRecommendationConfiguration.FromJson(__jsonConfiguration) : _configuration;}
             {_signalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("signalId"), out var __jsonSignalId) ? (string)__jsonSignalId : (string)_signalId;}
-            {_metricNamespace = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("metricNamespace"), out var __jsonMetricNamespace) ? (string)__jsonMetricNamespace : (string)_metricNamespace;}
-            {_metricName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("metricName"), out var __jsonMetricName) ? (string)__jsonMetricName : (string)_metricName;}
-            {_aggregationType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("aggregationType"), out var __jsonAggregationType) ? (string)__jsonAggregationType : (string)_aggregationType;}
-            {_unit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("unit"), out var __jsonUnit) ? (string)__jsonUnit : (string)_unit;}
-            {_timeGrain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("timeGrain"), out var __jsonTimeGrain) ? (string)__jsonTimeGrain : (string)_timeGrain;}
-            {_dimensionFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("dimensionFilter"), out var __jsonDimensionFilter) ? (string)__jsonDimensionFilter : (string)_dimensionFilter;}
+            {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
+            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
+            {_applicableResourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonArray>("applicableResourceTypes"), out var __jsonApplicableResourceTypes) ? If( __jsonApplicableResourceTypes as Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _applicableResourceType;}
+            {_refreshInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("refreshInterval"), out var __jsonRefreshInterval) ? (string)__jsonRefreshInterval : (string)_refreshInterval;}
+            {_dataUnit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString>("dataUnit"), out var __jsonDataUnit) ? (string)__jsonDataUnit : (string)_dataUnit;}
             {_evaluationRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonObject>("evaluationRules"), out var __jsonEvaluationRules) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.EvaluationRule.FromJson(__jsonEvaluationRules) : _evaluationRule;}
             AfterFromJson(json);
         }
@@ -105,13 +105,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
             {
                 return container;
             }
+            AddIf( null != this._configuration ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._configuration.ToJson(null,serializationMode) : null, "configuration" ,container.Add );
             AddIf( null != (((object)this._signalId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._signalId.ToString()) : null, "signalId" ,container.Add );
-            AddIf( null != (((object)this._metricNamespace)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._metricNamespace.ToString()) : null, "metricNamespace" ,container.Add );
-            AddIf( null != (((object)this._metricName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._metricName.ToString()) : null, "metricName" ,container.Add );
-            AddIf( null != (((object)this._aggregationType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._aggregationType.ToString()) : null, "aggregationType" ,container.Add );
-            AddIf( null != (((object)this._unit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._unit.ToString()) : null, "unit" ,container.Add );
-            AddIf( null != (((object)this._timeGrain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._timeGrain.ToString()) : null, "timeGrain" ,container.Add );
-            AddIf( null != (((object)this._dimensionFilter)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._dimensionFilter.ToString()) : null, "dimensionFilter" ,container.Add );
+            AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
+            AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
+            if (null != this._applicableResourceType)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.XNodeArray();
+                foreach( var __x in this._applicableResourceType )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("applicableResourceTypes",__w);
+            }
+            AddIf( null != (((object)this._refreshInterval)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._refreshInterval.ToString()) : null, "refreshInterval" ,container.Add );
+            AddIf( null != (((object)this._dataUnit)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonString(this._dataUnit.ToString()) : null, "dataUnit" ,container.Add );
             AddIf( null != this._evaluationRule ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Json.JsonNode) this._evaluationRule.ToJson(null,serializationMode) : null, "evaluationRules" ,container.Add );
             AfterToJson(ref container);
             return container;
