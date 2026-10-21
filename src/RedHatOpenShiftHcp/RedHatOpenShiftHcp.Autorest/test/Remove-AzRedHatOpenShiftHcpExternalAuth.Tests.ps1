@@ -14,16 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedHatOpenShiftHcpEx
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Deletes the throwaway external auth created by New-AzRedHatOpenShiftHcpExternalAuth.Tests.ps1.
+$authName = 'eatest-ps'
+
 Describe 'Remove-AzRedHatOpenShiftHcpExternalAuth' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityHcpOpenShiftCluster' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName `
+            -HcpOpenShiftClusterName $env.ClusterName -Name $authName } | Should -Not -Throw
     }
 }

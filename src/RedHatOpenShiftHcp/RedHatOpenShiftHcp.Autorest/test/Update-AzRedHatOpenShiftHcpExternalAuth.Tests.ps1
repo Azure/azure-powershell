@@ -14,24 +14,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRedHatOpenShiftHcpEx
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Same throwaway external auth created by New-AzRedHatOpenShiftHcpExternalAuth.Tests.ps1.
+$authName = 'eatest-ps'
+
 Describe 'Update-AzRedHatOpenShiftHcpExternalAuth' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityHcpOpenShiftClusterExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Change the username claim mapping (a cheap config PATCH).
+        $ea = Update-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName `
+            -HcpOpenShiftClusterName $env.ClusterName -Name $authName -UsernameClaim 'preferred_username'
+        $ea.Name | Should -Be $authName
+        @('AwaitingSecret', 'Succeeded') | Should -Contain $ea.ProvisioningState
     }
 }

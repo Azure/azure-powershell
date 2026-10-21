@@ -1,0 +1,174 @@
+{
+  "New-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+CreateExpanded (console client is Confidential -\u003e AwaitingSecret)+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps?api-version=2026-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"issuer\": {\n      \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\",\n      \"audiences\": [ \"11111111-1111-1111-1111-111111111111\" ]\n    },\n    \"claim\": {\n      \"mappings\": {\n        \"username\": {\n          \"claim\": \"email\"\n        },\n        \"groups\": {\n          \"claim\": \"groups\"\n        }\n      }\n    },\n    \"clients\": [\n      {\n        \"component\": {\n          \"name\": \"console\",\n          \"authClientNamespace\": \"openshift-console\"\n        },\n        \"clientId\": \"11111111-1111-1111-1111-111111111111\",\n        \"type\": \"Confidential\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "616" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/f66cde15-98ad-47e0-979f-e316839f15d4?api-version=2026-09-01-preview\u0026t=639281983419444002\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=W9L2YRr5EfiamySUcIdh6_y_CwfbOe0mDH0AipLF4O8c1J-gQ-COO6WCdxfM3SFixjy4d-wqLFUxs0dkUwyxYV1Jb0y3QOrKpd404fIPN7cauddukG_0wPcCfLP0q6v9-yuXA38Q4GsRwfrBYwY9C4CXIKnHo4Z9vqDb_g64aKBRrMJfYZJSUBh_OzhfiZQxJ-7A82816nqcGNhdd_K75VDqZMJrqHdOViz7zF0Fm4TRbVuHgkooxKgQ8im_dzSDVj3Myhoi6fcAgnAL-KB3chjQgz4MOdhnLn8xtrPPeD10grIrbsW6979oWcub7113uz0jguDJph2AgaGzygNchw\u0026h=5j3JU5E8t7x3qtBMfOPIZTQcnfxGL86-77N91o_wiCw" ],
+        "x-ms-request-id": [ "dd1234fd-8259-463f-8b8f-998c34dbe059" ],
+        "x-envoy-upstream-service-time": [ "31" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/13833ec3-3180-4950-b5bb-db09320077ec" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-correlation-request-id": [ "49637f75-0510-4d27-a3a9-7ae0bfb622c6" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T165221Z:49637f75-0510-4d27-a3a9-7ae0bfb622c6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D47D0DEAE7FA447E8270432DC69213BE Ref B: YTO221100611036 Ref C: 2026-10-21T16:52:20Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:52:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1565" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps\",\n    \"name\": \"eatest-ps\",\n    \"properties\": {\n        \"claim\": {\n            \"mappings\": {\n                \"groups\": {\n                    \"claim\": \"groups\"\n                },\n                \"username\": {\n                    \"claim\": \"email\",\n                    \"prefixPolicy\": \"None\"\n                }\n            },\n            \"validationRules\": []\n        },\n        \"clients\": [\n            {\n                \"clientId\": \"11111111-1111-1111-1111-111111111111\",\n                \"component\": {\n                    \"authClientNamespace\": \"openshift-console\",\n                    \"name\": \"console\"\n                },\n                \"extraScopes\": [],\n                \"type\": \"Confidential\"\n            }\n        ],\n        \"issuer\": {\n            \"audiences\": [\n                \"11111111-1111-1111-1111-111111111111\"\n            ],\n            \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\"\n        },\n        \"provisioningState\": \"Accepted\"\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-21T16:52:21.8350258Z\",\n        \"createdBy\": \"nikthoma@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-21T16:52:21.8350258Z\",\n        \"lastModifiedBy\": \"nikthoma@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/externalAuths\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+CreateExpanded (console client is Confidential -\u003e AwaitingSecret)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/f66cde15-98ad-47e0-979f-e316839f15d4?api-version=2026-09-01-preview\u0026t=639281983419444002\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=W9L2YRr5EfiamySUcIdh6_y_CwfbOe0mDH0AipLF4O8c1J-gQ-COO6WCdxfM3SFixjy4d-wqLFUxs0dkUwyxYV1Jb0y3QOrKpd404fIPN7cauddukG_0wPcCfLP0q6v9-yuXA38Q4GsRwfrBYwY9C4CXIKnHo4Z9vqDb_g64aKBRrMJfYZJSUBh_OzhfiZQxJ-7A82816nqcGNhdd_K75VDqZMJrqHdOViz7zF0Fm4TRbVuHgkooxKgQ8im_dzSDVj3Myhoi6fcAgnAL-KB3chjQgz4MOdhnLn8xtrPPeD10grIrbsW6979oWcub7113uz0jguDJph2AgaGzygNchw\u0026h=5j3JU5E8t7x3qtBMfOPIZTQcnfxGL86-77N91o_wiCw+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/f66cde15-98ad-47e0-979f-e316839f15d4?api-version=2026-09-01-preview\u0026t=639281983419444002\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=W9L2YRr5EfiamySUcIdh6_y_CwfbOe0mDH0AipLF4O8c1J-gQ-COO6WCdxfM3SFixjy4d-wqLFUxs0dkUwyxYV1Jb0y3QOrKpd404fIPN7cauddukG_0wPcCfLP0q6v9-yuXA38Q4GsRwfrBYwY9C4CXIKnHo4Z9vqDb_g64aKBRrMJfYZJSUBh_OzhfiZQxJ-7A82816nqcGNhdd_K75VDqZMJrqHdOViz7zF0Fm4TRbVuHgkooxKgQ8im_dzSDVj3Myhoi6fcAgnAL-KB3chjQgz4MOdhnLn8xtrPPeD10grIrbsW6979oWcub7113uz0jguDJph2AgaGzygNchw\u0026h=5j3JU5E8t7x3qtBMfOPIZTQcnfxGL86-77N91o_wiCw",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "612b9367-319b-41a3-aa3b-b7afa0b5d36c" ],
+        "CommandName": [ "New-AzRedHatOpenShiftHcpExternalAuth" ],
+        "FullCommandName": [ "New-AzRedHatOpenShiftHcpExternalAuth_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ad6b4957-6732-4796-ac62-3c023506f426" ],
+        "x-envoy-upstream-service-time": [ "28" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/canadaeast/e3d0fc51-77bd-4fa9-b488-e41104360e48" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "05bd4710-ca84-4d10-bcd4-0f7edc9a82c3" ],
+        "x-ms-routing-request-id": [ "CANADAEAST:20261021T165252Z:05bd4710-ca84-4d10-bcd4-0f7edc9a82c3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5D73BB51039D4B41917DCAB98B7E75FB Ref B: YTO221100611036 Ref C: 2026-10-21T16:52:52Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:52:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "361" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/f66cde15-98ad-47e0-979f-e316839f15d4\",\n    \"name\": \"f66cde15-98ad-47e0-979f-e316839f15d4\",\n    \"status\": \"Succeeded\",\n    \"startTime\": \"2026-10-21T16:52:21.907450038Z\",\n    \"endTime\": \"2026-10-21T16:52:27.645737676Z\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+CreateExpanded (console client is Confidential -\u003e AwaitingSecret)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps?api-version=2026-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps?api-version=2026-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "612b9367-319b-41a3-aa3b-b7afa0b5d36c" ],
+        "CommandName": [ "New-AzRedHatOpenShiftHcpExternalAuth" ],
+        "FullCommandName": [ "New-AzRedHatOpenShiftHcpExternalAuth_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e1e296e3-5573-4153-b96a-6c12356c879b" ],
+        "x-envoy-upstream-service-time": [ "9" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/7135c75e-e803-4d01-a588-f2498a4bb65d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "56c75fb0-8ca6-41e0-b7f7-ec4642a80a54" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T165253Z:56c75fb0-8ca6-41e0-b7f7-ec4642a80a54" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 10F2084D805044B7BC76734CABE8DEA0 Ref B: YTO221100611036 Ref C: 2026-10-21T16:52:52Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:52:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2041" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps\",\n    \"name\": \"eatest-ps\",\n    \"properties\": {\n        \"claim\": {\n            \"mappings\": {\n                \"groups\": {\n                    \"claim\": \"groups\"\n                },\n                \"username\": {\n                    \"claim\": \"email\",\n                    \"prefixPolicy\": \"None\"\n                }\n            },\n            \"validationRules\": []\n        },\n        \"clients\": [\n            {\n                \"clientId\": \"11111111-1111-1111-1111-111111111111\",\n                \"component\": {\n                    \"authClientNamespace\": \"openshift-console\",\n                    \"name\": \"console\"\n                },\n                \"extraScopes\": [],\n                \"type\": \"Confidential\"\n            }\n        ],\n        \"issuer\": {\n            \"audiences\": [\n                \"11111111-1111-1111-1111-111111111111\"\n            ],\n            \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\"\n        },\n        \"provisioningState\": \"Succeeded\",\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-21T16:52:26Z\",\n                    \"message\": \"OIDCClientsDegraded: console/openshift-console: Waiting for the client secret to be created in the openshift-config namespace by user.\",\n                    \"reason\": \"ExternalAuthDegraded\",\n                    \"status\": \"True\",\n                    \"type\": \"Degraded\"\n                }\n            ]\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-21T16:52:21.8350258Z\",\n        \"createdBy\": \"nikthoma@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-21T16:52:21.8350258Z\",\n        \"lastModifiedBy\": \"nikthoma@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/externalAuths\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+rejects a second external auth (only one per cluster)+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps2?api-version=2026-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nikthoma-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nikthoma-hcp-01/externalAuths/eatest-ps2?api-version=2026-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"issuer\": {\n      \"url\": \"https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0\",\n      \"audiences\": [ \"11111111-1111-1111-1111-111111111111\" ]\n    },\n    \"claim\": {\n      \"mappings\": {\n        \"username\": {\n          \"claim\": \"email\"\n        }\n      }\n    },\n    \"clients\": [\n      {\n        \"component\": {\n          \"name\": \"console\",\n          \"authClientNamespace\": \"openshift-console\"\n        },\n        \"clientId\": \"11111111-1111-1111-1111-111111111111\",\n        \"type\": \"Confidential\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "557" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-error-code": [ "InvalidRequestContent" ],
+        "x-ms-request-id": [ "3bafb2b3-3610-4a3e-8145-099ce7d3073e" ],
+        "x-envoy-upstream-service-time": [ "38" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/3bb37392-ad94-405e-9fb6-57d4eb7b1e7d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-correlation-request-id": [ "2a1e5364-42cf-4ace-84cc-a59686f9f244" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T165254Z:2a1e5364-42cf-4ace-84cc-a59686f9f244" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3511AA5E7AEF42C5ADF23F05DB2C5B24 Ref B: YTO221100611036 Ref C: 2026-10-21T16:52:53Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:52:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "217" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"error\": {\n        \"code\": \"InvalidRequestContent\",\n        \"message\": \"Forbidden: There are other external auths on the cluster. Only one external auth is allowed per cluster.\",\n        \"target\": \"name\"\n    }\n}",
+      "isContentBase64": false
+    }
+  }
+}
