@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Revoke-AzRedHatOpenShiftHcpCl
 }
 
 Describe 'Revoke-AzRedHatOpenShiftHcpClusterCredentials' {
-    It 'Revoke' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RevokeViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Revoke' {
+        # The revoke LRO completes with HTTP 204 (No Content). Without the C6 directive the generated cmdlet
+        # throws "unrecognized response, Status: NoContent"; with it, the 204 is dispatched to onNoContent and
+        # the call returns cleanly.
+        { Revoke-AzRedHatOpenShiftHcpClusterCredentials -ResourceGroupName $env.ResourceGroupName `
+            -HcpOpenShiftClusterName $env.ClusterName } | Should -Not -Throw
     }
 }

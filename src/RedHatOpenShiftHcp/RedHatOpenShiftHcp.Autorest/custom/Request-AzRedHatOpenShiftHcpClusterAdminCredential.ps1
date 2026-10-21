@@ -38,6 +38,7 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
 
         [Parameter(ParameterSetName = 'RequestExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription. Defaults to the current Az context subscription.
         ${SubscriptionId},

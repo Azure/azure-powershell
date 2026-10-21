@@ -15,27 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Request-AzRedHatOpenShiftHcpC
 }
 
 Describe 'Request-AzRedHatOpenShiftHcpClusterAdminCredential' {
-    It 'RequestExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    # Custom cmdlet (C1): generates an RSA key + CSR locally, calls the hidden generated cmdlet with the CSR,
+    # decodes the returned SecureString kubeconfig, splices in the private key, and writes it to -OutFile with
+    # 0600 perms. Each run makes a fresh keypair, but the CSR is in the request BODY (not the match key), so
+    # playback replays the recorded kubeconfig response regardless.
+    It 'RequestExpanded' {
+        $out = Join-Path ([System.IO.Path]::GetTempPath()) ("hcp-admin-$PID.config")
+        if (Test-Path $out) { Remove-Item $out -Force }
+        try {
+            $cred = Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName $env.ResourceGroupName `
+                -HcpOpenShiftClusterName $env.ClusterName -OutFile $out -Force -PassThru
 
-    It 'RequestViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+            Test-Path $out | Should -Be $true
+            (Get-Content $out -Raw) | Should -Match 'current-context'
+            $cred | Should -Not -BeNullOrEmpty
 
-    It 'RequestViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Request' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RequestViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RequestViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # Secret hygiene: the kubeconfig must be written owner-only (0600) on non-Windows.
+            if (-not $IsWindows) {
+                ([int][System.IO.File]::GetUnixFileMode($out)) | Should -Be 384   # 0o600 = UserRead,UserWrite
+            }
+        }
+        finally {
+            if (Test-Path $out) { Remove-Item $out -Force }
+        }
     }
 }
