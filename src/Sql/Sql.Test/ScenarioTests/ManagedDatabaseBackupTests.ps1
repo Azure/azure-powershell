@@ -186,7 +186,7 @@ function Test-ManagedDatabaseShortTermRetentionLockImmutability
 	# Verify LockImmutability is rejected for the restorable dropped database with locked immutability.
 	Assert-ThrowsContains `
 		-script { $deletedDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays $updatedRetention -LockImmutability $true -Force } `
-		-message "LockImmutability is not supported for restorable dropped managed databases."
+		-compare "LockImmutability is not supported for restorable dropped managed databases."
 }
 
 <#
@@ -229,7 +229,7 @@ function Test-ManagedDeletedDatabaseShortTermRetentionLockImmutability
 	Assert-NotNull $deletedDatabase
 	Assert-ThrowsContains `
 		-script { $deletedDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays $defaultRetention -LockImmutability $true -Force } `
-		-message "LockImmutability is not supported for restorable dropped managed databases."
+		-compare "LockImmutability is not supported for restorable dropped managed databases."
 
 	# Verify updating the restorable dropped database policy returns the database name and deletion date of the dropped database.
 	$updatedRetention = $defaultRetention - 1
