@@ -14,12 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedHatOpenShiftHcpCl
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzRedHatOpenShiftHcpCluster' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+# Deletes the throwaway cluster created by New-AzRedHatOpenShiftHcpCluster.Tests.ps1.
+# MUST be byte-identical to the name the New-/Update- cluster tests use, since the
+# recording match key includes the cluster name in the DELETE URI path. This is a
+# dedicated hardcoded literal (NOT $env.ClusterName, which is the persistent live
+# cluster nikthoma-hcp-01 and must never be the delete target).
+$clusterName = 'cltest-ps'
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Remove-AzRedHatOpenShiftHcpCluster' {
+    It 'Delete' {
+        { Remove-AzRedHatOpenShiftHcpCluster -ResourceGroupName $env.ResourceGroupName `
+            -Name $clusterName } | Should -Not -Throw
     }
 }
