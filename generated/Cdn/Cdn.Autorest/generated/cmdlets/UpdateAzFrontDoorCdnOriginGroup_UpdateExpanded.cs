@@ -123,8 +123,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"Health probe settings to the origin that is used to determine the health of the origin.",
         SerializedName = @"healthProbeSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get => _originGroupUpdatePropertiesBody.HealthProbeSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.HealthProbeSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters HealthProbeSetting { get => _originGroupUpdatePropertiesBody.HealthProbeSetting ?? null /* object */; set => _originGroupUpdatePropertiesBody.HealthProbeSetting = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]

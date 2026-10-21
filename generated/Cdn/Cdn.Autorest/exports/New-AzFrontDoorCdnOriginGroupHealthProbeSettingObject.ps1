@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Create an in-memory object for HealthProbeParameters.
+Create an in-memory object for AfdHealthProbeParameters.
 .Description
-Create an in-memory object for HealthProbeParameters.
+Create an in-memory object for AfdHealthProbeParameters.
 .Example
 New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnorigingrouphealthprobesettingobject
 #>
 function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

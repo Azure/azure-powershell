@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupPropertiesInternal)Property).HealthProbeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupPropertiesInternal)Property).HealthProbeSetting = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters HealthProbeSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupPropertiesInternal)Property).HealthProbeSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupPropertiesInternal)Property).HealthProbeSetting = value ?? null /* model class */; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -276,8 +276,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Update = true,
         Description = @"Health probe settings to the origin that is used to determine the health of the origin.",
         SerializedName = @"healthProbeSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters HealthProbeSetting { get; set; }
         /// <summary>Load balancing settings for a backend pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters HealthProbeSetting { get; set; }
         /// <summary>Load balancing settings for a backend pool</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParameters LoadBalancingSetting { get; set; }
         /// <summary>The name of the profile which holds the origin group.</summary>

@@ -31,8 +31,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-# Keep standalone EdgeAction resources available in the independent preview module.
+# Upgrade AFD only; retain the pinned classic CDN contract and standalone EdgeAction resources.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-09-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
@@ -59,6 +60,109 @@ disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:
+  # Keep classic operations on their existing API without downgrading shared AFD profile operations.
+  - from: swagger-document
+    where: $
+    transform: >-
+      if (!$.info || !["2026-04-01-preview", "2026-09-01-preview"].includes($.info.version)) { return $; }
+      const classic = new Set(["Endpoints", "CustomDomains", "Origins", "OriginGroups",
+        "Policies", "ManagedRuleSets", "EdgeNodes", "CheckNameAvailability",
+        "CheckNameAvailabilityWithSubscription", "ResourceUsage", "ValidateProbe"]);
+      const classicProfile = new Set(["Profiles_ListResourceUsage", "Profiles_GenerateSsoUri",
+        "Profiles_ListSupportedOptimizationTypes"]);
+      const sharedProfile = new Set(["Profiles_List", "Profiles_ListByResourceGroup",
+        "Profiles_Get", "Profiles_Create", "Profiles_Update", "Profiles_Delete"]);
+      const legacy = $.info.version === "2026-04-01-preview";
+      for (const [path, item] of Object.entries($.paths)) {
+        for (const [method, operation] of Object.entries(item)) {
+          if (!operation.operationId) { continue; }
+          const id = operation.operationId;
+          const isClassic = classic.has(id.split("_")[0]) || classicProfile.has(id);
+          if (legacy ? !isClassic && !sharedProfile.has(id) : isClassic) {
+            delete item[method];
+          } else if (legacy && sharedProfile.has(id)) {
+            operation.operationId = id.replace(/^Profiles_/, "ClassicProfiles_");
+            for (const status of ["201", "202"]) {
+              const headers = (operation.responses[status] || {}).headers || {};
+              for (const name of ["Location", "Retry-After", "Azure-AsyncOperation"]) { delete headers[name]; }
+            }
+            if (method === "delete") {
+              operation["x-ms-long-running-operation-options"] = { "final-state-via": "azure-async-operation" };
+            } else if ((operation["x-ms-long-running-operation-options"] || {})["final-state-via"] === "location") {
+              operation["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+            }
+          }
+        }
+        if (!Object.values(item).some(operation => operation.operationId)) {
+          delete $.paths[path];
+        } else if (legacy && Object.values(item).some(operation =>
+            operation.operationId && operation.operationId.startsWith("ClassicProfiles_"))) {
+          $["x-ms-paths"] = $["x-ms-paths"] || {};
+          $["x-ms-paths"][path + "?api-version=2026-04-01-preview"] = item;
+          delete $.paths[path];
+        }
+      }
+      return $;
+  # Separate AFD probe capabilities so the classic model cannot acquire gRPC completion.
+  - from: swagger-document
+    where: $
+    transform: >-
+      if (!$.info || $.info.version !== "2026-09-01-preview") { return $; }
+      $.definitions.AFDHealthProbeParameters = $.definitions.HealthProbeParameters;
+      delete $.definitions.HealthProbeParameters;
+      $.definitions.AFDProbeProtocol = JSON.parse(JSON.stringify($.definitions.ProbeProtocol));
+      $.definitions.AFDProbeProtocol["x-ms-enum"].name = "AFDProbeProtocol";
+      $.definitions.AFDHealthProbeParameters.properties.probeProtocol["$ref"] = "#/definitions/AFDProbeProtocol";
+      $.definitions.ProbeProtocol.enum = $.definitions.ProbeProtocol.enum.filter(value => value !== "Grpc");
+      const updateReferences = value => {
+        if (!value || typeof value !== "object") { return; }
+        if (value["$ref"] === "#/definitions/HealthProbeParameters") {
+          value["$ref"] = "#/definitions/AFDHealthProbeParameters";
+        }
+        Object.values(value).forEach(updateReferences);
+      };
+      updateReferences($);
+      return $;
+  # Exclude unused schemas from each API version to avoid duplicate models changing public types.
+  - from: swagger-document
+    where: $
+    transform: >-
+      if (!$.info || !["2026-04-01-preview", "2026-09-01-preview"].includes($.info.version)) { return $; }
+      const definitions = $.definitions;
+      const used = new Set();
+      const visit = value => {
+        if (!value || typeof value !== "object") { return; }
+        const ref = value["$ref"];
+        if (ref && ref.startsWith("#/definitions/")) {
+          const name = ref.slice("#/definitions/".length);
+          if (!used.has(name) && definitions[name]) {
+            used.add(name);
+            visit(definitions[name]);
+            if (definitions[name].discriminator) {
+              for (const [child, schema] of Object.entries(definitions)) {
+                if ((schema.allOf || []).some(parent => parent["$ref"] === ref)) {
+                  visit({ "$ref": "#/definitions/" + child });
+                }
+              }
+            }
+          }
+        }
+        Object.values(value).forEach(visit);
+      };
+      visit([$.paths, $["x-ms-paths"], $.parameters, $.responses]);
+      for (const name of Object.keys(definitions)) {
+        if (!used.has(name)) { delete definitions[name]; }
+      }
+      return $;
+  # The legacy profile operations are implementation details of the existing classic wrappers.
+  - where:
+      subject: ClassicProfile
+    hide: true
+  - where:
+      subject: ClassicProfile
+      parameter-name: ProfileName
+    set:
+      parameter-name: Name
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
@@ -75,6 +179,7 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
+    - AFDHealthProbeParameters
   # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
@@ -188,7 +293,7 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnAuthPolicyAssociationObject
 
     # OriginGroup Parameters
-    - model-name: HealthProbeParameters
+    - model-name: AfdHealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
     - model-name: LoadBalancingSettingsParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject

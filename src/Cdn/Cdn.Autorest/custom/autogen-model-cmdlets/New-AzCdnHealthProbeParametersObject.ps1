@@ -38,7 +38,7 @@ function New-AzCdnHealthProbeParametersObject {
         [string]
         $ProbePath,
         [Parameter(HelpMessage="Protocol to use for health probe.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https", "Grpc")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotSet", "Http", "Https")]
         [string]
         $ProbeProtocol,
         [Parameter(HelpMessage="The type of health probe request that is made.")]

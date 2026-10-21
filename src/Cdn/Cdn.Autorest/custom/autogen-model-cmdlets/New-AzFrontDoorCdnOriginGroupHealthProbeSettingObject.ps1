@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Create an in-memory object for HealthProbeParameters.
+Create an in-memory object for AfdHealthProbeParameters.
 .Description
-Create an in-memory object for HealthProbeParameters.
+Create an in-memory object for AfdHealthProbeParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnorigingrouphealthprobesettingobject
 #>
 function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +48,7 @@ function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('ProbeIntervalInSecond')) {
             $Object.ProbeIntervalInSecond = $ProbeIntervalInSecond

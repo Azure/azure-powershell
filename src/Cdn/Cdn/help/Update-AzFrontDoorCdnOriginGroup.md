@@ -16,7 +16,7 @@ Update an existing origin group within a profile.
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationType <String>] [-HealthProbeSetting <IAfdHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -41,7 +41,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
  [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationType <String>] [-HealthProbeSetting <IAfdHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -59,7 +59,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <
 ```
 Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-AuthenticationScope <String>]
  [-AuthenticationTokenDestinationHeader <String>] [-AuthenticationType <String>]
- [-HealthProbeSetting <IHealthProbeParameters>] [-LoadBalancingSetting <ILoadBalancingSettingsParameters>]
+ [-HealthProbeSetting <IAfdHealthProbeParameters>] [-LoadBalancingSetting <ILoadBalancingSettingsParameters>]
  [-SessionAffinityState <String>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
  [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 Health probe settings to the origin that is used to determine the health of the origin.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters
 Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 

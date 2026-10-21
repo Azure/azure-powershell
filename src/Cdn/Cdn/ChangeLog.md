@@ -20,7 +20,8 @@
 
 ## Upcoming Release
 
-* Upgraded the CDN and Azure Front Door preview API version to 2026-09-01-preview.
+* Upgraded the Azure Front Door preview API version to 2026-09-01-preview.
+    - Retained the 2026-04-01-preview API and existing functionality for Azure CDN (classic).
     - Added Azure Front Door authorization policy cmdlets and object helpers for Microsoft Entra ID configurations and profile, domain, or route associations.
     - Added ClientResponse invocation point support for EdgeAction delivery-rule actions.
     - Added server TLS group configuration, including post-quantum key exchange groups, and origin certificate subject name validation settings.

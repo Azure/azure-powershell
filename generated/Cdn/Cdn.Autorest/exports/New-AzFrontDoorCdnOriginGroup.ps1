@@ -35,7 +35,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING <IAfdHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
   [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
   [ProbeProtocol <String>]: Protocol to use for health probe.
@@ -53,7 +53,7 @@ ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for
   [AuthenticationScope <String>]: The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
   [AuthenticationTokenDestinationHeader <String>]: The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.
   [AuthenticationType <String>]: The type of the authentication for the origin.
-  [HealthProbeSetting <IHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
+  [HealthProbeSetting <IAfdHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
     [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
     [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
     [ProbeProtocol <String>]: Protocol to use for health probe.
@@ -77,7 +77,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -163,7 +163,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters]
     # Health probe settings to the origin that is used to determine the health of the origin.
     ${HealthProbeSetting},
 

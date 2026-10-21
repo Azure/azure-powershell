@@ -16,7 +16,7 @@ Create a new origin group within the specified profile.
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationType <String>] [-HealthProbeSetting <IAfdHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -41,7 +41,7 @@ New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -R
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
  [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationType <String>] [-HealthProbeSetting <IAfdHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Health probe settings to the origin that is used to determine the health of the origin.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdHealthProbeParameters
 Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 

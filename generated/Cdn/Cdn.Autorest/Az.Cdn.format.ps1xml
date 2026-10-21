@@ -736,6 +736,46 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdHealthProbeParameters#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProbeIntervalInSecond</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProbePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProbeProtocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProbeRequestType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProbeIntervalInSecond</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProbePath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProbeProtocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProbeRequestType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupListResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupListResult#Multiple</TypeName>

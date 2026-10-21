@@ -23,7 +23,7 @@ Create an in-memory object for AuthPolicyAssociation.
 New-AzFrontDoorCdnAuthPolicyAssociationObject -IsProfileLevel $true
 .Example
 $route = @{ Id = "/subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/myResourceGroup/providers/Microsoft.Cdn/profiles/myProfile/afdEndpoints/myEndpoint/routes/myRoute" }
-New-AzFrontDoorCdnAuthPolicyAssociationObject -IsProfileLevel:$false -Route $route
+New-AzFrontDoorCdnAuthPolicyAssociationObject -IsProfileLevel $false -Route $route
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AuthPolicyAssociation
