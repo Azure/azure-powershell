@@ -368,7 +368,7 @@ function Test-GallerySoftDeletePolicy
 {
     $rgname = Get-ComputeTestResourceName;
     $galleryName = 'gallery' + $rgname;
-    $galleryImageName = 'galleryimage' + $rgname;
+    $galleryImageName = 'galleryimage-' + $rgname;
     $galleryImageVersionName = '1.0.0';
     $snapshotName = 'ossnapshot' + $rgname;
     $loc = (Get-ComputeVMLocation).Replace(' ', '');
