@@ -112,6 +112,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -124,17 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).OperationKind = (string) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).OperationKind, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -161,6 +161,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -173,17 +181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).OperationKind = (string) content.GetValueForProperty("OperationKind",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).OperationKind, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentityInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

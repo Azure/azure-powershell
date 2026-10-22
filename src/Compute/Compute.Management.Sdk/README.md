@@ -24,7 +24,7 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 # Azure REST API Specs commit
-commit: bd1b35193e7f2581b3dce1790403da5795930ce4
+commit: d1995517ad29ee6fe4c6d4ca3953c304d5d5b488
 
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/common-types/resource-management/v3/types.json

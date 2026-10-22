@@ -16,9 +16,11 @@
 
 <#
 .Synopsis
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 .Description
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 .Example
 Remove-AzStorageMoverConnection -ResourceGroupName "examples-rg" -StorageMoverName "examples-storageMoverName" -Name "example-connection"
 

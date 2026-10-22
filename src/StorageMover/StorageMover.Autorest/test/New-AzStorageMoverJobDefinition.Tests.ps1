@@ -93,4 +93,39 @@ Describe 'New-AzStorageMoverJobDefinition' {
         # Clean up - removing the storage mover cascades all child resources
         Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $stoMoverName -Force
     }
+
+    # Needs a cross-tenant endpoint in a partner tenant; setupEnv reads its details from the SM_XT_PARTNER_* environment variables.
+    It 'CreateCrossTenant' -Skip:(-not $env.PartnerEndpointId) {
+        $projectName = "xtproject"
+        $sourceEndpointName = "blobsource"
+        $jobName = "xtjob"
+        New-AzStorageMoverProject -Name $projectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.CrossTenantStoMoverName | Out-Null
+        New-AzStorageMoverAzStorageContainerEndpoint -Name $sourceEndpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.CrossTenantStoMoverName -StorageAccountResourceId $env.CrossTenantStorageAccountId -BlobContainerName $env.CrossTenantContainerName -EndpointKind Source -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId | Out-Null
+
+        $job = New-AzStorageMoverJobDefinition -Name $jobName -ProjectName $projectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.CrossTenantStoMoverName -JobType CloudToCloud -CopyMode Additive -SourceName $sourceEndpointName -TargetName $env.PartnerEndpointName -IsCrossTenantJob -CrossTenantEndpointTenantId $env.PartnerTenantId -CrossTenantEndpointResourceId $env.PartnerEndpointId
+        $job.IsCrossTenantJob | Should -Be $true
+        $job.CrossTenantEndpointTenantId | Should -Be $env.PartnerTenantId
+        $job.CrossTenantEndpointResourceId | Should -Be $env.PartnerEndpointId
+
+        $job = Get-AzStorageMoverJobDefinition -Name $jobName -ProjectName $projectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.CrossTenantStoMoverName
+        $job.IsCrossTenantJob | Should -Be $true
+        $job.TargetName | Should -Be $env.PartnerEndpointName
+        $job.TargetResourceId | Should -Be $env.PartnerEndpointId
+    }
+
+    It 'CreateExpandedSyncAndHourlyRequest' {
+        # Hourly schedules and synchronization settings are not recorded live yet, so this checks the request model offline.
+        $jobDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobDefinition]::New()
+        $jobDefinition.JobType = "OnPremToCloudAgentLess"
+        $jobDefinition.ScheduleFrequency = "Hourly"
+        $jobDefinition.ScheduleRepeatInterval = "PT1H"
+        $jobDefinition.SyncMode = "SnapshotBased"
+        $jobDefinition.MoverSyncedUntil = [datetime]::new(2026, 5, 1, 0, 0, 0, [System.DateTimeKind]::Utc)
+        $request = ($jobDefinition.ToJsonString() | ConvertFrom-Json).properties
+        $request.jobType | Should -Be "OnPremToCloudAgentLess"
+        $request.schedule.frequency | Should -Be "Hourly"
+        $request.schedule.repeatInterval | Should -Be "PT1H"
+        $request.syncMode | Should -Be "SnapshotBased"
+        $request.moverSyncedUntil | Should -Not -BeNullOrEmpty
+    }
 }

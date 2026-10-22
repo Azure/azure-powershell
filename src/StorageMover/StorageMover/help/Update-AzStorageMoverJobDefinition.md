@@ -17,11 +17,12 @@ Properties not specified in the request body will be unchanged.
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-Connection <String[]>]
- [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>]
- [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>]
+ [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-MoverSyncedUntil <DateTime>] [-ScheduleCronExpression <String>]
  [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
- [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleStartDate <DateTime>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleRepeatInterval <String>]
+ [-ScheduleStartDate <DateTime>] [-SyncMode <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -42,32 +43,34 @@ Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -Resourc
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
  -StorageMoverInputObject <IStorageMoverIdentity> [-AgentName <String>] [-Connection <String[]>]
- [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>]
- [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>]
+ [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-MoverSyncedUntil <DateTime>] [-ScheduleCronExpression <String>]
  [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
- [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleStartDate <DateTime>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleRepeatInterval <String>]
+ [-ScheduleStartDate <DateTime>] [-SyncMode <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProjectExpanded
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity>
- [-AgentName <String>] [-Connection <String[]>] [-CopyMode <String>]
- [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
- [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>]
- [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
- [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleStartDate <DateTime>]
+ [-AgentName <String>] [-Connection <String[]>] [-CopyMode <String>] [-DataIntegrityValidation <String>]
+ [-Description <String>] [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>]
+ [-MoverSyncedUntil <DateTime>] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
+ [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
+ [-ScheduleIsActive] [-ScheduleRepeatInterval <String>] [-ScheduleStartDate <DateTime>] [-SyncMode <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentName <String>]
- [-Connection <String[]>] [-CopyMode <String>] [-DataIntegrityValidation <String>]
- [-Description <String>] [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>]
+ [-Connection <String[]>] [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>]
+ [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-MoverSyncedUntil <DateTime>]
  [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>]
  [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>] [-ScheduleIsActive]
- [-ScheduleStartDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ScheduleRepeatInterval <String>] [-ScheduleStartDate <DateTime>] [-SyncMode <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataIntegrityValidation
-The checksum validation mode for the job definition.
+Data Integrity Validation mode.
 
 ```yaml
 Type: System.String
@@ -275,6 +278,21 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoverSyncedUntil
+The last time the mover was synchronized.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -403,7 +421,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleFrequency
-Type of schedule — Monthly, Weekly, or Daily
+Type of schedule - Monthly, Weekly, or Daily
 
 ```yaml
 Type: System.String
@@ -422,6 +440,21 @@ Whether the schedule is currently active
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleRepeatInterval
+Repeat interval used for sub-daily schedules.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -488,6 +521,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SyncMode
+The synchronization mode for the Job Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

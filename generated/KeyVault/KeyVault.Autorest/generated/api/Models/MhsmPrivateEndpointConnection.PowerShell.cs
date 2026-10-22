@@ -113,97 +113,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Etag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Etag, global::System.Convert.ToString);
             }
-            if (content.Contains("RetryAfter"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureAsyncOperation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedByType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSkuTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Identity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpoint"))
             {
@@ -220,6 +196,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             if (content.Contains("PrivateLinkServiceConnectionStateActionsRequired"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).PrivateLinkServiceConnectionStateActionsRequired = (string) content.GetValueForProperty("PrivateLinkServiceConnectionStateActionsRequired",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).PrivateLinkServiceConnectionStateActionsRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("PrivateEndpointId"))
             {
@@ -254,97 +254,73 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Etag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Etag, global::System.Convert.ToString);
             }
-            if (content.Contains("RetryAfter"))
+            if (content.Contains("Location"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionTagsTypeConverter.ConvertFrom);
             }
             if (content.Contains("AzureAsyncOperation"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("SkuFamily"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuFamily, global::System.Convert.ToString);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SkuName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedByType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataLastModifiedAt"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
-            if (content.Contains("IdentityPrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityTenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityType, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentityUserAssignedIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmSkuTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Identity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResourceTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpoint"))
             {
@@ -361,6 +337,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             if (content.Contains("PrivateLinkServiceConnectionStateActionsRequired"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).PrivateLinkServiceConnectionStateActionsRequired = (string) content.GetValueForProperty("PrivateLinkServiceConnectionStateActionsRequired",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).PrivateLinkServiceConnectionStateActionsRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityType = (string) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityType, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityUserAssignedIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateEndpointConnectionInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("PrivateEndpointId"))
             {
