@@ -28,12 +28,12 @@ For information on how to develop for `Az.RedHatOpenShiftHcp`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ```yaml
-# Track the PREVIEW API (merged + deployed to dev) so cmdlets send api-version=2026-09-01-preview.
-commit: d218330c5a3b727df9504ba852e97259479e8fef
+# Track the STABLE GA API 2026-10-01 (introduced by azure-rest-api-specs PR #47069) so cmdlets send api-version=2026-10-01.
+commit: 322d99debcab19ffe9f41bfbd44631b9ba0de3b3
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/hcpopenshiftclusters/preview/2026-09-01-preview/openapi.json
+  - $(repo)/specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/hcpopenshiftclusters/stable/2026-10-01/openapi.json
 # For a new RP, the version is 0.1.0
 module-version: 0.1.0
 title: RedHatOpenShiftHcp
@@ -117,7 +117,7 @@ directive:
     hide: true
 
   # --- C6 customization: the RP returns 204 (No Content) as the terminal response of the revokeCredentials
-  #     long-running POST, but the 2026-09-01-preview spec declares only 202 + default -- so the generated
+  #     long-running POST, but the 2026-10-01 spec declares only 202 + default -- so the generated
   #     cmdlet dispatches the successful 204 to onDefault and throws "The server responded with an
   #     unrecognized response, Status: NoContent". Inject a 204 response (the DELETE operations correctly
   #     declare 202 + 204 + default and work) so AutoRest emits an onNoContent success handler. This directive

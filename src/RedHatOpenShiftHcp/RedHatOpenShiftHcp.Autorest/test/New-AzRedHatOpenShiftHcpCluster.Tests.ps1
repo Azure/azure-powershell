@@ -35,23 +35,23 @@ Describe 'New-AzRedHatOpenShiftHcpCluster' {
         # 9 control-plane operator identities. The C2 wrapper unions these values with the service MI to
         # auto-derive the flat identity.userAssignedIdentities list -- the caller never supplies it.
         $cpOperators = @{
-            'cluster-api-azure'        = "$miBase/nikthoma-hcp-01-cp-cluster-api-azure-wl4wdquqroamw"
-            'control-plane'            = "$miBase/nikthoma-hcp-01-cp-control-plane-wl4wdquqroamw"
-            'cloud-controller-manager' = "$miBase/nikthoma-hcp-01-cp-cloud-controller-manager-wl4wdquqroamw"
-            'ingress'                  = "$miBase/nikthoma-hcp-01-cp-ingress-wl4wdquqroamw"
-            'disk-csi-driver'          = "$miBase/nikthoma-hcp-01-cp-disk-csi-driver-wl4wdquqroamw"
-            'file-csi-driver'          = "$miBase/nikthoma-hcp-01-cp-file-csi-driver-wl4wdquqroamw"
-            'image-registry'           = "$miBase/nikthoma-hcp-01-cp-image-registry-wl4wdquqroamw"
-            'cloud-network-config'     = "$miBase/nikthoma-hcp-01-cp-cloud-network-config-wl4wdquqroamw"
-            'kms'                      = "$miBase/nikthoma-hcp-01-cp-kms-wl4wdquqroamw"
+            'cluster-api-azure'        = "$miBase/aro-hcp-01-cp-cluster-api-azure-wl4wdquqroamw"
+            'control-plane'            = "$miBase/aro-hcp-01-cp-control-plane-wl4wdquqroamw"
+            'cloud-controller-manager' = "$miBase/aro-hcp-01-cp-cloud-controller-manager-wl4wdquqroamw"
+            'ingress'                  = "$miBase/aro-hcp-01-cp-ingress-wl4wdquqroamw"
+            'disk-csi-driver'          = "$miBase/aro-hcp-01-cp-disk-csi-driver-wl4wdquqroamw"
+            'file-csi-driver'          = "$miBase/aro-hcp-01-cp-file-csi-driver-wl4wdquqroamw"
+            'image-registry'           = "$miBase/aro-hcp-01-cp-image-registry-wl4wdquqroamw"
+            'cloud-network-config'     = "$miBase/aro-hcp-01-cp-cloud-network-config-wl4wdquqroamw"
+            'kms'                      = "$miBase/aro-hcp-01-cp-kms-wl4wdquqroamw"
         }
         # 3 data-plane operator identities (NOT folded into the flat identity list by the wrapper).
         $dpOperators = @{
-            'disk-csi-driver' = "$miBase/nikthoma-hcp-01-dp-disk-csi-driver-wl4wdquqroamw"
-            'file-csi-driver' = "$miBase/nikthoma-hcp-01-dp-file-csi-driver-wl4wdquqroamw"
-            'image-registry'  = "$miBase/nikthoma-hcp-01-dp-image-registry-wl4wdquqroamw"
+            'disk-csi-driver' = "$miBase/aro-hcp-01-dp-disk-csi-driver-wl4wdquqroamw"
+            'file-csi-driver' = "$miBase/aro-hcp-01-dp-file-csi-driver-wl4wdquqroamw"
+            'image-registry'  = "$miBase/aro-hcp-01-dp-image-registry-wl4wdquqroamw"
         }
-        $smi = "$miBase/nikthoma-hcp-01-service-managed-identity-wl4wdquqroamw"
+        $smi = "$miBase/aro-hcp-01-service-managed-identity-wl4wdquqroamw"
 
         # KMS key version: live lookup at record time, masked env.json value on playback (body-only, so az
         # need not run during playback).

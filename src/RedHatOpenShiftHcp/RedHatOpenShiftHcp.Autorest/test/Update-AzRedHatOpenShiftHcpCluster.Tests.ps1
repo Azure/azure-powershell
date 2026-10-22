@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRedHatOpenShiftHcpCl
 
 # Updates the throwaway cluster created by New-AzRedHatOpenShiftHcpCluster.Tests.ps1. MUST be byte-identical
 # to the name the New-/Remove- cluster tests use (the recording match key includes the cluster name in the
-# PATCH/GET URIs). Dedicated literal, NOT $env.ClusterName (the persistent live cluster nikthoma-hcp-01).
+# PATCH/GET URIs). Dedicated literal, NOT $env.ClusterName (the persistent live cluster aro-hcp-01).
 $clusterName = 'cltest-ps'
 
 Describe 'Update-AzRedHatOpenShiftHcpCluster' {
@@ -30,22 +30,22 @@ Describe 'Update-AzRedHatOpenShiftHcpCluster' {
         $miBase = "/subscriptions/$sub/resourceGroups/$rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities"
 
         $cpOperators = @{
-            'cluster-api-azure'        = "$miBase/nikthoma-hcp-01-cp-cluster-api-azure-wl4wdquqroamw"
-            'control-plane'            = "$miBase/nikthoma-hcp-01-cp-control-plane-wl4wdquqroamw"
-            'cloud-controller-manager' = "$miBase/nikthoma-hcp-01-cp-cloud-controller-manager-wl4wdquqroamw"
-            'ingress'                  = "$miBase/nikthoma-hcp-01-cp-ingress-wl4wdquqroamw"
-            'disk-csi-driver'          = "$miBase/nikthoma-hcp-01-cp-disk-csi-driver-wl4wdquqroamw"
-            'file-csi-driver'          = "$miBase/nikthoma-hcp-01-cp-file-csi-driver-wl4wdquqroamw"
-            'image-registry'           = "$miBase/nikthoma-hcp-01-cp-image-registry-wl4wdquqroamw"
-            'cloud-network-config'     = "$miBase/nikthoma-hcp-01-cp-cloud-network-config-wl4wdquqroamw"
-            'kms'                      = "$miBase/nikthoma-hcp-01-cp-kms-wl4wdquqroamw"
+            'cluster-api-azure'        = "$miBase/aro-hcp-01-cp-cluster-api-azure-wl4wdquqroamw"
+            'control-plane'            = "$miBase/aro-hcp-01-cp-control-plane-wl4wdquqroamw"
+            'cloud-controller-manager' = "$miBase/aro-hcp-01-cp-cloud-controller-manager-wl4wdquqroamw"
+            'ingress'                  = "$miBase/aro-hcp-01-cp-ingress-wl4wdquqroamw"
+            'disk-csi-driver'          = "$miBase/aro-hcp-01-cp-disk-csi-driver-wl4wdquqroamw"
+            'file-csi-driver'          = "$miBase/aro-hcp-01-cp-file-csi-driver-wl4wdquqroamw"
+            'image-registry'           = "$miBase/aro-hcp-01-cp-image-registry-wl4wdquqroamw"
+            'cloud-network-config'     = "$miBase/aro-hcp-01-cp-cloud-network-config-wl4wdquqroamw"
+            'kms'                      = "$miBase/aro-hcp-01-cp-kms-wl4wdquqroamw"
         }
         $dpOperators = @{
-            'disk-csi-driver' = "$miBase/nikthoma-hcp-01-dp-disk-csi-driver-wl4wdquqroamw"
-            'file-csi-driver' = "$miBase/nikthoma-hcp-01-dp-file-csi-driver-wl4wdquqroamw"
-            'image-registry'  = "$miBase/nikthoma-hcp-01-dp-image-registry-wl4wdquqroamw"
+            'disk-csi-driver' = "$miBase/aro-hcp-01-dp-disk-csi-driver-wl4wdquqroamw"
+            'file-csi-driver' = "$miBase/aro-hcp-01-dp-file-csi-driver-wl4wdquqroamw"
+            'image-registry'  = "$miBase/aro-hcp-01-dp-image-registry-wl4wdquqroamw"
         }
-        $smi = "$miBase/nikthoma-hcp-01-service-managed-identity-wl4wdquqroamw"
+        $smi = "$miBase/aro-hcp-01-service-managed-identity-wl4wdquqroamw"
 
         $c = Update-AzRedHatOpenShiftHcpCluster -ResourceGroupName $rg -Name $clusterName -SubscriptionId $sub `
             -UserAssignedIdentityControlPlaneOperator $cpOperators `

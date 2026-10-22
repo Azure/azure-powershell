@@ -131,7 +131,10 @@ Accept wildcard characters: False
 ```
 
 ### -AutoRepair
-Auto-repair
+autoRepair specifies whether health checks should be enabled for machinesin the NodePool.
+Enabling this feature will cause the controller toautomatically delete unhealthy machines.
+The unhealthy criteria aredetermined by checking the Node Ready condition and a timeout that mightvary depending on the platform provider.
+autoRepair will not take actionwhen more than 2 Nodes are unhealthy at the same time, giving time forthe cluster to stabilize or for the user to manually intervene.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -267,7 +270,7 @@ Accept wildcard characters: False
 ```
 
 ### -Label
-Kubernetes labels to propagate to the NodePool NodesNote that when the labels are updated this is only applied to newlycreate nodes in the Nodepool, existing node labels remain unchanged.
+Kubernetes labels to propagate to the NodePool Nodes.Note that when the labels are updated this is only applied to newlycreated nodes in the NodePool, existing node labels remain unchanged.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.ILabel[]
@@ -436,7 +439,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlatformSubnetId
-The Azure resource ID of the worker subnetNote that a subnet cannot be reused between ARO-HCP Clusters, however thesame subnet can be used for NodePools of the same cluster.
+The Azure resource ID of the worker subnet.Note that a subnet cannot be reused between ARO-HCP Clusters, however thesame subnet can be used for NodePools of the same cluster.
 
 ```yaml
 Type: System.String
@@ -543,7 +546,7 @@ Accept wildcard characters: False
 ```
 
 ### -Taint
-Taints for the nodes
+Taints for the nodes.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.ITaint[]
@@ -574,7 +577,8 @@ Accept wildcard characters: False
 ```
 
 ### -VersionChannelGroup
-ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.
+ChannelGroup is the name of the set to which this version belongs.Each version belongs to only a single set.If not specified, the default value is 'stable'.This property is intended to be updateable, but that support is not yetcomplete.
+Until then, changing this value after node pool creation is rejected.
 
 ```yaml
 Type: System.String

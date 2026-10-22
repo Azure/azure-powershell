@@ -1,8 +1,8 @@
 {
-  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+List (default, CLI parity: enabled-only, sorted)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview+1": {
+  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+List (default, CLI parity: enabled-only, sorted)+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+ControlPlane view returns distinct MAJOR.MINOR+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview+1": {
+  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+ControlPlane view returns distinct MAJOR.MINOR+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -89,10 +89,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+NodePool view returns full X.Y.Z+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview+1": {
+  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+NodePool view returns full X.Y.Z+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -134,10 +134,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+Single -Name lookup is returned as-is+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview+1": {
+  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+Single -Name lookup is returned as-is+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -179,10 +179,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+Single -Name lookup is returned as-is+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions/4.20.0?api-version=2026-09-01-preview+2": {
+  "Get-AzRedHatOpenShiftHcpVersion+[NoContext]+Single -Name lookup is returned as-is+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions/4.20.0?api-version=2026-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions/4.20.0?api-version=2026-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOpenShiftVersions/4.20.0?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -18,7 +18,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedHatOpenShiftHcpCl
 # MUST be byte-identical to the name the New-/Update- cluster tests use, since the
 # recording match key includes the cluster name in the DELETE URI path. This is a
 # dedicated hardcoded literal (NOT $env.ClusterName, which is the persistent live
-# cluster nikthoma-hcp-01 and must never be the delete target).
+# cluster aro-hcp-01 and must never be the delete target).
 $clusterName = 'cltest-ps'
 
 Describe 'Remove-AzRedHatOpenShiftHcpCluster' {
