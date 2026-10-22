@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Change the username claim mapping
 ```powershell
-{{ Add code here }}
+Update-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName myResourceGroup `
+  -HcpOpenShiftClusterName myCluster -Name myExternalAuth `
+  -UsernameClaim 'preferred_username'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            Issuer                                                                   ProvisioningState
+----            ------                                                                   -----------------
+myExternalAuth  https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/… AwaitingSecret
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Patches the existing external auth so the cluster maps the `preferred_username` token claim (instead of `email`) to the Kubernetes username. The Confidential console client keeps the resource in `AwaitingSecret` until its in-cluster secret is supplied.

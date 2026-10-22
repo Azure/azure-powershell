@@ -29,27 +29,14 @@ Delete a HcpOpenShiftCluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an ARO-HCP cluster
 ```powershell
-{{ Add code here }}
+Remove-AzRedHatOpenShiftHcpCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the ARO-HCP cluster by resource group and name.
+This is a long-running operation that blocks until the cluster is deleted; the RP also tears down the managed resource group it created.
+Add `-NoWait` or `-AsJob` to return immediately, and `-PassThru` to return `$true` on success.
 
 ## PARAMETERS
 

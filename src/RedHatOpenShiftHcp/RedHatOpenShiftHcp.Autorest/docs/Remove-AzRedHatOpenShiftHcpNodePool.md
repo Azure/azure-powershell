@@ -37,27 +37,24 @@ Delete a NodePool
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a node pool
 ```powershell
-{{ Add code here }}
+Remove-AzRedHatOpenShiftHcpNodePool -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster `
+  -Name mynodepool
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the node pool `mynodepool` from cluster `myCluster`.
+The call blocks until the node pool is deleted.
+Delete node pools (and external auths) before deleting the cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a node pool and return a success result
 ```powershell
-{{ Add code here }}
+Remove-AzRedHatOpenShiftHcpNodePool -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster `
+  -Name mynodepool -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the node pool `mynodepool` and returns `$true` on success.
+Use `-WhatIf` to preview the operation without deleting.
 
 ## PARAMETERS
 

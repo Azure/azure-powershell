@@ -36,27 +36,41 @@ Az.RedHatOpenShiftHcp.internal\Request-AzRedHatOpenShiftHcpClusterAdminCredentia
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Request an admin kubeconfig and merge it into ~/.kube/config
 ```powershell
-{{ Add code here }}
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile ~/.kube/config
+```
+
+Requests a temporary admin credential and writes a ready-to-use kubeconfig.
+The cmdlet generates an RSA-4096 key and CSR locally, sends only the CSR (the private key never leaves the machine), splices the signed key back into the returned kubeconfig, adds a context named `myCluster-admin`, and merges it into `~/.kube/config` (AKS-style) written with `0600` permissions.
+After this, `kubectl get nodes` works in one shot.
+
+### Example 2: Print the kubeconfig to stdout instead of writing a file
+```powershell
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile -
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    server: https://api.myCluster.abcd1234.westeurope.aroapp.io:443
+  name: myCluster
+contexts:
+- context:
+    cluster: myCluster
+    user: myCluster-admin
+  name: myCluster-admin
+current-context: myCluster-admin
+users:
+- name: myCluster-admin
+  user:
+    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...
+    client-key-data: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0t...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Passing `-OutFile -` prints the prepared kubeconfig (private key already embedded, context `myCluster-admin`) to stdout instead of writing or merging a file, handy for piping into another tool.
 
 ## PARAMETERS
 
@@ -196,7 +210,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -37,27 +37,23 @@ Delete a ExternalAuth
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an external auth
 ```powershell
-{{ Add code here }}
+Remove-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName myResourceGroup `
+  -HcpOpenShiftClusterName myCluster -Name myExternalAuth
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the `ExternalAuth` from the cluster, removing the external OIDC login configuration.
+Delete the external auth (like node pools) before deleting the parent cluster.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete an external auth and confirm success with -PassThru
 ```powershell
-{{ Add code here }}
+Remove-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName myResourceGroup `
+  -HcpOpenShiftClusterName myCluster -Name myExternalAuth -PassThru
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the external auth and returns `$true` when the operation completes.
+Use `-PassThru` when you want a boolean result to branch on in a script.
 
 ## PARAMETERS
 

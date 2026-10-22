@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Revoke all issued admin credentials for a cluster
 ```powershell
-{{ Add code here }}
+Revoke-AzRedHatOpenShiftHcpClusterCredentials -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Revokes every admin credential previously issued for the cluster (break-glass reset). Any kubeconfig obtained via `Request-AzRedHatOpenShiftHcpClusterAdminCredential` is immediately invalidated. The operation returns no output; add `-PassThru` to get `$true` on success.
