@@ -67,7 +67,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         [ValidatePattern("/subscriptions/([A-z0-9\-]+)/resourceGroups/([A-z0-9\-]+)/providers/Microsoft.Storage/storageAccounts/([A-z0-9\-]+)")]
         ${StagingStorageAccountId},
 
-        [Parameter(Mandatory=$false, HelpMessage='List of source volume names (AzureElasticSAN) or database and database/container names (AzureCosmosDB) to be restored. Use this parameter for DatasourceType AzureElasticSAN or AzureCosmosDB. For AzureElasticSAN, the service currently supports exactly one volume per restore request.')]
+        [Parameter(Mandatory=$false, HelpMessage='List of source volume names (AzureElasticSAN) or database and database/container names (AzureCosmosDB) to be restored. Required for DatasourceType AzureElasticSAN and AzureCosmosDB. For AzureElasticSAN, the service currently supports exactly one volume per restore request.')]
         [System.String[]]
         ${ResourceIdentifier},
 

@@ -17,5 +17,5 @@ $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -Datasourc
 ```
 
 This command creates a restore configuration client object for Azure Cosmos DB item level restore.
-ResourceIdentifier lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
-Pass this object to Initialize-AzDataProtectionRestoreRequest using the RestoreConfiguration parameter along with ItemLevelRecovery.
+The -ResourceIdentifier parameter is required for AzureCosmosDB and lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
+Pass this object to Initialize-AzDataProtectionRestoreRequest with -RestoreConfiguration, together with -ItemLevelRecovery.

@@ -47,8 +47,8 @@ $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -Datasourc
 ```
 
 This command creates a restore configuration client object for Azure Cosmos DB item level restore.
-ResourceIdentifier lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
-Pass this object to Initialize-AzDataProtectionRestoreRequest using the RestoreConfiguration parameter along with ItemLevelRecovery.
+The -ResourceIdentifier parameter is required for AzureCosmosDB and lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
+Pass this object to Initialize-AzDataProtectionRestoreRequest with -RestoreConfiguration, together with -ItemLevelRecovery.
 
 ## PARAMETERS
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 
 ### -ResourceIdentifier
 List of source volume names (AzureElasticSAN) or database and database/container names (AzureCosmosDB) to be restored.
-Use this parameter for DatasourceType AzureElasticSAN or AzureCosmosDB.
+Required for DatasourceType AzureElasticSAN and AzureCosmosDB.
 For AzureElasticSAN, the service currently supports exactly one volume per restore request.
 
 ```yaml

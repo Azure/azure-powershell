@@ -174,4 +174,4 @@ $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCos
 The first and second commands fetch the backup instance and recovery points for the protected Azure Cosmos DB account.
 The third command builds the restore configuration selecting containers col1 and col2 in database db1, and the whole database db2.
 The fourth command sets the ARM ID of the target Azure Cosmos DB account.
-The last command initializes the restore request for an alternate location item level restore of the selected databases and containers.
+The last command initializes the restore request with -ItemLevelRecovery and -RestoreConfiguration, which are both required for AzureCosmosDB item level restore, to restore the selected databases and containers to an alternate location.

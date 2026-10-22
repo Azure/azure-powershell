@@ -87,6 +87,29 @@ Describe 'CosmosRestoreConfiguration' {
         $restoreRequest.IdentityDetailUserAssignedIdentityArmUrl | Should Be $userAssignedIdentityArmId
     }
 
+    It 'ItemLevelRestoreRequestSerializesUserAssignedIdentity' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
+        $restoreRequestJson = $restoreRequest.ToJsonString() | ConvertFrom-Json
+
+        $restoreRequestJson.restoreTargetInfo.objectType | Should Be "ItemLevelRestoreTargetInfo"
+        $restoreRequestJson.identityDetails.useSystemAssignedIdentity | Should Be $false
+        $restoreRequestJson.identityDetails.userAssignedIdentityArmUrl | Should Be $userAssignedIdentityArmId
+    }
+
+    It 'NonCosmosRestoreRequestSerializesIdentity' {
+        $diskResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/disks/diskName"
+        $systemAssignedRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $diskResourceId -UseSystemAssignedIdentity $true
+        $userAssignedRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $diskResourceId -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
+        $systemAssignedJson = $systemAssignedRequest.ToJsonString() | ConvertFrom-Json
+        $userAssignedJson = $userAssignedRequest.ToJsonString() | ConvertFrom-Json
+
+        $systemAssignedJson.identityDetails.useSystemAssignedIdentity | Should Be $true
+        $systemAssignedJson.identityDetails.userAssignedIdentityArmUrl | Should BeNullOrEmpty
+        $userAssignedJson.identityDetails.useSystemAssignedIdentity | Should Be $false
+        $userAssignedJson.identityDetails.userAssignedIdentityArmUrl | Should Be $userAssignedIdentityArmId
+    }
+
     It 'RestoreRequestThrowsWhenSystemAssignedIdentityIsNull' {
         $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
 
