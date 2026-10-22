@@ -85,7 +85,8 @@ The system-assigned identity is used by default for plan integrations.
 $script = @{
     Name = "setup"
     Source = @{
-        SourceUri = "https://contosostorage.blob.core.windows.net/scripts/setup.ps1"
+        # The ZIP package must contain Install.ps1 at its root.
+        SourceUri = "https://contosostorage.blob.core.windows.net/scripts/setup.zip"
         Type = "RemoteAzureBlob"
     }
 }
