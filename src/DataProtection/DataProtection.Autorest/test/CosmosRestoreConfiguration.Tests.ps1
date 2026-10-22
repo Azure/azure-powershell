@@ -86,4 +86,12 @@ Describe 'CosmosRestoreConfiguration' {
         $restoreRequest.IdentityDetailUseSystemAssignedIdentity | Should Be $false
         $restoreRequest.IdentityDetailUserAssignedIdentityArmUrl | Should Be $userAssignedIdentityArmId
     }
+
+    It 'RestoreRequestThrowsWhenSystemAssignedIdentityIsNull' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
+
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $null } | Should -Throw "UseSystemAssignedIdentity cannot be null"
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $null } | Should -Throw "UseSystemAssignedIdentity cannot be null"
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $null -UserAssignedIdentityArmId $userAssignedIdentityArmId } | Should -Throw "UseSystemAssignedIdentity cannot be null"
+    }
 }

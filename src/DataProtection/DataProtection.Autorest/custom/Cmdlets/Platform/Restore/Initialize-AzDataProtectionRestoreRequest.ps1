@@ -221,6 +221,10 @@ function Initialize-AzDataProtectionRestoreRequest
         $hasUserAssignedIdentityArmId = $PSBoundParameters.Remove("UserAssignedIdentityArmId")
         if ($hasUseSystemAssignedIdentity -or $hasUserAssignedIdentityArmId) {
 
+            if ($DatasourceType -eq "AzureCosmosDB" -and $hasUseSystemAssignedIdentity -and $null -eq $UseSystemAssignedIdentity) {
+                throw 'UseSystemAssignedIdentity cannot be null for DatasourceType AzureCosmosDB. Pass $true to use the system-assigned identity, or $false together with UserAssignedIdentityArmId.'
+            }
+
             if ($hasUserAssignedIdentityArmId -and (!$hasUseSystemAssignedIdentity -or $UseSystemAssignedIdentity)) {
                 throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
             }
