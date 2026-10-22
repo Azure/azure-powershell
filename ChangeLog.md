@@ -1,7 +1,3 @@
-## Upcoming Release
-#### Az.Compute
-* Added preview Flow VM (Virtual Machine) support through `PreferredVMSize` in `New-AzVMConfig`, `New-AzVM`, and `Update-AzVM`, with FlexProfile details in `Get-AzVM`. [Azure/azure-powershell-cmdlet-review-pr#1578](https://github.com/Azure/azure-powershell-cmdlet-review-pr/issues/1578)
-
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.
