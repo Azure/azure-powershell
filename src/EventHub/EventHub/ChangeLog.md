@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.8.0
 * Updated the default API version to '2026-07-01-preview'
 * Added new cmdlets for Fabric Shortcuts on Event Hubs: 'Get-AzEventHubFabricShortcut', 'New-AzEventHubFabricShortcut', 'Remove-AzEventHubFabricShortcut', 'Approve-AzEventHubFabricShortcut' and 'Invoke-AzEventHubRejectFabricShortcut'
 * Added new cmdlets for Cluster upgrade preferences: 'Get-AzEventHubUpgradePreferencesOperation' and 'New-AzEventHubUpgradePreferencesOperation'

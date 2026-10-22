@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.6.2
 * Fixed Key Vault name availability and Managed HSM region cmdlets to use API version `2026-02-01`.
 
 ## Version 6.6.1

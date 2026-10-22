@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Upgraded API version to 2026-07-01-preview.
 * Added support for Relay dedicated clusters.
     - Added cmdlets `Get-AzRelayCluster`, `New-AzRelayCluster`, `Set-AzRelayCluster` and `Remove-AzRelayCluster`.

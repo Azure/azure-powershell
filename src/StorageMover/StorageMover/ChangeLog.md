@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Upgraded API version to 2026-05-01
     - Added `Invoke-AzStorageMoverReconcileJobDefinition` to reconcile the job run that is currently running for a job definition
     - Added cross-tenant data transfer support: `-EnableCrossTenantTransfer` and `-AllowedStorageAccount` parameters on the Azure Storage blob container and Azure SMB file share endpoint cmdlets, and `-IsCrossTenantJob`, `-CrossTenantEndpointTenantId` and `-CrossTenantEndpointResourceId` parameters on `New-AzStorageMoverJobDefinition`

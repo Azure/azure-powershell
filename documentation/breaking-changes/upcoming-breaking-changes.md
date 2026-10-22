@@ -665,7 +665,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Monitor' from version : '7.0.0'
 
-- Parameter breaking-change will happen to parameter set `NewAzSubscriptionDiagnosticSetting_CreateExpanded`
+- Parameter breaking-change will happen to all parameter sets
   - `-Log`
     - The parameter : 'Log' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -814,26 +814,6 @@ Preview modules are not included in this list. Read more about [module version t
   - May 2025 onwards, this command will return a schedule policy object for Enhanced policy by default for AzureVM workload
   - This change is expected to take effect from Az.RecoveryServices version: 8.0.0 and Az version: 14.0.0
 
-## Az.Relay
-
-### `Get-AzRelayNamespace`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayNamespace' is changing
-  - The following properties in the output type are being deprecated : 'PrivateEndpointConnection'
-  - The following properties are being added to the output type : 'List[PrivateEndpointConnection]'
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect in 'Az.Relay' from version : '9.0.0'
-
-### `Get-AzRelayNamespaceNetworkRuleSet`
-
-- Cmdlet breaking-change will happen to all parameter sets
-  - The output type 'Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet' is changing
-  - The following properties in the output type are being deprecated : 'IPRule'
-  - The following properties are being added to the output type : 'List[IPRule]'
-  - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
-  - The change is expected to take effect in 'Az.Relay' from version : '9.0.0'
-
 ## Az.Resources
 
 ### `Get-AzRoleDefinition`
@@ -878,7 +858,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
   - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateExpanded`
   - `-Rule`
     - The parameter : 'Rule' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -886,6 +866,11 @@ Preview modules are not included in this list. Read more about [module version t
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
 - Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateViaIdentityExpanded`
+  - `-Rule`
+    - The parameter : 'Rule' is changing.
+    The type of the parameter is changing from 'Array' to 'List'.
+    - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
+    - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
 ## Az.StackHCI
 
