@@ -85,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_daysOfMonth = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray>("daysOfMonth"), out var __jsonDaysOfMonth) ? If( __jsonDaysOfMonth as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<int>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(int) (__p is Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNumber __o ? (int)__o : default(int))) ))() : null : _daysOfMonth;}
             {_cronExpression = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("cronExpression"), out var __jsonCronExpression) ? (string)__jsonCronExpression : (string)_cronExpression;}
             {_endDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("endDate"), out var __jsonEndDate) ? global::System.DateTime.TryParse((string)__jsonEndDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonEndDateValue) ? __jsonEndDateValue : _endDate : _endDate;}
+            {_repeatInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("repeatInterval"), out var __jsonRepeatInterval) ? (string)__jsonRepeatInterval : (string)_repeatInterval;}
             AfterFromJson(json);
         }
 
@@ -131,6 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             }
             AddIf( null != (((object)this._cronExpression)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._cronExpression.ToString()) : null, "cronExpression" ,container.Add );
             AddIf( null != this._endDate ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._endDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "endDate" ,container.Add );
+            AddIf( null != (((object)this._repeatInterval)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._repeatInterval.ToString()) : null, "repeatInterval" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
