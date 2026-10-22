@@ -121,10 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).AdditionalLatencyInMillisecond = (int?) content.GetValueForProperty("AdditionalLatencyInMillisecond",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).AdditionalLatencyInMillisecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("CapacityDistributionSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).CapacityDistributionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters) content.GetValueForProperty("CapacityDistributionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).CapacityDistributionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParametersTypeConverter.ConvertFrom);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -153,10 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("AdditionalLatencyInMillisecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).AdditionalLatencyInMillisecond = (int?) content.GetValueForProperty("AdditionalLatencyInMillisecond",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).AdditionalLatencyInMillisecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("CapacityDistributionSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).CapacityDistributionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters) content.GetValueForProperty("CapacityDistributionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadBalancingSettingsParametersInternal)this).CapacityDistributionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CapacityDistributionSettingsParametersTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

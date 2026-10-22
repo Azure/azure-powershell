@@ -95,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"Defines at which point in the request processing pipeline the edge action will be invoked.",
         SerializedName = @"invocationPoint",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest", "ClientResponse")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest")]
         string ParameterInvocationPoint { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>
         /// Defines at which point in the request processing pipeline the edge action will be invoked.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest", "ClientResponse")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("clientRequest", "originRequest", "originResponse", "clientResponse", "ClientRequest", "OriginRequest")]
         string ParameterInvocationPoint { get; set; }
 
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters", "DeliveryRuleEdgeActionParameters")]

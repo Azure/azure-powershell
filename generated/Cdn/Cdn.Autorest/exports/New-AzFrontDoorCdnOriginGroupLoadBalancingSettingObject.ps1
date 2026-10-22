@@ -24,14 +24,6 @@ New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMill
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-CAPACITYDISTRIBUTIONSETTING <ICapacityDistributionSettingsParameters>: Capacity based round-robin load balancing settings.
-  [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
-  [DistributionType <String>]: Type of distribution used in capacity based load balancing.
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnorigingrouploadbalancingsettingobject
 #>
@@ -44,12 +36,6 @@ param(
     [System.Int32]
     # The additional latency in milliseconds for probes to fall into the lowest latency bucket.
     ${AdditionalLatencyInMillisecond},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters]
-    # Capacity based round-robin load balancing settings.
-    ${CapacityDistributionSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]

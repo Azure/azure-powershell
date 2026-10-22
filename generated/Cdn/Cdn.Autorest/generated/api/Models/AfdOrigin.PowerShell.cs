@@ -171,14 +171,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
-            if (content.Contains("CertificateNameCheckValidationMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CertificateNameCheckValidationMode = (string) content.GetValueForProperty("CertificateNameCheckValidationMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CertificateNameCheckValidationMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomCertificateSubject"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CustomCertificateSubject = (System.Collections.Generic.List<string>) content.GetValueForProperty("CustomCertificateSubject",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CustomCertificateSubject, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -319,14 +311,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("EnforceCertificateNameCheck"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).EnforceCertificateNameCheck = (bool?) content.GetValueForProperty("EnforceCertificateNameCheck",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).EnforceCertificateNameCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("CertificateNameCheckValidationMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CertificateNameCheckValidationMode = (string) content.GetValueForProperty("CertificateNameCheckValidationMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CertificateNameCheckValidationMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomCertificateSubject"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CustomCertificateSubject = (System.Collections.Generic.List<string>) content.GetValueForProperty("CustomCertificateSubject",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginInternal)this).CustomCertificateSubject, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ProvisioningState"))
             {

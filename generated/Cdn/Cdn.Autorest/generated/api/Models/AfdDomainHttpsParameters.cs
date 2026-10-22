@@ -52,22 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Secret { get => (this._secret = this._secret ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._secret = value; }
 
-        /// <summary>Backing field for <see cref="ServerTlsGroup" /> property.</summary>
-        private System.Collections.Generic.List<string> _serverTlsGroup;
-
-        /// <summary>
-        /// Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<string> ServerTlsGroup { get => this._serverTlsGroup; set => this._serverTlsGroup = value; }
-
-        /// <summary>Backing field for <see cref="ServerTlsGroupPolicy" /> property.</summary>
-        private string _serverTlsGroupPolicy;
-
-        /// <summary>Server TLS group policy that will be used for Https.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ServerTlsGroupPolicy { get => this._serverTlsGroupPolicy; set => this._serverTlsGroupPolicy = value; }
-
         /// <summary>Creates an new <see cref="AfdDomainHttpsParameters" /> instance.</summary>
         public AfdDomainHttpsParameters()
         {
@@ -140,32 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"secret",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) })]
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Secret { get; set; }
-        /// <summary>
-        /// Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.",
-        SerializedName = @"serverTlsGroups",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SecP256r1MLKEM768", "SecP384r1MLKEM1024", "X25519MLKEM768", "prime256v1", "X25519", "secp384r1", "secp521r1")]
-        System.Collections.Generic.List<string> ServerTlsGroup { get; set; }
-        /// <summary>Server TLS group policy that will be used for Https.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Server TLS group policy that will be used for Https.",
-        SerializedName = @"serverTlsGroupPolicy",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard", "Enhanced", "Custom")]
-        string ServerTlsGroupPolicy { get; set; }
 
     }
     /// The JSON object that contains the properties to secure a domain.
@@ -189,14 +147,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string MinimumTlsVersion { get; set; }
         /// <summary>Resource reference to the secret. ie. subs/rg/profile/secret</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Secret { get; set; }
-        /// <summary>
-        /// Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SecP256r1MLKEM768", "SecP384r1MLKEM1024", "X25519MLKEM768", "prime256v1", "X25519", "secp384r1", "secp521r1")]
-        System.Collections.Generic.List<string> ServerTlsGroup { get; set; }
-        /// <summary>Server TLS group policy that will be used for Https.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard", "Enhanced", "Custom")]
-        string ServerTlsGroupPolicy { get; set; }
 
     }
 }
