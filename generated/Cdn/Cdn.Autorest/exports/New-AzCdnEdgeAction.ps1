@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a EdgeAction
+Create EdgeAction resource
 .Description
-Create a EdgeAction
+Create EdgeAction resource
 .Example
 New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
 
@@ -62,20 +62,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The name of the SKU
+    # The name of the SKU for the EdgeAction.
     ${SkuName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The tier of the SKU
+    # The pricing tier associated with the SKU.
     ${SkuTier},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.
+    # The provisioning state of the edge action
     ${ProvisioningState},
 
     [Parameter(ParameterSetName='CreateExpanded')]

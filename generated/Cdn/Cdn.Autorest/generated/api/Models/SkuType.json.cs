@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The SKU type for the edge action</summary>
+    /// <summary>Sku of edge actions.</summary>
     public partial class SkuType
     {
 

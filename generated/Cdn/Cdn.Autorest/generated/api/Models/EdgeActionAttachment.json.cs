@@ -7,7 +7,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>Edge action attachment information</summary>
     public partial class EdgeActionAttachment
     {
 

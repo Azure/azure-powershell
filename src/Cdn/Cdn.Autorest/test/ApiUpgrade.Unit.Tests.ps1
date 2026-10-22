@@ -1,23 +1,59 @@
 Describe 'ApiUpgrade.Unit' {
+    BeforeAll {
+        if (-not ('CdnApiUpgradeTestTransport' -as [type])) {
+            # SDK continuations can invoke the transport on a thread without a PowerShell runspace.
+            $references = @(
+                [System.Net.Http.HttpResponseMessage].Assembly.Location,
+                [System.Net.HttpStatusCode].Assembly.Location
+            )
+            if ($PSVersionTable.PSEdition -eq 'Core') {
+                $references += 'System.Collections'
+            }
+            Add-Type -ReferencedAssemblies $references -TypeDefinition @'
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+
+public sealed class CdnApiUpgradeTestTransport
+{
+    public readonly List<Dictionary<string, object>> Requests = new List<Dictionary<string, object>>();
+    public string ResponseJson;
+
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, object listener)
+    {
+        Requests.Add(new Dictionary<string, object> {
+            { "Method", request.Method.Method },
+            { "Uri", request.RequestUri },
+            { "Body", request.Content == null ? null : request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
+        });
+        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(ResponseJson, Encoding.UTF8, "application/json");
+        response.RequestMessage = request;
+        return Task.FromResult(response);
+    }
+}
+'@
+        }
+    }
+
     It 'Keeps <Resource> requests on <ApiVersion>' -TestCases @(
         @{ Resource = 'ClassicProfile'; ApiVersion = '2026-04-01-preview' },
         @{ Resource = 'AfdProfile'; ApiVersion = '2026-10-01' },
         @{ Resource = 'ClassicEndpoint'; ApiVersion = '2026-04-01-preview' },
-        @{ Resource = 'AfdEndpoint'; ApiVersion = '2026-10-01' }
+        @{ Resource = 'AfdEndpoint'; ApiVersion = '2026-10-01' },
+        @{ Resource = 'EdgeAction'; ApiVersion = '2024-07-22-preview' },
+        @{ Resource = 'EdgeActionVersion'; ApiVersion = '2024-07-22-preview' },
+        @{ Resource = 'EdgeActionExecutionFilter'; ApiVersion = '2024-07-22-preview' }
     ) {
         param($Resource, $ApiVersion)
-        $requests = [System.Collections.Generic.List[System.Uri]]::new()
-        $send = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync] {
-            param($request, $callback)
-            $callback.Token.ThrowIfCancellationRequested()
-            $requests.Add($request.RequestUri)
-            $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::OK)
-            $response.Content = [System.Net.Http.StringContent]::new(
-                '{"name":"offline","location":"Global","properties":{}}',
-                [System.Text.Encoding]::UTF8, 'application/json')
-            $response.RequestMessage = $request
-            return [System.Threading.Tasks.Task]::FromResult[System.Net.Http.HttpResponseMessage]($response)
-        }
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = '{"name":"offline","location":"Global","properties":{}}'
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
         $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
         $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
         $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
@@ -26,10 +62,13 @@ Describe 'ApiUpgrade.Unit' {
             'AfdProfile' { $client.ProfilesGetWithResult('offline', 'offline', 'offline', $listener, $terminal) }
             'ClassicEndpoint' { $client.EndpointsGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
             'AfdEndpoint' { $client.AfdEndpointsGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
+            'EdgeAction' { $client.EdgeActionsGetWithResult('offline', 'offline', 'offline', $listener, $terminal) }
+            'EdgeActionVersion' { $client.EdgeActionVersionsGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
+            'EdgeActionExecutionFilter' { $client.EdgeActionExecutionFiltersGetWithResult('offline', 'offline', 'offline', 'offline', $listener, $terminal) }
         }
         $null = $task.GetAwaiter().GetResult()
         $requests.Count | Should Be 1
-        $requests[0].Query | Should Be "?api-version=$ApiVersion"
+        $requests[0].Uri.Query | Should Be "?api-version=$ApiVersion"
     }
 
     It 'Adds canonical ClientResponse completion without removing existing invocation points' {
@@ -51,7 +90,8 @@ Describe 'ApiUpgrade.Unit' {
         $action.EdgeActionReferenceId = '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline'
         $rule = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
         $rule.Order = 1
-        $rule.Action = @($action)
+        $rule.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+        $rule.Action.Add($action)
         $json = $rule.ToJsonString()
         (($json | ConvertFrom-Json).properties.actions[0].parameters.invocationPoint -ceq 'ClientResponse') | Should Be $true
         $roundTrip = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::FromJsonString($json)
@@ -66,7 +106,8 @@ Describe 'ApiUpgrade.Unit' {
         $action.KeyGroupReferenceId = '/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/profiles/offline/keyGroups/offline'
         $rule = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
         $rule.Order = 1
-        $rule.Action = @($action)
+        $rule.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+        $rule.Action.Add($action)
         $json = $rule.ToJsonString()
         $parameters = ($json | ConvertFrom-Json).properties.actions[0].parameters
         $parameters.typeName | Should Be 'DeliveryRuleAfdUrlSigningActionParameters'
@@ -83,18 +124,13 @@ Describe 'ApiUpgrade.Unit' {
         @{ Operation = 'Get'; Method = 'GET' }
     ) {
         param($Operation, $Method)
-        $requests = [System.Collections.Generic.List[object]]::new()
         $responseJson = '{"properties":{"order":1,"actions":[{"name":"EdgeAction","parameters":{"typeName":"DeliveryRuleEdgeActionParameters","invocationPoint":"ClientResponse","edgeActionReference":{"id":"/subscriptions/offline/resourceGroups/offline/providers/Microsoft.Cdn/edgeActions/offline"}}}]}}'
-        $send = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync] {
-            param($request, $callback)
-            $callback.Token.ThrowIfCancellationRequested()
-            $body = if ($request.Content) { $request.Content.ReadAsStringAsync().GetAwaiter().GetResult() }
-            $requests.Add(@{ Method = $request.Method.Method; Uri = $request.RequestUri; Body = $body })
-            $response = [System.Net.Http.HttpResponseMessage]::new([System.Net.HttpStatusCode]::OK)
-            $response.Content = [System.Net.Http.StringContent]::new($responseJson, [System.Text.Encoding]::UTF8, 'application/json')
-            $response.RequestMessage = $request
-            return [System.Threading.Tasks.Task]::FromResult[System.Net.Http.HttpResponseMessage]($response)
-        }
+        $transport = [CdnApiUpgradeTestTransport]::new()
+        $transport.ResponseJson = $responseJson
+        $requests = $transport.Requests
+        $send = [System.Delegate]::CreateDelegate(
+            [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsync], $transport,
+            $transport.GetType().GetMethod('SendAsync'))
         $terminal = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncTerminalFactory]::new($send)
         $listener = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.EventListener]::new()
         $client = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn]::new()
@@ -105,11 +141,13 @@ Describe 'ApiUpgrade.Unit' {
         if ($Operation -eq 'Create') {
             $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Rule]::new()
             $body.Order = 1
-            $body.Action = @($action)
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
             $task = $client.RulesCreateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
         } elseif ($Operation -eq 'Update') {
             $body = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdateParameters]::new()
-            $body.Action = @($action)
+            $body.Action = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction]]::new()
+            $body.Action.Add($action)
             $task = $client.RulesUpdateWithResult('offline', 'offline', 'offline', 'offline', 'offline', $body, $listener, $terminal)
         } else {
             $task = $client.RulesGetWithResult('offline', 'offline', 'offline', 'offline', 'offline', $listener, $terminal)
@@ -231,7 +269,6 @@ Describe 'ApiUpgrade.Unit' {
             'Remove-AzCdnEdgeActionAttachment',
             'Remove-AzCdnEdgeActionExecutionFilter',
             'Remove-AzCdnEdgeActionVersion',
-            'Switch-AzCdnEdgeActionVersionDefault',
             'Update-AzCdnEdgeAction',
             'Update-AzCdnEdgeActionExecutionFilter',
             'Update-AzCdnEdgeActionVersion'

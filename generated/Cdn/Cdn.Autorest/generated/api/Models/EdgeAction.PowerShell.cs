@@ -112,14 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -208,14 +200,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuType) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

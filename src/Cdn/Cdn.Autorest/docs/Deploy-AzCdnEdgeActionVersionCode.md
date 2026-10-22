@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzCdnEdgeActionVersionCode
 
 ## SYNOPSIS
-A long-running resource action.
+A long-running operation to deploy versioncode to EdgeActionVersion resource.
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ Deploy-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-A long-running resource action.
+A long-running operation to deploy versioncode to EdgeActionVersion resource.
 
 ## EXAMPLES
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Version code information for edge action
+EdgeAction version code deployment object
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode
@@ -333,7 +333,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties
 
 ## NOTES
 

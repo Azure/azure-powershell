@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a EdgeActionVersion list operation.</summary>
+    /// <summary>The response of EdgeActionVersion resource list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionVersionListResultTypeConverter))]
     public partial class EdgeActionVersionListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a EdgeActionVersion list operation.
+    /// The response of EdgeActionVersion resource list operation.
     [System.ComponentModel.TypeConverter(typeof(EdgeActionVersionListResultTypeConverter))]
     public partial interface IEdgeActionVersionListResult
 

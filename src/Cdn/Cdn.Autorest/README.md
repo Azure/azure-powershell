@@ -31,11 +31,10 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-# Upgrade AFD and EdgeAction resources without changing the existing classic CDN contract.
+# Upgrade AFD without changing the existing classic CDN or standalone EdgeAction contracts.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-10-01/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/2e2b290fd446b03bbddcdc31098ff97e7218f0cf/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9e9079a5d235e0c804e7fbb188258a84b4221571/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -128,108 +127,19 @@ directive:
           'PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")');
       }
       return $;
-  # Preserve published bindings and finish resource/action operations without requiring Location.
-  - from: swagger-document
-    where: $
-    transform: |
-      if (!$.info || $.info.version !== "2026-10-01" || !$.definitions.EdgeActionProperties) {
-        return $;
-      }
-      for (const name of ["EdgeActionProperties", "EdgeActionVersionProperties", "EdgeActionExecutionFilterProperties"]) {
-        const property = $.definitions[name].properties.provisioningState;
-        property.readOnly = false;
-        property["x-ms-mutability"] = ["read", "create", "update"];
-        property.description += " Retained for script compatibility; this server-managed value is not sent in requests.";
-      }
-      $.definitions.EmptyBody = { type: "object", description: "The empty body." };
-      for (const path of Object.values($.paths)) {
-        if (path.post && path.post.operationId === "EdgeActionVersions_GetVersionCode") {
-          path.post.parameters.push({
-            name: "body", in: "body", required: true,
-            description: "Retained for script compatibility; the stable API does not send a request body.",
-            schema: { $ref: "#/definitions/EmptyBody" }
-          });
-        }
-        for (const operation of Object.values(path)) {
-          if (operation["x-ms-long-running-operation"]) {
-            const id = operation.operationId;
-            if (/_Delete$|_SwapDefault$/.test(id)) {
-              operation["x-ms-long-running-operation-options"] = { "final-state-via": "azure-async-operation" };
-            } else if (/_Create$|_Update$|_DeployVersionCode$/.test(id)) {
-              operation["x-ms-long-running-operation-options"] = { "final-state-via": "original-uri" };
-            }
-          }
-          if (operation.responses && operation.responses.default) {
-            operation.responses.default.schema.$ref =
-              "https://github.com/Azure/azure-rest-api-specs/blob/77c5c1cbdaefb13ec55c83302b6aaccfee33fd62/specification/common-types/resource-management/v6/types.json#/definitions/ErrorResponse";
-          }
-        }
-      }
-      return $;
-  # Deploy returns the version resource, not an action URL that can be retrieved with GET.
-  - from: source-file-csharp
-    where: $
-    transform: |
-      return $.replace(/(internal async [^\n]+ EdgeActionVersionsDeployVersionCode(?:WithResult)?_Call[^\n]+\n[\s\S]*?)(?=\n        \/\/\/ <summary>|\n    \})/g, method =>
-        method.replace('new global::System.Uri(_originalUri),',
-          'new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(_originalUri, @"/deployVersionCode(?=\\?|$)", "")),'));
-  # Void actions finish when polling succeeds; no final resource GET or Location is required.
-  - from: source-file-csharp
-    where: $
-    transform: |
-      return $.replace(/(internal async [^\n]+ (?:EdgeActionsDelete|EdgeActionExecutionFiltersDelete|EdgeActionVersionsDelete|EdgeActionVersionsSwapDefault)_Call[^\n]+\n[\s\S]*?)(?=\n        \/\/\/ <summary>|\n    \})/g, method => {
-        const completed = method.includes("EdgeActionVersionsSwapDefault_Call") ?
-          '                        if (_response.StatusCode == global::System.Net.HttpStatusCode.OK)\n                        {\n                            _response.StatusCode = global::System.Net.HttpStatusCode.NoContent;\n                        }\n' : '';
-        return method.replace(/^\s*var _finalUri = [^\n]+\n/m, '')
-          .replace(/                        \/\/ we are done polling, do a request on final target\?[\s\S]*?(?=                        break;)/, completed);
-      });
-  # The legacy body remains in generated signatures, never in the stable HTTP request.
-  - from: source-file-csharp
-    where: $
-    transform: |
-      return $.replace(/(public async [^\n]+ EdgeActionVersionsGetVersionCode[^\n]+\n[\s\S]*?)(?=\n        \/\/\/ <summary>|\n    \})/g, method =>
-        method.replace(/                \/\/ set body content[\s\S]*?request.Content.Headers.ContentType[^\n]*\n/g,
-          '                // The stable getVersionCode operation has no request body.\n'));
-  # Keep writable model/parameter surfaces, but serialize provisioningState only for output.
-  - from: source-file-csharp
-    where: $
-    transform: |
-      if (!/partial class EdgeAction(?:Version|ExecutionFilter)?Properties\b/.test($)) {
-        return $;
-      }
-      return $.replace(/^(            AddIf\([^\n]*"provisioningState"[^\n]*)$/gm,
-        '            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))\n            {\n    $1\n            }');
-  - from: source-file-csharp
-    where: $
-    transform: |
-      if (/class GetAzCdnEdgeActionVersionCode_/.test($)) {
-        return $.replace(/(protected override void ProcessRecord\(\)\s*\{)/,
-          '$1\n            if (this.MyInvocation.BoundParameters.ContainsKey("Body") || this.MyInvocation.BoundParameters.ContainsKey("JsonString") || this.MyInvocation.BoundParameters.ContainsKey("JsonFilePath"))\n            {\n                WriteWarning("Body, JsonString and JsonFilePath are retained for compatibility but are not sent by API version 2026-10-01.");\n            }');
-      }
-      if (!/class NewAzCdnEdgeAction(?:Version|ExecutionFilter)?_/.test($) || !/public [^\n]+ ProvisioningState\b/.test($)) {
-        return $;
-      }
-      return $.replace(/(protected override void ProcessRecord\(\)\s*\{)/,
-        '$1\n            if (this.MyInvocation.BoundParameters.ContainsKey("ProvisioningState"))\n            {\n                WriteWarning("ProvisioningState is server-managed and is ignored by API version 2026-10-01.");\n            }');
-  # Only Attachment operations use the legacy API; share their request model with the stable API.
+  # Share the equivalent ARM error schema so legacy EdgeAction callbacks retain IErrorResponse.
   - from: swagger-document
     where: $
     transform: |
       if (!$.info || $.info.version !== "2024-07-22-preview") {
         return $;
       }
-      for (const path of Object.keys($.paths)) {
-        if (!/\/(addAttachment|deleteAttachment)$/.test(path)) {
-          delete $.paths[path];
-        }
-      }
       for (const path of Object.values($.paths)) {
-        path.post.parameters.find(p => p.in === "body").schema.$ref =
-          "https://github.com/Azure/azure-rest-api-specs/blob/2e2b290fd446b03bbddcdc31098ff97e7218f0cf/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json#/definitions/EdgeActionAttachment";
-      }
-      for (const name of Object.keys($.definitions)) {
-        if (!["EdgeActionAttachmentResponse", "Azure.ResourceManager.ArmDeletedNoContentResponse"].includes(name)) {
-          delete $.definitions[name];
+        for (const operation of Object.values(path)) {
+          if (operation.responses && operation.responses.default && operation.responses.default.schema) {
+            operation.responses.default.schema.$ref =
+              "https://github.com/Azure/azure-rest-api-specs/blob/77c5c1cbdaefb13ec55c83302b6aaccfee33fd62/specification/common-types/resource-management/v6/types.json#/definitions/ErrorResponse";
+          }
         }
       }
       return $;

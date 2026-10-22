@@ -8,11 +8,7 @@ schema: 2.0.0
 # Update-AzCdnEdgeActionVersion
 
 ## SYNOPSIS
-Update the tags of an Edge Action version.
-Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
-Null tags are rejected.
-Version properties are not changed.
-If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+Update EdgeActionVersion resource
 
 ## SYNTAX
 
@@ -21,27 +17,6 @@ If deploymentType or isDefaultVersion is supplied, it must match the existing va
 Update-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
  [-SubscriptionId <String>] [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityEdgeAction
-```
-Update-AzCdnEdgeActionVersion -EdgeActionInputObject <ICdnIdentity> -Version <String>
- -Property <IEdgeActionVersionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityEdgeActionExpanded
-```
-Update-AzCdnEdgeActionVersion -EdgeActionInputObject <ICdnIdentity> -Version <String>
- [-DeploymentType <String>] [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzCdnEdgeActionVersion -InputObject <ICdnIdentity> [-DeploymentType <String>]
- [-IsDefaultVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -59,11 +34,7 @@ Update-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-Update the tags of an Edge Action version.
-Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
-Null tags are rejected.
-Version properties are not changed.
-If deploymentType or isDefaultVersion is supplied, it must match the existing value; use swapDefault to change the default version.
+Update EdgeActionVersion resource
 
 ## EXAMPLES
 
@@ -108,13 +79,11 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentType
-The deployment type for the Edge Action version.
-Set this value when creating the version.
-When updating an existing version, any supplied value must match the existing value.
+The deployment type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -124,27 +93,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EdgeActionInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityEdgeAction, UpdateViaIdentityEdgeActionExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -EdgeActionName
 The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -154,31 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -IsDefaultVersion
-Indicates whether this is the default version.
-When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied.
-If another default version exists, supplying true is rejected.
-When updating an existing version, any supplied value must match the existing value.
-Use swapDefault to change the default version.
+The active state
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -233,28 +168,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-The type used for update operations of the EdgeActionVersion.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionUpdate
-Parameter Sets: UpdateViaIdentityEdgeAction
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -270,7 +190,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +205,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -300,7 +220,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityEdgeActionExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -345,10 +265,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionUpdate
 
 ## OUTPUTS
 

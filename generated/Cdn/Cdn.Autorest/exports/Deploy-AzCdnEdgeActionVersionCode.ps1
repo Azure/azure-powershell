@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-A long-running resource action.
+A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Description
-A long-running resource action.
+A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Example
 Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
 
@@ -27,13 +27,13 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IVersionCode>: Version code information for edge action
+BODY <IVersionCode>: EdgeAction version code deployment object
   Content <String>: The version code deployment content 
   Name <String>: The version code name
 
@@ -78,7 +78,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/deploy-azcdnedgeactionversioncode
 #>
 function Deploy-AzCdnEdgeActionVersionCode {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties])]
 [CmdletBinding(DefaultParameterSetName='DeployExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Deploy', Mandatory)]
@@ -141,7 +141,7 @@ param(
     [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode]
-    # Version code information for edge action
+    # EdgeAction version code deployment object
     ${Body},
 
     [Parameter(ParameterSetName='DeployExpanded', Mandatory)]

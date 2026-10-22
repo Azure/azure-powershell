@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
-    /// value, is rejected.
-    /// </summary>
+    /// <summary>Object to update edge actions sku.</summary>
     public partial class SkuTypeUpdate
     {
 

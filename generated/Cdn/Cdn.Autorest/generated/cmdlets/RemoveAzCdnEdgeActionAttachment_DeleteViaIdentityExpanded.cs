@@ -35,7 +35,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        /// <summary>Edge action attachment information</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment _body = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionAttachment();
 
         /// <summary>

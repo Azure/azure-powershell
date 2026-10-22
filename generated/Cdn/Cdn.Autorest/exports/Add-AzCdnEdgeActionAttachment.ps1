@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IEdgeActionAttachment>: Edge action attachment information
+BODY <IEdgeActionAttachment>: .
   AttachedResourceId <String>: The attached resource Id
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
@@ -102,7 +102,7 @@ param(
     [Parameter(ParameterSetName='AddViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment]
-    # Edge action attachment information
+    # .
     ${Body},
 
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]

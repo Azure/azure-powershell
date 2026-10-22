@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
-    /// value, is rejected.
-    /// </summary>
+    /// <summary>Object to update edge actions sku.</summary>
     public partial class SkuTypeUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdateInternal
@@ -19,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the SKU</summary>
+        /// <summary>The name of the SKU for the EdgeAction.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="Tier" /> property.</summary>
         private string _tier;
 
-        /// <summary>The tier of the SKU</summary>
+        /// <summary>The pricing tier associated with the SKU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Tier { get => this._tier; set => this._tier = value; }
 
@@ -36,43 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
-    /// value, is rejected.
+    /// Object to update edge actions sku.
     public partial interface ISkuTypeUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>The name of the SKU</summary>
+        /// <summary>The name of the SKU for the EdgeAction.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the SKU",
+        Description = @"The name of the SKU for the EdgeAction.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
-        /// <summary>The tier of the SKU</summary>
+        /// <summary>The pricing tier associated with the SKU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The tier of the SKU",
+        Description = @"The pricing tier associated with the SKU.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
         string Tier { get; set; }
 
     }
-    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
-    /// value, is rejected.
+    /// Object to update edge actions sku.
     internal partial interface ISkuTypeUpdateInternal
 
     {
-        /// <summary>The name of the SKU</summary>
+        /// <summary>The name of the SKU for the EdgeAction.</summary>
         string Name { get; set; }
-        /// <summary>The tier of the SKU</summary>
+        /// <summary>The pricing tier associated with the SKU.</summary>
         string Tier { get; set; }
 
     }

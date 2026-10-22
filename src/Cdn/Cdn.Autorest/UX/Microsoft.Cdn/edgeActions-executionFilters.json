@@ -1,13 +1,13 @@
 {
   "resourceType": "edgeActions/executionFilters",
-  "apiVersion": "2026-10-01",
+  "apiVersion": "2024-07-22-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cdn"
   },
   "commands": [
     {
       "name": "Get-AzCdnEdgeActionExecutionFilter",
-      "description": "Get a EdgeActionExecutionFilter",
+      "description": "Get EdgeActionExecutionFilter resource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a EdgeActionExecutionFilter",
+          "description": "Get EdgeActionExecutionFilter resource",
           "parameters": [
             {
               "name": "-EdgeActionName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzCdnEdgeActionExecutionFilter",
-      "description": "Delete a EdgeActionExecutionFilter",
+      "description": "Delete EdgeActionExecutionFilter resource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/executionFilters/{executionFilter}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a EdgeActionExecutionFilter",
+          "description": "Delete EdgeActionExecutionFilter resource",
           "parameters": [
             {
               "name": "-EdgeActionName",

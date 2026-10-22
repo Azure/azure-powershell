@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>Properties for edge action execution filter</summary>
+    /// <summary>Properties for the tracked resource execution filters.</summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterPropertiesTypeConverter))]
     public partial class EdgeActionExecutionFilterProperties
     {
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Properties for edge action execution filter
+    /// Properties for the tracked resource execution filters.
     [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterPropertiesTypeConverter))]
     public partial interface IEdgeActionExecutionFilterProperties
 

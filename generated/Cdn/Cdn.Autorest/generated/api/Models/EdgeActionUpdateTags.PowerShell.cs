@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
-    /// </summary>
+    /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionUpdateTagsTypeConverter))]
     public partial class EdgeActionUpdateTags
     {
@@ -153,8 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
+    /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(EdgeActionUpdateTagsTypeConverter))]
     public partial interface IEdgeActionUpdateTags
 

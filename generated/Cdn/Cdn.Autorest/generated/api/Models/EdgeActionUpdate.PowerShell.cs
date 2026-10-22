@@ -106,10 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeUpdateTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AnyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionUpdateTagsTypeConverter.ConvertFrom);
@@ -142,10 +138,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISkuTypeUpdate) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuTypeUpdateTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AnyTypeConverter.ConvertFrom);
             }
             if (content.Contains("Tag"))
             {

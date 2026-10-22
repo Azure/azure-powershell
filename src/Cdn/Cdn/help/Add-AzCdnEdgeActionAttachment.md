@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/add-azcdnedgeactionattachment
 schema: 2.0.0
@@ -14,46 +14,42 @@ A long-running operation for adding an EdgeAction attachment.
 
 ### AddExpanded (Default)
 ```
-Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -AttachedResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
-```
-
-### AddViaJsonString
-```
-Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
-```
-
-### AddViaJsonFilePath
-```
-Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
+ -AttachedResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Add
 ```
-Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
- [<CommonParameters>]
-```
-
-### AddViaIdentityExpanded
-```
-Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
+ -Body <IEdgeActionAttachment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
 ```
 Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### AddViaJsonString
+```
+Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,21 +65,6 @@ Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionNam
 Adds the specified Front Door rule as an attachment to the EdgeAction resource.
 
 ## PARAMETERS
-
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -116,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Edge action attachment information
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment
@@ -127,21 +108,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +132,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
+Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -181,7 +147,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -242,7 +208,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
+Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -258,7 +224,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
+Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: False

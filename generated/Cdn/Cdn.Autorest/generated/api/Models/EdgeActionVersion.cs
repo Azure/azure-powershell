@@ -13,24 +13,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class EdgeActionVersion :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResource" />
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResource();
 
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
-
-        /// <summary>
-        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
-        /// any supplied value must match the existing value.
-        /// </summary>
+        /// <summary>The deployment type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string DeploymentType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).DeploymentType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).DeploymentType = value ?? null; }
 
@@ -40,12 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__trackedResource).Id; }
 
-        /// <summary>
-        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
-        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
-        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
-        /// the default version.
-        /// </summary>
+        /// <summary>The active state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string IsDefaultVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).IsDefaultVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).IsDefaultVersion = value ?? null; }
 
@@ -107,9 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionVersionProperties()); set => this._property = value; }
 
-        /// <summary>
-        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
-        /// </summary>
+        /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
@@ -117,12 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.FormatTable]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
-
-        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
-        private int? _retryAfter;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -181,19 +158,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader1) is string __headerRetryAfterHeader1 ? int.TryParse( __headerRetryAfterHeader1, out int __headerRetryAfterHeader1Value ) ? __headerRetryAfterHeader1Value : default(int?) : default(int?);
-            }
-        }
-
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
@@ -211,44 +175,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResource
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
-        /// <summary>
-        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
-        /// any supplied value must match the existing value.
-        /// </summary>
+        /// <summary>The deployment type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version, any supplied value must match the existing value.",
+        Description = @"The deployment type",
         SerializedName = @"deploymentType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>
-        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
-        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
-        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
-        /// the default version.
-        /// </summary>
+        /// <summary>The active state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the service makes the new version the default even when false is supplied. If another default version exists, supplying true is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change the default version.",
+        Description = @"The active state",
         SerializedName = @"isDefaultVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("True", "False")]
@@ -264,31 +210,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"lastPackageUpdateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastPackageUpdateTime { get;  }
-        /// <summary>
-        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
-        /// </summary>
+        /// <summary>The provisioning state</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.",
+        Description = @"The provisioning state",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"",
-        SerializedName = @"Retry-After",
-        PossibleTypes = new [] { typeof(int) })]
-        int? RetryAfter { get; set; }
         /// <summary>The validation status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -307,32 +240,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     internal partial interface IEdgeActionVersionInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal
     {
-        string AzureAsyncOperation { get; set; }
-        /// <summary>
-        /// The deployment type for the Edge Action version. Set this value when creating the version. When updating an existing version,
-        /// any supplied value must match the existing value.
-        /// </summary>
+        /// <summary>The deployment type</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("zip", "file", "others")]
         string DeploymentType { get; set; }
-        /// <summary>
-        /// Indicates whether this is the default version. When creating a version, if the Edge Action has no default version, the
-        /// service makes the new version the default even when false is supplied. If another default version exists, supplying true
-        /// is rejected. When updating an existing version, any supplied value must match the existing value. Use swapDefault to change
-        /// the default version.
-        /// </summary>
+        /// <summary>The active state</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("True", "False")]
         string IsDefaultVersion { get; set; }
         /// <summary>The last update time in UTC for package update</summary>
         global::System.DateTime? LastPackageUpdateTime { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties Property { get; set; }
-        /// <summary>
-        /// The provisioning state Retained for script compatibility; this server-managed value is not sent in requests.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Creating", "Succeeded", "Failed")]
+        /// <summary>The provisioning state</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get; set; }
-
-        int? RetryAfter { get; set; }
         /// <summary>The validation status</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed")]
         string ValidationStatus { get; set; }

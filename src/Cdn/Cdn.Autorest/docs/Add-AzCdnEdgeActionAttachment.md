@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Edge action attachment information
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment

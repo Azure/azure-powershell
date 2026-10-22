@@ -49,12 +49,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Backing field for <see cref="Body" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment _body;
 
-        /// <summary>Edge action attachment information</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Edge action attachment information", ValueFromPipeline = true)]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = ".", ValueFromPipeline = true)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Edge action attachment information",
+        Description = @"",
         SerializedName = @"body",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]

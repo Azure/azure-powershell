@@ -7,7 +7,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>Edge action attachment information</summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionAttachmentTypeConverter))]
     public partial class EdgeActionAttachment
     {
@@ -162,7 +161,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Edge action attachment information
     [System.ComponentModel.TypeConverter(typeof(EdgeActionAttachmentTypeConverter))]
     public partial interface IEdgeActionAttachment
 

@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
-    /// </summary>
+    /// <summary>Resource tags.</summary>
     public partial class EdgeActionUpdateTags
     {
 

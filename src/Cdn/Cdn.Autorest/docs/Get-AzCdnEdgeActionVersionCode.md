@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnEdgeActionVersionCode
 
 ## SYNOPSIS
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 
 ## EXAMPLES
 

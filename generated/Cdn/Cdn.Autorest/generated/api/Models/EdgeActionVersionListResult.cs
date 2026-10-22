@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The response of a EdgeActionVersion list operation.</summary>
+    /// <summary>The response of EdgeActionVersion resource list operation.</summary>
     public partial class EdgeActionVersionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionListResultInternal
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// The response of a EdgeActionVersion list operation.
+    /// The response of EdgeActionVersion resource list operation.
     public partial interface IEdgeActionVersionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion> Value { get; set; }
 
     }
-    /// The response of a EdgeActionVersion list operation.
+    /// The response of EdgeActionVersion resource list operation.
     internal partial interface IEdgeActionVersionListResultInternal
 
     {

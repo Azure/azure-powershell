@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
-    /// </summary>
+    /// <summary>Resource tags.</summary>
     public partial class EdgeActionUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTags,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionUpdateTagsInternal
@@ -22,16 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
+    /// Resource tags.
     public partial interface IEdgeActionUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Resource tags. For PATCH requests, omitted tags are preserved, an empty tags object clears all tags, and supplied tags
-    /// replace the entire tag collection. Null tags are rejected.
+    /// Resource tags.
     internal partial interface IEdgeActionUpdateTagsInternal
 
     {

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a EdgeActionExecutionFilter list operation.</summary>
+    /// <summary>The response of EdgeActionExecutionFilter resource list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterListResultTypeConverter))]
     public partial class EdgeActionExecutionFilterListResult
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a EdgeActionExecutionFilter list operation.
+    /// The response of EdgeActionExecutionFilter resource list operation.
     [System.ComponentModel.TypeConverter(typeof(EdgeActionExecutionFilterListResultTypeConverter))]
     public partial interface IEdgeActionExecutionFilterListResult
 

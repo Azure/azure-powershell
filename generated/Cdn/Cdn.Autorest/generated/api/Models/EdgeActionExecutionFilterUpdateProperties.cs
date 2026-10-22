@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="VersionId" /> property.</summary>
         private string _versionId;
 
-        /// <summary>The referenced versionId of the edgeaction version</summary>
+        /// <summary>The referenced versionId of the edgeAction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string VersionId { get => this._versionId; set => this._versionId = value; }
 
@@ -68,14 +68,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"executionFilterIdentifierHeaderValue",
         PossibleTypes = new [] { typeof(string) })]
         string ExecutionFilterIdentifierHeaderValue { get; set; }
-        /// <summary>The referenced versionId of the edgeaction version</summary>
+        /// <summary>The referenced versionId of the edgeAction version</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The referenced versionId of the edgeaction version",
+        Description = @"The referenced versionId of the edgeAction version",
         SerializedName = @"versionId",
         PossibleTypes = new [] { typeof(string) })]
         string VersionId { get; set; }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string ExecutionFilterIdentifierHeaderName { get; set; }
         /// <summary>Custom Header Value associated with the execution filter</summary>
         string ExecutionFilterIdentifierHeaderValue { get; set; }
-        /// <summary>The referenced versionId of the edgeaction version</summary>
+        /// <summary>The referenced versionId of the edgeAction version</summary>
         string VersionId { get; set; }
 
     }

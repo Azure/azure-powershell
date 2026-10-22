@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionversioncode
 schema: 2.0.0
@@ -8,66 +8,64 @@ schema: 2.0.0
 # Get-AzCdnEdgeActionVersionCode
 
 ## SYNOPSIS
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 
 ## SYNTAX
 
 ### GetExpanded (Default)
 ```
-Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaJsonString
-```
-Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -Version <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaJsonFilePath
-```
-Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -Version <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -Version <String> -Body <IAny> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetViaIdentityEdgeActionExpanded
-```
-Get-AzCdnEdgeActionVersionCode -Version <String> -EdgeActionInputObject <ICdnIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### GetViaIdentityEdgeAction
-```
-Get-AzCdnEdgeActionVersionCode -Version <String> -EdgeActionInputObject <ICdnIdentity> -Body <IAny>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzCdnEdgeActionVersionCode -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ -Body <IAny> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzCdnEdgeActionVersionCode -InputObject <ICdnIdentity> -Body <IAny> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeAction
+```
+Get-AzCdnEdgeActionVersionCode -EdgeActionInputObject <ICdnIdentity> -Version <String> -Body <IAny>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityEdgeActionExpanded
+```
+Get-AzCdnEdgeActionVersionCode -EdgeActionInputObject <ICdnIdentity> -Version <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzCdnEdgeActionVersionCode -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzCdnEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 
 ## EXAMPLES
 
@@ -100,7 +98,7 @@ Anything
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
-Parameter Sets: Get, GetViaIdentityEdgeAction, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, GetViaIdentityEdgeAction
 Aliases:
 
 Required: True
@@ -131,7 +129,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: GetViaIdentityEdgeActionExpanded, GetViaIdentityEdgeAction
+Parameter Sets: GetViaIdentityEdgeAction, GetViaIdentityEdgeActionExpanded
 Aliases:
 
 Required: True
@@ -146,7 +144,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -161,7 +159,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -222,7 +220,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True
@@ -238,7 +236,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
+Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: False
@@ -253,7 +251,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get, GetViaIdentityEdgeActionExpanded, GetViaIdentityEdgeAction
+Parameter Sets: Get, GetExpanded, GetViaIdentityEdgeAction, GetViaIdentityEdgeActionExpanded, GetViaJsonFilePath, GetViaJsonString
 Aliases:
 
 Required: True

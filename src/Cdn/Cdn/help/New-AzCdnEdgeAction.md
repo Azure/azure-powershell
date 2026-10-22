@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnedgeaction
 schema: 2.0.0
@@ -8,34 +8,32 @@ schema: 2.0.0
 # New-AzCdnEdgeAction
 
 ## SYNOPSIS
-Create a EdgeAction
+Create EdgeAction resource
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -SkuName <String> -SkuTier <String> [-ProvisioningState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
+ -SkuTier <String> [-SubscriptionId <String>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+New-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a EdgeAction
+Create EdgeAction resource
 
 ## EXAMPLES
 
@@ -48,41 +46,11 @@ Creates an EdgeAction resource.
 
 ## PARAMETERS
 
-### -AcquirePolicyToken
-Acquire an Azure Policy token automatically for this resource operation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ChangeReference
-The change reference resource ID for this resource operation.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningState
-The provisioning state of the edge action Retained for script compatibility; this server-managed value is not sent in requests.
+The provisioning state of the edge action
 
 ```yaml
 Type: System.String
@@ -216,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The name of the SKU
+The name of the SKU for the EdgeAction.
 
 ```yaml
 Type: System.String
@@ -231,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of the SKU
+The pricing tier associated with the SKU.
 
 ```yaml
 Type: System.String

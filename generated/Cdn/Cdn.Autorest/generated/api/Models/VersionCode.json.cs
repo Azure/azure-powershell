@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>Version code information for edge action</summary>
+    /// <summary>EdgeAction version code deployment object</summary>
     public partial class VersionCode
     {
 

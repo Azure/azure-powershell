@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 .Description
-Get the version code for the edge action version.
+A long-running operation to get versioncode deployed to EdgeActionVersion resource.
 .Example
 Get-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 

@@ -1,13 +1,13 @@
 {
   "resourceType": "edgeActions",
-  "apiVersion": "2026-10-01",
+  "apiVersion": "2024-07-22-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cdn"
   },
   "commands": [
     {
       "name": "Get-AzCdnEdgeAction",
-      "description": "Get a EdgeAction",
+      "description": "Get EdgeAction resource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get a EdgeAction",
+          "description": "Get EdgeAction resource",
           "parameters": [
             {
               "name": "-Name",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Remove-AzCdnEdgeAction",
-      "description": "Delete a EdgeAction",
+      "description": "Delete EdgeAction resource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Delete a EdgeAction",
+          "description": "Delete EdgeAction resource",
           "parameters": [
             {
               "name": "-Name",
