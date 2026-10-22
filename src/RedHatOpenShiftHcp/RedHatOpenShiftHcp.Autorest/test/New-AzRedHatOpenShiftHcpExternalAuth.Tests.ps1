@@ -17,6 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzRedHatOpenShiftHcpExter
 # Throwaway external auth exercised by the New/Update/Remove lifecycle tests. Fixed name so the recorded
 # request URIs match on playback.
 $authName = 'eatest-ps'
+# The lifecycle runs on the throwaway cluster 'cltest-ps' (created by the cluster lifecycle test), NOT on the
+# persistent $env.ClusterName (aro-hcp-01): the RP allows only one external auth per cluster and aro-hcp-01
+# already carries $env.ExternalAuthName ('entra') for the Get-ExternalAuth read tests, so creating here would
+# both mutate the read fixture and collide. Fixed literal so the recorded request URIs match on playback.
+$clusterName = 'cltest-ps'
 # Synthetic (non-real) audience/client id so no real app registration is committed; it only has to be
 # internally consistent (ClientId must appear in IssuerAudience).
 $audience = '11111111-1111-1111-1111-111111111111'
@@ -40,7 +45,7 @@ Describe 'New-AzRedHatOpenShiftHcpExternalAuth' {
         )
 
         $ea = New-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName `
-            -HcpOpenShiftClusterName $env.ClusterName -Name $authName `
+            -HcpOpenShiftClusterName $clusterName -Name $authName `
             -IssuerUrl $issuer -IssuerAudience @($audience) -ClientProfile $clientProfile `
             -UsernameClaim 'email' -GroupClaim 'groups'
 
@@ -61,7 +66,7 @@ Describe 'New-AzRedHatOpenShiftHcpExternalAuth' {
             }
         )
         { New-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName `
-            -HcpOpenShiftClusterName $env.ClusterName -Name 'eatest-ps2' `
+            -HcpOpenShiftClusterName $clusterName -Name 'eatest-ps2' `
             -IssuerUrl $issuer -IssuerAudience @($audience) -ClientProfile $clientProfile `
             -UsernameClaim 'email' } | Should -Throw 'Only one external auth is allowed'
     }

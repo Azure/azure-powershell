@@ -50,6 +50,11 @@ The two switches are mutually exclusive.
 A single lookup by `-Name` is returned as-is
 (explicit requests are not filtered).
 
+Output types differ by view: the default list, `-NodePool`, and `-Name` return the full
+`IHcpOpenShiftVersion` model; `-ControlPlane` returns a summarized projection - a `PSCustomObject`
+with `Name` (MAJOR.MINOR) and `ChannelGroup` - because a MAJOR.MINOR value is not a real version
+resource and must not masquerade as one.
+
 ## EXAMPLES
 
 ### Example 1: List installable versions in a region
@@ -242,6 +247,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftVersion
+
+### System.Management.Automation.PSCustomObject
 
 ## NOTES
 

@@ -1,8 +1,8 @@
 {
-  "Remove-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/eatest-ps?api-version=2026-10-01+1": {
+  "Remove-AzRedHatOpenShiftHcpExternalAuth+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/cltest-ps/externalAuths/eatest-ps?api-version=2026-10-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/externalAuths/eatest-ps?api-version=2026-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/cltest-ps/externalAuths/eatest-ps?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

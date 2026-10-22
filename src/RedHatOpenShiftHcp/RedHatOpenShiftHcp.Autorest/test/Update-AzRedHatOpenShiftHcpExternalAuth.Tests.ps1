@@ -14,14 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRedHatOpenShiftHcpEx
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Same throwaway external auth created by New-AzRedHatOpenShiftHcpExternalAuth.Tests.ps1.
-$authName = 'eatest-ps'
+# Same throwaway external auth created by New-AzRedHatOpenShiftHcpExternalAuth.Tests.ps1, on the throwaway
+# cluster 'cltest-ps' (not the persistent $env.ClusterName, which owns the 'entra' read fixture).
+$authName    = 'eatest-ps'
+$clusterName = 'cltest-ps'
 
 Describe 'Update-AzRedHatOpenShiftHcpExternalAuth' {
     It 'UpdateExpanded' {
         # Change the username claim mapping (a cheap config PATCH).
         $ea = Update-AzRedHatOpenShiftHcpExternalAuth -ResourceGroupName $env.ResourceGroupName `
-            -HcpOpenShiftClusterName $env.ClusterName -Name $authName -UsernameClaim 'preferred_username'
+            -HcpOpenShiftClusterName $clusterName -Name $authName -UsernameClaim 'preferred_username'
         $ea.Name | Should -Be $authName
         @('AwaitingSecret', 'Succeeded') | Should -Contain $ea.ProvisioningState
     }

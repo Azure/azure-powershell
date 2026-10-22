@@ -48,7 +48,16 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    # Preserve the committed fixture coordinates (ResourceGroupName, ClusterName, NodePoolName, KMS keys, ...)
+    # so recording does not overwrite the env file with only SubscriptionId/Tenant. Merge the existing file in
+    # (context-derived Sub/Tenant above still win), then write the complete set.
+    $envPath = Join-Path $PSScriptRoot $envFile
+    if (Test-Path $envPath) {
+        (Get-Content $envPath -Raw | ConvertFrom-Json).psobject.properties | Foreach-Object {
+            if (-not $env.Contains($_.Name)) { $env[$_.Name] = $_.Value }
+        }
+    }
+    set-content -Path $envPath -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
     # Clean resources you create for testing

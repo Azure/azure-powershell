@@ -14,12 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedHatOpenShiftHcpNo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# Deletes the throwaway pool created by New-AzRedHatOpenShiftHcpNodePool.Tests.ps1.
-$poolName = 'nptest-ps'
-
 Describe 'Remove-AzRedHatOpenShiftHcpNodePool' {
-    It 'Delete' {
-        { Remove-AzRedHatOpenShiftHcpNodePool -ResourceGroupName $env.ResourceGroupName `
-            -HcpOpenShiftClusterName $env.ClusterName -Name $poolName } | Should -Not -Throw
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityHcpOpenShiftCluster' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

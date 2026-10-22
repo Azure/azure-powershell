@@ -155,7 +155,17 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
                 [System.Security.Cryptography.HashAlgorithmName]::SHA256,
                 [System.Security.Cryptography.RSASignaturePadding]::Pkcs1)
             $csrPem = ConvertTo-Pem -Label 'CERTIFICATE REQUEST' -Der ($req.CreateSigningRequest())
-            $privateKeyPem = ConvertTo-Pem -Label 'PRIVATE KEY' -Der ($rsa.ExportPkcs8PrivateKey())
+            # Private key as PKCS#1 PEM (kubeconfig client-key-data accepts it). PowerShell 7+ (.NET Core) has
+            # ExportRSAPrivateKey(); Windows PowerShell 5.1 (.NET Framework) does not, so fall back to a manual
+            # DER encoder (as Az.ConnectedKubernetes does) to keep -CompatiblePSEditions 'Desktop' honest.
+            if ($PSVersionTable.PSVersion.Major -eq 5) {
+                . "$PSScriptRoot/helpers/RSAHelper.ps1"
+                $privateKeyDer = [System.Convert]::FromBase64String((ExportRSAPrivateKeyBase64 -RSA $rsa))
+            }
+            else {
+                $privateKeyDer = $rsa.ExportRSAPrivateKey()
+            }
+            $privateKeyPem = ConvertTo-Pem -Label 'RSA PRIVATE KEY' -Der $privateKeyDer
 
             # 2. Call the hidden generated cmdlet with the CSR injected.
             $invoke = @{ CertificateSigningRequest = $csrPem; Confirm = $false; ErrorAction = 'Stop' }
@@ -171,8 +181,9 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
             $cred = Az.RedHatOpenShiftHcp.internal\Request-AzRedHatOpenShiftHcpClusterAdminCredential @invoke
             if (-not $cred) { return }
 
-            # 3. .Kubeconfig is a SecureString (x-ms-secret) — decode it.
-            $kubeYaml = ConvertFrom-SecureString -AsPlainText $cred.Kubeconfig
+            # 3. .Kubeconfig is a SecureString (x-ms-secret) — decode it. NetworkCredential works on both
+            #    Windows PowerShell 5.1 and PowerShell 7+ (ConvertFrom-SecureString -AsPlainText is 7+ only).
+            $kubeYaml = [System.Net.NetworkCredential]::new('', $cred.Kubeconfig).Password
             if ($kubeYaml -notmatch "`n") { $kubeYaml = $kubeYaml -replace '\\n', "`n" }
 
             # 4. Embed the private key + give the context a stable name.
@@ -225,9 +236,9 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
                 $tmp = "$target.$([System.IO.Path]::GetRandomFileName()).tmp"
                 if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force }
                 Set-Content -LiteralPath $tmp -Value $final -NoNewline
-                try { if (-not $IsWindows) { [System.IO.File]::SetUnixFileMode($tmp, [System.IO.UnixFileMode]'UserRead, UserWrite') } } catch { }
+                try { if ([System.Environment]::OSVersion.Platform -eq [System.PlatformID]::Unix) { [System.IO.File]::SetUnixFileMode($tmp, [System.IO.UnixFileMode]'UserRead, UserWrite') } } catch { }
                 Move-Item -LiteralPath $tmp -Destination $target -Force
-                try { if (-not $IsWindows) { [System.IO.File]::SetUnixFileMode($target, [System.IO.UnixFileMode]'UserRead, UserWrite') } } catch { }
+                try { if ([System.Environment]::OSVersion.Platform -eq [System.PlatformID]::Unix) { [System.IO.File]::SetUnixFileMode($target, [System.IO.UnixFileMode]'UserRead, UserWrite') } } catch { }
 
                 Write-Verbose "Admin kubeconfig written to '$target' (context '$contextName'); expires $($cred.ExpirationTimestamp)."
             }

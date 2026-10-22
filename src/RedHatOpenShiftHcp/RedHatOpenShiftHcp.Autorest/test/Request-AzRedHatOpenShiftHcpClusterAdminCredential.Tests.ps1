@@ -31,7 +31,7 @@ Describe 'Request-AzRedHatOpenShiftHcpClusterAdminCredential' {
             $cred | Should -Not -BeNullOrEmpty
 
             # Secret hygiene: the kubeconfig must be written owner-only (0600) on non-Windows.
-            if (-not $IsWindows) {
+            if ([System.Environment]::OSVersion.Platform -eq [System.PlatformID]::Unix) {
                 ([int][System.IO.File]::GetUnixFileMode($out)) | Should -Be 384   # 0o600 = UserRead,UserWrite
             }
         }

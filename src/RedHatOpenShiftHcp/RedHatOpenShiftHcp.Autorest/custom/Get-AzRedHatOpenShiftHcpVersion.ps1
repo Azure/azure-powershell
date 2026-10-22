@@ -15,15 +15,24 @@ disabled versions are hidden. `-ControlPlane` returns the distinct **MAJOR.MINOR
 accepts; `-NodePool` (and the default list) returns the full **X.Y.Z** patch versions a NODE POOL
 requires. The two switches are mutually exclusive. A single lookup by `-Name` is returned as-is
 (explicit requests are not filtered).
+
+Output types differ by view: the default list, `-NodePool`, and `-Name` return the full
+`IHcpOpenShiftVersion` model; `-ControlPlane` returns a summarized projection — a `PSCustomObject`
+with `Name` (MAJOR.MINOR) and `ChannelGroup` — because a MAJOR.MINOR value is not a real version
+resource and must not masquerade as one.
 .Example
 Get-AzRedHatOpenShiftHcpVersion -Location westeurope -ControlPlane
 .Example
 Get-AzRedHatOpenShiftHcpVersion -Location westeurope -NodePool
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftVersion
+.Outputs
+System.Management.Automation.PSCustomObject
 #>
 function Get-AzRedHatOpenShiftHcpVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftVersion])]
+    # Default/-NodePool/-Name views emit the full version model; -ControlPlane emits a PSCustomObject
+    # (Name = MAJOR.MINOR, ChannelGroup). Both declared so the output contract matches every view.
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Models.IHcpOpenShiftVersion], [System.Management.Automation.PSCustomObject])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
@@ -145,7 +154,9 @@ function Get-AzRedHatOpenShiftHcpVersion {
             Sort-Object -Property @{ Expression = { try { [version]$_.Name } catch { [version]'0.0.0' } } }
 
         if ($ControlPlane) {
-            # distinct MAJOR.MINOR (first occurrence wins; ascending)
+            # distinct MAJOR.MINOR (first occurrence wins; ascending). Emits a summarized PSCustomObject
+            # (declared in OutputType) rather than IHcpOpenShiftVersion: a MAJOR.MINOR value is not a real
+            # version resource, so returning a full model with Name='4.22' but Id='.../4.22.18' would be a lie.
             $seen = [System.Collections.Generic.HashSet[string]]::new()
             foreach ($v in $sorted) {
                 $parts = "$($v.Name)" -split '\.'
