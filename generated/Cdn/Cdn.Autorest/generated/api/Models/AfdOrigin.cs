@@ -25,19 +25,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string AzureOriginId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).AzureOriginId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).AzureOriginId = value ?? null; }
 
-        /// <summary>
-        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string CertificateNameCheckValidationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).CertificateNameCheckValidationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).CertificateNameCheckValidationMode = value ?? null; }
-
-        /// <summary>
-        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
-        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<string> CustomCertificateSubject { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).CustomCertificateSubject; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).CustomCertificateSubject = value ?? null /* arrayOf */; }
-
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginPropertiesInternal)Property).DeploymentStatus; }
 
@@ -273,34 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string AzureOriginId { get; set; }
-        /// <summary>
-        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.",
-        SerializedName = @"certificateNameCheckValidationMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
-        string CertificateNameCheckValidationMode { get; set; }
-        /// <summary>
-        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
-        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.",
-        SerializedName = @"customCertificateSubjects",
-        PossibleTypes = new [] { typeof(string) })]
-        System.Collections.Generic.List<string> CustomCertificateSubject { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -513,16 +472,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureOrigin { get; set; }
         /// <summary>Resource ID.</summary>
         string AzureOriginId { get; set; }
-        /// <summary>
-        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
-        string CertificateNameCheckValidationMode { get; set; }
-        /// <summary>
-        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
-        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
-        /// </summary>
-        System.Collections.Generic.List<string> CustomCertificateSubject { get; set; }
 
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
         string DeploymentStatus { get; set; }

@@ -92,14 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet) content.GetValueForProperty("CustomizedCipherSuiteSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSetTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ServerTlsGroupPolicy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroupPolicy = (string) content.GetValueForProperty("ServerTlsGroupPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroupPolicy, global::System.Convert.ToString);
-            }
-            if (content.Contains("ServerTlsGroup"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServerTlsGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
             if (content.Contains("Secret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).Secret = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("Secret",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).Secret, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -136,14 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("CustomizedCipherSuiteSet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsCustomizedCipherSuiteSet) content.GetValueForProperty("CustomizedCipherSuiteSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).CustomizedCipherSuiteSet, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSetTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ServerTlsGroupPolicy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroupPolicy = (string) content.GetValueForProperty("ServerTlsGroupPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroupPolicy, global::System.Convert.ToString);
-            }
-            if (content.Contains("ServerTlsGroup"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServerTlsGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParametersInternal)this).ServerTlsGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("Secret"))
             {

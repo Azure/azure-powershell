@@ -69,8 +69,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_cipherSuiteSetType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("cipherSuiteSetType"), out var __jsonCipherSuiteSetType) ? (string)__jsonCipherSuiteSetType : (string)_cipherSuiteSetType;}
             {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
             {_customizedCipherSuiteSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("customizedCipherSuiteSet"), out var __jsonCustomizedCipherSuiteSet) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsCustomizedCipherSuiteSet.FromJson(__jsonCustomizedCipherSuiteSet) : _customizedCipherSuiteSet;}
-            {_serverTlsGroupPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("serverTlsGroupPolicy"), out var __jsonServerTlsGroupPolicy) ? (string)__jsonServerTlsGroupPolicy : (string)_serverTlsGroupPolicy;}
-            {_serverTlsGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("serverTlsGroups"), out var __jsonServerTlsGroups) ? If( __jsonServerTlsGroups as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _serverTlsGroup;}
             {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("secret"), out var __jsonSecret) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonSecret) : _secret;}
             AfterFromJson(json);
         }
@@ -110,16 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != (((object)this._cipherSuiteSetType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._cipherSuiteSetType.ToString()) : null, "cipherSuiteSetType" ,container.Add );
             AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
             AddIf( null != this._customizedCipherSuiteSet ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._customizedCipherSuiteSet.ToJson(null,serializationMode) : null, "customizedCipherSuiteSet" ,container.Add );
-            AddIf( null != (((object)this._serverTlsGroupPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._serverTlsGroupPolicy.ToString()) : null, "serverTlsGroupPolicy" ,container.Add );
-            if (null != this._serverTlsGroup)
-            {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __x in this._serverTlsGroup )
-                {
-                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
-                }
-                container.Add("serverTlsGroups",__w);
-            }
             AddIf( null != this._secret ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._secret.ToJson(null,serializationMode) : null, "secret" ,container.Add );
             AfterToJson(ref container);
             return container;

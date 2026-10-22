@@ -77,21 +77,7 @@ param(
     # Resource reference to the secret.
     # ie.
     # subs/rg/profile/secret.
-    ${Secret},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SecP256r1MLKEM768", "SecP384r1MLKEM1024", "X25519MLKEM768", "prime256v1", "X25519", "secp384r1", "secp521r1")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String[]]
-    # Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.
-    ${ServerTlsGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard", "Enhanced", "Custom")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Server TLS group policy that will be used for Https.
-    ${ServerTlsGroupPolicy}
+    ${Secret}
 )
 
 begin {
