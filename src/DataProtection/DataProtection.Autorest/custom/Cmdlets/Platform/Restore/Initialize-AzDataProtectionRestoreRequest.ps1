@@ -269,6 +269,10 @@ function Initialize-AzDataProtectionRestoreRequest
         }
         elseif(!($ItemLevelRecovery))
         {   
+            if($DatasourceType -eq "AzureCosmosDB" -and $RestoreConfiguration -ne $null){
+                throw "RestoreConfiguration for DatasourceType AzureCosmosDB requires ItemLevelRecovery. Add -ItemLevelRecovery to restore the selected databases and containers, or remove RestoreConfiguration for a full restore."
+            }
+
             # RestoreTargetInfo for OLR ALR Full recovery
             if($DatasourceType -ne "AzureKubernetesService" -and $DatasourceType -ne "AzureElasticSAN"){
                 $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.RestoreTargetInfo]::new()
@@ -307,9 +311,18 @@ function Initialize-AzDataProtectionRestoreRequest
             
             # can generalise this condition to manifest level if needed
             if($DatasourceType -eq "AzureCosmosDB"){
+                if($PSBoundParameters.ContainsKey("ContainersList") -or $PSBoundParameters.ContainsKey("PrefixMatch")){
+                    throw "ContainersList and PrefixMatch are not supported for DatasourceType AzureCosmosDB. Use RestoreConfiguration to select databases and containers."
+                }
+
                 if($RestoreConfiguration -eq $null){
                     $errormsg = "Please input parameter RestoreConfiguration for $DatasourceType restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
                     throw $errormsg
+                }
+
+                $resourceSelector = if($RestoreConfiguration -is [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]){ $RestoreConfiguration.ResourceSelector }
+                if($resourceSelector -isnot [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ResourceListSelectionCriteria] -or $resourceSelector.ResourceIdentifier.Count -eq 0){
+                    throw "Invalid RestoreConfiguration for DatasourceType AzureCosmosDB. Use New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier to create it."
                 }
 
                 # Windows PowerShell 5.1 cannot assign an object array to the typed criteria list.

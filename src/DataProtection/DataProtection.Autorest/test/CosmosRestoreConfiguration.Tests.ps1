@@ -53,6 +53,27 @@ Describe 'CosmosRestoreConfiguration' {
         { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -ItemLevelRecovery } | Should -Throw "RestoreConfiguration"
     }
 
+    It 'ItemLevelRestoreRequestThrowsWhenContainersListOrPrefixMatchSupplied' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1")
+
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -ContainersList @("col1") } | Should -Throw "ContainersList and PrefixMatch are not supported"
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -PrefixMatch @{ "db1" = @("col1") } } | Should -Throw "ContainersList and PrefixMatch are not supported"
+    }
+
+    It 'ItemLevelRestoreRequestThrowsWhenRestoreConfigurationIsNotCosmosSelection' {
+        $aksRestoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService
+        $emptyRestoreConfig = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.GenericRestoreDatasourceCriteria]::new()
+
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $aksRestoreConfig -ItemLevelRecovery } | Should -Throw "Invalid RestoreConfiguration"
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $emptyRestoreConfig -ItemLevelRecovery } | Should -Throw "Invalid RestoreConfiguration"
+    }
+
+    It 'FullRestoreRequestThrowsWhenRestoreConfigurationSupplied' {
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
+
+        { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig } | Should -Throw "requires ItemLevelRecovery"
+    }
+
     It 'RestoreRequestWithSystemAssignedIdentity' {
         $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $true
 

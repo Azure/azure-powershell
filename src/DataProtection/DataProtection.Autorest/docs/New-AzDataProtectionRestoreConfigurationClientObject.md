@@ -69,15 +69,6 @@ GenericRestoreDatasourceCriteria   Microsoft.Azure.PowerShell.Cmdlets.DataProtec
 
 This command creates a restore configuration client object that restores the source volume into a renamed target volume using ResourceNameOverride.
 
-### Example 4: Create a RestoreConfiguration for item level restore with AzureCosmosDB
-```powershell
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
-```
-
-This command creates a restore configuration client object for Azure Cosmos DB item level restore.
-ResourceIdentifier lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
-Pass this object to Initialize-AzDataProtectionRestoreRequest using the RestoreConfiguration parameter along with ItemLevelRecovery.
-
 ## PARAMETERS
 
 ### -ConflictPolicy
@@ -296,9 +287,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceIdentifier
-List of source volume names (AzureElasticSAN) or database and database/container names (AzureCosmosDB) to be restored.
-Use this parameter for DatasourceType AzureElasticSAN or AzureCosmosDB.
-For AzureElasticSAN, the service currently supports exactly one volume per restore request.
+List of source Azure Elastic SAN volume names to restore.
+Use this parameter for DatasourceType AzureElasticSAN.
+The service currently supports exactly one volume per restore request.
 
 ```yaml
 Type: System.String[]

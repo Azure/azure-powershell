@@ -262,20 +262,6 @@ The third command builds the restore configuration selecting the source volume a
 The fourth command sets the target volume group ARM ID.
 The last command initializes the restore request for an alternate-location item-level restore of the selected Elastic SAN volume.
 
-### Example 10: Get restore request object for alternate location item level restore for AzureCosmosDB
-```powershell
-$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "cosmosAccountName" }
-$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
-$targetCosmosAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/targetCosmosAccountName"
-$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId -ItemLevelRecovery -RestoreConfiguration $restoreConfig
-```
-
-The first and second commands fetch the backup instance and recovery points for the protected Azure Cosmos DB account.
-The third command builds the restore configuration selecting containers col1 and col2 in database db1, and the whole database db2.
-The fourth command sets the ARM ID of the target Azure Cosmos DB account.
-The last command initializes the restore request for an alternate location item level restore of the selected databases and containers.
-
 ## PARAMETERS
 
 ### -BackupInstance
