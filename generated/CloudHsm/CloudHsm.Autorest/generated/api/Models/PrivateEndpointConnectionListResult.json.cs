@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
+    /// <summary>List of private endpoint connections associated with the specified resource.</summary>
     public partial class PrivateEndpointConnectionListResult
     {
 

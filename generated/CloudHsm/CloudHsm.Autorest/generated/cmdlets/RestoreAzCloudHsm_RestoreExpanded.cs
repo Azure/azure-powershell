@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Description(@"Restores all key materials of a specified Cloud HSM Cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore", ApiVersion = "2025-03-31")]
     public partial class RestoreAzCloudHsm_RestoreExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IContext
@@ -40,6 +40,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Cloud Hsm Cluster restore information</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreRequestProperties _restoreRequestPropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.RestoreRequestProperties();
@@ -210,9 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
         ReadOnly = false,
         Description = @"The SAS token pointing to an Azure blob storage container. This property is reserved for Azure Backup Service.",
         SerializedName = @"token",
-        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.DoNotExport]
-        public System.Security.SecureString Token { get => _restoreRequestPropertiesBody.Token ?? null; set => _restoreRequestPropertiesBody.Token = value; }
+        public string Token { get => _restoreRequestPropertiesBody.Token ?? null; set => _restoreRequestPropertiesBody.Token = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -283,6 +292,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -487,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                 // get the client instance
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Token"))
                 {
-                    Token = (System.Security.SecureString)this.MyInvocation.BoundParameters["Token"];
+                    Token = (string)this.MyInvocation.BoundParameters["Token"];
                 }
                 try
                 {
@@ -602,7 +616,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IRestoreResult
                 var result = (await response);
-                WriteObject(result, false);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

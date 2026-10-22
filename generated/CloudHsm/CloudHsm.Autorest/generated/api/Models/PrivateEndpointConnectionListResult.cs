@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
+    /// <summary>List of private endpoint connections associated with the specified resource.</summary>
     public partial class PrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResult,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnectionListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> _value;
 
-        /// <summary>The PrivateEndpointConnection items on this page</summary>
+        /// <summary>Array of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 
         }
     }
-    /// The response of a PrivateEndpointConnection list operation.
+    /// List of private endpoint connections associated with the specified resource.
     public partial interface IPrivateEndpointConnectionListResult :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IJsonSerializable
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The link to the next page of items",
+        Description = @"The URL to get the next set of private endpoint connections.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The PrivateEndpointConnection items on this page</summary>
+        /// <summary>Array of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The PrivateEndpointConnection items on this page",
+        Description = @"Array of private endpoint connections.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }
-    /// The response of a PrivateEndpointConnection list operation.
+    /// List of private endpoint connections associated with the specified resource.
     internal partial interface IPrivateEndpointConnectionListResultInternal
 
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of private endpoint connections.</summary>
         string NextLink { get; set; }
-        /// <summary>The PrivateEndpointConnection items on this page</summary>
+        /// <summary>Array of private endpoint connections.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> Value { get; set; }
 
     }

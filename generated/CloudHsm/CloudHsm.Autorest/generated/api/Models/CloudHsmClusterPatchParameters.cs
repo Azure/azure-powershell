@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         Update = true,
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The Cloud HSM Cluster's tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The Cloud HSM Cluster's tags</summary>
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPatchParametersTags Tag { get; set; }
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    public partial class ManagedServiceIdentityUserAssignedIdentities :
+    public partial class UserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentityUserAssignedIdentities source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.UserAssignedIdentities source) => source.__additionalProperties;
     }
 }

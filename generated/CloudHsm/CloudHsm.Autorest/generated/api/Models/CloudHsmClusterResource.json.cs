@@ -7,12 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    /// <summary>
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
-    /// </summary>
-    public partial class ManagedServiceIdentityUserAssignedIdentities
+    /// <summary>Cloud HSM Cluster Resource</summary>
+    public partial class CloudHsmClusterResource
     {
 
         /// <summary>
@@ -58,24 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject json ? new ManagedServiceIdentityUserAssignedIdentities(json) : null;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject into a new instance of <see cref="ManagedServiceIdentityUserAssignedIdentities"
-        /// />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject into a new instance of <see cref="CloudHsmClusterResource" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject instance to deserialize from.</param>
-        /// <param name="exclusions"></param>
-        internal ManagedServiceIdentityUserAssignedIdentities(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
+        internal CloudHsmClusterResource(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -83,20 +65,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.UserAssignedIdentity.FromJson(j) ,exclusions );
+            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.TrackedResource(json);
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSku.FromJson(__jsonSku) : _sku;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode"
-        /// />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource FromJson(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject json ? new CloudHsmClusterResource(json) : null;
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="CloudHsmClusterResource" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode"
-        /// />.
+        /// a serialized instance of <see cref="CloudHsmClusterResource" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode serializationMode)
         {
@@ -108,7 +102,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentity>)this).AdditionalProperties, container);
+            __trackedResource?.ToJson(container, serializationMode);
+            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -135,7 +135,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -327,7 +328,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -468,7 +470,7 @@ param(
     ${DomainNameLabelScope},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.DefaultInfo(Script='"Standard_B1"')]
     [System.String]
@@ -564,7 +566,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -773,7 +776,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -984,7 +988,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1200,7 +1205,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

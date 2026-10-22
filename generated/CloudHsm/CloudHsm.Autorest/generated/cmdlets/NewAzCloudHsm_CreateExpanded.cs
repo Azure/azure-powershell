@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Description(@"create a Cloud HSM Cluster in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}", ApiVersion = "2025-03-31")]
     public partial class NewAzCloudHsm_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IContext
@@ -43,6 +43,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -211,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
         Description =@"",
         Script = @"""Standard_B1""",
         SetCondition = @"")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10")]
         public string Sku { get => _body.SkuName ?? null; set => _body.SkuName = value; }
 
         /// <summary>Sku capacity</summary>
@@ -334,6 +343,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -569,13 +583,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("PublicNetworkAccess"))
-                {
-                    PublicNetworkAccess = (string)this.MyInvocation.BoundParameters["PublicNetworkAccess"];
-                }
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("SkuCapacity"))
                 {
                     SkuCapacity = (int)this.MyInvocation.BoundParameters["SkuCapacity"];
+                }
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("PublicNetworkAccess"))
+                {
+                    PublicNetworkAccess = (string)this.MyInvocation.BoundParameters["PublicNetworkAccess"];
                 }
                 try
                 {
@@ -683,7 +697,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster
                 var result = (await response);
-                WriteObject(result, false);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

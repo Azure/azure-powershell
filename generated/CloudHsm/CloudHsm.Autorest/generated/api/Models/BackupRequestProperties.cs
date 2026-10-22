@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// The SAS token pointing to an Azure blob storage container. This property is reserved for Azure Backup Service.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public System.Security.SecureString Token { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)__backupRestoreRequestBaseProperties).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)__backupRestoreRequestBaseProperties).Token = value ?? null; }
+        public string Token { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)__backupRestoreRequestBaseProperties).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)__backupRestoreRequestBaseProperties).Token = value ?? null; }
 
         /// <summary>Creates an new <see cref="BackupRequestProperties" /> instance.</summary>
         public BackupRequestProperties()

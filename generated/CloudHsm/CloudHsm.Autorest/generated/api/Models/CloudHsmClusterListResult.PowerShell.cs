@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.PowerShell;
 
-    /// <summary>The response of a CloudHsmCluster list operation.</summary>
+    /// <summary>List of Cloud HSM Clusters</summary>
     [System.ComponentModel.TypeConverter(typeof(CloudHsmClusterListResultTypeConverter))]
     public partial class CloudHsmClusterListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             return ToJsonString();
         }
     }
-    /// The response of a CloudHsmCluster list operation.
+    /// List of Cloud HSM Clusters
     [System.ComponentModel.TypeConverter(typeof(CloudHsmClusterListResultTypeConverter))]
     public partial interface ICloudHsmClusterListResult
 

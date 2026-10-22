@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>Backing field for <see cref="JobId" /> property.</summary>
         private string _jobId;
 
-        /// <summary>Identifier for the backup operation</summary>
+        /// <summary>The id returned as part of the backup request</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public string JobId { get => this._jobId; set => this._jobId = value; }
 
@@ -91,14 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Identifier for the backup operation</summary>
+        /// <summary>The id returned as part of the backup request</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identifier for the backup operation",
+        Description = @"The id returned as part of the backup request",
         SerializedName = @"jobId",
         PossibleTypes = new [] { typeof(string) })]
         string JobId { get; set; }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         string CloudHsmClusterName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Identifier for the backup operation</summary>
+        /// <summary>The id returned as part of the backup request</summary>
         string JobId { get; set; }
         /// <summary>Name of the private endpoint connection associated with the Cloud HSM Cluster.</summary>
         string PeConnectionName { get; set; }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Description(@"Gets the specified Cloud HSM Cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}", ApiVersion = "2025-03-31")]
     public partial class GetAzCloudHsm_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IContext

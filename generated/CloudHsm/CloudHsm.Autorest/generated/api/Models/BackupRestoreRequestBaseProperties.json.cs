@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
                 return;
             }
             {_azureStorageBlobContainerUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("azureStorageBlobContainerUri"), out var __jsonAzureStorageBlobContainerUri) ? (string)__jsonAzureStorageBlobContainerUri : (string)_azureStorageBlobContainerUri;}
-            {_token = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("token"), out var __jsonToken) ? new System.Net.NetworkCredential("",(string)__jsonToken).SecurePassword : _token;}
+            {_token = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("token"), out var __jsonToken) ? (string)__jsonToken : (string)_token;}
             AfterFromJson(json);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
                 return container;
             }
             AddIf( null != (((object)this._azureStorageBlobContainerUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._azureStorageBlobContainerUri.ToString()) : null, "azureStorageBlobContainerUri" ,container.Add );
-            AddIf( null != (((object)this._token)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._token))) : null, "token" ,container.Add );
+            AddIf( null != (((object)this._token)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._token.ToString()) : null, "token" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Extensions;
 
-    /// <summary>The response of a CloudHsmCluster list operation.</summary>
+    /// <summary>List of Cloud HSM Clusters</summary>
     public partial class CloudHsmClusterListResult :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResult,
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of Cloud HSM Clusters.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> _value;
 
-        /// <summary>The CloudHsmCluster items on this page</summary>
+        /// <summary>The list of Cloud HSM Clusters.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
 
         }
     }
-    /// The response of a CloudHsmCluster list operation.
+    /// List of Cloud HSM Clusters
     public partial interface ICloudHsmClusterListResult :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IJsonSerializable
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of Cloud HSM Clusters.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The link to the next page of items",
+        Description = @"The URL to get the next set of Cloud HSM Clusters.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The CloudHsmCluster items on this page</summary>
+        /// <summary>The list of Cloud HSM Clusters.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The CloudHsmCluster items on this page",
+        Description = @"The list of Cloud HSM Clusters.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> Value { get; set; }
 
     }
-    /// The response of a CloudHsmCluster list operation.
+    /// List of Cloud HSM Clusters
     internal partial interface ICloudHsmClusterListResultInternal
 
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>The URL to get the next set of Cloud HSM Clusters.</summary>
         string NextLink { get; set; }
-        /// <summary>The CloudHsmCluster items on this page</summary>
+        /// <summary>The list of Cloud HSM Clusters.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmCluster> Value { get; set; }
 
     }

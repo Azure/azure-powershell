@@ -21,13 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         public string AzureStorageBlobContainerUri { get => this._azureStorageBlobContainerUri; set => this._azureStorageBlobContainerUri = value; }
 
         /// <summary>Backing field for <see cref="Token" /> property.</summary>
-        private System.Security.SecureString _token;
+        private string _token;
 
         /// <summary>
         /// The SAS token pointing to an Azure blob storage container. This property is reserved for Azure Backup Service.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
-        public System.Security.SecureString Token { get => this._token; set => this._token = value; }
+        public string Token { get => this._token; set => this._token = value; }
 
         /// <summary>Creates an new <see cref="BackupRestoreRequestBaseProperties" /> instance.</summary>
         public BackupRestoreRequestBaseProperties()
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         Update = true,
         Description = @"The SAS token pointing to an Azure blob storage container. This property is reserved for Azure Backup Service.",
         SerializedName = @"token",
-        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        System.Security.SecureString Token { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Token { get; set; }
 
     }
     /// Backup and Restore Common properties
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>
         /// The SAS token pointing to an Azure blob storage container. This property is reserved for Azure Backup Service.
         /// </summary>
-        System.Security.SecureString Token { get; set; }
+        string Token { get; set; }
 
     }
 }

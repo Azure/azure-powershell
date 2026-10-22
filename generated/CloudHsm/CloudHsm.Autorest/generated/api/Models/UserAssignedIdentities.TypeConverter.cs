@@ -8,10 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
     using Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ManagedServiceIdentityUserAssignedIdentities"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="UserAssignedIdentities" />
     /// </summary>
-    public partial class ManagedServiceIdentityUserAssignedIdentitiesTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class UserAssignedIdentitiesTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,14 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ManagedServiceIdentityUserAssignedIdentities"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="UserAssignedIdentities"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ManagedServiceIdentityUserAssignedIdentities"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="UserAssignedIdentities"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ManagedServiceIdentityUserAssignedIdentities" /> type,
-        /// otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="UserAssignedIdentities" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -97,33 +95,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="UserAssignedIdentities" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ManagedServiceIdentityUserAssignedIdentities"
-        /// />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="UserAssignedIdentities" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ManagedServiceIdentityUserAssignedIdentities"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="UserAssignedIdentities" />.</param>
         /// <returns>
-        /// an instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="UserAssignedIdentities" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ManagedServiceIdentityUserAssignedIdentities.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return UserAssignedIdentities.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -131,11 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ManagedServiceIdentityUserAssignedIdentities.DeserializeFromPSObject(sourceValue);
+                return UserAssignedIdentities.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ManagedServiceIdentityUserAssignedIdentities.DeserializeFromDictionary(sourceValue);
+                return UserAssignedIdentities.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }
