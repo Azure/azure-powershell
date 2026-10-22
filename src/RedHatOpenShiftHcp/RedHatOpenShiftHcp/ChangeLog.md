@@ -18,7 +18,5 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.1.0
-* First preview release for module Az.RedHatOpenShiftHcp
+* First preview release for module Az.RedHatOpenShiftHcp, managing Azure Red Hat OpenShift Hosted Control Planes (ARO-HCP) against the stable 2026-10-01 API.
 
