@@ -447,7 +447,7 @@ Accept wildcard characters: False
 
 ### -RestoreConfiguration
 Restore configuration for restore.
-Use this parameter to restore with AzureKubernetesService.
+Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.
 
 ```yaml
 Type: System.Management.Automation.PSObject
