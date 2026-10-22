@@ -1,11 +1,18 @@
-### Example 1: Request an admin kubeconfig and merge it into ~/.kube/config
+### Example 1: Request an admin kubeconfig as a standalone file
 ```powershell
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile ~/.kube/config
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile ./myCluster.kubeconfig
 ```
 
-Requests a temporary admin credential and writes a ready-to-use kubeconfig. The cmdlet generates an RSA-4096 key and CSR locally, sends only the CSR (the private key never leaves the machine), splices the signed key back into the returned kubeconfig, adds a context named `myCluster-admin`, and merges it into `~/.kube/config` (AKS-style) written with `0600` permissions. After this, `kubectl get nodes` works in one shot.
+Requests a temporary admin credential and writes a ready-to-use, standalone kubeconfig. The cmdlet generates an RSA-4096 key and CSR locally, sends only the CSR (the private key never leaves the machine), splices the signed key back into the returned kubeconfig, and adds a context named `myCluster-admin`, written with `0600` permissions. After this, `kubectl --kubeconfig ./myCluster.kubeconfig get nodes` works in one shot. Writing is the default; an existing non-empty target is left untouched unless you pass `-Merge` or `-Force`.
 
-### Example 2: Print the kubeconfig to stdout instead of writing a file
+### Example 2: Merge the credential into your existing kubeconfig
+```powershell
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -Merge
+```
+
+Passing `-Merge` adds the `myCluster-admin` cluster/user/context into your existing kubeconfig (`$env:KUBECONFIG` or `~/.kube/config`) AKS-style, preserving every other entry, and switches the current context to it. Without `-Merge`, the cmdlet writes a standalone file and refuses to overwrite an existing one.
+
+### Example 3: Print the kubeconfig to stdout instead of writing a file
 ```powershell
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile -
 ```

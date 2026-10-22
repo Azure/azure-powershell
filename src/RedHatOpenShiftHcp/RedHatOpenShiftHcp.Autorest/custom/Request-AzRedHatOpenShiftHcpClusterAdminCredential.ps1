@@ -9,12 +9,15 @@
 Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
 .Description
 One-shot admin credential: generates an RSA-4096 key + CSR locally, sends only the CSR (the private key
-never leaves this machine), splices the signed key back into the returned kubeconfig, names the context
-'<cluster>-admin', and merges it into your kubeconfig (AKS-style). Replaces the generated cmdlet of the
+never leaves this machine), splices the signed key back into the returned kubeconfig, and names the context
+'<cluster>-admin'. By default it writes a standalone kubeconfig; pass -Merge to add the context into an
+existing kubeconfig (AKS-style) instead of overwriting it. Replaces the generated cmdlet of the
 same name (hidden via the README directive; still callable as
 Az.RedHatOpenShiftHcp.internal\Request-AzRedHatOpenShiftHcpClusterAdminCredential).
 .Example
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myRg -HcpOpenShiftClusterName myCluster
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myRg -HcpOpenShiftClusterName myCluster -OutFile ./admin.kubeconfig
+.Example
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myRg -HcpOpenShiftClusterName myCluster -Merge
 .Example
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myRg -HcpOpenShiftClusterName myCluster -OutFile -
 .Outputs
@@ -62,9 +65,15 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
         ${Context},
 
         [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Merge the credential into the existing target kubeconfig (AKS-style) instead of writing a standalone
+        # file. Without this, an existing non-empty target is left untouched unless -Force is also given.
+        ${Merge},
+
+        [Parameter()]
         [Alias('OverwriteExisting')]
         [System.Management.Automation.SwitchParameter]
-        # Replace the target kubeconfig file entirely instead of merging into it.
+        # Overwrite the target kubeconfig file with the standalone credential, replacing any existing content.
         ${Force},
 
         [Parameter()]
@@ -130,6 +139,10 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
         $rsa = $null
         $privateKeyPem = $null
         try {
+            if ($Merge -and $Force) {
+                throw '-Merge and -Force cannot be combined: -Merge adds the context into the existing kubeconfig; -Force overwrites the file. Pick one.'
+            }
+
             $clusterName = $HcpOpenShiftClusterName
             if (-not $clusterName -and $InputObject) { $clusterName = $InputObject.HcpOpenShiftClusterName }
             if (-not $PSCmdlet.ShouldProcess($clusterName, 'Request admin credential')) { return }
@@ -169,6 +182,7 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
 
             # 5. Emit to stdout or merge/write to a file.
             if ($OutFile -eq '-') {
+                if ($Merge -or $Force) { Write-Warning '-Merge/-Force are ignored when -OutFile is ''-'' (writing to stdout).' }
                 Write-Output $prepared
             }
             else {
@@ -190,15 +204,26 @@ function Request-AzRedHatOpenShiftHcpClusterAdminCredential {
                     throw "Refusing to write through a symbolic link: $target"
                 }
 
+                # Default: write a standalone kubeconfig. Merging into an existing file is opt-in (-Merge);
+                # overwriting one is opt-in (-Force). Refuse to clobber an existing non-empty file otherwise.
                 $final = $prepared
-                if (-not $Force -and $existingItem) {
+                if ($existingItem) {
                     $existing = Get-Content -LiteralPath $target -Raw
-                    if ($existing -and $existing.Trim()) {
-                        $final = [Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Custom.KubeConfigHelper]::MergeKubeConfig($existing, $prepared)
+                    $hasContent = $existing -and $existing.Trim()
+                    if ($Merge) {
+                        if ($hasContent) {
+                            $final = [Microsoft.Azure.PowerShell.Cmdlets.RedHatOpenShiftHcp.Custom.KubeConfigHelper]::MergeKubeConfig($existing, $prepared)
+                        }
+                    }
+                    elseif (-not $Force -and $hasContent) {
+                        throw "A kubeconfig already exists at '$target'. Re-run with -Merge to add this cluster's context to it, -Force to overwrite it, or -OutFile <path> to write elsewhere."
                     }
                 }
 
-                $tmp = "$target.$PID.tmp"
+                # Unpredictable temp name next to the target (same filesystem -> atomic Move), so a pre-planted
+                # symlink at the temp path cannot redirect the private-key-bearing write elsewhere.
+                $tmp = "$target.$([System.IO.Path]::GetRandomFileName()).tmp"
+                if (Test-Path -LiteralPath $tmp) { Remove-Item -LiteralPath $tmp -Force }
                 Set-Content -LiteralPath $tmp -Value $final -NoNewline
                 try { if (-not $IsWindows) { [System.IO.File]::SetUnixFileMode($tmp, [System.IO.UnixFileMode]'UserRead, UserWrite') } } catch { }
                 Move-Item -LiteralPath $tmp -Destination $target -Force

@@ -15,37 +15,48 @@ Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
 ### RequestExpanded (Default)
 ```
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -HcpOpenShiftClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Context <String>] [-Force] [-OutFile <String>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Context <String>] [-Force] [-Merge]
+ [-OutFile <String>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RequestViaIdentityExpanded
 ```
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -InputObject <IRedHatOpenShiftHcpIdentity>
- [-Context <String>] [-Force] [-OutFile <String>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Context <String>] [-Force] [-Merge] [-OutFile <String>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 One-shot admin credential: generates an RSA-4096 key + CSR locally, sends only the CSR (the private key
-never leaves this machine), splices the signed key back into the returned kubeconfig, names the context
-'\<cluster\>-admin', and merges it into your kubeconfig (AKS-style).
+never leaves this machine), splices the signed key back into the returned kubeconfig, and names the context
+'\<cluster\>-admin'.
+By default it writes a standalone kubeconfig; pass -Merge to add the context into an
+existing kubeconfig (AKS-style) instead of overwriting it.
 Replaces the generated cmdlet of the
 same name (hidden via the README directive; still callable as
 Az.RedHatOpenShiftHcp.internal\Request-AzRedHatOpenShiftHcpClusterAdminCredential).
 
 ## EXAMPLES
 
-### Example 1: Request an admin kubeconfig and merge it into ~/.kube/config
+### Example 1: Request an admin kubeconfig as a standalone file
 ```powershell
-Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile ~/.kube/config
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile ./myCluster.kubeconfig
 ```
 
-Requests a temporary admin credential and writes a ready-to-use kubeconfig.
-The cmdlet generates an RSA-4096 key and CSR locally, sends only the CSR (the private key never leaves the machine), splices the signed key back into the returned kubeconfig, adds a context named `myCluster-admin`, and merges it into `~/.kube/config` (AKS-style) written with `0600` permissions.
-After this, `kubectl get nodes` works in one shot.
+Requests a temporary admin credential and writes a ready-to-use, standalone kubeconfig.
+The cmdlet generates an RSA-4096 key and CSR locally, sends only the CSR (the private key never leaves the machine), splices the signed key back into the returned kubeconfig, and adds a context named `myCluster-admin`, written with `0600` permissions.
+After this, `kubectl --kubeconfig ./myCluster.kubeconfig get nodes` works in one shot.
+Writing is the default; an existing non-empty target is left untouched unless you pass `-Merge` or `-Force`.
 
-### Example 2: Print the kubeconfig to stdout instead of writing a file
+### Example 2: Merge the credential into your existing kubeconfig
+```powershell
+Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -Merge
+```
+
+Passing `-Merge` adds the `myCluster-admin` cluster/user/context into your existing kubeconfig (`$env:KUBECONFIG` or `~/.kube/config`) AKS-style, preserving every other entry, and switches the current context to it.
+Without `-Merge`, the cmdlet writes a standalone file and refuses to overwrite an existing one.
+
+### Example 3: Print the kubeconfig to stdout instead of writing a file
 ```powershell
 Request-AzRedHatOpenShiftHcpClusterAdminCredential -ResourceGroupName myResourceGroup -HcpOpenShiftClusterName myCluster -OutFile -
 ```
@@ -107,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Replace the target kubeconfig file entirely instead of merging into it.
+Overwrite the target kubeconfig file with the standalone credential, replacing any existing content.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -148,6 +159,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Merge
+Merge the credential into the existing target kubeconfig (AKS-style) instead of writing a standalone
+file.
+Without this, an existing non-empty target is left untouched unless -Force is also given.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

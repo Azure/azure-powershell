@@ -1,6 +1,8 @@
 # Offline unit tests for the C1 helper custom/KubeConfigHelper.cs.
 # Pure YAML string -> string transforms: no Azure, no HTTP, no recording. The module must be imported (the
-# harness does this) so the compiled type (and its YamlDotNet dependency) is available.
+# harness does this) so the compiled type is available. The helper is BCL-only (no YAML package): it parses
+# only the regular content it produces and block-splices into the user's existing config without re-serializing
+# it, so these tests also guard that existing content (including exec auth-plugins) is preserved verbatim.
 
 Describe 'KubeConfigHelper' {
     BeforeAll {
@@ -91,6 +93,72 @@ current-context: other
             @([regex]::Matches($merged, 'name: dup')).Count | Should -Be 3   # 1 cluster + 1 user + 1 context
             $merged | Should -Match 'api.v2.example.com'
             $merged | Should -Not -Match 'api.hcp.example.com'
+        }
+
+        It 'preserves an existing exec auth-plugin (nested "- name:" is not treated as an item name)' {
+            # A user entry whose exec plugin carries an env list with its own "- name:" lines. A naive
+            # "find name:" / "split on '- '" merge would mangle these; the block-splice must leave them intact.
+            $withExec = @'
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    server: https://aks.example.com:443
+  name: aks
+users:
+- name: aks-user
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      command: kubelogin
+      args:
+      - get-token
+      - --server-id
+      env:
+      - name: AAD_LOGIN_METHOD
+        value: devicecode
+      - name: KUBECACHEDIR
+        value: /tmp/kubecache
+contexts:
+- context:
+    cluster: aks
+    user: aks-user
+  name: aks
+current-context: aks
+'@
+            $prepared = $kh::PrepareKubeconfig($returned, $pem, 'my-cluster')
+            $merged   = $kh::MergeKubeConfig($withExec, $prepared)
+            # existing exec plugin survives byte-for-byte
+            $merged | Should -Match 'command: kubelogin'
+            $merged | Should -Match 'name: AAD_LOGIN_METHOD'
+            $merged | Should -Match 'name: KUBECACHEDIR'
+            $merged | Should -Match 'devicecode'
+            # existing aks user/cluster preserved and new one added
+            $merged | Should -Match 'name: aks-user'
+            $merged | Should -Match 'name: my-cluster'
+            $merged | Should -Match 'current-context: my-cluster'
+        }
+
+        It 'appends a section that is absent from the existing kubeconfig' {
+            # An existing config missing the 'contexts' section entirely; merge must add it.
+            $noContexts = @'
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    server: https://other.example.com:6443
+  name: other-cluster
+users:
+- name: other-user
+  user:
+    token: sometoken
+current-context: ""
+'@
+            $prepared = $kh::PrepareKubeconfig($returned, $pem, 'my-cluster')
+            $merged   = $kh::MergeKubeConfig($noContexts, $prepared)
+            $merged | Should -Match 'contexts:'
+            $merged | Should -Match 'current-context: my-cluster'
+            $merged | Should -Match 'name: other-user'   # existing content preserved
         }
     }
 }
