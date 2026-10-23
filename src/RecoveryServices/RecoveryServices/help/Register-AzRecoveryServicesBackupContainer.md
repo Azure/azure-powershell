@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
+Full Azure Resource Manager ID of the virtual machine to register. The cmdlet matches the complete ID, including the subscription, resource group, and virtual machine name, against discovered workload containers. A virtual machine with the same name and resource-group name in a different subscription is not selected.
 
 ```yaml
 Type: System.String

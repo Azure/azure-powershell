@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public int? SnapshotRetentionInDays { get; set; }
 
+        public bool? InstantAccessSnapshotEnabled { get; set; }
+
+        public int? InstantAccessDurationMinutes { get; set; }
+
         /// <summary>
         /// Object defining the number of associated items for the policy
         /// </summary>

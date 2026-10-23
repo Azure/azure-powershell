@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RestorePointQueryType)]
         [Parameter(Mandatory = false, ParameterSetName = NoFilterParameterSet, HelpMessage = ParamHelpMsgs.RecoveryPoint.RestorePointQueryType)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Full", "Log", "Differential", "FullAndDifferential", "All", "Incremental", "SnapshotFull", "SnapshotCopyOnlyFull", "Snapshot", "FullDifferentialAndSnapshot")]
+        [ValidateSet("Full", "Differential", "FullAndDifferential", "Incremental", "SnapshotFull", "SnapshotCopyOnlyFull", "Snapshot", "FullDifferentialAndSnapshot")]
         public string RestorePointQueryType { get; set; }
 
         /// <summary>

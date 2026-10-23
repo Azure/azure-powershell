@@ -790,6 +790,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadModifyPolicy.VMWorkloadPolicyType = ((AzureVmWorkloadPolicy)policy).VMWorkloadPolicyType;
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
@@ -842,6 +843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+                    azureVmWorkloadProtectionPolicy.VMWorkloadPolicyType = ((AzureVmWorkloadPolicy)policy).VMWorkloadPolicyType;
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
@@ -1092,9 +1094,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
             string workloadType = (string)ProviderData[ContainerParams.ContainerType];
             string vmResourceGroupName = (string)ProviderData[ContainerParams.ResourceGroupName];
+            string resourceId = (string)ProviderData[ContainerParams.ResourceId];
             ContainerBase containerBase =
                 (ContainerBase)ProviderData[ContainerParams.Container];
             AzureVmWorkloadContainer container = (AzureVmWorkloadContainer)ProviderData[ContainerParams.Container];
+
+            if (container == null && string.IsNullOrEmpty(resourceId))
+            {
+                throw new ArgumentException(Resources.VirtualMachineIdIsEmptyOrNull);
+            }
 
             ProtectionContainerResource protectionContainerResource = null;
 
@@ -1115,17 +1123,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("containerName: "+ containerName + ",  vmResourceGroupName: " + vmResourceGroupName
                 + ", unregisteredVMContainers.Count: " + unregisteredVmContainers?.Count);
 
-            ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
+            ProtectableContainerResource unregisteredVmContainer = container == null ? unregisteredVmContainers.Find(
                 vmContainer => {
-                    string[] containerNameSplit = vmContainer.Name.Split(';');
-                    int containerNameSplitLen = containerNameSplit.Length;
-                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName.Split(';').Last(), true) == 0;
-                    bool rgNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 2], vmResourceGroupName, true) == 0;
+                    bool resourceIdMatch = string.Equals(vmContainer.Properties?.ContainerId, resourceId,
+                        StringComparison.OrdinalIgnoreCase);
 
-                    Logger.Instance.WriteDebug("Unregistered Container Name: " + vmContainer.Name + ", vmNameMatch: " + vmNameMatch + ", rgNameMatch: " + rgNameMatch);
+                    Logger.Instance.WriteDebug("Unregistered Container Name: " + vmContainer.Name + ", resourceIdMatch: " + resourceIdMatch);
 
-                    return vmNameMatch && rgNameMatch;
-                });
+                    return resourceIdMatch;
+                }) : null;
 
             if (unregisteredVmContainer != null || container != null)
             {
@@ -1146,7 +1152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.AzureWorkloadAlreadyRegisteredException));
+                throw new ArgumentException(string.Format(Resources.AzureWorkloadContainerNotDiscovered, resourceId));
             }
         }
 

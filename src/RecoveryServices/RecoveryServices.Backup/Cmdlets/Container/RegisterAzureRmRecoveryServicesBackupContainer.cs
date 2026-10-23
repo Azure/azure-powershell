@@ -196,6 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ContainerParams.Container, Container},
                                 { ContainerParams.ResourceGroupName, vmResourceGroupParsed },
                                 { ContainerParams.ContainerSubscriptionId, ContainerSubscriptionId },
+                                { ContainerParams.ResourceId, ResourceId },
                             }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =

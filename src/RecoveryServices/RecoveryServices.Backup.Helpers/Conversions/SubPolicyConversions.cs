@@ -68,17 +68,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static List<ServiceClientModel.SubProtectionPolicy> GetServiceClientSubProtectionPolicy(
             AzureVmWorkloadPolicy policy, bool isSmartTieringEnabled = false)
         {
+            bool isSnapshotPolicy = policy.WorkloadType == WorkloadType.MSSQLInstance ||
+                policy.VMWorkloadPolicyType == ServiceClientModel.VMWorkloadPolicyType.SnapshotV1 ||
+                policy.VMWorkloadPolicyType == ServiceClientModel.VMWorkloadPolicyType.SnapshotV2;
             List<ServiceClientModel.SubProtectionPolicy> subProtectionPolicy =
                 new List<ServiceClientModel.SubProtectionPolicy>();
             if (policy.FullBackupSchedulePolicy != null &&
                 policy.FullBackupRetentionPolicy != null)
             {
-                subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy("Full",
+                subProtectionPolicy.Add(new ServiceClientModel.SubProtectionPolicy(
+                    isSnapshotPolicy ? "SnapshotFull" : "Full",
                     GetServiceClientSimpleSchedulePolicy((SimpleSchedulePolicy)policy.FullBackupSchedulePolicy),
                     GetServiceClientLongTermRetentionPolicy((LongTermRetentionPolicy)policy.FullBackupRetentionPolicy),
-                    GetServiceClientTieringPolicy(policy.FullBackupTieringPolicy, isSmartTieringEnabled)));
+                    isSnapshotPolicy ? null : GetServiceClientTieringPolicy(policy.FullBackupTieringPolicy, isSmartTieringEnabled))
+                {
+                    SnapshotBackupAdditionalDetails = policy.SnapshotBackupAdditionalDetails
+                });
             }
-            if (policy.DifferentialBackupSchedulePolicy != null &&
+            if (!isSnapshotPolicy &&
+                policy.DifferentialBackupSchedulePolicy != null &&
                 policy.DifferentialBackupRetentionPolicy != null &&
                 policy.IsDifferentialBackupEnabled)
             {

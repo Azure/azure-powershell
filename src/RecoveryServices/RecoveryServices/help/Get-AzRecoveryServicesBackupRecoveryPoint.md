@@ -293,13 +293,15 @@ Accept wildcard characters: False
 
 ### -RestorePointQueryType
 
-Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Log, Differential, FullAndDifferential, All, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential.
+Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential.
+
+This cmdlet returns recovery points with a single recovery time, not point-in-time log ranges. The values `Log` and `All` are not supported. To retrieve log ranges, including those available on top of a base snapshot, use [Get-AzRecoveryServicesBackupRecoveryLogChain](./Get-AzRecoveryServicesBackupRecoveryLogChain.md).
 
 ```yaml
 Type: System.String
 Parameter Sets: NoFilterParameterSet, DateTimeFilter
 Aliases:
-Accepted values: Full, Log, Differential, FullAndDifferential, All, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot
+Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot
 
 Required: False
 Position: Named

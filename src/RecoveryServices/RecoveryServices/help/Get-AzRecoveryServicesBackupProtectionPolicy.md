@@ -205,6 +205,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Azure virtual machine policies expose `InstantAccessSnapshotEnabled` and `InstantAccessDurationMinutes`.
+SQL Server instance snapshot policies expose `VMWorkloadPolicyType` and `SnapshotBackupAdditionalDetails`, including the snapshot resource group, instant recovery-point retention, and user-assigned managed identity.
+
 ## RELATED LINKS
 
 [New-AzRecoveryServicesBackupProtectionPolicy](./New-AzRecoveryServicesBackupProtectionPolicy.md)
@@ -212,5 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRecoveryServicesBackupProtectionPolicy](./Remove-AzRecoveryServicesBackupProtectionPolicy.md)
 
 [Set-AzRecoveryServicesBackupProtectionPolicy](./Set-AzRecoveryServicesBackupProtectionPolicy.md)
-
 

@@ -299,6 +299,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to No unregistered workload container was discovered for resource ID {0}. Verify the resource ID, discovery subscription, and whether the workload is already registered.
+        /// </summary>
+        public static string AzureWorkloadContainerNotDiscovered
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadContainerNotDiscovered", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Provide SQLInstance protectable item in TargetItem.
         /// </summary>
         public static string AzureWorkloadRestoreProtectableItemException

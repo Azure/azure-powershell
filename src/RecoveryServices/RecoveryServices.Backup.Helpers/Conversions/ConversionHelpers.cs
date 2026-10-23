@@ -164,6 +164,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
             iaasPolicyModel.SnapshotRetentionInDays = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
                 Properties).InstantRpRetentionRangeInDays;
+            iaasPolicyModel.InstantAccessSnapshotEnabled =
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantAccessSnapshotEnabled;
+            iaasPolicyModel.InstantAccessDurationMinutes =
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantAccessDurationMinutes;
 
             string policyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).PolicyType;
             iaasPolicyModel.PolicySubType = (policyType != null && policyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
@@ -315,7 +319,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             foreach (var policy in azureVmWorkloadPolicy.SubProtectionPolicy)
             {
-                if (string.Compare(policy.PolicyType, "Full") == 0)
+                if (string.Compare(policy.PolicyType, "Full") == 0 ||
+                    string.Compare(policy.PolicyType, "SnapshotFull") == 0)
                 {
                     if (policy.SchedulePolicy.GetType() !=
                         typeof(ServiceClientModel.SimpleSchedulePolicy))
@@ -380,6 +385,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             azureVmWorkloadPolicyModel.WorkloadType =
                 (serviceWorkLoadType == ServiceClientModel.WorkloadType.SQLInstance) ? WorkloadType.MSSQLInstance : WorkloadType.MSSQL;
             azureVmWorkloadPolicyModel.BackupManagementType = BackupManagementType.AzureWorkload;
+            azureVmWorkloadPolicyModel.VMWorkloadPolicyType = azureVmWorkloadPolicy.VMWorkloadPolicyType;
             azureVmWorkloadPolicyModel.IsCompression =
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.IsCompression;
             azureVmWorkloadPolicyModel.IsDifferentialBackupEnabled = false;
@@ -909,6 +915,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 if (string.Compare(subProtectionPolicy.PolicyType, "Full") == 0 ||
                     string.Compare(subProtectionPolicy.PolicyType, "SnapshotFull") == 0)
                 {
+                    azureVmWorkloadPolicyModel.SnapshotBackupAdditionalDetails = subProtectionPolicy.SnapshotBackupAdditionalDetails;
                     azureVmWorkloadPolicyModel.FullBackupSchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy(
                         (ServiceClientModel.SimpleSchedulePolicy)subProtectionPolicy.SchedulePolicy,
                         ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);

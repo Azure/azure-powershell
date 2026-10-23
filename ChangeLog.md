@@ -1,5 +1,8 @@
 ## Upcoming Release
 #### Az.RecoveryServices
+* Restricted `RestorePointQueryType` in `Get-AzRecoveryServicesBackupRecoveryPoint` to single-time recovery points. Use `Get-AzRecoveryServicesBackupRecoveryLogChain` for point-in-time log ranges instead of `Log` or `All`.
+* Fixed `Register-AzRecoveryServicesBackupContainer` to match the full virtual machine resource ID during Azure Workload registration, preventing selection of a same-named virtual machine in another subscription.
+* Fixed `Set-AzRecoveryServicesBackupProtectionPolicy` to preserve SQL Server instance snapshot settings and Azure virtual machine Instant Access settings when updating policies.
 * Fixed recovery point mount-script operation polling in `Get-AzRecoveryServicesBackupRPMountScript` and `Disable-AzRecoveryServicesBackupRPMountScript` to preserve the protected-item scope.
 * Refreshed Backup scenario recordings for API version 2026-10-01.
 

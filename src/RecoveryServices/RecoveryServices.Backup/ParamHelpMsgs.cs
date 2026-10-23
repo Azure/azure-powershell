@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string GetLatestRecoveryPointOnly = "When set, only the latest recovery point for the item is fetched.";
             public const string BaseSnapshotRecoveryPointId = "Id of the base snapshot recovery point. Used to fetch recovery points relative to a base snapshot.";
             public const string BaseRecoveryPointDatasourceId = "Id of the datasource of the base snapshot recovery point.";
-            public const string RestorePointQueryType = "Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Log, Differential, FullAndDifferential, All, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential.";
-            public const string RecoveryMode = "Recovery mode to filter the recovery points for SQL (MSSQL) items. Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot. Used with -RestorePointQueryType Log and -BaseSnapshotRecoveryPointId/-BaseRecoveryPointDatasourceId to list the point-in-time log recovery points available on top of an instance snapshot.";
+            public const string RestorePointQueryType = "Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential. Use Get-AzRecoveryServicesBackupRecoveryLogChain to retrieve point-in-time log ranges.";
+            public const string RecoveryMode = "Recovery mode for SQL (MSSQL) snapshot recovery. Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot. To list point-in-time log ranges on top of a base snapshot, use Get-AzRecoveryServicesBackupRecoveryLogChain with -BaseSnapshotRecoveryPointId and -BaseRecoveryPointDatasourceId.";
         }
 
         internal static class RestoreDisk

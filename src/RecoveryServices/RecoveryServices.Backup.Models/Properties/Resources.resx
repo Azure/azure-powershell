@@ -574,6 +574,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureWorkloadAlreadyRegisteredException" xml:space="preserve">
     <value>The specified workload is already registered in the given resource ID</value>
   </data>
+  <data name="AzureWorkloadContainerNotDiscovered" xml:space="preserve">
+    <value>No unregistered workload container was discovered for resource ID {0}. Verify the resource ID, discovery subscription, and whether the workload is already registered.</value>
+  </data>
   <data name="AzureWorkloadRestoreProtectableItemException" xml:space="preserve">
     <value>Provide SQLInstance protectable item in TargetItem</value>
   </data>

@@ -1261,6 +1261,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
+                    InstantAccessSnapshotEnabled = ((AzureVmPolicy)policy).InstantAccessSnapshotEnabled,
+                    InstantAccessDurationMinutes = ((AzureVmPolicy)policy).InstantAccessDurationMinutes,
                     InstantRpDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix),

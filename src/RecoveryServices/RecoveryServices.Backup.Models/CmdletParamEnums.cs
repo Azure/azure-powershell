@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Container,
         FriendlyName,
         ContainerSubscriptionId,
+        ResourceId,
     }
 
     public enum RecoveryPointParams
