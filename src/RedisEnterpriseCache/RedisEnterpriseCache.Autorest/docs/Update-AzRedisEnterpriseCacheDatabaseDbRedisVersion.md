@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion
 
 ## SYNOPSIS
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String>
 ```
 
 ## DESCRIPTION
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## EXAMPLES
 
-### Example 1: Update database Redis version
+### Example 1: Upgrade database Redis version
 ```powershell
 Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default"
 ```
 
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## PARAMETERS
 
@@ -63,7 +63,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: Upgrade
 Aliases:
 
 Required: True
@@ -139,7 +139,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: UpdateViaIdentityRedisEnterprise
+Parameter Sets: UpgradeViaIdentityRedisEnterprise
 Aliases:
 
 Required: True
@@ -155,7 +155,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: Upgrade
 Aliases:
 
 Required: True
@@ -167,10 +167,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: Upgrade
 Aliases:
 
 Required: False

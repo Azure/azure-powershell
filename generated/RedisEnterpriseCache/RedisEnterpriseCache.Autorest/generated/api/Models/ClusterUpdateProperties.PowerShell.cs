@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("MaintenanceConfigurationMaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfigurationMaintenanceWindow = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>) content.GetValueForProperty("MaintenanceConfigurationMaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfigurationMaintenanceWindow, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceWindowTypeConverter.ConvertFrom));
+            }
             if (content.Contains("EncryptionCustomerManagedKeyEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).EncryptionCustomerManagedKeyEncryption = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryption) content.GetValueForProperty("EncryptionCustomerManagedKeyEncryption",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).EncryptionCustomerManagedKeyEncryption, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionTypeConverter.ConvertFrom);
@@ -103,6 +107,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("Encryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterPropertiesEncryptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration) content.GetValueForProperty("MaintenanceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("HighAvailability"))
             {
@@ -135,6 +143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MigratedEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MigratedEndpoint = (string) content.GetValueForProperty("MigratedEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MigratedEndpoint, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -157,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("MaintenanceConfigurationMaintenanceWindow"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfigurationMaintenanceWindow = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>) content.GetValueForProperty("MaintenanceConfigurationMaintenanceWindow",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfigurationMaintenanceWindow, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceWindowTypeConverter.ConvertFrom));
+            }
             if (content.Contains("EncryptionCustomerManagedKeyEncryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).EncryptionCustomerManagedKeyEncryption = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryption) content.GetValueForProperty("EncryptionCustomerManagedKeyEncryption",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).EncryptionCustomerManagedKeyEncryption, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterPropertiesEncryptionCustomerManagedKeyEncryptionTypeConverter.ConvertFrom);
@@ -180,6 +196,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("Encryption"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ClusterPropertiesEncryptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MaintenanceConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration) content.GetValueForProperty("MaintenanceConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.MaintenanceConfigurationTypeConverter.ConvertFrom);
             }
             if (content.Contains("HighAvailability"))
             {
@@ -212,6 +232,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("MigratedEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MigratedEndpoint = (string) content.GetValueForProperty("MigratedEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)this).MigratedEndpoint, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

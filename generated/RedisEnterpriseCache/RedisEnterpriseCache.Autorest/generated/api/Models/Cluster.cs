@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         public string HostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).HostName; }
 
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).Id; }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IManagedServiceIdentity _identity;
 
-        /// <summary>The identity of the resource.</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
@@ -99,6 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MaintenanceConfigurationMaintenanceWindow; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MaintenanceConfigurationMaintenanceWindow = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for CustomerManagedKeyEncryptionKeyIdentity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesEncryptionCustomerManagedKeyEncryptionKeyIdentity Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal.CustomerManagedKeyEncryptionKeyIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).CustomerManagedKeyEncryptionKeyIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).CustomerManagedKeyEncryptionKeyIdentity = value ?? null /* model class */; }
 
@@ -122,6 +126,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 
         /// <summary>Internal Acessors for Kind</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal.Kind { get => this._kind; set { {_kind = value;} } }
+
+        /// <summary>Internal Acessors for MaintenanceConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal.MaintenanceConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MaintenanceConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MaintenanceConfiguration = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MigratedEndpoint</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal.MigratedEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MigratedEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MigratedEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
@@ -150,8 +160,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
+
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public string MigratedEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IClusterPropertiesInternal)Property).MigratedEndpoint; }
 
         /// <summary>
         /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS
@@ -229,6 +266,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuInternal)Sku).Name = value ; }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
+
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
@@ -242,7 +309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Backing field for <see cref="Zone" /> property.</summary>
         private System.Collections.Generic.List<string> _zone;
 
-        /// <summary>The Availability Zones where this cluster will be deployed.</summary>
+        /// <summary>The availability zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> Zone { get => this._zone; set => this._zone = value; }
 
@@ -403,6 +470,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("v1", "v2")]
         string Kind { get;  }
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Custom maintenance windows that apply to the cluster.",
+        SerializedName = @"maintenanceWindows",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get; set; }
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.",
+        SerializedName = @"migratedEndpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string MigratedEndpoint { get;  }
         /// <summary>
         /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS
         /// 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency
@@ -526,14 +617,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enterprise_E1", "Enterprise_E5", "Enterprise_E10", "Enterprise_E20", "Enterprise_E50", "Enterprise_E100", "Enterprise_E200", "Enterprise_E400", "EnterpriseFlash_F300", "EnterpriseFlash_F700", "EnterpriseFlash_F1500", "Balanced_B0", "Balanced_B1", "Balanced_B3", "Balanced_B5", "Balanced_B10", "Balanced_B20", "Balanced_B50", "Balanced_B100", "Balanced_B150", "Balanced_B250", "Balanced_B350", "Balanced_B500", "Balanced_B700", "Balanced_B1000", "MemoryOptimized_M10", "MemoryOptimized_M20", "MemoryOptimized_M50", "MemoryOptimized_M100", "MemoryOptimized_M150", "MemoryOptimized_M250", "MemoryOptimized_M350", "MemoryOptimized_M500", "MemoryOptimized_M700", "MemoryOptimized_M1000", "MemoryOptimized_M1500", "MemoryOptimized_M2000", "ComputeOptimized_X3", "ComputeOptimized_X5", "ComputeOptimized_X10", "ComputeOptimized_X20", "ComputeOptimized_X50", "ComputeOptimized_X100", "ComputeOptimized_X150", "ComputeOptimized_X250", "ComputeOptimized_X350", "ComputeOptimized_X500", "ComputeOptimized_X700", "FlashOptimized_A250", "FlashOptimized_A500", "FlashOptimized_A700", "FlashOptimized_A1000", "FlashOptimized_A1500", "FlashOptimized_A2000", "FlashOptimized_A4500")]
         string SkuName { get; set; }
-        /// <summary>The Availability Zones where this cluster will be deployed.</summary>
+        /// <summary>The availability zones.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The Availability Zones where this cluster will be deployed.",
+        Description = @"The availability zones.",
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Zone { get; set; }
@@ -566,7 +657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string HighAvailability { get; set; }
         /// <summary>DNS name of the cluster endpoint</summary>
         string HostName { get; set; }
-        /// <summary>The identity of the resource.</summary>
+        /// <summary>The managed service identities assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IManagedServiceIdentity Identity { get; set; }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -600,6 +691,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Distinguishes the kind of cluster. Read-only.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("v1", "v2")]
         string Kind { get; set; }
+        /// <summary>Cluster-level maintenance configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceConfiguration MaintenanceConfiguration { get; set; }
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow> MaintenanceConfigurationMaintenanceWindow { get; set; }
+        /// <summary>
+        /// The endpoint of the source resource that is currently pointing to this resource as a result of an ACR/ACRE to AMR migration.
+        /// </summary>
+        string MigratedEndpoint { get; set; }
         /// <summary>
         /// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS
         /// 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency
@@ -646,7 +745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("Enterprise_E1", "Enterprise_E5", "Enterprise_E10", "Enterprise_E20", "Enterprise_E50", "Enterprise_E100", "Enterprise_E200", "Enterprise_E400", "EnterpriseFlash_F300", "EnterpriseFlash_F700", "EnterpriseFlash_F1500", "Balanced_B0", "Balanced_B1", "Balanced_B3", "Balanced_B5", "Balanced_B10", "Balanced_B20", "Balanced_B50", "Balanced_B100", "Balanced_B150", "Balanced_B250", "Balanced_B350", "Balanced_B500", "Balanced_B700", "Balanced_B1000", "MemoryOptimized_M10", "MemoryOptimized_M20", "MemoryOptimized_M50", "MemoryOptimized_M100", "MemoryOptimized_M150", "MemoryOptimized_M250", "MemoryOptimized_M350", "MemoryOptimized_M500", "MemoryOptimized_M700", "MemoryOptimized_M1000", "MemoryOptimized_M1500", "MemoryOptimized_M2000", "ComputeOptimized_X3", "ComputeOptimized_X5", "ComputeOptimized_X10", "ComputeOptimized_X20", "ComputeOptimized_X50", "ComputeOptimized_X100", "ComputeOptimized_X150", "ComputeOptimized_X250", "ComputeOptimized_X350", "ComputeOptimized_X500", "ComputeOptimized_X700", "FlashOptimized_A250", "FlashOptimized_A500", "FlashOptimized_A700", "FlashOptimized_A1000", "FlashOptimized_A1500", "FlashOptimized_A2000", "FlashOptimized_A4500")]
         string SkuName { get; set; }
-        /// <summary>The Availability Zones where this cluster will be deployed.</summary>
+        /// <summary>The availability zones.</summary>
         System.Collections.Generic.List<string> Zone { get; set; }
 
     }

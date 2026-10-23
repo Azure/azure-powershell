@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PowerShell;
 
-    /// <summary>A list of private link resources</summary>
+    /// <summary>A list of private link resources.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourceListResultTypeConverter))]
     public partial class PrivateLinkResourceListResult
     {
@@ -115,6 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateLinkResourceTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -136,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResource>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResource>(__y, Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.PrivateLinkResourceTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateLinkResourceListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -156,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             return ToJsonString();
         }
     }
-    /// A list of private link resources
+    /// A list of private link resources.
     [System.ComponentModel.TypeConverter(typeof(PrivateLinkResourceListResultTypeConverter))]
     public partial interface IPrivateLinkResourceListResult
 

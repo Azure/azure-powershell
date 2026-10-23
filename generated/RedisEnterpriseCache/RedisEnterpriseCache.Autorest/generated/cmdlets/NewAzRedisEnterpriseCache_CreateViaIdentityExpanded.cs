@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"create an existing (overwrite/recreate  with potential downtime) cache cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2025-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}", ApiVersion = "2026-06-01-preview")]
     public partial class NewAzRedisEnterpriseCache_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IContext
@@ -182,6 +182,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
+        /// <summary>Custom maintenance windows that apply to the cluster.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Custom maintenance windows that apply to the cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Custom maintenance windows that apply to the cluster.",
+        SerializedName = @"maintenanceWindows",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[] MaintenanceConfigurationMaintenanceWindow { get => _parametersBody.MaintenanceConfigurationMaintenanceWindow?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.MaintenanceConfigurationMaintenanceWindow = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow>(value) : null); }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -287,14 +299,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         [global::System.Management.Automation.AllowEmptyCollection]
         public string[] UserAssignedIdentity { get; set; }
 
-        /// <summary>The Availability Zones where this cluster will be deployed.</summary>
+        /// <summary>The availability zones.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Availability Zones where this cluster will be deployed.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The availability zones.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Availability Zones where this cluster will be deployed.",
+        Description = @"The availability zones.",
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
         public string[] Zone { get => _parametersBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }

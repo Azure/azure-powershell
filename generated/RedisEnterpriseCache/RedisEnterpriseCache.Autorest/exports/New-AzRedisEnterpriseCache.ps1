@@ -27,6 +27,8 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "EnterpriseFlash_F300" -NoDatabase
 .Example
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "West US" -Sku "Enterprise_E10" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}'
+.Example
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Balanced_B10" -PublicNetworkAccess "Enabled" -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"})
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ICluster
@@ -37,6 +39,11 @@ To create the parameters described below, construct a hash table containing the 
 
 LINKEDDATABASE <ILinkedDatabase[]>: List of database resources to link with this database To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
   [Id <String>]: Resource ID of a database resource to link with this database.
+
+MAINTENANCECONFIGURATIONMAINTENANCEWINDOW <IMaintenanceWindow[]>: Custom maintenance windows that apply to the cluster.
+  Duration <String>: Duration in ISO-8601 format, for example 'PT5H'.
+  StartHourUtc <Int32>: Start hour (0-23) in UTC when the maintenance window begins.
+  [ScheduleDayOfWeek <String>]: Day of week. Required when the maintenance window type is 'Weekly'.
 
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at create time. To construct, see NOTES section for MODULE properties and create a hash table.
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
@@ -173,6 +180,16 @@ param(
     # Can be updated even after database is created.
     ${AccessKeysAuthentication},
 
+    [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Specifies which keyspace events should trigger notifications on the default database.
+    # Default is an empty string, meaning this feature is disabled.
+    # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+    # For example, 'AKE' enables all standard events.
+    # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+    ${NotifyKeyspaceEvents},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String]
@@ -225,6 +242,13 @@ param(
     # User assigned identity to use for accessing key encryption key Url.
     # Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
     ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]]
+    # Custom maintenance windows that apply to the cluster.
+    ${MaintenanceConfigurationMaintenanceWindow},
 
     [Parameter(ParameterSetName='CreateClusterWithDatabase')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]

@@ -181,6 +181,16 @@ function New-AzRedisEnterpriseCache {
         # Can be updated even after database is created.
         ${AccessKeysAuthentication},
 
+        [Parameter(ParameterSetName='CreateClusterWithDatabase')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Specifies which keyspace events should trigger notifications on the default database.
+        # Default is an empty string, meaning this feature is disabled.
+        # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+        # For example, 'AKE' enables all standard events.
+        # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+        ${NotifyKeyspaceEvents},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
@@ -230,6 +240,13 @@ function New-AzRedisEnterpriseCache {
         [System.String]
         # User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
         ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]]
+        # Custom maintenance windows that apply to the cluster.
+        ${MaintenanceConfigurationMaintenanceWindow},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
@@ -352,6 +369,7 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("GroupNickname")
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
         $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
+        $null = $GetPSBoundParameters.Remove("NotifyKeyspaceEvents")
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
@@ -374,6 +392,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
         $null = $PSBoundParameters.Remove("HighAvailability")
         $null = $PSBoundParameters.Remove("PublicNetworkAccess")  # Remove for database creation
+        $null = $PSBoundParameters.Remove("MaintenanceConfigurationMaintenanceWindow")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}
