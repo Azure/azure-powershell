@@ -117,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryWorkspaceUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Capability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Capability = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryCapabilitiesUpdate) content.GetValueForProperty("Capability",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Capability, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryCapabilitiesUpdateTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Sku, global::System.Convert.ToString);
@@ -132,6 +136,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Scope = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScope>) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Scope, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScope>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryScopeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CapabilityAzureBlobStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapabilityAzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IAzureBlobStorageCapabilityUpdate) content.GetValueForProperty("CapabilityAzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapabilityAzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.AzureBlobStorageCapabilityUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStorageCapacityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStorageCapacityDetail = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ICapacityDetailsUpdate) content.GetValueForProperty("AzureBlobStorageCapacityDetail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStorageCapacityDetail, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStoragePrefixConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStoragePrefixConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate>) content.GetValueForProperty("AzureBlobStoragePrefixConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStoragePrefixConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfigurationUpdateTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CapacityDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapacityDetailStatus = (string) content.GetValueForProperty("CapacityDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapacityDetailStatus, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -158,6 +178,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryWorkspaceUpdateTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Capability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Capability = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryCapabilitiesUpdate) content.GetValueForProperty("Capability",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Capability, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryCapabilitiesUpdateTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Sku, global::System.Convert.ToString);
@@ -173,6 +197,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Scope = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScope>) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).Scope, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScope>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryScopeTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CapabilityAzureBlobStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapabilityAzureBlobStorage = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IAzureBlobStorageCapabilityUpdate) content.GetValueForProperty("CapabilityAzureBlobStorage",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapabilityAzureBlobStorage, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.AzureBlobStorageCapabilityUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStorageCapacityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStorageCapacityDetail = (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ICapacityDetailsUpdate) content.GetValueForProperty("AzureBlobStorageCapacityDetail",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStorageCapacityDetail, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetailsUpdateTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AzureBlobStoragePrefixConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStoragePrefixConfiguration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate>) content.GetValueForProperty("AzureBlobStoragePrefixConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).AzureBlobStoragePrefixConfiguration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfigurationUpdateTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CapacityDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapacityDetailStatus = (string) content.GetValueForProperty("CapacityDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateInternal)this).CapacityDetailStatus, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -2,6 +2,50 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetailsUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.CapacityDetailsUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetail</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ErrorDetail#Multiple</TypeName>
@@ -131,6 +175,74 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ContainerName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Prefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageAccountName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ContainerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Prefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageAccountName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfigurationUpdate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.PrefixConfigurationUpdate#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ContainerName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Prefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageAccountName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ContainerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Prefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageAccountName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

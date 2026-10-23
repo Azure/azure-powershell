@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Description(@"update a StorageDiscoveryWorkspace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2026-10-01-preview")]
     public partial class UpdateAzStorageDiscoveryWorkspace_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IContext
@@ -50,6 +50,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
+        /// <summary>The prefix configurations to update for Azure Blob Storage.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The prefix configurations to update for Azure Blob Storage.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The prefix configurations to update for Azure Blob Storage.",
+        SerializedName = @"prefixConfigurations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate[] AzureBlobStoragePrefixConfiguration { get => _propertiesBody.AzureBlobStoragePrefixConfiguration?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.AzureBlobStoragePrefixConfiguration = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IPrefixConfigurationUpdate>(value) : null); }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.ParameterCategory.Runtime)]
@@ -57,6 +69,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
 
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
+        /// <summary>The enablement status to update for the capacity details capability.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The enablement status to update for the capacity details capability.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The enablement status to update for the capacity details capability.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string CapacityDetailStatus { get => _propertiesBody.CapacityDetailStatus ?? null; set => _propertiesBody.CapacityDetailStatus = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.StorageDiscoveryClient Client => Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Module.Instance.ClientAPI;
