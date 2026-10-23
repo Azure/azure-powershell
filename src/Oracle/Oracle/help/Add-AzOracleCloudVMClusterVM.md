@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/add-azoraclecloudvmclustervm
 schema: 2.0.0
@@ -14,29 +14,29 @@ Add VMs to the VM Cluster
 
 ### AddExpanded (Default)
 ```
-Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -DbServer <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AddViaJsonString
-```
-Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AddViaJsonFilePath
-```
-Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -DbServer <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -DbServer <String[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### AddViaJsonString
+```
+Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +80,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -187,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -203,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: False
@@ -258,3 +258,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
