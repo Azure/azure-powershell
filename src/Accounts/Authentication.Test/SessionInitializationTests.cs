@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Moq;
 using System.IO;
 using System.Text;
+using System.Threading;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Common.Authentication.Test
@@ -202,6 +203,34 @@ namespace Common.Authentication.Test
             finally
             {
                 ResetState();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ConfigInitMutexNameIsScopedToConfigPath()
+        {
+            string userA = Path.Combine("home", "userA", ".Azure", "PSConfig.json");
+            string userB = Path.Combine("home", "userB", ".Azure", "PSConfig.json");
+
+            Assert.StartsWith(@"Global\AzurePowerShellConfigInit_", AzureSessionInitializer.GetConfigInitMutexName(userA));
+            Assert.Equal(AzureSessionInitializer.GetConfigInitMutexName(userA), AzureSessionInitializer.GetConfigInitMutexName(userA));
+            Assert.NotEqual(AzureSessionInitializer.GetConfigInitMutexName(userA), AzureSessionInitializer.GetConfigInitMutexName(userB));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AbandonedConfigInitMutexIsAcquired()
+        {
+            using (var mutex = new Mutex(false))
+            {
+                // acquire the mutex on another thread and let the thread exit without releasing it
+                var thread = new Thread(() => mutex.WaitOne());
+                thread.Start();
+                thread.Join();
+
+                Assert.True(AzureSessionInitializer.TryAcquireMutex(mutex, 1000));
+                mutex.ReleaseMutex();
             }
         }
     }

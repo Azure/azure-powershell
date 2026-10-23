@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed `Access to the path 'Global\AzurePowerShellConfigInit' is denied` error when importing Az.Accounts concurrently under different users. [#25701]
+    - Scoped the config initialization lock to the current user's config file.
+    - Fell back to safe mode with a warning instead of failing the import when the lock cannot be opened.
 * Updated the `-ResourceUrl` help text of `Get-AzAccessToken` to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
 * Updated the `-AzureKeyVaultDnsSuffix` help text of `Add-AzEnvironment` and `Set-AzEnvironment` to describe the expected format instead of a specific host name.
 * Fixed incorrect usage of "log in" and "login".
