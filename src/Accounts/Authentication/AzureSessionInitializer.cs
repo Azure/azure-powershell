@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             catch (Exception ex) when (ex is UnauthorizedAccessException || ex is IOException || ex is WaitHandleCannotBeOpenedException)
             {
-                writeWarning($"[AzureSessionInitializer] Failed to open the config initialization lock, reason: {ex.Message}.");
+                writeWarning($"[AzureSessionInitializer] Failed to open the config initialization lock, reason: {ex.Message}");
                 return null;
             }
         }
