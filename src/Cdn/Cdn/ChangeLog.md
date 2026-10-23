@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+## Version 6.2.1
+
 * Marked the module as a preview package without changing the numeric module version.
 * Upgraded the Azure Front Door preview API version to 2026-09-01-preview.
     - Retained the 2026-04-01-preview API and existing functionality for Azure CDN (classic).
