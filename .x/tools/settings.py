@@ -8,6 +8,11 @@
 import re
 
 AAZ_SOURCE_REPOSITORY = 'Azure/aaz'
+AUTOREST_FIX_ROUTE = (
+    "Add a `directive:` to the AutoRest project's `README.md` or a "
+    "handwritten wrapper under `custom/`, then rerun Codegen and commit the "
+    "complete regenerated output with its `generate-info.json`."
+)
 COMPONENT_DISPLAY_NAMES = {'vm': 'VM', 'vmss': 'VMSS', 'acr': 'ACR', 'acs': 'AKS', 'aks': 'AKS', 'keyvault': 'KeyVault', 'appservice': 'AppService', 'cosmosdb': 'Cosmos DB', 'sql': 'SQL', 'mysql': 'MySQL', 'postgres': 'PostgreSQL', 'rdbms': 'RDBMS', 'network': 'Network', 'storage': 'Storage', 'role': 'Role', 'resource': 'Resource', 'backup': 'Backup', 'batch': 'Batch', 'monitor': 'Monitor', 'iot': 'IoT', 'cdn': 'CDN', 'dns': 'DNS', 'eventhubs': 'Event Hubs', 'servicebus': 'Service Bus', 'eventgrid': 'Event Grid', 'containerapp': 'Container Apps', 'apim': 'API Management', 'appconfig': 'App Config', 'hdinsight': 'HDInsight', 'signalr': 'SignalR', 'search': 'Search', 'redis': 'Redis', 'advisor': 'Advisor', 'profile': 'Profile', 'identity': 'Identity', 'core': 'Core'}
 PR_FORMAT_DOC_URL = 'https://github.com/Azure/azure-cli/tree/dev/doc/authoring_command_modules#submitting-pull-requests'
 PR_TEMPLATE_URL = 'https://github.com/Azure/azure-cli/blob/dev/.github/pull_request_template.md'
@@ -17,12 +22,12 @@ _AUTO_TITLE_REPAIR_REPOS = {'Azure/azure-cli': 'cli', 'Azure/azure-powershell': 
 _AZ_COMMAND_ACTIONS = {'add', 'apply', 'approve', 'cancel', 'check-name', 'create', 'delete', 'disable', 'download', 'enable', 'export', 'get', 'invoke', 'list', 'login', 'logout', 'open', 'remove', 'reset', 'restart', 'restore', 'set', 'show', 'start', 'stop', 'sync', 'update', 'upgrade', 'upload', 'validate', 'wait'}
 _AZ_COMMAND_PROSE_BOUNDARIES = {'does', 'fails', 'for', 'is', 'returns', 'should', 'when', 'with'}
 _BACKTICKED_AZ_COMMAND_PATTERN = re.compile('`(az\\s+[^`]+)`', 34)
-_BEHAVIOR_SIGNAL = re.compile('(?:add_argument|register_command|command_group|custom_command|generic_update_command|AAZ|Cmdlet\\(|\\[Parameter\\b|\\b(?:GET|POST|PUT|PATCH|DELETE)\\b|api[_-]?version)', 34)
+_BEHAVIOR_SIGNAL = re.compile('(?:add_argument|register_command|command_group|custom_command|generic_update_command|AAZ|Cmdlet\\(|\\[Parameter\\b|\\bc\\.(?:argument|positional|extra|ignore)\\(|\\bg\\.(?:command|show_command|wait_command|custom_show_command|custom_wait_command|generic_wait_command)\\(|\\b(?:GET|POST|PUT|PATCH|DELETE)\\b|api[_-]?version)', re.IGNORECASE)
 _CLI_PARAMETER_PATTERN = re.compile('(?<![`A-Za-z0-9])(--[a-z0-9][a-z0-9-]*)(?![`A-Za-z0-9-])', 34)
 _GENERATED_FILE_PATTERNS = (re.compile('(?:^|/)generated(?:/|$)', re.IGNORECASE), re.compile('(?:^|/)aaz/[^/]+/', re.IGNORECASE), re.compile('(?:^|/)vendored_sdks?/.*(?:_client|_configuration|_serialization)\\.py$', re.IGNORECASE), re.compile('(?:^|/)vendored_sdks?/.*/models/_models.*\\.py$', re.IGNORECASE), re.compile('(?:^|/)vendored_sdks?/.*/operations/_.*\\.py$', re.IGNORECASE), re.compile('(?:^|/)(?:autorest|generated)[^/]*\\.cs$', re.IGNORECASE), re.compile('\\.generated\\.cs$', re.IGNORECASE))
 _GENERATION_SOURCE_PATTERNS = (re.compile('(?:^|/)(?:swagger|specification|specs?)(?:/|$)', re.IGNORECASE), re.compile('(?:^|/)(?:codegen|generation)(?:/|$)', re.IGNORECASE), re.compile('(?:^|/)(?:swagger|specification|codegen|generation)/.*(?:readme|autorest)\\.(?:md|ya?ml)$', re.IGNORECASE), re.compile('(?:^|/)_meta\\.(?:json|ya?ml)$', re.IGNORECASE))
 _GENERATION_SOURCE_PR = re.compile('https://github\\.com/Azure/(?:azure-rest-api-specs|aaz|aaz-dev-tools|azure-cli|azure-cli-extensions)/pull/\\d+', 34)
-_HELP_COMMAND_PATTERNS = (re.compile('(?:^|/)_help\\.py$', re.IGNORECASE), re.compile('(?:^|/)(?:commands|parameters)\\.py$', re.IGNORECASE), re.compile('(?:^|/)help/.*\\.(?:md|txt)$', re.IGNORECASE), re.compile('\\.(?:psd1|psm1)$', re.IGNORECASE), re.compile('(?:cmdlet|commands?)\\.cs$', re.IGNORECASE))
+_HELP_COMMAND_PATTERNS = (re.compile('(?:^|/)_help\\.py$', re.IGNORECASE), re.compile('(?:^|/)(?:commands|parameters)\\.py$', re.IGNORECASE), re.compile('(?:^|/)_params\\.py$', re.IGNORECASE), re.compile('(?:^|/)help/.*\\.(?:md|txt)$', re.IGNORECASE), re.compile('\\.(?:psd1|psm1)$', re.IGNORECASE), re.compile('(?:cmdlet|commands?)\\.cs$', re.IGNORECASE))
 _HISTORY_NOTES_HEADING_PATTERN = re.compile('^\\s*\\*\\*History Notes\\*\\*\\s*$', 34)
 _MARKDOWN_SECTION_BREAK_PATTERN = re.compile('^\\s*---\\s*$', 32)
 _MODULE_PATH_PATTERN = re.compile('command_modules/([a-z0-9_-]+)', 34)
