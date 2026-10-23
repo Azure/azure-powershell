@@ -75,6 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 return;
             }
+            {_capability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonObject>("capabilities"), out var __jsonCapabilities) ? Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.StorageDiscoveryCapabilities.FromJson(__jsonCapabilities) : _capability;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)_sku;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
             {_workspaceRoot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonArray>("workspaceRoots"), out var __jsonWorkspaceRoots) ? If( __jsonWorkspaceRoots as Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _workspaceRoot;}
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
             {
                 return container;
             }
+            AddIf( null != this._capability ? (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonNode) this._capability.ToJson(null,serializationMode) : null, "capabilities" ,container.Add );
             AddIf( null != (((object)this._sku)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonString(this._sku.ToString()) : null, "sku" ,container.Add );
             AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
             if (null != this._workspaceRoot)
