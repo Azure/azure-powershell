@@ -1,0 +1,48 @@
+{
+  "Get-AzAppNetworkAvailableVersion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/eastus2/availableVersions?api-version=2025-08-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9e491c5-2dc4-4254-9c7f-cee19a234b2a/providers/Microsoft.AppLink/locations/eastus2/availableVersions?api-version=2025-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "0246a341-7940-4b30-ae87-87087f86945b" ],
+        "CommandName": [ "Get-AzAppNetworkAvailableVersion" ],
+        "FullCommandName": [ "Get-AzAppNetworkAvailableVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.5", "Az.AppNetwork/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=65637ed6-6841-46fa-8bae-8051a8b691f7/westus2/f0847699-91ad-4d86-a73f-283591df1055" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "151" ],
+        "x-ms-request-id": [ "9fecc827-3363-4346-b4a9-93cc5485826a" ],
+        "x-ms-correlation-request-id": [ "ac06464e-fb87-4569-837b-0a50334321b0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260909T213005Z:ac06464e-fb87-4569-837b-0a50334321b0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 43D8A612351A4EC2A0CFC1985B660066 Ref B: CO1AA3060818025 Ref C: 2026-09-09T21:30:05Z" ],
+        "Date": [ "Wed, 09 Sep 2026 21:30:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1967" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[]},\"kubernetesVersion\":\"1.30\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[],\"version\":\"1.3\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"}]},\"kubernetesVersion\":\"1.31\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.4\"],\"version\":\"1.3\"},{\"upgrades\":[],\"version\":\"1.4\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"},{\"releaseChannel\":\"Rapid\",\"version\":\"1.5\"}]},\"kubernetesVersion\":\"1.32\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.4\"],\"version\":\"1.3\"},{\"upgrades\":[\"1.5\"],\"version\":\"1.4\"},{\"upgrades\":[],\"version\":\"1.5\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"},{\"releaseChannel\":\"Rapid\",\"version\":\"1.5\"}]},\"kubernetesVersion\":\"1.33\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.4\"],\"version\":\"1.3\"},{\"upgrades\":[\"1.5\"],\"version\":\"1.4\"},{\"upgrades\":[],\"version\":\"1.5\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"},{\"releaseChannel\":\"Rapid\",\"version\":\"1.5\"}]},\"kubernetesVersion\":\"1.34\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.4\"],\"version\":\"1.3\"},{\"upgrades\":[\"1.5\"],\"version\":\"1.4\"},{\"upgrades\":[],\"version\":\"1.5\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"},{\"releaseChannel\":\"Rapid\",\"version\":\"1.5\"}]},\"kubernetesVersion\":\"1.35\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.4\"],\"version\":\"1.3\"},{\"upgrades\":[\"1.5\"],\"version\":\"1.4\"},{\"upgrades\":[],\"version\":\"1.5\"}]}}},{\"properties\":{\"fullyManagedVersions\":{\"releaseChannels\":[{\"releaseChannel\":\"Stable\",\"version\":\"1.4\"},{\"releaseChannel\":\"Rapid\",\"version\":\"1.5\"}]},\"kubernetesVersion\":\"1.36\",\"selfManagedVersions\":{\"versions\":[{\"upgrades\":[\"1.5\"],\"version\":\"1.4\"},{\"upgrades\":[],\"version\":\"1.5\"}]}}}]}",
+      "isContentBase64": false
+    }
+  }
+}
