@@ -178,10 +178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTarget = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfo) content.GetValueForProperty("StorageTarget",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTarget, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IscsiTargetInfoTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ManagedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
-            }
             if (content.Contains("VolumeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).VolumeId = (string) content.GetValueForProperty("VolumeId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).VolumeId, global::System.Convert.ToString);
@@ -189,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).SizeGiB = (long) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResourcesTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -221,10 +221,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("StorageTargetStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTargetStatus = (string) content.GetValueForProperty("StorageTargetStatus",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTargetStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagedByResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedByResourceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -295,10 +291,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTarget = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfo) content.GetValueForProperty("StorageTarget",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTarget, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IscsiTargetInfoTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ManagedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
-            }
             if (content.Contains("VolumeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).VolumeId = (string) content.GetValueForProperty("VolumeId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).VolumeId, global::System.Convert.ToString);
@@ -306,6 +298,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).SizeGiB = (long) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedBy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResourcesTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -338,10 +334,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("StorageTargetStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTargetStatus = (string) content.GetValueForProperty("StorageTargetStatus",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).StorageTargetStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagedByResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal)this).ManagedByResourceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

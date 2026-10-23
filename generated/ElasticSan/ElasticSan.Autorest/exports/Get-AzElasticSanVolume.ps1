@@ -127,6 +127,14 @@ param(
     # Identity Parameter
     ${VolumegroupInputObject},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Header')]
+    [System.String]
+    # Optional, returns only soft deleted volumes if set to true.
+    # If set to false or if not specified, returns only active volumes.
+    ${XmsAccessSoftDeletedResource},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

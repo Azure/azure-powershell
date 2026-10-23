@@ -79,6 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             }
             {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
             {_zone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("zones"), out var __jsonZones) ? If( __jsonZones as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _zone;}
+            {_zoneDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("zoneDetails"), out var __jsonZoneDetails) ? If( __jsonZoneDetails as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuZoneDetails) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SkuZoneDetails.FromJson(__p) )) ))() : null : _zoneDetail;}
             AfterFromJson(json);
         }
 
@@ -115,6 +116,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                         AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
                     }
                     container.Add("zones",__w);
+                }
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._zoneDetail)
+                {
+                    var __r = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.XNodeArray();
+                    foreach( var __s in this._zoneDetail )
+                    {
+                        AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                    }
+                    container.Add("zoneDetails",__r);
                 }
             }
             AfterToJson(ref container);

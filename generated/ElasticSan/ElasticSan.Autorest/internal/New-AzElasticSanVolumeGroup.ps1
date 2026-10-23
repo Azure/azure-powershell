@@ -120,11 +120,30 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # The number of days to retain the resources after deletion.
+    ${DeleteRetentionPolicyRetentionPeriodDay},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # .
+    ${DeleteRetentionPolicyState},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of encryption
     ${Encryption},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # A boolean indicating whether or not Encryption in Transit is enabled, supported only for ISCSI protocol.
+    ${EncryptionInTransit},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
@@ -179,11 +198,30 @@ param(
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Iscsi", "DirectAttach", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("GeneralPurpose", "PerformanceCritical")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Quality of Service tier for the volume group, applicable for ElasticSanVersion V2 only.
+    ${QualityOfService},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved IOPS allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+    ${ReservedIop},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int32]
+    # Reserved MBps allocated for this volume group, applicable for QualityOfService PerformanceCritical only.
+    ${ReservedMBps},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

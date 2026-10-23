@@ -169,6 +169,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).VolumeName, global::System.Convert.ToString);
             }
+            if (content.Contains("AccessState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).AccessState = (string) content.GetValueForProperty("AccessState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).AccessState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletionPercent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CompletionPercent = (float?) content.GetValueForProperty("CompletionPercent",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CompletionPercent, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
             if (content.Contains("CreationDataSourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CreationDataSourceId = (string) content.GetValueForProperty("CreationDataSourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CreationDataSourceId, global::System.Convert.ToString);
@@ -249,6 +257,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("VolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).VolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).AccessState = (string) content.GetValueForProperty("AccessState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).AccessState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompletionPercent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CompletionPercent = (float?) content.GetValueForProperty("CompletionPercent",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotInternal)this).CompletionPercent, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
             }
             if (content.Contains("CreationDataSourceId"))
             {

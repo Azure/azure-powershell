@@ -126,17 +126,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ManagedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
-            }
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB = (long?) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("ManagedByResourceId"))
+            if (content.Contains("ManagedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResourcesTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -155,17 +151,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ManagedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
-            }
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB = (long?) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
-            if (content.Contains("ManagedByResourceId"))
+            if (content.Contains("ManagedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResourcesTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -123,6 +123,27 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
+    # Total Provisioned IOPS of the Elastic San appliance.
+    # Supported only for ElasticSanVersion V2.
+    ${TotalIop},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total Provisioned MBps Elastic San appliance.
+    # Supported only for ElasticSanVersion V2.
+    ${TotalMBps},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total size of the Elastic San appliance in TB.
+    # Supported only for ElasticSanVersion V2.
+    ${TotalSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
     # Unused size on Elastic San appliance in TiB.
     ${UnusedSizeTiB},
 

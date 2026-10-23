@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create a Volume.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2026-05-01-preview")]
     public partial class NewAzElasticSanVolume_CreateViaIdentityVolumegroupExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -112,19 +112,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>
-        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.")]
+        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Information about Azure services owning the ElasticSan volume resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
-        SerializedName = @"resourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.DoNotExport]
-        public string ManagedByResourceId { get => _parametersBody.ManagedByResourceId ?? null; set => _parametersBody.ManagedByResourceId = value; }
+        Description = @"Information about Azure services owning the ElasticSan volume resource.",
+        SerializedName = @"managedBy",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources[] ManagedBy { get => _parametersBody.ManagedBy?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ManagedBy = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources>(value) : null); }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -476,10 +474,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ManagedByResourceId"))
-                {
-                    ManagedByResourceId = (string)this.MyInvocation.BoundParameters["ManagedByResourceId"];
-                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }

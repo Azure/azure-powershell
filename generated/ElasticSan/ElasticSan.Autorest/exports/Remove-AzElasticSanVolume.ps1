@@ -122,6 +122,15 @@ param(
     ${VolumegroupInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("permanent")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Query')]
+    [System.String]
+    # Optional.
+    # Specifies that the delete operation should be a permanent delete for the soft deleted volume.
+    # The value of deleteType can only be 'permanent'.
+    ${DeleteType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("true", "false")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Header')]
     [System.String]
