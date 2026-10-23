@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroupnetworkrule
 schema: 2.0.0
@@ -14,18 +14,16 @@ Remove a list of virtual network rules from a VolumeGroup
 
 ### NetworkRuleObject (Default)
 ```
-Remove-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -ResourceGroupName <String>
+ -VolumeGroupName <String> -NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NetworkRuleResourceId
 ```
-Remove-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkResourceId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -ResourceGroupName <String>
+ -VolumeGroupName <String> -NetworkAclsVirtualNetworkResourceId <String[]> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +31,7 @@ Remove a list of virtual network rules from a VolumeGroup
 
 ## EXAMPLES
 
-### Example 1: Remove network rules by NetworkAclsVirtualNetworkRule objects
+### Example 1: Remove network rules by NetworkAclsVirtualNetworkRule objects  
 ```powershell
 # Initialize network rule objects 
 $virtualNetworkRule1 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
@@ -263,3 +261,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for restoring soft-deleted volumes.
+    - `Restore-AzElasticSanVolume`
+    - Supported identity-based restore operations running as background jobs.
+* Preserved the `ManagedByResourceId` volume property alongside `ManagedBy`.
+    - Reading returns the first resource ID. Setting replaces the managed owners with a single resource ID.
+    - Setting a null or empty value clears the managed owners.
+    - Volume inputs cannot specify both properties.
 
 ## Version 1.7.0
 * Supported auto scale when creating and updating an Elastic SAN.
@@ -82,4 +89,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.ElasticSan
-

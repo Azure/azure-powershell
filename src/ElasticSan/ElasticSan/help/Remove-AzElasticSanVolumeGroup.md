@@ -1,5 +1,5 @@
 ---
-external help file: Az.ElasticSan-help.xml
+external help file:
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroup
 schema: 2.0.0
@@ -15,21 +15,20 @@ Delete an VolumeGroup.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityElasticSan
+```
+Remove-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -243,3 +242,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

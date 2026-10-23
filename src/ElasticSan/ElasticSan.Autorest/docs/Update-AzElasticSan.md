@@ -17,17 +17,17 @@ Update a Elastic San.
 Update-AzElasticSan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AutoScalePolicyEnforcement <String>] [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>]
  [-ExtendedCapacitySizeTiB <Int64>] [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>]
- [-Tag <Hashtable>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TotalIop <Int64>] [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticSan -InputObject <IElasticSanIdentity> [-AutoScalePolicyEnforcement <String>]
  [-BaseSizeTiB <Int64>] [-CapacityUnitScaleUpLimitTiB <Int64>] [-ExtendedCapacitySizeTiB <Int64>]
- [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IncreaseCapacityUnitByTiB <Int64>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-TotalIop <Int64>]
+ [-TotalMBps <Int64>] [-TotalSizeTiB <Int64>] [-UnusedSizeTiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,6 +281,54 @@ Update tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalIop
+Total Provisioned IOPS of the Elastic San appliance.
+Supported only for ElasticSanVersion V2.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalMBps
+Total Provisioned MBps Elastic San appliance.
+Supported only for ElasticSanVersion V2.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TotalSizeTiB
+Total size of the Elastic San appliance in TB.
+Supported only for ElasticSanVersion V2.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
