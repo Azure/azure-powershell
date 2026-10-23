@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Updated Az.Relationships to use API version 2026-08-01
     - Added support for listing relationship resources and managing dependency relationships scoped to service groups
     - Added support for listing contains relationships by subscription and resource group

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Added support for CloudHealth API version 2026-11-01.
 
 ## Version 0.1.0

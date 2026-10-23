@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.4.0
 * Updated Private Link common cmdlets for `Microsoft.DataReplication/replicationVaults` to use API version `2026-05-01`.
 * Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
     - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
