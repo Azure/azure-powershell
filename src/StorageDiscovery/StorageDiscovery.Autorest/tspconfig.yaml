@@ -1,0 +1,9 @@
+options:
+  "@azure-tools/typespec-powershell":
+    emitter-output-dir: "{output-dir}/{service-dir}/StorageDiscovery/StorageDiscovery.Autorest"
+
+# Replaces the spec's linter block. The "client-sdk" rule set it also extends does not
+# exist in the @azure-tools/typespec-azure-rulesets version pinned by eng/emitter-package.json.
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

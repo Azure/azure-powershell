@@ -49,6 +49,7 @@ function setupEnv() {
     $env.region = 'eastus2'
     $env.testWorkspaceName1 = 'pshtestworkspace1'
     $env.testWorkspaceName2 = 'pshtestworkspace2'
+    $env.testWorkspaceName3 = 'pshtestworkspace3'
     $env.workspaceRoot = @("/subscriptions/$($env.SubscriptionId)")
     
     Write-Host 'Start to create test resource group' $env.resourceGroup
@@ -85,6 +86,9 @@ function cleanupEnv() {
     }
     if (Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup -ErrorAction SilentlyContinue) {
         Remove-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup
+    }
+    if (Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName3 -ResourceGroupName $env.resourceGroup -ErrorAction SilentlyContinue) {
+        Remove-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName3 -ResourceGroupName $env.resourceGroup
     }
 }
 

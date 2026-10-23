@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageDiscovery
-Module Guid: e862cfcb-5844-4c82-afae-b23fdfd67bdd
+Module Guid: b353ca75-8009-4340-8ee0-23b26491f52b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagediscovery
 Help Version: 1.0.0.0
 Locale: en-US
