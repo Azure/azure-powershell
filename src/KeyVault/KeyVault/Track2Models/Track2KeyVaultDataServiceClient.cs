@@ -531,6 +531,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
         }
 
+        public PSKeyVaultKey CreateManagedHsmExternalKey(string managedHsmName, string keyName, string externalKeyId, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            return HsmClient.CreateExternalKey(managedHsmName, keyName, externalKeyId, keyAttributes);
+        }
+
         public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
         {
             return HsmClient.DeleteKey(managedHsmName, keyName);
@@ -643,6 +648,58 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
         {
             return HsmClient.UpdateSetting(psSettingParams);
+        }
+        #endregion
+
+        #region EKM
+        public PSKeyVaultEkmConnection CreateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName, string connectivityMode = null)
+        {
+            return HsmClient.CreateEkmConnection(hsmName, host, pathPrefix, serverCaCertificates, serverSubjectCommonName, connectivityMode);
+        }
+
+        public PSKeyVaultEkmConnection GetManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.GetEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmConnection UpdateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName, string connectivityMode = null)
+        {
+            return HsmClient.UpdateEkmConnection(hsmName, host, pathPrefix, serverCaCertificates, serverSubjectCommonName, connectivityMode);
+        }
+
+        public PSKeyVaultEkmConnection RemoveManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.DeleteEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmProxyInfo CheckManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.CheckEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmConnectionCertificate GetManagedHsmEkmCertificate(string hsmName)
+        {
+            return HsmClient.GetEkmCertificate(hsmName);
+        }
+
+        public PSKeyVaultEkmPrivateEndpointOperation CreateManagedHsmEkmPrivateEndpoint(string hsmName, string name, string privateLinkServiceAlias, string requestMessage, bool noWait, System.Threading.CancellationToken cancellationToken)
+        {
+            return HsmClient.CreateEkmPrivateEndpoint(hsmName, name, privateLinkServiceAlias, requestMessage, noWait, cancellationToken);
+        }
+
+        public PSKeyVaultEkmPrivateEndpointOperation RemoveManagedHsmEkmPrivateEndpoint(string hsmName, string name, bool noWait, System.Threading.CancellationToken cancellationToken)
+        {
+            return HsmClient.DeleteEkmPrivateEndpoint(hsmName, name, noWait, cancellationToken);
+        }
+
+        public PSKeyVaultEkmPrivateEndpoint[] GetManagedHsmEkmPrivateEndpoint(string hsmName, string name, System.Threading.CancellationToken cancellationToken)
+        {
+            return HsmClient.GetEkmPrivateEndpoints(hsmName, name, cancellationToken);
+        }
+
+        public PSKeyVaultEkmPrivateEndpointOperation GetManagedHsmEkmPrivateEndpointOperation(string hsmName, string jobId, System.Threading.CancellationToken cancellationToken)
+        {
+            return HsmClient.GetEkmPrivateEndpointOperation(hsmName, jobId, cancellationToken);
         }
         #endregion
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from 10.0.3 to 10.0.10.
 
 ## Version 2.9.2
 * Fixed `New-AzIotHubKey` to generate secure shared access keys during primary or secondary key rotation.

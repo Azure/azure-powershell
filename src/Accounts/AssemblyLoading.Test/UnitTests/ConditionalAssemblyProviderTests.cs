@@ -16,6 +16,8 @@ using Microsoft.Azure.PowerShell.AssemblyLoading.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -85,6 +87,70 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Text.Json"), textJson.Path);
             Assert.True(assemblies.TryGetValue("System.Diagnostics.DiagnosticSource", out var diagnosticSource));
             Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "System.Diagnostics.DiagnosticSource"), diagnosticSource.Path);
+        }
+
+        [Theory]
+        [InlineData(Constants.PSEditionCore, "7.3.0")]
+        [InlineData(Constants.PSEditionDesktop, "5.1.0")]
+        public void ProviderChecksActualRuntimeEvenWithOlderPowerShellContext(string psEdition, string psVersion)
+        {
+            string projectPath = typeof(ConditionalAssemblyProviderTests).Assembly.GetCustomAttributes<AssemblyMetadataAttribute>()
+                .Single(attribute => attribute.Key == "TestProjectPath").Value;
+            string sharedRoot = Path.GetFullPath(Path.Combine(projectPath, "..", "..", "lib"));
+            var context = new MockConditionalAssemblyContext { PSEdition = psEdition, PSVersion = Version.Parse(psVersion) };
+            ConditionalAssemblyProvider.Initialize(sharedRoot, context);
+            var assemblies = ConditionalAssemblyProvider.GetAssemblies();
+
+            foreach (string name in new[] { "System.Text.Json", "System.Text.Encodings.Web", "System.IO.Pipelines", "System.Net.ServerSentEvents", "System.Diagnostics.DiagnosticSource" })
+            {
+                var sharedIdentity = AssemblyName.GetAssemblyName(Path.Combine(sharedRoot, NetStandard20, name + ".dll"));
+                string runtimePath = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), name + ".dll");
+                bool runtimeCanSatisfy = File.Exists(runtimePath)
+                    && ConditionalAssemblyProvider.CanUseRuntimeAssembly(context, sharedIdentity, AssemblyName.GetAssemblyName(runtimePath));
+                Assert.Equal(!runtimeCanSatisfy, assemblies.ContainsKey(name));
+            }
+        }
+
+        [Theory]
+        [InlineData("7.3.0", "10.0.0.0", true)]
+        [InlineData("7.4.0", "8.0.0.0", false)]
+        [InlineData("7.5.0", "9.0.0.0", false)]
+        [InlineData("7.6.0", "10.0.0.0", true)]
+        [InlineData("7.6.0", "9.0.0.0", false)]
+        [InlineData("7.4.0", "11.0.0.0", true)]
+        public void RuntimeUnificationDependsOnAssemblyVersionNotPowerShellVersion(string psVersion, string runtimeVersion, bool expected)
+        {
+            var context = new MockConditionalAssemblyContext { PSEdition = Constants.PSEditionCore, PSVersion = Version.Parse(psVersion) };
+            foreach (string name in new[] { "System.Text.Json", "System.Text.Encodings.Web", "System.IO.Pipelines", "System.Net.ServerSentEvents", "System.Diagnostics.DiagnosticSource" })
+            {
+                var sharedIdentity = new AssemblyName($"{name}, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51");
+                var runtimeIdentity = new AssemblyName($"{name}, Version={runtimeVersion}, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51");
+                Assert.Equal(expected, ConditionalAssemblyProvider.CanUseRuntimeAssembly(context, sharedIdentity, runtimeIdentity));
+            }
+        }
+
+        [Theory]
+        [InlineData("System.Text.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51", true)]
+        [InlineData("System.Text.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=null", false)]
+        [InlineData("System.Text.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", false)]
+        [InlineData("System.Text.Json, Version=10.0.0.0, Culture=fr, PublicKeyToken=cc7b13ffcd2ddd51", false)]
+        [InlineData("Other.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51", false)]
+        public void RuntimeUnificationRequiresMatchingIdentity(string runtimeIdentity, bool expected)
+        {
+            var context = new MockConditionalAssemblyContext { PSEdition = Constants.PSEditionCore };
+            var sharedIdentity = new AssemblyName("System.Text.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51");
+            Assert.Equal(expected, ConditionalAssemblyProvider.CanUseRuntimeAssembly(context, sharedIdentity, new AssemblyName(runtimeIdentity)));
+        }
+
+        [Theory]
+        [InlineData(Constants.PSEditionDesktop, "System.Text.Json")]
+        [InlineData(Constants.PSEditionCore, "Microsoft.Extensions.Logging.Abstractions")]
+        [InlineData(Constants.PSEditionCore, "System.Memory.Data")]
+        public void PrivateAssembliesArePreserved(string psEdition, string name)
+        {
+            var context = new MockConditionalAssemblyContext { PSEdition = psEdition };
+            var identity = new AssemblyName($"{name}, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51");
+            Assert.False(ConditionalAssemblyProvider.CanUseRuntimeAssembly(context, identity, identity));
         }
 
         private string GetExpectedAssemblyPath(string framework, string assemblyName)
