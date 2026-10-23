@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     providerType = ServiceClientModel.BackupManagementType.AzureStorage.ToString();
                     break;
                 case CmdletModel.WorkloadType.MSSQL:
+                case CmdletModel.WorkloadType.MSSQLInstance:
                     providerType = ServiceClientModel.BackupManagementType.AzureWorkload.ToString();
                     break;
                 default:

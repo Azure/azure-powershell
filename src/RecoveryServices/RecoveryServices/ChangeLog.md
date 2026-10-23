@@ -4,6 +4,8 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Fixed SQL Instance policy retrieval with the MSSQLInstance workload filter in `Get-AzRecoveryServicesBackupProtectionPolicy`.
+    * Fixed snapshot recovery-point query filter names and documented snapshot recovery context parameters in recovery-point and log-chain help.
     * Restricted `RestorePointQueryType` in `Get-AzRecoveryServicesBackupRecoveryPoint` to single-time recovery points. Use `Get-AzRecoveryServicesBackupRecoveryLogChain` for point-in-time log ranges instead of `Log` or `All`.
     * Overview of change #1
         - Additional information about change #1

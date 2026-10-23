@@ -1,5 +1,7 @@
 ## Upcoming Release
 #### Az.RecoveryServices
+* Fixed SQL Instance policy retrieval with the MSSQLInstance workload filter.
+* Fixed snapshot recovery-point query filter names and documented snapshot recovery context parameters.
 * Restricted `RestorePointQueryType` in `Get-AzRecoveryServicesBackupRecoveryPoint` to single-time recovery points. Use `Get-AzRecoveryServicesBackupRecoveryLogChain` for point-in-time log ranges instead of `Log` or `All`.
 * Fixed `Register-AzRecoveryServicesBackupContainer` to match the full virtual machine resource ID during Azure Workload registration, preventing selection of a same-named virtual machine in another subscription.
 * Fixed `Set-AzRecoveryServicesBackupProtectionPolicy` to preserve SQL Server instance snapshot settings and Azure virtual machine Instant Access settings when updating policies.

@@ -144,14 +144,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
                     if (snapshotFilters)
                     {
                         Assert.Contains("recoveryMode eq 'SnapshotAttachAndRecover'", query);
-                        Assert.Contains("baseRpDatasourceId eq '598134931741184'", query);
-                        Assert.Contains("baseSnapshotRpId eq '930916508998274'", query);
+                        Assert.Contains("baseRPDatasourceId eq '598134931741184'", query);
+                        Assert.Contains("baseSnapshotRPId eq '930916508998274'", query);
+                        Assert.DoesNotContain("baseRpDatasourceId", query);
+                        Assert.DoesNotContain("baseSnapshotRpId", query);
                     }
                     else
                     {
                         Assert.DoesNotContain("recoveryMode", query);
-                        Assert.DoesNotContain("baseRpDatasourceId", query);
-                        Assert.DoesNotContain("baseSnapshotRpId", query);
+                        Assert.DoesNotContain("baseRPDatasourceId", query);
+                        Assert.DoesNotContain("baseSnapshotRPId", query);
                     }
                 }
                 finally
