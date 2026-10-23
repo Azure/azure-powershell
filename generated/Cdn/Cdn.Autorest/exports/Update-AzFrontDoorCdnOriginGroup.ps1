@@ -44,13 +44,14 @@ HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin
   [ProbeRequestType <String>]: The type of health probe request that is made.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -64,6 +65,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 
 LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
   [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+    [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+    [DistributionType <String>]: Type of distribution used in capacity based load balancing.
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 
@@ -78,6 +82,9 @@ ORIGINGROUPUPDATEPROPERTY <IAfdOriginGroupUpdateParameters>: AFDOrigin group pro
     [ProbeRequestType <String>]: The type of health probe request that is made.
   [LoadBalancingSetting <ILoadBalancingSettingsParameters>]: Load balancing settings for a backend pool
     [AdditionalLatencyInMillisecond <Int32?>]: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+    [CapacityDistributionSetting <ICapacityDistributionSettingsParameters>]: Capacity based round-robin load balancing settings
+      [CapacityConsciousThreshold <Int32?>]: Threshold at which additional backends are added for capacity based load balancing. Default is 80 percent.
+      [DistributionType <String>]: Type of distribution used in capacity based load balancing.
     [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
     [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
   [SessionAffinityState <String>]: Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
@@ -85,13 +92,14 @@ ORIGINGROUPUPDATEPROPERTY <IAfdOriginGroupUpdateParameters>: AFDOrigin group pro
   [UserAssignedIdentityId <String>]: Resource ID.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
+  [AuthPolicyName <String>]: Name of the authorization policy under the profile.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
