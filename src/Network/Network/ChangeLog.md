@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.4.0
 * Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
     - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
 * Added cmdlets to manage ExpressRoute link aggregation group (LAG) authorizations and retrieve their authorization keys.

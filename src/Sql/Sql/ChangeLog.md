@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.3.0
 * Added short-term backup immutability support to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`.
     - Added the `LockImmutability` parameter and `ImmutabilityStatus` output property.
     - Restricted `LockImmutability` to live Managed Instance databases.
