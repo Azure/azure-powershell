@@ -83,6 +83,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Get-AzCdnProfileResourceUsage', 
                'Get-AzCdnProfileSupportedOptimizationType', 
                'Get-AzCdnSubscriptionResourceUsage', 
+               'Get-AzFrontDoorCdnAuthPolicy',
                'Get-AzFrontDoorCdnCustomDomain', 'Get-AzFrontDoorCdnEndpoint', 
                'Get-AzFrontDoorCdnEndpointResourceUsage', 
                'Get-AzFrontDoorCdnOrigin', 'Get-AzFrontDoorCdnOriginGroup', 
@@ -129,6 +130,9 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'New-AzCdnUrlRewriteActionObject', 
                'New-AzCdnUrlSigningActionObject', 
                'New-AzCdnUserManagedHttpsParametersObject', 
+               'New-AzFrontDoorCdnAuthPolicy',
+               'New-AzFrontDoorCdnAuthPolicyAssociationObject',
+               'New-AzFrontDoorCdnAuthPolicyEntraIdConfigObject',
                'New-AzFrontDoorCdnCustomDomain', 
                'New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject', 
                'New-AzFrontDoorCdnEndpoint', 
@@ -185,6 +189,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Remove-AzCdnEdgeActionVersion', 'Remove-AzCdnEndpoint', 
                'Remove-AzCdnOrigin', 'Remove-AzCdnOriginGroup', 
                'Remove-AzCdnProfile', 'Remove-AzFrontDoorCdnCustomDomain', 
+               'Remove-AzFrontDoorCdnAuthPolicy',
                'Remove-AzFrontDoorCdnEndpoint', 'Remove-AzFrontDoorCdnOrigin', 
                'Remove-AzFrontDoorCdnOriginGroup', 'Remove-AzFrontDoorCdnProfile', 
                'Remove-AzFrontDoorCdnRoute', 'Remove-AzFrontDoorCdnRule', 
@@ -202,6 +207,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Update-AzCdnEdgeActionVersion', 'Update-AzCdnEndpoint', 
                'Update-AzCdnOrigin', 'Update-AzCdnOriginGroup', 
                'Update-AzCdnProfile', 'Update-AzFrontDoorCdnCustomDomain', 
+               'Update-AzFrontDoorCdnAuthPolicy',
                'Update-AzFrontDoorCdnCustomDomainValidationToken', 
                'Update-AzFrontDoorCdnEndpoint', 'Update-AzFrontDoorCdnOrigin', 
                'Update-AzFrontDoorCdnOriginGroup', 'Update-AzFrontDoorCdnProfile', 
@@ -249,7 +255,7 @@ PrivateData = @{
         ReleaseNotes = '* Added ChangeSafety Support'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -268,4 +274,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

@@ -78,6 +78,9 @@ A user can list an endpoint with an optimization type from the listed values.
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Check the quota and actual usage of the CDN profiles under the given subscription.
 
+### [Get-AzFrontDoorCdnAuthPolicy](Get-AzFrontDoorCdnAuthPolicy.md)
+Gets an existing authorization policy within a profile.
+
 ### [Get-AzFrontDoorCdnCustomDomain](Get-AzFrontDoorCdnCustomDomain.md)
 Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -250,6 +253,15 @@ Create an in-memory object for UrlSigningAction.
 
 ### [New-AzCdnUserManagedHttpsParametersObject](New-AzCdnUserManagedHttpsParametersObject.md)
 Create an in-memory object for UserManagedHttpsParameters.
+
+### [New-AzFrontDoorCdnAuthPolicy](New-AzFrontDoorCdnAuthPolicy.md)
+Create an authorization policy within the specified profile.
+
+### [New-AzFrontDoorCdnAuthPolicyAssociationObject](New-AzFrontDoorCdnAuthPolicyAssociationObject.md)
+Create an in-memory object for AuthPolicyAssociation.
+
+### [New-AzFrontDoorCdnAuthPolicyEntraIdConfigObject](New-AzFrontDoorCdnAuthPolicyEntraIdConfigObject.md)
+Create an in-memory object for AuthPolicyEntraIDConfig.
 
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Create a new domain within the specified profile.
@@ -435,6 +447,9 @@ Deletes an existing origin group within an endpoint.
 Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
+### [Remove-AzFrontDoorCdnAuthPolicy](Remove-AzFrontDoorCdnAuthPolicy.md)
+Deletes an existing authorization policy within a profile.
+
 ### [Remove-AzFrontDoorCdnCustomDomain](Remove-AzFrontDoorCdnCustomDomain.md)
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -535,6 +550,9 @@ Update an existing origin group within an endpoint.
 
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
 Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
+
+### [Update-AzFrontDoorCdnAuthPolicy](Update-AzFrontDoorCdnAuthPolicy.md)
+Update an existing authorization policy within a profile.
 
 ### [Update-AzFrontDoorCdnCustomDomain](Update-AzFrontDoorCdnCustomDomain.md)
 Update an existing domain within a profile.

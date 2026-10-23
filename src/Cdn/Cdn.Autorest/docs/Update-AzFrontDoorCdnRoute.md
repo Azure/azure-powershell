@@ -19,9 +19,10 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
  [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAfdEndpoint
@@ -37,9 +38,10 @@ Update-AzFrontDoorCdnRoute -AfdEndpointInputObject <ICdnIdentity> -Name <String>
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -48,9 +50,10 @@ Update-AzFrontDoorCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQuery
  [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
@@ -66,9 +69,10 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileInputOb
  [-CacheConfigurationQueryParameter <String>] [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
- [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GrpcState <String>] [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>]
+ [-OriginPath <String>] [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>]
+ [-SupportedProtocol <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -290,6 +294,22 @@ Accept wildcard characters: False
 
 ### -ForwardingProtocol
 Protocol this rule will use when forwarding traffic to backends.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAfdEndpointExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GrpcState
+Whether or not gRPC is enabled on this route.
+Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
 Type: System.String

@@ -14,7 +14,8 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 
 ```
 New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject [-AdditionalLatencyInMillisecond <Int32>]
- [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
+ [-CapacityDistributionSetting <ICapacityDistributionSettingsParameters>] [-SampleSize <Int32>]
+ [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +43,21 @@ The additional latency in milliseconds for probes to fall into the lowest latenc
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityDistributionSetting
+Capacity based round-robin load balancing settings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICapacityDistributionSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
