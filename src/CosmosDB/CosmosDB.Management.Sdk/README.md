@@ -5,7 +5,7 @@ This directory contains the service clients of Az.CosmosDB module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --use:@autorest/powershell@4.0.758
 ```
 
 ### AutoRest Configuration
@@ -26,8 +26,8 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: 4d1741c4c55f304a60681522a9453597a435c547
-apiversion: "2026-03-15"
+commit: 38af0cfe0b5b32270a01d4e5c1c56e0dd241a873
+apiversion: "2026-07-15"
 previewapiversion: "2026-04-01-preview"
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/DocumentDB/stable/$(apiversion)/openapi.json
