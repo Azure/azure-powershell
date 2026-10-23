@@ -13,8 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'CosmosRestoreConfiguration' {
     BeforeAll {
-        $targetResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/targetAccountName"
-        $userAssignedIdentityArmId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"
+        $subId = $env.TestCosmosDBItemLevelRestore.SubscriptionId
+        $resourceGroupName = $env.TestCosmosDBItemLevelRestore.ResourceGroupName
+        $vaultName = $env.TestCosmosDBItemLevelRestore.VaultName
+        $location = $env.TestCosmosDBItemLevelRestore.Location
+        $sourceAccountName = $env.TestCosmosDBItemLevelRestore.SourceCosmosDBAccountName
+        $targetResourceId = $env.TestCosmosDBItemLevelRestore.TargetCosmosDBAccountId
+        $userAssignedIdentityArmId = $env.TestCosmosDBItemLevelRestore.UserAssignedIdentityArmId
     }
 
     It 'RestoreConfigDatabaseAndContainer' {
@@ -116,5 +121,45 @@ Describe 'CosmosRestoreConfiguration' {
         { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $null } | Should -Throw "UseSystemAssignedIdentity cannot be null"
         { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $null } | Should -Throw "UseSystemAssignedIdentity cannot be null"
         { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "eastus" -RestoreType AlternateLocation -RecoveryPoint "recoveryPointId" -TargetResourceId $targetResourceId -UseSystemAssignedIdentity $null -UserAssignedIdentityArmId $userAssignedIdentityArmId } | Should -Throw "UseSystemAssignedIdentity cannot be null"
+    }
+
+    It 'ItemLevelRestoreValidation' {
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceName -eq $sourceAccountName }
+        $recoveryPoints = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+        foreach ($selection in "db1/col1", "db2", "db1/col1,db2") {
+            $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier $selection.Split(",")
+            $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $recoveryPoints[0].Name -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $true
+            $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreRequest
+            $validateRestore.ObjectType | Should Be "OperationJobExtendedInfo"
+        }
+    }
+
+    It 'ItemLevelRestoreValidationWithUserAssignedIdentity' {
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceName -eq $sourceAccountName }
+        $recoveryPoints = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1")
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $recoveryPoints[0].Name -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $false -UserAssignedIdentityArmId $userAssignedIdentityArmId
+        $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreRequest
+        $validateRestore.ObjectType | Should Be "OperationJobExtendedInfo"
+    }
+
+    It 'ItemLevelRestore' {
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceName -eq $sourceAccountName }
+        $recoveryPoints = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+        $restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db2")
+        $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $recoveryPoints[0].Name -TargetResourceId $targetResourceId -RestoreConfiguration $restoreConfig -ItemLevelRecovery -UseSystemAssignedIdentity $true
+        $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name -Parameter $restoreRequest
+        $jobId = $restoreJob.JobId.Split("/")[-1]
+
+        $jobStatus = "InProgress"
+        while ($jobStatus -eq "InProgress") {
+            Start-TestSleep -Seconds 30
+            $currentJob = Get-AzDataProtectionJob -Id $jobId -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobStatus = $currentJob.Status
+        }
+        $jobStatus | Should Be "Completed"
     }
 }
