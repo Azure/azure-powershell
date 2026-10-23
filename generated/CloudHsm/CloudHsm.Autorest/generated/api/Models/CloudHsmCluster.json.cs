@@ -65,8 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 return;
             }
-            __cloudHsmClusterResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterResource(json);
+            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.TrackedResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterProperties.FromJson(__jsonProperties) : _property;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSku.FromJson(__jsonSku) : _sku;}
             AfterFromJson(json);
         }
 
@@ -101,8 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {
                 return container;
             }
-            __cloudHsmClusterResource?.ToJson(container, serializationMode);
+            __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }
