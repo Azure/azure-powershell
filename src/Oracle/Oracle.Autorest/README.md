@@ -85,4 +85,38 @@ directive:
       parameter-name: ScheduledOperationScheduledStopTime
     set: 
       parameter-name: ScheduledStopTime
+
+  # Breaking change announcement
+  - where:
+      subject: DbSystem
+      parameter-name: DomainV2
+    set:
+      breaking-change:
+        change-description: The parameter 'DomainV2' will be renamed to 'Domain'.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 17.0.0
+        change-effective-date: 2026/11
+  - where:
+      subject: DbSystem
+      parameter-name: LicenseModelV2
+    set:
+      breaking-change:
+        change-description: The parameter 'LicenseModelV2' will be renamed to 'LicenseModel'.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 17.0.0
+        change-effective-date: 2026/11
+  - where:
+      subject: DbSystem
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - DomainV2
+          - LicenseModelV2
+        new-output-properties:
+          - Domain
+          - LicenseModel
+        change-description: The properties 'DomainV2' and 'LicenseModelV2' of type 'Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbSystem' will be renamed to 'Domain' and 'LicenseModel'.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 17.0.0
+        change-effective-date: 2026/11
 ```
