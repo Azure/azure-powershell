@@ -14,6 +14,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="CompletionPercent" /> property.</summary>
+        private float? _completionPercent;
+
+        /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public float? CompletionPercent { get => this._completionPercent; }
+
         /// <summary>Backing field for <see cref="CreationData" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationData _creationData;
 
@@ -27,11 +36,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public string CreationDataSourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationDataInternal)CreationData).SourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationDataInternal)CreationData).SourceId = value ; }
 
+        /// <summary>Internal Acessors for CompletionPercent</summary>
+        float? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal.CompletionPercent { get => this._completionPercent; set { {_completionPercent = value;} } }
+
         /// <summary>Internal Acessors for CreationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationData Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal.CreationData { get => (this._creationData = this._creationData ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SnapshotCreationData()); set { {_creationData = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for SnapshotAccessState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal.SnapshotAccessState { get => this._snapshotAccessState; set { {_snapshotAccessState = value;} } }
 
         /// <summary>Internal Acessors for SourceVolumeSizeGiB</summary>
         long? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotPropertiesInternal.SourceVolumeSizeGiB { get => this._sourceVolumeSizeGiB; set { {_sourceVolumeSizeGiB = value;} } }
@@ -45,6 +60,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>State of the operation on the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="SnapshotAccessState" /> property.</summary>
+        private string _snapshotAccessState;
+
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Owned)]
+        public string SnapshotAccessState { get => this._snapshotAccessState; }
 
         /// <summary>Backing field for <see cref="SourceVolumeSizeGiB" /> property.</summary>
         private long? _sourceVolumeSizeGiB;
@@ -71,6 +93,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IJsonSerializable
     {
         /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.",
+        SerializedName = @"completionPercent",
+        PossibleTypes = new [] { typeof(float) })]
+        float? CompletionPercent { get;  }
+        /// <summary>
         /// Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -93,8 +128,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The state of snapshot which determines the access availability of the snapshot.",
+        SerializedName = @"snapshotAccessState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Unknown", "Pending", "Available", "InstantAccess", "AvailableWithInstantAccess")]
+        string SnapshotAccessState { get;  }
         /// <summary>Size of Source Volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -123,6 +170,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
     internal partial interface ISnapshotPropertiesInternal
 
     {
+        /// <summary>
+        /// Percentage complete for the background copy of the snapshot when a snapshot is in InstantAccess state.
+        /// </summary>
+        float? CompletionPercent { get; set; }
         /// <summary>Data used when creating a volume snapshot.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshotCreationData CreationData { get; set; }
         /// <summary>
@@ -130,8 +181,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         string CreationDataSourceId { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
+        /// <summary>The state of snapshot which determines the access availability of the snapshot.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Unknown", "Pending", "Available", "InstantAccess", "AvailableWithInstantAccess")]
+        string SnapshotAccessState { get; set; }
         /// <summary>Size of Source Volume</summary>
         long? SourceVolumeSizeGiB { get; set; }
         /// <summary>Source Volume Name of a snapshot</summary>

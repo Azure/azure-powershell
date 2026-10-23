@@ -111,6 +111,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 AddIf( null != this._extendedCapacitySizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._extendedCapacitySizeTiB) : null, "extendedCapacitySizeTiB" ,container.Add );
             }
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._totalIops ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._totalIops) : null, "totalIops" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._totalMBps ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._totalMBps) : null, "totalMBps" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeUpdate))
+            {
+                AddIf( null != this._totalSizeTiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._totalSizeTiB) : null, "totalSizeTiB" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

@@ -35,11 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Id; }
 
-        /// <summary>
-        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-        /// </summary>
+        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
-        public string ManagedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedByResourceId = value ?? null; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedBy = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
@@ -73,9 +71,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
         /// <summary>Internal Acessors for CreationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISourceCreationData Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal.CreationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).CreationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).CreationData = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for ManagedBy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal.ManagedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedBy = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeProperties Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VolumeProperties()); set { {_property = value;} } }
@@ -237,19 +232,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"sourceId",
         PossibleTypes = new [] { typeof(string) })]
         string CreationDataSourceId { get; set; }
-        /// <summary>
-        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-        /// </summary>
+        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
-        SerializedName = @"resourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ManagedByResourceId { get; set; }
+        Description = @"Information about Azure services owning the ElasticSan volume resource.",
+        SerializedName = @"managedBy",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get; set; }
         /// <summary>State of the operation on the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
@@ -260,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
         /// <summary>Volume size.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -318,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string StorageTargetProvisioningState { get;  }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -358,16 +351,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         string CreationDataSourceId { get; set; }
-        /// <summary>Parent resource information.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo ManagedBy { get; set; }
-        /// <summary>
-        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
-        /// </summary>
-        string ManagedByResourceId { get; set; }
+        /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources> ManagedBy { get; set; }
         /// <summary>Properties of Volume.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeProperties Property { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
         /// <summary>Volume size.</summary>
         long SizeGiB { get; set; }
@@ -382,7 +371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>iSCSI Target Portal Port</summary>
         int? StorageTargetPortalPort { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string StorageTargetProvisioningState { get; set; }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Unknown", "Healthy", "Unhealthy", "Updating", "Running", "Stopped", "Stopped (deallocated)")]

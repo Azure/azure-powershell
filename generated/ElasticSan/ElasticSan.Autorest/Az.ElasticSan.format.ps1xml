@@ -2,6 +2,34 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicy#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PolicyState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetentionPeriodDay</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PolicyState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetentionPeriodDay</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateTags</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateTags#Multiple</TypeName>
@@ -206,21 +234,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByResources#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ResourceId</Label>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

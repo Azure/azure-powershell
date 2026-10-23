@@ -118,6 +118,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("TotalIops"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalIops = (long?) content.GetValueForProperty("TotalIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalIops, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalMBps = (long?) content.GetValueForProperty("TotalMBps",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalSizeTiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalSizeTiB = (long?) content.GetValueForProperty("TotalSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             if (content.Contains("AutoScalePropertyScaleUpProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IScaleUpProperties) content.GetValueForProperty("AutoScalePropertyScaleUpProperty",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).AutoScalePropertyScaleUpProperty, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ScaleUpPropertiesTypeConverter.ConvertFrom);
@@ -170,6 +182,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
+            }
+            if (content.Contains("TotalIops"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalIops = (long?) content.GetValueForProperty("TotalIops",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalIops, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalMBps = (long?) content.GetValueForProperty("TotalMBps",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("TotalSizeTiB"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalSizeTiB = (long?) content.GetValueForProperty("TotalSizeTiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanUpdatePropertiesInternal)this).TotalSizeTiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("AutoScalePropertyScaleUpProperty"))
             {

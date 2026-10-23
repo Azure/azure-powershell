@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Sku Name",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
         string Name { get; set; }
         /// <summary>The type of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Availability of the SKU for the location/zone</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuLocationInfo> LocationInfo { get; set; }
         /// <summary>Sku Name</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
         string Name { get; set; }
         /// <summary>The type of the resource.</summary>
         string ResourceType { get; set; }

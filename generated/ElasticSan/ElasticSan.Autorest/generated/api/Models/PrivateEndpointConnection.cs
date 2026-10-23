@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"Provisioning State of Private Endpoint connection resource",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get;  }
 
     }
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>Private Endpoint Connection Properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnectionProperties Property { get; set; }
         /// <summary>Provisioning State of Private Endpoint connection resource</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring", "SoftDeleting")]
         string ProvisioningState { get; set; }
 
     }

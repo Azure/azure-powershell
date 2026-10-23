@@ -81,6 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_sourceVolumeSizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sourceVolumeSizeGiB"), out var __jsonSourceVolumeSizeGiB) ? (long?)__jsonSourceVolumeSizeGiB : _sourceVolumeSizeGiB;}
             {_volumeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("volumeName"), out var __jsonVolumeName) ? (string)__jsonVolumeName : (string)_volumeName;}
+            {_snapshotAccessState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("snapshotAccessState"), out var __jsonSnapshotAccessState) ? (string)__jsonSnapshotAccessState : (string)_snapshotAccessState;}
+            {_completionPercent = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("completionPercent"), out var __jsonCompletionPercent) ? (float?)__jsonCompletionPercent : _completionPercent;}
             AfterFromJson(json);
         }
 
@@ -115,6 +117,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._volumeName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._volumeName.ToString()) : null, "volumeName" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._snapshotAccessState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._snapshotAccessState.ToString()) : null, "snapshotAccessState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._completionPercent ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((float)this._completionPercent) : null, "completionPercent" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

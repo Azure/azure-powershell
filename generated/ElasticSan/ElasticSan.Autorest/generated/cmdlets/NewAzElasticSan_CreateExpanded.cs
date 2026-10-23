@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create ElasticSan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2026-05-01-preview")]
     public partial class NewAzElasticSan_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         public string[] AvailabilityZone { get => _parametersBody.AvailabilityZone?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.AvailabilityZone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Base size of the Elastic San appliance in TiB.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Base size of the Elastic San appliance in TiB.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Base size of the Elastic San appliance in TiB.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Base size of the Elastic San appliance in TiB.",
         SerializedName = @"baseSizeTiB",
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
         /// <summary>Extended size of the Elastic San appliance in TiB.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Extended size of the Elastic San appliance in TiB.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Extended size of the Elastic San appliance in TiB.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Extended size of the Elastic San appliance in TiB.",
         SerializedName = @"extendedCapacitySizeTiB",
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         Description = @"The sku name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
         public string SkuName { get => _parametersBody.SkuName ?? null; set => _parametersBody.SkuName = value; }
 
         /// <summary>The sku tier.</summary>
@@ -302,6 +302,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
+        /// <summary>
+        /// Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
+        /// for V1.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total Provisioned IOPS of the Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        SerializedName = @"totalIops",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalIop { get => _parametersBody.TotalIops ?? default(long); set => _parametersBody.TotalIops = value; }
+
+        /// <summary>
+        /// Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only
+        /// for V1.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total Provisioned MBps Elastic San appliance. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        SerializedName = @"totalMBps",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalMBps { get => _parametersBody.TotalMBps ?? default(long); set => _parametersBody.TotalMBps = value; }
+
+        /// <summary>
+        /// Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only
+        /// for V1.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Total size of the Elastic San appliance in TB. Settable only for ElasticSanVersion V2, where it is required; read-only for V1.",
+        SerializedName = @"totalSizeTiB",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TotalSizeTiB { get => _parametersBody.TotalSizeTiB ?? default(long); set => _parametersBody.TotalSizeTiB = value; }
+
         /// <summary>Unused size on Elastic San appliance in TiB.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unused size on Elastic San appliance in TiB.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
@@ -312,6 +354,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         SerializedName = @"unusedSizeTiB",
         PossibleTypes = new [] { typeof(long) })]
         public long UnusedSizeTiB { get => _parametersBody.UnusedSizeTiB ?? default(long); set => _parametersBody.UnusedSizeTiB = value; }
+
+        /// <summary>Elastic San appliance version. Defaults to V1 if not specified.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Elastic San appliance version. Defaults to V1 if not specified.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Elastic San appliance version. Defaults to V1 if not specified.",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
+        public string Version { get => _parametersBody.Version ?? null; set => _parametersBody.Version = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

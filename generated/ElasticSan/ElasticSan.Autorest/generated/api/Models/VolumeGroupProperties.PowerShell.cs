@@ -134,6 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAcls = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.INetworkRuleSet) content.GetValueForProperty("NetworkAcls",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.NetworkRuleSetTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DeleteRetentionPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy) content.GetValueForProperty("DeleteRetentionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -154,9 +158,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("EncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionInTransit = (bool?) content.GetValueForProperty("EncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionInTransit, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ReservedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedIop = (int?) content.GetValueForProperty("ReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ReservedMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedMBps = (int?) content.GetValueForProperty("ReservedMBps",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedMBps, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("QualityOfService"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).QualityOfService = (string) content.GetValueForProperty("QualityOfService",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).QualityOfService, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity) content.GetValueForProperty("EncryptionPropertyEncryptionIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeleteRetentionPolicyState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyState = (string) content.GetValueForProperty("DeleteRetentionPolicyState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyState, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionPropertyKeyVaultProperty"))
             {
@@ -173,6 +197,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("NetworkAclsVirtualNetworkRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAclsVirtualNetworkRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>) content.GetValueForProperty("NetworkAclsVirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAclsVirtualNetworkRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeleteRetentionPolicyRetentionPeriodDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyRetentionPeriodDay = (int?) content.GetValueForProperty("DeleteRetentionPolicyRetentionPeriodDay",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyRetentionPeriodDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("KeyVaultPropertyKeyVaultUri"))
             {
@@ -219,6 +247,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAcls = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.INetworkRuleSet) content.GetValueForProperty("NetworkAcls",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAcls, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.NetworkRuleSetTypeConverter.ConvertFrom);
             }
+            if (content.Contains("DeleteRetentionPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IDeleteRetentionPolicy) content.GetValueForProperty("DeleteRetentionPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.DeleteRetentionPolicyTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -239,9 +271,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("EncryptionInTransit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionInTransit = (bool?) content.GetValueForProperty("EncryptionInTransit",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionInTransit, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ReservedIop"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedIop = (int?) content.GetValueForProperty("ReservedIop",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ReservedMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedMBps = (int?) content.GetValueForProperty("ReservedMBps",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).ReservedMBps, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("QualityOfService"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).QualityOfService = (string) content.GetValueForProperty("QualityOfService",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).QualityOfService, global::System.Convert.ToString);
+            }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity) content.GetValueForProperty("EncryptionPropertyEncryptionIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DeleteRetentionPolicyState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyState = (string) content.GetValueForProperty("DeleteRetentionPolicyState",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyState, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionPropertyKeyVaultProperty"))
             {
@@ -258,6 +310,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("NetworkAclsVirtualNetworkRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAclsVirtualNetworkRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>) content.GetValueForProperty("NetworkAclsVirtualNetworkRule",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).NetworkAclsVirtualNetworkRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRuleTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DeleteRetentionPolicyRetentionPeriodDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyRetentionPeriodDay = (int?) content.GetValueForProperty("DeleteRetentionPolicyRetentionPeriodDay",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).DeleteRetentionPolicyRetentionPeriodDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("KeyVaultPropertyKeyVaultUri"))
             {

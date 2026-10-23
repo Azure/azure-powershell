@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Extensions;
 
-    /// <summary>Parent resource information.</summary>
-    public partial class ManagedByInfo
+    /// <summary>Information about Azure services owning the ElasticSan volume resource.</summary>
+    public partial class ManagedByResources
     {
 
         /// <summary>
@@ -54,22 +54,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByResources FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json ? new ManagedByInfo(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json ? new ManagedByResources(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject into a new instance of <see cref="ManagedByInfo" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject into a new instance of <see cref="ManagedByResources" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ManagedByInfo(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
+        internal ManagedByResources(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,18 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)_resourceId;}
+            {_clientId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("clientId"), out var __jsonClientId) ? (string)__jsonClientId : (string)_clientId;}
+            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("version"), out var __jsonVersion) ? (int?)__jsonVersion : _version;}
+            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("resourceIds"), out var __jsonResourceIds) ? If( __jsonResourceIds as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _resourceId;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedByInfo" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="ManagedByResources" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedByInfo" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="ManagedByResources" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode serializationMode)
         {
@@ -100,7 +102,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._resourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._resourceId.ToString()) : null, "resourceId" ,container.Add );
+            AddIf( null != (((object)this._clientId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(this._clientId.ToString()) : null, "clientId" ,container.Add );
+            AddIf( null != this._version ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((int)this._version) : null, "version" ,container.Add );
+            if (null != this._resourceId)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.XNodeArray();
+                foreach( var __x in this._resourceId )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("resourceIds",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

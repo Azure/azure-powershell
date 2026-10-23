@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"The sku name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
         string Name { get; set; }
         /// <summary>The sku tier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
     {
         /// <summary>The sku name.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
         string Name { get; set; }
         /// <summary>The sku tier.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium")]
