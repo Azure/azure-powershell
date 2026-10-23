@@ -32,6 +32,7 @@ Describe 'Update-AzWvdScalingPlanPersonalSchedule' {
 
             $scalingPlan.Name | Should -Be $scalingPlanName
             $scalingPlan.Location | Should -Be $env.Location
+            $scalingPlan.HostPoolType | Should -Be 'Personal'
 
             $scalingPlanPersonalSchedule = New-AzWvdScalingPlanPersonalSchedule `
                 -SubscriptionId $env.SubscriptionId `
@@ -78,7 +79,11 @@ Describe 'Update-AzWvdScalingPlanPersonalSchedule' {
             -RampUpStartTimeHour 7 `
             -RampUpStartTimeMinute 7 `
             -RampDownStartTimeHour 17 `
-            -RampDownStartTimeMinute 7 
+            -RampDownStartTimeMinute 7 `
+            -RampUpStartVMOnConnect Disable `
+            -PeakStartVMOnConnect Disable `
+            -RampDownStartVMOnConnect Disable `
+            -OffPeakStartVMOnConnect Disable
 
             $scalingPlanPersonalSchedule = Get-AzWvdScalingPlanPersonalSchedule `
                 -SubscriptionId $env.SubscriptionId `
@@ -91,6 +96,10 @@ Describe 'Update-AzWvdScalingPlanPersonalSchedule' {
             $scalingPlanPersonalSchedule.RampUpStartTimeMinute | Should -Be 7
             $scalingPlanPersonalSchedule.RampDownStartTimeHour | Should -Be 17
             $scalingPlanPersonalSchedule.RampDownStartTimeMinute | Should -Be 7
+            $scalingPlanPersonalSchedule.RampUpStartVMOnConnect | Should -Be 'Disable'
+            $scalingPlanPersonalSchedule.PeakStartVMOnConnect | Should -Be 'Disable'
+            $scalingPlanPersonalSchedule.RampDownStartVMOnConnect | Should -Be 'Disable'
+            $scalingPlanPersonalSchedule.OffPeakStartVMOnConnect | Should -Be 'Disable'
         }
         finally {
             Remove-AzWvdScalingPlanPersonalSchedule `
