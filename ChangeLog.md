@@ -1,3 +1,8 @@
+## Upcoming Release
+#### Az.RecoveryServices
+* Fixed recovery point mount-script operation polling in `Get-AzRecoveryServicesBackupRPMountScript` and `Disable-AzRecoveryServicesBackupRPMountScript` to preserve the protected-item scope.
+* Refreshed Backup scenario recordings for API version 2026-10-01.
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.

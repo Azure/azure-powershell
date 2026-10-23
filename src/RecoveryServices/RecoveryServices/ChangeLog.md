@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed recovery point mount-script operation polling in `Get-AzRecoveryServicesBackupRPMountScript` and `Disable-AzRecoveryServicesBackupRPMountScript` to preserve the protected-item scope.
+* Refreshed Backup scenario recordings for API version 2026-10-01.
 * Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
 * Added `-BaseSnapshotRecoveryPointId`, `-BaseRecoveryPointDatasourceId`, and `-RecoveryMode` parameters to `Get-AzRecoveryServicesBackupRecoveryLogChain` to list the point-in-time log ranges available on top of a SQL (MSSQL) Instance snapshot recovery point (for snapshot point-in-time restore).
 * Added support for stopping protection of SQL (MSSQL) Instance protected items via `Disable-AzRecoveryServicesBackupProtection` (both retain-data and `-RemoveRecoveryPoints` delete-data). Previously these failed because the instance protected item was cast to a SQL database item.
