@@ -34,6 +34,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 
 using TraceLevel = System.Diagnostics.TraceLevel;
@@ -323,9 +325,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             };
             ConfigInitializer configInitializer = new ConfigInitializer(fallbackList);
 
-            using (var mutex = new Mutex(false, @"Global\AzurePowerShellConfigInit"))
+            using (var mutex = TryCreateConfigInitMutex(fallbackList[0], writeWarning))
             {
-                if (mutex.WaitOne(1000))
+                if (mutex != null && TryAcquireMutex(mutex, 1000))
                 {
                     // regular initialization
                     try
@@ -343,7 +345,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         mutex.ReleaseMutex();
                     }
                 }
-                else
+                else if (mutex != null)
                 {
                     writeWarning($"[AzureSessionInitializer] Timed out when initializing the configs.");
                 }
@@ -351,6 +353,50 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 // initialize in safe mode and do not try to migrate configs
                 writeWarning($"[AzureSessionInitializer] Config manager will be re-initialized in safe mode. All configs will have only default values.");
                 configInitializer.SafeInitialize(session);
+            }
+        }
+
+        /// <summary>
+        /// Creates or opens the mutex guarding the config file. Returns null if the mutex cannot be opened,
+        /// e.g. when it was created by a process running under another principal (see #25701).
+        /// </summary>
+        private static Mutex TryCreateConfigInitMutex(string configPath, Action<string> writeWarning)
+        {
+            try
+            {
+                return new Mutex(false, GetConfigInitMutexName(configPath));
+            }
+            catch (Exception ex) when (ex is UnauthorizedAccessException || ex is IOException || ex is WaitHandleCannotBeOpenedException)
+            {
+                writeWarning($"[AzureSessionInitializer] Failed to open the config initialization lock, reason: {ex.Message}.");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// The config file lives in the user's profile, so the lock only has to be shared by processes of the same user.
+        /// Deriving the name from the config path avoids collisions between users, whose processes cannot open each other's mutex.
+        /// </summary>
+        internal static string GetConfigInitMutexName(string configPath)
+        {
+            // paths are case-insensitive on Windows; elsewhere this only merges locks of case-variant paths, which is harmless
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(configPath.ToUpperInvariant()));
+                return @"Global\AzurePowerShellConfigInit_" + BitConverter.ToString(hash).Replace("-", string.Empty);
+            }
+        }
+
+        internal static bool TryAcquireMutex(Mutex mutex, int millisecondsTimeout)
+        {
+            try
+            {
+                return mutex.WaitOne(millisecondsTimeout);
+            }
+            catch (AbandonedMutexException)
+            {
+                // the previous owner exited without releasing the mutex; ownership has been transferred to this thread
+                return true;
             }
         }
 
