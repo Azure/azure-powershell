@@ -34,7 +34,7 @@ input-file:
 # Upgrade AFD without changing the existing classic CDN or standalone EdgeAction contracts.
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/stable/2026-10-01/openapi.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/9e9079a5d235e0c804e7fbb188258a84b4221571/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2024-07-22-preview/edgeaction.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
