@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>Describes a License Update.</summary>
+    /// <summary>Describes a Gateway Update.</summary>
     [System.ComponentModel.TypeConverter(typeof(GatewayUpdateTypeConverter))]
     public partial class GatewayUpdate
     {
@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).AllowedFeature = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).AllowedFeature, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("GatewayBypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).GatewayBypass = (System.Collections.Generic.List<string>) content.GetValueForProperty("GatewayBypass",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).GatewayBypass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -150,6 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).AllowedFeature = (System.Collections.Generic.List<string>) content.GetValueForProperty("AllowedFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).AllowedFeature, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("GatewayBypass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).GatewayBypass = (System.Collections.Generic.List<string>) content.GetValueForProperty("GatewayBypass",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewayUpdateInternal)this).GatewayBypass, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -170,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// Describes a License Update.
+    /// Describes a Gateway Update.
     [System.ComponentModel.TypeConverter(typeof(GatewayUpdateTypeConverter))]
     public partial interface IGatewayUpdate
 
