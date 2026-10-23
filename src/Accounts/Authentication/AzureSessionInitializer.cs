@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
+        private const int ConfigInitMutexTimeoutMilliseconds = 1000;
+
         /// <summary>
         /// Initialize the azure session if it is not already initialized
         /// </summary>
@@ -327,7 +329,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             using (var mutex = TryCreateConfigInitMutex(fallbackList[0], writeWarning))
             {
-                if (mutex != null && TryAcquireMutex(mutex, 1000))
+                if (mutex != null && TryAcquireMutex(mutex, ConfigInitMutexTimeoutMilliseconds))
                 {
                     // regular initialization
                     try
@@ -351,6 +353,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 // initialize in safe mode and do not try to migrate configs
+                // (also reached when the mutex could not be opened; TryCreateConfigInitMutex has already written the warning)
                 writeWarning($"[AzureSessionInitializer] Config manager will be re-initialized in safe mode. All configs will have only default values.");
                 configInitializer.SafeInitialize(session);
             }
@@ -382,8 +385,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             // paths are case-insensitive on Windows; elsewhere this only merges locks of case-variant paths, which is harmless
             using (var sha256 = SHA256.Create())
             {
-                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(configPath.ToUpperInvariant()));
-                return @"Global\AzurePowerShellConfigInit_" + BitConverter.ToString(hash).Replace("-", string.Empty);
+                var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(configPath.ToUpperInvariant()));
+                // the first 16 bytes (128 bits) keep the name short; a collision between the few users of one machine is not realistic
+                return @"Global\AzurePowerShellConfigInit_" + BitConverter.ToString(hash, 0, 16).Replace("-", string.Empty);
             }
         }
 
