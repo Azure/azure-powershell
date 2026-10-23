@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Fixed capacity reservation assignment behavior for VM (Virtual Machine) and VMSS (Virtual Machine Scale Set) create and update cmdlets.
+    - Users can now combine a capacity reservation group ID with an explicitly false opt-out switch and can pass null during update to remove an existing association.
 * Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
 * Updated Azure Compute cmdlets with two new features from API version 2026-04-01.
 
