@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>Describes a License Update.</summary>
+    /// <summary>Describes a Gateway Update.</summary>
     public partial class GatewayUpdate
     {
 

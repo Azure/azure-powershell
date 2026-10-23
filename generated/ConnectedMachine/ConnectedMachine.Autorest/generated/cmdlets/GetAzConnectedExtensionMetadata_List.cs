@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Gets all Extension versions based on location, publisher, extensionType")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions", ApiVersion = "2024-07-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes/{extensionType}/versions", ApiVersion = "2026-06-16-preview")]
     public partial class GetAzConnectedExtensionMetadata_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -42,6 +42,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
 
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
+
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -166,12 +172,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(
@@ -502,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
-                // pageable / value / <none>
+                // pageable / value / nextLink
                 if (null != result.Value)
                 {
                     if (0 == _responseSize && 1 == result.Value.Count)
@@ -524,6 +530,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         }
                         WriteObject(values, true);
                         _responseSize = 2;
+                    }
+                }
+                _nextLink = result.NextLink;
+                if (_isFirst)
+                {
+                    _isFirst = false;
+                    while (!String.IsNullOrEmpty(_nextLink))
+                    {
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.ExtensionMetadataList_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
                     }
                 }
             }
