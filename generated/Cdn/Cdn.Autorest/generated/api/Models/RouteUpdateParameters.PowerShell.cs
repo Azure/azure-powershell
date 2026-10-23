@@ -161,6 +161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
             }
+            if (content.Contains("GrpcState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).GrpcState, global::System.Convert.ToString);
+            }
             if (content.Contains("CacheConfigurationCompressionSetting"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
@@ -253,6 +257,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("LinkToDefaultDomain"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
+            }
+            if (content.Contains("GrpcState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdateParametersInternal)this).GrpcState, global::System.Convert.ToString);
             }
             if (content.Contains("CacheConfigurationCompressionSetting"))
             {
