@@ -1,3 +1,7 @@
+## Upcoming Release
+#### Az.CosmosDB
+* Isolated role-definition permissions and account offer types from generated SDK model changes. Permissions now use PSPermission objects and account offer types use strings.
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.

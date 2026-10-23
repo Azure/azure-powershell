@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RoleName = sqlRoleDefinitionGetResults.RoleName;
             Id = sqlRoleDefinitionGetResults.Id;
             Type = sqlRoleDefinitionGetResults.PropertiesType.ToString();
-            Permissions = new List<Permission>(sqlRoleDefinitionGetResults.Permissions);
+            Permissions = sqlRoleDefinitionGetResults.Permissions?.Select(PSPermission.FromSDKModel).ToList();
             AssignableScopes = new List<string>(sqlRoleDefinitionGetResults.AssignableScopes);
         }
 
@@ -68,6 +69,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         [Ps1Xml(Label = "Permissions.DataActions", Target = ViewControl.List, ScriptBlock = "$_.Permissions.DataActions")]
         [Ps1Xml(Label = "Permissions.NotDataActions", Target = ViewControl.List, ScriptBlock = "$_.Permissions.NotDataActions")]
-        public IList<Permission> Permissions { get; set; }
+        public IList<PSPermission> Permissions { get; set; }
     }
 }

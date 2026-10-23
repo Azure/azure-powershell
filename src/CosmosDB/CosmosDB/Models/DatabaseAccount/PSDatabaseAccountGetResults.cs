@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableAutomaticFailover = databaseAccountGetResults.EnableAutomaticFailover;
             IsVirtualNetworkFilterEnabled = databaseAccountGetResults.IsVirtualNetworkFilterEnabled;
             IpRules = databaseAccountGetResults.IPRules;
-            DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType;
+            DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType?.ToString();
             DocumentEndpoint = databaseAccountGetResults.DocumentEndpoint;
             ProvisioningState = databaseAccountGetResults.ProvisioningState;
             Kind = databaseAccountGetResults.Kind;
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets the offer type for the Cosmos DB database account. Default value: Standard.
         //     Possible values include: 'Standard'
-        public DatabaseAccountGetPropertiesDatabaseAccountOfferType? DatabaseAccountOfferType { get; }
+        public string DatabaseAccountOfferType { get; }
         //
         // Summary:
         //     Gets the connection endpoint for the Cosmos DB database account.

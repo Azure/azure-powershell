@@ -21,6 +21,10 @@ New-AzCosmosDBPermission -DataAction <System.Collections.Generic.List`1[System.S
 ## DESCRIPTION
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
+The returned PSPermission object is independent of generated SDK constructor signatures.
+SQL and Table role definitions also expose their Permissions as PSPermission objects, which can be passed to the Permission parameter of the corresponding create or update cmdlet.
+The Id, DataActions, and NotDataActions properties are preserved when permissions are converted to service requests.
+
 ## EXAMPLES
 
 ### Example 1
