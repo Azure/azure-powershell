@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Core` from 1.57.0 to 1.63.0 and `System.ClientModel` from 1.13.0 to 1.16.0.
+* Upgraded `Microsoft.Identity.Client` and `Microsoft.Identity.Client.Extensions.Msal` from 4.84.0 to 4.90.0.
+* Upgraded shared .NET dependencies from 10.0.3 to 10.0.10 and added `System.Net.ServerSentEvents` 10.0.10.
+* Fixed shared assembly loading to reuse compatible .NET runtime assemblies and prevent duplicate JSON type identities on PowerShell 7.6.
 * Updated the `-ResourceUrl` help text of `Get-AzAccessToken` to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
 * Updated the `-AzureKeyVaultDnsSuffix` help text of `Add-AzEnvironment` and `Set-AzEnvironment` to describe the expected format instead of a specific host name.
 * Fixed incorrect usage of "log in" and "login".

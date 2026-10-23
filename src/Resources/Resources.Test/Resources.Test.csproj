@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="10.0.10" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,7 +1,7 @@
 [
     {
         "PackageName": "Azure.Core",
-        "PackageVersion": "1.57.0",
+        "PackageVersion": "1.63.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -22,21 +22,21 @@
     },
     {
         "PackageName": "Microsoft.Bcl.AsyncInterfaces",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client",
-        "PackageVersion": "4.84.0",
+        "PackageVersion": "4.90.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.Extensions.Msal",
-        "PackageVersion": "4.84.0",
+        "PackageVersion": "4.90.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -65,56 +65,56 @@
     },
     {
         "PackageName": "Microsoft.Extensions.Configuration.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.DependencyInjection.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.Diagnostics.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.FileProviders.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.Hosting.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.Logging.Abstractions",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.Options",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Extensions.Primitives",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -135,21 +135,28 @@
     },
     {
         "PackageName": "System.ClientModel",
-        "PackageVersion": "1.13.0",
+        "PackageVersion": "1.16.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "System.Memory.Data",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "System.IO.Pipelines",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
+        "TargetFramework": "netstandard2.0",
+        "WindowsPowerShell": true,
+        "PowerShell7Plus": true
+    },
+    {
+        "PackageName": "System.Net.ServerSentEvents",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -205,7 +212,7 @@
     },
     {
         "PackageName": "System.Text.Json",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -226,7 +233,7 @@
     },
     {
         "PackageName": "System.Diagnostics.DiagnosticSource",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -268,7 +275,7 @@
     },
     {
         "PackageName": "System.Text.Encodings.Web",
-        "PackageVersion": "10.0.3",
+        "PackageVersion": "10.0.10",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true

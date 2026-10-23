@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.PowerShell.AssemblyLoading
 {
@@ -27,6 +29,14 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
         private static IConditionalAssemblyContext _context = null;
         private static IEnumerable<IConditionalAssembly> _assemblies = null;
         private static string _rootPath = null;
+        private static readonly HashSet<string> RuntimeAssemblies = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "System.Text.Json",
+            "System.Text.Encodings.Web",
+            "System.IO.Pipelines",
+            "System.Net.ServerSentEvents",
+            "System.Diagnostics.DiagnosticSource"
+        };
 
         /// <summary>
         /// Initializes the conditional assembly provider.
@@ -50,10 +60,10 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("net462", "System.Runtime.CompilerServices.Unsafe", "6.0.3.0").WithWindowsPowerShell(),
                 CreateAssembly("net47", "System.Security.Cryptography.Cng", "5.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("net47", "System.ValueTuple", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.57.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.63.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.6.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.21.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "10.0.0.3"),
+                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "10.0.0.10"),
                 CreateAssembly("netstandard2.0", "Microsoft.Extensions.Configuration.Abstractions", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Extensions.DependencyInjection.Abstractions", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Extensions.Diagnostics.Abstractions", "10.0.0.0"),
@@ -63,18 +73,19 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "Microsoft.Extensions.Options", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Extensions.Primitives", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.84.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.84.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.84.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.90.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.90.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.20.4.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "8.14.0.0"),
                 CreateAssembly("netstandard2.0", "System.Buffers", "4.0.2.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.ClientModel", "1.13.0.0"),
+                CreateAssembly("netstandard2.0", "System.ClientModel", "1.16.0.0"),
                 CreateAssembly("netstandard2.0", "System.Diagnostics.DiagnosticSource", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Formats.Asn1", "8.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.IO.Pipelines", "10.0.0.0"),
-                CreateAssembly("netstandard2.0", "System.Memory.Data", "10.0.0.3"),
+                CreateAssembly("netstandard2.0", "System.Memory.Data", "10.0.0.10"),
                 CreateAssembly("netstandard2.0", "System.Memory", "4.0.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Net.ServerSentEvents", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.3.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.3.0").WithWindowsPowerShell(),
@@ -102,7 +113,39 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
         public static IDictionary<string, (string Path, Version Version)> GetAssemblies()
         {
             if (_context == null || _assemblies == null) throw new InvalidOperationException($"Call {nameof(Initialize)}() first.");
-            return _assemblies.Where(x => x.ShouldLoad).ToDictionary(x => x.Name, x => (x.Path, x.Version));
+            return _assemblies.Where(x => x.ShouldLoad && !IsProvidedByRuntime(x)).ToDictionary(x => x.Name, x => (x.Path, x.Version));
+        }
+
+        private static bool IsProvidedByRuntime(IConditionalAssembly assembly)
+        {
+            if (_context.PSEdition != Constants.PSEditionCore || !RuntimeAssemblies.Contains(assembly.Name)) return false;
+
+            string runtimePath = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), assembly.Name + ".dll");
+            if (!File.Exists(runtimePath) || !File.Exists(assembly.Path)) return false;
+
+            try
+            {
+                var sharedIdentity = AssemblyName.GetAssemblyName(assembly.Path);
+                var runtimeIdentity = AssemblyName.GetAssemblyName(runtimePath);
+                if (!CanUseRuntimeAssembly(_context, sharedIdentity, runtimeIdentity)) return false;
+
+                var loadedAssembly = Assembly.Load(runtimeIdentity);
+                return CanUseRuntimeAssembly(_context, sharedIdentity, loadedAssembly.GetName());
+            }
+            catch (FileNotFoundException) { return false; }
+            catch (FileLoadException) { return false; }
+            catch (BadImageFormatException) { return false; }
+        }
+
+        internal static bool CanUseRuntimeAssembly(IConditionalAssemblyContext context, AssemblyName sharedIdentity, AssemblyName runtimeIdentity)
+        {
+            return context.PSEdition == Constants.PSEditionCore
+                && RuntimeAssemblies.Contains(sharedIdentity.Name)
+                && string.Equals(sharedIdentity.Name, runtimeIdentity.Name, StringComparison.OrdinalIgnoreCase)
+                && sharedIdentity.Version != null && runtimeIdentity.Version != null
+                && runtimeIdentity.Version >= sharedIdentity.Version
+                && string.Equals(sharedIdentity.CultureName ?? string.Empty, runtimeIdentity.CultureName ?? string.Empty, StringComparison.OrdinalIgnoreCase)
+                && (sharedIdentity.GetPublicKeyToken() ?? Array.Empty<byte>()).SequenceEqual(runtimeIdentity.GetPublicKeyToken() ?? Array.Empty<byte>());
         }
     }
 }
