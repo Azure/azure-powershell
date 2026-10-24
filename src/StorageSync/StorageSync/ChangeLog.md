@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.1
 * Improved `Set-AzStorageSyncServer` managed identity troubleshooting
     - The cmdlet now preserves managed identity token acquisition errors and provides guidance based on the local server type
     - Help now includes `ServerId` in the example and explains the elevated session requirement for Azure Arc-enabled servers

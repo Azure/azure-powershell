@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Upgraded API version to 2025-12-01-preview
 * Added new SKU values `Standard_B1v2`, `Standard_B5v2`, `Standard_B10v2`, `Standard_B15v2` and `Standard_B20v2` to the `-Sku` argument completer of `New-AzCloudHsm`
 * The type of property `IdentityUserAssignedIdentity` of `ICloudHsmCluster` has changed from `IUserAssignedIdentities` to `IManagedServiceIdentityUserAssignedIdentities`
