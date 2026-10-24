@@ -40,14 +40,6 @@ namespace: Microsoft.Azure.Management.Compute
 
 directive:
 
-  # Temporary workaround: normal gallery image-definition names have no Swagger pattern.
-  # Let Azure validate artifactName until the recycle-bin specification is corrected.
-  - from: swagger-document
-    where: $.paths.*[?(@.operationId === "SoftDeletedResource_ListByArtifactName")].parameters[?(@.name === "artifactName")]
-    transform: |
-      delete $.pattern;
-      return $;
-
   # Remove SystemData from Resource and TrackedResource definitions in swagger
   # This will make them generate with the old constructor signature
   - from: swagger-document

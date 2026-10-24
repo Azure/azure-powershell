@@ -134,7 +134,13 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "artifactName");
             }
-
+            if (artifactName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(artifactName, "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "artifactName", "^[a-zA-Z0-9]+([_]?[a-zA-Z0-9]+)*$");
+                }
+            }
             string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
