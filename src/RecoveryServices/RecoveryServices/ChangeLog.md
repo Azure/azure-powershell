@@ -22,6 +22,8 @@
 -->
 
 ## Upcoming Release
+* Added support for Cross Region Restore (CRR) of SQL Server instance snapshots, including secondary-region recovery point details, log chains, snapshot disk mapping, and managed identity restore settings. [#30299]
+    - Includes database-under-instance snapshot restores and instance point-in-time recovery using secondary-region recovery points.
 * Fixed `Register-AzRecoveryServicesBackupContainer` to match the full virtual machine resource ID during Azure Workload registration, preventing selection of a same-named virtual machine in another subscription.
 * Fixed `Set-AzRecoveryServicesBackupProtectionPolicy` to preserve SQL Server instance snapshot settings and Azure virtual machine Instant Access settings when updating policies.
 * Fixed recovery point mount-script operation polling in `Get-AzRecoveryServicesBackupRPMountScript` and `Disable-AzRecoveryServicesBackupRPMountScript` to preserve the protected-item scope.

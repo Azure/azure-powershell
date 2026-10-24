@@ -930,18 +930,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RehydrationExpiryTime = (DateTime?)null
             };
 
-            if (item.WorkloadType == WorkloadType.MSSQL)
+            if (item.WorkloadType == WorkloadType.MSSQL || item.WorkloadType == WorkloadType.MSSQLInstance)
             {
                 rpBase.DataDirectoryPaths = null;
                 CrrModel.AzureWorkloadSQLRecoveryPoint crrRP = (CrrModel.AzureWorkloadSQLRecoveryPoint)recoveryPoint;
                 if(crrRP.ExtendedInfo != null)
                 {
-                    rpBase.DataDirectoryPaths = new List<ServiceClientModel.SQLDataDirectory>();
-                    foreach (var dataDirectoryPath in crrRP.ExtendedInfo.DataDirectoryPaths)
-                    {
-                        ServiceClientModel.SQLDataDirectory sqlDataDirectory = new ServiceClientModel.SQLDataDirectory(dataDirectoryPath.Type, dataDirectoryPath.Path, dataDirectoryPath.LogicalName);
-                        rpBase.DataDirectoryPaths.Add(sqlDataDirectory);
-                    }
+                    var extendedInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<ServiceClientModel.AzureWorkloadSQLRecoveryPointExtendedInfo>(
+                        Newtonsoft.Json.JsonConvert.SerializeObject(crrRP.ExtendedInfo));
+                    rpBase.DataDirectoryPaths = extendedInfo.DataDirectoryPaths;
+                    rpBase.IncludedDatabases = extendedInfo.IncludedDatabases;
+                    rpBase.SnapshotRecoveryPointInfo = extendedInfo.SnapshotRecoveryPointInfo;
                 }                    
             }
 

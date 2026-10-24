@@ -395,7 +395,9 @@ Accept wildcard characters: False
 ```
 
 ### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+Retrieves replicated recovery points from the secondary region for Cross Region Restore.
+SQL instance snapshot recovery points support the snapshot query filters in this command.
+Retrieve a recovery point by ID to inspect its included databases and source filesystem metadata.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -568,6 +568,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     itemModel = GetAzureVmWorkloadItemModelCrr(protectedItem);
                 }
 
+                if (protectedItem.Properties is CrrModel.AzureVmWorkloadSQLInstanceProtectedItem)
+                {
+                    string policyId = protectedItem.Properties.PolicyId;
+                    string policyName = string.IsNullOrEmpty(policyId) ? null :
+                        HelperUtils.GetPolicyNameFromPolicyId(HelperUtils.ParseUri(policyId), policyId);
+                    string containerUri = HelperUtils.GetContainerUri(
+                        HelperUtils.ParseUri(protectedItem.Id), protectedItem.Id);
+                    itemModel = new AzureWorkloadSQLInstanceProtectedItem(
+                        protectedItem, containerUri, ContainerType.AzureVMAppContainer, policyName);
+                }
+
                 if (protectedItem.Properties.GetType() ==
                     typeof(CrrModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem))
                 {

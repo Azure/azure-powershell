@@ -79,6 +79,48 @@ path with an empty `TargetPath`. Set the `TargetPath` on the volumes you want to
 shows the source path and asks for a target path), then pipe the config to `Restore-AzRecoveryServicesBackupItem`.
 This applies to both original (`-OriginalWorkloadRestore`) and alternate (`-AlternateWorkloadRestore`) location restore.
 
+### Example 4: Restore a SQL instance snapshot in the secondary region
+
+The source vault must have Cross Region Restore enabled and a replicated snapshot recovery point.
+The target SQL instance and its container must be registered with a vault in the paired region.
+Use a user-assigned managed identity with permission to restore the snapshot disks, and a target
+resource group in that region.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "source-rg" -Name "source-vault"
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "secondary-rg" -Name "secondary-vault"
+$targetContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer `
+    -BackupManagementType AzureWorkload -FriendlyName "secondary-vm" -VaultId $targetVault.ID
+$targetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance `
+    -Name "mssqlserver" -ServerName "secondary-vm" -VaultId $targetVault.ID
+$uamiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/secondary-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity"
+$sourceInstanceItemId = $vault.ID + "/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;source-rg;source-vm/protectedItems/SQLInstance;mssqlserver"
+
+$instanceItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQLInstance -VaultId $vault.ID -UseSecondaryRegion |
+    Where-Object { $_.Id -eq $sourceInstanceItemId }
+$snapshots = Get-AzRecoveryServicesBackupRecoveryPoint -Item $instanceItem -RestorePointQueryType Snapshot -VaultId $vault.ID -UseSecondaryRegion
+$snapshot = Get-AzRecoveryServicesBackupRecoveryPoint -Item $instanceItem -RecoveryPointId $snapshots[0].RecoveryPointId -VaultId $vault.ID -UseSecondaryRegion
+
+$config = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $snapshot `
+    -AlternateWorkloadRestore -TargetItem $targetInstance -TargetContainer $targetContainer `
+    -TargetResourceGroupName "secondary-restore-rg" -UserAssignedIdentityId $uamiId `
+    -RecoveryMode SnapshotAttachAndRecover -VaultId $vault.ID -UseSecondaryRegion
+
+$config.targetPhysicalPath | Format-Table SourcePath, TargetPath
+($config.targetPhysicalPath | Where-Object { $_.SourcePath -eq "E:\" }).TargetPath = "X:\"
+Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $config -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Replace the example resource names and identity ID with your own values. Set
+`sourceInstanceItemId` to the full resource ID of the source protected SQL instance.
+The config obtains source filesystem metadata from the secondary region. Set target paths only
+for volumes that need remapping. Use `SnapshotAttach` instead to attach snapshot disks without
+database recovery. For point-in-time recovery, query the database log chain with
+`Get-AzRecoveryServicesBackupRecoveryLogChain -UseSecondaryRegion` and the base snapshot context,
+then supply a time within a returned range using `-PointInTime`.
+Use `-UseSecondaryRegion` on recovery-point, log-chain, and config queries, and
+`-RestoreToSecondaryRegion` on the restore command.
+
 ## PARAMETERS
 
 ### -AlternateWorkloadRestore
@@ -323,7 +365,11 @@ Accept wildcard characters: False
 ```
 
 ### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+Reads recovery-point details from the secondary region for Cross Region Restore.
+For SQL instance and database snapshot restores, this includes the source filesystem
+metadata used to populate target disk mappings. Also specify `-UseSecondaryRegion`
+when retrieving the recovery point or log chain, and `-RestoreToSecondaryRegion`
+when submitting the resulting configuration to `Restore-AzRecoveryServicesBackupItem`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

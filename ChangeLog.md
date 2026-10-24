@@ -1,5 +1,7 @@
 ## Upcoming Release
 #### Az.RecoveryServices
+* Added support for Cross Region Restore (CRR) of SQL Server instance snapshots, including secondary-region recovery point details and snapshot restore settings. [#30299]
+    - Includes database-under-instance snapshot restores and instance point-in-time recovery using secondary-region recovery points.
 * Fixed SQL Instance policy retrieval with the MSSQLInstance workload filter.
 * Fixed snapshot recovery-point query filter names and documented snapshot recovery context parameters.
 * Restricted `RestorePointQueryType` in `Get-AzRecoveryServicesBackupRecoveryPoint` to single-time recovery points. Use `Get-AzRecoveryServicesBackupRecoveryLogChain` for point-in-time log ranges instead of `Log` or `All`.

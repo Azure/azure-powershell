@@ -361,18 +361,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 resourceGroupName,
                 (itemModel, protectedItemGetResponse) =>
                 {
-                    AzureWorkloadSQLDatabaseProtectedItemExtendedInfo extendedInfo = new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
-                    var serviceClientExtendedInfo = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                    if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                    AzureItemExtendedInfo extendedInfo = itemModel is AzureWorkloadSQLInstanceProtectedItem ?
+                        (AzureItemExtendedInfo)new AzureWorkloadSQLInstanceProtectedItemExtendedInfo() :
+                        new AzureWorkloadSQLDatabaseProtectedItemExtendedInfo();
+                    var serviceClientItem = (AzureVmWorkloadProtectedItem)protectedItemGetResponse.Properties;
+                    var serviceClientExtendedInfo = serviceClientItem.ExtendedInfo;
+                    if (serviceClientExtendedInfo != null)
                     {
                         extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState;
+                        extendedInfo.RecoveryPointCount = serviceClientExtendedInfo.RecoveryPointCount ?? 0;
                     }
-                    extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
-                    extendedInfo.RecoveryPointCount =
-                        (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                            serviceClientExtendedInfo.RecoveryPointCount : 0);
-                    ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).LatestRecoveryPoint = ((AzureVmWorkloadSQLDatabaseProtectedItem)protectedItemGetResponse.Properties).LastRecoveryPoint;
-                    ((AzureWorkloadSQLDatabaseProtectedItem)itemModel).ExtendedInfo = extendedInfo;
+                    ((AzureItem)itemModel).LatestRecoveryPoint = serviceClientItem.LastRecoveryPoint;
+                    ((AzureItem)itemModel).ExtendedInfo = extendedInfo;
                 });                
             }
             else

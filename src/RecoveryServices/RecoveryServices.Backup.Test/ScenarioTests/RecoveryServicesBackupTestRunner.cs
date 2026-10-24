@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
@@ -21,6 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     public class RecoveryServicesBackupTestRunner
     {
         protected readonly ITestRunner TestRunner;
+
+        static RecoveryServicesBackupTestRunner()
+        {
+            RecorderUtilities.JsonPathSanitizers.Add("$..accessTokenString");
+        }
 
         protected RecoveryServicesBackupTestRunner(ITestOutputHelper output, string resourceManagementApiVersion = "2016-02-01")
         {

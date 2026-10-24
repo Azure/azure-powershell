@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -117,6 +118,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     }
                 }
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+        }
+
+        public AzureWorkloadSQLInstanceProtectedItem(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType, policyName)
+        {
+            var protectedItem = (CrrModel.AzureVmWorkloadSQLInstanceProtectedItem)protectedItemResource.Properties;
+            FriendlyName = protectedItem.FriendlyName;
+            ServerName = protectedItem.ServerName;
+            ParentName = protectedItem.ParentName;
+            ParentType = protectedItem.ParentType;
+            if (protectedItem.LastBackupErrorDetail != null)
+            {
+                LastBackupErrorDetail = new ErrorDetail(protectedItem.LastBackupErrorDetail.Code,
+                    protectedItem.LastBackupErrorDetail.Message, protectedItem.LastBackupErrorDetail.Recommendations);
+            }
+            ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;
+            ProtectedItemHealthStatus = protectedItem.ProtectedItemHealthStatus;
+            ChildDatabaseNameList = protectedItem.ChildDatabaseNameList != null ? new List<string>(protectedItem.ChildDatabaseNameList) : null;
+            InstanceProtectionReadiness = protectedItem.InstanceProtectionReadiness;
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
+            ProtectionState = EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState);
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
+            IsArchiveEnabled = protectedItem.IsArchiveEnabled;
+            SoftDeleteRetentionPeriodInDays = protectedItem.SoftDeleteRetentionPeriodInDays;
+            IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
+            DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+            DeferredDeleteTimeRemaining = protectedItem.DeferredDeleteTimeRemaining;
+            if (protectedItem.IsScheduledForDeferredDelete == true)
+            {
+                if (TimeSpan.TryParse(protectedItem.DeferredDeleteTimeRemaining, out TimeSpan timeRemaining))
+                {
+                    DateOfPurge = DateTime.UtcNow.Add(timeRemaining);
+                }
+                DeleteState = ItemDeleteState.ToBeDeleted;
             }
         }
     }

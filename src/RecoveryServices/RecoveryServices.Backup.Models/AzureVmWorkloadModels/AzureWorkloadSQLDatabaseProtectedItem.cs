@@ -138,6 +138,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ServerName = protectedItem.ServerName;
             ParentName = protectedItem.ParentName;
             ParentType = protectedItem.ParentType;
+            ParentProtectedItem = protectedItem.ParentProtectedItem;
+            ProtectionLevel = protectedItem.ProtectionLevel;
 
             if(protectedItem.LastBackupErrorDetail != null)
             {

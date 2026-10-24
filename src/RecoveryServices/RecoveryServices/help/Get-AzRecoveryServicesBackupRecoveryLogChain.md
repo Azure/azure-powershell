@@ -213,7 +213,10 @@ Accept wildcard characters: False
 ```
 
 ### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+Retrieves log recovery ranges from the secondary region for Cross Region Restore.
+For log recovery on top of a SQL instance snapshot, specify `-RecoveryMode`,
+`-BaseSnapshotRecoveryPointId`, and `-BaseRecoveryPointDatasourceId` using the
+secondary-region snapshot and the source instance datasource ID.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -672,12 +672,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ODataQuery<BmsrpQueryObject> queryFilter = new ODataQuery<BmsrpQueryObject>();
             queryFilter.Filter = queryFilterString;
 
-            var rpResponse = ServiceClientAdapter.GetRecoveryPoints(
-                containerUri,
-                protectedItemName,
-                queryFilter,
-                vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+            List<RecoveryPointResource> rpResponse;
+            if (UseSecondaryRegion)
+            {
+                var secondaryQuery = new ODataQuery<CrrModel.BmsrpQueryObject> { Filter = queryFilterString };
+                rpResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
+                    containerUri, protectedItemName, secondaryQuery,
+                    vaultName: vaultName, resourceGroupName: resourceGroupName)
+                    .Where(rp => rp.Properties is CrrModel.AzureWorkloadSQLRecoveryPoint)
+                    .Select(rp => new RecoveryPointResource(rp.Id, rp.Name)
+                    {
+                        Properties = Newtonsoft.Json.JsonConvert.DeserializeObject<AzureWorkloadSQLRecoveryPoint>(
+                            Newtonsoft.Json.JsonConvert.SerializeObject(rp.Properties))
+                    }).ToList();
+            }
+            else
+            {
+                rpResponse = ServiceClientAdapter.GetRecoveryPoints(
+                    containerUri, protectedItemName, queryFilter,
+                    vaultName: vaultName, resourceGroupName: resourceGroupName);
+            }
 
             foreach (var rp in rpResponse)
             {
@@ -694,13 +708,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     return sqlRp.ExtendedInfo.SnapshotRecoveryPointInfo;
                 }
 
-                var rpDetailResponse = ServiceClientAdapter.GetRecoveryPointDetails(
-                    containerUri,
-                    protectedItemName,
-                    rp.Name,
-                    vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
-                AzureWorkloadSQLRecoveryPoint detailRp = rpDetailResponse.Properties as AzureWorkloadSQLRecoveryPoint;
+                AzureWorkloadSQLRecoveryPoint detailRp = GetSnapshotRecoveryPointDetails(
+                    vaultName, resourceGroupName, containerUri, protectedItemName, rp.Name);
                 if (detailRp != null && detailRp.ExtendedInfo != null && detailRp.ExtendedInfo.SnapshotRecoveryPointInfo != null)
                 {
                     return detailRp.ExtendedInfo.SnapshotRecoveryPointInfo;
@@ -777,15 +786,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             string containerUri = HelperUtils.GetContainerUri(uriDict, RecoveryPoint.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, RecoveryPoint.Id);
 
-            var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
-            containerUri,
-            protectedItemName,
-            RecoveryPoint.RecoveryPointId,
-            vaultName: vaultName,
-            resourceGroupName: resourceGroupName);
-
-            AzureWorkloadSQLRecoveryPoint recoveryPoint = rpResponse.Properties as AzureWorkloadSQLRecoveryPoint;
+            AzureWorkloadSQLRecoveryPoint recoveryPoint = GetSnapshotRecoveryPointDetails(
+                vaultName, resourceGroupName, containerUri, protectedItemName, RecoveryPoint.RecoveryPointId);
             return recoveryPoint?.ExtendedInfo?.SnapshotRecoveryPointInfo;
+        }
+
+        private AzureWorkloadSQLRecoveryPoint GetSnapshotRecoveryPointDetails(
+            string vaultName, string resourceGroupName, string containerName, string itemName, string recoveryPointId)
+        {
+            if (UseSecondaryRegion)
+            {
+                var response = ServiceClientAdapter.GetRecoveryPointDetailsFromSecondaryRegion(
+                    containerName, itemName, recoveryPointId,
+                    vaultName: vaultName, resourceGroupName: resourceGroupName);
+                var recoveryPoint = response.Properties as CrrModel.AzureWorkloadSQLRecoveryPoint;
+                return recoveryPoint == null ? null :
+                    Newtonsoft.Json.JsonConvert.DeserializeObject<AzureWorkloadSQLRecoveryPoint>(
+                        Newtonsoft.Json.JsonConvert.SerializeObject(recoveryPoint));
+            }
+
+            return ServiceClientAdapter.GetRecoveryPointDetails(
+                containerName, itemName, recoveryPointId,
+                vaultName: vaultName, resourceGroupName: resourceGroupName).Properties as AzureWorkloadSQLRecoveryPoint;
         }
 
         public IList<CrrModel.SQLDataDirectory> GetRpDetailsFromSecondaryRegion(string vaultName, string resourceGroupName)
