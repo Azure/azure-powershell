@@ -25,6 +25,7 @@
 * Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.4 to 0.20.6.
 * Upgraded `System.Text.Json`, `System.Memory.Data`, `Microsoft.Bcl.AsyncInterfaces` and related .NET dependencies from 10.0.3 to 10.0.10.
 * Added `System.Net.ServerSentEvents` 10.0.10 as a dependency of `System.ClientModel`.
+* Fixed AutoRest-generated cmdlets ignoring the context passed with `-DefaultProfile` when authenticating requests and resolving endpoints. [#21688]
 
 ## Version 5.5.4
 * Fixed `Get-AzAccessToken -ResourceUrl` help; replaced Azure AD Graph with Microsoft Graph.
