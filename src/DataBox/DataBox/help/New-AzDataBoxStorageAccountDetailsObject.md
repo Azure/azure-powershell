@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxstorageaccountdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for StorageAccountDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxStorageAccountDetailsObject -StorageAccountId <String> -DataAccountType <DataAccountType>
- [-SharePassword <String>] [<CommonParameters>]
+New-AzDataBoxStorageAccountDetailsObject -StorageAccountId <String> [-SharePassword <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +36,6 @@ StorageAccount                /subscriptions/SubscriptionId/resourceGroups/resou
 Storage account in-memory object
 
 ## PARAMETERS
-
-### -DataAccountType
-Account Type of the data to be transferred.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.DataAccountType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -SharePassword
 Password for all the shares to be created on the device.
@@ -95,7 +80,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.StorageAccountDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.StorageAccountDetails
 
 ## NOTES
 
