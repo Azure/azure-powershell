@@ -382,6 +382,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Updating an existing policy preserves its Azure virtual machine Instant Access settings or SQL Server instance snapshot type, resource group, instant recovery-point retention, and managed identity.
+SQL Server instance snapshot policies retain their `SnapshotFull` sub-policy without archive tiering.
+
 ## RELATED LINKS
 
 [Get-AzRecoveryServicesBackupProtectionPolicy](./Get-AzRecoveryServicesBackupProtectionPolicy.md)
@@ -391,5 +394,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzRecoveryServicesBackupProtectionPolicy](./New-AzRecoveryServicesBackupProtectionPolicy.md)
 
 [Remove-AzRecoveryServicesBackupProtectionPolicy](./Remove-AzRecoveryServicesBackupProtectionPolicy.md)
-
 

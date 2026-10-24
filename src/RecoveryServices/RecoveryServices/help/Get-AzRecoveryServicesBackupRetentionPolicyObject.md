@@ -127,7 +127,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureFiles, MSSQL, MSSQLInstance
 
 Required: True
 Position: 0

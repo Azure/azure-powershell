@@ -17,8 +17,10 @@ This command constructs the recovery configuration of a backed up item such as S
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-RecoveryPoint] <RecoveryPointBase>]
  [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
  [-AlternateWorkloadRestore] [-TargetContainer <ContainerBase>] [-RestoreAsFiles]
- [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+ [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-DisksToDetachOnClash <String[]>]
+ [-TargetResourceGroupName <String>] [-UserAssignedIdentityId <String>] [-TargetInstanceDatabaseName <String>]
+ [-RecoveryMode <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion]
+ [<CommonParameters>]
 ```
 
 ### LogChainParameterSet
@@ -26,8 +28,10 @@ Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-RecoveryPoint] <RecoveryPo
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig [[-PointInTime] <DateTime>]
  [[-TargetItem] <ProtectableItemBase>] [[-Item] <ItemBase>] [-OriginalWorkloadRestore]
  [-AlternateWorkloadRestore] [-TargetContainer <ContainerBase>] [-RestoreAsFiles]
- [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+ [-FromFull <RecoveryPointBase>] [-FilePath <String>] [-DisksToDetachOnClash <String[]>]
+ [-TargetResourceGroupName <String>] [-UserAssignedIdentityId <String>] [-TargetInstanceDatabaseName <String>]
+ [-RecoveryMode <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +61,66 @@ This command constructs the recovery configuration of a backed up item such as S
 Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -AlternateWorkloadRestore -RecoveryPoint $rp[0] -TargetItem <ProtectableItemBase> -TargetContainer $targetVMContainer -VaultId $vault.ID
 ```
 
+### Example 3: SQL Instance snapshot restore with customer-supplied target paths
+```powershell
+$recoveryConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $snapRp -OriginalWorkloadRestore -TargetResourceGroupName "sqlsnap-restore-rg" -UserAssignedIdentityId $uamiId -VaultId $vault.ID
+
+# The config lists each source volume path (from the snapshot recovery point) with a blank target
+# path. Set the target path for every volume you want to remap on filesystem clash, then restore.
+$recoveryConfig.targetPhysicalPath | Format-Table SourcePath, TargetPath
+$recoveryConfig.targetPhysicalPath[0].TargetPath = "X:\"
+$recoveryConfig.targetPhysicalPath[1].TargetPath = "P:\"
+
+Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $recoveryConfig -VaultId $vault.ID
+```
+
+For a SQL (MSSQL) Instance snapshot recovery point, the recovery config surfaces each source volume
+path with an empty `TargetPath`. Set the `TargetPath` on the volumes you want to remap (the portal
+shows the source path and asks for a target path), then pipe the config to `Restore-AzRecoveryServicesBackupItem`.
+This applies to both original (`-OriginalWorkloadRestore`) and alternate (`-AlternateWorkloadRestore`) location restore.
+
+### Example 4: Restore a SQL instance snapshot in the secondary region
+
+The source vault must have Cross Region Restore enabled and a replicated snapshot recovery point.
+The target SQL instance and its container must be registered with a vault in the paired region.
+Use a user-assigned managed identity with permission to restore the snapshot disks, and a target
+resource group in that region.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "source-rg" -Name "source-vault"
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "secondary-rg" -Name "secondary-vault"
+$targetContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer `
+    -BackupManagementType AzureWorkload -FriendlyName "secondary-vm" -VaultId $targetVault.ID
+$targetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance `
+    -Name "mssqlserver" -ServerName "secondary-vm" -VaultId $targetVault.ID
+$uamiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/secondary-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/restore-identity"
+$sourceInstanceItemId = $vault.ID + "/backupFabrics/Azure/protectionContainers/VMAppContainer;compute;source-rg;source-vm/protectedItems/SQLInstance;mssqlserver"
+
+$instanceItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQLInstance -VaultId $vault.ID -UseSecondaryRegion |
+    Where-Object { $_.Id -eq $sourceInstanceItemId }
+$snapshots = Get-AzRecoveryServicesBackupRecoveryPoint -Item $instanceItem -RestorePointQueryType Snapshot -VaultId $vault.ID -UseSecondaryRegion
+$snapshot = Get-AzRecoveryServicesBackupRecoveryPoint -Item $instanceItem -RecoveryPointId $snapshots[0].RecoveryPointId -VaultId $vault.ID -UseSecondaryRegion
+
+$config = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $snapshot `
+    -AlternateWorkloadRestore -TargetItem $targetInstance -TargetContainer $targetContainer `
+    -TargetResourceGroupName "secondary-restore-rg" -UserAssignedIdentityId $uamiId `
+    -RecoveryMode SnapshotAttachAndRecover -VaultId $vault.ID -UseSecondaryRegion
+
+$config.targetPhysicalPath | Format-Table SourcePath, TargetPath
+($config.targetPhysicalPath | Where-Object { $_.SourcePath -eq "E:\" }).TargetPath = "X:\"
+Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $config -RestoreToSecondaryRegion -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Replace the example resource names and identity ID with your own values. Set
+`sourceInstanceItemId` to the full resource ID of the source protected SQL instance.
+The config obtains source filesystem metadata from the secondary region. Set target paths only
+for volumes that need remapping. Use `SnapshotAttach` instead to attach snapshot disks without
+database recovery. For point-in-time recovery, query the database log chain with
+`Get-AzRecoveryServicesBackupRecoveryLogChain -UseSecondaryRegion` and the base snapshot context,
+then supply a time within a returned range using `-PointInTime`.
+Use `-UseSecondaryRegion` on recovery-point, log-chain, and config queries, and
+`-RestoreToSecondaryRegion` on the restore command.
+
 ## PARAMETERS
 
 ### -AlternateWorkloadRestore
@@ -81,6 +145,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisksToDetachOnClash
+List of disk ARM IDs to detach in case of a filesystem clash during SQL (MSSQL) Instance snapshot restore.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -164,6 +243,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryMode
+Recovery mode for SQL (MSSQL) Instance snapshot restore. Accepted values: SnapshotAttachAndRecover (default), SnapshotAttach, RecoveryUsingSnapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryPoint
 Recovery point object to be restored
 
@@ -209,6 +304,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetInstanceDatabaseName
+Target database name for SQL (MSSQL) Instance snapshot restore (maps to the restore request's `targetInfo.databaseName`). Overrides the default `<targetInstance>/*_restored_<timestamp>` value; may be instance-qualified (e.g. `mssqlserver/*_lh_20261012_230309`).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetItem
 Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.
 
@@ -224,8 +334,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetResourceGroupName
+Target resource group name for SQL (MSSQL) Instance snapshot restore. Required for SQL Instance snapshot restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ARM ID of the user-assigned managed identity used for SQL (MSSQL) Instance snapshot restore. Required for SQL Instance snapshot restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+Reads recovery-point details from the secondary region for Cross Region Restore.
+For SQL instance and database snapshot restores, this includes the source filesystem
+metadata used to populate target disk mappings. Also specify `-UseSecondaryRegion`
+when retrieving the recovery point or log chain, and `-RestoreToSecondaryRegion`
+when submitting the resulting configuration to `Restore-AzRecoveryServicesBackupItem`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

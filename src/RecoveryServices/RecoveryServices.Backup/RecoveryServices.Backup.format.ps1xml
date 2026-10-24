@@ -858,6 +858,64 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadSQLInstanceProtectedItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadSQLInstanceProtectedItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkloadType</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ServerName</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProtectionStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InstanceProtectionReadiness</Label>
+            <Width>27</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastBackupTime</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkloadType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InstanceProtectionReadiness</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastBackupTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlItem</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlItem</TypeName>

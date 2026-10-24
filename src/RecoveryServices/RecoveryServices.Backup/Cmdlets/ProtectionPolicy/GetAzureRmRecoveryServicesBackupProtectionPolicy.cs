@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, MSSQLInstance";
 
         /// <summary>
         /// Name of the policy to be fetched.
@@ -144,9 +144,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             {
                                 serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureFiles);
                             }
-                            else if (WorkloadType == Models.WorkloadType.MSSQL)
+                            else if (WorkloadType == Models.WorkloadType.MSSQL ||
+                                WorkloadType == Models.WorkloadType.MSSQLInstance)
                             {
-                                serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.MSSQL);
+                                serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(WorkloadType.Value);
                             }
                             break;
 
@@ -172,7 +173,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             ServiceClientHelpers.GetServiceClientProviderType(
                                 Models.WorkloadType.AzureFiles );
                         }
-                    else if( WorkloadType == Models.WorkloadType.MSSQL )
+                    else if( WorkloadType == Models.WorkloadType.MSSQL ||
+                        WorkloadType == Models.WorkloadType.MSSQLInstance )
                         {
                         if( BackupManagementType != Models.BackupManagementType.AzureWorkload )
                             {
@@ -181,7 +183,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         serviceClientProviderType =
                             ServiceClientHelpers.GetServiceClientProviderType(
-                                Models.WorkloadType.MSSQL );
+                                WorkloadType.Value );
                         }
                     else
                         {
@@ -201,6 +203,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     ODataQuery<ServiceClientModel.ProtectionPolicyQueryObject> queryParams
                     = new ODataQuery<ServiceClientModel.ProtectionPolicyQueryObject>(
                     q => q.BackupManagementType == backupManagementTypeFilter);
+                    if (WorkloadType == Models.WorkloadType.MSSQLInstance)
+                    {
+                        queryParams = new ODataQuery<ServiceClientModel.ProtectionPolicyQueryObject>(
+                            q => q.BackupManagementType == backupManagementTypeFilter &&
+                                q.WorkloadType == ServiceClientModel.WorkloadType.SQLInstance);
+                    }
 
                     WriteDebug("going to query service to get list of policies");
                     List<ServiceClientModel.ProtectionPolicyResource> respList =

@@ -1,6 +1,8 @@
 # Overall
 This directory contains management plane service clients of Az.RecoveryServices Backup CrossRegionRestore APIs.
 
+CRR operations retain API `2021-11-15`. SQL snapshot model customizations use schemas from `2026-10-01` and must be preserved when regenerating the SDK.
+
 ## Run Generation
 In this directory, run AutoRest:
 ```
