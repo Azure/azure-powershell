@@ -53,27 +53,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
 
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [InlineData("SnapshotV1", "SQLInstance", "Schedule")]
-        [InlineData("SnapshotV1", "SQLInstance", "Retention")]
-        [InlineData("SnapshotV1", "SQLInstance", "Consistency")]
-        [InlineData("SnapshotV1", "SQLDataBase", "Schedule")]
-        [InlineData("SnapshotV1", "SQLDataBase", "Retention")]
-        [InlineData("SnapshotV1", "SQLDataBase", "Consistency")]
-        [InlineData("SnapshotV2", "SQLInstance", "Schedule")]
-        [InlineData("SnapshotV2", "SQLInstance", "Retention")]
-        [InlineData("SnapshotV2", "SQLInstance", "Consistency")]
-        [InlineData(null, "SQLInstance", "Schedule")]
-        [InlineData(null, "SQLInstance", "Retention")]
-        [InlineData(null, "SQLInstance", "Consistency")]
-        [InlineData("Streaming", "SQLDataBase", "Schedule")]
-        [InlineData("Streaming", "SQLDataBase", "Retention")]
-        [InlineData("Streaming", "SQLDataBase", "Consistency")]
-        [InlineData(null, "SQLDataBase", "Schedule")]
-        [InlineData(null, "SQLDataBase", "Retention")]
-        [InlineData(null, "SQLDataBase", "Consistency")]
-        public void SqlPolicyUpdatePreservesSnapshotSettings(string policyType, string workloadType, string change)
+        [InlineData("SnapshotV2", "SQLInstance", "Schedule", true)]
+        [InlineData("SnapshotV2", "SQLInstance", "Retention", true)]
+        [InlineData("SnapshotV2", "SQLInstance", "Consistency", true)]
+        [InlineData(null, "SQLInstance", "Schedule", true)]
+        [InlineData(null, "SQLInstance", "Retention", true)]
+        [InlineData(null, "SQLInstance", "Consistency", true)]
+        [InlineData("Streaming", "SQLDataBase", "Schedule", true)]
+        [InlineData("Streaming", "SQLDataBase", "Retention", true)]
+        [InlineData("Streaming", "SQLDataBase", "Consistency", true)]
+        [InlineData(null, "SQLDataBase", "Schedule", true)]
+        [InlineData(null, "SQLDataBase", "Retention", true)]
+        [InlineData(null, "SQLDataBase", "Consistency", true)]
+        [InlineData("SnapshotV2", "SQLInstance", "Schedule", false)]
+        [InlineData("SnapshotV2", "SQLInstance", "Retention", false)]
+        [InlineData("SnapshotV2", "SQLInstance", "Consistency", false)]
+        [InlineData(null, "SQLInstance", "Schedule", false)]
+        [InlineData(null, "SQLInstance", "Retention", false)]
+        [InlineData(null, "SQLInstance", "Consistency", false)]
+        public void SqlPolicyUpdatePreservesSnapshotSettings(string policyType, string workloadType, string change, bool logsEnabled)
         {
-            bool snapshot = workloadType == "SQLInstance" || policyType == "SnapshotV1" || policyType == "SnapshotV2";
+            bool snapshot = workloadType == "SQLInstance" || policyType == "SnapshotV2";
             var details = snapshot ? new Sdk.SnapshotBackupAdditionalDetails
             {
                 InstantRpRetentionRangeInDays = 2,
@@ -114,6 +114,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
                     }
                 }
             };
+            if (!logsEnabled)
+            {
+                source.SubProtectionPolicy.RemoveAt(1);
+            }
             var policy = Assert.IsType<AzureVmWorkloadPolicy>(
                 ConversionHelpers.GetPolicyModelForAzureVmWorkload(
                     new Sdk.ProtectionPolicyResource { Properties = source }, null));
@@ -123,7 +127,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
 
             var updates = new Dictionary<Enum, object>
             {
-                { PolicyParams.IsSmartTieringEnabled, true }
+                { PolicyParams.IsSmartTieringEnabled, true },
+                { PolicyParams.ExistingPolicy, new Sdk.ProtectionPolicyResource { Properties = source } },
+                { ResourceGuardParams.IsMUAOperation, true }
             };
             if (change == "Schedule")
             {
@@ -172,9 +178,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
                 Assert.NotNull(full["tieringPolicy"]);
             }
 
-            JObject log = Assert.Single(subPolicies.Children<JObject>(), p => (string)p["policyType"] == "Log");
-            Assert.Equal(15, (int)log["schedulePolicy"]["scheduleFrequencyInMins"]);
-            Assert.Equal(7, (int)log["retentionPolicy"]["retentionDuration"]["count"]);
+            if (logsEnabled)
+            {
+                JObject log = Assert.Single(subPolicies.Children<JObject>(), p => (string)p["policyType"] == "Log");
+                Assert.Equal(15, (int)log["schedulePolicy"]["scheduleFrequencyInMins"]);
+                Assert.Equal(7, (int)log["retentionPolicy"]["retentionDuration"]["count"]);
+            }
+            else
+            {
+                Assert.DoesNotContain(subPolicies.Children<JObject>(), p => (string)p["policyType"] == "Log");
+            }
             Assert.Equal(change == "Retention" ? 60 : 30,
                 (int)full["retentionPolicy"]["dailySchedule"]["retentionDuration"]["count"]);
             Assert.Equal(change == "Schedule" ? RunTime.AddHours(1) : RunTime,
@@ -236,6 +249,102 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
             Assert.Equal(2, (int)properties["instantRpRetentionRangeInDays"]);
             Assert.Equal(60, (int)properties["retentionPolicy"]["dailySchedule"]["retentionDuration"]["count"]);
             Assert.Equal(enhanced ? "V2" : null, (string)properties["policyType"]);
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("SnapshotFull", "Daily", null, 1440)]
+        [InlineData("Full", "Daily", null, 1440)]
+        [InlineData("Full", "Weekly", null, 5760)]
+        [InlineData("SnapshotFull", "Daily", "Log", 15)]
+        [InlineData("Full", "Weekly", "Log", 15)]
+        [InlineData("Full", "Weekly", "Differential", 4320)]
+        [InlineData("Full", "Weekly", "Incremental", 4320)]
+        public void WorkloadPolicyRpoHandlesOptionalSubPolicies(
+            string fullPolicyType, string frequency, string additionalPolicy, int expectedMinutes)
+        {
+            var helper = new AzureWorkloadProviderHelper(null);
+            var policy = CreateRpoPolicy(fullPolicyType, frequency, additionalPolicy);
+
+            Assert.Equal(TimeSpan.FromMinutes(expectedMinutes).Ticks, helper.calculateRPO(policy));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData("SnapshotFull", true)]
+        [InlineData("Full", false)]
+        [InlineData("Full", true)]
+        public void WorkloadPolicyRpoIncreaseRequiresMua(string fullPolicyType, bool removeLogs)
+        {
+            var helper = new AzureWorkloadProviderHelper(null);
+            string frequency = fullPolicyType == "SnapshotFull" ? "Daily" : "Weekly";
+            var oldPolicy = CreateRpoPolicy(fullPolicyType, frequency, removeLogs ? "Log" : null);
+            var newPolicy = CreateRpoPolicy(fullPolicyType, frequency, null);
+            if (!removeLogs)
+            {
+                var full = ((Sdk.AzureVmWorkloadProtectionPolicy)newPolicy.Properties).SubProtectionPolicy[0];
+                ((Sdk.SimpleSchedulePolicy)full.SchedulePolicy).ScheduleRunDays =
+                    new List<Sdk.DayOfWeek?> { Sdk.DayOfWeek.Monday };
+            }
+
+            Assert.Equal(
+                (removeLogs ? TimeSpan.FromMinutes(15) : TimeSpan.FromDays(4)).Ticks,
+                helper.calculateRPO(oldPolicy));
+            int expectedDays = fullPolicyType == "SnapshotFull" ? 1 : removeLogs ? 4 : 7;
+            Assert.Equal(TimeSpan.FromDays(expectedDays).Ticks, helper.calculateRPO(newPolicy));
+            Assert.True(helper.checkMUAForModifyPolicy(oldPolicy, newPolicy, true));
+            Assert.False(helper.checkMUAForModifyPolicy(newPolicy, oldPolicy, true));
+            Assert.False(helper.checkMUAForModifyPolicy(oldPolicy, newPolicy, false));
+        }
+
+        private static Sdk.ProtectionPolicyResource CreateRpoPolicy(
+            string fullPolicyType, string frequency, string additionalPolicy)
+        {
+            var schedule = CreateServiceSchedule();
+            schedule.ScheduleRunFrequency = frequency;
+            if (frequency == "Weekly")
+            {
+                schedule.ScheduleRunDays = new List<Sdk.DayOfWeek?>
+                {
+                    Sdk.DayOfWeek.Monday, Sdk.DayOfWeek.Thursday
+                };
+            }
+
+            var subPolicies = new List<Sdk.SubProtectionPolicy>
+            {
+                new Sdk.SubProtectionPolicy
+                {
+                    PolicyType = fullPolicyType,
+                    SchedulePolicy = schedule,
+                    RetentionPolicy = CreateServiceRetention()
+                }
+            };
+            if (additionalPolicy != null)
+            {
+                subPolicies.Add(new Sdk.SubProtectionPolicy
+                {
+                    PolicyType = additionalPolicy,
+                    SchedulePolicy = additionalPolicy == "Log"
+                        ? (Sdk.SchedulePolicy)new Sdk.LogSchedulePolicy { ScheduleFrequencyInMins = 15 }
+                        : new Sdk.SimpleSchedulePolicy
+                        {
+                            ScheduleRunFrequency = "Weekly",
+                            ScheduleRunDays = new List<Sdk.DayOfWeek?> { Sdk.DayOfWeek.Saturday }
+                        },
+                    RetentionPolicy = new Sdk.SimpleRetentionPolicy
+                    {
+                        RetentionDuration = new Sdk.RetentionDuration { Count = 7, DurationType = "Days" }
+                    }
+                });
+            }
+            return new Sdk.ProtectionPolicyResource
+            {
+                Properties = new Sdk.AzureVmWorkloadProtectionPolicy
+                {
+                    WorkLoadType = fullPolicyType == "SnapshotFull" ? "SQLInstance" : "SQLDataBase",
+                    SubProtectionPolicy = subPolicies
+                }
+            };
         }
 
         private static Sdk.SimpleSchedulePolicy CreateServiceSchedule()

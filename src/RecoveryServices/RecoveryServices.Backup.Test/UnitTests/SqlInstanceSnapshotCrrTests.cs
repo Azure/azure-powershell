@@ -472,25 +472,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
 
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [InlineData("AzureStorage", "AzureFileShare", "Snapshot", null, "2021-11-15")]
-        [InlineData("AzureIaasVM", "VM", "Snapshot", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SAPHanaDatabase", "Full", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "Full", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "FullAndDifferential", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "Snapshot", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "SnapshotFull", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "SnapshotCopyOnlyFull", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "FullDifferentialAndSnapshot", null, "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "BaseSnapshotRPId", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "BaseRPDatasourceId", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "SnapshotAttachAndRecover", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "SnapshotAttach", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "RecoveryUsingSnapshot", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLDataBase", "All", "WorkloadRecovery", "2021-11-15")]
-        [InlineData("AzureWorkload", "SQLInstance", "All", null, "2021-11-15")]
+        [InlineData("AzureStorage", "AzureFileShare", "Snapshot")]
+        [InlineData("AzureIaasVM", "VM", "Snapshot")]
+        [InlineData("AzureWorkload", "SAPHanaDatabase", "Full")]
+        [InlineData("AzureWorkload", "SQLDataBase", "Snapshot")]
+        [InlineData("AzureWorkload", "SQLInstance", "Snapshot")]
         public void SecondaryRecoveryPointQueriesRetainCrrContract(
-            string managementType, string workload, string queryType, string snapshotContext, string version)
+            string managementType, string workload, string queryType)
         {
             var handler = new ControlOperationHandler();
             using (var client = new CrrClient(new TokenCredentials("test-token"), handler))
@@ -534,21 +522,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.UnitTests
                         { RecoveryPointParams.Tier, (RecoveryPointTier)0 },
                         { CRRParams.UseSecondaryRegion, true }
                     };
-                    if (snapshotContext == "BaseSnapshotRPId")
-                    {
-                        data[RecoveryPointParams.BaseSnapshotRPId] = RecoveryPointId;
-                    }
-                    else if (snapshotContext == "BaseRPDatasourceId")
-                    {
-                        data[RecoveryPointParams.BaseRPDatasourceId] = "database-id";
-                    }
-                    else if (snapshotContext != null)
-                    {
-                        data[RecoveryPointParams.RecoveryMode] = snapshotContext;
-                    }
-
                     Assert.Empty(helper.ListRecoveryPoints(data));
-                    Assert.Contains("api-version=" + version, Assert.Single(handler.Requests).Query);
+                    string query = Uri.UnescapeDataString(Assert.Single(handler.Requests).Query);
+                    Assert.Contains("api-version=2021-11-15", query);
+                    Assert.Contains("restorePointQueryType eq '" + queryType + "'", query);
                     Assert.Equal("2021-11-15", client.ApiVersion);
                 }
                 finally

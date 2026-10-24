@@ -660,9 +660,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 List<SubProtectionPolicy> filteredSubProtectionPolicyLog = GetSubProtectionPolicyOfType(subProtectionPolicies, "Log");
                 List<SubProtectionPolicy> filteredSubProtectionPolicyDifferential = GetSubProtectionPolicyOfType(subProtectionPolicies, "Differential");
                 List<SubProtectionPolicy> filteredSubProtectionPolicyIncremental = GetSubProtectionPolicyOfType(subProtectionPolicies, "Incremental");
-                List<SubProtectionPolicy> filteredSubProtectionPolicyFull = GetSubProtectionPolicyOfType(subProtectionPolicies, "Full");
+                List<SubProtectionPolicy> filteredSubProtectionPolicyFull = subProtectionPolicies
+                    .Where(subPolicy => subPolicy.PolicyType == "Full" || subPolicy.PolicyType == "SnapshotFull")
+                    .ToList();
 
-                if (filteredSubProtectionPolicyLog != null && filteredSubProtectionPolicyLog[0] != null)
+                if (filteredSubProtectionPolicyLog.Count > 0)
                 {
                     ServiceClientModel.LogSchedulePolicy logPolicy = (ServiceClientModel.LogSchedulePolicy)(filteredSubProtectionPolicyLog[0].SchedulePolicy);
                     
@@ -671,7 +673,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         rpoTime = TimeSpan.FromMinutes((int)logPolicy.ScheduleFrequencyInMins).Ticks;
                     }
                 }
-                else if (filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null && ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunFrequency.ToLower() == "daily")
+                else if (filteredSubProtectionPolicyFull.Count > 0 && ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunFrequency.ToLower() == "daily")
                 {
                     rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
                 }
@@ -679,21 +681,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     System.Collections.Generic.List<ServiceClientModel.DayOfWeek?> combinedScheduleRunDays = new List<ServiceClientModel.DayOfWeek?>();
 
-                    if(filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null)
+                    if (filteredSubProtectionPolicyFull.Count > 0)
                     {
                         var scheduleRunDaysFull = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysFull); 
                     }
-                    if (filteredSubProtectionPolicyDifferential != null && filteredSubProtectionPolicyDifferential[0] != null)
+                    if (filteredSubProtectionPolicyDifferential.Count > 0)
                     {
                         var scheduleRunDaysDifferential = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyDifferential[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysDifferential);
                     }
-                    if (filteredSubProtectionPolicyIncremental != null && filteredSubProtectionPolicyIncremental[0] != null)
+                    if (filteredSubProtectionPolicyIncremental.Count > 0)
                     {
                         var scheduleRunDaysIncremental = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyIncremental[0].SchedulePolicy)).ScheduleRunDays;
                         combinedScheduleRunDays.AddRange(scheduleRunDaysIncremental);
                     }
+                    rpoTime = GetRpoForWeeklySchedule(combinedScheduleRunDays);
                 }
             }
             else if (policy.Properties.GetType() == typeof(ServiceClientModel.AzureFileShareProtectionPolicy))

@@ -1,5 +1,6 @@
 ## Upcoming Release
 #### Az.RecoveryServices
+* Fixed `Set-AzRecoveryServicesBackupProtectionPolicy` to update SQL Server snapshot-only policies without failing the policy-change precheck. [#30299]
 * Added support for Cross Region Restore (CRR) of SQL Server instance snapshots, including secondary-region recovery point details and snapshot restore settings. [#30299]
     - Includes database-under-instance snapshot restores and instance point-in-time recovery using secondary-region recovery points.
 * Fixed SQL Instance policy retrieval with the MSSQLInstance workload filter.
