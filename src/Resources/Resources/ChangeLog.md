@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 * Updated `Microsoft.Extensions.DependencyInjection.Abstractions` dependency from `10.0.3` to `10.0.10`.
+* Added `Install-AzBicep`, `Uninstall-AzBicep`, and `Get-AzBicepVersion` cmdlets to manage a local, version-specific cache of the Bicep CLI
+    - 'Install-AzBicep' downloads and caches a specific Bicep version (or the latest, if '-Version' is omitted)
+    - 'Uninstall-AzBicep' removes the managed Bicep cache (the unpinned install and any pinned versioned installs)
+    - 'Get-AzBicepVersion' lists the Bicep versions currently cached
+    - When a Bicep project's 'bicepconfig.json' specifies a 'bicep.version' constraint, Bicep deployment cmdlets now automatically download, cache, and use a compatible Bicep CLI version instead of relying solely on the version found on PATH
 
 ## Version 10.2.2
 * Expanded deployment stack What-If create/delete details, including potential changes; removed redundant headers and aligned JSON formatting with Azure CLI [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).

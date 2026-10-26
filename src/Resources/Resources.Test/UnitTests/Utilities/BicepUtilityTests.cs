@@ -14,6 +14,8 @@
 
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using FluentAssertions;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -111,7 +113,40 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void BuildParams_fails_for_missing_bicep()
+        public void BuildParams_falls_back_to_auto_install_when_bicep_missing_from_path()
+        {
+            var fakeProfileDirectory = "/fake/profile";
+            var installedBicepPath = Path.Combine(fakeProfileDirectory, "bin", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+
+            var invokerMock = new Mock<IProcessInvoker>();
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep"))
+                .Returns(false);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == installedBicepPath && p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.22.6 (d62b94db31)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == installedBicepPath && p.Arguments == "build-params \"foo.bicepparam\" --stdout")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "{\"parametersJson\":\"{}\",\"templateJson\":\"{}\",\"templateSpecId\":null}" });
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists("foo.bicepparam"))
+                .Returns(true);
+
+            var downloaderMock = new Mock<IBicepDownloader>();
+            downloaderMock.Setup(x => x.GetLatestReleaseTag()).Returns("v0.22.6");
+            downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1 });
+            var installerDataStoreMock = new Mock<IDataStore>();
+            installerDataStoreMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(false);
+            installerDataStoreMock.Setup(x => x.DirectoryExists(It.IsAny<string>())).Returns(true);
+            var bicepInstaller = new BicepInstaller(downloaderMock.Object, installerDataStoreMock.Object, Mock.Of<IProcessInvoker>(), fakeProfileDirectory);
+
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
+
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
+                .Should().NotThrow();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BuildParams_fails_for_missing_bicep_when_auto_install_fails()
         {
             var invokerMock = new Mock<IProcessInvoker>();
             invokerMock.Setup(x => x.CheckExecutableExists("bicep"))
@@ -121,10 +156,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             dataStoreMock.Setup(x => x.FileExists("foo.bicepparam"))
                 .Returns(true);
 
-            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
+            var downloaderMock = new Mock<IBicepDownloader>();
+            downloaderMock.Setup(x => x.GetLatestReleaseTag()).Throws(new System.Exception("network error"));
+            var installerDataStoreMock = new Mock<IDataStore>();
+            installerDataStoreMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(false);
+            installerDataStoreMock.Setup(x => x.DirectoryExists(It.IsAny<string>())).Returns(true);
+            var bicepInstaller = new BicepInstaller(downloaderMock.Object, installerDataStoreMock.Object, Mock.Of<IProcessInvoker>(), "/installed");
+
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
 
             FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
-                .Should().Throw<AzPSApplicationException>().WithMessage("Cannot find Bicep. Please add Bicep to your PATH or visit *");
+                .Should().Throw<AzPSApplicationException>().WithMessage("Failed to automatically download Bicep: *");
         }
 
         [Fact]
@@ -141,6 +183,108 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSArgumentException>().WithMessage("Invalid Bicepparam file path.");
         }
+
+        private static string NewRoot() => Path.Combine(Path.GetTempPath(), "bicep-util-" + System.Guid.NewGuid().ToString("N"));
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BuildBicepFile_uses_PATH_executable_when_its_version_satisfies_pinned_constraint()
+        {
+            var root = NewRoot();
+            var entrypoint = Path.Combine(root, "main.bicep");
+            var configPath = Path.Combine(root, "bicepconfig.json");
+
+            var invokerMock = new Mock<IProcessInvoker>();
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep")).Returns(true);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == "bicep" && p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.30.1 (abc123)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Arguments == $"build {GetQuoted(entrypoint)} --stdout")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "{}" });
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists(entrypoint)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(configPath)).Returns(true);
+            dataStoreMock.Setup(x => x.ReadFileAsText(configPath)).Returns("{ \"bicep\": { \"version\": \">=0.26.0\" } }");
+
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
+
+            bicepUtility.BuildBicepFile(entrypoint);
+
+            invokerMock.Verify(x => x.Invoke(It.Is<ProcessInput>(p => p.Arguments == $"build {GetQuoted(entrypoint)} --stdout" && p.Executable == "bicep")), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BuildBicepFile_ignores_PATH_executable_and_uses_managed_install_when_its_version_does_not_satisfy_pinned_constraint()
+        {
+            var root = NewRoot();
+            var entrypoint = Path.Combine(root, "main.bicep");
+            var configPath = Path.Combine(root, "bicepconfig.json");
+            var fakeProfileDirectory = "/fake/profile";
+            var cachedDirectory = Path.Combine(fakeProfileDirectory, "bin", "bicep-0.30.1");
+            var cachedPath = Path.Combine(cachedDirectory, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+
+            var invokerMock = new Mock<IProcessInvoker>();
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep")).Returns(true);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == "bicep" && p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.20.0 (abc123)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == cachedPath && p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.30.1 (abc123)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == cachedPath && p.Arguments == $"build {GetQuoted(entrypoint)} --stdout")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "{}" });
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists(entrypoint)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(configPath)).Returns(true);
+            dataStoreMock.Setup(x => x.ReadFileAsText(configPath)).Returns("{ \"bicep\": { \"version\": \">=0.26.0\" } }");
+            dataStoreMock.Setup(x => x.DirectoryExists(Path.Combine(fakeProfileDirectory, "bin"))).Returns(true);
+            dataStoreMock.Setup(x => x.GetDirectories(Path.Combine(fakeProfileDirectory, "bin"))).Returns(new[] { cachedDirectory });
+
+            var bicepInstaller = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), fakeProfileDirectory);
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
+
+            bicepUtility.BuildBicepFile(entrypoint);
+
+            invokerMock.Verify(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == cachedPath && p.Arguments == $"build {GetQuoted(entrypoint)} --stdout")), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BuildBicepFile_downloads_matching_version_when_pinned_and_PATH_executable_is_missing()
+        {
+            var root = NewRoot();
+            var entrypoint = Path.Combine(root, "main.bicep");
+            var configPath = Path.Combine(root, "bicepconfig.json");
+            var fakeProfileDirectory = "/fake/profile";
+            var installedDirectory = Path.Combine(fakeProfileDirectory, "bin", "bicep-0.26.0");
+            var installedPath = Path.Combine(installedDirectory, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+
+            var invokerMock = new Mock<IProcessInvoker>();
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep")).Returns(false);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == installedPath && p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.26.0 (abc123)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == installedPath && p.Arguments == $"build {GetQuoted(entrypoint)} --stdout")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "{}" });
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists(entrypoint)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(configPath)).Returns(true);
+            dataStoreMock.Setup(x => x.ReadFileAsText(configPath)).Returns("{ \"bicep\": { \"version\": \"0.26.0\" } }");
+            dataStoreMock.Setup(x => x.DirectoryExists(It.IsAny<string>())).Returns(false);
+
+            var downloaderMock = new Mock<IBicepDownloader>();
+            downloaderMock.Setup(x => x.GetAvailableReleaseTags()).Returns(new[] { "v0.26.0", "v0.24.0" });
+            downloaderMock.Setup(x => x.DownloadFile(It.IsAny<string>())).Returns(new byte[] { 1 });
+
+            var bicepInstaller = new BicepInstaller(downloaderMock.Object, dataStoreMock.Object, Mock.Of<IProcessInvoker>(), fakeProfileDirectory);
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object, bicepInstaller);
+
+            bicepUtility.BuildBicepFile(entrypoint);
+
+            invokerMock.Verify(x => x.Invoke(It.Is<ProcessInput>(p => p.Executable == installedPath && p.Arguments == $"build {GetQuoted(entrypoint)} --stdout")), Times.Once);
+        }
+
+        private static string GetQuoted(string path) => $"\"{path}\"";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
