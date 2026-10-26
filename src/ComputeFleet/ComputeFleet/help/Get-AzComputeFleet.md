@@ -98,11 +98,11 @@ Lists all Compute Fleets across all resource groups in the current subscription.
 ### Example 4: Get a fleet using its identity
 ```powershell
 $fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
-Get-AzComputeFleet -InputObject $fleet |
+Get-AzComputeFleet -InputObject @{ Id = $fleet.Id } |
     Select-Object Name, Mode, ProvisioningState
 ```
 
-Retrieves the same fleet using the identity contained in an existing fleet object.
+Retrieves the same fleet using an identity hash table containing the resource ID of an existing fleet.
 
 ## PARAMETERS
 
