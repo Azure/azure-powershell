@@ -70,11 +70,155 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully installed Bicep {0}..
+        /// </summary>
+        internal static string BicepAutoInstallComplete {
+            get {
+                return ResourceManager.GetString("BicepAutoInstallComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bicep was not found on the PATH. Attempting to automatically download and install Bicep....
+        /// </summary>
+        internal static string BicepAutoInstallStarting {
+            get {
+                return ResourceManager.GetString("BicepAutoInstallStarting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;extends&apos; chain in Bicep configuration starting at &apos;{0}&apos; exceeds the maximum supported depth of {1}..
+        /// </summary>
+        internal static string BicepConfigExtendsChainTooDeep {
+            get {
+                return ResourceManager.GetString("BicepConfigExtendsChainTooDeep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detected a cycle in the &apos;extends&apos; chain while resolving Bicep configuration starting at &apos;{0}&apos;..
+        /// </summary>
+        internal static string BicepConfigExtendsCycleDetected {
+            get {
+                return ResourceManager.GetString("BicepConfigExtendsCycleDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;extends&apos; value &apos;{0}&apos; in Bicep configuration file &apos;{1}&apos; must be a relative path. Absolute paths are not allowed..
+        /// </summary>
+        internal static string BicepConfigExtendsAbsolutePath {
+            get {
+                return ResourceManager.GetString("BicepConfigExtendsAbsolutePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find Bicep configuration file &apos;{0}&apos; referenced by &apos;extends&apos; in &apos;{1}&apos;..
+        /// </summary>
+        internal static string BicepConfigFileNotFound {
+            get {
+                return ResourceManager.GetString("BicepConfigFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse Bicep configuration file &apos;{0}&apos;: {1}.
+        /// </summary>
+        internal static string BicepConfigInvalidJson {
+            get {
+                return ResourceManager.GetString("BicepConfigInvalidJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to automatically download Bicep: {0}.
+        /// </summary>
+        internal static string BicepDownloadFailed {
+            get {
+                return ResourceManager.GetString("BicepDownloadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find Bicep. Please add Bicep to your PATH or visit https://aka.ms/bicep-install to install Bicep..
         /// </summary>
         internal static string BicepNotFound {
             get {
                 return ResourceManager.GetString("BicepNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic Bicep installation is not supported on this operating system or architecture. Please add Bicep to your PATH or visit https://aka.ms/bicep-install to install Bicep..
+        /// </summary>
+        internal static string BicepUnsupportedPlatform {
+            get {
+                return ResourceManager.GetString("BicepUnsupportedPlatform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;bicep.version&apos; value &apos;{0}&apos; in configuration file &apos;{1}&apos; is not a valid version..
+        /// </summary>
+        internal static string BicepVersionConstraintInvalid {
+            get {
+                return ResourceManager.GetString("BicepVersionConstraintInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Bicep release matching the version constraint &apos;{0}&apos; could be found. Available releases: {1}..
+        /// </summary>
+        internal static string BicepVersionNoMatchingReleaseFound {
+            get {
+                return ResourceManager.GetString("BicepVersionNoMatchingReleaseFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Bicep executable on the PATH does not satisfy the &apos;bicep.version&apos; constraint &apos;{0}&apos;; using the managed, version-specific installation instead..
+        /// </summary>
+        internal static string BicepVersionPinIgnoringPathExecutable {
+            get {
+                return ResourceManager.GetString("BicepVersionPinIgnoringPathExecutable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid Bicep version. Specify a version in the form &apos;major.minor.patch&apos; (e.g. &apos;0.26.54&apos;)..
+        /// </summary>
+        internal static string BicepVersionInvalidFormat {
+            get {
+                return ResourceManager.GetString("BicepVersionInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bicep {0} is already installed..
+        /// </summary>
+        internal static string BicepVersionAlreadyInstalled {
+            get {
+                return ResourceManager.GetString("BicepVersionAlreadyInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No managed Bicep installation was found; nothing to uninstall..
+        /// </summary>
+        internal static string BicepUninstallNothingInstalled {
+            get {
+                return ResourceManager.GetString("BicepUninstallNothingInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed all managed Bicep installations from &apos;{0}&apos;..
+        /// </summary>
+        internal static string BicepUninstallComplete {
+            get {
+                return ResourceManager.GetString("BicepUninstallComplete", resourceCulture);
             }
         }
         

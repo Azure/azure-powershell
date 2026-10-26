@@ -66,28 +66,160 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         public delegate void OutputCallback(string msg);
 
+        private static readonly Regex VersionNumberPattern = new Regex("\\d+(\\.\\d+)+");
+
         private readonly IProcessInvoker processInvoker;
         private readonly IDataStore dataStore;
-        private readonly Lazy<string> bicepVersionLazy;
+        private BicepInstaller bicepInstaller;
+        private BicepConfigResolver configResolver;
+        private string resolvedBicepExecutable;
+        private string resolvedBicepVersion;
 
-        public BicepUtility(IProcessInvoker processInvoker, IDataStore dataStore)
+        public BicepUtility(IProcessInvoker processInvoker, IDataStore dataStore, BicepInstaller bicepInstaller = null, BicepConfigResolver configResolver = null)
         {
             this.processInvoker = processInvoker;
             this.dataStore = dataStore;
-            this.bicepVersionLazy = new Lazy<string>(() => {
-                if (!processInvoker.CheckExecutableExists(BicepExecutable))
-                {
-                    return null;
-                }
-
-                var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = "-v" });            
-                
-                var pattern = new Regex("\\d+(\\.\\d+)+");
-                return pattern.Match(output.Stdout)?.Value;
-            });
+            this.bicepInstaller = bicepInstaller;
+            this.configResolver = configResolver;
         }
 
-        private string BicepVersion => bicepVersionLazy.Value;
+        /// <summary>
+        /// Lazily creates the default BicepInstaller only if one wasn't supplied.
+        /// </summary>
+        private BicepInstaller BicepInstaller
+        {
+            get
+            {
+                if (bicepInstaller == null)
+                {
+                    bicepInstaller = BicepInstaller.Create();
+                }
+
+                return bicepInstaller;
+            }
+        }
+
+        /// <summary>
+        /// Lazily creates the default BicepConfigResolver only if one wasn't supplied.
+        /// </summary>
+        private BicepConfigResolver ConfigResolver
+        {
+            get
+            {
+                if (configResolver == null)
+                {
+                    // Reuse the same IDataStore this BicepUtility was constructed with (rather than
+                    // BicepConfigResolver.Create()'s own default), so that tests supplying a mock
+                    // dataStore see consistent, isolated behavior for bicepconfig.json lookups.
+                    configResolver = new BicepConfigResolver(dataStore);
+                }
+
+                return configResolver;
+            }
+        }
+
+        /// <summary>
+        /// Resolves the effective 'bicep.version' constraint (if any) that applies to the given
+        /// entrypoint file, by locating the nearest bicepconfig.json and parsing its value.
+        /// Returns null if no bicepconfig.json applies, or none in its 'extends' chain specifies
+        /// a 'bicep.version'.
+        /// </summary>
+        private BicepVersionConstraint ResolveVersionConstraint(string entrypointFilePath)
+        {
+            if (string.IsNullOrEmpty(entrypointFilePath))
+            {
+                return null;
+            }
+
+            var configFilePath = ConfigResolver.FindNearestConfigFile(entrypointFilePath);
+            if (configFilePath == null)
+            {
+                return null;
+            }
+
+            var raw = ConfigResolver.ResolveVersionConstraint(configFilePath);
+            return raw == null ? null : BicepVersionConstraint.Parse(raw, configFilePath);
+        }
+
+        /// <summary>
+        /// Resolves the path to a working Bicep executable for the given entrypoint file.
+        /// </summary>
+        /// <remarks>
+        /// When no 'bicep.version' constraint applies, the system PATH is used if available,
+        /// otherwise Bicep is automatically downloaded and installed. When a constraint does
+        /// apply (from the nearest bicepconfig.json), the PATH executable is only used if its
+        /// own version satisfies the constraint; otherwise a matching version is resolved from
+        /// the managed, version-specific cache (downloading it first if necessary), leaving the
+        /// PATH installation untouched.
+        /// </remarks>
+        private string ResolveBicepExecutablePath(string entrypointFilePath, OutputCallback writeVerbose = null)
+        {
+            if (resolvedBicepExecutable != null)
+            {
+                return resolvedBicepExecutable;
+            }
+
+            var constraint = ResolveVersionConstraint(entrypointFilePath);
+            var pathExecutableExists = processInvoker.CheckExecutableExists(BicepExecutable);
+
+            if (constraint == null)
+            {
+                if (pathExecutableExists)
+                {
+                    resolvedBicepExecutable = BicepExecutable;
+                    return resolvedBicepExecutable;
+                }
+
+                resolvedBicepExecutable = BicepInstaller.EnsureInstalled(writeVerbose);
+                return resolvedBicepExecutable;
+            }
+
+            if (pathExecutableExists && PathExecutableSatisfiesConstraint(constraint))
+            {
+                resolvedBicepExecutable = BicepExecutable;
+                return resolvedBicepExecutable;
+            }
+
+            if (pathExecutableExists)
+            {
+                writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionPinIgnoringPathExecutable, constraint));
+            }
+
+            resolvedBicepExecutable = BicepInstaller.EnsureInstalled(constraint, writeVerbose);
+            return resolvedBicepExecutable;
+        }
+
+        /// <summary>
+        /// Checks whether the Bicep executable currently on the PATH satisfies the given
+        /// 'bicep.version' constraint, by invoking "bicep -v" and parsing its output.
+        /// </summary>
+        private bool PathExecutableSatisfiesConstraint(BicepVersionConstraint constraint)
+        {
+            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = "-v" });
+            var match = VersionNumberPattern.Match(output.Stdout ?? string.Empty);
+
+            BicepSemanticVersion pathVersion;
+            return match.Success && BicepSemanticVersion.TryParse(match.Value, out pathVersion) && constraint.IsSatisfiedBy(pathVersion);
+        }
+
+        private string ResolveBicepVersion(string entrypointFilePath, OutputCallback writeVerbose = null)
+        {
+            if (resolvedBicepVersion != null)
+            {
+                return resolvedBicepVersion;
+            }
+
+            var executablePath = ResolveBicepExecutablePath(entrypointFilePath, writeVerbose);
+            if (executablePath == null)
+            {
+                return null;
+            }
+
+            var output = processInvoker.Invoke(new ProcessInput { Executable = executablePath, Arguments = "-v" });
+
+            resolvedBicepVersion = VersionNumberPattern.Match(output.Stdout)?.Value;
+            return resolvedBicepVersion;
+        }
 
         public static bool IsBicepFile(string templateFilePath) =>
             ".bicep".Equals(Path.GetExtension(templateFilePath), StringComparison.OrdinalIgnoreCase);
@@ -106,6 +238,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
 
             var stdout = RunBicepCommand(
+                bicepTemplateFilePath,
                 $"build {GetQuotedFilePath(bicepTemplateFilePath)} --stdout",
                 MinimalVersionRequirement,
                 envVars: null,
@@ -128,13 +261,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             var envVars = new Dictionary<string, string>();
             if (overrideParams.Any())
             {
-                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides);
+                CheckMinimalVersionRequirement(bicepParamFilePath, MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides, writeVerbose);
                 writeVerbose?.Invoke($"Overriding the following parameters: {string.Join(", ", overrideParams.Keys)}");
                 // As per https://github.com/Azure/bicep/issues/12481, secure string parameters must be serialized.
                 envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams, serializeSecureString: true);
             }
 
             var stdout = RunBicepCommand(
+                bicepParamFilePath,
                 $"build-params {GetQuotedFilePath(bicepParamFilePath)} --stdout",
                 MinimalVersionRequirementForBicepparamFileBuild,
                 envVars: envVars,
@@ -154,7 +288,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             string bicepPublishCommand = $"publish {GetQuotedFilePath(bicepFilePath)} --target {GetQuotedFilePath(target)}";
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
-                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
+                CheckMinimalVersionRequirement(bicepFilePath, MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter, writeVerbose);
 
                 if (IsBicepMinimalVersion(MinimalVersionRequirementForBicepPublishWithNewDocumentationUriParameter)) {
                     bicepPublishCommand += $" --documentation-uri {GetQuotedFilePath(documentationUri)}";
@@ -165,17 +299,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             if (withSource)
             {
-                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalWithSourceParameter);
+                CheckMinimalVersionRequirement(bicepFilePath, MinimalVersionRequirementForBicepPublishWithOptionalWithSourceParameter, writeVerbose);
                 bicepPublishCommand += $" --with-source";
             }
 
             if (force)
             {
-                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalForceParameter);
+                CheckMinimalVersionRequirement(bicepFilePath, MinimalVersionRequirementForBicepPublishWithOptionalForceParameter, writeVerbose);
                 bicepPublishCommand += $" --force";
             }
             
             var stdout = RunBicepCommand(
+                bicepFilePath,
                 bicepPublishCommand,
                 MinimalVersionRequirementForBicepPublish,
                 envVars: null,
@@ -183,40 +318,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 writeWarning: writeWarning);
         }
 
-        private void CheckBicepExecutable()
+        private void CheckBicepExecutable(string entrypointFilePath, OutputCallback writeVerbose = null)
         {
-            if (BicepVersion == null)
+            if (ResolveBicepVersion(entrypointFilePath, writeVerbose) == null)
             {
                 throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
             }
         }
 
-        private string CheckMinimalVersionRequirement(string minimalVersionRequirement)
+        private string CheckMinimalVersionRequirement(string entrypointFilePath, string minimalVersionRequirement, OutputCallback writeVerbose = null)
         {
-            CheckBicepExecutable();
+            CheckBicepExecutable(entrypointFilePath, writeVerbose);
 
-            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(BicepVersion)) > 0)
+            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(resolvedBicepVersion)) > 0)
             {
                 throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, minimalVersionRequirement));
             };
 
-            return BicepVersion;
+            return resolvedBicepVersion;
         }
 
         private bool IsBicepMinimalVersion(string minimalVersionRequirement) =>
-            Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(BicepVersion)) > 0;
+            Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(resolvedBicepVersion)) > 0;
 
         /// <summary>
         /// Runs a bicep command, and returns stdout as a string.
         /// </summary>
-        private string RunBicepCommand(string arguments, string minimalVersionRequirement, Dictionary<string, string> envVars = null, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        private string RunBicepCommand(string entrypointFilePath, string arguments, string minimalVersionRequirement, Dictionary<string, string> envVars = null, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
-            string currentBicepVersion = CheckMinimalVersionRequirement(minimalVersionRequirement);
+            string currentBicepVersion = CheckMinimalVersionRequirement(entrypointFilePath, minimalVersionRequirement, writeVerbose);
             writeVerbose?.Invoke($"Using Bicep v{currentBicepVersion}");
 
             writeVerbose?.Invoke($"Calling Bicep with arguments: {arguments}");
 
-            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = arguments, EnvVars = envVars });
+            var output = processInvoker.Invoke(new ProcessInput { Executable = resolvedBicepExecutable, Arguments = arguments, EnvVars = envVars });
 
             if (output.ExitCode != 0)
             {

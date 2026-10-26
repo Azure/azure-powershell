@@ -522,4 +522,52 @@ NOTICE! - Want to get What-if without noise? Move to Deployment Stacks What-If h
   <data name="BuildBicepparamFileToJsonFailed" xml:space="preserve">
     <value>Build bicepparam file '{0}' to json failed.</value>
   </data>
+  <data name="BicepConfigFileNotFound" xml:space="preserve">
+    <value>Could not find Bicep configuration file '{0}' referenced by 'extends' in '{1}'.</value>
+  </data>
+  <data name="BicepConfigInvalidJson" xml:space="preserve">
+    <value>Failed to parse Bicep configuration file '{0}': {1}</value>
+  </data>
+  <data name="BicepConfigExtendsCycleDetected" xml:space="preserve">
+    <value>Detected a cycle in the 'extends' chain while resolving Bicep configuration starting at '{0}'.</value>
+  </data>
+  <data name="BicepConfigExtendsAbsolutePath" xml:space="preserve">
+    <value>The 'extends' value '{0}' in Bicep configuration file '{1}' must be a relative path. Absolute paths are not allowed.</value>
+  </data>
+  <data name="BicepConfigExtendsChainTooDeep" xml:space="preserve">
+    <value>The 'extends' chain in Bicep configuration starting at '{0}' exceeds the maximum supported depth of {1}.</value>
+  </data>
+  <data name="BicepVersionConstraintInvalid" xml:space="preserve">
+    <value>The 'bicep.version' value '{0}' in configuration file '{1}' is not a valid version.</value>
+  </data>
+  <data name="BicepAutoInstallStarting" xml:space="preserve">
+    <value>Bicep was not found on the PATH. Attempting to automatically download and install Bicep...</value>
+  </data>
+  <data name="BicepAutoInstallComplete" xml:space="preserve">
+    <value>Successfully installed Bicep {0}.</value>
+  </data>
+  <data name="BicepDownloadFailed" xml:space="preserve">
+    <value>Failed to automatically download Bicep: {0}</value>
+  </data>
+  <data name="BicepUnsupportedPlatform" xml:space="preserve">
+    <value>Automatic Bicep installation is not supported on this operating system or architecture. Please add Bicep to your PATH or visit https://aka.ms/bicep-install to install Bicep.</value>
+  </data>
+  <data name="BicepVersionNoMatchingReleaseFound" xml:space="preserve">
+    <value>No Bicep release matching the version constraint '{0}' could be found. Available releases: {1}.</value>
+  </data>
+  <data name="BicepVersionPinIgnoringPathExecutable" xml:space="preserve">
+    <value>The Bicep executable on the PATH does not satisfy the 'bicep.version' constraint '{0}'; using the managed, version-specific installation instead.</value>
+  </data>
+  <data name="BicepVersionInvalidFormat" xml:space="preserve">
+    <value>'{0}' is not a valid Bicep version. Specify a version in the form 'major.minor.patch' (e.g. '0.26.54').</value>
+  </data>
+  <data name="BicepVersionAlreadyInstalled" xml:space="preserve">
+    <value>Bicep {0} is already installed.</value>
+  </data>
+  <data name="BicepUninstallNothingInstalled" xml:space="preserve">
+    <value>No managed Bicep installation was found; nothing to uninstall.</value>
+  </data>
+  <data name="BicepUninstallComplete" xml:space="preserve">
+    <value>Successfully removed all managed Bicep installations from '{0}'.</value>
+  </data>
 </root>

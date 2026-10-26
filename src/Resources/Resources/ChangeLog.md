@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added `Install-AzBicep`, `Uninstall-AzBicep`, and `Get-AzBicepVersion` cmdlets to manage a local, version-specific cache of the Bicep CLI
+    - 'Install-AzBicep' downloads and caches a specific Bicep version (or the latest, if '-Version' is omitted)
+    - 'Uninstall-AzBicep' removes the entire managed Bicep cache
+    - 'Get-AzBicepVersion' lists the Bicep versions currently cached
+    - When a Bicep project's 'bicepconfig.json' specifies a 'bicep.version' constraint, Bicep deployment cmdlets now automatically download, cache, and use a compatible Bicep CLI version instead of relying solely on the version found on PATH
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 
 ## Version 10.2.1
