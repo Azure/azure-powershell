@@ -3,7 +3,7 @@
 Get-AzCommvaultProtectedItemCount -ResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Commvault.ContentStore/cloudAccounts/cca-contoso', '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Commvault.ContentStore/cloudAccounts/cca-fabrikam'
 ```
 
-Gets the number of protected items for each of the specified cloud accounts.
+Gets the number of protected items across the specified cloud accounts.
 
 ### Example 2: Count the protected items by using a JSON request
 ```powershell

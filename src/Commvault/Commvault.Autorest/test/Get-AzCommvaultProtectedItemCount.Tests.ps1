@@ -19,10 +19,6 @@ Describe 'Get-AzCommvaultProtectedItemCount' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Count' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CountViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

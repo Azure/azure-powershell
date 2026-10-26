@@ -17,12 +17,6 @@ Gets the count of protected items for provided CCA resource IDs across subscript
 Get-AzCommvaultProtectedItemCount -ResourceId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Count
-```
-Get-AzCommvaultProtectedItemCount -Body <ICountProtectedItemsRequest> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### CountViaJsonFilePath
 ```
 Get-AzCommvaultProtectedItemCount -JsonFilePath <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -43,7 +37,7 @@ Gets the count of protected items for provided CCA resource IDs across subscript
 Get-AzCommvaultProtectedItemCount -ResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Commvault.ContentStore/cloudAccounts/cca-contoso', '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-commvault/providers/Commvault.ContentStore/cloudAccounts/cca-fabrikam'
 ```
 
-Gets the number of protected items for each of the specified cloud accounts.
+Gets the number of protected items across the specified cloud accounts.
 
 ### Example 2: Count the protected items by using a JSON request
 ```powershell
@@ -53,21 +47,6 @@ Get-AzCommvaultProtectedItemCount -JsonString '{"resourceIds":["/subscriptions/0
 Gets the number of protected items by passing the request body as a JSON string.
 
 ## PARAMETERS
-
-### -Body
-Request to count protected items for the provided CCA resource IDs across subscriptions.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Commvault.Models.ICountProtectedItemsRequest
-Parameter Sets: Count
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -134,8 +113,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Commvault.Models.ICountProtectedItemsRequest
 
 ## OUTPUTS
 

@@ -96,6 +96,15 @@ directive:
     set:
       verb: Get
       subject: ProtectedItemCount
+  # The body parameter set of this action is named exactly "Count". The test coverage analysis of the Azure PowerShell
+  # pipeline reads ParameterSets.Count of every parameter, which returns that parameter set instead of a number and
+  # fails every Test job. Remove the unexpanded set, as for the other cmdlets; -ResourceId, -JsonString and
+  # -JsonFilePath remain.
+  - where:
+      verb: Get
+      subject: ProtectedItemCount
+      variant: ^Count$
+    remove: true
 
   # POST actions without a mapped verb are generated as Invoke-*. Use approved verbs that describe the action.
   - where:

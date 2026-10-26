@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.1.0
 * First preview release for module Az.Commvault
     - Added cmdlets to manage Commvault cloud accounts: `New-AzCommvaultCloudAccount`, `Get-AzCommvaultCloudAccount`, `Update-AzCommvaultCloudAccount` and `Remove-AzCommvaultCloudAccount`
     - Added `Initialize-AzCommvaultSaaS`, `Connect-AzCommvaultCloudAccountSaaS` and `Get-AzCommvaultCloudAccountLatestLinkedSaaS` cmdlets to activate and link the Commvault SaaS
