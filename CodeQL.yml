@@ -1,0 +1,5 @@
+queries:
+  - exclude:
+      path:
+        - "azps/src/Websites/Websites.Management.Sdk/Generated/WebAppsOperations.cs"
+        - "azps/src/Websites/Websites.Management.Sdk/Generated/CertificatesOperations.cs"

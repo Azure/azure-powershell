@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="OriginName" /> property.</summary>
         private string _originName;
 
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string OriginName { get => this._originName; set => this._originName = value; }
 
@@ -208,14 +208,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"originGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string OriginGroupName { get; set; }
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the origin which is unique within the endpoint.",
+        Description = @"Name of the origin which is unique within the profile.",
         SerializedName = @"originName",
         PossibleTypes = new [] { typeof(string) })]
         string OriginName { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string Id { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         string OriginGroupName { get; set; }
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         string OriginName { get; set; }
         /// <summary>The name of the CdnWebApplicationFirewallPolicy.</summary>
         string PolicyName { get; set; }
