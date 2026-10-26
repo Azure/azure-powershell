@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAppNetwork
 
 ## SYNOPSIS
-Delete an AppLink.
+Delete an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzAppNetwork -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObjec
 ```
 
 ## DESCRIPTION
-Delete an AppLink.
+Delete an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

@@ -8,28 +8,18 @@ schema: 2.0.0
 # New-AzAppNetworkMember
 
 ## SYNOPSIS
-Create an AppLinkMember.
+Create a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ClusterType <String>] [-EastWestGatewayVisibility <String>]
- [-FullyManagedUpgradeProfileReleaseChannel <String>] [-MetadataResourceId <String>]
- [-PrivateConnectSubnetResourceId <String>] [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>]
- [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityAppLinkExpanded
-```
-New-AzAppNetworkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String> -Location <String>
- [-ClusterType <String>] [-EastWestGatewayVisibility <String>]
- [-FullyManagedUpgradeProfileReleaseChannel <String>] [-MetadataResourceId <String>]
- [-PrivateConnectSubnetResourceId <String>] [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>]
- [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ClusterType <String>] [-ConnectivityProfileNetwork <String>]
+ [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
+ [-MetadataResourceId <String>] [-PrivateConnectSubnetResourceId <String>]
+ [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -47,7 +37,7 @@ New-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-Create an AppLinkMember.
+Create a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -85,27 +75,12 @@ Joins an AKS cluster to the `appnet-test-01` Application Network as member `memb
 
 ## PARAMETERS
 
-### -AppLinkInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppNetworkIdentity
-Parameter Sets: CreateViaIdentityAppLinkExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AppLinkName
 The name of the AppLink
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -135,7 +110,22 @@ Cluster type
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityProfileNetwork
+The network name for an Azure Kubernetes Application Network member.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -166,7 +156,7 @@ East-West gateway visibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +171,7 @@ Release channel
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -226,7 +216,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -241,7 +231,7 @@ Resource ID
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -286,7 +276,7 @@ Delegated Subnet to AppLink.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -302,7 +292,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -317,7 +307,7 @@ Istio version
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -333,7 +323,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -348,7 +338,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -363,7 +353,7 @@ Upgrade mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAppLinkExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -408,8 +398,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.AppNetwork.Models.IAppNetworkIdentity
 
 ## OUTPUTS
 

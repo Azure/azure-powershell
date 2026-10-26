@@ -8,36 +8,36 @@ schema: 2.0.0
 # Set-AzAppNetworkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Location <String> [-ClusterType <String>] [-EastWestGatewayVisibility <String>]
- [-FullyManagedUpgradeProfileReleaseChannel <String>] [-MetadataResourceId <String>]
- [-PrivateConnectSubnetResourceId <String>] [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>]
- [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ClusterType <String>] [-ConnectivityProfileNetwork <String>]
+ [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
+ [-MetadataResourceId <String>] [-PrivateConnectSubnetResourceId <String>]
+ [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -91,6 +91,21 @@ Accept wildcard characters: False
 
 ### -ClusterType
 Cluster type
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityProfileNetwork
+The network name for an Azure Kubernetes Application Network member.
 
 ```yaml
 Type: System.String
@@ -255,21 +270,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -390,3 +390,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

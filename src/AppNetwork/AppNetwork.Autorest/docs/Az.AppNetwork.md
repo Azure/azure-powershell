@@ -12,38 +12,38 @@ Microsoft Azure PowerShell: AppNetwork cmdlets
 
 ## Az.AppNetwork Cmdlets
 ### [Get-AzAppNetwork](Get-AzAppNetwork.md)
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ### [Get-AzAppNetworkAvailableVersion](Get-AzAppNetworkAvailableVersion.md)
-List AvailableVersion resources by location.
+List the Azure Kubernetes Application Network versions available in a location.
 
 ### [Get-AzAppNetworkMember](Get-AzAppNetworkMember.md)
-Get an AppLinkMember.
+Get a member of an Azure Kubernetes Application Network resource.
 
 ### [Get-AzAppNetworkMemberUpgradeHistory](Get-AzAppNetworkMemberUpgradeHistory.md)
-List UpgradeHistory resources by AppLinkMember.
+List the upgrade history of an Azure Kubernetes Application Network member.
 
 ### [New-AzAppNetwork](New-AzAppNetwork.md)
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ### [New-AzAppNetworkMember](New-AzAppNetworkMember.md)
-Create an AppLinkMember.
+Create a member of an Azure Kubernetes Application Network resource.
 
 ### [Remove-AzAppNetwork](Remove-AzAppNetwork.md)
-Delete an AppLink.
+Delete an Azure Kubernetes Application Network resource.
 
 ### [Remove-AzAppNetworkMember](Remove-AzAppNetworkMember.md)
-Delete an AppLinkMember.
+Remove a member from an Azure Kubernetes Application Network resource.
 
 ### [Set-AzAppNetwork](Set-AzAppNetwork.md)
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ### [Set-AzAppNetworkMember](Set-AzAppNetworkMember.md)
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ### [Update-AzAppNetwork](Update-AzAppNetwork.md)
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ### [Update-AzAppNetworkMember](Update-AzAppNetworkMember.md)
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 

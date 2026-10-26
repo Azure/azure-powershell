@@ -1,13 +1,13 @@
 {
   "resourceType": "appLinks/appLinkMembers",
-  "apiVersion": "2025-08-01-preview",
+  "apiVersion": "2026-08-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.appnetwork"
   },
   "commands": [
     {
       "name": "Get-AzAppNetworkMember",
-      "description": "Get an AppLinkMember.",
+      "description": "Get a member of an Azure Kubernetes Application Network resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get an AppLinkMember.",
+          "description": "Get a member of an Azure Kubernetes Application Network resource.",
           "parameters": [
             {
               "name": "-AppLinkName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzAppNetworkMember",
-      "description": "Delete an AppLinkMember.",
+      "description": "Remove a member from an Azure Kubernetes Application Network resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/appLinks/{appLinkName}/appLinkMembers/{appLinkMemberName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete an AppLinkMember.",
+          "description": "Remove a member from an Azure Kubernetes Application Network resource.",
           "parameters": [
             {
               "name": "-AppLinkName",

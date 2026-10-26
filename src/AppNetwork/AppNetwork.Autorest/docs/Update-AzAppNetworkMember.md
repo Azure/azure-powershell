@@ -8,14 +8,14 @@ schema: 2.0.0
 # Update-AzAppNetworkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EastWestGatewayVisibility <String>]
+ [-SubscriptionId <String>] [-ConnectivityProfileNetwork <String>] [-EastWestGatewayVisibility <String>]
  [-FullyManagedUpgradeProfileReleaseChannel <String>] [-SelfManagedUpgradeProfileVersion <String>]
  [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -24,17 +24,18 @@ Update-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupNam
 ### UpdateViaIdentityAppLinkExpanded
 ```
 Update-AzAppNetworkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String>
- [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
- [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConnectivityProfileNetwork <String>] [-EastWestGatewayVisibility <String>]
+ [-FullyManagedUpgradeProfileReleaseChannel <String>] [-SelfManagedUpgradeProfileVersion <String>]
+ [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAppNetworkMember -InputObject <IAppNetworkIdentity> [-EastWestGatewayVisibility <String>]
- [-FullyManagedUpgradeProfileReleaseChannel <String>] [-SelfManagedUpgradeProfileVersion <String>]
- [-Tag <Hashtable>] [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzAppNetworkMember -InputObject <IAppNetworkIdentity> [-ConnectivityProfileNetwork <String>]
+ [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
+ [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -52,7 +53,7 @@ Update-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -120,6 +121,21 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityProfileNetwork
+The network name for an Azure Kubernetes Application Network member.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppLinkExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

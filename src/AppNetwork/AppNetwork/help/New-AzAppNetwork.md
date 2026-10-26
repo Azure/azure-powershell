@@ -8,34 +8,31 @@ schema: 2.0.0
 # New-AzAppNetwork
 
 ## SYNOPSIS
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzAppNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+New-AzAppNetwork -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzAppNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzAppNetwork -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzAppNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzAppNetwork -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -188,21 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -309,3 +291,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

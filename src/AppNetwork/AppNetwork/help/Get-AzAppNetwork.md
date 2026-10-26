@@ -8,14 +8,13 @@ schema: 2.0.0
 # Get-AzAppNetwork
 
 ## SYNOPSIS
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
-Get-AzAppNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAppNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,20 +23,19 @@ Get-AzAppNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzAppNetwork -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzAppNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzAppNetwork -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Get an AppLink.
+Get the details of an Azure Kubernetes Application Network.
 
 ## EXAMPLES
 
@@ -151,7 +149,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -175,3 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

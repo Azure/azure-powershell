@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAppNetwork
 
 ## SYNOPSIS
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Set-AzAppNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
 ```
 
 ## DESCRIPTION
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

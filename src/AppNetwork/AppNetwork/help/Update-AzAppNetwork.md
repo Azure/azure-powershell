@@ -8,27 +8,26 @@ schema: 2.0.0
 # Update-AzAppNetwork
 
 ## SYNOPSIS
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzAppNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAppNetwork -InputObject <IAppNetworkIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+Update-AzAppNetwork -InputObject <IAppNetworkIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an AppLink.
+Update an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -82,7 +81,7 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,21 +129,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -261,3 +245,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

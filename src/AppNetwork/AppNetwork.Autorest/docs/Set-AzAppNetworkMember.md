@@ -8,18 +8,18 @@ schema: 2.0.0
 # Set-AzAppNetworkMember
 
 ## SYNOPSIS
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ClusterType <String>] [-EastWestGatewayVisibility <String>]
- [-FullyManagedUpgradeProfileReleaseChannel <String>] [-MetadataResourceId <String>]
- [-PrivateConnectSubnetResourceId <String>] [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>]
- [-UpgradeProfileMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ClusterType <String>] [-ConnectivityProfileNetwork <String>]
+ [-EastWestGatewayVisibility <String>] [-FullyManagedUpgradeProfileReleaseChannel <String>]
+ [-MetadataResourceId <String>] [-PrivateConnectSubnetResourceId <String>]
+ [-SelfManagedUpgradeProfileVersion <String>] [-Tag <Hashtable>] [-UpgradeProfileMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -37,7 +37,7 @@ Set-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <
 ```
 
 ## DESCRIPTION
-Update an AppLinkMember.
+Update a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -91,6 +91,21 @@ Accept wildcard characters: False
 
 ### -ClusterType
 Cluster type
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectivityProfileNetwork
+The network name for an Azure Kubernetes Application Network member.
 
 ```yaml
 Type: System.String

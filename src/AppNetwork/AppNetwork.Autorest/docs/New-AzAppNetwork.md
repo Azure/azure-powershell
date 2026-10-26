@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAppNetwork
 
 ## SYNOPSIS
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzAppNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
 ```
 
 ## DESCRIPTION
-Create an AppLink.
+Create an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppNetworkMemberUpgradeHistory
 
 ## SYNOPSIS
-List UpgradeHistory resources by AppLinkMember.
+List the upgrade history of an Azure Kubernetes Application Network member.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzAppNetworkMemberUpgradeHistory -AppLinkMemberName <String> -AppLinkName <S
 ```
 
 ## DESCRIPTION
-List UpgradeHistory resources by AppLinkMember.
+List the upgrade history of an Azure Kubernetes Application Network member.
 
 ## EXAMPLES
 

@@ -8,37 +8,35 @@ schema: 2.0.0
 # Get-AzAppNetworkMember
 
 ## SYNOPSIS
-Get an AppLinkMember.
+Get a member of an Azure Kubernetes Application Network resource.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzAppNetworkMember -AppLinkName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppNetworkMember -AppLinkName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityAppLink
-```
-Get-AzAppNetworkMember -Name <String> -AppLinkInputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzAppNetworkMember -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzAppNetworkMember -InputObject <IAppNetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityAppLink
+```
+Get-AzAppNetworkMember -AppLinkInputObject <IAppNetworkIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get an AppLinkMember.
+Get a member of an Azure Kubernetes Application Network resource.
 
 ## EXAMPLES
 
@@ -91,7 +89,7 @@ The name of the AppLink
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -147,28 +145,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -184,7 +167,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -208,3 +191,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
