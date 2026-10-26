@@ -17,18 +17,29 @@ Sets an Azure App Service plan.
 ```
 Set-AzAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-AsJob] [-Tag <Hashtable>] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-Name] <String> [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>]
+ [-DefaultIdentity <String>] [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>]
+ [-InstallScript <InstallScript[]>] [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
+ [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Set-AzAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+ [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>] [-DefaultIdentity <String>]
+ [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>] [-InstallScript <InstallScript[]>]
+ [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzAppServicePlan** cmdlet sets an Azure App Service plan.
+
+For Managed Instance plans, this cmdlet also configures managed identities, installation scripts, storage mounts, registry adapters, plan-level virtual network integration, and Remote Desktop Protocol (RDP) access.
+Settings omitted from the command are preserved.
+Collection parameters replace the entire corresponding collection; pass an empty array to remove all entries.
+To add or remove a single entry, retrieve the existing plan and pass the updated collection.
 
 ## EXAMPLES
 
@@ -57,6 +68,36 @@ Set-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" 
 ```
 
 This command changes an App Service plan in an App Service Environment to the I5MV4 memory-optimized SKU.
+
+### Example 4: Update managed identities and disable RDP
+```powershell
+$identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ContosoIdentity"
+Set-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan" -UserAssignedIdentityId $identityId -DefaultIdentity $identityId -RdpEnabled $false
+```
+
+This command replaces the user-assigned identity list, selects that identity for plan integrations, and disables RDP.
+The system-assigned identity and other settings are preserved because their parameters were not specified.
+
+### Example 5: Remove one installation script without removing other scripts
+```powershell
+$plan = Get-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan"
+$scripts = @($plan.InstallScripts | Where-Object { $_.Name -ne "setup" })
+Set-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan" -InstallScript $scripts
+```
+
+This command removes the setup script and retains the other scripts in their existing order.
+If setup was the last script, passing the empty array clears the script collection.
+To add a script, pass the existing collection together with the new script object.
+
+### Example 6: Clear Managed Instance configuration using pipeline input
+```powershell
+Get-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan" |
+    Set-AzAppServicePlan -InstallScript @() -StorageMount @() -RegistryAdapter @() -VirtualNetworkSubnetId "" -DefaultIdentity "" -AssignIdentity $false -UserAssignedIdentityId @()
+```
+
+This command removes all scripts, mounts, registry adapters, virtual network integration, and managed identities from the plan.
+The default identity is also cleared.
+Other properties, including whether the plan is a Managed Instance plan, are preserved.
 
 ## PARAMETERS
 
@@ -120,8 +161,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssignIdentity
+Enable or disable the plan's system-assigned managed identity.
+Omit this parameter to preserve the current system-assigned identity.
+User-assigned identities are preserved unless **-UserAssignedIdentityId** is also specified.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ChangeReference
 The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultIdentity
+The identity used by default for plan integrations.
+Specify `[system]` for the system-assigned identity or the resource ID of a user-assigned identity associated with the plan.
+Pass an empty string to clear the default, including when removing the identity previously selected as the default.
+Omit the parameter to preserve the current default.
 
 ```yaml
 Type: System.String
@@ -142,6 +218,23 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstallScript
+The complete installation script collection for the Managed Instance plan.
+Each object specifies Name and a Source containing SourceUri and Type, such as RemoteAzureBlob or PlatformStorage.
+Pass an empty array to remove all scripts; omit the parameter to preserve existing scripts.
+
+```yaml
+Type: Microsoft.Azure.Management.WebSites.Models.InstallScript[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -190,7 +283,42 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RdpEnabled
+Enable or disable Remote Desktop Protocol (RDP) access to the Managed Instance plan.
+Pass false to disable access; omit the parameter to preserve the current setting.
+Use **Get-AzAppServicePlanRdpCredential** to retrieve credentials when RDP is enabled.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryAdapter
+The complete registry adapter collection for the Managed Instance plan.
+Each object specifies RegistryKey, Type, and KeyVaultSecretReference.SecretUri.
+Supported types include Binary, String, Expand_String, Multi_String, DWord, and QWord.
+Pass an empty array to remove all adapters; omit the parameter to preserve existing adapters.
+
+```yaml
+Type: Microsoft.Azure.Management.WebSites.Models.RegistryAdapter[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -205,6 +333,25 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageMount
+The complete storage mount collection for the Managed Instance plan.
+Each object specifies Name, Type, and DestinationPath.
+AzureFiles and FileShare mounts also require Source and can reference credentials with CredentialsKeyVaultReference.SecretUri.
+LocalStorage mounts do not require a source.
+Pass an empty array to remove all mounts; omit the parameter to preserve existing mounts.
+
+```yaml
+Type: Microsoft.Azure.Management.WebSites.Models.StorageMount[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -236,6 +383,39 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+The complete list of user-assigned managed identity resource IDs to associate with the plan.
+Pass an empty array to remove all user-assigned identities; omit the parameter to preserve the current list.
+The system-assigned identity is preserved unless **-AssignIdentity** is also specified.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkSubnetId
+The full resource ID of an existing subnet configured for App Service integration, including delegation to Microsoft.Web/serverFarms.
+Pass an empty string to disconnect the plan from its subnet; omit the parameter to preserve the current integration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -21,6 +21,8 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 .Example
 New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+.Example
+New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -BlobContainerName myContainer -StorageAccountResourceId myAccountResourceId -EndpointKind Target -EnableCrossTenantTransfer -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
@@ -79,6 +81,27 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Source", "Target")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # The kind of the endpoint, either Source or Target.
+    # Cannot be changed after the endpoint is created.
+    ${EndpointKind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables this endpoint to be used as one side of a cross-tenant data transfer.
+    # Defaults to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    ${AllowedStorageAccount},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
