@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.1
 * Added support for restoring soft-deleted volumes.
     - `Restore-AzElasticSanVolume`
     - Supported identity-based restore operations running as background jobs.
