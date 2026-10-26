@@ -16,7 +16,7 @@ Sets an Azure App Service plan.
 ### S1
 ```
 Set-AzAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-AsJob] [-Tag <Hashtable>] [-ResourceGroupName] <String>
+ [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-AsyncScalingEnabled <Boolean>] [-AsJob] [-Tag <Hashtable>] [-ResourceGroupName] <String>
  [-Name] <String> [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>]
  [-DefaultIdentity <String>] [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>]
  [-InstallScript <InstallScript[]>] [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
@@ -26,7 +26,7 @@ Set-AzAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofW
 
 ### S2
 ```
-Set-AzAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+Set-AzAppServicePlan [-AsyncScalingEnabled <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
  [-AssignIdentity <Boolean>] [-UserAssignedIdentityId <String[]>] [-DefaultIdentity <String>]
  [-RdpEnabled <Boolean>] [-VirtualNetworkSubnetId <String>] [-InstallScript <InstallScript[]>]
  [-StorageMount <StorageMount[]>] [-RegistryAdapter <RegistryAdapter[]>]
@@ -35,6 +35,11 @@ Set-AzAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProf
 
 ## DESCRIPTION
 The **Set-AzAppServicePlan** cmdlet sets an Azure App Service plan.
+
+Use **-AsyncScalingEnabled $true** to allow asynchronous scaling when there are insufficient workers to scale synchronously, or **-AsyncScalingEnabled $false** to disable it.
+This setting requires a dedicated App Service plan.
+Omit the parameter to preserve the existing setting, including when passing a plan through the pipeline.
+The cmdlet waits for the operation to complete; use **-AsJob** for background execution.
 
 For Managed Instance plans, this cmdlet also configures managed identities, installation scripts, storage mounts, registry adapters, plan-level virtual network integration, and Remote Desktop Protocol (RDP) access.
 Settings omitted from the command are preserved.
@@ -98,6 +103,14 @@ Get-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoManagedPlan" |
 This command removes all scripts, mounts, registry adapters, virtual network integration, and managed identities from the plan.
 The default identity is also cleared.
 Other properties, including whether the plan is a Managed Instance plan, are preserved.
+
+### Example 7: Enable asynchronous scaling while increasing the worker count
+```powershell
+Set-AzAppServicePlan -ResourceGroupName "ContosoRG" -Name "ContosoASP" -NumberofWorkers 10 -AsyncScalingEnabled $true
+```
+
+This command enables asynchronous scaling on an existing dedicated App Service plan and requests ten workers.
+If there are insufficient workers to scale synchronously, the service scales asynchronously and the cmdlet waits for completion.
 
 ## PARAMETERS
 
@@ -165,6 +178,24 @@ Accept wildcard characters: False
 Enable or disable the plan's system-assigned managed identity.
 Omit this parameter to preserve the current system-assigned identity.
 User-assigned identities are preserved unless **-UserAssignedIdentityId** is also specified.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsyncScalingEnabled
+Enable or disable asynchronous scaling for a dedicated App Service plan.
+Set to true to allow an asynchronous operation when there are insufficient workers to scale synchronously, or false to allow only synchronous scaling.
+Omit this parameter to preserve the current setting.
+This parameter can also override the setting on a plan passed through the pipeline and is independent of **-AsJob**.
 
 ```yaml
 Type: System.Boolean
