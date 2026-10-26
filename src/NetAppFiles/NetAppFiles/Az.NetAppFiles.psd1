@@ -146,7 +146,8 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'New-AzNetAppFilesCache', 'Update-AzNetAppFilesCache', 
                'Remove-AzNetAppFilesCache', 
                'Get-AzNetAppFilesCachePeeringPassphrase', 
-               'Set-AzNetAppFilesCachePool', 'Reset-AzNetAppFilesCacheSmbPassword'
+               'Set-AzNetAppFilesCachePool', 'Reset-AzNetAppFilesCacheSmbPassword',
+               'Update-AzNetAppFilesAccountLdapBindPassword'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -194,7 +195,8 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Set-AnfBucketAkvCredential', 'Update-AnfBucketCertificate', 
                'Get-AnfCache', 'New-AnfCache', 'Update-AnfCache', 'Remove-AnfCache', 
                'Get-AnfCachePeeringPassphrase', 'Set-AnfCachePool', 
-               'Reset-AnfCacheSmbPassword'
+               'Reset-AnfCacheSmbPassword',
+               'Update-AnfAccountLdapBindPassword'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -247,4 +249,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

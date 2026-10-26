@@ -198,6 +198,70 @@ function Test-AccountCrud
 
 <#
 .SYNOPSIS
+Validates LDAP input binding and password-refresh WhatIf behavior without contacting Azure.
+#>
+function Test-AccountLdapParameterBinding
+{
+    $configuration = [Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesLdapConfiguration]@{
+        Domain = "example.com"
+        LdapServers = @("192.0.2.4", "192.0.2.5")
+        SecureLdapType = "LdapOverTLS"
+        ServerCACertificate = "test-certificate"
+        CertificateCNHost = "ldap.example.com"
+        DnsServers = @("192.0.2.6")
+        LdapPort = 636
+        UserDN = "ou=users,dc=example,dc=com"
+        GroupDN = "ou=groups,dc=example,dc=com"
+        NetGroupDN = "ou=netgroups,dc=example,dc=com"
+        BindAuthenticationLevel = "Simple"
+        BindDN = "cn=bind,dc=example,dc=com"
+        BindPasswordAkvConfig = @{
+            AzureKeyVaultUri = "https://example.vault.azure.net/"
+            SecretName = "ldap-bind-password"
+            UserAssignedIdentity = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"
+        }
+    }
+
+    Assert-AreEqual 2 $configuration.LdapServers.Count
+    Assert-AreEqual "192.0.2.4" $configuration.LdapServers[0]
+    Assert-AreEqual "192.0.2.5" $configuration.LdapServers[1]
+    Assert-AreEqual "192.0.2.6" $configuration.DnsServers[0]
+    Assert-AreEqual "ldap-bind-password" $configuration.BindPasswordAkvConfig.SecretName
+
+    foreach ($commandName in @("New-AzNetAppFilesAccount", "Set-AzNetAppFilesAccount", "Update-AzNetAppFilesAccount"))
+    {
+        $command = Get-Command $commandName -ErrorAction Stop
+        Assert-AreEqual $configuration.GetType() $command.Parameters["LdapConfiguration"].ParameterType
+        foreach ($parameterSet in $command.ParameterSets)
+        {
+            $parameter = @($parameterSet.Parameters | Where-Object { $_.Name -eq "LdapConfiguration" })
+            Assert-AreEqual 1 $parameter.Count
+            Assert-AreEqual $false $parameter[0].IsMandatory
+        }
+    }
+
+    $account = [Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount]@{
+        Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account"
+        Name = "test-account"
+        ResourceGroupName = "test-rg"
+        LdapConfiguration = $configuration
+    }
+    Assert-AreEqual "example.com" $account.LdapConfiguration.Domain
+    Assert-AreEqual "LdapOverTLS" $account.LdapConfiguration.SecureLdapType
+    Assert-AreEqual 636 $account.LdapConfiguration.LdapPort
+    Assert-AreEqual "Simple" $account.LdapConfiguration.BindAuthenticationLevel
+
+    Assert-AreEqual "Update-AzNetAppFilesAccountLdapBindPassword" (Get-Alias Update-AnfAccountLdapBindPassword -ErrorAction Stop).Definition
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceGroupName "test-rg" -Name "test-account" -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceId $account.Id -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+    $result = @($account | Update-AzNetAppFilesAccountLdapBindPassword -WhatIf -PassThru -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+}
+
+<#
+.SYNOPSIS
 Test Account CMK CRUD operations
 #>
 function Test-AccountCMK
@@ -244,6 +308,7 @@ function Test-AccountCMK
     $vnetName = $resourceGroup + "-vnet"
 
     $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+    $cmkPrincipalId = $null
 
     try
     {
@@ -274,7 +339,8 @@ function Test-AccountCMK
         Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         #set access policy account identity, and the permissions "Get," "Encrypt," and "Decrypt."       
-        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName  -ObjectId $retrievedAcc.Identity.PrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
+        $cmkPrincipalId = $retrievedAcc.Identity.PrincipalId
+        Set-AzKeyVaultAccessPolicy -ResourceGroupname $kvResourceGroup -VaultName $keyVaultName -ObjectId $cmkPrincipalId -PermissionsToKeys get,encrypt,decrypt -BypassObjectIdValidation
                 
 
         #subnet for akv
@@ -378,8 +444,17 @@ function Test-AccountCMK
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroup
+        try
+        {
+            Clean-ResourceGroup $resourceGroup
+        }
+        finally
+        {
+            if ($cmkPrincipalId)
+            {
+                Remove-AzKeyVaultAccessPolicy -ResourceGroupName $kvResourceGroup -VaultName $keyVaultName -ObjectId $cmkPrincipalId -ErrorAction Stop
+            }
+        }
     }
 }
 

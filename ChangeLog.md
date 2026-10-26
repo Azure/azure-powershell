@@ -1,3 +1,9 @@
+## Upcoming Release
+#### Az.NetAppFiles
+* Updated to API version 2026-08-01.
+* Added Lightweight Directory Access Protocol (LDAP) configuration to account create, set, update, and output.
+* Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.

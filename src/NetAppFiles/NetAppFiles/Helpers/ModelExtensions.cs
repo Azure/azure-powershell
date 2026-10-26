@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Identity = netAppAccount.Identity.ConvertToPs(),
                 SystemData =  netAppAccount.SystemData?.ToPsSystemData(),
                 MultiAdStatus = netAppAccount.MultiAdStatus,
-                NfsV4IdDomain= netAppAccount.NfsV4IdDomain
+                NfsV4IdDomain= netAppAccount.NfsV4IdDomain,
+                LdapConfiguration = netAppAccount.LdapConfiguration?.ConvertToPs()
             };
         }
 

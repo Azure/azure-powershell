@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "LDAP server, search, transport security, and bind authentication settings for the account.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -115,7 +121,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : new List<Management.NetApp.Models.ActiveDirectory>(),
                 Tags = tagPairs,
-                NfsV4IdDomain = NfsV4IdDomain
+                NfsV4IdDomain = NfsV4IdDomain,
+                LdapConfiguration = LdapConfiguration?.ConvertFromPs()
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

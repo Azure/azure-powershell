@@ -90,12 +90,12 @@ function Test-BackupCrud
         until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);
     }
 
-    function WaitForBackupSucceeded #($sourceOnly)    
+    function WaitForBackupSucceeded ($backupName, $backupVaultName)
     {
         $i = 0 
         do
         {
-            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName1
+            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -BackupVaultName $backupVaultName -Name $backupName
             Start-TestSleep -Seconds 10
             $i++
         }               
@@ -184,7 +184,7 @@ function Test-BackupCrud
         #$updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $labelUpdate $updateBackup.Label
-        WaitForBackupSucceeded
+        WaitForBackupSucceeded $backupName1 $backupVaultName
         
         #Restore job not deployed on region enable when finished
         #Test restore files from backup,  
@@ -458,6 +458,8 @@ function Test-VolumeBackupStatus
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1
     $protocolTypes[0] = "NFSv3"
+    $retrievedVolume = $null
+    $retrievedBackup = $null
 
     try
     {
@@ -523,8 +525,27 @@ function Test-VolumeBackupStatus
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $resourceGroup
+        try
+        {
+            if ($retrievedVolume)
+            {
+                Remove-AzNetAppFilesVolume -ResourceId $retrievedVolume.Id -ErrorAction Stop
+            }
+        }
+        finally
+        {
+            try
+            {
+                if ($retrievedBackup)
+                {
+                    Remove-AzNetAppFilesBackup -ResourceId $retrievedBackup.Id -ErrorAction Stop
+                }
+            }
+            finally
+            {
+                Clean-ResourceGroup $resourceGroup
+            }
+        }
     }
 }
     function WaitForBackupSucceeded ($backupName, $backupVaultName)
