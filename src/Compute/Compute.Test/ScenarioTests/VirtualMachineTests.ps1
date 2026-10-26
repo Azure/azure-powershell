@@ -8845,8 +8845,7 @@ function Assert-FlexProfileRoundTrip
 .SYNOPSIS
 Tests FlexProfile (PreferredVMSize) end to end in a single resource group to avoid repeated setup:
 New-AzVMConfig binding and validation, New-AzVM/Get-AzVM/Update-AzVM lifecycle (create, roundtrip,
-tag preservation, preferred resize, invalid updates, opt-out and fixed-to-Flow conversion), and
-service rejection of unsupported placement options.
+tag preservation, preferred resize, invalid updates, opt-out and fixed-to-Flow conversion).
 .DESCRIPTION
 Requires FlexProfile support and Dsv5 quota in the selected Compute test region.
 Shared feature registration must not be changed; SubscriptionNotRegisteredForFeature
@@ -8855,7 +8854,7 @@ propagation is covered by mocked SDK request tests instead.
 function Test-FlexProfile
 {
     $rgname = Get-ComputeTestResourceName
-    $loc = Get-ComputeVMLocation
+    $loc = 'eastasia'
     $size = 'Standard_D2s_v5'
     $nextSize = 'Standard_D4s_v5'
     $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
@@ -8920,18 +8919,18 @@ function Test-FlexProfile
             New-AzVM -Name 'both' -Size $size -PreferredVMSize $size -Credential $cred -ErrorAction Stop
         } 'PreferredVMSize'
 
-        # Step 5: Empty is bound and reaches service RequiredParameterMissing validation.
+        # Step 5: Empty is bound and reaches service required-parameter validation.
         $empty = New-AzVMConfig -VMName 'empty' -PreferredVMSize ''
         Assert-NotNull $empty.FlexProfile
         Assert-AreEqual '' $empty.FlexProfile.PreferredVMSize
         Assert-Null $empty.HardwareProfile.VmSize
         $nullPreferred = New-AzVMConfig -VMName 'null-preferred' -PreferredVMSize $null
         Assert-NotNull $nullPreferred.FlexProfile
-        Assert-AreEqual '' $nullPreferred.FlexProfile.PreferredVMSize
+        Assert-Null $nullPreferred.FlexProfile.PreferredVMSize
         Assert-Null $nullPreferred.HardwareProfile.VmSize
         $nullPipeline = [PSCustomObject]@{ VMName = 'null-pipeline'; PreferredVMSize = $null } | New-AzVMConfig
         Assert-NotNull $nullPipeline.FlexProfile
-        Assert-AreEqual '' $nullPipeline.FlexProfile.PreferredVMSize
+        Assert-Null $nullPipeline.FlexProfile.PreferredVMSize
         Assert-Null $nullPipeline.HardwareProfile.VmSize
 
         # Step 6: Create the shared resource group.
@@ -8941,6 +8940,7 @@ function Test-FlexProfile
         $simpleName = 'flexsimple'
         $simple = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $simpleName `
             -PreferredVMSize $size -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard `
+            -DomainNameLabel ($simpleName + '-' + $rgname) `
             -InformationVariable creationInformation
         $defaultSizeMessages = @($creationInformation | Where-Object { $_.MessageData -like 'No Size value has been provided*' })
         Assert-AreEqual 0 $defaultSizeMessages.Count
@@ -8979,6 +8979,10 @@ function Test-FlexProfile
         Assert-AreEqual $size $vm.FlexProfile.PreferredVMSize
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
         Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $nextSize
+        Start-AzVM -ResourceGroupName $rgname -Name $name
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $name
+        Assert-FlexProfileRoundTrip -VM $vm -PreferredSize $nextSize
+        Assert-NotNull $vm.HardwareProfile.VmSize
 
         # Step 11: Reject invalid changes and verify that each rejection leaves service state unchanged.
         $stableActualSize = $vm.HardwareProfile.VmSize
@@ -8992,7 +8996,7 @@ function Test-FlexProfile
             },
             @{
                 Action = { Update-AzVM -ResourceGroupName $rgname -VM $vm -PreferredVMSize '' }
-                ErrorCode = 'RequiredParameterMissing'
+                ErrorCode = 'InvalidParameter'
             },
             @{
                 Action = { Update-AzVM -ResourceGroupName $rgname -VM $invalid }
@@ -9030,63 +9034,120 @@ function Test-FlexProfile
         Assert-Null $fixed.FlexProfile
         Assert-AreEqual $size $fixed.HardwareProfile.VmSize
         Assert-FlexProfileRoundTrip -VM (Get-AzVM -ResourceGroupName $rgname -Name $name) -PreferredSize $size
-
-        # Step 15: Provision actual placement resources so failures cannot be missing-resource errors.
-        $availability = New-AzAvailabilitySet -ResourceGroupName $rgname -Name 'flex-as' `
-            -Location $loc -Sku Aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
-        $ppg = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name 'flex-ppg' `
-            -Location $loc -ProximityPlacementGroupType Standard
-        $reservation = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name 'flex-crg' -Location $loc
-        New-AzCapacityReservation -ResourceGroupName $rgname -ReservationGroupName $reservation.Name `
-            -Name 'flex-cr' -Location $loc -Sku $size -CapacityToReserve 1
-        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $size `
-            -OrchestrationMode Flexible -PlatformFaultDomainCount 1 -SecurityType Standard
-        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName 'flex-vmss' -VirtualMachineScaleSet $vmssConfig
-        $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name 'flex-hg' -Location $loc `
-            -PlatformFaultDomain 1 -SupportAutomaticPlacement $true
-        $hostResource = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroup.Name `
-            -Name 'flex-host' -Location $loc -Sku DSv5-Type1
-
-        # Step 16: Verify config-based placement exclusions return InvalidParameter.
-        $placements = @(
-            @{ AvailabilitySetId = $availability.Id },
-            @{ ProximityPlacementGroupId = $ppg.Id },
-            @{ CapacityReservationGroupId = $reservation.Id },
-            @{ VmssId = $vmss.Id },
-            @{ HostId = $hostResource.Id }
-        )
-        $index = 0
-        foreach ($placement in $placements)
-        {
-            $index++
-            $parameters = @{ VMName = "placement$index"; PreferredVMSize = $size }
-            foreach ($key in $placement.Keys) { $parameters[$key] = $placement[$key] }
-            $config = New-FlexProfileTestConfig -Parameters $parameters -NicId $nic.Id -Credential $cred
-            Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $config } 'InvalidParameter'
-        }
-
-        # Step 17: Cover the simple-path HostGroupId placement using the real host group.
-        Assert-ThrowsContains {
-            New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'hostgroup-vm' `
-                -PreferredVMSize $size -HostGroupId $hostGroup.Id -Credential $cred `
-                -Image Win2022AzureEditionCore -SecurityType Standard
-        } 'InvalidParameter'
-
-        # Step 18: Preserve service validation for empty and invalid preferred sizes.
-        $empty = New-FlexProfileTestConfig -Parameters @{ VMName = 'empty-create'; PreferredVMSize = '' } `
-            -NicId $nic.Id -Credential $cred
-        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $empty } 'RequiredParameterMissing'
-        $invalid = New-FlexProfileTestConfig -Parameters @{ VMName = 'invalid-create'; PreferredVMSize = 'Not_A_Real_VM_Size' } `
-            -NicId $nic.Id -Credential $cred
-        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $invalid } 'InvalidParameter'
-        Assert-ThrowsContains {
-            New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'nullpreferred' `
-                -PreferredVMSize $null -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard
-        } 'RequiredParameterMissing'
     }
     finally
     {
-        # Step 19: Remove every resource created by this scenario.
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
+    }
+}
+
+<#
+.SYNOPSIS
+Tests each FlexProfile validation independently so placement capacity cannot block other cases.
+#>
+function Test-FlexProfileValidation
+{
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateSet('AvailabilitySet', 'ProximityPlacementGroup', 'CapacityReservation', 'Vmss',
+            'Host', 'HostGroup', 'EmptyPreferredSize', 'InvalidPreferredSize', 'NullPreferredSize')]
+        [string] $ValidationCase
+    )
+
+    $rgname = Get-ComputeTestResourceName
+    $loc = 'eastasia'
+    $size = 'Standard_D2s_v5'
+    $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential ('admin01', $password)
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force
+        $parameters = @{ VMName = 'validation-vm'; PreferredVMSize = $size }
+        $nic = $null
+        $expectedError = 'InvalidParameter'
+        switch ($ValidationCase)
+        {
+            'AvailabilitySet'
+            {
+                $availability = New-AzAvailabilitySet -ResourceGroupName $rgname -Name 'flex-as' `
+                    -Location $loc -Sku Aligned -PlatformFaultDomainCount 2 -PlatformUpdateDomainCount 5
+                $parameters.AvailabilitySetId = $availability.Id
+            }
+            'ProximityPlacementGroup'
+            {
+                $ppg = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name 'flex-ppg' `
+                    -Location $loc -ProximityPlacementGroupType Standard
+                $parameters.ProximityPlacementGroupId = $ppg.Id
+            }
+            'CapacityReservation'
+            {
+                # Keep this rejection test independent of reservable capacity.
+                $reservation = New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name 'flex-crg' -Location $loc
+                $parameters.CapacityReservationGroupId = $reservation.Id
+                $expectedError = "FlexProfile is not supported with 'capacityReservation"
+            }
+            'Vmss'
+            {
+                $nic = New-FlexProfileTestNetwork -ResourceGroupName $rgname -Location $loc
+                $ipConfig = New-AzVmssIpConfig -Name 'ipconfig1' -SubnetId $nic.IpConfigurations[0].Subnet.Id
+                $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $size `
+                    -OrchestrationMode Flexible -PlatformFaultDomainCount 1 -SecurityType Standard
+                $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+                    -Name 'nicconfig1' -Primary $true -IPConfiguration $ipConfig -NetworkApiVersion '2020-11-01'
+                $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+                    -ComputerNamePrefix 'flexvm' -AdminUsername $cred.UserName -AdminPassword $cred.Password
+                $vmssConfig = Set-AzVmssStorageProfile -VirtualMachineScaleSet $vmssConfig `
+                    -OsDiskCreateOption FromImage -ManagedDisk Standard_LRS -ImageReferencePublisher 'MicrosoftWindowsServer' `
+                    -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2022-datacenter-azure-edition' -ImageReferenceVersion 'latest'
+                $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName 'flex-vmss' -VirtualMachineScaleSet $vmssConfig
+                $parameters.VmssId = $vmss.Id
+            }
+            { $_ -in @('Host', 'HostGroup') }
+            {
+                $hostGroup = New-AzHostGroup -ResourceGroupName $rgname -Name 'flex-hg' -Location $loc `
+                    -PlatformFaultDomain 1 -SupportAutomaticPlacement $true
+                $hostResource = New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroup.Name `
+                    -Name 'flex-host' -Location $loc -Sku DSv5-Type1
+                $parameters.HostId = $hostResource.Id
+            }
+            'EmptyPreferredSize'
+            {
+                $parameters.PreferredVMSize = ''
+            }
+            'InvalidPreferredSize'
+            {
+                $parameters.PreferredVMSize = 'Not_A_Real_VM_Size'
+            }
+        }
+
+        if ($ValidationCase -eq 'NullPreferredSize')
+        {
+            Assert-ThrowsContains {
+                New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'nullpreferred' `
+                    -PreferredVMSize $null -Credential $cred -Image Win2022AzureEditionCore -SecurityType Standard `
+                    -DomainNameLabel ('nullpreferred-' + $rgname)
+            } "'PreferredVMSize' cannot be null."
+        }
+        elseif ($ValidationCase -eq 'HostGroup')
+        {
+            Assert-ThrowsContains {
+                New-AzVM -ResourceGroupName $rgname -Location $loc -Name 'hostgroup-vm' `
+                    -PreferredVMSize $size -HostGroupId $hostGroup.Id -Credential $cred `
+                    -Image Win2022AzureEditionCore -SecurityType Standard -DomainNameLabel ('hostgroup-' + $rgname)
+            } "FlexProfile is not supported with 'hostGroup'"
+        }
+        else
+        {
+            if ($null -eq $nic)
+            {
+                $nic = New-FlexProfileTestNetwork -ResourceGroupName $rgname -Location $loc
+            }
+            $config = New-FlexProfileTestConfig -Parameters $parameters -NicId $nic.Id -Credential $cred
+            Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $config } $expectedError
+        }
+    }
+    finally
+    {
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
     }
 }

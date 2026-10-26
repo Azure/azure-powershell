@@ -407,7 +407,7 @@ Using 'SpotPlus' requires the 'Microsoft.Compute/SpotPlus' subscription feature 
 ### Example 16: Create a VM with a preferred size
 ```powershell
 $location = "eastus2"
-New-AzVM -ResourceGroupName "myRG" -Location $location -Name "myFlexVM" -Credential (Get-Credential) -Image "Win2022Datacenter" -PreferredVMSize "Standard_D4s_v5"
+New-AzVM -ResourceGroupName "myRG" -Location $location -Name "myFlexVM" -Credential (Get-Credential) -Image "Win2022AzureEdition" -PreferredVMSize "Standard_D4s_v5"
 ```
 
 Use a region enabled for the registered FlexProfile preview. This example omits **Size** and lets Azure choose the preferred size or a compatible alternative.

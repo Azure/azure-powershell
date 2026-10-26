@@ -807,6 +807,69 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-FlexProfile");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileAvailabilitySetValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase AvailabilitySet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileProximityPlacementGroupValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase ProximityPlacementGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileCapacityReservationValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase CapacityReservation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileVmssValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase Vmss");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileHostValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase Host");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileHostGroupValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase HostGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileEmptyPreferredSizeValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase EmptyPreferredSize");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileInvalidPreferredSizeValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase InvalidPreferredSize");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFlexProfileNullPreferredSizeValidation()
+        {
+            TestRunner.RunTestScript("Test-FlexProfileValidation -ValidationCase NullPreferredSize");
+        }
+
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
