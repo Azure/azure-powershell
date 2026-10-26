@@ -43,12 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected static void ValidateSnapshotAccessState(string accessState)
         {
-            if (string.Equals(accessState, "Pending", StringComparison.OrdinalIgnoreCase)
-                || string.Equals(accessState, "Unknown", StringComparison.OrdinalIgnoreCase))
-            {
-                throw new InvalidOperationException(
-                    $"The snapshot access state '{accessState}' does not allow an immutability policy update.");
-            }
+            SnapshotImmutabilityPolicyRules.ValidateSnapshotAccessState(accessState);
         }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]

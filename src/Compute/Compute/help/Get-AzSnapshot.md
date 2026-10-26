@@ -20,6 +20,8 @@ Get-AzSnapshot [[-ResourceGroupName] <String>] [[-SnapshotName] <String>]
 ## DESCRIPTION
 The **Get-AzSnapshot** cmdlet gets the properties of a snapshot.
 
+When a snapshot has an immutability policy, its `ImmutabilityPolicy` property includes the policy type, duration, start and expiration times, and expiration status.
+
 ## EXAMPLES
 
 ### Example 1
@@ -144,6 +146,14 @@ Tags               : {}
 ```
 
 This command gets the properties of the snapshot named "SnapshotName1" in the resource group named "ResourceGroupName1"
+
+### Example 5
+```powershell
+Get-AzSnapshot -ResourceGroupName "ResourceGroupName1" -SnapshotName "SnapshotName1" |
+    Select-Object Name, ImmutabilityPolicy
+```
+
+This command displays the immutability policy returned for a snapshot, when one is present.
 
 ### Example 4
 ```powershell

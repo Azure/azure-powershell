@@ -2,13 +2,14 @@ using System;
 using System.Net;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotImmutabilityPolicy",
-        DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
+        DefaultParameterSetName = "DefaultParameterSet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public class RemoveAzSnapshotImmutabilityPolicy : SnapshotImmutabilityPolicyBaseCmdlet
     {
@@ -35,16 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Snapshot currentSnapshot = SnapshotsClient.Get(resourceGroupName, snapshotName);
                 ValidateSnapshotAccessState(currentSnapshot.SnapshotAccessState);
 
-                ImmutabilityPolicy currentPolicy = currentSnapshot.ImmutabilityPolicy;
-                if (currentPolicy == null || currentPolicy.IsPolicyExpired == true)
-                {
-                    throw new InvalidOperationException("The snapshot does not have an active Unlocked immutability policy to remove.");
-                }
-
-                if (!string.Equals(currentPolicy.Type, "Unlocked", StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new InvalidOperationException("Only an active Unlocked immutability policy can be removed.");
-                }
+                SnapshotImmutabilityPolicyRules.ValidateRemove(currentSnapshot.ImmutabilityPolicy);
 
                 try
                 {

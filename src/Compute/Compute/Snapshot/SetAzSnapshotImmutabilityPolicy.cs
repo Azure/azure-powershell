@@ -2,13 +2,14 @@ using System;
 using System.Net;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotImmutabilityPolicy",
-        DefaultParameterSetName = DefaultParameterSet, SupportsShouldProcess = true)]
+        DefaultParameterSetName = "DefaultParameterSet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public class SetAzSnapshotImmutabilityPolicy : SnapshotImmutabilityPolicyBaseCmdlet
     {
@@ -35,35 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 Snapshot currentSnapshot = SnapshotsClient.Get(resourceGroupName, snapshotName);
                 ValidateSnapshotAccessState(currentSnapshot.SnapshotAccessState);
-
-                ImmutabilityPolicy currentPolicy = currentSnapshot.ImmutabilityPolicy;
-                if (currentPolicy != null && currentPolicy.IsPolicyExpired != true)
-                {
-                    if (!string.Equals(currentPolicy.Type, "Unlocked", StringComparison.OrdinalIgnoreCase)
-                        && !string.Equals(currentPolicy.Type, "Locked", StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new InvalidOperationException(
-                            $"The existing immutability policy type '{currentPolicy.Type}' is not supported for updates.");
-                    }
-
-                    if (string.Equals(currentPolicy.Type, "Locked", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (policyType != "Locked")
-                        {
-                            throw new InvalidOperationException("An active Locked immutability policy cannot be changed to Unlocked.");
-                        }
-
-                        if (!currentPolicy.ImmutabilityDurationDays.HasValue)
-                        {
-                            throw new InvalidOperationException("The active Locked immutability policy duration could not be read.");
-                        }
-
-                        if (DurationDays < currentPolicy.ImmutabilityDurationDays.Value)
-                        {
-                            throw new InvalidOperationException("An active Locked immutability policy duration cannot be shortened.");
-                        }
-                    }
-                }
+                SnapshotImmutabilityPolicyRules.ValidateSet(currentSnapshot.ImmutabilityPolicy, policyType, DurationDays);
 
                 if (policyType == "Unlocked")
                 {

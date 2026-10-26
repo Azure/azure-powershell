@@ -524,6 +524,9 @@ This Cmdlet can remove Restore Point Collection
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
 
+### [Remove-AzSnapshotImmutabilityPolicy](Remove-AzSnapshotImmutabilityPolicy.md)
+Expires an active Unlocked immutability policy on a snapshot.
+
 ### [Remove-AzSshKey](Remove-AzSshKey.md)
 Delete a SSH Public Key resource.
 
@@ -661,6 +664,9 @@ Sets the disk encryption key properties on a snapshot object.
 
 ### [Set-AzSnapshotImageReference](Set-AzSnapshotImageReference.md)
 Sets the image reference properties on a snapshot object.
+
+### [Set-AzSnapshotImmutabilityPolicy](Set-AzSnapshotImmutabilityPolicy.md)
+Sets or updates a snapshot immutability policy.
 
 ### [Set-AzSnapshotKeyEncryptionKey](Set-AzSnapshotKeyEncryptionKey.md)
 Sets the key encryption key properties on a snapshot object.
