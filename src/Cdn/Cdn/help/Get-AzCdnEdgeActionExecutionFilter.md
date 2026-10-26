@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionexecutionfilter
 schema: 2.0.0
@@ -15,15 +15,13 @@ Get EdgeActionExecutionFilter resource
 ### List (Default)
 ```
 Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ResourceGroupName <String>
- -ExecutionFilter <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
