@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added preview FlexProfile support with `PreferredVMSize` for virtual machine creation and updates, and FlexProfile details in `Get-AzVM` model output. Requires feature registration and regional availability.
 * Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
 * Updated Azure Compute cmdlets with two new features from API version 2026-04-01.
 
