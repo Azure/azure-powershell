@@ -18,10 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for the `RecordType` property on Traffic Manager profiles [#29711]
-    - Added `-RecordType` parameter to `New-AzTrafficManagerProfile` to allow specifying the DNS record type (`A`, `AAAA`, or `CNAME`) used for the profile's synthesized DNS records
-    - `RecordType` is now returned on the profile object from `Get-AzTrafficManagerProfile`, `New-AzTrafficManagerProfile`, and `Set-AzTrafficManagerProfile`
-    - Upgraded TrafficManager SDK to API version 2026-09-01
+* Added `New-AzTrafficManagerProfile -RecordType` (A, AAAA or CNAME), returned by profile get/create/set cmdlets [#29711].
+* Updated to API 2026-09-01.
 
 ## Version 1.4.0
 * Added ChangeSafety Support
