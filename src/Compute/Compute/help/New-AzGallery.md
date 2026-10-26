@@ -17,6 +17,8 @@ New-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Location
  [-Description <String>] [-Tag <Hashtable>] [-Permission <String>] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
  [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-EnableSoftDelete] [-SoftDeleteRetentionPeriodInDays <Int32>]
+ [-SoftDeleteGracePeriodInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -54,6 +56,14 @@ New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location 
 ```
 
 Create a gallery with a user-assigned managed identity.
+
+### Example 5
+```powershell
+New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location `
+    -EnableSoftDelete -SoftDeleteRetentionPeriodInDays 30 -SoftDeleteGracePeriodInDays 7
+```
+
+Create a gallery with soft delete enabled and custom retention and grace periods.
 
 ## PARAMETERS
 
@@ -99,6 +109,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableSoftDelete
+Enables soft delete for gallery image versions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -234,6 +259,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SoftDeleteGracePeriodInDays
+The number of days a simulated hard-deleted gallery image version remains recoverable. Requires -EnableSoftDelete.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionPeriodInDays
+The number of days a soft-deleted gallery image version is retained. Requires -EnableSoftDelete.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
