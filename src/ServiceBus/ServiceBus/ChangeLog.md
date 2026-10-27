@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.4.1
 * Updated default API to 2026-07-01-preview.
 
 ## Version 4.4.0

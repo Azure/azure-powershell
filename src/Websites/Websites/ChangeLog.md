@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Added Managed Instance identities, scripts, mounts, registry adapters, networking and Remote Desktop Protocol (RDP) to `New-AzAppServicePlan`/`Set-AzAppServicePlan`.
 * Added `Get-AzAppServicePlanManagedInstance` (worker IPs/status), `Restart-AzAppServicePlanManagedInstance` (recycling) and `Get-AzAppServicePlanRdpCredential` (secure RDP credentials).
 * Removed unsupported `New-AzStaticWebApp` identity/JSON sets.

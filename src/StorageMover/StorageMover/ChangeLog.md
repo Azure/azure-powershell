@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Updated to API 2026-05-01.
 * Added `Invoke-AzStorageMoverReconcileJobDefinition` for active runs.
 * Added cross-tenant transfers: `EnableCrossTenantTransfer`/`AllowedStorageAccount` on blob/SMB (Server Message Block) endpoints; `IsCrossTenantJob`, `CrossTenantEndpointTenantId`/`CrossTenantEndpointResourceId` on `New-AzStorageMoverJobDefinition`.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Updated to API 2026-08-01.
 * Added relationship listing, service group dependency management and subscription/resource group contains relationship listing.
 * Updated member relationship commands to accept the source service group ID and derive the target from the scoped resource.

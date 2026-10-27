@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Updated to API 2026-06-16-preview.
 * Added `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`.
 * Changed run command `RunAsPassword` from `String` to `SecureString`.

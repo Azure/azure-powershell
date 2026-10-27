@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.4.0
 * Updated replication vault Private Link to API 2026-05-01 and Network SDK to 2026-03-01/2026-01-01.
 * Added `CapacityProviderId` to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance`.
 * Added ExpressRoute link aggregation group (LAG) authorization/key cmdlets.

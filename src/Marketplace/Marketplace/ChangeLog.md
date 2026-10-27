@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * Made Az.Marketplace generally available.
 
 ## Version 0.6.0

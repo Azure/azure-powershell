@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.1
 * Removed non-public endpoints from the `Get-AzApiManagementNetworkStatus` example.
 
 ## Version 4.2.0

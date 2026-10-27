@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Restored the `ExtendedLocationName` parameter name.
 * Removed `InputObject` from `Get-AzAksArcNodepool` and `New-AzAksArcNodepool`.
 * Restricted `New-AzAksArcCluster` parameters `VnetId` and `EnableAzureHybridBenefit` to `CreateExpanded`; delegated network validation to the webhook.

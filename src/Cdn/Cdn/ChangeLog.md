@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.0
 * Updated Front Door to API 2026-10-01; added server TLS (Transport Layer Security) groups, post-quantum key exchange, origin certificate name validation and EdgeAction `ClientResponse`. Preserved existing features/URL signing compatibility.
 * Kept classic CDN on API 2026-04-01-preview and standalone EdgeAction on 2024-07-22-preview. Use Az.EdgeAction for the stable API.
 * Fixed Change Safety parameter forwarding.
