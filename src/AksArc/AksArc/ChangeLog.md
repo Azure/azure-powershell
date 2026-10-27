@@ -18,31 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed commands and added autorest tests.
-    - Undo ExtendedLocationName to CustomLocationID parameter rename in `src/AksArc/AksArc.Autorest/README.md`.
-    - Get-AzAksArcNodepool
-        - Removed `-InputObject` parameter.
-    - New-AzAksArcCluster
-        - Parameter `-VnetId` only available for `CreateExpanded` parameter set.
-        - Parameter `-EnableAzureHybridBenefit` only available for `CreateExpanded` parameter set.
-        - Removed redundant, complex logical network validation already done by webhook.
-    - New-AzAksArcNodepool
-        - Removed `-InputObject` parameter.
-    - New-AzAksArcVirtualNetwork
-        - Fixed `CreateViaJsonFilePath` and `CreateViaJsonString` parameter sets.
-    - Remove-AzAksArcNodepool
-        - Parameters `ClusterName`, `ResourceGroupName`, and `SubscriptionId` are part of `Delete` parameter set.
-        - Add work-around for `InputObject` parameter.
-    - Update-AzAksArcCluster
-        - Parameter `SubscriptionId` is mandatory.
-        - Parameters `MinCount`, `MaxCount`, and `EnableAutoScaling` are available for all parameter sets.
-        - Removed `return` statement after only updating the nodepool.
-    - Update-AzAksArcNodepool
-        - Parameters `ClusterName`, `ResourceGroupName`, `SubscriptionId`, and `Name` are part of `UpdateExpanded` parameter set.
-        - Removed `AutoScaling` parameter set.
-        - Added `MaxPod`, `OSSku`, and `OSType` parameters.
-        - Changed parameter set name from `CreateViaIdentityExpanded` to `UpdateViaIdentityExpanded`.
-        - Add work-around for `InputObject` parameter.
+* Restored the `ExtendedLocationName` parameter name.
+* Removed `InputObject` from `Get-AzAksArcNodepool` and `New-AzAksArcNodepool`.
+* Restricted `New-AzAksArcCluster` parameters `VnetId` and `EnableAzureHybridBenefit` to `CreateExpanded`; delegated network validation to the webhook.
+* Fixed JSON parameter sets in `New-AzAksArcVirtualNetwork`.
+* Added `ClusterName`, `ResourceGroupName` and `SubscriptionId` to `Remove-AzAksArcNodepool` parameter set `Delete`; fixed `InputObject` handling.
+* Made `Update-AzAksArcCluster -SubscriptionId` mandatory, enabled autoscaling parameters in all sets, and fixed early exit after nodepool updates.
+* Updated `Update-AzAksArcNodepool`:
+    - Added `ClusterName`, `ResourceGroupName`, `SubscriptionId` and `Name` to `UpdateExpanded`.
+    - Removed `AutoScaling`; renamed `CreateViaIdentityExpanded` to `UpdateViaIdentityExpanded`.
+    - Added `MaxPod`, `OSSku` and `OSType`; fixed `InputObject` handling.
 
 ## Version 0.1.4
 * Fixed module name in module metadata
