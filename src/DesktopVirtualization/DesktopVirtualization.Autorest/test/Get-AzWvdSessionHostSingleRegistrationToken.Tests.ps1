@@ -30,6 +30,9 @@ Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
                 -ExpirationTimeInUtc (Get-Date).ToUniversalTime().AddHours(2)
             $tokenList | Should -Not -BeNullOrEmpty
             $tokenList[0].Token | Should -Not -BeNullOrEmpty
+            foreach ($registrationToken in @($tokenList)) {
+                $registrationToken.Token.GetType().FullName | Should -Be 'System.String'
+            }
         } finally {
             Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `

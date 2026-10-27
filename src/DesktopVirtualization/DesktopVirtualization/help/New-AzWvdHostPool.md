@@ -1,5 +1,5 @@
 ---
-external help file: Az.DesktopVirtualization-help.xml
+external help file:
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 schema: 2.0.0
@@ -14,9 +14,9 @@ Create a host pool.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
- [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <String> -Name <String>
+ -PreferredAppGroupType <String> -ResourceGroupName <String> [-ManagementType <String>]
+ [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
  [-ConditionalRdpProperty <String>] [-CustomRdpProperty <String>] [-DeploymentScope <String>]
@@ -27,30 +27,30 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <String>] [-PublicUdp <String>] [-RegistrationInfoToken <String>]
  [-RegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-SsoClientId <String>]
- [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>] [-SsoadfsAuthority <String>]
- [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### FullScenarioCreate
-```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -HostPoolType <String>
- -LoadBalancerType <String> -Location <String> -PreferredAppGroupType <String> [-ManagementType <String>]
- [-DesktopAppGroupName <String>] [-WorkspaceName <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-SsoSecretType <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
+ [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FullScenarioCreate
+```
+New-AzWvdHostPool -HostPoolType <String> -LoadBalancerType <String> -Location <String> -Name <String>
+ -PreferredAppGroupType <String> -ResourceGroupName <String> [-DesktopAppGroupName <String>]
+ [-ManagementType <String>] [-SubscriptionId <String>] [-WorkspaceName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -1044,3 +1044,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

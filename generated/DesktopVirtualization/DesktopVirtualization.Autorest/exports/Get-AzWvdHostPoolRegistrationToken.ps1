@@ -27,7 +27,7 @@ Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtuali
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 #>
 function Get-AzWvdHostPoolRegistrationToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -148,7 +148,8 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

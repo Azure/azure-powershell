@@ -1,5 +1,5 @@
 ---
-external help file: Az.DesktopVirtualization-help.xml
+external help file:
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 schema: 2.0.0
@@ -15,21 +15,19 @@ Operation to list the RegistrationTokens associated with the HostPool.
 ### List (Default)
 ```
 Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Retrieve
 ```
 Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
 ```
 Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,8 +170,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 
 ## NOTES
 
 ## RELATED LINKS
+

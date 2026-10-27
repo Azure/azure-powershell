@@ -1,5 +1,5 @@
 ---
-external help file: Az.DesktopVirtualization-help.xml
+external help file:
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostsingleregistrationtoken
 schema: 2.0.0
@@ -15,29 +15,29 @@ Operation to list the scoped RegistrationTokens associated with the SessionHost.
 ### ListExpanded (Default)
 ```
 Get-AzWvdSessionHostSingleRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String[]>] -ExpirationTimeInUtc <DateTime>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SessionHostName <String> -ExpirationTimeInUtc <DateTime> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWvdSessionHostSingleRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String[]>] -Body <IScopedRegistrationTokenProperties>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SessionHostName <String> -Body <IScopedRegistrationTokenProperties> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListViaJsonFilePath
 ```
 Get-AzWvdSessionHostSingleRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SessionHostName <String> -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListViaJsonString
 ```
 Get-AzWvdSessionHostSingleRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String[]>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SessionHostName <String> -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,8 +241,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal
 
 ## NOTES
 
 ## RELATED LINKS
+

@@ -12,6 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzWvdHostPoolRegistrationToken' {
+    It 'Preserves the string registration token parameter' {
+        $tokenParameter = (Get-Command New-AzWvdHostPool).Parameters['RegistrationInfoToken']
+        $tokenParameter.ParameterType.FullName | Should -Be 'System.String'
+    }
+
     It 'Retrieve' {
         try{
             New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
@@ -38,6 +43,9 @@ Describe 'Get-AzWvdHostPoolRegistrationToken' {
                 -HostPoolName $env.HostPool `
 
             $regToken.Token | Should -not -BeNullOrEmpty
+            foreach ($registrationToken in @($regToken)) {
+                $registrationToken.Token.GetType().FullName | Should -Be 'System.String'
+            }
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `

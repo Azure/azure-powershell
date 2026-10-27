@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2026-08-01-preview.
+    - Preserved registration tokens as strings for existing host pool and session host scripts.
 
 ## Version 6.0.1
 * Upgraded API version to 2026-04-01-preview
