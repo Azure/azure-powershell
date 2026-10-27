@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Made Az.EdgeAction generally available on API 2026-10-01.
+* General availability for module Az.EdgeAction
 * Updated parameters; documented tag replacement, JSON-based clearing and immutable properties.
 * Tag updates preserve the default version; switch with `Switch-AzEdgeActionVersionDefault`.
 * Clarified subscriptions for code retrieval/default-version switching.
