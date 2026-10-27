@@ -15,7 +15,7 @@ Creates a configurable virtual machine object.
 
 ### DefaultParameterSet (Default)
 ```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
+New-AzVMConfig [-VMName] <String> [[-VMSize] <String>] [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
  [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
  [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
@@ -23,12 +23,13 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
- [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
-New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
+New-AzVMConfig [-VMName] <String> [[-VMSize] <String>] [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
  [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-EncryptionIdentity <String>]
  [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-MaxPrice <Double>] [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
@@ -37,11 +38,20 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-ProcessorMode <String>] [-SharedGalleryImageId <String>]
  [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-ZonePlacementPolicy <String>]
  [-IncludeZone <String[]>] [-ExcludeZone <String[]>] [-AlignRegionalDisksToVMZone]
- [-DisableCapacityReservationAssignment] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DisableCapacityReservationAssignment] [-PreferredVMSize <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVMConfig** cmdlet creates a configurable local virtual machine object for Azure. <br>
+
+Specify exactly one of **VMSize** or **PreferredVMSize** in either parameter set.
+**VMSize** selects a fixed size. **PreferredVMSize** sets `FlexProfile.PreferredVMSize` and leaves `HardwareProfile.VmSize` unset.
+With FlexProfile, Azure may deploy the preferred size or a compatible alternative based on capacity and placement.
+Pass the completed configuration to **New-AzVM -VM** to forward its FlexProfile.
+
+FlexProfile is a preview feature that requires registration of the `Microsoft.Compute/FlexProfileEnabled` subscription feature and availability in the target region.
+Supported VM families vary by region. Azure validates unsupported placements and empty preferred-size strings.
 
 The following cmdlets are used to set different properties of the virtual machine object: <br>
 - **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
@@ -239,6 +249,21 @@ New-AzVM -ResourceGroupName "myRG" -Location "eastus" -VM $vmConfig;
 ```
 
 This example creates a virtual machine configuration object which is explicitly opted out from any capacity reservation assignment, so the virtual machine consumes publicly available capacity instead of implicitly or explicitly consuming a capacity reservation.
+
+### Example 7: Configure and deploy a VM with a preferred size
+```powershell
+$cred = Get-Credential
+$nic = Get-AzNetworkInterface -ResourceGroupName "myRG" -Name "myNic"
+$vmConfig = New-AzVMConfig -VMName "myFlexVM" -PreferredVMSize "Standard_D4s_v5"
+$vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName "myFlexVM" -Credential $cred
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version "latest"
+$vmConfig = Set-AzVMOSDisk -VM $vmConfig -CreateOption "FromImage" -StorageAccountType "Standard_LRS"
+$vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+New-AzVM -ResourceGroupName "myRG" -Location $nic.Location -VM $vmConfig
+```
+
+This example uses an existing, unattached network interface in a region enabled for the registered FlexProfile preview.
+It supplies **PreferredVMSize** instead of **VMSize**. **New-AzVM -VM** forwards the configured FlexProfile without a separate preferred-size parameter.
 
 ## PARAMETERS
 
@@ -593,6 +618,25 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PreferredVMSize
+Specifies the preferred VM size for the preview FlexProfile, for example `Standard_D4s_v5`.
+Azure may choose a compatible alternative based on capacity and placement.
+Specify exactly one of **PreferredVMSize** or **VMSize**.
+This parameter sets `FlexProfile.PreferredVMSize` and leaves `HardwareProfile.VmSize` unset.
+It requires preview feature registration and regional availability. Azure validates unsupported placements and empty strings.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Priority
 The priority for the virtual machine.  Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'.
 'Regular' is for regular virtual machine.
@@ -749,14 +793,16 @@ Accept wildcard characters: False
 ```
 
 ### -VMSize
-Specifies the size for the virtual machine. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. 
+Specifies the fixed size for the virtual machine. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.
+Although optional in parameter metadata, exactly one of **VMSize** or **PreferredVMSize** must be supplied.
+Do not combine this parameter with **PreferredVMSize**.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
