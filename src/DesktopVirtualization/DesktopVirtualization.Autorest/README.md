@@ -70,6 +70,16 @@ directive:
   - from: swagger-document
     where: $.definitions.RegistrationTokenMinimal.properties.token
     transform: delete $.format;
+  # Retain legacy token-list OutputType metadata without changing token-item pipeline output.
+  - from:
+      - GetAzWvdHostPoolRegistrationToken_List.cs
+      - GetAzWvdSessionHostSingleRegistrationToken_List.cs
+      - GetAzWvdSessionHostSingleRegistrationToken_ListExpanded.cs
+      - GetAzWvdSessionHostSingleRegistrationToken_ListViaJsonFilePath.cs
+      - GetAzWvdSessionHostSingleRegistrationToken_ListViaJsonString.cs
+    where: $
+    transform: >-
+      $ = $.replace('[global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal))]', '[global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList))]');
   - where:
       verb: Update
       subject: Application

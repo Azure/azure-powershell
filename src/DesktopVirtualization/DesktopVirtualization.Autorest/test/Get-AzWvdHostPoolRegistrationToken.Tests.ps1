@@ -12,6 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzWvdHostPoolRegistrationToken' {
+    It 'Preserves the legacy list output declaration' {
+        $outputTypes = @((Get-Command Get-AzWvdHostPoolRegistrationToken).OutputType | ForEach-Object { $_.Name })
+        $outputTypes | Should -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList'
+        $outputTypes | Should -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo'
+        $outputTypes | Should -Not -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal'
+    }
+
     It 'Preserves the string registration token parameter' {
         $tokenParameter = (Get-Command New-AzWvdHostPool).Parameters['RegistrationInfoToken']
         $tokenParameter.ParameterType.FullName | Should -Be 'System.String'

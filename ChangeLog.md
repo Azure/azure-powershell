@@ -1,6 +1,7 @@
 ## Upcoming Release
 #### Az.DesktopVirtualization
 * Upgraded API version to 2026-08-01-preview while preserving string registration tokens for existing scripts.
+* Preserved the declared return types of registration-token list commands without changing their token-item output.
 
 ## 16.2.0 - August 2026
 #### Az.Accounts 5.5.2
