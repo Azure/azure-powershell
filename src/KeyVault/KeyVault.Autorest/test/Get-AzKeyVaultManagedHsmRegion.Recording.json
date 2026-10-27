@@ -1,17 +1,17 @@
 {
-  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64840/regions?api-version=2026-05-15+1": {
+  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64840/regions?api-version=2026-05-15",
+      "RequestUri": "https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "2cca4b7e-10fd-42ef-a1f6-fd02d6ae6869" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
         "CommandName": [ "Get-AzKeyVaultManagedHsmRegion" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsmRegion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.6.7", "Az.KeyVault/6.3.1" ],
+        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.6.9", "Az.KeyVault/6.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "2cca4b7e-10fd-42ef-a1f6-fd02d6ae6869" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
         "x-ms-keyvault-service-version": [ "2.2.1231.0" ],
-        "x-ms-request-id": [ "9f33c7a3-a904-4911-a62c-858107941982" ],
+        "x-ms-request-id": [ "3751431f-0eed-446b-87f9-a71c5cbe0bfd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a1b2c3d4-0000-4000-8000-000000000002/eastus/fa05b29e-aa4f-4d03-87de-0c0dffe0c2b5" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a1b2c3d4-0000-4000-8000-000000000002/eastus/0ef0a6b1-02f3-4bde-8da5-a12937784967" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "b4b15945-b1ec-42a7-94e3-c49cb3e600b6" ],
-        "x-ms-routing-request-id": [ "EASTUS:20261021T140431Z:b4b15945-b1ec-42a7-94e3-c49cb3e600b6" ],
+        "x-ms-correlation-request-id": [ "f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261027T151515Z:f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A70593CC680346B592858DEF363FA4C0 Ref B: DUB241062306054 Ref C: 2026-10-21T14:04:30Z" ],
-        "Date": [ "Wed, 21 Oct 2026 14:04:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 48B3F39722E847ED818CE39083EFA765 Ref B: DUB241062305062 Ref C: 2026-10-27T15:15:14Z" ],
+        "Date": [ "Tue, 27 Oct 2026 15:15:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "147" ],
