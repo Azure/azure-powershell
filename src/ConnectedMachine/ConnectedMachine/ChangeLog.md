@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Upgraded API version to 2026-06-16-preview
 * Added new cmdlets `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`
 * Changed the type of `RunAsPassword` on run command cmdlets from `String` to `SecureString`

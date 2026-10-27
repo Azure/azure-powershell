@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Fixed commands and added autorest tests.
     - Undo ExtendedLocationName to CustomLocationID parameter rename in `src/AksArc/AksArc.Autorest/README.md`.
     - Get-AzAksArcNodepool

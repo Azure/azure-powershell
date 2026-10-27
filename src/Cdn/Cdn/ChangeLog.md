@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.0
 * Upgraded Azure Front Door to stable API version 2026-10-01.
     - Kept classic CDN resources on API version 2026-04-01-preview with their existing functionality.
     - Added server TLS group configuration, including post-quantum key exchange groups, and origin certificate subject name validation settings.

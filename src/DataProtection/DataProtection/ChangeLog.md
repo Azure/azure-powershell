@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.1
 * Added support for Azure Cosmos DB item level restore in `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`
     - Use `-ResourceIdentifier` with database names or database/container names to select the resources to restore
 * Fixed an error in `Initialize-AzDataProtectionRestoreRequest` when `-UseSystemAssignedIdentity` or `-UserAssignedIdentityArmId` is specified

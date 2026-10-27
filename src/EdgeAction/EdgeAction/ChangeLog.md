@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability for module Az.EdgeAction
 * Targeted version 0.2.0, retaining the module's pre-1.0 status.
 * Updated EdgeAction cmdlets and help to the stable 2026-10-01 API.
