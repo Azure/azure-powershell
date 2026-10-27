@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Operation to list the scoped RegistrationTokens associated with the SessionHost.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/listSingleSessionHostRegistrationTokens", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/listSingleSessionHostRegistrationTokens", ApiVersion = "2026-08-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.NotSuggestDefaultParameterSet]
     public partial class GetAzWvdSessionHostSingleRegistrationToken_ListViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener,
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
-                // nested-array / value / nextLink
+                // pageable / value / nextLink
                 if (null != result.Value)
                 {
                     if (0 == _responseSize && 1 == result.Value.Count)
