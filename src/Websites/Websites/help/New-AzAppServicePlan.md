@@ -239,7 +239,7 @@ Omit this parameter to use the service default.
 This setting is independent of **-AsJob**.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

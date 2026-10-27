@@ -198,7 +198,7 @@ Omit this parameter to preserve the current setting.
 This parameter can also override the setting on a plan passed through the pipeline and is independent of **-AsJob**.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

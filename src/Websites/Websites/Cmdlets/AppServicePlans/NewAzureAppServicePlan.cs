@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public bool PerSiteScaling { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enable or disable asynchronous scaling when there are insufficient workers to scale synchronously. Requires a dedicated App Service plan.")]
-        public bool AsyncScalingEnabled { get; set; }
+        public bool? AsyncScalingEnabled { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Specify this, App Service Plan will run Windows Containers")]
         public SwitchParameter HyperV { get; set; }
@@ -130,11 +129,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Location = Location,
                 Sku = sku,
                 PerSiteScaling = PerSiteScaling,
-                AsyncScalingEnabled = this.IsParameterBound(c => c.AsyncScalingEnabled) ? AsyncScalingEnabled : (bool?)null,
                 IsXenon = HyperV.IsPresent,
                 Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag),
                 Reserved = Linux.IsPresent
             };
+
+            if (AsyncScalingEnabled.HasValue)
+            {
+                appServicePlan.AsyncScalingEnabled = AsyncScalingEnabled.Value;
+            }
 
             if (ManagedInstance.IsPresent)
             {

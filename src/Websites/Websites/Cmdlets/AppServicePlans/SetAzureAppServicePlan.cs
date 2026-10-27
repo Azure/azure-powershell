@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public bool PerSiteScaling { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Enable or disable asynchronous scaling when there are insufficient workers to scale synchronously. Requires a dedicated App Service plan.")]
-        public bool AsyncScalingEnabled { get; set; }
+        public bool? AsyncScalingEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
             }
 
-            if (this.IsParameterBound(c => c.AsyncScalingEnabled))
+            if (AsyncScalingEnabled.HasValue)
             {
-                AppServicePlan.AsyncScalingEnabled = AsyncScalingEnabled;
+                AppServicePlan.AsyncScalingEnabled = AsyncScalingEnabled.Value;
             }
 
             if (AppServicePlan.IsCustomMode == true && AppServicePlan.PerSiteScaling == true)
