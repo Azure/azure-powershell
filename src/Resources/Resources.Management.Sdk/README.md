@@ -1,6 +1,11 @@
 # Overall
 This directory contains management plane service clients of Az.Resources module.
 
+## Request timeout
+`NewResourceManagerSdkClient` sets a five-minute HTTP request timeout on the SDK clients it creates, including clients for other subscriptions. Deployment validation can take up to two minutes before returning an asynchronous response. This override applies to all deployment scopes without changing the generated SDK's defaults.
+
+SDK clients supplied to the wrapper through its client-injection constructor retain their existing timeouts, as do standalone SDK clients. Cancellation tokens continue to allow requests to be canceled before the timeout elapses.
+
 ## Run Generation
 In this directory, run AutoRest:
 ```

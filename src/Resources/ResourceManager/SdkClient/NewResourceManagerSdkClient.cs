@@ -106,9 +106,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         /// <param name="context">Profile containing resources to manipulate</param>
         public NewResourceManagerSdkClient(IAzureContext context)
-            : this(
-                AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+            var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                context, AzureEnvironment.Endpoint.ResourceManager);
+            // Validation can take two minutes before returning an asynchronous response.
+            client.HttpClient.Timeout = TimeSpan.FromMinutes(5);
+            this.ResourceManagementClient = client;
             this.azureContext = context;
         }
 
@@ -145,6 +148,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         context: this.azureContext,
                         endpoint: AzureEnvironment.Endpoint.ResourceManager);
 
+                    sdkClient.HttpClient.Timeout = TimeSpan.FromMinutes(5);
                     sdkClient.SubscriptionId = subscriptionId;
 
                     resourceManagementClientCache[subscriptionId] = sdkClient;

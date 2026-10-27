@@ -1,3 +1,7 @@
+## Upcoming Release
+#### Az.Resources
+* Increased the request timeout for SDK clients created by the resource management cmdlet wrapper from 100 seconds to five minutes to prevent premature timeouts during large deployment validations at all deployment scopes. Fixed issue [#22003].
+
 ## 16.4.0 - October 2026
 #### Az.Compute 11.10.0
 * Added '-ScheduleProfileStart' and '-MinimumCommitmentDayCount' parameters to 'New-AzCapacityReservation' to create Future Capacity Reservations, and surfaced the read-only 'ScheduleProfile' (including 'ModifiableUntil') and instance view 'ReservationStateInfo' on 'Get-AzCapacityReservation' output.
