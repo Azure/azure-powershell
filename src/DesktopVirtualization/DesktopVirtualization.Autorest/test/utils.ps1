@@ -1,3 +1,100 @@
+function New-TestSessionHostConfigurationHostPool {
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [Parameter(Mandatory)] $TestEnvironment,
+        [Parameter(Mandatory)] [string] $Name
+    )
+
+    if (-not $PSCmdlet.ShouldProcess($Name, 'Create the session host configuration test host pool')) { return }
+    $hostPool = New-AzWvdHostPool -SubscriptionId $TestEnvironment.SubscriptionId `
+        -ResourceGroupName $TestEnvironment.ResourceGroup `
+        -Name $Name -Location $TestEnvironment.Location `
+        -HostPoolType 'Pooled' -LoadBalancerType 'DepthFirst' `
+        -PreferredAppGroupType 'Desktop' -ManagementType 'Automated' `
+        -IdentityType 'SystemAssigned' -Confirm:$false
+
+    if (-not $env:AzPSAutorestTestPlaybackMode) {
+        $null = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
+            -RoleDefinitionName 'Desktop Virtualization Virtual Machine Contributor' `
+            -Scope $TestEnvironment.ResourceGroupArmPath
+        $null = New-AzRoleAssignment -ObjectId $hostPool.IdentityPrincipalId `
+            -RoleDefinitionName 'Key Vault Secrets User' `
+            -Scope $TestEnvironment.KeyVaultPersistentArmPath
+        $null = [Threading.Tasks.Task]::Delay([TimeSpan]::FromSeconds(60)).GetAwaiter().GetResult()
+    }
+    return $hostPool
+}
+
+function New-TestSessionHostConfiguration {
+    [CmdletBinding(SupportsShouldProcess)]
+    param(
+        [Parameter(Mandatory)] $TestEnvironment,
+        [Parameter(Mandatory)] [string] $HostPoolName,
+        [Parameter(Mandatory)] [ValidateSet('Managed', 'Ephemeral')] [string] $DiskMode
+    )
+
+    if (-not $PSCmdlet.ShouldProcess($HostPoolName, 'Create the session host configuration test baseline')) { return }
+    $parameters = @{
+        SubscriptionId = $TestEnvironment.SubscriptionId
+        ResourceGroupName = $TestEnvironment.ResourceGroup
+        HostPoolName = $HostPoolName
+        DomainInfoJoinType = 'AzureActiveDirectory'
+        ImageInfoImageType = 'Marketplace'
+        NetworkInfoSubnetId = $TestEnvironment.VnetSubnetId
+        VMAdminCredentialsPasswordKeyvaultSecretUri = $TestEnvironment.VMAdminCredentialsPasswordKeyvaultSecretUri
+        VMAdminCredentialsUserNameKeyvaultSecretUri = $TestEnvironment.VMAdminCredentialsUserNameKeyvaultSecretUri
+        VMNamePrefix = 'createTest'
+        VMSizeId = 'Standard_D2s_v3'
+        MarketplaceInfoExactVersion = $TestEnvironment.MarketplaceImageVersion
+        MarketplaceInfoOffer = $TestEnvironment.MarketplaceInfoOffer
+        MarketplaceInfoPublisher = $TestEnvironment.MarketplaceInfoPublisher
+        MarketplaceInfoSku = $TestEnvironment.MarketplaceInfoSku
+        SecurityInfoSecureBootEnabled = $true
+        SecurityInfoType = 'TrustedLaunch'
+        SecurityInfoVTpmEnabled = $true
+        VmLocation = $TestEnvironment.Location
+        VmResourceGroup = $TestEnvironment.ResourceGroup
+        VmTag = @{
+            'cm-resource-parent' = '/subscriptions/' + $TestEnvironment.SubscriptionId + '/resourceGroups/' +
+                $TestEnvironment.ResourceGroup + '/providers/Microsoft.DesktopVirtualization/hostPools/' + $HostPoolName
+        }
+    }
+    if ($DiskMode -eq 'Managed') {
+        $parameters.ManagedDiskType = 'Standard_LRS'
+    } else {
+        $parameters.DiffDiskSettingOption = 'Local'
+        $parameters.DiffDiskSettingPlacement = 'TempDisk'
+    }
+    New-AzWvdSessionHostConfiguration @parameters -Confirm:$false
+}
+
+function Wait-TestHostPoolApplicationGroupRemoval {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)] [string] $SubscriptionId,
+        [Parameter(Mandatory)] [string] $ResourceGroupName,
+        [Parameter(Mandatory)] [string] $HostPoolName,
+        [ValidateRange(1, 120)] [int] $MaxAttempts = 30,
+        [ValidateRange(0, 30)] [int] $PollIntervalSeconds = 2
+    )
+
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        $hostPool = Get-AzWvdHostPool -SubscriptionId $SubscriptionId `
+            -ResourceGroupName $ResourceGroupName -Name $HostPoolName -ErrorAction Stop
+        $referencesProperty = $hostPool.PSObject.Properties['ApplicationGroupReference']
+        if ($null -eq $referencesProperty) {
+            throw 'The host pool response does not expose application group references.'
+        }
+        $references = @($referencesProperty.Value | Where-Object { -not [string]::IsNullOrWhiteSpace([string] $_) })
+        if ($references.Count -eq 0) { return }
+        if ($attempt -lt $MaxAttempts -and $PollIntervalSeconds -gt 0 -and -not $env:AzPSAutorestTestPlaybackMode) {
+            $null = [Threading.Tasks.Task]::Delay([TimeSpan]::FromSeconds($PollIntervalSeconds)).GetAwaiter().GetResult()
+        }
+    }
+
+    throw "Application group associations remain on test host pool '$HostPoolName'; host pool deletion was not attempted."
+}
+
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})

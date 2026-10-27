@@ -44,14 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 818c76ff8814566df4d5f312d7a1997c173a6746
+commit: 68175b2c1a4eb91e3ca626a44e1608586fffbf4d
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
-# Pin the August preview specification from the AVD-RDDAM fork for reproducible generation.
 input-file:
-- https://github.com/AVD-RDDAM/avd-rest-api-specs/blob/$(commit)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/preview/2026-08-01-preview/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/preview/2026-04-01-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -62,24 +61,6 @@ disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:
-  # Preserve legacy string registration-token properties without removing secret metadata.
-  - from: swagger-document
-    where: $.definitions.RegistrationInfo.properties.token
-    transform: delete $.format;
-  # Preserve string token-list items for existing host-pool and session-host scripts.
-  - from: swagger-document
-    where: $.definitions.RegistrationTokenMinimal.properties.token
-    transform: delete $.format;
-  # Retain legacy token-list OutputType metadata without changing token-item pipeline output.
-  - from:
-      - GetAzWvdHostPoolRegistrationToken_List.cs
-      - GetAzWvdSessionHostSingleRegistrationToken_List.cs
-      - GetAzWvdSessionHostSingleRegistrationToken_ListExpanded.cs
-      - GetAzWvdSessionHostSingleRegistrationToken_ListViaJsonFilePath.cs
-      - GetAzWvdSessionHostSingleRegistrationToken_ListViaJsonString.cs
-    where: $
-    transform: >-
-      $ = $.replace('[global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal))]', '[global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList))]');
   - where:
       verb: Update
       subject: Application

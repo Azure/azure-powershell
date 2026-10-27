@@ -15,10 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWvdSessionHostConfig
 }
 
 Describe 'Update-AzWvdSessionHostConfiguration' {
+    BeforeAll {
+        $managedHostPoolName = $env.HostPool + '-shc-update-managed'
+        $ephemeralHostPoolName = $env.HostPool + '-shc-update-ephemeral'
+        $configurationHostPoolNames = @($managedHostPoolName, $ephemeralHostPoolName)
+        foreach ($hostPoolName in $configurationHostPoolNames) {
+            $hostPool = New-TestSessionHostConfigurationHostPool -TestEnvironment $env -Name $hostPoolName
+        }
+    }
+
     It 'UpdateExpanded' {    
+        $configuration = New-TestSessionHostConfiguration -TestEnvironment $env -HostPoolName $managedHostPoolName -DiskMode Managed
         $configuration = Update-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
-        -ResourceGroupName $env.ResourceGroupPersistent `
-        -HostPoolName $env.SHMHostPoolPersistent `
+        -ResourceGroupName $env.ResourceGroup `
+        -HostPoolName $managedHostPoolName `
         -VMNamePrefix $env.SHMSessionHostNamePrefix `
         -MarketplaceInfoExactVersion $env.MarketplaceImageVersion
 
@@ -26,19 +36,25 @@ Describe 'Update-AzWvdSessionHostConfiguration' {
     }
 
     It 'UpdateExpanded_EphemeralOSDisk' {
-        # An ephemeral OS disk (DiffDiskSettingOption 'Local') can only be backed by a Premium_LRS or
-        # StandardSSD_LRS managed disk. Combining it with Standard_LRS raises MultipleDiskTypesSpecified,
-        # so the DiffDiskSettingPlacement scenario is validated separately from the case above.
+        $configuration = New-TestSessionHostConfiguration -TestEnvironment $env -HostPoolName $ephemeralHostPoolName -DiskMode Ephemeral
         $configuration = Update-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
-        -ResourceGroupName $env.ResourceGroupPersistent `
-        -HostPoolName $env.SHMHostPoolPersistent `
+        -ResourceGroupName $env.ResourceGroup `
+        -HostPoolName $ephemeralHostPoolName `
         -VMNamePrefix $env.SHMSessionHostNamePrefix `
         -MarketplaceInfoExactVersion $env.MarketplaceImageVersion `
-        -ManagedDiskType "Premium_LRS" `
         -DiffDiskSettingOption "Local" `
         -DiffDiskSettingPlacement "TempDisk"
 
         $configuration.DiffDiskSettingOption | Should -Be "Local"
         $configuration.DiffDiskSettingPlacement | Should -Be "TempDisk"
+        $configuration.ManagedDiskType | Should -BeNullOrEmpty
+    }
+
+    AfterAll {
+        foreach ($hostPoolName in $configurationHostPoolNames) {
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroup `
+                -Name $hostPoolName
+        }
     }
 }

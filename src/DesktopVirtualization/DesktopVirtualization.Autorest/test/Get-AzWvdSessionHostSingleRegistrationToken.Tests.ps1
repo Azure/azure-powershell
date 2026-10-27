@@ -15,12 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostSingleReg
 }
 
 Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
-    It 'Preserves the legacy list output declaration' {
-        $outputTypes = @((Get-Command Get-AzWvdSessionHostSingleRegistrationToken).OutputType | ForEach-Object { $_.Name })
-        $outputTypes | Should -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenList'
-        $outputTypes | Should -Not -Contain 'Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationTokenMinimal'
-    }
-
     It 'Retrieve' {
         try {
             New-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
@@ -36,9 +30,6 @@ Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
                 -ExpirationTimeInUtc (Get-Date).ToUniversalTime().AddHours(2)
             $tokenList | Should -Not -BeNullOrEmpty
             $tokenList[0].Token | Should -Not -BeNullOrEmpty
-            foreach ($registrationToken in @($tokenList)) {
-                $registrationToken.Token.GetType().FullName | Should -Be 'System.String'
-            }
         } finally {
             Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `

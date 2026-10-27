@@ -1,17 +1,17 @@
 {
-  "Get-AzWvdSessionHostManagement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default?api-version=2026-04-01-preview+1": {
+  "Get-AzWvdSessionHostManagement+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default?api-version=2026-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default?api-version=2026-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "157" ],
-        "x-ms-client-request-id": [ "f20276fe-7888-4f6c-8501-1057f3208700" ],
+        "x-ms-unique-id": [ "159" ],
+        "x-ms-client-request-id": [ "862f1c69-63bf-465d-ae6f-328c9879c6ff" ],
         "CommandName": [ "Get-AzWvdSessionHostManagement" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagement_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.DesktopVirtualization/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.6.9", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,32 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=8666cc830dd47c2d7654a02aa9175f1bc17fa37c91b6b6552457574e91027a6e;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=8666cc830dd47c2d7654a02aa9175f1bc17fa37c91b6b6552457574e91027a6e;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/ef908103-a528-406a-849f-be71c929634e" ],
+        "Set-Cookie": [ "ARRAffinity=cf89e5fd1fabcbf5c27d4913344829c641e55d3d45fdb4a5c5491a1449f022d1;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=cf89e5fd1fabcbf5c27d4913344829c641e55d3d45fdb4a5c5491a1449f022d1;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/bf25fb9c-7854-41ac-99ba-1cf82384b5b0" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9850" ],
-        "X-Rate-Limit-Reset": [ "2026-08-06T06:11:42.0688375Z" ],
+        "X-Rate-Limit-Remaining": [ "9705" ],
+        "X-Rate-Limit-Reset": [ "2026-10-27T11:30:56.6892256Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0TWFuYWdlbWVudHMvZGVmYXVsdA==" ],
-        "x-ms-lamport-ts": [ "-9223372036854775757" ],
-        "x-ms-correlation-id": [ "ddf25114-e689-49d1-91c2-b9a5fdf5c217" ],
-        "x-ms-request-id": [ "f20276fe-7888-4f6c-8501-1057f3208700" ],
+        "x-ms-lamport-ts": [ "-9223372036854706314" ],
+        "x-ms-correlation-id": [ "bdc1ec2d-a56b-4920-9d5f-6b02a645ac58" ],
+        "x-ms-request-id": [ "862f1c69-63bf-465d-ae6f-328c9879c6ff" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
-        "x-ms-correlation-request-id": [ "72725310-58d2-4b01-a3db-795bfc0a697d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260806T060822Z:72725310-58d2-4b01-a3db-795bfc0a697d" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-correlation-request-id": [ "766e607d-311a-4163-a73b-a7792298eadd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20261027T113053Z:766e607d-311a-4163-a73b-a7792298eadd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E756AF49102E4AFEB6DE7C47D6E1000C Ref B: PNQ231110908034 Ref C: 2026-08-06T06:08:19Z" ],
-        "Date": [ "Thu, 06 Aug 2026 06:08:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 56C26305BEAD4359BD29A55BF0AF10E0 Ref B: SN4AA2022301039 Ref C: 2026-10-27T11:30:52Z" ],
+        "Date": [ "Tue, 27 Oct 2026 11:30:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "600" ],
+        "Content-Length": [ "597" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostManagements\",\"properties\":{\"provisioningState\":\"Succeeded\",\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}",
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostManagements/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostManagements\",\"properties\":{\"provisioningState\":\"Failed\",\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}",
       "isContentBase64": false
     }
   }
