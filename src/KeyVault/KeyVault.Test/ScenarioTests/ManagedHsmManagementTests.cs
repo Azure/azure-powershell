@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedHsmWithStandardB1v2Sku()
+        {
+            TestRunner.RunTestScript("Test-ManagedHsmWithStandardB1v2Sku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedHsmSoftDelete()
         {
             TestRunner.RunTestScript("Test-ManagedHsmSoftDelete");
