@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to API 2026-05-01.
+* Added `Invoke-AzStorageMoverReconcileJobDefinition` for active runs.
+* Added cross-tenant transfers: `EnableCrossTenantTransfer`/`AllowedStorageAccount` on blob/SMB (Server Message Block) endpoints; `IsCrossTenantJob`, `CrossTenantEndpointTenantId`/`CrossTenantEndpointResourceId` on `New-AzStorageMoverJobDefinition`.
+* Added endpoint `EndpointKind`, NFS (Network File System) `NFSv4_1`, and `SourceType` FSX-EFS (NFS)/FSX-SMB (SMB).
+* Added hourly `ScheduleRepeatInterval`, `SyncMode`/`MoverSyncedUntil` to job creation/updates and job type `OnPremToCloudAgentLess`.
 
 ## Version 2.1.0
 * Upgraded API version to 2025-12-01

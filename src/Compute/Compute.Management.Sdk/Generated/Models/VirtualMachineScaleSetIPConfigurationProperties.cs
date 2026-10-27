@@ -40,6 +40,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Possible values are: &#39;IPv4&#39; and &#39;IPv6&#39;.
         /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
 
+        /// <param name="privateIPAddressPrefixLength">The private IP address prefix length. If specified and the allocation
+        /// method is dynamic, the service will allocate a CIDR block instead of a
+        /// single IP address.
+        /// </param>
+
         /// <param name="applicationGatewayBackendAddressPools">Specifies an array of references to backend address pools of application
         /// gateways. A scale set can reference backend address pools of multiple
         /// application gateways. Multiple scale sets cannot use the same application
@@ -60,13 +65,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// one internal load balancer. Multiple scale sets cannot use the same basic
         /// sku load balancer.
         /// </param>
-        public VirtualMachineScaleSetIPConfigurationProperties(ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), string privateIPAddressVersion = default(string), System.Collections.Generic.IList<SubResource> applicationGatewayBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> applicationSecurityGroups = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerInboundNatPools = default(System.Collections.Generic.IList<SubResource>))
+        public VirtualMachineScaleSetIPConfigurationProperties(ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), string privateIPAddressVersion = default(string), int? privateIPAddressPrefixLength = default(int?), System.Collections.Generic.IList<SubResource> applicationGatewayBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> applicationSecurityGroups = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerInboundNatPools = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.Subnet = subnet;
             this.Primary = primary;
             this.PublicIPAddressConfiguration = publicIPAddressConfiguration;
             this.PrivateIPAddressVersion = privateIPAddressVersion;
+            this.PrivateIPAddressPrefixLength = privateIPAddressPrefixLength;
             this.ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
             this.ApplicationSecurityGroups = applicationSecurityGroups;
             this.LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
@@ -106,6 +112,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateIPAddressVersion")]
         public string PrivateIPAddressVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the private IP address prefix length. If specified and the
+        /// allocation method is dynamic, the service will allocate a CIDR block
+        /// instead of a single IP address.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateIPAddressPrefixLength")]
+        public int? PrivateIPAddressPrefixLength {get; set; }
 
         /// <summary>
         /// Gets or sets specifies an array of references to backend address pools of
@@ -154,6 +168,17 @@ namespace Microsoft.Azure.Management.Compute.Models
                 this.PublicIPAddressConfiguration.Validate();
             }
 
+            if (this.PrivateIPAddressPrefixLength != null)
+            {
+                if (this.PrivateIPAddressPrefixLength > 128)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "PrivateIPAddressPrefixLength", 128);
+                }
+                if (this.PrivateIPAddressPrefixLength < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PrivateIPAddressPrefixLength", 1);
+                }
+            }
 
 
 

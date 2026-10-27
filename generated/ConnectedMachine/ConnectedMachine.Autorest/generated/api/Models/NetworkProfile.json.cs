@@ -100,14 +100,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return container;
             }
-            if (null != this._networkInterface)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
-                foreach( var __x in this._networkInterface )
+                if (null != this._networkInterface)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._networkInterface )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("networkInterfaces",__w);
                 }
-                container.Add("networkInterfaces",__w);
             }
             AfterToJson(ref container);
             return container;

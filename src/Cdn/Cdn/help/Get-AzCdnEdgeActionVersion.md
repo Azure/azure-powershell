@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeactionversion
 schema: 2.0.0
@@ -20,8 +20,8 @@ Get-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> 
 
 ### Get
 ```
-Get-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCdnEdgeActionVersion -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Cosmos DB item-level restore to `New-AzDataProtectionRestoreConfigurationClientObject` and `Initialize-AzDataProtectionRestoreRequest`; select databases or database/container pairs with `-ResourceIdentifier`.
+* Fixed `Initialize-AzDataProtectionRestoreRequest` with `-UseSystemAssignedIdentity` or `-UserAssignedIdentityArmId`.
 
 ## Version 3.1.0
 * Upgraded the DataProtection API version to `2026-06-01` (general availability), which natively models the Azure Elastic SAN (Storage Area Network) backup and restore types

@@ -28,12 +28,12 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 78c88e6f990bff6c87db8309cd804941538bffdd
+commit: f89d3d95044e14c679785fa9e0d28c7c97af870a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2025-12-01/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/StorageMover/stable/2026-05-01/storagemover.json
 
 # For new RP, the version is 0.1.0
 module-version: 2.0.0
@@ -90,6 +90,13 @@ directive:
     set:
       verb: Stop
       subject: JobDefinition
+  # Rename Invoke-AzStorageMoverReconcileJobDefinitionJob -> Invoke-AzStorageMoverReconcileJobDefinition
+  # to match the Start/Stop job definition cmdlets, which also act on the job definition's running job
+  - where:
+      verb: Invoke
+      subject: ReconcileJobDefinitionJob
+    set:
+      subject: ReconcileJobDefinition
   # Remove New-AzStorageMoverAgent
   - where:
       verb: New 
@@ -120,6 +127,11 @@ directive:
       verb: Update
       subject: Connection
     hide: true
+  # The Connections_Delete description contains an embedded newline that the generator emits as a literal "\n" in help;
+  # use a single-line description so the generated help renders correctly
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}"].delete
+    transform: $['description'] = "Deletes a Connection resource. Returns 409 if there are active jobs using this connection."
   - where:
       model-name: Agent
       property-name: NumberOfCore

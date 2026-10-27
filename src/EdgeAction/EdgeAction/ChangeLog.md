@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* General availability for module Az.EdgeAction
+* Updated parameters; documented tag replacement, JSON-based clearing and immutable properties.
+* Tag updates preserve the default version; switch with `Switch-AzEdgeActionVersionDefault`.
+* Clarified subscriptions for code retrieval/default-version switching.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified
@@ -31,4 +35,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.EdgeAction
-

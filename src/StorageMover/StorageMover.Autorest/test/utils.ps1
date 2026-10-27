@@ -156,9 +156,43 @@ function setupEnv() {
     # Pre-create a connection on the initial Storage Mover so Get-AzStorageMoverConnection tests can find it.
     New-AzStorageMoverConnection -Name $env.ConnectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId -Description "setupEnv connection" | Out-Null
 
+    # API 2026-05-01 endpoint scenarios reuse the initial storage mover and test storage account, and need a file share.
+    $env.EndpointStoMoverName = $env.InitialStoMoverName
+    $env.EndpointStorageAccountId = $env.StoraccId
+    $env.EndpointContainerName = $env.ContainerName
+    $env.EndpointFileShareName = "share" + $env.RandomString
+    New-AzRmStorageShare -ResourceGroupName $env.ResourceGroupName -StorageAccountName $env.StorageAccountName -Name $env.EndpointFileShareName | Out-Null
+
+    # The cross-tenant job definition scenario needs a partner tenant whose storage mover has a cross-tenant Target endpoint
+    # that allows $env.CrossTenantStorageAccountId. Provide its details through SM_XT_PARTNER_TENANT,
+    # SM_XT_PARTNER_STORAGE_ACCOUNT_ID and SM_XT_PARTNER_ENDPOINT_ID, and replace the partner IDs with placeholders in
+    # env.json and the recordings before committing. The scenario is skipped when they are not provided.
+    $env.CrossTenantLocation = "eastus"
+    $env.CrossTenantStoMoverName = "testStoMoverXt" + $env.RandomString
+    New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.CrossTenantStoMoverName -Location $env.CrossTenantLocation | Out-Null
+    $env.CrossTenantStorageAccountName = "storaccxt" + $env.RandomString
+    $crossTenantStorageAccount = New-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CrossTenantStorageAccountName -SkuName Standard_LRS -Location $env.CrossTenantLocation -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false -RequireInfrastructureEncryption -EnableHttpsTrafficOnly $true -MinimumTlsVersion TLS1_2
+    $env.CrossTenantStorageAccountId = $crossTenantStorageAccount.Id
+    $env.CrossTenantContainerName = "container" + $env.RandomString
+    New-AzRmStorageContainer -ResourceGroupName $env.ResourceGroupName -StorageAccountName $env.CrossTenantStorageAccountName -Name $env.CrossTenantContainerName | Out-Null
+    $env.PartnerTenantId = $env:SM_XT_PARTNER_TENANT
+    $env.PartnerStorageAccountId = $env:SM_XT_PARTNER_STORAGE_ACCOUNT_ID
+    $env.PartnerEndpointId = $env:SM_XT_PARTNER_ENDPOINT_ID
+    if ($env.PartnerEndpointId) {
+        $env.PartnerEndpointName = ($env.PartnerEndpointId -split '/')[-1]
+    }
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
+    # Delete the storage mover and storage account created for the cross-tenant job definition scenario.
+    if ($env.CrossTenantStoMoverName) {
+        Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.CrossTenantStoMoverName -Force -ErrorAction SilentlyContinue
+    }
+    if ($env.CrossTenantStorageAccountName) {
+        Remove-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CrossTenantStorageAccountName -Force -ErrorAction SilentlyContinue
+    }
+
     # Delete the Connection resource created by setupEnv/tests.
     if ($env.ConnectionName) {
         Remove-AzStorageMoverConnection -Name $env.ConnectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -ErrorAction SilentlyContinue

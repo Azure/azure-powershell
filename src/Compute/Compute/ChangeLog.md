@@ -20,7 +20,8 @@
 
 -->
 ## Upcoming Release
-* Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.
+* Added Compute Gallery soft delete policies, recycle-bin discovery and image version restore; `-BypassSoftDelete` permanently deletes.
+* Updated Gallery to API 2026-03-03 and added two Compute features from API 2026-04-01.
 
 ## Version 11.10.0
 * Added `-ScheduleProfileStart` and `-MinimumCommitmentDayCount` parameters to `New-AzCapacityReservation` to create Future Capacity Reservations, and surfaced the read-only `ScheduleProfile` (including `ModifiableUntil`) and instance view `ReservationStateInfo` on `Get-AzCapacityReservation` output.

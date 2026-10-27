@@ -81,6 +81,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public global::System.DateTime? WindowParameterMaxPatchPublishDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).MaxPatchPublishDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).MaxPatchPublishDate = value ?? default(global::System.DateTime); }
 
+        /// <summary>
+        /// This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> WindowParameterPatchNameMasksToExclude { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).PatchNameMasksToExclude; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).PatchNameMasksToExclude = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> WindowParameterPatchNameMasksToInclude { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).PatchNameMasksToInclude; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)WindowsParameter).PatchNameMasksToInclude = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="WindowsParameter" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParameters _windowsParameter;
 
@@ -220,6 +236,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"maxPatchPublishDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? WindowParameterMaxPatchPublishDate { get; set; }
+        /// <summary>
+        /// This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.",
+        SerializedName = @"patchNameMasksToExclude",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> WindowParameterPatchNameMasksToExclude { get; set; }
+        /// <summary>
+        /// This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are not supported.",
+        SerializedName = @"patchNameMasksToInclude",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> WindowParameterPatchNameMasksToInclude { get; set; }
 
     }
     /// Input for InstallPatches as directly received by the API
@@ -260,6 +306,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// This is used to install patches that were published on or before this given max published date.
         /// </summary>
         global::System.DateTime? WindowParameterMaxPatchPublishDate { get; set; }
+        /// <summary>
+        /// This is used to exclude patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        System.Collections.Generic.List<string> WindowParameterPatchNameMasksToExclude { get; set; }
+        /// <summary>
+        /// This is used to include patches that match the given patch name masks. Alphanumeric strings and wildcard expressions consisting
+        /// of * and ? are only supported as input values in the list. Null, empty and only whitespaces strings as inputs values are
+        /// not supported.
+        /// </summary>
+        System.Collections.Generic.List<string> WindowParameterPatchNameMasksToInclude { get; set; }
         /// <summary>Input for InstallPatches on a Windows VM, as directly received by the API</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParameters WindowsParameter { get; set; }
 

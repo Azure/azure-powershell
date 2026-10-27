@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Extensions;
 
-    /// <summary>The SKU type for the edge action</summary>
+    /// <summary>
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
+    /// </summary>
     public partial class SkuTypeUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdate,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuTypeUpdateInternal
@@ -33,7 +36,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 
         }
     }
-    /// The SKU type for the edge action
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
     public partial interface ISkuTypeUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IJsonSerializable
     {
@@ -61,7 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         string Tier { get; set; }
 
     }
-    /// The SKU type for the edge action
+    /// The SKU fields in the update model. Do not include sku in PATCH requests; any supplied sku, including null or the existing
+    /// value, is rejected.
     internal partial interface ISkuTypeUpdateInternal
 
     {
