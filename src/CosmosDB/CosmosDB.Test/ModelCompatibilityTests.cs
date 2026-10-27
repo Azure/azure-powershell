@@ -39,6 +39,34 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test
                     .GetParameters().Select(parameter => parameter.ParameterType));
         }
 
+        [Fact]
+        public void SqlRoleOutputRetainsPositionalPermissionConstruction()
+        {
+            var role = new PSSqlRoleDefinitionGetResults(new SqlRoleDefinitionGetResults
+            {
+                Permissions = new List<Permission> { CreatePermission() },
+                AssignableScopes = new List<string> { "/" }
+            });
+            var actions = new List<string> { "read", "write" };
+
+            using (var powerShell = System.Management.Automation.PowerShell.Create())
+            {
+                var results = powerShell.AddScript(@"
+param($role, $actions)
+$permissionType = $role.Permissions[0].GetType()
+$permissionType::new($actions)")
+                    .AddArgument(role)
+                    .AddArgument(actions)
+                    .Invoke();
+
+                Assert.False(powerShell.HadErrors,
+                    string.Join(System.Environment.NewLine, powerShell.Streams.Error));
+                var permission = Assert.IsType<PSPermission>(Assert.Single(results).BaseObject);
+                Assert.Equal(actions, permission.DataActions);
+                Assert.Null(permission.Id);
+            }
+        }
+
         [Theory]
         [InlineData(false)]
         [InlineData(true)]
