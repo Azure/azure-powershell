@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The resource ID of the ANF account.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The resource ID of the ANF account, including the target subscription.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = "The account whose LDAP bind password is refreshed from Azure Key Vault.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = "The account whose LDAP bind password is refreshed from Azure Key Vault, using the subscription in its resource ID.")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount InputObject { get; set; }
 
@@ -55,15 +55,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         public override void ExecuteCmdlet()
         {
+            ResourceIdentifier resourceIdentifier = null;
             if (ParameterSetName == ResourceIdParameterSet)
             {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
+                resourceIdentifier = new ResourceIdentifier(ResourceId);
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
-                var resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+            }
+
+            if (resourceIdentifier != null)
+            {
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }
@@ -72,7 +75,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 try
                 {
-                    AzureNetAppFilesManagementClient.NetAppAccounts.RefreshLdapBindPassword(ResourceGroupName, Name);
+                    var client = AzureNetAppFilesManagementClient;
+                    if (resourceIdentifier != null)
+                    {
+                        client.SubscriptionId = resourceIdentifier.Subscription;
+                    }
+                    client.NetAppAccounts.RefreshLdapBindPassword(ResourceGroupName, Name);
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);
@@ -80,7 +88,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new CloudException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body?.Error?.Message ?? ex.Message, ex);
                 }
             }
         }

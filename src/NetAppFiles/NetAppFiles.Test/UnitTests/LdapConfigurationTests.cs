@@ -3,23 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.NetAppFiles.Account;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 using Microsoft.Rest.Serialization;
+using Microsoft.Rest.TransientFaultHandling;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
 {
+    [Trait("AcceptanceType", "CheckIn")]
     public class LdapConfigurationTests
     {
         [Fact]
@@ -371,6 +378,141 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
             }
         }
 
+        [Theory]
+        [InlineData("<html><body>Bad Gateway</body></html>", "text/html", null)]
+        [InlineData("", "application/json", null)]
+        [InlineData("null", "application/json", null)]
+        [InlineData("{}", "application/json", null)]
+        [InlineData("{\"error\":{}}", "application/json", null)]
+        [InlineData("{\"error\":{\"code\":\"KeyVaultAccessDenied\",\"message\":\"The bind password secret could not be read.\"}}",
+            "application/json", "The bind password secret could not be read.")]
+        public void RefreshCmdletPreservesHttpErrorsWithoutEmittingPassThruSuccess(
+            string responseBody, string contentType, string structuredMessage)
+        {
+            using (var handler = new LdapServiceErrorHandler("POST", HttpStatusCode.BadGateway, responseBody, contentType))
+            using (var client = new NetAppManagementClient(new TokenCredentials("test-token"), handler))
+            {
+                client.SubscriptionId = "00000000-0000-0000-0000-000000000000";
+                client.SetRetryPolicy(new RetryPolicy<HttpStatusCodeErrorDetectionStrategy>(0));
+                var runtime = new MockCommandRuntime();
+                var cmdlet = new UpdateAzureRmNetAppFilesAccountLdapBindPassword
+                {
+                    AzureNetAppFilesManagementClient = client,
+                    CommandRuntime = runtime,
+                    ResourceGroupName = "test-rg",
+                    Name = "test-account",
+                    PassThru = true
+                };
+
+                var error = Assert.Throws<CloudException>(() => cmdlet.ExecuteCmdlet());
+                var original = Assert.IsType<ErrorResponseException>(error.InnerException);
+                Assert.Equal(HttpStatusCode.BadGateway, original.Response.StatusCode);
+                Assert.Equal(responseBody, original.Response.Content);
+                Assert.NotNull(original.Request);
+                Assert.Equal(structuredMessage, original.Body?.Error?.Message);
+                Assert.Equal(structuredMessage ?? original.Message, error.Message);
+                Assert.Equal(1, handler.RequestCount);
+                Assert.Empty(runtime.OutputPipeline);
+            }
+        }
+
+        public static IEnumerable<object[]> RefreshSubscriptionCases()
+        {
+            foreach (var source in new[] { "Fields", "ResourceId", "InputObject", "PipelineInputObject", "PipelineResourceId" })
+            {
+                foreach (var crossSubscription in new[] { false, true })
+                {
+                    if (source == "Fields" && crossSubscription)
+                    {
+                        continue;
+                    }
+                    foreach (var whatIf in new[] { false, true })
+                    {
+                        yield return new object[] { source, crossSubscription, whatIf };
+                    }
+                }
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(RefreshSubscriptionCases))]
+        public void RefreshRequestsHonorSelectedAccountSubscription(string source, bool crossSubscription, bool whatIf)
+        {
+            const string currentSubscription = "00000000-0000-0000-0000-000000000000";
+            var targetSubscription = crossSubscription ? "11111111-1111-1111-1111-111111111111" : currentSubscription;
+            var resourceId = "/subscriptions/" + targetSubscription +
+                "/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account";
+            using (var handler = new RefreshSubscriptionRequestHandler(targetSubscription))
+            using (var client = new NetAppManagementClient(new TokenCredentials("test-token"), handler))
+            {
+                client.SubscriptionId = currentSubscription;
+                client.SetRetryPolicy(new RetryPolicy<HttpStatusCodeErrorDetectionStrategy>(0));
+                var initialState = InitialSessionState.CreateDefault();
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    initialState.ExecutionPolicy = Microsoft.PowerShell.ExecutionPolicy.Unrestricted;
+                }
+                initialState.ImportPSModule(new[] { new EnvironmentSetupHelper().RMProfileModule });
+                initialState.Commands.Add(new SessionStateCmdletEntry(
+                    "Update-TestNetAppFilesAccountLdapBindPassword", typeof(RefreshSubscriptionTestCmdlet), null));
+                using (var powershell = System.Management.Automation.PowerShell.Create(initialState))
+                {
+                    powershell.AddScript("(Get-AzContext).Subscription.Id");
+                    var contextSubscription = powershell.Invoke<string>().SingleOrDefault();
+                    Assert.False(powershell.HadErrors, string.Join("\n", powershell.Streams.Error));
+                    powershell.Commands.Clear();
+                    powershell.AddCommand("Update-TestNetAppFilesAccountLdapBindPassword")
+                        .AddParameter("TestClient", client)
+                        .AddParameter("PassThru")
+                        .AddParameter("Confirm", false)
+                        .AddParameter("WhatIf", whatIf)
+                        .AddParameter("ErrorAction", "Stop");
+                    object[] input = null;
+                    var account = new PSNetAppFilesAccount { Id = resourceId };
+                    switch (source)
+                    {
+                        case "Fields":
+                            powershell.AddParameter("ResourceGroupName", "test-rg").AddParameter("Name", "test-account");
+                            break;
+                        case "ResourceId":
+                            powershell.AddParameter("ResourceId", resourceId);
+                            break;
+                        case "InputObject":
+                            powershell.AddParameter("InputObject", account);
+                            break;
+                        case "PipelineInputObject":
+                            input = new object[] { account };
+                            break;
+                        case "PipelineResourceId":
+                            var resource = new PSObject();
+                            resource.Properties.Add(new PSNoteProperty("ResourceId", resourceId));
+                            input = new object[] { resource };
+                            break;
+                        default:
+                            throw new ArgumentException("Unknown test input source.", nameof(source));
+                    }
+
+                    var output = powershell.Invoke(input);
+                    Assert.False(powershell.HadErrors, string.Join("\n", powershell.Streams.Error));
+                    Assert.Equal(whatIf ? 0 : 2, handler.RequestCount);
+                    Assert.Equal(whatIf ? currentSubscription : targetSubscription, client.SubscriptionId);
+                    if (whatIf)
+                    {
+                        Assert.Empty(output);
+                    }
+                    else
+                    {
+                        Assert.Equal(true, Assert.Single(output).BaseObject);
+                    }
+
+                    powershell.Commands.Clear();
+                    powershell.AddScript("(Get-AzContext).Subscription.Id");
+                    Assert.Equal(contextSubscription, powershell.Invoke<string>().SingleOrDefault());
+                    Assert.False(powershell.HadErrors, string.Join("\n", powershell.Streams.Error));
+                }
+            }
+        }
+
         private static PSNetAppFilesLdapConfiguration CreateConfiguration()
         {
             return new PSNetAppFilesLdapConfiguration
@@ -471,11 +613,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
         {
             private readonly string method;
             private readonly HttpStatusCode status;
+            private readonly string responseBody;
+            private readonly string contentType;
 
-            public LdapServiceErrorHandler(string method, HttpStatusCode status)
+            public LdapServiceErrorHandler(string method, HttpStatusCode status,
+                string responseBody = null, string contentType = "application/json")
             {
                 this.method = method;
                 this.status = status;
+                this.responseBody = responseBody ?? new JObject
+                {
+                    ["error"] = new JObject
+                    {
+                        ["code"] = status.ToString(),
+                        ["message"] = "Simulated LDAP service failure."
+                    }
+                }.ToString();
+                this.contentType = contentType;
             }
 
             public int RequestCount { get; private set; }
@@ -490,14 +644,48 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                 return Task.FromResult(new HttpResponseMessage(status)
                 {
                     RequestMessage = request,
-                    Content = new StringContent(new JObject
+                    Content = new StringContent(responseBody, System.Text.Encoding.UTF8, contentType)
+                });
+            }
+        }
+
+        private sealed class RefreshSubscriptionRequestHandler : DelegatingHandler
+        {
+            private readonly string accountPath;
+
+            public RefreshSubscriptionRequestHandler(string subscriptionId)
+            {
+                accountPath = "/subscriptions/" + subscriptionId +
+                    "/resourceGroups/test-rg/providers/Microsoft.NetApp/netAppAccounts/test-account";
+            }
+
+            public int RequestCount { get; private set; }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                RequestCount++;
+                var statusUrl = "https://management.azure.com" + accountPath +
+                    "/refresh-status?api-version=2026-08-01";
+                if (request.Method == HttpMethod.Post)
+                {
+                    Assert.Equal(accountPath + "/refreshLdapBindPassword", request.RequestUri.AbsolutePath);
+                    Assert.Equal("?api-version=2026-08-01", request.RequestUri.Query);
+                    var response = new HttpResponseMessage(HttpStatusCode.Accepted)
                     {
-                        ["error"] = new JObject
-                        {
-                            ["code"] = status.ToString(),
-                            ["message"] = "Simulated LDAP service failure."
-                        }
-                    }.ToString(), System.Text.Encoding.UTF8, "application/json")
+                        RequestMessage = request,
+                        Content = new StringContent("{}")
+                    };
+                    response.Headers.Add("Azure-AsyncOperation", statusUrl);
+                    response.Headers.Add("Retry-After", "0");
+                    return Task.FromResult(response);
+                }
+
+                Assert.Equal(HttpMethod.Get, request.Method);
+                Assert.Equal(statusUrl, request.RequestUri.AbsoluteUri);
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    RequestMessage = request,
+                    Content = new StringContent("{\"status\":\"Succeeded\"}", System.Text.Encoding.UTF8, "application/json")
                 });
             }
         }
@@ -518,6 +706,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
                     RequestMessage = request
                 });
             }
+        }
+
+        [Cmdlet("Update", "TestNetAppFilesAccountLdapBindPassword",
+            SupportsShouldProcess = true, DefaultParameterSetName = "ByFieldsParameterSet")]
+        public class RefreshSubscriptionTestCmdlet : UpdateAzureRmNetAppFilesAccountLdapBindPassword
+        {
+            [Parameter(Mandatory = true)]
+            public INetAppManagementClient TestClient { get; set; }
+
+            // Exercise real parameter binding and execution without the authentication lifecycle.
+            protected override void BeginProcessing() { }
+
+            protected override void ProcessRecord()
+            {
+                AzureNetAppFilesManagementClient = TestClient;
+                ExecuteCmdlet();
+            }
+
+            protected override void EndProcessing() { }
         }
     }
 }

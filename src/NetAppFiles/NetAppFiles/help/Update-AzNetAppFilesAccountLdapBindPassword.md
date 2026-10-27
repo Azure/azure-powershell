@@ -33,6 +33,8 @@ Update-AzNetAppFilesAccountLdapBindPassword -InputObject <PSNetAppFilesAccount>
 ## DESCRIPTION
 Fetches the latest LDAP bind password from the Azure Key Vault secret configured in the account's LdapConfiguration.BindPasswordAkvConfig. Use this command after rotating that secret. The command does not accept or return the password, and waits for the refresh operation to complete.
 
+When ResourceId or InputObject is supplied, the command targets the subscription in the account's resource ID without changing the active Az context. With ResourceGroupName and Name, it uses the subscription from the selected context.
+
 ## EXAMPLES
 
 ### Example 1: Refresh a bind password after rotating its Key Vault secret
@@ -49,6 +51,14 @@ Get-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" |
 ```
 
 Refreshes the LDAP bind password for the account received from the pipeline.
+
+### Example 3: Refresh an account in a different subscription
+```powershell
+$accountId = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount"
+Update-AzNetAppFilesAccountLdapBindPassword -ResourceId $accountId -PassThru
+```
+
+Targets the subscription specified in the resource ID, even when it differs from the active context. The selected profile must have access to that subscription.
 
 ## PARAMETERS
 
@@ -83,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Full Azure resource ID of the account.
+Full Azure resource ID of the account. The subscription in this ID is used for the refresh request.
 
 ```yaml
 Type: System.String
@@ -98,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Account object whose LDAP bind password is refreshed.
+Account object whose LDAP bind password is refreshed. The subscription in the object's Id is used for the refresh request.
 
 ```yaml
 Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
@@ -129,6 +139,7 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+For ResourceId and InputObject, the subscription in the account's resource ID overrides the profile's subscription for this request only.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer

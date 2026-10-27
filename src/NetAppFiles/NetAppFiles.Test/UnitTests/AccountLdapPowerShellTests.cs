@@ -8,6 +8,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.UnitTest
 {
+    [Trait("AcceptanceType", "CheckIn")]
     public class AccountLdapPowerShellTests
     {
         [Fact]
