@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"update a managed HSM Pool in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2026-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2026-05-15")]
     public partial class UpdateAzKeyVaultManagedHsm_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IContext
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         Description = @"SKU of the managed HSM Pool",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
         public string SkuName { get => _parametersBody.SkuName ?? null; set => _parametersBody.SkuName = value; }
 
         /// <summary>

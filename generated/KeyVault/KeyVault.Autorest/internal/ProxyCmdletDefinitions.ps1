@@ -559,7 +559,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10")]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("Standard_B1", "Custom_B32", "Custom_B6", "Custom_C42", "Custom_C10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [System.String]
     # SKU of the managed HSM Pool
