@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
-                        {"Microsoft.Websites", null},
+                        {"Microsoft.Web", null},
                         {"Microsoft.Network", null},
                         {"Microsoft.KeyVault", null},
                         {"Microsoft.Storage", null}

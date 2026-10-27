@@ -20,20 +20,21 @@ Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJ
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
  [-SoftDeleteState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-CmkEncryptionState <String>] [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>]
- [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-CostManagementGranularity <String>] [-CmkEncryptionState <String>] [-CmkIdentityType <String>]
+ [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
  [-XmsDeletedVaultId <String>] [-AzureMonitorAlertsForAllJobFailure <String>]
- [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>] [-ETag <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionSetting <IEncryptionSettings>]
- [-ImmutabilityState <String>] [-ReplicatedRegion <String[]>] [-ResourceGuardOperationRequest <String[]>]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-StorageSetting <IStorageSetting[]>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-CostManagementSettingGranularityLevel <String>] [-CrossRegionRestoreState <String>]
+ [-CrossSubscriptionRestoreState <String>] [-ETag <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-EncryptionSetting <IEncryptionSettings>] [-ImmutabilityState <String>] [-ReplicatedRegion <String[]>]
+ [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <String>] [-StorageSetting <IStorageSetting[]>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -221,6 +222,37 @@ Add the user assigned managed identity id to be used which has access permission
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementGranularity
+Cost Management Granularity of the vault.
+Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementSettingGranularityLevel
+Settings for granularity level
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -40,17 +40,24 @@ namespace Microsoft.Azure.Commands.Maintenance
                 string resourceType = this.ResourceType;
                 string resourceName = this.ResourceName;
 
-                var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
+                bool hasParent = !string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName);
+                var result = hasParent ?
                     UpdatesClient.ListParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
                     UpdatesClient.List(resourceGroupName, providerName, resourceType, resourceName);
 
                 var psObject = new List<PSUpdate>();
 
-                foreach (var update in result)
+                while (result != null)
                 {
-                    PSUpdate psUpdate = new PSUpdate();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<Update, PSUpdate>(update, psUpdate);
-                    psObject.Add(psUpdate);
+                    foreach (var update in result)
+                    {
+                        PSUpdate psUpdate = new PSUpdate();
+                        MaintenanceAutomationAutoMapperProfile.Mapper.Map<Update, PSUpdate>(update, psUpdate);
+                        psObject.Add(psUpdate);
+                    }
+
+                    result = string.IsNullOrEmpty(result.NextPageLink) ? null :
+                        (hasParent ? UpdatesClient.ListParentNext(result.NextPageLink) : UpdatesClient.ListNext(result.NextPageLink));
                 }
 
                 WriteObject(psObject);

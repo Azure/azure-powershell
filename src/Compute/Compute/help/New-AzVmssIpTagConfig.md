@@ -13,8 +13,8 @@ Creates an IP Tag object for a network interface of a VMSS.
 ## SYNTAX
 
 ```
-New-AzVmssIpTagConfig [-IpTagType] <String> [-Tag <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVmssIpTagConfig [-IpTagType] <String> [-Tag <String>] [-FirstPartyServiceTagId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,11 +25,21 @@ Specify the configuration from this cmdlet as the *IPTag* parameter of the New-A
 
 ### Example 1
 ```powershell
-$iptag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
-$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -IpTag $ipTag;
+$subnetId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet'
+$ipTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -Tag 'Sql'
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId -IpTag $ipTag
 ```
 
 This command creates an IP Tag local object with 'FirstPartyUsage' type and 'Sql' tag, and then creates an IP configuration with this IP tag.
+
+### Example 2: Create an IP tag with a first-party service tag resource ID
+```powershell
+$serviceTagResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/firstPartyServiceTags/myServiceTag'
+$ipTag = New-AzVmssIpTagConfig -IpTagType 'FirstPartyUsage' -FirstPartyServiceTagId $serviceTagResourceId
+$ipCfg = New-AzVmssIpConfig -Name 'ipConfig' -IpTag $ipTag
+```
+
+This command creates an IP tag for a VMSS implicit public IP address and associates it with a first-party service tag resource.
 
 ## PARAMETERS
 
@@ -45,6 +55,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirstPartyServiceTagId
+Specifies the resource ID of the first-party service tag associated with the implicit public IP address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

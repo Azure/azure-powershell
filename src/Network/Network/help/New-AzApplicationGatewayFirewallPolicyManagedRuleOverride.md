@@ -68,7 +68,7 @@ Specify the Action in override rule entry.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AnomalyScoring, Allow, Block, Log
+Accepted values: AnomalyScoring, Allow, Block, Log, CAPTCHA
 
 Required: False
 Position: Named

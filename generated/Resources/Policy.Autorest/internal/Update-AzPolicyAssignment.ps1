@@ -16,17 +16,13 @@
 
 <#
 .Synopsis
-This operation update the policy assignment with the given ID.
-Policy assignments made on a scope apply to all resources contained in that scope.
-For example, when you assign a policy to a resource group that policy applies to all resources in the group.
-Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
+This operation update a policy assignment with the given scope and name.
+Policy assignments apply to all resources contained within their scope.
+For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Description
-This operation update the policy assignment with the given ID.
-Policy assignments made on a scope apply to all resources contained in that scope.
-For example, when you assign a policy to a resource group that policy applies to all resources in the group.
-Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
+This operation update a policy assignment with the given scope and name.
+Policy assignments apply to all resources contained within their scope.
+For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
@@ -71,6 +67,8 @@ $Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
 .Notes
@@ -78,9 +76,26 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-NONCOMPLIANCEMESSAGETABLE <INonComplianceMessage[]>: The messages that describe why a resource is non-compliant with the policy.
-  Message <String>: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
-  [PolicyDefinitionReferenceId <String>]: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
+INPUTOBJECT <IPolicyIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ManagementGroupId <String>]: The management group ID.
+  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
+  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to get.
+  [PolicyDefinitionName <String>]: The name of the policy definition to get.
+  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
+  [PolicyEnrollmentName <String>]: The name of the policy enrollment.
+  [PolicyExemptionName <String>]: The name of the policy exemption to get.
+  [PolicyMode <String>]: The policy mode of the data policy manifest to get.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to get.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the resource.
+  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
+  [Scope <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VariableName <String>]: The name of the variable to operate on.
+  [VariableValueName <String>]: The name of the variable value to operate on.
 
 OVERRIDE <IOverride[]>: The policy property value override.
   [Kind <String>]: The override kind.
@@ -104,90 +119,97 @@ function Update-AzPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('PolicyAssignmentId')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('PolicyAssignmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
-    # The ID of the policy assignment to create.
-    # Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-    ${Id},
+    # The name of the policy assignment to get.
+    ${Name},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.String]
+    # The fully qualified Azure Resource manager identifier of the resource.
+    ${Scope},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
-    # The type of policy assignment.
-    # Possible values are NotSpecified, System, SystemHidden, and Custom.
-    # Immutable.
-    ${AssignmentType},
+    # The identity type.
+    # This is the only required field when adding a system or user assigned identity to a resource.
+    ${IdentityType},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The version of the policy definition to use.
-    ${DefinitionVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # This message will be part of response in case of policy violation.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The display name of the policy assignment.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Nullable[System.Boolean]]
-    # Determines whether to enable a system-assigned identity for the resource.
-    ${EnableSystemAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String]
-    # The policy assignment enforcement mode.
-    # Possible values are Default, DoNotEnforce, and Enroll
-    ${EnforcementMode},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The location of the policy assignment.
     # Only required when utilizing managed identity.
     ${Location},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.String[]]
-    # The policy's excluded scopes.
-    ${NotScope},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
     # The policy property value override.
     ${Override},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
     # The resource selector list to filter policies by resource properties.
     ${ResourceSelector},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether self-serve exemption is enabled.
+    ${SelfServeExemptionSettingEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String[]]
+    # The policy definition reference IDs for self-serve exemption.
+    ${SelfServeExemptionSettingPolicyDefinitionReferenceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String[]]
     # The array of user assigned identities associated with the resource.
     # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -251,6 +273,9 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Policy.private\Update-AzPolicyAssignment_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Policy.private\Update-AzPolicyAssignment_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Policy.private\Update-AzPolicyAssignment_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Policy.private\Update-AzPolicyAssignment_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

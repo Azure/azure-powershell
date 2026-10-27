@@ -227,7 +227,10 @@ namespace Microsoft.Azure.Management.Compute.Models
                 this.UpgradePolicy.Validate();
             }
 
-
+            if (this.VirtualMachineProfile != null)
+            {
+                this.VirtualMachineProfile.Validate();
+            }
 
 
 

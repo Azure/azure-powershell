@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Creating a new CosmosDB MongoDB Role Definition"))
             {
-                MongoRoleDefinitionGetResults mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoRoleDefinitionGetResults mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, Id, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBRoleDefinitionGetResults(mongoRoleDefinitionGetResults));
             }
 

@@ -81,7 +81,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ddosSettings">The DDoS protection settings associated with the frontend IP configuration.
         /// </param>
-        public FrontendIPConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), SubResource gatewayLoadBalancer = default(SubResource), DdosFrontendIpConfigurationSettings ddosSettings = default(DdosFrontendIpConfigurationSettings))
+
+        /// <param name="enableConnectionTracking">Enables UDP flow tracking for traffic associated with the frontend IP
+        /// configuration. When enabled, packets belonging to the same UDP flow are
+        /// consistently directed to the same backend instance. This setting applies to
+        /// all associated load balancing rules and takes precedence over rule-level
+        /// enableConnectionTracking settings.
+        /// </param>
+        public FrontendIPConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Subnet subnet = default(Subnet), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), SubResource gatewayLoadBalancer = default(SubResource), DdosFrontendIpConfigurationSettings ddosSettings = default(DdosFrontendIpConfigurationSettings), bool? enableConnectionTracking = default(bool?))
 
         : base(id, name, type)
         {
@@ -100,6 +107,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.PublicIPPrefix = publicIPPrefix;
             this.GatewayLoadBalancer = gatewayLoadBalancer;
             this.DdosSettings = ddosSettings;
+            this.EnableConnectionTracking = enableConnectionTracking;
             CustomInit();
         }
 
@@ -203,5 +211,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ddosSettings")]
         public DdosFrontendIpConfigurationSettings DdosSettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables UDP flow tracking for traffic associated with the
+        /// frontend IP configuration. When enabled, packets belonging to the same UDP
+        /// flow are consistently directed to the same backend instance. This setting
+        /// applies to all associated load balancing rules and takes precedence over
+        /// rule-level enableConnectionTracking settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableConnectionTracking")]
+        public bool? EnableConnectionTracking {get; set; }
     }
 }

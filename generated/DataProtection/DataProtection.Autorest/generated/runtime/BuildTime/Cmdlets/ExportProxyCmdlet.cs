@@ -139,6 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PowerShell
                     }
                     sb.Append($"){Environment.NewLine}{Environment.NewLine}");
 
+                    sb.Append(variantGroup.ToDynamicParamOutput());
                     sb.Append(variantGroup.ToBeginOutput());
                     sb.Append(variantGroup.ToProcessOutput());
                     sb.Append(variantGroup.ToEndOutput());

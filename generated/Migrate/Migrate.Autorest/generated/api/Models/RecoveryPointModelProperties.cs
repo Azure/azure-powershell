@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Description = @"Gets or sets the recovery point type.",
         SerializedName = @"recoveryPointType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("ApplicationConsistent", "CrashConsistent")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("LatestTime", "LatestTag", "Custom")]
         string RecoveryPointType { get; set; }
 
     }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Gets or sets the recovery point time.</summary>
         global::System.DateTime RecoveryPointTime { get; set; }
         /// <summary>Gets or sets the recovery point type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("ApplicationConsistent", "CrashConsistent")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.PSArgumentCompleterAttribute("LatestTime", "LatestTag", "Custom")]
         string RecoveryPointType { get; set; }
 
     }

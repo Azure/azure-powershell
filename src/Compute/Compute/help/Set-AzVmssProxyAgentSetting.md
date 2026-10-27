@@ -14,7 +14,8 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 
 ```
 Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>]
- [-WireServerMode <String>] [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>]
+ [-WireServerMode <String>] [-WireServerProfile <String>] [-WireServerUseLocalFileRules <Boolean>]
+ [-ImdsMode <String>] [-ImdsProfile <String>] [-ImdsUseLocalFileRules <Boolean>]
  [-AddProxyAgentExtension <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -27,11 +28,11 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ### Example 1
 ```powershell
 $vmssConfig = New-AzVmssConfig -Location 'EastUS2' -SkuName 'Standard_D4s_v3'
-Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -AddProxyAgentExtension false -WireServerProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}'
+Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet $vmssConfig -EnableProxyAgent $true -AddProxyAgentExtension $false -WireServerMode 'Enforce' -WireServerUseLocalFileRules $true -ImdsProfile '/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}' -ImdsUseLocalFileRules $true
 ```
 
-This command sets the Proxy Agent settings for a virtual machine scale set configuration object `$vmssConfig`. 
-It enables the Proxy Agent, specifies the Wire Server profile, and specifies the IMDS profile.
+This command sets the Proxy Agent settings for a virtual machine scale set configuration object `$vmssConfig`.
+It enables the Proxy Agent, sets the Wire Server mode to Enforce, and enables local file rules for the Wire Server and IMDS endpoints.
 
 ## PARAMETERS
 
@@ -113,6 +114,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ImdsUseLocalFileRules
+Specifies whether the IMDS endpoint should load additional access control rules from a local file.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineScaleSet
 PSVirtualMachineScaleSet object created from New-AzVMSSConfig.
 
@@ -151,6 +167,21 @@ Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/pro
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WireServerUseLocalFileRules
+Specifies whether the Wire Server endpoint should load additional access control rules from a local file.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

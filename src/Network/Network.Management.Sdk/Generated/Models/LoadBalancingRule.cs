@@ -89,9 +89,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified in the frontend of the load balancing rule.
         /// </param>
 
-        /// <param name="enableConnectionTracking">Defines whether connections between 2 communicating endpoints can be
-        /// tracked and associated to the same backend VM over its lifetime when using
-        /// UDP protocol.
+        /// <param name="enableConnectionTracking">Enables UDP flow tracking for the load balancing rule. This property is
+        /// retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
         /// </param>
         public LoadBalancingRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string loadDistribution = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource backendAddressPool = default(SubResource), System.Collections.Generic.IList<SubResource> backendAddressPools = default(System.Collections.Generic.IList<SubResource>), SubResource probe = default(SubResource), string protocol = default(string), int? frontendPort = default(int?), int? backendPort = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableFloatingIP = default(bool?), bool? enableTcpReset = default(bool?), bool? disableOutboundSnat = default(bool?), bool? enableConnectionTracking = default(bool?))
 
@@ -222,9 +223,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? DisableOutboundSnat {get; set; }
 
         /// <summary>
-        /// Gets or sets defines whether connections between 2 communicating endpoints
-        /// can be tracked and associated to the same backend VM over its lifetime when
-        /// using UDP protocol.
+        /// Gets or sets enables UDP flow tracking for the load balancing rule. This
+        /// property is retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableConnectionTracking")]
         public bool? EnableConnectionTracking {get; set; }

@@ -376,6 +376,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithCaptcha()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCaptcha");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
@@ -419,6 +427,14 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleGeoLocationXFFHeaderRemoval");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayAdvancedRouting()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayAdvancedRouting");
         }
     }
 }

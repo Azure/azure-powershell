@@ -72,9 +72,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// specified in the frontend of the load balancing rule.
         /// </param>
 
-        /// <param name="enableConnectionTracking">Defines whether connections between 2 communicating endpoints can be
-        /// tracked and associated to the same backend VM over its lifetime when using
-        /// UDP protocol.
+        /// <param name="enableConnectionTracking">Enables UDP flow tracking for the load balancing rule. This property is
+        /// retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the load balancing rule resource.
@@ -194,9 +195,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public bool? DisableOutboundSnat {get; set; }
 
         /// <summary>
-        /// Gets or sets defines whether connections between 2 communicating endpoints
-        /// can be tracked and associated to the same backend VM over its lifetime when
-        /// using UDP protocol.
+        /// Gets or sets enables UDP flow tracking for the load balancing rule. This
+        /// property is retained for rule-level configuration compatibility. When
+        /// enableConnectionTracking is specified on the associated frontend IP
+        /// configuration, the frontend setting takes precedence.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableConnectionTracking")]
         public bool? EnableConnectionTracking {get; set; }

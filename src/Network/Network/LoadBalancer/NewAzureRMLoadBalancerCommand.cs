@@ -86,6 +86,25 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The load balancer mode. Set to 'Advanced' to enable additional capabilities on a Standard SKU load balancer. Advanced mode must be specified at creation and cannot be changed afterward.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Advanced"
+        )]
+        public string Mode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The scope of the load balancer: external ('Public') or internal ('Private'). Set together with '-Mode Advanced' to create an advanced (Banksy-based) load balancer.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Public",
+            "Private"
+        )]
+        public string Scope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Object representing the frontend IPs to be used for the load balancer",
             ValueFromPipelineByPropertyName = true)]
         public PSFrontendIPConfiguration[] FrontendIpConfiguration { get; set; }
@@ -239,6 +258,8 @@ namespace Microsoft.Azure.Commands.Network
                 InboundNatPools = this.InboundNatPool?.ToList(),
                 OutboundRules = this.OutboundRule?.ToList(),
                 Sku = vSku,
+                Mode = this.Mode,
+                Scope = this.Scope,
                 ExtendedLocation = string.IsNullOrEmpty(this.EdgeZone) ? null : new PSExtendedLocation(this.EdgeZone)
             };
 

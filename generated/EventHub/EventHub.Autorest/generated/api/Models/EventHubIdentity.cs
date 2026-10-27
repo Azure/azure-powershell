@@ -55,6 +55,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         public string EventHubName { get => this._eventHubName; set => this._eventHubName = value; }
 
+        /// <summary>Backing field for <see cref="FabricShortcutName" /> property.</summary>
+        private string _fabricShortcutName;
+
+        /// <summary>The Microsoft Fabric shortcut name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
+        public string FabricShortcutName { get => this._fabricShortcutName; set => this._fabricShortcutName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -179,6 +186,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         SerializedName = @"eventHubName",
         PossibleTypes = new [] { typeof(string) })]
         string EventHubName { get; set; }
+        /// <summary>The Microsoft Fabric shortcut name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The Microsoft Fabric shortcut name.",
+        SerializedName = @"fabricShortcutName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FabricShortcutName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -273,6 +291,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         string ConsumerGroupName { get; set; }
         /// <summary>The Event Hub name</summary>
         string EventHubName { get; set; }
+        /// <summary>The Microsoft Fabric shortcut name.</summary>
+        string FabricShortcutName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The Namespace name</summary>

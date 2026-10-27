@@ -280,5 +280,93 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services
                 GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.DeleteByResourceGroup(resourceGroupName, locationName, instanceName, databaseName, backupName);
             }
         }
+
+        public ManagedInstanceLongTermRetentionBackup LockManagedDatabaseLongTermRetentionBackupImmutability(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                GetCurrentSqlClient().ManagedInstanceLongTermRetentionBackups.LockTimeBasedImmutability(
+                    locationName, instanceName, databaseName, backupName);
+            }
+            else
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.LockTimeBasedImmutabilityByResourceGroup(
+                    resourceGroupName, locationName, instanceName, databaseName, backupName);
+            }
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupImmutability(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                GetCurrentSqlClient().ManagedInstanceLongTermRetentionBackups.RemoveTimeBasedImmutability(
+                    locationName, instanceName, databaseName, backupName);
+            }
+            else
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveTimeBasedImmutabilityByResourceGroup(
+                    resourceGroupName, locationName, instanceName, databaseName, backupName);
+            }
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup SetManagedDatabaseLongTermRetentionBackupLegalHold(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                GetCurrentSqlClient().ManagedInstanceLongTermRetentionBackups.SetLegalHoldImmutability(
+                    locationName, instanceName, databaseName, backupName);
+            }
+            else
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.SetLegalHoldImmutabilityByResourceGroup(
+                    resourceGroupName, locationName, instanceName, databaseName, backupName);
+            }
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
+        }
+
+        public ManagedInstanceLongTermRetentionBackup RemoveManagedDatabaseLongTermRetentionBackupLegalHold(
+            string resourceGroupName,
+            string locationName,
+            string instanceName,
+            string databaseName,
+            string backupName)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                GetCurrentSqlClient().ManagedInstanceLongTermRetentionBackups.RemoveLegalHoldImmutability(
+                    locationName, instanceName, databaseName, backupName);
+            }
+            else
+            {
+                GetCurrentSqlClient().LongTermRetentionManagedInstanceBackups.RemoveLegalHoldImmutabilityByResourceGroup(
+                    resourceGroupName, locationName, instanceName, databaseName, backupName);
+            }
+
+            return GetManagedDatabaseLongTermRetentionBackup(
+                locationName, instanceName, databaseName, backupName, resourceGroupName);
+        }
     }
 }

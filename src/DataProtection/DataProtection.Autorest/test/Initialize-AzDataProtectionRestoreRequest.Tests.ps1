@@ -50,4 +50,3 @@ Describe 'Initialize-AzDataProtectionRestoreRequest -RenameTo rejection on unsup
         { Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation "westus" -RecoveryPoint "fake-rp" -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ContainerService/managedClusters/cluster" -RenameTo $renameMap -RestoreConfiguration ([PSCustomObject]@{}) -ErrorAction Stop } | Should -Throw "does not support renaming containers"
     }
 }
-

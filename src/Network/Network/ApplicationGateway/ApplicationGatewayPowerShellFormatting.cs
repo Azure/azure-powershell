@@ -25,11 +25,18 @@ namespace Microsoft.Azure.Commands.Network
         public static string Format(PSApplicationGatewayFirewallRule rule, int depth = 0)
         {
             string prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+
+            // ParanoiaLevel is served only by api-version 2026-01-01 and later, and only for DRS and
+            // OWASP rule sets. When absent the line keeps its original shape.
+            string description = string.IsNullOrEmpty(rule.ParanoiaLevel)
+                ? rule.Description
+                : string.Format("[{0}] {1}", rule.ParanoiaLevel, rule.Description);
+
             return string.Format(
                 ApplicationGatewayPowerShellFormatting.RuleFormat, 
                 prefix, 
                 ApplicationGatewayPowerShellFormatting.NormalizeStringLength(Convert.ToString(rule.RuleId), ApplicationGatewayPowerShellFormatting.MaxRuleIdLength),
-                rule.Description);
+                description);
         }
 
         public static string Format(PSApplicationGatewayFirewallRuleGroup ruleGroup, int depth = 0)
@@ -82,7 +89,17 @@ namespace Microsoft.Azure.Commands.Network
             string prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
             StringBuilder output = new StringBuilder();
 
-            output.AppendFormat("{0}{1} (Ver. {2}):\n", prefix, ruleSet.RuleSetType, ruleSet.RuleSetVersion);
+            // DisplayName is served only by api-version 2026-01-01 and later. When absent the header
+            // keeps its original shape.
+            if (string.IsNullOrEmpty(ruleSet.DisplayName))
+            {
+                output.AppendFormat("{0}{1} (Ver. {2}):\n", prefix, ruleSet.RuleSetType, ruleSet.RuleSetVersion);
+            }
+            else
+            {
+                output.AppendFormat("{0}{1} (Ver. {2}) {3}:\n", prefix, ruleSet.RuleSetType, ruleSet.RuleSetVersion, ruleSet.DisplayName);
+            }
+
             foreach (var ruleGroup in ruleSet.RuleGroups)
             {
                 output.AppendLine();

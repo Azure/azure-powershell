@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network
     using Models;
 
     /// <summary>
-    /// APIs to manage web application firewall rules.
+    /// APIs to manage Microsoft Azure network resources.
     /// </summary>
     public partial class NetworkManagementClient : Microsoft.Rest.ServiceClient<NetworkManagementClient>, INetworkManagementClient, IAzureClient
     {
@@ -80,6 +80,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; private set; }
         /// <summary>
+        /// Gets the IAuthenticationPoliciesOperations
+        /// </summary>
+        public virtual IAuthenticationPoliciesOperations AuthenticationPolicies { get; private set; }
+        /// <summary>
         /// Gets the IWebCategoriesOperations
         /// </summary>
         public virtual IWebCategoriesOperations WebCategories { get; private set; }
@@ -103,6 +107,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IExpressRouteCrossConnectionsOperations
         /// </summary>
         public virtual IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; private set; }
+        /// <summary>
+        /// Gets the IExpressRouteLagsOperations
+        /// </summary>
+        public virtual IExpressRouteLagsOperations ExpressRouteLags { get; private set; }
         /// <summary>
         /// Gets the IExpressRouteProviderPortsLocationOperations
         /// </summary>
@@ -144,6 +152,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; private set; }
         /// <summary>
+        /// Gets the IExpressRouteLagAuthorizationsOperations
+        /// </summary>
+        public virtual IExpressRouteLagAuthorizationsOperations ExpressRouteLagAuthorizations { get; private set; }
+        /// <summary>
         /// Gets the IExpressRoutePortAuthorizationsOperations
         /// </summary>
         public virtual IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; private set; }
@@ -176,6 +188,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; private set; }
         /// <summary>
+        /// Gets the IFirewallPolicyKubeSelectorGroupsOperations
+        /// </summary>
+        public virtual IFirewallPolicyKubeSelectorGroupsOperations FirewallPolicyKubeSelectorGroups { get; private set; }
+        /// <summary>
         /// Gets the IFirewallPolicyIdpsSignaturesFilterValuesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; private set; }
@@ -195,6 +211,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IFirewallPolicyIdpsSignaturesOverridesOperations
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
+        /// <summary>
+        /// Gets the IFirstPartyServiceTagsOperations
+        /// </summary>
+        public virtual IFirstPartyServiceTagsOperations FirstPartyServiceTags { get; private set; }
         /// <summary>
         /// Gets the IInterconnectGroupsOperations
         /// </summary>
@@ -512,6 +532,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IVirtualRoutersOperations VirtualRouters { get; private set; }
         /// <summary>
+        /// Gets the IAddressPrefixSetsOperations
+        /// </summary>
+        public virtual IAddressPrefixSetsOperations AddressPrefixSets { get; private set; }
+        /// <summary>
         /// Gets the IAvailableResourceGroupDelegationsOperations
         /// </summary>
         public virtual IAvailableResourceGroupDelegationsOperations AvailableResourceGroupDelegations { get; private set; }
@@ -599,6 +623,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualNetworkAppliancesOperations
         /// </summary>
         public virtual IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; private set; }
+        /// <summary>
+        /// Gets the IVirtualNetworkApplianceCapabilitiesOperations
+        /// </summary>
+        public virtual IVirtualNetworkApplianceCapabilitiesOperations VirtualNetworkApplianceCapabilities { get; private set; }
         /// <summary>
         /// Gets the IExpressRouteGatewaysOperations
         /// </summary>
@@ -947,12 +975,14 @@ namespace Microsoft.Azure.Management.Network
             this.ApplicationGatewayWafDynamicManifestsDefault = new ApplicationGatewayWafDynamicManifestsDefaultOperations(this);
             this.ApplicationGatewayPrivateEndpointConnections = new ApplicationGatewayPrivateEndpointConnectionsOperations(this);
             this.ApplicationGatewayPrivateLinkResources = new ApplicationGatewayPrivateLinkResourcesOperations(this);
+            this.AuthenticationPolicies = new AuthenticationPoliciesOperations(this);
             this.WebCategories = new WebCategoriesOperations(this);
             this.ExpressRoutePorts = new ExpressRoutePortsOperations(this);
             this.ExpressRoutePortsLocations = new ExpressRoutePortsLocationsOperations(this);
             this.BgpServiceCommunities = new BgpServiceCommunitiesOperations(this);
             this.ExpressRouteCircuits = new ExpressRouteCircuitsOperations(this);
             this.ExpressRouteCrossConnections = new ExpressRouteCrossConnectionsOperations(this);
+            this.ExpressRouteLags = new ExpressRouteLagsOperations(this);
             this.ExpressRouteProviderPortsLocation = new ExpressRouteProviderPortsLocationOperations(this);
             this.ExpressRouteServiceProviders = new ExpressRouteServiceProvidersOperations(this);
             this.RouteFilters = new RouteFiltersOperations(this);
@@ -963,6 +993,7 @@ namespace Microsoft.Azure.Management.Network
             this.ExpressRouteCircuitConnections = new ExpressRouteCircuitConnectionsOperations(this);
             this.PeerExpressRouteCircuitConnections = new PeerExpressRouteCircuitConnectionsOperations(this);
             this.ExpressRouteCrossConnectionPeerings = new ExpressRouteCrossConnectionPeeringsOperations(this);
+            this.ExpressRouteLagAuthorizations = new ExpressRouteLagAuthorizationsOperations(this);
             this.ExpressRoutePortAuthorizations = new ExpressRoutePortAuthorizationsOperations(this);
             this.RouteFilterRules = new RouteFilterRulesOperations(this);
             this.ServiceEndpointPolicyDefinitions = new ServiceEndpointPolicyDefinitionsOperations(this);
@@ -971,11 +1002,13 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicies = new FirewallPoliciesOperations(this);
             this.FirewallPolicyDeployments = new FirewallPolicyDeploymentsOperations(this);
             this.FirewallPolicyDrafts = new FirewallPolicyDraftsOperations(this);
+            this.FirewallPolicyKubeSelectorGroups = new FirewallPolicyKubeSelectorGroupsOperations(this);
             this.FirewallPolicyIdpsSignaturesFilterValues = new FirewallPolicyIdpsSignaturesFilterValuesOperations(this);
             this.FirewallPolicyIdpsSignatures = new FirewallPolicyIdpsSignaturesOperations(this);
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.FirstPartyServiceTags = new FirstPartyServiceTagsOperations(this);
             this.InterconnectGroups = new InterconnectGroupsOperations(this);
             this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
@@ -1055,6 +1088,7 @@ namespace Microsoft.Azure.Management.Network
             this.SecurityPartnerProviders = new SecurityPartnerProvidersOperations(this);
             this.VirtualNetworks = new VirtualNetworksOperations(this);
             this.VirtualRouters = new VirtualRoutersOperations(this);
+            this.AddressPrefixSets = new AddressPrefixSetsOperations(this);
             this.AvailableResourceGroupDelegations = new AvailableResourceGroupDelegationsOperations(this);
             this.NetworkInterfaceIPConfigurations = new NetworkInterfaceIPConfigurationsOperations(this);
             this.NetworkInterfaceLoadBalancers = new NetworkInterfaceLoadBalancersOperations(this);
@@ -1077,6 +1111,7 @@ namespace Microsoft.Azure.Management.Network
             this.VirtualRouterPeerings = new VirtualRouterPeeringsOperations(this);
             this.VipSwap = new VipSwapOperations(this);
             this.VirtualNetworkAppliances = new VirtualNetworkAppliancesOperations(this);
+            this.VirtualNetworkApplianceCapabilities = new VirtualNetworkApplianceCapabilitiesOperations(this);
             this.ExpressRouteGateways = new ExpressRouteGatewaysOperations(this);
             this.P2SVpnGateways = new P2SVpnGatewaysOperations(this);
             this.VirtualHubs = new VirtualHubsOperations(this);
@@ -1141,6 +1176,8 @@ namespace Microsoft.Azure.Management.Network
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<BaseAdminRule>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<EffectiveBaseSecurityAdminRule>("kind"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<VirtualNetworkApplianceCapability>("kind"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<VirtualNetworkApplianceCapability>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<FirewallPolicyRule>("ruleType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<FirewallPolicyRule>("ruleType"));
             CustomInitialize();
@@ -1190,7 +1227,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "providerport");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1437,7 +1474,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1698,7 +1735,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1954,7 +1991,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2209,7 +2246,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "top", 1);
                 }
             }
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2439,7 +2476,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "domainNameLabel");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2747,7 +2784,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3005,7 +3042,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3260,7 +3297,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3488,7 +3525,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3721,7 +3758,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3936,7 +3973,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4145,7 +4182,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "bastionHostName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -4376,7 +4413,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2025-07-01";
+            string apiVersion = "2026-03-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

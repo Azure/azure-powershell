@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate
 https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/update-azconnectedlicenseprofilefeature
 #>
 function Update-AzConnectedLicenseProfileFeature {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

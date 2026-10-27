@@ -27,6 +27,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDeletedServerAtSubscriptionLevel()
+        {
+            TestRunner.RunTestScript("Test-GetDeletedServerAtSubscriptionLevel");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetDeletedServerByServerNameOnly()
+        {
+            TestRunner.RunTestScript("Test-GetDeletedServerByServerNameOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDeletedServerByLocation()
         {
             TestRunner.RunTestScript("Test-GetDeletedServerByLocation");

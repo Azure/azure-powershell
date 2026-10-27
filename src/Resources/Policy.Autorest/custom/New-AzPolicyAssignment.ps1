@@ -104,7 +104,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -292,11 +291,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # make mapping table
-    $mapping = @{
-        CreateExpanded = 'Az.Policy.private\New-AzPolicyAssignment_CreateExpanded';
-    }
 }
 
 process {
@@ -366,13 +360,11 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
-
-    $null = $calledParameters.Remove('Metadata')
 
     # resolve [string] 'policyparameter' input parameter to [hashtable]
     if ($PolicyParameter) {
@@ -388,8 +380,7 @@ process {
 
     # resolve [PSCustomObject[]] 'NonComplianceMessage' input parameter to [hashtable]
     if ($NonComplianceMessage) {
-        $calledParameters.NonComplianceMessageTable = ConvertParameterArray $NonComplianceMessage
-        $null = $calledParameters.Remove('NonComplianceMessage')
+        $calledParameters.NonComplianceMessage = ConvertParameterArray $NonComplianceMessage
     }
 
     # resolve IdentityType
@@ -410,18 +401,8 @@ process {
         $null = $calledParameters.Remove('IdentityId')
     }
 
-    # choose parameter set to call
-    $calledParameterSet = 'CreateExpanded'
-
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $mapping[$calledParameterSet]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$calledParameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $item = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $item = Az.Policy.internal\New-AzPolicyAssignment @calledParameters
 
     $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
     $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (ConvertObjectToPSObject $item.NonComplianceMessage) -Force

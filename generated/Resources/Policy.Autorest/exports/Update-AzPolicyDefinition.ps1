@@ -45,19 +45,16 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IPolicyDefinition>: 
   [Description <String>]: The policy definition description.
   [DisplayName <String>]: The display name of the policy definition.
-  [EndpointSettingDetail <IExternalEvaluationEndpointSettingsDetails>]: The details of the endpoint.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [EndpointSettingDetailRaw <IAny>]: The details of the endpoint.
   [EndpointSettingKind <String>]: The kind of the endpoint.
   [ExternalEvaluationEnforcementSettingMissingTokenAction <String>]: What to do when evaluating an enforcement policy that requires an external evaluation and the token is missing. Possible values are Audit and Deny and language expressions are supported.
   [ExternalEvaluationEnforcementSettingResultLifespan <String>]: The lifespan of the endpoint invocation result after which it's no longer valid. Value is expected to follow the ISO 8601 duration format and language expressions are supported.
   [ExternalEvaluationEnforcementSettingRoleDefinitionId <List<String>>]: An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint.
-  [Metadata <IPolicyDefinitionPropertiesMetadata>]: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [MetadataRaw <IAny>]: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   [Mode <String>]: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
-  [Parameter <IParameterDefinitions>]: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-    [(Any) <Object>]: This indicates any property can be added to this object.
-  [PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]: The policy rule.
-    [(Any) <Object>]: This indicates any property can be added to this object.
+  [ParameterRaw <IPolicyDefinitionPropertiesParameters>]: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+    [(Any) <IParameterDefinitionsValue>]: This indicates any property can be added to this object.
+  [PolicyRuleRaw <IAny>]: The policy rule.
   [PolicyType <String>]: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   [Version <String>]: The policy definition version in #.#.# format.
   [Versions <List<String>>]: A list of available versions for this policy definition.
@@ -79,10 +76,11 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -120,7 +118,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -128,7 +125,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions]))]
     [System.String]
     # The parameter definitions for parameters used in the policy rule.
     # The keys are the parameter names.

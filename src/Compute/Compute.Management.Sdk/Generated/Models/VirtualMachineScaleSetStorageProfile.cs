@@ -46,13 +46,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="diskControllerType">Specifies the disk controller type configured for the virtual machines in
         /// the scale set. Minimum api-version: 2022-08-01
         /// Possible values include: &#39;SCSI&#39;, &#39;NVMe&#39;</param>
-        public VirtualMachineScaleSetStorageProfile(ImageReference imageReference = default(ImageReference), VirtualMachineScaleSetOSDisk osDisk = default(VirtualMachineScaleSetOSDisk), System.Collections.Generic.IList<VirtualMachineScaleSetDataDisk> dataDisks = default(System.Collections.Generic.IList<VirtualMachineScaleSetDataDisk>), string diskControllerType = default(string))
+
+        /// <param name="diskApiVersion">Specifies the Disk API version used when applying additionalDiskProperties
+        /// to managed disks. The value must be in the format YYYY-MM-DD (e.g.,
+        /// &#34;2026-03-02&#34;).
+        /// Possible values include: &#39;2025-01-02&#39;, &#39;2026-03-02&#39;</param>
+        public VirtualMachineScaleSetStorageProfile(ImageReference imageReference = default(ImageReference), VirtualMachineScaleSetOSDisk osDisk = default(VirtualMachineScaleSetOSDisk), System.Collections.Generic.IList<VirtualMachineScaleSetDataDisk> dataDisks = default(System.Collections.Generic.IList<VirtualMachineScaleSetDataDisk>), string diskControllerType = default(string), string diskApiVersion = default(string))
 
         {
             this.ImageReference = imageReference;
             this.OsDisk = osDisk;
             this.DataDisks = dataDisks;
             this.DiskControllerType = diskControllerType;
+            this.DiskApiVersion = diskApiVersion;
             CustomInit();
         }
 
@@ -96,6 +102,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskControllerType")]
         public string DiskControllerType {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Disk API version used when applying
+        /// additionalDiskProperties to managed disks. The value must be in the format
+        /// YYYY-MM-DD (e.g., &#34;2026-03-02&#34;). Possible values include: &#39;2025-01-02&#39;, &#39;2026-03-02&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskApiVersion")]
+        public string DiskApiVersion {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -119,6 +133,7 @@ namespace Microsoft.Azure.Management.Compute.Models
                     }
                 }
             }
+
 
         }
     }

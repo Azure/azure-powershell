@@ -29,11 +29,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="maxThroughput">Maximum throughput for the pool.
         /// </param>
-        public FleetspacePropertiesThroughputPoolConfiguration(int? minThroughput = default(int?), int? maxThroughput = default(int?))
+
+        /// <param name="dedicatedRUs">Total dedicated throughput (RU/s) for fleetspace. Represents the sum of all
+        /// manual provisioned throughput and all autoscale max RU/s across all shared
+        /// throughput databases and dedicated throughput containers across all
+        /// accounts in the fleetspace for 1 region.
+        /// </param>
+
+        /// <param name="maxConsumableRUs">Maximum consumable throughput (RU/s) for fleetspace. Represents the maximum
+        /// throughput that resources in the fleetspace can consume from the
+        /// fleetspace&#39;s pool in 1 region.
+        /// </param>
+        public FleetspacePropertiesThroughputPoolConfiguration(int? minThroughput = default(int?), int? maxThroughput = default(int?), long? dedicatedRUs = default(long?), long? maxConsumableRUs = default(long?))
 
         {
             this.MinThroughput = minThroughput;
             this.MaxThroughput = maxThroughput;
+            this.DedicatedRUs = dedicatedRUs;
+            this.MaxConsumableRUs = maxConsumableRUs;
             CustomInit();
         }
 
@@ -54,5 +67,22 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxThroughput")]
         public int? MaxThroughput {get; set; }
+
+        /// <summary>
+        /// Gets or sets total dedicated throughput (RU/s) for fleetspace. Represents
+        /// the sum of all manual provisioned throughput and all autoscale max RU/s
+        /// across all shared throughput databases and dedicated throughput containers
+        /// across all accounts in the fleetspace for 1 region.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dedicatedRUs")]
+        public long? DedicatedRUs {get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum consumable throughput (RU/s) for fleetspace.
+        /// Represents the maximum throughput that resources in the fleetspace can
+        /// consume from the fleetspace&#39;s pool in 1 region.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxConsumableRUs")]
+        public long? MaxConsumableRUs {get; set; }
     }
 }

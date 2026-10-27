@@ -232,6 +232,120 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Aborts an in-progress migration of the specified Network Virtual Appliance
+        /// and rolls back to the previous state.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void AbortMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).AbortMigrationAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Aborts an in-progress migration of the specified Network Virtual Appliance
+        /// and rolls back to the previous state.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task AbortMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.AbortMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Commits the migration of the specified Network Virtual Appliance. This
+        /// finalizes a previously executed migration workflow.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void CommitMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceCommitMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).CommitMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Commits the migration of the specified Network Virtual Appliance. This
+        /// finalizes a previously executed migration workflow.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task CommitMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceCommitMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.CommitMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Executes the migration of the specified Network Virtual Appliance. This
+        /// step performs the migration workflow that was previously prepared.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void ExecuteMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceExecuteMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).ExecuteMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Executes the migration of the specified Network Virtual Appliance. This
+        /// step performs the migration workflow that was previously prepared.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task ExecuteMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceExecuteMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.ExecuteMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Retrieves the boot diagnostic logs for a VM instance belonging to the
         /// specified Network Virtual Appliance.
         /// </summary>
@@ -271,6 +385,46 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Prepares the migration of the specified Network Virtual Appliance. This is
+        /// the first step of a migration workflow, such as migrating to a new OS
+        /// version or to the new internal load balancer architecture.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void PrepareMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualAppliancePrepareMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).PrepareMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Prepares the migration of the specified Network Virtual Appliance. This is
+        /// the first step of a migration workflow, such as migrating to a new OS
+        /// version or to the new internal load balancer architecture.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task PrepareMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualAppliancePrepareMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.PrepareMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Reimages one VM belonging to the specified Network Virtual Appliance.
@@ -428,6 +582,120 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Aborts an in-progress migration of the specified Network Virtual Appliance
+        /// and rolls back to the previous state.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void BeginAbortMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).BeginAbortMigrationAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Aborts an in-progress migration of the specified Network Virtual Appliance
+        /// and rolls back to the previous state.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginAbortMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginAbortMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Commits the migration of the specified Network Virtual Appliance. This
+        /// finalizes a previously executed migration workflow.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void BeginCommitMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceCommitMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).BeginCommitMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Commits the migration of the specified Network Virtual Appliance. This
+        /// finalizes a previously executed migration workflow.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginCommitMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceCommitMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginCommitMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Executes the migration of the specified Network Virtual Appliance. This
+        /// step performs the migration workflow that was previously prepared.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void BeginExecuteMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceExecuteMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).BeginExecuteMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Executes the migration of the specified Network Virtual Appliance. This
+        /// step performs the migration workflow that was previously prepared.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginExecuteMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceExecuteMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginExecuteMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Retrieves the boot diagnostic logs for a VM instance belonging to the
         /// specified Network Virtual Appliance.
         /// </summary>
@@ -467,6 +735,46 @@ namespace Microsoft.Azure.Management.Network
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Prepares the migration of the specified Network Virtual Appliance. This is
+        /// the first step of a migration workflow, such as migrating to a new OS
+        /// version or to the new internal load balancer architecture.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void BeginPrepareMigration(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualAppliancePrepareMigrationRequest body)
+        {
+                ((INetworkVirtualAppliancesOperations)operations).BeginPrepareMigrationAsync(resourceGroupName, networkVirtualApplianceName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Prepares the migration of the specified Network Virtual Appliance. This is
+        /// the first step of a migration workflow, such as migrating to a new OS
+        /// version or to the new internal load balancer architecture.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginPrepareMigrationAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualAppliancePrepareMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginPrepareMigrationWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Reimages one VM belonging to the specified Network Virtual Appliance.

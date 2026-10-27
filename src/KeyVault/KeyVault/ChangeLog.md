@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Key Vault name availability and Managed HSM region cmdlets to use API version `2026-02-01`.
+
+## Version 6.6.1
+* Upgraded the Key Vault control plane API version to '2026-02-01'.
+    - Earlier API versions retire on 27 February 2027; this upgrade keeps `Az.KeyVault` working afterward.
+    - No action or cmdlet behavior change is required. `New-AzKeyVault` has created vaults with RBAC (Role-Based Access Control) enabled by default since Az.KeyVault 6.0.0 and sends this setting explicitly, so the new service default does not affect it. Use `DisableRbacAuthorization` for access policies.
 
 ## Version 6.6.0
 * Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.

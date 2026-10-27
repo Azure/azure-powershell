@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return;
             }
-            __action = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action(json);
+            __chaosExperimentAction = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentAction(json);
             {_duration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("duration"), out var __jsonDuration) ? global::System.Xml.XmlConvert.ToTimeSpan( __jsonDuration ) : _duration;}
             AfterFromJson(json);
         }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return container;
             }
-            __action?.ToJson(container, serializationMode);
+            __chaosExperimentAction?.ToJson(container, serializationMode);
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString(global::System.Xml.XmlConvert.ToString((global::System.TimeSpan)this._duration)), "duration" ,container.Add );
             AfterToJson(ref container);
             return container;

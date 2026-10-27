@@ -34,5 +34,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-RouteServerPeerRoutes"));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRouteServerPeerWithRoutingConfiguration()
+        {
+            TestRunner.RunTestScript(string.Format("Test-RouteServerPeerWithRoutingConfiguration"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestRouteServerPeerWithHubVnetConnection()
+        {
+            TestRunner.RunTestScript(string.Format("Test-RouteServerPeerWithHubVnetConnection"));
+        }
     }
 }

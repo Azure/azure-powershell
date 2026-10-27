@@ -71,7 +71,6 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the job object of the replicating serv
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
-  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
   [PrivateLinkResourceName <String>]: The private link name.
   [ProtectableItemName <String>]: Protectable item name.
   [ProtectedItemName <String>]: The protected item name.

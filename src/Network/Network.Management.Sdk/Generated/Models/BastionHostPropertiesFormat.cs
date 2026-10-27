@@ -67,7 +67,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enablePrivateOnlyBastion">Enable/Disable Private Only feature of the Bastion Host resource.
         /// </param>
-        public BastionHostPropertiesFormat(System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), string provisioningState = default(string), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?))
+
+        /// <param name="sessionRecordingConfiguration">The storage account and identity to use for session recording
+        /// </param>
+        public BastionHostPropertiesFormat(System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), string provisioningState = default(string), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?), bool? enablePrivateOnlyBastion = default(bool?), BastionSessionRecordingConfiguration sessionRecordingConfiguration = default(BastionSessionRecordingConfiguration))
 
         {
             this.IPConfigurations = ipConfigurations;
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableKerberos = enableKerberos;
             this.EnableSessionRecording = enableSessionRecording;
             this.EnablePrivateOnlyBastion = enablePrivateOnlyBastion;
+            this.SessionRecordingConfiguration = sessionRecordingConfiguration;
             CustomInit();
         }
 
@@ -181,6 +185,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePrivateOnlyBastion")]
         public bool? EnablePrivateOnlyBastion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the storage account and identity to use for session recording
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sessionRecordingConfiguration")]
+        public BastionSessionRecordingConfiguration SessionRecordingConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -204,6 +214,10 @@ namespace Microsoft.Azure.Management.Network.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ScaleUnits", 2);
                 }
+            }
+            if (this.SessionRecordingConfiguration != null)
+            {
+                this.SessionRecordingConfiguration.Validate();
             }
         }
     }

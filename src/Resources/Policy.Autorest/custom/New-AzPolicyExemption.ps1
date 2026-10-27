@@ -99,7 +99,6 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -203,33 +202,21 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.Metadata = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
 
     # check for $null ExpiresOn and handle accordingly
-    if ($ExpiresOn) {
-        $calledParameters.ExpiresOnInternal = $ExpiresOn
+    if (!$ExpiresOn) {
+        $null = $calledParameters.Remove('ExpiresOn')
     }
 
     $null = $calledParameters.Remove('PolicyAssignment')
-    $null = $calledParameters.Remove('Metadata')
-    $null = $calledParameters.Remove('ExpiresOn')
 
-    $calledParameterSet = 'CreateExpanded'
-    $calledCommand = 'Az.Policy.private\New-AzPolicyExemption_CreateExpanded'
-
-    if ($writeln) {
-        Write-Host -ForegroundColor Blue -> $calledCommand'(' $calledParameters ')'
-    }
-
-    $cmdInfo = Get-Command -Name $calledCommand
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-    $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand($calledCommand, [System.Management.Automation.CommandTypes]::Cmdlet)
-    $scriptCmd = {& $wrappedCmd @calledParameters}
-    $object = Invoke-Command -ScriptBlock $scriptCmd
+    # call the internal cmdlet with the parsed parameters
+    $object = Az.Policy.internal\New-AzPolicyExemption @calledParameters
 
     foreach ($item in $object) {
         $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force

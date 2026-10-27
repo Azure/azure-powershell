@@ -188,6 +188,11 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations
+        /// </summary>
+        IVirtualMachineScaleSetVMDiagnosticRunCommandsOperations VirtualMachineScaleSetVMDiagnosticRunCommands { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMExtensionsOperations
         /// </summary>
         IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensions { get; }
@@ -196,6 +201,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations
         /// </summary>
         IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineDiagnosticRunCommandsOperations
+        /// </summary>
+        IVirtualMachineDiagnosticRunCommandsOperations VirtualMachineDiagnosticRunCommands { get; }
 
         /// <summary>
         /// Gets the IVirtualMachineExtensionsOperations
@@ -226,6 +236,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IDiskRestorePointOperations
         /// </summary>
         IDiskRestorePointOperations DiskRestorePoint { get; }
+
+        /// <summary>
+        /// Gets the ITenantLevelGallerySharingOperations
+        /// </summary>
+        ITenantLevelGallerySharingOperations TenantLevelGallerySharing { get; }
 
         /// <summary>
         /// Gets the IGalleriesOperations
@@ -261,6 +276,11 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ISharedGalleryImageVersionsOperations
         /// </summary>
         ISharedGalleryImageVersionsOperations SharedGalleryImageVersions { get; }
+
+        /// <summary>
+        /// Gets the IGallerySharingOperations
+        /// </summary>
+        IGallerySharingOperations GallerySharing { get; }
 
         /// <summary>
         /// Gets the IGalleryApplicationsOperations

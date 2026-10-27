@@ -51,7 +51,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -67,7 +67,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -142,7 +142,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -157,7 +157,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases: cf
 
 Required: False
@@ -220,7 +220,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentityEdgeAction, DeleteViaIdentity
 Aliases: wi
 
 Required: False

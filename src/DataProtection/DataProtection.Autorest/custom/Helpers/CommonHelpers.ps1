@@ -22,7 +22,7 @@ function GetDatasourceSetInfo
 		$DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
 		
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		if($manifest.enableDataSourceSetInfo -eq $true){		
+		if($manifest.enableDataSourceSetInfo -eq $true -and $manifest.dataSourceSetParentResource -ne $true){		
 			$DataSourceSetInfo.ResourceId =  $DatasourceInfo.ResourceId
 			$DataSourceSetInfo.ResourceName = $DatasourceInfo.ResourceName			
 			$DataSourceSetInfo.ResourceType =  $DataSourceInfo.ResourceType

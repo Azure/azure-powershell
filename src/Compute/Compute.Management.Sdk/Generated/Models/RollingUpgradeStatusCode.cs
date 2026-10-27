@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         [System.Runtime.Serialization.EnumMember(Value = "RollingForward")]
         RollingForward,
+        [System.Runtime.Serialization.EnumMember(Value = "RollingBack")]
+        RollingBack,
         [System.Runtime.Serialization.EnumMember(Value = "Cancelled")]
         Cancelled,
         [System.Runtime.Serialization.EnumMember(Value = "Completed")]
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 case RollingUpgradeStatusCode.RollingForward:
                     return "RollingForward";
+                case RollingUpgradeStatusCode.RollingBack:
+                    return "RollingBack";
                 case RollingUpgradeStatusCode.Cancelled:
                     return "Cancelled";
                 case RollingUpgradeStatusCode.Completed:
@@ -50,6 +54,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 case "RollingForward":
                     return RollingUpgradeStatusCode.RollingForward;
+                case "RollingBack":
+                    return RollingUpgradeStatusCode.RollingBack;
                 case "Cancelled":
                     return RollingUpgradeStatusCode.Cancelled;
                 case "Completed":

@@ -114,6 +114,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
+    # Cost Management Granularity of the vault.
+    # Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
+    ${CostManagementGranularity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
     # Cross region restore state of the vault.
     # Allowed values are Disabled, Enabled.
     ${CrossRegionRestoreState},

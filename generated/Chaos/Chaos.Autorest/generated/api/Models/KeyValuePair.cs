@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>A map to describe the settings of an action.</summary>
+    /// <summary>A key-value pair used to describe parameters for actions or configurations.</summary>
     public partial class KeyValuePair :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair,
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePairInternal
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         }
     }
-    /// A map to describe the settings of an action.
+    /// A key-value pair used to describe parameters for actions or configurations.
     public partial interface IKeyValuePair :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
     {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         string Value { get; set; }
 
     }
-    /// A map to describe the settings of an action.
+    /// A key-value pair used to describe parameters for actions or configurations.
     internal partial interface IKeyValuePairInternal
 
     {

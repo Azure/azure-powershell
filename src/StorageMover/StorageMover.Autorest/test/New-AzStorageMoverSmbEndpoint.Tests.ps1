@@ -63,4 +63,24 @@ Describe 'New/Update-AzStorageMoverSmbEndpoint' {
         $smbendpoint.Property.ShareName | Should -Be $shareName
         $smbendpoint.Property.Description | Should -Be "update smb endpoint"
     }
+
+    It 'CreateExpandedFsxSmb' {
+        $endpointName = "smbfsx"
+        $smbEndpoint = New-AzStorageMoverSmbEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -Host "10.0.0.6" -ShareName "share" -SourceType FSX-SMB -EndpointKind Source
+        $smbEndpoint.Property.EndpointType | Should -Be "SmbMount"
+        $smbEndpoint.Property.EndpointKind | Should -Be "Source"
+
+        $smbEndpoint = Get-AzStorageMoverEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName
+        $smbEndpoint.Property.ProvisioningState | Should -Be "Succeeded"
+    }
+
+    It 'CreateExpandedSourceTypeRequest' {
+        # The service does not return sourceType, so this checks the request offline.
+        Mock -CommandName New-AzStorageMoverEndpoint -ModuleName Az.StorageMover.custom -MockWith { [pscustomobject]@{ Property = $Property } }
+        $smbEndpoint = New-AzStorageMoverSmbEndpoint -Name "smbfsxo" -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -Host "10.0.0.6" -ShareName "share" -SourceType FSX-SMB -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password"
+        $request = $smbEndpoint.Property.ToJsonString() | ConvertFrom-Json
+        $request.sourceType | Should -Be "FSX-SMB"
+        $request.credentials.usernameUri | Should -Be "https://examples-azureKeyVault.vault.azure.net/secrets/username"
+        $request.credentials.passwordUri | Should -Be "https://examples-azureKeyVault.vault.azure.net/secrets/password"
+    }
 }
