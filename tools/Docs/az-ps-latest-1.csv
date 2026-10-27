@@ -24,7 +24,7 @@ pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Blueprint.0.5.1.zip;sourceType=sa]Az.Blueprint,0.5.1
 pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BotService.0.6.0.zip;sourceType=sa]Az.BotService,0.6.0
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Carbon.0.1.0.zip;sourceType=sa]Az.Carbon,0.1.0
-pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.6.2.0.zip;sourceType=sa]Az.Cdn,6.2.0
+pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Cdn.6.2.1.zip;sourceType=sa]Az.Cdn,6.2.1
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeAnalysis.0.2.0.zip;sourceType=sa]Az.ChangeAnalysis,0.2.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ChangeSafety.0.1.0.zip;sourceType=sa]Az.ChangeSafety,0.1.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Chaos.0.1.2.zip;sourceType=sa]Az.Chaos,0.1.2
