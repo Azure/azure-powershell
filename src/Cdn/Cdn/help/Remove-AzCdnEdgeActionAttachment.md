@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnedgeactionattachment
 schema: 2.0.0
@@ -15,42 +15,40 @@ A long-running operation for deleting an EdgeAction attachment that returns no c
 ### DeleteExpanded (Default)
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -AttachedResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaJsonString
-```
-Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaJsonFilePath
-```
-Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AttachedResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityExpanded
-```
-Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Body <IEdgeActionAttachment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityExpanded
+```
+Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaJsonFilePath
+```
+Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeleteViaJsonString
+```
+Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -134,7 +132,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
+Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -149,7 +147,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: DeleteViaIdentityExpanded, DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -210,7 +208,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
+Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -226,7 +224,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
+Parameter Sets: Delete, DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: False

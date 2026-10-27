@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string LicenseType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseType = value ?? null; }
 
         /// <summary>Internal Acessors for LicenseDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesLicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdateInternal.LicenseDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesLicenseDetails Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdateInternal.LicenseDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdatePropertiesInternal)Property).LicenseDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseUpdateProperties()); set { {_property = value;} } }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"Describes the license target server.",
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string LicenseDetailTarget { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Activated", "Deactivated")]
         string LicenseDetailState { get; set; }
         /// <summary>Describes the license target server.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Windows Server 2012", "Windows Server 2012 R2", "Windows Server 2016")]
         string LicenseDetailTarget { get; set; }
         /// <summary>Describes the license core type (pCore or vCore).</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("pCore", "vCore")]

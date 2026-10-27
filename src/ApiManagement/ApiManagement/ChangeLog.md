@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated the `Get-AzApiManagementNetworkStatus` example output to remove non-public service endpoints.
+* Removed non-public endpoints from the `Get-AzApiManagementNetworkStatus` example.
 
 ## Version 4.2.0
 * Added ChangeSafety Support

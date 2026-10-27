@@ -1196,6 +1196,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMember>()
                     .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
                 cfg.CreateMap<CNM.PSExpressRouteLagMember, MNM.ExpressRouteLagMemberPropertiesFormat>();
+                cfg.CreateMap<CNM.PSExpressRouteLagAuthorization, MNM.ExpressRouteLagAuthorization>()
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src));
+                cfg.CreateMap<CNM.PSExpressRouteLagAuthorization, MNM.ExpressRouteLagAuthorizationPropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteLag, CNM.PSExpressRouteLag>()
@@ -1207,6 +1210,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteLagMember, CNM.PSExpressRouteLagMember>()
                     .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
                 cfg.CreateMap<MNM.ExpressRouteLagMemberPropertiesFormat, CNM.PSExpressRouteLagMember>();
+                cfg.CreateMap<MNM.ExpressRouteLagAuthorization, CNM.PSExpressRouteLagAuthorization>()
+                    .AfterMap((src, dest, ctx) => { if (src.Properties != null) { ctx.Mapper.Map(src.Properties, dest); } });
+                cfg.CreateMap<MNM.ExpressRouteLagAuthorizationPropertiesFormat, CNM.PSExpressRouteLagAuthorization>();
 
                 // ExpressRouteCircuit
                 // CNM to MNM
@@ -1819,6 +1825,8 @@ namespace Microsoft.Azure.Commands.Network
                 //// DDoS custom policy
 
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosCustomPolicyMitigationRule, MNM.DdosMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.ToSdk(src));
                 cfg.CreateMap<CNM.PSDdosCustomPolicy, MNM.DdosCustomPolicy>();
                 cfg.CreateMap<CNM.PSDdosCustomPolicyDetectionRule, MNM.DdosDetectionRule>()
                     .ForMember(
@@ -1836,6 +1844,8 @@ namespace Microsoft.Azure.Commands.Network
                         }));
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.DdosMitigationRule, CNM.PSDdosCustomPolicyMitigationRule>()
+                    .ConvertUsing(src => DdosCustomPolicyMitigationRuleUtils.FromSdk(src));
                 cfg.CreateMap<MNM.DdosCustomPolicy, CNM.PSDdosCustomPolicy>();
                 cfg.CreateMap<MNM.DdosDetectionRule, CNM.PSDdosCustomPolicyDetectionRule>()
                     .ForMember(
@@ -2627,6 +2637,14 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.PrivateIpAddress,
                         opt => opt.MapFrom(src => src.PrivateIPAddress)
+                    )
+                    .ForMember(
+                        dest => dest.PublicIpAddressV6,
+                        opt => opt.MapFrom(src => src.PublicIPAddressV6)
+                    )
+                    .ForMember(
+                        dest => dest.PrivateIpAddressV6,
+                        opt => opt.MapFrom(src => src.PrivateIPAddressV6)
                     );
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();

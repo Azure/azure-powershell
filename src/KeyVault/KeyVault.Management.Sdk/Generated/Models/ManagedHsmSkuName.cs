@@ -23,7 +23,17 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         [System.Runtime.Serialization.EnumMember(Value = "Custom_C42")]
         CustomC42,
         [System.Runtime.Serialization.EnumMember(Value = "Custom_C10")]
-        CustomC10
+        CustomC10,
+        [System.Runtime.Serialization.EnumMember(Value = "Standard_B1v2")]
+        StandardB1V2,
+        [System.Runtime.Serialization.EnumMember(Value = "Standard_B5v2")]
+        StandardB5V2,
+        [System.Runtime.Serialization.EnumMember(Value = "Standard_B10v2")]
+        StandardB10V2,
+        [System.Runtime.Serialization.EnumMember(Value = "Standard_B15v2")]
+        StandardB15V2,
+        [System.Runtime.Serialization.EnumMember(Value = "Standard_B20v2")]
+        StandardB20V2
     }
     internal static class ManagedHsmSkuNameEnumExtension
     {
@@ -45,6 +55,16 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return "Custom_C42";
                 case ManagedHsmSkuName.CustomC10:
                     return "Custom_C10";
+                case ManagedHsmSkuName.StandardB1V2:
+                    return "Standard_B1v2";
+                case ManagedHsmSkuName.StandardB5V2:
+                    return "Standard_B5v2";
+                case ManagedHsmSkuName.StandardB10V2:
+                    return "Standard_B10v2";
+                case ManagedHsmSkuName.StandardB15V2:
+                    return "Standard_B15v2";
+                case ManagedHsmSkuName.StandardB20V2:
+                    return "Standard_B20v2";
             }
             return null;
         }
@@ -62,6 +82,16 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return ManagedHsmSkuName.CustomC42;
                 case "Custom_C10":
                     return ManagedHsmSkuName.CustomC10;
+                case "Standard_B1v2":
+                    return ManagedHsmSkuName.StandardB1V2;
+                case "Standard_B5v2":
+                    return ManagedHsmSkuName.StandardB5V2;
+                case "Standard_B10v2":
+                    return ManagedHsmSkuName.StandardB10V2;
+                case "Standard_B15v2":
+                    return ManagedHsmSkuName.StandardB15V2;
+                case "Standard_B20v2":
+                    return ManagedHsmSkuName.StandardB20V2;
             }
             return null;
         }

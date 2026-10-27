@@ -77,11 +77,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// <summary>Internal Acessors for OperationStatus</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.OperationStatus { get => this._operationStatus; set { {_operationStatus = value;} } }
 
+        /// <summary>Internal Acessors for Priority</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.Priority { get => this._priority; set { {_priority = value;} } }
+
         /// <summary>Internal Acessors for Target</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IApiErrorInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IApiErrorInternal)Error).Target = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.Type { get => this._type; set { {_type = value;} } }
+
+        /// <summary>Internal Acessors for VMSize</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.VMSize { get => this._vMSize; set { {_vMSize = value;} } }
+
+        /// <summary>Internal Acessors for Zone</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineInternal.Zone { get => this._zone; set { {_zone = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -100,6 +109,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Owned)]
         public string OperationStatus { get => this._operationStatus; }
 
+        /// <summary>Backing field for <see cref="Priority" /> property.</summary>
+        private string _priority;
+
+        /// <summary>The priority of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Owned)]
+        public string Priority { get => this._priority; }
+
         /// <summary>The target of the particular error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
         public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IApiErrorInternal)Error).Target; }
@@ -107,9 +123,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>Type of the virtual machine</summary>
+        /// <summary>ARM resource type - virtual machine</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
+
+        /// <summary>Backing field for <see cref="VMSize" /> property.</summary>
+        private string _vMSize;
+
+        /// <summary>The VM size of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Owned)]
+        public string VMSize { get => this._vMSize; }
+
+        /// <summary>Backing field for <see cref="Zone" /> property.</summary>
+        private string _zone;
+
+        /// <summary>The availability zone of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Owned)]
+        public string Zone { get => this._zone; }
 
         /// <summary>Creates an new <see cref="VirtualMachine" /> instance.</summary>
         public VirtualMachine()
@@ -215,6 +245,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("Launching", "Creating", "Failed", "Succeeded")]
         string OperationStatus { get;  }
+        /// <summary>The priority of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The priority of the virtual machine.",
+        SerializedName = @"priority",
+        PossibleTypes = new [] { typeof(string) })]
+        string Priority { get;  }
         /// <summary>The target of the particular error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
         Required = false,
@@ -226,17 +267,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
         string Target { get;  }
-        /// <summary>Type of the virtual machine</summary>
+        /// <summary>ARM resource type - virtual machine</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Type of the virtual machine",
+        Description = @"ARM resource type - virtual machine",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
+        /// <summary>The VM size of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The VM size of the virtual machine.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        string VMSize { get;  }
+        /// <summary>The availability zone of the virtual machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The availability zone of the virtual machine.",
+        SerializedName = @"zone",
+        PossibleTypes = new [] { typeof(string) })]
+        string Zone { get;  }
 
     }
     /// A Launch mode Fleet's virtual machine.
@@ -269,10 +332,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("Launching", "Creating", "Failed", "Succeeded")]
         string OperationStatus { get; set; }
+        /// <summary>The priority of the virtual machine.</summary>
+        string Priority { get; set; }
         /// <summary>The target of the particular error.</summary>
         string Target { get; set; }
-        /// <summary>Type of the virtual machine</summary>
+        /// <summary>ARM resource type - virtual machine</summary>
         string Type { get; set; }
+        /// <summary>The VM size of the virtual machine.</summary>
+        string VMSize { get; set; }
+        /// <summary>The availability zone of the virtual machine.</summary>
+        string Zone { get; set; }
 
     }
 }

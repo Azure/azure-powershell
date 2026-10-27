@@ -19,10 +19,11 @@
 -->
 
 ## Upcoming Release
-
-* Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
-* Documented the planned removal of standalone EdgeAction resource cmdlets in Az.Cdn 7.0.0 and Az 17.0.0 on November 15, 2026. This advance announcement did not change cmdlet behavior or add runtime warnings; EdgeAction delivery-rule actions and URL signing are not affected.
-* Added post-migration endpoint cutover guidance for Azure Front Door (classic) and Azure CDN from Microsoft (classic) migrations.
+* Updated Front Door to API 2026-10-01; added server TLS (Transport Layer Security) groups, post-quantum key exchange, origin certificate name validation and EdgeAction `ClientResponse`. Preserved existing features/URL signing compatibility.
+* Kept classic CDN on API 2026-04-01-preview and standalone EdgeAction on 2024-07-22-preview. Use Az.EdgeAction for the stable API.
+* Fixed Change Safety parameter forwarding.
+* Announced standalone EdgeAction removal in Az.Cdn 7.0.0/Az 17.0.0 on November 15, 2026; no behavior changes/warnings yet. Delivery-rule actions and URL signing are unaffected.
+* Added classic Front Door/Microsoft CDN migration cutover guidance.
 
 ## Version 6.2.0
 * Added ChangeSafety Support

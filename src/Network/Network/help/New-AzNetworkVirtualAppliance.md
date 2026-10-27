@@ -19,6 +19,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
+ [-AddressFamily <String[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
@@ -33,6 +34,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> [-VirtualH
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
+ [-AddressFamily <String[]>]
  [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-NetworkProfile <PSVirtualApplianceNetworkProfile>]
  [-NvaInterfaceConfiguration <PSNetworkVirtualApplianceInterfaceConfigProperties[]>]
@@ -113,6 +115,16 @@ $nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Locati
 
 Creates a new Network Virtual Appliance resource deployed in VNet with PrivateNic & PublicNic type.
 
+### Example 6
+```powershell
+$sku = New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwan" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
+$hub = Get-AzVirtualHub -ResourceGroupName testrg -Name hub
+
+$nva = New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location australiaeast -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AddressFamily "IPv4","IPv6"
+```
+
+Creates a new dual-stack (IPv4 + IPv6) Network Virtual Appliance resource in resource group: testrg. Omitting -AddressFamily (or passing only "IPv4") creates an IPv4-only appliance.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
@@ -135,6 +147,21 @@ The AdditionalNic Properties of the Virtual Appliance.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AddressFamily
+The address family (IP version) of the Virtual Appliance. Accepts IPv4 and/or IPv6 (case-insensitive). Omitting the parameter defaults to IPv4-only.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

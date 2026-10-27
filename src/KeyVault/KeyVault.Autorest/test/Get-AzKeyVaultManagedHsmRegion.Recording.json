@@ -1,17 +1,17 @@
 {
-  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01+1": {
+  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/daniel-rg/providers/Microsoft.KeyVault/managedHSMs/daniel-hsm/regions?api-version=2024-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "f7790fba-fd1d-4352-9d0c-12615f856734" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
         "CommandName": [ "Get-AzKeyVaultManagedHsmRegion" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsmRegion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.KeyVault/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.6.9", "Az.KeyVault/6.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,20 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "f7790fba-fd1d-4352-9d0c-12615f856734" ],
-        "x-ms-keyvault-service-version": [ "2.2.243.0" ],
-        "x-ms-request-id": [ "31066744-0ff8-4f4a-80ae-aef993423fb5" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
+        "x-ms-keyvault-service-version": [ "2.2.1231.0" ],
+        "x-ms-request-id": [ "3751431f-0eed-446b-87f9-a71c5cbe0bfd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=a217809c-9dd2-41d4-b32a-7b16e0b588bf/australiaeast/71576620-0908-41cb-a36d-91709e5bfdf6" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "0749e52e-cf26-4eae-b931-0cef36e2317d" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250811T232643Z:0749e52e-cf26-4eae-b931-0cef36e2317d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a1b2c3d4-0000-4000-8000-000000000002/eastus/0ef0a6b1-02f3-4bde-8da5-a12937784967" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261027T151515Z:f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 88E1B6E55A8644A1B7DB70CE0B4E91D7 Ref B: SYD03EDGE2018 Ref C: 2025-08-11T23:26:42Z" ],
-        "Date": [ "Mon, 11 Aug 2025 23:26:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 48B3F39722E847ED818CE39083EFA765 Ref B: DUB241062305062 Ref C: 2026-10-27T15:15:14Z" ],
+        "Date": [ "Tue, 27 Oct 2026 15:15:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "147" ],

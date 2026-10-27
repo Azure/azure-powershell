@@ -13,8 +13,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal
     {
 
+        /// <summary>Internal Acessors for NextLink</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
+
         /// <summary>Internal Acessors for Value</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal.Value { get => this._value; set { {_value = value;} } }
+
+        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
+        private string _nextLink;
+
+        /// <summary>The URL to get the next set of results.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string NextLink { get => this._nextLink; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue> _value;
@@ -33,6 +43,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface IExtensionValueListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
+        /// <summary>The URL to get the next set of results.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The URL to get the next set of results.",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get;  }
         /// <summary>The list of extension metadata</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -50,6 +71,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     internal partial interface IExtensionValueListResultInternal
 
     {
+        /// <summary>The URL to get the next set of results.</summary>
+        string NextLink { get; set; }
         /// <summary>The list of extension metadata</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue> Value { get; set; }
 

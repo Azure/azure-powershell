@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed the unsupported identity and JSON parameter sets from `New-AzStaticWebApp`.
+* Added `AsyncScalingEnabled` to `New-AzAppServicePlan` and `Set-AzAppServicePlan` to enable or disable asynchronous scaling for dedicated App Service plans
+* Added Managed Instance identities, scripts, mounts, registry adapters, networking and Remote Desktop Protocol (RDP) to `New-AzAppServicePlan`/`Set-AzAppServicePlan`.
+* Added `Get-AzAppServicePlanManagedInstance` (worker IPs/status), `Restart-AzAppServicePlanManagedInstance` (recycling) and `Get-AzAppServicePlanRdpCredential` (secure RDP credentials).
+* Removed unsupported `New-AzStaticWebApp` identity/JSON sets.
 
 ## Version 4.2.0
 * Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.

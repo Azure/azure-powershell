@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to API 2026-11-01.
 
 ## Version 0.1.0
 * Added cmdlets to create and manage Azure Monitor health models.
