@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.SourceControlName = sourceControlName;
             this.SourceControlSyncJobId = new Guid(syncJob.SourceControlSyncJobId);
             this.ProvisioningState = syncJob.ProvisioningState;
-            this.CreationTime = syncJob.CreationTime.ToLocalTime();            
+            this.CreationTime = syncJob.CreationTime.GetValueOrDefault().ToLocalTime();
             this.StartTime = syncJob.StartTime.HasValue ? syncJob.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.EndTime = syncJob.EndTime.HasValue ? syncJob.EndTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.SyncType = syncJob.SyncType;

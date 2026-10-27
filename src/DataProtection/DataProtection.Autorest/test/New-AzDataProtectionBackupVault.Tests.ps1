@@ -15,9 +15,11 @@ Describe 'New-AzDataProtectionBackupVault' {
     It 'CreateExpanded' {
         $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
         $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting
-        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
-        $vault.Location | Should be "centraluseuap"
-        $vault.Name | Should be $env.TestBackupVault.NewVaultName
+        $vault.CostManagementSettingGranularityLevel | Should be "VaultLevel"
+        Remove-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
+
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting -CostManagementGranularity ProtectedItemLevel
+        $vault.CostManagementSettingGranularityLevel | Should be "ProtectedItemLevel"
         Remove-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.CreateSubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
     }
 

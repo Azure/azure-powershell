@@ -163,7 +163,7 @@ function Update-AzCdnProfile {
         # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
         # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
         $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
-        $wrapped = Get-Command -Name 'Az.Cdn.private\Update-AzCdnProfile_UpdateExpanded' -ErrorAction Ignore
+        $wrapped = Get-Command -Name 'Az.Cdn.private\Update-AzCdnClassicProfile_UpdateExpanded' -ErrorAction Ignore
         if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
             $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
             foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
@@ -182,9 +182,11 @@ function Update-AzCdnProfile {
         $hasNoWait = $PSBoundParameters.Remove('NoWait')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $cdnProfile = Get-AzCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzCdnProfile' -BoundParameters $PSBoundParameters
+            $cdnProfile = Get-AzCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }
@@ -209,7 +211,7 @@ function Update-AzCdnProfile {
             }
 
             if (-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
-                Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
+                Az.Cdn.internal\Update-AzCdnClassicProfile @PSBoundParameters
             } else {
                 throw "Provided cdnProfile does not exist."
             }

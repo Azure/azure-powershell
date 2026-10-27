@@ -45,69 +45,75 @@ To create the parameters described below, construct a hash table containing the 
 
 HYBRIDCONNECTIONINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACE1INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACE2INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
 #>
@@ -148,7 +154,8 @@ param(
     [Parameter(ParameterSetName='List2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -160,8 +167,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -337,9 +343,9 @@ end {
 
 <#
 .Synopsis
-Lists all available Relay REST API operations.
+List the operations for the provider
 .Description
-Lists all available Relay REST API operations.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
@@ -474,14 +480,15 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 IPRULE <INwRuleSetIPRules[]>: List of IpRules
   [Action <String>]: The IP Filter Action
@@ -493,6 +500,7 @@ PARAMETER <INetworkRuleSet>: Description of topic resource.
     [Action <String>]: The IP Filter Action
     [IPMask <String>]: IP Mask
   [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled
+  [TrustedServiceAccessEnabled <Boolean?>]: Value that indicates whether Trusted Service Access is Enabled or not.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
 #>
@@ -513,7 +521,8 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -522,8 +531,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -557,6 +565,13 @@ param(
     # This determines if traffic is allowed over public network.
     # By default it is enabled
     ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether Trusted Service Access is Enabled or not.
+    ${TrustedServiceAccessEnabled},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
@@ -709,69 +724,75 @@ To create the parameters described below, construct a hash table containing the 
 
 HYBRIDCONNECTIONINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACE1INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACE2INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/remove-azrelayauthorizationrule
 #>
@@ -806,7 +827,8 @@ param(
     [Parameter(ParameterSetName='Delete2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
@@ -815,8 +837,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete1', Mandatory)]
@@ -1049,15 +1070,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Update1', Mandatory)]
@@ -1229,6 +1250,227 @@ end {
 
 <#
 .Synopsis
+Update a Relay cluster.
+.Description
+Update a Relay cluster.
+.Example
+Set-AzRelayCluster -ResourceGroupName lucas-relay-rg -Name relaycluster01 -SkuCapacity 2
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+RESOURCE <IRelayCluster>: A Relay dedicated cluster.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [SkuCapacity <Int32?>]: The number of capacity units assigned to the Relay cluster.
+  [SkuTier <String>]: Tier of the Relay cluster SKU.
+  [ZoneRedundant <Boolean?>]: Indicates whether the Relay cluster was created as zone redundant.
+.Link
+https://learn.microsoft.com/powershell/module/az.relay/set-azrelaycluster
+#>
+function Set-AzRelayCluster {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ClusterName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The name of the Relay cluster.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayCluster]
+    # A Relay dedicated cluster.
+    ${Resource},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.Int32]
+    # The number of capacity units assigned to the Relay cluster.
+    ${SkuCapacity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Dedicated")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Tier of the Relay cluster SKU.
+    ${SkuTier},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the Relay cluster was created as zone redundant.
+    ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Update = 'Az.Relay.private\Set-AzRelayCluster_Update';
+            UpdateExpanded = 'Az.Relay.private\Set-AzRelayCluster_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Relay.private\Set-AzRelayCluster_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Relay.private\Set-AzRelayCluster_UpdateViaJsonString';
+        }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a service hybrid connection.
 This operation is idempotent.
 .Description
@@ -1276,15 +1518,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -1470,15 +1712,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -1644,39 +1886,42 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
   [Rights <List<String>>]: The rights associated with the rule.
 
 WCFRELAYINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/update-azrelayauthorizationrule
 #>
@@ -1707,7 +1952,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -1715,8 +1961,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -1905,25 +2150,27 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 NAMESPACEINPUTOBJECT <IRelayIdentity>: Identity Parameter
   [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Relay cluster.
   [HybridConnectionName <String>]: The hybrid connection name.
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [PrivateLinkResourceName <String>]: The PrivateLinkResource name
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
   [RelayName <String>]: The relay name.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IHybridConnection>: Description of hybrid connection resource.
   [RequiresClientAuthorization <Boolean?>]: Returns true if client authorization is needed for this hybrid connection; otherwise, false.
@@ -1956,7 +2203,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -1964,8 +2212,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]

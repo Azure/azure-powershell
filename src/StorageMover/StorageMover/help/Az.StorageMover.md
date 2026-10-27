@@ -17,6 +17,9 @@ Gets a Storage Mover resource.
 ### [Get-AzStorageMoverAgent](Get-AzStorageMoverAgent.md)
 Gets an Agent resource.
 
+### [Get-AzStorageMoverConnection](Get-AzStorageMoverConnection.md)
+Gets a Connection resource.
+
 ### [Get-AzStorageMoverEndpoint](Get-AzStorageMoverEndpoint.md)
 Gets an Endpoint resource.
 
@@ -28,6 +31,9 @@ Gets a Job Run resource.
 
 ### [Get-AzStorageMoverProject](Get-AzStorageMoverProject.md)
 Gets a Project resource.
+
+### [Invoke-AzStorageMoverReconcileJobDefinition](Invoke-AzStorageMoverReconcileJobDefinition.md)
+Post action to reconcile the running job.
 
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Create a top-level Storage Mover resource.
@@ -41,6 +47,9 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ### [New-AzStorageMoverAzStorageContainerEndpoint](New-AzStorageMoverAzStorageContainerEndpoint.md)
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
+### [New-AzStorageMoverConnection](New-AzStorageMoverConnection.md)
+Create a Connection resource.
+
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
 Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
@@ -53,6 +62,9 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
 Create a Project resource, which is a logical grouping of related jobs.
 
+### [New-AzStorageMoverS3WithHmacEndpoint](New-AzStorageMoverS3WithHmacEndpoint.md)
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
+
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
 
@@ -61,6 +73,10 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
+
+### [Remove-AzStorageMoverConnection](Remove-AzStorageMoverConnection.md)
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 
 ### [Remove-AzStorageMoverEndpoint](Remove-AzStorageMoverEndpoint.md)
 Deletes an Endpoint resource.
@@ -113,6 +129,10 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
 Update properties for a Project resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverS3WithHmacEndpoint](Update-AzStorageMoverS3WithHmacEndpoint.md)
+Updates properties for an S3 with HMAC endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)

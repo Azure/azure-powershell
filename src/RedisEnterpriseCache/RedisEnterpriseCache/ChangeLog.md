@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Update-AzRedisEnterpriseCacheDatabase` to update databases using a read-modify-write request.
-    - Fixed issue [#30045]
 
 ## Version 2.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
@@ -60,3 +58,4 @@
 
 ## Version 0.1.0
 * First preview release for module Az.RedisEnterpriseCache
+

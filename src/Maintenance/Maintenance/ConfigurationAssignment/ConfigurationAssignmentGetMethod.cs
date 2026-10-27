@@ -58,15 +58,22 @@ namespace Microsoft.Azure.Commands.Maintenance
                 }
                 else if (string.IsNullOrEmpty(this.ConfigurationAssignmentName))
                 {
-                    var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
+                    bool hasParent = !string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName);
+                    var result = hasParent ?
                         ConfigurationAssignmentsClient.ListParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
                         ConfigurationAssignmentsClient.List(resourceGroupName, providerName, resourceType, resourceName);
 
-                    foreach (var configurationAssignment in result)
+                    while (result != null)
                     {
-                        PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
-                        MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
-                        psObject.Add(psConfigurationAssignment);
+                        foreach (var configurationAssignment in result)
+                        {
+                            PSConfigurationAssignment psConfigurationAssignment = new PSConfigurationAssignment();
+                            MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(configurationAssignment, psConfigurationAssignment);
+                            psObject.Add(psConfigurationAssignment);
+                        }
+
+                        result = string.IsNullOrEmpty(result.NextPageLink) ? null :
+                            (hasParent ? ConfigurationAssignmentsClient.ListParentNext(result.NextPageLink) : ConfigurationAssignmentsClient.ListNext(result.NextPageLink));
                     }
                 }
                 else

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.1
+* Corrected the `Invoke-AzNewRelicResubscribeMonitor` command description wording (`underline` corrected to `underlying`).
+
 ## Version 0.3.0
 * Added AutoRest-generated NewRelic PowerShell module using API version 2025-05-01-preview
     - Generated 30 cmdlets covering complete NewRelic Observability service functionality

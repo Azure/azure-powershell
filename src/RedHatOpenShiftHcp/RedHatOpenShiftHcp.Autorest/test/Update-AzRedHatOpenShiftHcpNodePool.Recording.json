@@ -1,0 +1,176 @@
+{
+  "Update-AzRedHatOpenShiftHcpNodePool+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "1d3f6007-4ee7-48e9-9194-ba5b1be91c8d" ],
+        "CommandName": [ "Update-AzRedHatOpenShiftHcpNodePool" ],
+        "FullCommandName": [ "Update-AzRedHatOpenShiftHcpNodePool_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8bb4c1d2-452f-40e9-b19d-1067370dcc8f" ],
+        "x-envoy-upstream-service-time": [ "11" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "1066090e-dd59-4d21-add9-7783ac2afe3e" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T161657Z:1066090e-dd59-4d21-add9-7783ac2afe3e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0D348DCB5BE344038623C38FE98D301E Ref B: YTO221100612029 Ref C: 2026-10-21T16:16:57Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1658" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps\",\n    \"location\": \"westeurope\",\n    \"name\": \"nptest-ps\",\n    \"properties\": {\n        \"autoRepair\": true,\n        \"platform\": {\n            \"enableEncryptionAtHost\": false,\n            \"osDisk\": {\n                \"diskStorageAccountType\": \"StandardSSD_LRS\",\n                \"diskType\": \"Managed\",\n                \"sizeGiB\": 64\n            },\n            \"subnetId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\n            \"vmSize\": \"Standard_D8s_v3\"\n        },\n        \"provisioningState\": \"Succeeded\",\n        \"replicas\": 1,\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-21T16:08:58Z\",\n                    \"message\": \"\",\n                    \"reason\": \"Valid\",\n                    \"status\": \"True\",\n                    \"type\": \"RequirementsValid\"\n                }\n            ]\n        },\n        \"version\": {\n            \"channelGroup\": \"stable\",\n            \"id\": \"4.22.18\"\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-21T16:08:56.5068631Z\",\n        \"createdBy\": \"aro@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-21T16:08:56.5068631Z\",\n        \"lastModifiedBy\": \"aro@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nodePools\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRedHatOpenShiftHcpNodePool+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01",
+      "Content": "{\n  \"location\": \"westeurope\",\n  \"properties\": {\n    \"version\": {\n      \"id\": \"4.22.18\",\n      \"channelGroup\": \"stable\"\n    },\n    \"platform\": {\n      \"osDisk\": {\n        \"sizeGiB\": 64,\n        \"diskStorageAccountType\": \"StandardSSD_LRS\",\n        \"diskType\": \"Managed\"\n      },\n      \"subnetId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\n      \"vmSize\": \"Standard_D8s_v3\",\n      \"enableEncryptionAtHost\": false\n    },\n    \"replicas\": 1,\n    \"autoRepair\": true,\n    \"nodeDrainTimeoutMinutes\": 45\n  },\n  \"identity\": {\n    \"type\": \"None\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "670" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/1a64f30c-acf0-401a-a6b6-58201d3e84f0?api-version=2026-10-01\u0026t=639281962179999071\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=gI3VnEokRPUYOr-WsGMUNXMsEexZKlIKuYsAWwnEObVu_x9GBrX18HCDK-ASM7Sza_04wfAXxjAk939mG09JdhcfAMVGk7aZHxK-ut6tEaeybUOB17GzjVg-Zl0C9CZslhLsF5f6cgDrHn8UB_txyXf6q3YE511Jh8Niz8NU-GYZQXSlnjx8S6IJHsu2SYuYo0LsE87dVHh1ceWuSc1HYFQ-yDmg8qPbM6W7RT9ih8Uxe0-XSSHRgGTxq1gs7CDqNwhCi9AMQ5Sy5u_GmAYkJD3V91VtKD4-je-4SmK55LqanN0pNFNLg0oMRcDRyBO0DLrZbKbvOVD4tZlzsw9TTg\u0026h=jHGsgCnTq2DyH5c5WiPARnuzBBNCgvtVESlmjN27pxk" ],
+        "x-ms-request-id": [ "6fcd1a95-cdfd-40e0-889d-08464f45d93e" ],
+        "x-envoy-upstream-service-time": [ "31" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/westeurope/ea5a76e6-ff3a-48b1-8317-834c783536e6" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-correlation-request-id": [ "35079a96-c5a9-4613-9e60-4e79723c0958" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T161658Z:35079a96-c5a9-4613-9e60-4e79723c0958" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5D1ED0D3FCA64DAD89B63C3A4261B236 Ref B: YTO221100612029 Ref C: 2026-10-21T16:16:57Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1695" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps\",\n    \"location\": \"westeurope\",\n    \"name\": \"nptest-ps\",\n    \"properties\": {\n        \"autoRepair\": true,\n        \"nodeDrainTimeoutMinutes\": 45,\n        \"platform\": {\n            \"enableEncryptionAtHost\": false,\n            \"osDisk\": {\n                \"diskStorageAccountType\": \"StandardSSD_LRS\",\n                \"diskType\": \"Managed\",\n                \"sizeGiB\": 64\n            },\n            \"subnetId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\n            \"vmSize\": \"Standard_D8s_v3\"\n        },\n        \"provisioningState\": \"Accepted\",\n        \"replicas\": 1,\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-21T16:08:58Z\",\n                    \"message\": \"\",\n                    \"reason\": \"Valid\",\n                    \"status\": \"True\",\n                    \"type\": \"RequirementsValid\"\n                }\n            ]\n        },\n        \"version\": {\n            \"channelGroup\": \"stable\",\n            \"id\": \"4.22.18\"\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-21T16:08:56.5068631Z\",\n        \"createdBy\": \"aro@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-21T16:16:57.859287Z\",\n        \"lastModifiedBy\": \"aro@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nodePools\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRedHatOpenShiftHcpNodePool+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/1a64f30c-acf0-401a-a6b6-58201d3e84f0?api-version=2026-10-01\u0026t=639281962179999071\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=gI3VnEokRPUYOr-WsGMUNXMsEexZKlIKuYsAWwnEObVu_x9GBrX18HCDK-ASM7Sza_04wfAXxjAk939mG09JdhcfAMVGk7aZHxK-ut6tEaeybUOB17GzjVg-Zl0C9CZslhLsF5f6cgDrHn8UB_txyXf6q3YE511Jh8Niz8NU-GYZQXSlnjx8S6IJHsu2SYuYo0LsE87dVHh1ceWuSc1HYFQ-yDmg8qPbM6W7RT9ih8Uxe0-XSSHRgGTxq1gs7CDqNwhCi9AMQ5Sy5u_GmAYkJD3V91VtKD4-je-4SmK55LqanN0pNFNLg0oMRcDRyBO0DLrZbKbvOVD4tZlzsw9TTg\u0026h=jHGsgCnTq2DyH5c5WiPARnuzBBNCgvtVESlmjN27pxk+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/1a64f30c-acf0-401a-a6b6-58201d3e84f0?api-version=2026-10-01\u0026t=639281962179999071\u0026c=MIIHlTCCBn2gAwIBAgIRALLGu8EppFcH5hmisV5_CugwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA5MjIwMjM0MjdaFw0yNjEyMTcwODM0MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvlHl6MWFh4sVyDX86SXho6up73n3Cw8SF05--Tw4T0GdREq123FDaCGsXT67bi7TMBEp3R7zxuuIRVLJrd8nP04XrFyXWxBPsoot39e_4jVqwwqq_xPzzdQo_m8FiMDffvBOztXpj6xmwkFjqdbcyzXUghb4_DCxxidZPzF-0tQmB6GGN3YCA8MnVOSvLr2Wm1iVXqAPOFt6PrJ614gH3U3xYurR002trOdUkIzQtDS4mBgJs_-homb3k-xbkYDWJJz6Zq2jjCTRImTE7hetrqJtgmX2xr9s0qR32-LsCN56AmbIgDNFxjIM0Yz6JFhfie_gb_LiA-jT_BIvdehDdQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUiGnw78TPrSmERHdsg2J0cunwKVcwHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS84My9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzgzL2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvODMvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEALRW5985M5NN07kPutlPzc14J5dboz3nWyaPtQ-QQ2rBZDxrcI1GnZMee0TddyNP7lIWPuYF88VsWVrNfipBB1ABLo2dhr4x_as6S5BRKG79pGnpwYSuL3eqk8CsPU7zuMZwfgBEptu-2q1y3b-CPcq_Viv0ttMphLKaOJUasBAyA6I1GuGX9gQZM9E9H-q1UlvWUvGD2a9izQyRaWOBNFGl5NZROuyzEEuRoCigJZ2w-MSrHdIjea0v3_mbXsBj-atG5csSypntOvFlo7chHVdj-8huq2UqJlouVQevelH3Ps-2bp0Afma5w_SmUYLk6hXiPVOuzGdmHO7xlAFUV1A\u0026s=gI3VnEokRPUYOr-WsGMUNXMsEexZKlIKuYsAWwnEObVu_x9GBrX18HCDK-ASM7Sza_04wfAXxjAk939mG09JdhcfAMVGk7aZHxK-ut6tEaeybUOB17GzjVg-Zl0C9CZslhLsF5f6cgDrHn8UB_txyXf6q3YE511Jh8Niz8NU-GYZQXSlnjx8S6IJHsu2SYuYo0LsE87dVHh1ceWuSc1HYFQ-yDmg8qPbM6W7RT9ih8Uxe0-XSSHRgGTxq1gs7CDqNwhCi9AMQ5Sy5u_GmAYkJD3V91VtKD4-je-4SmK55LqanN0pNFNLg0oMRcDRyBO0DLrZbKbvOVD4tZlzsw9TTg\u0026h=jHGsgCnTq2DyH5c5WiPARnuzBBNCgvtVESlmjN27pxk",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "1d3f6007-4ee7-48e9-9194-ba5b1be91c8d" ],
+        "CommandName": [ "Update-AzRedHatOpenShiftHcpNodePool" ],
+        "FullCommandName": [ "Update-AzRedHatOpenShiftHcpNodePool_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "36d4bea5-2669-48e3-a03e-cb08a6f59ab1" ],
+        "x-envoy-upstream-service-time": [ "7" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=5320d50d-03d4-41a9-a4b6-2dbac3c54918/canadacentral/cfd28604-e428-46ba-86c4-0e54fc652d96" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "5aa2356f-5ca2-4445-a4a6-471559fd36e6" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20261021T161728Z:5aa2356f-5ca2-4445-a4a6-471559fd36e6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 06F3DAC7F4B5484A878723284C3A51E2 Ref B: YTO221100612029 Ref C: 2026-10-21T16:17:28Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:17:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "360" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.RedHatOpenShift/locations/westeurope/hcpOperationStatuses/1a64f30c-acf0-401a-a6b6-58201d3e84f0\",\n    \"name\": \"1a64f30c-acf0-401a-a6b6-58201d3e84f0\",\n    \"status\": \"Succeeded\",\n    \"startTime\": \"2026-10-21T16:16:57.93638602Z\",\n    \"endTime\": \"2026-10-21T16:17:20.369794471Z\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRedHatOpenShiftHcpNodePool+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps?api-version=2026-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "1d3f6007-4ee7-48e9-9194-ba5b1be91c8d" ],
+        "CommandName": [ "Update-AzRedHatOpenShiftHcpNodePool" ],
+        "FullCommandName": [ "Update-AzRedHatOpenShiftHcpNodePool_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.3.0", "PSVersion/v7.6.6", "Az.RedHatOpenShiftHcp/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "967a0469-5b8b-4a2a-bfee-291e57a75e80" ],
+        "x-envoy-upstream-service-time": [ "10" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "a0d6a49e-faac-4179-9c2a-abdb8abf9445" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20261021T161729Z:a0d6a49e-faac-4179-9c2a-abdb8abf9445" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2999E31690F4E56BDEAAB9880622928 Ref B: YTO221100612029 Ref C: 2026-10-21T16:17:28Z" ],
+        "Date": [ "Wed, 21 Oct 2026 16:17:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1696" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n    \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/aro-hcp-01/nodePools/nptest-ps\",\n    \"location\": \"westeurope\",\n    \"name\": \"nptest-ps\",\n    \"properties\": {\n        \"autoRepair\": true,\n        \"nodeDrainTimeoutMinutes\": 45,\n        \"platform\": {\n            \"enableEncryptionAtHost\": false,\n            \"osDisk\": {\n                \"diskStorageAccountType\": \"StandardSSD_LRS\",\n                \"diskType\": \"Managed\",\n                \"sizeGiB\": 64\n            },\n            \"subnetId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aro-hcp-rg-01/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/customer-subnet-1\",\n            \"vmSize\": \"Standard_D8s_v3\"\n        },\n        \"provisioningState\": \"Succeeded\",\n        \"replicas\": 1,\n        \"status\": {\n            \"conditions\": [\n                {\n                    \"lastTransitionTime\": \"2026-10-21T16:08:58Z\",\n                    \"message\": \"\",\n                    \"reason\": \"Valid\",\n                    \"status\": \"True\",\n                    \"type\": \"RequirementsValid\"\n                }\n            ]\n        },\n        \"version\": {\n            \"channelGroup\": \"stable\",\n            \"id\": \"4.22.18\"\n        }\n    },\n    \"systemData\": {\n        \"createdAt\": \"2026-10-21T16:08:56.5068631Z\",\n        \"createdBy\": \"aro@redhat.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2026-10-21T16:16:57.859287Z\",\n        \"lastModifiedBy\": \"aro@redhat.com\",\n        \"lastModifiedByType\": \"User\"\n    },\n    \"type\": \"Microsoft.RedHatOpenShift/hcpOpenShiftClusters/nodePools\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

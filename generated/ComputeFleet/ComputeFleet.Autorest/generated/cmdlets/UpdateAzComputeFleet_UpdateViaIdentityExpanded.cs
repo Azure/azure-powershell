@@ -497,30 +497,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string[] Zone { get => _resourceBody.Zone?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.Zone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
-        /// <summary>Distribution strategy used for zone allocation policy.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Distribution strategy used for zone allocation policy.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Distribution strategy used for zone allocation policy.",
-        SerializedName = @"distributionStrategy",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-        public string ZoneAllocationPolicyDistributionStrategy { get => _resourceBody.ZoneAllocationPolicyDistributionStrategy ?? null; set => _resourceBody.ZoneAllocationPolicyDistributionStrategy = value; }
-
-        /// <summary>Zone preferences, required when zone distribution strategy is Prioritized.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Zone preferences, required when zone distribution strategy is Prioritized.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Zone preferences, required when zone distribution strategy is Prioritized.",
-        SerializedName = @"zonePreferences",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[] ZoneAllocationPolicyZonePreference { get => _resourceBody.ZoneAllocationPolicyZonePreference?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ZoneAllocationPolicyZonePreference = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>(value) : null); }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -926,10 +902,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
             {
                 this.AdditionalLocationProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile[])(this.MyInvocation?.BoundParameters["AdditionalLocationProfile"]);
             }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ZoneAllocationPolicyZonePreference")))
-            {
-                this.ZoneAllocationPolicyZonePreference = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[])(this.MyInvocation?.BoundParameters["ZoneAllocationPolicyZonePreference"]);
-            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("PlanName")))
             {
                 this.PlanName = (string)(this.MyInvocation?.BoundParameters["PlanName"]);
@@ -993,10 +965,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ComputeProfileBaseVirtualMachineProfile")))
             {
                 this.ComputeProfileBaseVirtualMachineProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IBaseVirtualMachineProfile)(this.MyInvocation?.BoundParameters["ComputeProfileBaseVirtualMachineProfile"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ZoneAllocationPolicyDistributionStrategy")))
-            {
-                this.ZoneAllocationPolicyDistributionStrategy = (string)(this.MyInvocation?.BoundParameters["ZoneAllocationPolicyDistributionStrategy"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AdditionalVirtualMachineCapabilityUltraSsdEnabled")))
             {

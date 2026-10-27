@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>The name of the recovery point.</summary>
+        /// <summary>The recovery point name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -91,14 +91,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The name of the recovery point.</summary>
+        /// <summary>The recovery point name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the recovery point.",
+        Description = @"The recovery point name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     {
         /// <summary>The recovery point Id.</summary>
         string Id { get; set; }
-        /// <summary>The name of the recovery point.</summary>
+        /// <summary>The recovery point name.</summary>
         string Name { get; set; }
         /// <summary>The recovery point properties.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IClusterRecoveryPointProperties Property { get; set; }

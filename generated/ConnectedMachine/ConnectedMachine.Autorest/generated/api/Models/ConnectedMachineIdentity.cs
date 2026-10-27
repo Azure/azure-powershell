@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location of the Extension being received.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -96,26 +96,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string MachineName { get => this._machineName; set => this._machineName = value; }
 
-        /// <summary>Backing field for <see cref="MetadataName" /> property.</summary>
-        private string _metadataName;
-
-        /// <summary>Name of the HybridIdentityMetadata.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string MetadataName { get => this._metadataName; set => this._metadataName = value; }
-
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
         /// <summary>The name of the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>Backing field for <see cref="OSType" /> property.</summary>
-        private string _oSType;
-
-        /// <summary>Defines the os type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string OSType { get => this._oSType; set => this._oSType = value; }
 
         /// <summary>Backing field for <see cref="PerimeterName" /> property.</summary>
         private string _perimeterName;
@@ -178,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -309,14 +295,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("default")]
         string LicenseProfileName { get; set; }
-        /// <summary>The location of the Extension being received.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The location of the Extension being received.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -331,17 +317,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
         string MachineName { get; set; }
-        /// <summary>Name of the HybridIdentityMetadata.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the HybridIdentityMetadata.",
-        SerializedName = @"metadataName",
-        PossibleTypes = new [] { typeof(string) })]
-        string MetadataName { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -353,17 +328,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
-        /// <summary>Defines the os type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Defines the os type.",
-        SerializedName = @"osType",
-        PossibleTypes = new [] { typeof(string) })]
-        string OSType { get; set; }
         /// <summary>
         /// The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
         /// </summary>
@@ -454,14 +418,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"settingsResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string SettingsResourceName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -502,16 +466,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The name of the license profile.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("default")]
         string LicenseProfileName { get; set; }
-        /// <summary>The location of the Extension being received.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
         string MachineName { get; set; }
-        /// <summary>Name of the HybridIdentityMetadata.</summary>
-        string MetadataName { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
         string Name { get; set; }
-        /// <summary>Defines the os type.</summary>
-        string OSType { get; set; }
         /// <summary>
         /// The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
         /// </summary>
@@ -530,7 +490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ScopeName { get; set; }
         /// <summary>The name of the settings resource.</summary>
         string SettingsResourceName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The version of the Extension being received.</summary>
         string Version { get; set; }

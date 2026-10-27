@@ -21,6 +21,24 @@ $saName = "pstestsa8895"
 $skuName="Standard_LRS"
 $policyName = "afspolicy1"
 
+function Get-AzureFSMsiTestValue(
+	[string] $Name,
+	[string] $PlaybackValue)
+{
+	if ($env:AZURE_TEST_MODE -eq "Record")
+	{
+		$value = [Environment]::GetEnvironmentVariable($Name)
+		if ([string]::IsNullOrWhiteSpace($value))
+		{
+			throw "Environment variable '$Name' is required to record Azure Files managed identity tests."
+		}
+
+		return $value
+	}
+
+	return $PlaybackValue
+}
+
 # Setup Instructions:
 # 1. Create a resource group
 #New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -71,7 +89,7 @@ $policyName = "afspolicy1"
 			-FriendlyName $saName;
 	}
 
-	$item = Get-AzRecoveryServicesBackupItem `
+		$item = Get-AzRecoveryServicesBackupItem `
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureFiles `
@@ -90,6 +108,23 @@ $policyName = "afspolicy1"
 			-storageAccountName $saName | Out-Null
 
  		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureFiles `
+			-Name $fileShareFriendlyName
+	}
+	elseif ($item.ProtectionState -eq "ProtectionStopped")
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Item $item | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `

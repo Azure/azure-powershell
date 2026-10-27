@@ -85,6 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {_metricId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("metricId"), out var __jsonMetricId) ? (string)__jsonMetricId : (string)_metricId;}
             {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.PrivateEndpointConnection.FromJson(__u) )) ))() : null : _privateEndpointConnection;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
+            {_minimumTlsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("minimumTlsVersion"), out var __jsonMinimumTlsVersion) ? (string)__jsonMinimumTlsVersion : (string)_minimumTlsVersion;}
+            {_clusterArmId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString>("clusterArmId"), out var __jsonClusterArmId) ? (string)__jsonClusterArmId : (string)_clusterArmId;}
             AfterFromJson(json);
         }
 
@@ -141,6 +143,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 container.Add("privateEndpointConnections",__w);
             }
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            AddIf( null != (((object)this._minimumTlsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._minimumTlsVersion.ToString()) : null, "minimumTlsVersion" ,container.Add );
+            AddIf( null != (((object)this._clusterArmId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Json.JsonString(this._clusterArmId.ToString()) : null, "clusterArmId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

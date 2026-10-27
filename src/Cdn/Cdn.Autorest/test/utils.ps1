@@ -39,6 +39,7 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    # Certificate tests also require Secrets:Get access for the profile identity on their configured Key Vault.
     Write-Host -ForegroundColor Green "Start to import module."
     Import-Module -Name Az.FrontDoor
     Import-Module -Name Az.KeyVault
@@ -56,6 +57,10 @@ function setupEnv() {
         $rgExists = Get-AzResourceGroup -Name $env.ResourceGroupName -ErrorAction SilentlyContinue
         if ($rgExists) {
             Write-Host -ForegroundColor Green "Reusing previous environment from env.json (ResourceGroup: $($env.ResourceGroupName))"
+            $profile = Get-AzFrontDoorCdnProfile -Name $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction Stop
+            if (-not $profile.IdentityType -or $profile.IdentityType -eq 'None') {
+                Update-AzFrontDoorCdnProfile -Name $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -IdentityType SystemAssigned -ErrorAction Stop | Out-Null
+            }
             return
         }
         # Resource group was deleted (e.g. by cleanupEnv), recreate with same names from env.json
@@ -70,7 +75,7 @@ function setupEnv() {
         New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
         Write-Host -ForegroundColor Green "Recreated Classic CDN profile: $classicCdnProfileName"
 
-        New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+        New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global -IdentityType SystemAssigned | Out-Null
         Write-Host -ForegroundColor Green "Recreated FrontDoor CDN profile: $frontDoorCdnProfileName"
 
         return
@@ -93,7 +98,7 @@ function setupEnv() {
     # Create FrontDoor CDN profile with Standard_AzureFrontDoor SKU
     $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6)
     Write-Host -ForegroundColor Green "Start to create Standard_AzureFrontDoor SKU profile: $($frontDoorCdnProfileName)"
-    New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+    New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global -IdentityType SystemAssigned | Out-Null
     $env.Add("FrontDoorCdnProfileName", $frontDoorCdnProfileName)
     Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU profile created."
 

@@ -97,6 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_connection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray>("connections"), out var __jsonConnections) ? If( __jsonConnections as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _connection;}
             {_dataIntegrityValidation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("dataIntegrityValidation"), out var __jsonDataIntegrityValidation) ? (string)__jsonDataIntegrityValidation : (string)_dataIntegrityValidation;}
             {_preservePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean>("preservePermissions"), out var __jsonPreservePermissions) ? (bool?)__jsonPreservePermissions : _preservePermission;}
+            {_isCrossTenantJob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean>("isCrossTenantJob"), out var __jsonIsCrossTenantJob) ? (bool?)__jsonIsCrossTenantJob : _isCrossTenantJob;}
+            {_crossTenantEndpointTenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("crossTenantEndpointTenantId"), out var __jsonCrossTenantEndpointTenantId) ? (string)__jsonCrossTenantEndpointTenantId : (string)_crossTenantEndpointTenantId;}
+            {_crossTenantEndpointResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("crossTenantEndpointResourceId"), out var __jsonCrossTenantEndpointResourceId) ? (string)__jsonCrossTenantEndpointResourceId : (string)_crossTenantEndpointResourceId;}
+            {_syncMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("syncMode"), out var __jsonSyncMode) ? (string)__jsonSyncMode : (string)_syncMode;}
+            {_moverSyncedUntil = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("moverSyncedUntil"), out var __jsonMoverSyncedUntil) ? global::System.DateTime.TryParse((string)__jsonMoverSyncedUntil, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonMoverSyncedUntilValue) ? __jsonMoverSyncedUntilValue : _moverSyncedUntil : _moverSyncedUntil;}
             AfterFromJson(json);
         }
 
@@ -180,6 +185,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             }
             AddIf( null != (((object)this._dataIntegrityValidation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._dataIntegrityValidation.ToString()) : null, "dataIntegrityValidation" ,container.Add );
             AddIf( null != this._preservePermission ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean((bool)this._preservePermission) : null, "preservePermissions" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._isCrossTenantJob ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean((bool)this._isCrossTenantJob) : null, "isCrossTenantJob" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._crossTenantEndpointTenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._crossTenantEndpointTenantId.ToString()) : null, "crossTenantEndpointTenantId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._crossTenantEndpointResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._crossTenantEndpointResourceId.ToString()) : null, "crossTenantEndpointResourceId" ,container.Add );
+            }
+            AddIf( null != (((object)this._syncMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._syncMode.ToString()) : null, "syncMode" ,container.Add );
+            AddIf( null != this._moverSyncedUntil ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._moverSyncedUntil?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "moverSyncedUntil" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

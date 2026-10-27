@@ -56,5 +56,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ExpressRoutePortAuthorizationCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRoutePortAuthorizationKey()
+        {
+            TestRunner.RunTestScript("Test-ExpressRoutePortAuthorizationKey");
+        }
     }
 }

@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         {
             WriteVerbose(StorageSyncResources.ResetCertificateMessage17);
 
-            StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.TriggerRollover(resourceGroupName, storageSyncServiceName, serverId.ToString(), certificateData);
+            StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.TriggerRollover(resourceGroupName, storageSyncServiceName, serverId, certificateData);
 
             WriteVerbose(StorageSyncResources.ResetCertificateMessage18);
         }

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Chaos
-Module Guid: ca01a43f-b9c7-4e71-a41d-a185e2355c98
+Module Guid: 50f50ac7-1d8a-49cd-b641-5bf6d1b83acd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.chaos
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,69 +11,86 @@ Locale: en-US
 Microsoft Azure PowerShell: Chaos cmdlets
 
 ## Az.Chaos Cmdlets
-### [Get-AzChaosCapability](Get-AzChaosCapability.md)
-Get a Capability resource that extends a Target resource.
+### [Get-AzChaosDiscoveredResource](Get-AzChaosDiscoveredResource.md)
+Get a discovered resource.
 
-### [Get-AzChaosCapabilityType](Get-AzChaosCapabilityType.md)
-Get a Capability Type resource for given Target Type and location.
+### [Get-AzChaosScenario](Get-AzChaosScenario.md)
+Get a scenario.
 
-### [Get-AzChaosExecutionExperimentDetail](Get-AzChaosExecutionExperimentDetail.md)
-Execution details of an experiment resource.
+### [Get-AzChaosScenarioConfiguration](Get-AzChaosScenarioConfiguration.md)
+Get a scenario definition.
 
-### [Get-AzChaosExperiment](Get-AzChaosExperiment.md)
-Get a Experiment resource.
+### [Get-AzChaosScenarioConfigurationResourcePermission](Get-AzChaosScenarioConfigurationResourcePermission.md)
+Get the latest scenario configuration resource permission fix result.
 
-### [Get-AzChaosExperimentExecution](Get-AzChaosExperimentExecution.md)
-Get an execution of an Experiment resource.
+### [Get-AzChaosScenarioConfigurationValidation](Get-AzChaosScenarioConfigurationValidation.md)
+Get the latest scenario configuration validation result.
 
-### [Get-AzChaosTarget](Get-AzChaosTarget.md)
-Get a Target resource that extends a tracked regional resource.
+### [Get-AzChaosScenarioRun](Get-AzChaosScenarioRun.md)
+Get a scenario run.
+This endpoint is also the polling target for ScenarioConfigurations.execute and ScenarioRuns.cancel (final-state-via: location).
+While the run is in progress the service returns 202 with a Location header pointing back to this URL; clients must keep polling until they receive 200, which carries the final ScenarioRun body.
 
-### [Get-AzChaosTargetType](Get-AzChaosTargetType.md)
-Get a Target Type resources for given location.
+### [Get-AzChaosWorkspace](Get-AzChaosWorkspace.md)
+Get a Workspace resource.
 
-### [New-AzChaosActionObject](New-AzChaosActionObject.md)
-Create an in-memory object for Action.
+### [Get-AzChaosWorkspaceEvaluation](Get-AzChaosWorkspaceEvaluation.md)
+Get the latest workspace evaluation result.
 
-### [New-AzChaosBranchObject](New-AzChaosBranchObject.md)
-Create an in-memory object for Branch.
+### [Initialize-AzChaosWorkspace](Initialize-AzChaosWorkspace.md)
+Stand up a ready-to-use Chaos Studio workspace end to end.
 
-### [New-AzChaosCapability](New-AzChaosCapability.md)
-Create a Capability resource that extends a Target resource.
+### [Invoke-AzChaosScenarioConfigurationExecution](Invoke-AzChaosScenarioConfigurationExecution.md)
+Execute the scenario execution with the given scenario configuration.
 
-### [New-AzChaosExperiment](New-AzChaosExperiment.md)
-Create a Experiment resource.
+### [Invoke-AzChaosWorkspaceScenarioEvaluation](Invoke-AzChaosWorkspaceScenarioEvaluation.md)
+Evaluate a workspace end to end.
 
-### [New-AzChaosSelectorObject](New-AzChaosSelectorObject.md)
-Create an in-memory object for Selector.
+### [New-AzChaosActionDependencyObject](New-AzChaosActionDependencyObject.md)
+Create an in-memory object for ActionDependency.
 
-### [New-AzChaosStepObject](New-AzChaosStepObject.md)
-Create an in-memory object for Step.
+### [New-AzChaosKeyValuePairObject](New-AzChaosKeyValuePairObject.md)
+Create an in-memory object for KeyValuePair.
 
-### [New-AzChaosTarget](New-AzChaosTarget.md)
-Create a Target resource that extends a tracked regional resource.
+### [New-AzChaosScenario](New-AzChaosScenario.md)
+Create a scenario.
 
-### [Remove-AzChaosCapability](Remove-AzChaosCapability.md)
-Delete a Capability that extends a Target resource.
+### [New-AzChaosScenarioActionObject](New-AzChaosScenarioActionObject.md)
+Create an in-memory object for ScenarioAction.
 
-### [Remove-AzChaosExperiment](Remove-AzChaosExperiment.md)
-Delete a Experiment resource.
+### [New-AzChaosScenarioConfiguration](New-AzChaosScenarioConfiguration.md)
+Create a scenario definition.
 
-### [Remove-AzChaosTarget](Remove-AzChaosTarget.md)
-Delete a Target resource that extends a tracked regional resource.
+### [New-AzChaosScenarioParameterObject](New-AzChaosScenarioParameterObject.md)
+Create an in-memory object for ScenarioParameter.
 
-### [Start-AzChaosExperiment](Start-AzChaosExperiment.md)
-Start a Experiment resource.
+### [New-AzChaosWorkspace](New-AzChaosWorkspace.md)
+Create a Workspace resource.
 
-### [Stop-AzChaosExperiment](Stop-AzChaosExperiment.md)
-Cancel a running Experiment resource.
+### [Remove-AzChaosScenario](Remove-AzChaosScenario.md)
+Delete a scenario.
 
-### [Update-AzChaosCapability](Update-AzChaosCapability.md)
-Update a Capability resource that extends a Target resource.
+### [Remove-AzChaosScenarioConfiguration](Remove-AzChaosScenarioConfiguration.md)
+Delete a scenario definition.
 
-### [Update-AzChaosExperiment](Update-AzChaosExperiment.md)
-Update a Experiment resource.
+### [Remove-AzChaosWorkspace](Remove-AzChaosWorkspace.md)
+Delete a Workspace resource.
 
-### [Update-AzChaosTarget](Update-AzChaosTarget.md)
-Update a Target resource that extends a tracked regional resource.
+### [Repair-AzChaosScenarioConfigurationResourcePermission](Repair-AzChaosScenarioConfigurationResourcePermission.md)
+Fixes resource permissions for the given scenario configuration.
+
+### [Start-AzChaosScenarioRun](Start-AzChaosScenarioRun.md)
+Start a scenario run for a scenario configuration.
+
+### [Stop-AzChaosScenarioRun](Stop-AzChaosScenarioRun.md)
+Cancel the currently running scenario execution.
+
+### [Test-AzChaosScenarioConfiguration](Test-AzChaosScenarioConfiguration.md)
+Validate the given scenario configuration.
+
+### [Update-AzChaosWorkspace](Update-AzChaosWorkspace.md)
+Update a Workspace resource.
+
+### [Update-AzChaosWorkspaceRecommendation](Update-AzChaosWorkspaceRecommendation.md)
+Refreshes recommendation status for all scenarios in a given workspace.
 

@@ -112,10 +112,10 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHost parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <remarks>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the Bastion Host.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to update BastionHost tags.
+        /// Parameters supplied to update BastionHost tags or identity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> UpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified Bastion Host.
@@ -193,10 +193,10 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHost parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </summary>
         /// <remarks>
-        /// Updates Tags for BastionHost resource
+        /// Updates Tags or identity for BastionHost resource
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the Bastion Host.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to update BastionHost tags.
+        /// Parameters supplied to update BastionHost tags or identity.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BastionHost>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionHostUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified Bastion Host.

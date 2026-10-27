@@ -19,10 +19,22 @@
 -->
 
 ## Upcoming Release
-* Added Cross Region Restore support for Azure File Share backup items (`Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`)
-* Refined soft delete behavior for Azure File share backup items
-    - `Undo-AzRecoveryServicesBackupItemDeletion` now throws a clear error when the target Azure File share item is not in the soft-deleted (`ToBeDeleted`) state instead of issuing an undelete request that cannot succeed.
-    - Corrected the `DateOfPurge` computation for soft-deleted Azure File share items; it is now derived from the service-returned remaining deferred-delete window, fixing the previous value that always fell back to a fixed 14-day period.
+* Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
+
+## Version 7.15.0
+* Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listInstantItemRecoveryOperationResult` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).
+* Added Managed Identity (MI) based authentication support for Azure File Share backup:
+    - Supports identity-based registration and restore for Azure File Share backup, including Cross Subscription Restore.
+* Fixed `New-AzRecoveryServicesVault` and `Update-AzRecoveryServicesVault` to use the AsPerPolicy configuration by default when enabling vault immutability.
+* Fixed cross-subscription Azure VM protection for virtual machines with user-assigned managed identities.
+* Added Microsoft Defender for Cloud Source Scan configuration for Recovery Services vaults and Azure Virtual Machine backup items.
+    - Supports vault and protected-item configuration and exposes Source Scan and threat details in backup output.
+
+## Version 7.14.1
+* Added Cross Region Restore for Azure File Share backups through `Get-AzRecoveryServicesBackupItem -UseSecondaryRegion`, `Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion`, and `Restore-AzRecoveryServicesBackupItem -RestoreToSecondaryRegion`.
+* Refined soft delete behavior for Azure File Share backup items
+    - `Undo-AzRecoveryServicesBackupItemDeletion` now errors unless the item is soft-deleted (`ToBeDeleted`), avoiding an invalid undelete request.
+    - Corrected `DateOfPurge` to use the remaining deferred-delete window returned by the service instead of a fixed 14 days.
 
 ## Version 7.14.0
 * Added Cross Subscription Backup (CSB) support for Azure VM:
@@ -40,6 +52,7 @@
 ## Version 7.13.0
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
 * Added Cross region restore support for Delos cloud regions
+* Added Cross region restore support for USSec cloud - USSec West Central region
 * Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
 * Added Private Disk Access support for Azure-to-Azure managed disk replication: new `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` parameters on `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`; values are honored by `New-AzRecoveryServicesAsrReplicationProtectedItem` and surfaced on `ASRAzureToAzureProtectedDiskDetails`.
 

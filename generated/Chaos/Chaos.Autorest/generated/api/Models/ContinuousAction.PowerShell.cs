@@ -88,13 +88,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IContinuousActionInternal)this).SelectorId = (string) content.GetValueForProperty("SelectorId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IContinuousActionInternal)this).SelectorId, global::System.Convert.ToString);
             }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Type, global::System.Convert.ToString);
-            }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IContinuousActionInternal)this).SelectorId = (string) content.GetValueForProperty("SelectorId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IContinuousActionInternal)this).SelectorId, global::System.Convert.ToString);
             }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Type, global::System.Convert.ToString);
-            }
             if (content.Contains("Name"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

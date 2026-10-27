@@ -1,0 +1,455 @@
+{
+  "Remove-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"Delete auth\",\n    \"authenticationKind\": \"ManagedIdentity\",\n    \"managedIdentityName\": \"SystemAssigned\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "148"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000261"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000309"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000111"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T152223Z:00000000-0000-4000-8000-000000000111"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CE3D203531284A6E8D9531657C6E4BCB Ref B: FRA261071505034 Ref C: 2026-10-13T15:22:23Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:22:22 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p\",\"name\":\"azps-auth-delete-r3wz6p\",\"type\":\"microsoft.cloudhealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:22:23.2871081Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:22:23.2871081Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete auth\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "83"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000015"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000078"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000246"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000376"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T152254Z:00000000-0000-4000-8000-000000000376"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E63D811B36AC45DF89922B62CCE7499B Ref B: FRA261071505034 Ref C: 2026-10-13T15:22:53Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:22:53 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p\",\"name\":\"azps-auth-delete-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:22:23.2871081Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:22:23.5034028Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete auth\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "84"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000015"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModelAuthenticationSetting_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000162"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000032"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000242"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T152254Z:00000000-0000-4000-8000-000000000242"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0FE07CC49B794BD0951967F714178557 Ref B: FRA261071505034 Ref C: 2026-10-13T15:22:54Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:22:53 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourcegroups/azps-ch-rg-r3wz6p/providers/microsoft.cloudhealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p\",\"name\":\"azps-auth-delete-r3wz6p\",\"type\":\"Microsoft.CloudHealth/healthmodels/authenticationsettings\",\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:22:23.2871081Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:22:23.5034028Z\"},\"properties\":{\"authenticationKind\":\"ManagedIdentity\",\"managedIdentityName\":\"SystemAssigned\",\"provisioningState\":\"Succeeded\",\"displayName\":\"Delete auth\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "85"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000075"
+        ],
+        "CommandName": [
+          "Remove-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "Remove-AzMonitorHealthModelAuthenticationSetting_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000141"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000371"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "199"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000368"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T152255Z:00000000-0000-4000-8000-000000000368"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3DD450024EC54D45B0F84F769D072FF7 Ref B: FRA261071505034 Ref C: 2026-10-13T15:22:54Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:22:54 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMonitorHealthModelAuthenticationSetting+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/authenticationsettings/azps-auth-delete-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "86"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000194"
+        ],
+        "CommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting"
+        ],
+        "FullCommandName": [
+          "Get-AzMonitorHealthModelAuthenticationSetting_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000339"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000235"
+        ],
+        "x-ms-error-code": [
+          "AuthenticationSettingNotFound"
+        ],
+        "x-ms-failure-cause": [
+          "service"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000084"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T152255Z:00000000-0000-4000-8000-000000000084"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8202C0C78C37427A8920EE107E206222 Ref B: FRA261071505034 Ref C: 2026-10-13T15:22:55Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:22:54 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "128"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthenticationSettingNotFound\",\"message\":\"Authentication setting was not found ('azps-auth-delete-r3wz6p').\"}}",
+      "isContentBase64": false
+    }
+  }
+}

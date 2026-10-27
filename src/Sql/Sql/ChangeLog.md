@@ -18,12 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added multi-database Managed Instance link support
-    - Added `LinkMode` support to `New-AzSqlInstanceLink`
-    - Added database membership updates to `Update-AzSqlInstanceLink`
-* Enhanced `Get-AzSqlDeletedServer` cmdlet to support subscription-level queries
-    - Made location input parameter optional to enable listing deleted servers across all locations at subscription level
-    - Added `ScheduledPurgeTime` and `Location` to output properties for deleted server information
+* Added short-term backup immutability support to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`.
+    - Added the `LockImmutability` parameter and `ImmutabilityStatus` output property.
+    - Restricted `LockImmutability` to live Managed Instance databases.
+    - Added an irreversible-action confirmation prompt when locking immutability, which can be bypassed with `-Force`.
+* Added immutability support for Azure SQL Managed Instance long-term retention backups.
+    - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
+    - Exposed immutability state in managed database long-term retention policy and backup output.
+    - Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` to manage time-based immutability.
+    - Added `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` to manage legal holds.
+
+## Version 7.2.0
+* Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
+* Fixed `Restore-AzSqlDatabase` to omit the high availability (HA) replica count when the parameter is not specified.
+* Added selective-fields support to Azure SQL auditing
+    - Added the optional `RequiredFields` parameter to `Set-AzSqlServerAudit` and `Set-AzSqlDatabaseAudit`
+    - Added `RequiredFields` to the output of `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+    - Updated blob auditing operations to API version `2026-08-01-preview`
+
+## Version 7.1.0
+* Added multi-database Managed Instance links through `LinkMode` on `New-AzSqlInstanceLink` and database membership updates on `Update-AzSqlInstanceLink`.
+* Enhanced `Get-AzSqlDeletedServer` subscription-level queries by making location optional and adding `ScheduledPurgeTime` and `Location` output.
 
 ## Version 7.0.0
 * Added ChangeSafety Support

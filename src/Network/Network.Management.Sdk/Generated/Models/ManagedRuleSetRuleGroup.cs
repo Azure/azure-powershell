@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="rules">List of rules within the rule group
         /// </param>
-        public ManagedRuleSetRuleGroup(string ruleGroupName, System.Collections.Generic.IList<string> rules = default(System.Collections.Generic.IList<string>))
+        public ManagedRuleSetRuleGroup(string ruleGroupName, System.Collections.Generic.IList<int?> rules = default(System.Collections.Generic.IList<int?>))
 
         {
             this.RuleGroupName = ruleGroupName;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets list of rules within the rule group
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rules")]
-        public System.Collections.Generic.IList<string> Rules {get; set; }
+        public System.Collections.Generic.IList<int?> Rules {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

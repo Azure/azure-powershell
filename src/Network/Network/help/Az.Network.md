@@ -11,6 +11,12 @@ Locale: en-US
 This topic displays help topics for the Azure Network Cmdlets.
 
 ## Az.Network Cmdlets
+### [Add-AzApplicationGatewayAdvancedRoutingConditionSet](Add-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Adds an advanced routing condition set to an application gateway.
+
+### [Add-AzApplicationGatewayAdvancedRoutingMap](Add-AzApplicationGatewayAdvancedRoutingMap.md)
+Adds an advanced routing map to an application gateway.
+
 ### [Add-AzApplicationGatewayAuthenticationCertificate](Add-AzApplicationGatewayAuthenticationCertificate.md)
 Adds an authentication certificate to an application gateway.
 
@@ -200,6 +206,12 @@ Lists the Radius servers and corresponding radius secrets set on VpnServerConfig
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
 
+### [Get-AzApplicationGatewayAdvancedRoutingConditionSet](Get-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Gets an advanced routing condition set from an application gateway.
+
+### [Get-AzApplicationGatewayAdvancedRoutingMap](Get-AzApplicationGatewayAdvancedRoutingMap.md)
+Gets an advanced routing map from an application gateway.
+
 ### [Get-AzApplicationGatewayAuthenticationCertificate](Get-AzApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
 
@@ -341,6 +353,9 @@ Gets a CustomIpPrefix resource
 ### [Get-AzDdosCustomPolicy](Get-AzDdosCustomPolicy.md)
 Gets a DDoS custom policy.
 
+### [Get-AzDdosCustomPolicyDetectionRule](Get-AzDdosCustomPolicyDetectionRule.md)
+Gets one or all detection rules from an in-memory DDoS custom policy.
+
 ### [Get-AzDdosProtectionPlan](Get-AzDdosProtectionPlan.md)
 Gets a DDoS protection plan.
 
@@ -361,6 +376,9 @@ Gets the ARP table from an ExpressRoute circuit.
 
 ### [Get-AzExpressRouteCircuitAuthorization](Get-AzExpressRouteCircuitAuthorization.md)
 Gets information about ExpressRoute circuit authorizations.
+
+### [Get-AzExpressRouteCircuitAuthorizationKey](Get-AzExpressRouteCircuitAuthorizationKey.md)
+Gets the authorization key for an ExpressRoute circuit authorization.
 
 ### [Get-AzExpressRouteCircuitConnectionConfig](Get-AzExpressRouteCircuitConnectionConfig.md)
 Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
@@ -415,6 +433,9 @@ Gets an Azure ExpressRoutePort resource.
 
 ### [Get-AzExpressRoutePortAuthorization](Get-AzExpressRoutePortAuthorization.md)
 Gets information about ExpressRoutePort authorizations.
+
+### [Get-AzExpressRoutePortAuthorizationKey](Get-AzExpressRoutePortAuthorizationKey.md)
+Gets the authorization key for an ExpressRoute port authorization.
 
 ### [Get-AzExpressRoutePortIdentity](Get-AzExpressRoutePortIdentity.md)
 Get identity assigned to an ExpressRoutePort.
@@ -796,6 +817,9 @@ Gets a virtual network in a resource group.
 ### [Get-AzVirtualNetworkAppliance](Get-AzVirtualNetworkAppliance.md)
 Gets a Virtual Network Appliance (VNA) resource.
 
+### [Get-AzVirtualNetworkApplianceCapability](Get-AzVirtualNetworkApplianceCapability.md)
+Gets a capability of a Virtual Network Appliance (VNA), or lists all capabilities on an appliance.
+
 ### [Get-AzVirtualNetworkAvailableEndpointService](Get-AzVirtualNetworkAvailableEndpointService.md)
 Lists available endpoint services for location.
 
@@ -954,6 +978,18 @@ Moves an ExpressRoute circuit from the classic deployment model to the Resource 
 
 ### [New-AzApplicationGateway](New-AzApplicationGateway.md)
 Creates an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingCondition](New-AzApplicationGatewayAdvancedRoutingCondition.md)
+Creates a routing condition for an application gateway advanced routing condition set.
+
+### [New-AzApplicationGatewayAdvancedRoutingConditionSet](New-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Creates an advanced routing condition set for an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingMap](New-AzApplicationGatewayAdvancedRoutingMap.md)
+Creates an advanced routing map for an application gateway.
+
+### [New-AzApplicationGatewayAdvancedRoutingRuleConfig](New-AzApplicationGatewayAdvancedRoutingRuleConfig.md)
+Creates an advanced routing rule for an application gateway advanced routing map.
 
 ### [New-AzApplicationGatewayAuthenticationCertificate](New-AzApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.
@@ -1679,6 +1715,9 @@ Creates a virtual network.
 ### [New-AzVirtualNetworkAppliance](New-AzVirtualNetworkAppliance.md)
 Creates a new Virtual Network Appliance (VNA) resource.
 
+### [New-AzVirtualNetworkApplianceCapability](New-AzVirtualNetworkApplianceCapability.md)
+Creates a capability on a Virtual Network Appliance (VNA).
+
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
 
@@ -1763,6 +1802,12 @@ Creates an Azure VpnSiteLinkConnection object.
 
 ### [Remove-AzApplicationGateway](Remove-AzApplicationGateway.md)
 Removes an application gateway.
+
+### [Remove-AzApplicationGatewayAdvancedRoutingConditionSet](Remove-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Removes an advanced routing condition set from an application gateway.
+
+### [Remove-AzApplicationGatewayAdvancedRoutingMap](Remove-AzApplicationGatewayAdvancedRoutingMap.md)
+Removes an advanced routing map from an application gateway.
 
 ### [Remove-AzApplicationGatewayAuthenticationCertificate](Remove-AzApplicationGatewayAuthenticationCertificate.md)
 Removes an authentication certificate from an application gateway.
@@ -2172,6 +2217,9 @@ Removes a virtual network.
 ### [Remove-AzVirtualNetworkAppliance](Remove-AzVirtualNetworkAppliance.md)
 Removes a Virtual Network Appliance (VNA) resource.
 
+### [Remove-AzVirtualNetworkApplianceCapability](Remove-AzVirtualNetworkApplianceCapability.md)
+Removes a capability from a Virtual Network Appliance (VNA).
+
 ### [Remove-AzVirtualNetworkGateway](Remove-AzVirtualNetworkGateway.md)
 Deletes a Virtual Network Gateway
 
@@ -2261,6 +2309,12 @@ Restarts a virtual machine instance in the Network Virtual Appliance or all the 
 
 ### [Set-AzApplicationGateway](Set-AzApplicationGateway.md)
 Updates an application gateway.
+
+### [Set-AzApplicationGatewayAdvancedRoutingConditionSet](Set-AzApplicationGatewayAdvancedRoutingConditionSet.md)
+Modifies an advanced routing condition set on an application gateway.
+
+### [Set-AzApplicationGatewayAdvancedRoutingMap](Set-AzApplicationGatewayAdvancedRoutingMap.md)
+Modifies an advanced routing map on an application gateway.
 
 ### [Set-AzApplicationGatewayAuthenticationCertificate](Set-AzApplicationGatewayAuthenticationCertificate.md)
 Updates an authentication certificate for an application gateway.
@@ -2360,6 +2414,9 @@ Updates the Bastion Resource.
 
 ### [Set-AzDdosCustomPolicy](Set-AzDdosCustomPolicy.md)
 Updates and persists a DDoS custom policy to Azure.
+
+### [Set-AzDdosCustomPolicyDetectionRule](Set-AzDdosCustomPolicyDetectionRule.md)
+Updates an existing detection rule on a DDoS custom policy object.
 
 ### [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 Modifies an ExpressRoute circuit.

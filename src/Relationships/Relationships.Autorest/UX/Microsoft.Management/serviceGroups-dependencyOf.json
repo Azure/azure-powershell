@@ -1,0 +1,75 @@
+{
+  "resourceType": "serviceGroups/dependencyOf",
+  "apiVersion": "2026-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.relationships"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup",
+      "description": "Get a DependencyOfRelationship",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsdependencyofrelationshipsbyservicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DependencyOfRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzRelationshipsDependencyOfRelationshipsByServiceGroup",
+      "description": "Delete a DependencyOfRelationship",
+      "path": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsdependencyofrelationshipsbyservicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ServiceGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DependencyOfRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ServiceGroupName",
+              "value": "[Path.serviceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

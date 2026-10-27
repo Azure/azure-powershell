@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 
         public const string PredicateExpressionHelpMessage = "The T-SQL predicate (WHERE clause) used to filter audit logs.";
 
+        public const string RequiredFieldsHelpMessage = "The audit event fields that must be included in each audit record. Specify at most 52 unique, valid audit_event field names; each name can contain at most 35 characters. This parameter can only be used when Azure Monitor is enabled as an audit target. Specify an empty array to clear the fields.";
+
         public const string EventHubNameHelpMessage = "The name of the event hub. If none is specified when providing EventHubAuthorizationRuleResourceId, the default event hub will be selected.";
 
         public const string EventHubAuthorizationRuleIdHelpMessage = "The resource Id for the event hub authorization rule";

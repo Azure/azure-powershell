@@ -297,7 +297,7 @@ Recovery Services Cost Management Settings CRUD Tests
 function Test-RecoveryServicesCostManagementSettings
 {
     $location = "westus"
-    $resourceGroupName = "vijami-rg"
+    $resourceGroupName = "hiagarg"
     $name = "vijamivault"
 
     # 1. Create a new Recovery Services Vault

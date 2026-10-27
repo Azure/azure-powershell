@@ -48,7 +48,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="targetDetails">Target File Share Details
         /// </param>
-        public AzureFileShareRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo))
+
+        /// <param name="identityInfo">Managed identity information required to access the storage account.
+        /// </param>
+        public AzureFileShareRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo), IdentityInfo identityInfo = default(IdentityInfo))
 
         : base(resourceGuardOperationRequests)
         {
@@ -58,6 +61,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RestoreRequestType = restoreRequestType;
             this.RestoreFileSpecs = restoreFileSpecs;
             this.TargetDetails = targetDetails;
+            this.IdentityInfo = identityInfo;
             CustomInit();
         }
 
@@ -103,5 +107,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetDetails")]
         public TargetAFSRestoreInfo TargetDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed identity information required to access the storage
+        /// account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identityInfo")]
+        public IdentityInfo IdentityInfo {get; set; }
     }
 }

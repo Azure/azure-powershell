@@ -39,7 +39,7 @@ Forces the network security perimeter configuration to refresh for a private lin
 
 ### Example 1: Invoke Network Security Perimeter Configuration
 ```powershell
-Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName "a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation" -ResourceGroupName "myResourceGroup" -ScopeName "myPrivateLinkScope"
 ```
 
 Invoke Network Security Perimeter Configuration
@@ -170,6 +170,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

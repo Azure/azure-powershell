@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Management.Network
         IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; }
 
         /// <summary>
+        /// Gets the IAuthenticationPoliciesOperations
+        /// </summary>
+        IAuthenticationPoliciesOperations AuthenticationPolicies { get; }
+
+        /// <summary>
         /// Gets the IWebCategoriesOperations
         /// </summary>
         IWebCategoriesOperations WebCategories { get; }
@@ -176,6 +181,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IExpressRouteCrossConnectionPeeringsOperations
         /// </summary>
         IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; }
+
+        /// <summary>
+        /// Gets the IExpressRouteLagAuthorizationsOperations
+        /// </summary>
+        IExpressRouteLagAuthorizationsOperations ExpressRouteLagAuthorizations { get; }
 
         /// <summary>
         /// Gets the IExpressRoutePortAuthorizationsOperations
@@ -761,6 +771,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualNetworkAppliancesOperations
         /// </summary>
         IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; }
+
+        /// <summary>
+        /// Gets the IVirtualNetworkApplianceCapabilitiesOperations
+        /// </summary>
+        IVirtualNetworkApplianceCapabilitiesOperations VirtualNetworkApplianceCapabilities { get; }
 
         /// <summary>
         /// Gets the IExpressRouteGatewaysOperations

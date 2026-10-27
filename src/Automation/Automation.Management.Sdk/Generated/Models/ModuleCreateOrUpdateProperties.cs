@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the ModuleCreateOrUpdateProperties class.
         /// </summary>
 
-        /// <param name="contentLink">Sets the hash.
+        /// <param name="contentLink">Gets or sets the module content link.
         /// </param>
         public ModuleCreateOrUpdateProperties(ContentLink contentLink)
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets sets the hash.
+        /// Gets or sets gets or sets the module content link.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "contentLink")]
         public ContentLink ContentLink {get; set; }
