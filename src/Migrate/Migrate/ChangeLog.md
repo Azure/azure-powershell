@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `TargetVMSecurityOption` (Standard or TrustedLaunch) and `EnableSecureBoot` to `New-AzMigrateLocalServerReplication` and `Set-AzMigrateLocalServerReplication`. Trusted Launch enables Secure Boot and virtual Trusted Platform Module (vTPM); it and Secure Boot require Generation 2 target virtual machines (VMs).
-* Rejected disabling Secure Boot when enabled on the source; skipped validation if source state is unknown.
-* Changed `Initialize-AzMigrateLocalReplicationInfrastructure` cache storage grants from Contributor to Storage Account Contributor for the vault identity and source/target appliance applications.
+* Added `TargetVMSecurityOption` (Standard/TrustedLaunch) and `EnableSecureBoot` to `New-AzMigrateLocalServerReplication` and `Set-AzMigrateLocalServerReplication`. Trusted Launch enables Secure Boot and virtual Trusted Platform Module (vTPM). Trusted Launch/Secure Boot require Generation 2 targets.
+* Blocked disabling source-enabled Secure Boot; skipped checks if source state is unknown.
+* Changed `Initialize-AzMigrateLocalReplicationInfrastructure` cache grants to Storage Account Contributor (was Contributor) for the vault identity/source/target appliance applications.
 
 ## Version 3.1.0
 * Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01

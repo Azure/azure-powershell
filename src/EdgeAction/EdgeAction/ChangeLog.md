@@ -19,11 +19,11 @@
 -->
 
 ## Upcoming Release
-* Updated to stable API 2026-10-01; module remains pre-1.0 at 0.2.0.
-* Updated parameters and documented tag replacement, JSON-based clearing and immutable properties.
-* Preserved default versions during tag updates; use `Switch-AzEdgeActionVersionDefault` to switch.
-* Clarified subscription selection for code retrieval and default-version switching.
-* Expanded asynchronous operation tests and fixed Windows PowerShell 5.1 recording compatibility.
+* Made Az.EdgeAction generally available on API 2026-10-01.
+* Updated parameters; documented tag replacement, JSON-based clearing and immutable properties.
+* Tag updates preserve the default version; switch with `Switch-AzEdgeActionVersionDefault`.
+* Clarified subscriptions for code retrieval/default-version switching.
+* Improved async tests and Windows PowerShell 5.1 recordings.
 
 ## Version 0.1.2
 * Updated `Get-AzEdgeActionVersionCode` to decode the base64-encoded version code and save it as a zip file when `-OutputPath` is specified

@@ -20,9 +20,9 @@
 ## Upcoming Release
 * Updated to API 2026-07-01-preview.
 * Added dedicated clusters: `Get-AzRelayCluster`, `New-AzRelayCluster`, `Set-AzRelayCluster`, `Remove-AzRelayCluster`, `Get-AzRelayClusterNamespace`, `Get-AzRelayClusterSku` and `Get-AzRelayClusterAvailableClusterRegion`.
-* Allowed `Set-AzRelayCluster` tag/capacity updates without repeating `Location` or `SkuCapacity`.
-* Added `ClusterArmId` and `MinimumTlsVersion` to `New-AzRelayNamespace` and `Update-AzRelayNamespace`.
-* Fixed `Update-AzRelayNamespace` failing on Accepted responses during asynchronous updates.
+* Allowed `Set-AzRelayCluster` tag/capacity updates without `Location`/`SkuCapacity`.
+* Added `ClusterArmId`/`MinimumTlsVersion` to `New-AzRelayNamespace`/`Update-AzRelayNamespace`.
+* Fixed `Update-AzRelayNamespace` async Accepted responses.
 
 ## Version 3.0.0
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).

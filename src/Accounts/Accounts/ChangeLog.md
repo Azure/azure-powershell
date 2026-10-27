@@ -19,9 +19,9 @@
 -->
 
 ## Upcoming Release
-* Corrected `Get-AzAccessToken -ResourceUrl` help and replaced the Azure AD Graph example with Microsoft Graph.
-* Clarified `-AzureKeyVaultDnsSuffix` format in `Add-AzEnvironment` and `Set-AzEnvironment` help.
-* Corrected login terminology.
+* Fixed `Get-AzAccessToken -ResourceUrl` help; replaced Azure AD Graph with Microsoft Graph.
+* Clarified `Add-AzEnvironment`/`Set-AzEnvironment -AzureKeyVaultDnsSuffix` format.
+* Fixed login terminology.
 
 ## Version 5.5.3
 * Fixed `Get-AzSubscription` to throw a clear error instead of returning nothing when `-TenantId` does not match the current Managed Service Identity (MSI) context. [#25710]

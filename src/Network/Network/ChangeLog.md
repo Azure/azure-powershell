@@ -19,23 +19,23 @@
 --->
 
 ## Upcoming Release
-* Updated replication vault Private Link cmdlets to API 2026-05-01 and Network SDK to APIs 2026-03-01 and 2026-01-01.
+* Updated replication vault Private Link to API 2026-05-01 and Network SDK to 2026-03-01/2026-01-01.
 * Added `CapacityProviderId` to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance`.
-* Added ExpressRoute link aggregation group (LAG) authorization management and key retrieval cmdlets.
-* Added managed Network Virtual Appliance IPv6/dual-stack support via `AddressFamily`. Creation defaults to IPv4; updates preserve the family if omitted. Added read-only address family, IPv6 prefix and private address output, plus public/private IPv6 addresses on network interfaces.
-* Added DDoS (Distributed Denial of Service) custom policy TCP/UDP mitigation rules, with create/get/add/update/remove cmdlets, IP prefix and geographic Deny/Permit matches, and policy integration [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
+* Added ExpressRoute link aggregation group (LAG) authorization/key cmdlets.
+* Added managed Network Virtual Appliance IPv6/dual-stack via `AddressFamily` (IPv4 default on creation; unchanged if omitted on update). Added read-only family, IPv6 prefix/private address output and interface public/private IPv6 addresses.
+* Added DDoS (Distributed Denial of Service) custom policy TCP/UDP mitigation rule management, IP prefix/geographic Deny/Permit matches and policy integration [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
 * Added `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability` and `Remove-AzVirtualNetworkApplianceCapability`.
-* Added `Get-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicyDetectionRule`, extending API 2025-07-01 support [#29387].
+* Added `Get-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicyDetectionRule` for API 2025-07-01 [#29387].
 * Expanded Change Safety support and fixed parameter forwarding.
 * Added provider-led ExpressRoute cross-connection migration and circuits on `ExpressRouteLag`.
-* Added First Party Service Tag associations to `New-AzPublicIpPrefix` IP tags.
-* Added `MigrateGatewayForPointToSiteProfile` and fixed `MigrationType` handling in `New-AzVirtualNetworkGatewayMigrationParameter`.
-* Added Application Gateway advanced routing and request routing rule type `AdvancedRouting`.
-* Added `VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` for mutual TLS (Transport Layer Security) certificate verification.
+* Added First Party Service Tag associations to `New-AzPublicIpPrefix`.
+* Added `MigrateGatewayForPointToSiteProfile`; fixed `New-AzVirtualNetworkGatewayMigrationParameter -MigrationType`.
+* Added Application Gateway advanced routing/rule type `AdvancedRouting`.
+* Added mutual TLS (Transport Layer Security) `VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration`.
 * Fixed `New-AzVirtualHubVnetConnection -EnableOnlyIpv6Peering` boolean conversion.
-* Added IPAM (IP Address Management) pool allocation size bounds to creation, updates and output.
+* Added IPAM (IP Address Management) pool size bounds to creation/updates/output.
 * Added `Get-AzExpressRouteCircuitAuthorizationKey` and `Get-AzExpressRoutePortAuthorizationKey`.
-* Added Application Gateway WAF (Web Application Firewall) managed rule set display name, paranoia level output and CAPTCHA actions.
+* Added Application Gateway WAF (Web Application Firewall) rule set display name/paranoia level output and CAPTCHA.
 * Added `SourceGeoLocation` and `DestinationGeoLocation` to `New-AzFirewallPolicyNetworkRule`.
 * Removed `FormatVersion` validation from `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
 

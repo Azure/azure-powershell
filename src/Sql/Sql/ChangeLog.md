@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `LockImmutability` and `ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation; `-Force` skips confirmation.
-* Added Managed Instance long-term backup immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy` and immutability state in policy/backup output.
+* Added `LockImmutability`/`ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation (`-Force` skips).
+* Added Managed Instance long-term immutability to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy` and policy/backup output.
 * Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` for time-based immutability.
-* Added `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` for legal holds.
+* Added legal holds via `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold`.
 
 ## Version 7.2.0
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.
