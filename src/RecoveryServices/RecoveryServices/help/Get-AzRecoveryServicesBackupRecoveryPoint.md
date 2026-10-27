@@ -20,7 +20,7 @@ Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegio
  [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly]
  [-BaseSnapshotRecoveryPointId <String>] [-BaseRecoveryPointDatasourceId <String>]
  [-RestorePointQueryType <String>] [-RecoveryMode <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
@@ -29,7 +29,7 @@ Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] 
  [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <Boolean>]
  [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly] [-BaseSnapshotRecoveryPointId <String>]
  [-BaseRecoveryPointDatasourceId <String>] [-RestorePointQueryType <String>] [-RecoveryMode <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] 
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
  [[-KeyFileDownloadLocation] <String>] [-UseSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,21 +271,6 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

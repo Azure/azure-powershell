@@ -17,21 +17,21 @@ Gets Backup protection policies for a vault.
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-IsArchiveSmartTieringEnabled <Boolean>]
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-PolicySubType <PSPolicyType>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
@@ -39,7 +39,7 @@ Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-BackupManagementType] <BackupManagementType> [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,21 +155,6 @@ Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyTy
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Enhanced
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

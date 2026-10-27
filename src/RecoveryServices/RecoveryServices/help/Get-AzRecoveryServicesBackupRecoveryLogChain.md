@@ -16,7 +16,7 @@ This command lists the start and end points of the unbroken log chain of the giv
 ```
 Get-AzRecoveryServicesBackupRecoveryLogChain [-Item] <ItemBase> [-UseSecondaryRegion]
  [-BaseSnapshotRecoveryPointId <String>] [-BaseRecoveryPointDatasourceId <String>] [-RecoveryMode <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzRecoveryServicesBackupRecoveryLogChain [-Item] <ItemBase> [-UseSecondaryRe
 Get-AzRecoveryServicesBackupRecoveryLogChain [[-StartDate] <DateTime>] [[-EndDate] <DateTime>]
  [-Item] <ItemBase> [-UseSecondaryRegion] [-BaseSnapshotRecoveryPointId <String>]
  [-BaseRecoveryPointDatasourceId <String>] [-RecoveryMode <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +161,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
