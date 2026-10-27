@@ -27,11 +27,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="sourceTierType">Source tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="targetTierType">target tier for the request
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
-        public FetchTieringCostInfoRequest(RecoveryPointTierType sourceTierType, RecoveryPointTierType targetTierType)
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
+        public FetchTieringCostInfoRequest(string sourceTierType, string targetTierType)
 
         {
             this.SourceTierType = sourceTierType;
@@ -46,16 +48,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets or sets source tier for the request Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;
+        /// Gets or sets source tier for the request Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceTierType")]
-        public RecoveryPointTierType SourceTierType {get; set; }
+        public string SourceTierType {get; set; }
 
         /// <summary>
-        /// Gets or sets target tier for the request Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;
+        /// Gets or sets target tier for the request Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetTierType")]
-        public RecoveryPointTierType TargetTierType {get; set; }
+        public string TargetTierType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -64,6 +66,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (this.SourceTierType == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "SourceTierType");
+            }
+            if (this.TargetTierType == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TargetTierType");
+            }
 
 
         }

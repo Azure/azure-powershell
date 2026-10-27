@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported SQL instance snapshot backup features.
 * Stopped Backup cmdlets overriding session-wide HTTPS certificate validation.
 
 ## Version 7.15.0

@@ -16,28 +16,30 @@ Gets Backup protection policies for a vault.
 ### NoParamSet (Default)
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-IsArchiveSmartTieringEnabled <Boolean>]
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-PolicySubType <PSPolicyType>] [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-BackupManagementType] <BackupManagementType> [-IsArchiveSmartTieringEnabled <Boolean>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +93,7 @@ The class of resources being protected. Currently the values supported for this 
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, SCDPM, AzureBackupServer, AzureStorage, AzureWorkload, MAB
+Accepted values: AzureVM, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload, MAB, NA
 
 Required: True
 Position: 3
@@ -161,6 +163,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 ARM ID of the Recovery Services Vault.
 
@@ -177,13 +194,15 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource. The current supported values are AzureVM, AzureFiles, MSSQL
+Workload type of the resource. Supported values are AzureVM, AzureSQLDatabase, AzureFiles, MSSQL, and MSSQLInstance.
+Use MSSQLInstance to list SQL Instance snapshot policies. It can be supplied alone or with BackupManagementType AzureWorkload.
+The existing MSSQL filter continues to list Azure Workload policies.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType]
 Parameter Sets: WorkloadParamSet, WorkloadBackupManagementTypeParamSet
 Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL, FileFolder, SAPHanaDatabase, MSSQLInstance
 
 Required: True
 Position: 2
@@ -205,6 +224,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+Azure virtual machine policies expose `InstantAccessSnapshotEnabled` and `InstantAccessDurationMinutes`.
+SQL Server instance snapshot policies expose `VMWorkloadPolicyType` and `SnapshotBackupAdditionalDetails`, including the snapshot resource group, instant recovery-point retention, and user-assigned managed identity.
+
 ## RELATED LINKS
 
 [New-AzRecoveryServicesBackupProtectionPolicy](./New-AzRecoveryServicesBackupProtectionPolicy.md)
@@ -212,5 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzRecoveryServicesBackupProtectionPolicy](./Remove-AzRecoveryServicesBackupProtectionPolicy.md)
 
 [Set-AzRecoveryServicesBackupProtectionPolicy](./Set-AzRecoveryServicesBackupProtectionPolicy.md)
-
-

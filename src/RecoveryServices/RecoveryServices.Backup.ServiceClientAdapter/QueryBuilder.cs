@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -50,7 +51,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             List<string> queryStrings = new List<string>();
             foreach (var property in properties)
             {
-                var leftHandSide = property.Name.ToCamelCase();
+                var leftHandSide = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName;
+                if (string.IsNullOrEmpty(leftHandSide))
+                {
+                    leftHandSide = property.Name.ToCamelCase();
+                }
 
                 var rightHandSide = string.Empty;
 

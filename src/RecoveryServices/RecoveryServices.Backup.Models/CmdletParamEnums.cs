@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Status,
         Container,
         FriendlyName,
+        ContainerSubscriptionId,
+        ResourceId,
     }
 
     public enum RecoveryPointParams
@@ -58,7 +60,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         IsReadyForMove,
         RehydrateDuration,
         RehydratePriority,
-        Tier
+        Tier,
+        GetLatestRPOnly,
+        BaseSnapshotRPId,
+        BaseRPDatasourceId,
+        RecoveryMode
     }
 
     public enum RestoreBackupItemParams
@@ -144,7 +150,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         BackupSnapshotResourceGroup,
         BackupSnapshotResourceGroupSuffix,
         SnapshotConsistencyType,
-        BackupTier
+        BackupTier,
+        InstantRPRetentionRangeInDays,
+        UserAssignedIdentityId
     }
 
     public enum ItemParams
@@ -177,7 +185,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         IsSystemAssignedIdentity,
         UserAssignedIdentityArmUrl,
         ForceReregister,
-        ConfirmReregister
+        ConfirmReregister,
+        ChildDatabaseNameList
     }
 
     public enum ProtectionCheckParams

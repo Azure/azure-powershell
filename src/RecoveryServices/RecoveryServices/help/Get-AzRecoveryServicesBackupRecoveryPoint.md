@@ -17,15 +17,19 @@ Gets the recovery points for a backed up item.
 ### NoFilterParameterSet (Default)
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-UseSecondaryRegion] [-Tier <RecoveryPointTier>]
- [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IsReadyForMove <Boolean>] [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly]
+ [-BaseSnapshotRecoveryPointId <String>] [-BaseRecoveryPointDatasourceId <String>]
+ [-RestorePointQueryType <String>] [-RecoveryMode <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>] [-Item] <ItemBase>
  [-UseSecondaryRegion] [-Tier <RecoveryPointTier>] [-IsReadyForMove <Boolean>]
- [-TargetTier <RecoveryPointTier>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-TargetTier <RecoveryPointTier>] [-GetLatestRecoveryPointOnly] [-BaseSnapshotRecoveryPointId <String>]
+ [-BaseRecoveryPointDatasourceId <String>] [-RestorePointQueryType <String>] [-RecoveryMode <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +37,7 @@ Get-AzRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] 
 ```
 Get-AzRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
  [[-KeyFileDownloadLocation] <String>] [-UseSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +147,38 @@ The last command displays the list of pruned recovery points.
 
 ## PARAMETERS
 
+### -BaseRecoveryPointDatasourceId
+
+Id of the datasource of the base snapshot recovery point.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BaseSnapshotRecoveryPointId
+
+Id of the base snapshot recovery point. Used to fetch recovery points relative to a base snapshot.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -170,6 +206,22 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GetLatestRecoveryPointOnly
+
+When set, only the latest recovery point for the item is fetched.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -224,6 +276,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryMode
+Filters SQL recovery points by snapshot recovery mode. Accepted values are SnapshotAttachAndRecover, SnapshotAttach, and RecoveryUsingSnapshot.
+This parameter is available when listing recovery points, not when retrieving a recovery point by ID.
+To retrieve point-in-time log ranges for a base snapshot, use [Get-AzRecoveryServicesBackupRecoveryLogChain](Get-AzRecoveryServicesBackupRecoveryLogChain.md) with the base snapshot and datasource IDs.
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+Accepted values: SnapshotAttachAndRecover, SnapshotAttach, RecoveryUsingSnapshot
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryPointId
 
 Specifies the recovery point ID.
@@ -235,6 +320,25 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestorePointQueryType
+
+Restore point query type to filter the recovery points to fetch for SQL (MSSQL) items. Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot. Defaults to FullAndDifferential.
+
+This cmdlet returns recovery points with a single recovery time, not point-in-time log ranges. The values `Log` and `All` are not supported. To retrieve log ranges, including those available on top of a base snapshot, use [Get-AzRecoveryServicesBackupRecoveryLogChain](./Get-AzRecoveryServicesBackupRecoveryLogChain.md).
+
+```yaml
+Type: System.String
+Parameter Sets: NoFilterParameterSet, DateTimeFilter
+Aliases:
+Accepted values: Full, Differential, FullAndDifferential, Incremental, SnapshotFull, SnapshotCopyOnlyFull, Snapshot, FullDifferentialAndSnapshot
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -291,7 +395,9 @@ Accept wildcard characters: False
 ```
 
 ### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
+Retrieves replicated recovery points from the secondary region for Cross Region Restore.
+SQL instance snapshot recovery points support the snapshot query filters in this command.
+Retrieve a recovery point by ID to inspect its included databases and source filesystem metadata.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

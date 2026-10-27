@@ -69,7 +69,7 @@ Type of backup to be performed
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Full, Differential, Log, CopyOnlyFull
+Accepted values: Full, Differential, Log, CopyOnlyFull, SnapshotFull, SnapshotCopyOnlyFull
 
 Required: False
 Position: Named
