@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class SourceType
     {
+        /// <summary>
+        /// VsoGit
+        /// </summary>
         public const string VsoGit = "VsoGit";
+        /// <summary>
+        /// VsoTfvc
+        /// </summary>
         public const string VsoTfvc = "VsoTfvc";
+        /// <summary>
+        /// GitHub
+        /// </summary>
         public const string GitHub = "GitHub";
     }
 }

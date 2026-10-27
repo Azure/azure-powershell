@@ -13,7 +13,7 @@ Creates a RoutingConfiguration object.
 ## SYNTAX
 
 ```
-New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
+New-AzRoutingConfiguration [-AssociatedRouteTable <String>] [-Label <String[]>] [-Id <String[]>]
  [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>] [-InboundRouteMap <String>]
  [-OutboundRouteMap <String>] [-DefaultProfile <IAzureContextContainer>]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
@@ -89,7 +89,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,7 +134,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,7 +164,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

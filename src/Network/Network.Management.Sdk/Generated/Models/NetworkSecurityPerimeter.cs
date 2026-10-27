@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="perimeterGuid">perimeter guid of the network security perimeter.
         /// </param>
-        public NetworkSecurityPerimeter(string location, string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), string perimeterGuid = default(string))
+        public NetworkSecurityPerimeter(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), string perimeterGuid = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {

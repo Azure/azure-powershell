@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string Size { get; set; }
 
+        // Read-only; set by the service to indicate the policy is managed by AFC.
+        public bool? AfcManaged { get; set; }
+
         [JsonProperty("ruleCollectionGroups")]
         public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
 

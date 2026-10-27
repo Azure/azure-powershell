@@ -380,6 +380,11 @@ namespace Microsoft.Azure.Management.Sql
         ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; }
 
         /// <summary>
+        /// Gets the IManagedInstanceLongTermRetentionBackupsOperations
+        /// </summary>
+        IManagedInstanceLongTermRetentionBackupsOperations ManagedInstanceLongTermRetentionBackups { get; }
+
+        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations
         /// </summary>
         IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; }

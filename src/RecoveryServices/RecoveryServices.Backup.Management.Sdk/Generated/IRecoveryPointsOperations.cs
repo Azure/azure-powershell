@@ -19,24 +19,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <remarks>
         /// Lists the backup copies for the backed up item.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item whose backup copies are to be fetched.
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='filter'>
+        /// OData filter options.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,33 +49,34 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation. To know the status of
-        /// the operation, call the GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation.
+        /// To know the status of the operation, call the
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation. To know the status of
-        /// the operation, call the GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation.
+        /// To know the status of the operation, call the
+        /// GetProtectedItemOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with backed up item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with backed up item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose backup data needs to be fetched.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
         /// RecoveryPointID represents the backed up data to be fetched.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPointResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoveryPointResource>> GetWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the backup copies for the backed up item.

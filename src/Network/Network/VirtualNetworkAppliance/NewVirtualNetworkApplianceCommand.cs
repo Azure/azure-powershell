@@ -79,6 +79,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource ID of another Virtual Network Appliance to use as the capacity provider for this Virtual Network Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string CapacityProviderId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -129,6 +136,12 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.PrivateIPAddressVersion))
             {
                 vnaModel.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
+            }
+
+            // Set CapacityProvider if specified
+            if (!string.IsNullOrEmpty(this.CapacityProviderId))
+            {
+                vnaModel.CapacityProvider = new SubResource { Id = this.CapacityProviderId };
             }
 
             // Create the resource

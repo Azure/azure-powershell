@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         public string EndpointType { get => "StorageBlob"; }
 
         /// <summary>Internal Acessors for EndpointType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal.EndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal)__deadLetterDestination).EndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal)__deadLetterDestination).EndpointType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal.EndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal)__deadLetterDestination).EndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeadLetterDestinationInternal)__deadLetterDestination).EndpointType = value ; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IStorageBlobDeadLetterDestinationProperties Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IStorageBlobDeadLetterDestinationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StorageBlobDeadLetterDestinationProperties()); set { {_property = value;} } }

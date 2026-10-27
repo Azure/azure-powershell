@@ -22,14 +22,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location of the deleted vault.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the managed HSM Pool</summary>
+        /// <summary>The name of the deleted managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -43,31 +43,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
 
-        /// <summary>Name of the private endpoint connection associated with the key vault.</summary>
+        /// <summary>Name of the private endpoint connection associated with the managed hsm pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the Resource Group to which the server belongs.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Backing field for <see cref="VaultName" /> property.</summary>
         private string _vaultName;
 
-        /// <summary>Name of the vault</summary>
+        /// <summary>The name of the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string VaultName { get => this._vaultName; set => this._vaultName = value; }
 
@@ -91,25 +88,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The location of the deleted vault.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The location of the deleted vault.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>Name of the managed HSM Pool</summary>
+        /// <summary>The name of the deleted managed HSM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the managed HSM Pool",
+        Description = @"The name of the deleted managed HSM.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -125,50 +122,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("add", "replace", "remove")]
         string OperationKind { get; set; }
-        /// <summary>Name of the private endpoint connection associated with the key vault.</summary>
+        /// <summary>Name of the private endpoint connection associated with the managed hsm pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the private endpoint connection associated with the key vault.",
+        Description = @"Name of the private endpoint connection associated with the managed hsm pool.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The name of the Resource Group to which the server belongs.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the Resource Group to which the server belongs.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
-        /// <summary>Name of the vault</summary>
+        /// <summary>The name of the vault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the vault",
+        Description = @"The name of the vault.",
         SerializedName = @"vaultName",
         PossibleTypes = new [] { typeof(string) })]
         string VaultName { get; set; }
@@ -179,23 +173,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
     {
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The location of the deleted vault.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
-        /// <summary>Name of the managed HSM Pool</summary>
+        /// <summary>The name of the deleted managed HSM.</summary>
         string Name { get; set; }
         /// <summary>Name of the operation</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PSArgumentCompleterAttribute("add", "replace", "remove")]
         string OperationKind { get; set; }
-        /// <summary>Name of the private endpoint connection associated with the key vault.</summary>
+        /// <summary>Name of the private endpoint connection associated with the managed hsm pool.</summary>
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The name of the Resource Group to which the server belongs.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
-        /// <summary>Name of the vault</summary>
+        /// <summary>The name of the vault.</summary>
         string VaultName { get; set; }
 
     }

@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="natGateway">NatGateway of Public IP Prefix.
         /// </param>
-        public PublicIPPrefixPropertiesFormat(string publicIPAddressVersion = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIPConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), NatGateway natGateway = default(NatGateway))
+
+        /// <param name="upgradedToV2">Whether the public IP prefix SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </param>
+        public PublicIPPrefixPropertiesFormat(string publicIPAddressVersion = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIPConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), bool? upgradedToV2 = default(bool?))
 
         {
             this.PublicIPAddressVersion = publicIPAddressVersion;
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ResourceGuid = resourceGuid;
             this.ProvisioningState = provisioningState;
             this.NatGateway = natGateway;
+            this.UpgradedToV2 = upgradedToV2;
             CustomInit();
         }
 
@@ -137,5 +142,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "natGateway")]
         public NatGateway NatGateway {get; set; }
+
+        /// <summary>
+        /// Gets whether the public IP prefix SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradedToV2")]
+        public bool? UpgradedToV2 {get; private set; }
     }
 }

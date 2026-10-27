@@ -1,9 +1,9 @@
 {
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendAadLogs\": \"Enabled\",\r\n      \"sendSubscriptionLogs\": \"Enabled\",\r\n      \"sendActivityLogs\": \"Enabled\"\r\n    },\r\n    \"metricRules\": {\r\n      \"sendMetrics\": \"Enabled\",\r\n      \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendAadLogs\": \"Enabled\",\r\n      \"sendSubscriptionLogs\": \"Enabled\",\r\n      \"sendActivityLogs\": \"Enabled\"\r\n    },\r\n    \"metricRules\": {\r\n      \"sendMetrics\": \"Enabled\",\r\n      \"userEmail\": \"user@example.com\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -39,14 +39,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+2": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -85,14 +85,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+3": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -131,14 +131,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[],\"userEmail\":null}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -176,14 +176,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:19:46.3151864Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Enabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -221,14 +221,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Vansh\",\"lastName\":\"Joshi\",\"emailAddress\":\"vanshjoshi@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Test\",\"lastName\":\"User\",\"emailAddress\":\"user@example.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}]}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -266,15 +266,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Vansh\",\"lastName\":\"Joshi\",\"emailAddress\":\"vanshjoshi@microsoft.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014\",\"name\":\"clientParity-Test-1014\",\"type\":\"newrelic.observability/monitors\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-14T10:33:03.5764066Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-14T10:33:03.5764066Z\"},\"identity\":{\"principalId\":\"58688f66-7376-4a3c-9369-6aab6385208c\",\"tenantId\":\"c9967a4f-613f-442b-88f6-1e46aad03123\",\"type\":\"SystemAssigned\"},\"properties\":{\"orgCreationSource\":\"LIFTR\",\"accountCreationSource\":\"LIFTR\",\"provisioningState\":\"Succeeded\",\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"newRelicAccountProperties\":{\"accountInfo\":{\"accountId\":\"7243015\"},\"organizationInfo\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}},\"userInfo\":{\"firstName\":\"Test\",\"lastName\":\"User\",\"emailAddress\":\"user@example.com\",\"phoneNumber\":\"\"},\"planData\":{\"usageType\":\"PAYG\",\"billingCycle\":\"MONTHLY\",\"planDetails\":\"standardpaygrevisedplan@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\"effectiveDate\":\"2025-10-14T10:32:29.993Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview",
-      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listAppServices?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"user@example.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -312,11 +312,11 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview",
-      "Content": "{\r\n  \"vmIds\": [ \"joyertestmachine01\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listHosts?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"vmIds\": [ \"azps-testmachine01\" ],\r\n  \"userEmail\": \"user@example.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -354,11 +354,11 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview",
-      "Content": "{\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricRules?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"userEmail\": \"user@example.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -397,11 +397,11 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview",
-      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"vanshjoshi@microsoft.com\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getMetricStatus?api-version=2025-05-01-preview",
+      "Content": "{\r\n  \"azureResourceIds\": [ \"\" ],\r\n  \"userEmail\": \"user@example.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -440,10 +440,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/monitoredResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -488,10 +488,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=user%40example.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/accounts?api-version=2025-05-01-preview\u0026userEmail=user%40example.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -584,10 +584,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=user%40example.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=vanshjoshi%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/providers/NewRelic.Observability/organizations?api-version=2025-05-01-preview\u0026userEmail=user%40example.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -631,10 +631,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+ListMonitorLinkedResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+ListMonitorLinkedResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listLinkedResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -674,14 +674,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VANSHJOSHI-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\"}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/AZPS-NEWRELIC-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\"}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+BillingInfoGet+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+BillingInfoGet+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/getBillingInfo?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -721,14 +721,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"marketplaceSaasInfo\":{\"marketplaceSubscriptionId\":\"4b3683e9-b7d9-4edd-c31f-30e4a7db5057\",\"marketplaceSubscriptionName\":\"AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceResourceId\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/Microsoft.SaaS/resources/AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\"},\"partnerBillingEntity\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\",\"organizationName\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}}",
+      "Content": "{\"marketplaceSaasInfo\":{\"marketplaceSubscriptionId\":\"4b3683e9-b7d9-4edd-c31f-30e4a7db5057\",\"marketplaceSubscriptionName\":\"AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceResourceId\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/Microsoft.SaaS/resources/AzNewRelic_90b894e2-8de4-40d3-82a5-560208b3ba2e_clientParity\",\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":\"e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e\"},\"partnerBillingEntity\":{\"organizationId\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\",\"organizationName\":\"af3e6c93-a8c7-44cb-9987-8ffed7a168f7\"}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+GetConnectedPartnerResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+GetConnectedPartnerResource+$POST+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/listConnectedPartnerResources?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -768,14 +768,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"accountName\":\"Account 7243015\",\"accountId\":\"7243015\",\"azureResourceId\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/VANSHJOSHI-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\",\"location\":\"eastus\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"properties\":{\"accountName\":\"Account 7243015\",\"accountId\":\"7243015\",\"azureResourceId\":\"/SUBSCRIPTIONS/E16A0478-BCB5-4C34-B8C7-7F2AA1B9995E/RESOURCEGROUPS/AZPS-NEWRELIC-CLIENTPARITY-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/CLIENTPARITY-TEST-1014\",\"location\":\"eastus\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendActivityLogs\": \"Disabled\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -809,14 +809,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"vanshjoshi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"vanshjoshi@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:20:51.5240726Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Disabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default\",\"name\":\"default\",\"type\":\"newrelic.observability/monitors/tagrules\",\"systemData\":{\"createdBy\":\"user@example.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-10-16T08:19:46.3151864Z\",\"lastModifiedBy\":\"user@example.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-10-16T08:20:51.5240726Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":\"Enabled\",\"sendSubscriptionLogs\":\"Enabled\",\"sendActivityLogs\":\"Disabled\",\"filteringTags\":[]},\"metricRules\":{\"sendMetrics\":\"Enabled\",\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/vanshjoshi-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e16a0478-bcb5-4c34-b8c7-7f2aa1b9995e/resourceGroups/azps-newrelic-clientparity-test/providers/NewRelic.Observability/monitors/clientParity-Test-1014/tagRules/default?api-version=2025-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

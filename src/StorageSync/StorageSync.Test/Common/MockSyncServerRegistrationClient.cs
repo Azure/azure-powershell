@@ -29,13 +29,13 @@ using System.Management;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 
-namespace Commands.StorageSync.Interop.Clients
+namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 {
     /// <summary>
     /// Sync Server Registration Client
-    /// Implements the <see cref="Commands.StorageSync.Interop.Clients.SyncServerRegistrationClientBase" />
+    /// Implements the <see cref="MockSyncServerRegistrationClientBase" />
     /// </summary>
-    /// <seealso cref="Commands.StorageSync.Interop.Clients.SyncServerRegistrationClientBase" />
+    /// <seealso cref="MockSyncServerRegistrationClientBase" />
     public class MockSyncServerRegistrationClient : MockSyncServerRegistrationClientBase
     {
         /// <summary>
@@ -358,7 +358,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// </summary>
         /// <param name="monitoringDataPath">The monitoring data path.</param>
         /// <param name="directoryInfo">The directory information.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> if the directory exists or was created; otherwise, <c>false</c>.</returns>
         private bool TryCreateDirectory(string monitoringDataPath, out DirectoryInfo directoryInfo)
         {
             directoryInfo = null;
@@ -375,7 +375,7 @@ namespace Commands.StorageSync.Interop.Clients
 
         public override ServerApplicationIdentity GetServerApplicationIdentityOrNull()
         {
-            var testTenantGuid = new Guid("0483643a-cb2f-462a-bc27-1a270e5bdc0a");
+            var testTenantGuid = new Guid(StorageSyncTestConstants.TenantId);
             if (TestName == "TestNewRegisteredServerWithIdentityError")
             {
                 return null;

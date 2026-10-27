@@ -15,9 +15,10 @@ Create a new origin within the specified origin group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
- [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>]
+ [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -32,6 +33,7 @@ New-AzFrontDoorCdnOrigin -OriginGroupInputObject <ICdnIdentity> -OriginName <Str
 ### CreateViaIdentityOriginGroupExpanded
 ```
 New-AzFrontDoorCdnOrigin -OriginGroupInputObject <ICdnIdentity> -OriginName <String> [-AzureOriginId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>]
  [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
  [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
@@ -49,9 +51,10 @@ New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Profile
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
- [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-AzureOriginId <String>] [-CertificateNameCheckValidationMode <String>]
+ [-CustomCertificateSubject <String[]>] [-EnabledState <String>] [-EnforceCertificateNameCheck]
+ [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>]
+ [-Priority <Int32>] [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
  [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
  [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -111,6 +114,39 @@ Resource ID.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityOriginGroupExpanded, CreateViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateNameCheckValidationMode
+The validation mode for certificate name check.
+Only applicable when enforceCertificateNameCheck is true.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityOriginGroupExpanded, CreateViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomCertificateSubject
+The list of custom certificate subjects to validate against.
+Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+Must contain 1 or 2 entries.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityOriginGroupExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 

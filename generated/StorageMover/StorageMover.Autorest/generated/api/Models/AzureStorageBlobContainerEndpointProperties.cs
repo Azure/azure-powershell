@@ -20,6 +20,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseProperties __endpointBaseProperties = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.EndpointBaseProperties();
 
+        /// <summary>Backing field for <see cref="AllowedStorageAccount" /> property.</summary>
+        private System.Collections.Generic.List<string> _allowedStorageAccount;
+
+        /// <summary>
+        /// Full ARM resource IDs of partner-tenant storage accounts that are allowed
+        /// to be the other side of a cross-tenant data transfer pair with this
+        /// endpoint. For a source endpoint this lists allowed target storage accounts;
+        /// for a target endpoint this lists allowed source storage accounts.
+        /// The full list is replaced on PATCH (omit an entry to remove it; include
+        /// an entry to add it). Mutual presence in both endpoints' allow lists is
+        /// re-validated at every job run start, so removing an entry blocks future
+        /// runs that reference the removed storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AllowedStorageAccount { get => this._allowedStorageAccount; set => this._allowedStorageAccount = value; }
+
         /// <summary>Backing field for <see cref="BlobContainerName" /> property.</summary>
         private string _blobContainerName;
 
@@ -30,6 +46,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>A description for the Endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inherited)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)__endpointBaseProperties).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)__endpointBaseProperties).Description = value ?? null; }
+
+        /// <summary>Backing field for <see cref="EnableCrossTenantTransfer" /> property.</summary>
+        private bool? _enableCrossTenantTransfer;
+
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. When set to true, RBAC for the endpoint's managed
+        /// identity is granted on the customer's storage account so that authorization
+        /// can be performed entirely in the tenant where this endpoint lives. Defaults
+        /// to false. Can be updated via PATCH.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public bool? EnableCrossTenantTransfer { get => this._enableCrossTenantTransfer; set => this._enableCrossTenantTransfer = value; }
 
         /// <summary>The Endpoint resource kind source or target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inherited)]
@@ -79,6 +108,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBaseProperties
     {
+        /// <summary>
+        /// Full ARM resource IDs of partner-tenant storage accounts that are allowed
+        /// to be the other side of a cross-tenant data transfer pair with this
+        /// endpoint. For a source endpoint this lists allowed target storage accounts;
+        /// for a target endpoint this lists allowed source storage accounts.
+        /// The full list is replaced on PATCH (omit an entry to remove it; include
+        /// an entry to add it). Mutual presence in both endpoints' allow lists is
+        /// re-validated at every job run start, so removing an entry blocks future
+        /// runs that reference the removed storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Full ARM resource IDs of partner-tenant storage accounts that are allowed
+        to be the other side of a cross-tenant data transfer pair with this
+        endpoint. For a source endpoint this lists allowed target storage accounts;
+        for a target endpoint this lists allowed source storage accounts.
+        The full list is replaced on PATCH (omit an entry to remove it; include
+        an entry to add it). Mutual presence in both endpoints' allow lists is
+        re-validated at every job run start, so removing an entry blocks future
+        runs that reference the removed storage account.",
+        SerializedName = @"allowedStorageAccounts",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AllowedStorageAccount { get; set; }
         /// <summary>The name of the Storage blob container that is the target destination.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -90,6 +146,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"blobContainerName",
         PossibleTypes = new [] { typeof(string) })]
         string BlobContainerName { get; set; }
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. When set to true, RBAC for the endpoint's managed
+        /// identity is granted on the customer's storage account so that authorization
+        /// can be performed entirely in the tenant where this endpoint lives. Defaults
+        /// to false. Can be updated via PATCH.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        data transfer pair. When set to true, RBAC for the endpoint's managed
+        identity is granted on the customer's storage account so that authorization
+        can be performed entirely in the tenant where this endpoint lives. Defaults
+        to false. Can be updated via PATCH.",
+        SerializedName = @"enableCrossTenantTransfer",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnableCrossTenantTransfer { get; set; }
         /// <summary>The Azure Resource ID of the storage account that is the target destination.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -107,8 +184,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
     internal partial interface IAzureStorageBlobContainerEndpointPropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal
     {
+        /// <summary>
+        /// Full ARM resource IDs of partner-tenant storage accounts that are allowed
+        /// to be the other side of a cross-tenant data transfer pair with this
+        /// endpoint. For a source endpoint this lists allowed target storage accounts;
+        /// for a target endpoint this lists allowed source storage accounts.
+        /// The full list is replaced on PATCH (omit an entry to remove it; include
+        /// an entry to add it). Mutual presence in both endpoints' allow lists is
+        /// re-validated at every job run start, so removing an entry blocks future
+        /// runs that reference the removed storage account.
+        /// </summary>
+        System.Collections.Generic.List<string> AllowedStorageAccount { get; set; }
         /// <summary>The name of the Storage blob container that is the target destination.</summary>
         string BlobContainerName { get; set; }
+        /// <summary>
+        /// Opt-in flag enabling this endpoint to be used as one side of a cross-tenant
+        /// data transfer pair. When set to true, RBAC for the endpoint's managed
+        /// identity is granted on the customer's storage account so that authorization
+        /// can be performed entirely in the tenant where this endpoint lives. Defaults
+        /// to false. Can be updated via PATCH.
+        /// </summary>
+        bool? EnableCrossTenantTransfer { get; set; }
         /// <summary>The Azure Resource ID of the storage account that is the target destination.</summary>
         string StorageAccountResourceId { get; set; }
 

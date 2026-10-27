@@ -46,7 +46,7 @@ Get-AzGalleryImageVersion [-ExpandReplicationStatus] [-Location <String>] [-Comm
 ```
 
 ## DESCRIPTION
-Get or list gallery image versions.
+Get or list gallery image versions. Shared and community gallery results also include the `ConsumptionEndTime` and `ImageState` properties when returned by the service.
 
 ## EXAMPLES
 

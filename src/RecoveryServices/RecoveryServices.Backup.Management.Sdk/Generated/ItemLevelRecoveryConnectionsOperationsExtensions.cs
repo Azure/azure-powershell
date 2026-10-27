@@ -13,142 +13,207 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ItemLevelRecoveryConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        public static InstantItemRecoveryTarget ListInstantItemRecoveryOperationResult(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, string provisionInstantItemRecoveryOperationId)
+        {
+                return ((IItemLevelRecoveryConnectionsOperations)operations).ListInstantItemRecoveryOperationResultAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, provisionInstantItemRecoveryOperationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches the mount scripts (iSCSI connection details) for an active Instant
+        /// Item Recovery (ILR) session on the recovery point. Required from API
+        /// version 2026-08-01 onwards; replaces the scripts previously returned inline
+        /// in the operationsStatus (ILR provision) response.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
+        /// </param>
+        /// <param name='fabricName'>
+        /// The name of the BackupFabricResource
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container whose details need to be fetched.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose details are to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InstantItemRecoveryTarget> ListInstantItemRecoveryOperationResultAsync(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, string provisionInstantItemRecoveryOperationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListInstantItemRecoveryOperationResultWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, provisionInstantItemRecoveryOperationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
-        /// Executing this script opens a file explorer displaying all the recoverable
-        /// files and folders. This is an asynchronous operation. To know the status of
+        /// Executing this script opens a file
+        /// explorer displaying all the recoverable files and folders. This is an
+        /// asynchronous operation. To know the status of
         /// provisioning, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose files/folders are to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// provisioned for this backed up data.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
-        public static void Provision(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, ILRRequestResource parameters)
+        public static void Provision(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, ILRRequestResource parameters)
         {
-                ((IItemLevelRecoveryConnectionsOperations)operations).ProvisionAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
+                ((IItemLevelRecoveryConnectionsOperations)operations).ProvisionAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
-        /// Executing this script opens a file explorer displaying all the recoverable
-        /// files and folders. This is an asynchronous operation. To know the status of
+        /// Executing this script opens a file
+        /// explorer displaying all the recoverable files and folders. This is an
+        /// asynchronous operation. To know the status of
         /// provisioning, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose files/folders are to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// provisioned for this backed up data.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ProvisionAsync(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, ILRRequestResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task ProvisionAsync(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, ILRRequestResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ProvisionWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.ProvisionWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Revokes an iSCSI connection which can be used to download a script.
-        /// Executing this script opens a file explorer displaying all recoverable
-        /// files and folders. This is an asynchronous operation.
+        /// Executing this script opens a file explorer
+        /// displaying all recoverable files and folders. This is an asynchronous
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose files/folders are to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// revoked for this backed up data.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
-        public static void Revoke(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
+        public static void Revoke(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
         {
-                ((IItemLevelRecoveryConnectionsOperations)operations).RevokeAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId).GetAwaiter().GetResult();
+                ((IItemLevelRecoveryConnectionsOperations)operations).RevokeAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Revokes an iSCSI connection which can be used to download a script.
-        /// Executing this script opens a file explorer displaying all recoverable
-        /// files and folders. This is an asynchronous operation.
+        /// Executing this script opens a file explorer
+        /// displaying all recoverable files and folders. This is an asynchronous
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item name whose files/folders are to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// revoked for this backed up data.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RevokeAsync(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task RevokeAsync(this IItemLevelRecoveryConnectionsOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RevokeWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.RevokeWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

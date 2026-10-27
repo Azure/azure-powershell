@@ -29,10 +29,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// capacity has been reserved. Please refer to
         /// https://aka.ms/CapacityReservation for more details.
         /// </param>
-        public CapacityReservationProfile(SubResource capacityReservationGroup = default(SubResource))
+
+        /// <param name="disableCapacityReservationAssignment">Specifies whether the virtual machine is explicitly opted out from being
+        /// associated with any capacity reservation. When set to true, the virtual
+        /// machine will not be allowed to implicitly or explicitly associate with any
+        /// type of capacity reservation and will consume capacity from the publicly
+        /// available capacity. Minimum api-version: 2026-04-01.
+        /// </param>
+        public CapacityReservationProfile(SubResource capacityReservationGroup = default(SubResource), bool? disableCapacityReservationAssignment = default(bool?))
 
         {
             this.CapacityReservationGroup = capacityReservationGroup;
+            this.DisableCapacityReservationAssignment = disableCapacityReservationAssignment;
             CustomInit();
         }
 
@@ -50,5 +58,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capacityReservationGroup")]
         public SubResource CapacityReservationGroup {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the virtual machine is explicitly opted out
+        /// from being associated with any capacity reservation. When set to true, the
+        /// virtual machine will not be allowed to implicitly or explicitly associate
+        /// with any type of capacity reservation and will consume capacity from the
+        /// publicly available capacity. Minimum api-version: 2026-04-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "disableCapacityReservationAssignment")]
+        public bool? DisableCapacityReservationAssignment {get; set; }
     }
 }

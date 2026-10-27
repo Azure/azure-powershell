@@ -14,11 +14,12 @@
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     public abstract class RemoveSqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType> : SqlServerAuditCmdlet<ServerAuditPolicyType, ServerAuditModelType, ServerAuditAdapterType>
-        where ServerAuditPolicyType : ProxyResource
+        where ServerAuditPolicyType : IResource
         where ServerAuditModelType : ServerDevOpsAuditModel, new()
         where ServerAuditAdapterType : SqlAuditAdapter<ServerAuditPolicyType, ServerAuditModelType> 
     {

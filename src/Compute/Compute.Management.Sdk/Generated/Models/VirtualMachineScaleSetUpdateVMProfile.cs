@@ -174,5 +174,30 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectBlockProfile")]
         public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.StorageProfile != null)
+            {
+                this.StorageProfile.Validate();
+            }
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

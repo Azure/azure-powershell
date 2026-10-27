@@ -77,7 +77,7 @@ Describe 'Set-AzEventHub' {
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
 
-        $eventhub = Set-AzEventHub -InputObject $eventhub.Id -CaptureEnabled:$false
+        $eventhub = Set-AzEventHub -InputObject $eventhub.Id -CaptureEnabled:$false -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer
@@ -89,7 +89,7 @@ Describe 'Set-AzEventHub' {
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
 
-        $eventhub = Set-AzEventHub -InputObject $eventhub.Id -PartitionCount 8
+        $eventhub = Set-AzEventHub -InputObject $eventhub.Id -PartitionCount 8 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled:$false -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.PartitionCount | Should -Be 8
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer

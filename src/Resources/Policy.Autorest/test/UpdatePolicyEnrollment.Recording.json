@@ -1,0 +1,222 @@
+{
+  "UpdatePolicyEnrollment+[NoContext]+Update-AzPolicyEnrollment -Name -Scope+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "804" ],
+        "x-ms-client-request-id": [ "e75a8b10-1def-4fa9-9fc3-7d742a6df544" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/58013d2c-190e-4a4f-8f0f-c419bb33f10d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "5cd91cac-3f79-4bb0-9ee5-d3bea384450c" ],
+        "x-ms-correlation-request-id": [ "5cd91cac-3f79-4bb0-9ee5-d3bea384450c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233226Z:5cd91cac-3f79-4bb0-9ee5-d3bea384450c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DAF91909BFA34F1993592E0265D41EC0 Ref B: MWH011020808023 Ref C: 2026-07-27T23:32:26Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:32:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyEnrollmentNotFound\",\"message\":\"The policy enrollment \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyEnrollment+[NoContext]+Update-AzPolicyEnrollment -Name -Scope -DisplayName+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "805" ],
+        "x-ms-client-request-id": [ "88eeac6b-25ae-44a3-b12a-5036c875c9e8" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/ded0c38f-89cd-49ea-9737-78437abdc648" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "2f01b0e7-affb-4d52-8262-0efd76a76aa2" ],
+        "x-ms-correlation-request-id": [ "2f01b0e7-affb-4d52-8262-0efd76a76aa2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233227Z:2f01b0e7-affb-4d52-8262-0efd76a76aa2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97737848351448A39A865FFC0E51DFC9 Ref B: MWH011020808023 Ref C: 2026-07-27T23:32:27Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:32:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyEnrollmentNotFound\",\"message\":\"The policy enrollment \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyEnrollment+[NoContext]+Update-AzPolicyEnrollment -Name -Scope -Description+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "806" ],
+        "x-ms-client-request-id": [ "be1d429c-6fd0-4f67-87b4-12ba876b7887" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/d23d7b7b-eff1-4573-b67f-4af0bb12d3dc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "b8f592f0-20b3-4001-b298-783d86dcc0aa" ],
+        "x-ms-correlation-request-id": [ "b8f592f0-20b3-4001-b298-783d86dcc0aa" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233228Z:b8f592f0-20b3-4001-b298-783d86dcc0aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1FAFFAF07E9845909D8814F1C274B8B5 Ref B: MWH011020808023 Ref C: 2026-07-27T23:32:28Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:32:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyEnrollmentNotFound\",\"message\":\"The policy enrollment \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyEnrollment+[NoContext]+Update-AzPolicyEnrollment -Name -Scope -Metadata+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "807" ],
+        "x-ms-client-request-id": [ "7247283d-48ce-4e35-8e47-9c3c40eeffa0" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/fff226d4-c562-4a6c-a36f-cd16260385c0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "9147d1c8-7fb1-4101-8c73-b6686ed5cf93" ],
+        "x-ms-correlation-request-id": [ "9147d1c8-7fb1-4101-8c73-b6686ed5cf93" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233229Z:9147d1c8-7fb1-4101-8c73-b6686ed5cf93" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 26FA314EBB0B475FAB2C5380C53BEB22 Ref B: MWH011020808023 Ref C: 2026-07-27T23:32:29Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:32:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyEnrollmentNotFound\",\"message\":\"The policy enrollment \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyEnrollment+[NoContext]+Update-AzPolicyEnrollment -Id+$GET+https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/e5a130f3-57fd-46b6-9c55-03d21a853935/providers/Microsoft.Authorization/policyEnrollments/someName?api-version=2026-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "808" ],
+        "x-ms-client-request-id": [ "f204937f-3d28-4e74-a776-88cc5651d9c6" ],
+        "CommandName": [ "Az.Policy.internal\\Get-AzPolicyEnrollment" ],
+        "FullCommandName": [ "Get-AzPolicyEnrollment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v16.0.0", "PSVersion/v7.6.4", "Az.Policy/9.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aaa98dcf-7592-4632-a750-6f61c2d0d1d7/westus2/7cc7dc54-f680-42e2-812f-b824d997c1c7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "26521453-baf9-4cfb-9dcc-fb6f718b8be6" ],
+        "x-ms-correlation-request-id": [ "26521453-baf9-4cfb-9dcc-fb6f718b8be6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260727T233230Z:26521453-baf9-4cfb-9dcc-fb6f718b8be6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B5C8A00C67F47FCAEE518BE297E7024 Ref B: MWH011020808023 Ref C: 2026-07-27T23:32:30Z" ],
+        "Date": [ "Mon, 27 Jul 2026 23:32:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "110" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyEnrollmentNotFound\",\"message\":\"The policy enrollment \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

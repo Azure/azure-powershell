@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The DDoS custom policy ID to associate with the Public IP address. Requires the Public IP address protection mode to be 'Enabled'.")]
+            HelpMessage = "The DDoS custom policy ID to associate with the Public IP address.")]
         [ValidateNotNullOrEmpty]
         public string DdosCustomPolicyId { get; set; }
 
@@ -63,13 +63,9 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
             {
-                if (this.PublicIpAddress.DdosSettings == null ||
-                    string.IsNullOrEmpty(this.PublicIpAddress.DdosSettings.ProtectionMode) ||
-                    !this.PublicIpAddress.DdosSettings.ProtectionMode.Equals(MNM.DdosSettingsProtectionMode.Enabled, StringComparison.OrdinalIgnoreCase))
+                if (this.PublicIpAddress.DdosSettings == null)
                 {
-                    throw new ArgumentException(
-                        "DdosCustomPolicyId can only be set when the Public IP address has ProtectionMode set to 'Enabled'.",
-                        nameof(DdosCustomPolicyId));
+                    this.PublicIpAddress.DdosSettings = new PSDdosSettings();
                 }
 
                 this.PublicIpAddress.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };

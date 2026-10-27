@@ -59,10 +59,11 @@ param(
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
+    [Alias('ManagementGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
-    ${ManagementGroupName},
+    ${ManagementGroupId},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
@@ -186,7 +187,7 @@ process {
     }
 
     # construct confirmation prompt
-    $resolved = ResolvePolicyDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicyDefinition $Name $SubscriptionId $ManagementGroupId $thisId
     $result = $false
 
     # make a friendly prompt
@@ -235,7 +236,7 @@ process {
             $null = $PSBoundParameters.Remove('Id')
             $null = $PSBoundParameters.Remove('Name');
             $null = $PSBoundParameters.Remove('SubscriptionId');
-            $null = $PSBoundParameters.Remove('ManagementGroupName');
+            $null = $PSBoundParameters.Remove('ManagementGroupId');
         }
         else {
             switch ($resolved.ScopeType) {
@@ -243,7 +244,6 @@ process {
                     $calledParameterSet = 'Delete1'
                     if (!$PSBoundParameters['Version']) {
                         $PSBoundParameters['ManagementGroupId'] = $resolved.ManagementGroupName
-                        $null = $PSBoundParameters.Remove('ManagementGroupName')
                     }
                 }
                 default {

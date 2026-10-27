@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         public static PrivateLinkResourceListResult ListByVault(this IPrivateLinkResourcesOperations operations, string resourceGroupName, string vaultName)
         {
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.KeyVault
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of the resource group that contains the key vault.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vaultName'>
-        /// The name of the key vault.
+        /// The name of the vault.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

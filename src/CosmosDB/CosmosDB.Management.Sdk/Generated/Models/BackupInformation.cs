@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets information about the status of continuous backups.
+        /// Gets or sets information about the status of continuous backups.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "continuousBackupInformation")]
-        public ContinuousBackupInformation ContinuousBackupInformation {get; private set; }
+        public ContinuousBackupInformation ContinuousBackupInformation {get; set; }
     }
 }

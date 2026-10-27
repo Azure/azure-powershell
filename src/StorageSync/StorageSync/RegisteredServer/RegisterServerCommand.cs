@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     {
                         try
                         {
-                            clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.ToString());
+                            clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverRegistrationData.ClusterId.Value);
                         }
                         catch (StorageSyncErrorException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                         {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             return StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
                resourceGroupName,
                 storageSyncServiceName,
-                serverRegistrationData.ServerId.ToString(),
+                serverRegistrationData.ServerId,
                 createParameters);
         }
     }

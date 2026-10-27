@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return;
             }
-            __action = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action(json);
+            __chaosExperimentAction = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentAction(json);
             {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray>("parameters"), out var __jsonParameters) ? If( __jsonParameters as Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair) (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.KeyValuePair.FromJson(__u) )) ))() : null : _parameter;}
             {_selectorId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonString>("selectorId"), out var __jsonSelectorId) ? (string)__jsonSelectorId : (string)_selectorId;}
             AfterFromJson(json);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 return container;
             }
-            __action?.ToJson(container, serializationMode);
+            __chaosExperimentAction?.ToJson(container, serializationMode);
             if (null != this._parameter)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.XNodeArray();

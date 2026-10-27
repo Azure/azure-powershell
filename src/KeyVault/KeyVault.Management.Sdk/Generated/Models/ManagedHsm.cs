@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     /// <summary>
     /// Resource information with extended details.
     /// </summary>
-    public partial class ManagedHsm : ManagedHsmResource
+    public partial class ManagedHsm : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedHsm class.
@@ -24,38 +24,44 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Initializes a new instance of the ManagedHsm class.
         /// </summary>
 
-        /// <param name="id">The Azure Resource Manager resource ID for the managed HSM Pool.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the managed HSM Pool.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The resource type of the managed HSM Pool.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The supported Azure location where the managed HSM Pool should be created.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="properties">Properties of the managed HSM
         /// </param>
 
         /// <param name="sku">SKU details
         /// </param>
 
-        /// <param name="tags">Resource tags
+        /// <param name="identity">Managed service identity
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the key vault
-        /// resource.
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="identity">Managed service identity (system assigned and/or user assigned identities)
+        /// <param name="tags">Resource tags.
         /// </param>
+        public ManagedHsm(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), ManagedHsmProperties properties = default(ManagedHsmProperties), ManagedHsmSku sku = default(ManagedHsmSku), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
-        /// <param name="properties">Properties of the managed HSM
-        /// </param>
-        public ManagedHsm(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ManagedHsmProperties properties = default(ManagedHsmProperties))
-
-        : base(id, name, type, location, sku, tags, systemData, identity)
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
+            this.Sku = sku;
+            this.Identity = identity;
+            this.Location = location;
+            this.Tags = tags;
             CustomInit();
         }
 
@@ -70,15 +76,48 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public ManagedHsmProperties Properties {get; set; }
+
+        /// <summary>
+        /// Gets or sets sKU details
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
+        public ManagedHsmSku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed service identity
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
+
+            if (this.Sku != null)
+            {
+                this.Sku.Validate();
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
+
 
         }
     }

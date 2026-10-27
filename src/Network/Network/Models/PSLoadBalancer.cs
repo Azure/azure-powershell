@@ -25,6 +25,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSLoadBalancerSku Sku { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Mode { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Scope { get; set; }
         public List<PSFrontendIPConfiguration> FrontendIpConfigurations { get; set; }
         public List<PSBackendAddressPool> BackendAddressPools { get; set; }
         public List<PSLoadBalancingRule> LoadBalancingRules { get; set; }

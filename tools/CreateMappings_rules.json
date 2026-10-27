@@ -889,10 +889,6 @@
     "alias": "Oracle"
   },
   {
-    "alias": "Astro",
-    "module": "Astro"
-  },
-  {
     "module": "Fabric",
     "alias": "Fabric"
   },
@@ -941,14 +937,6 @@
     "alias": "ScVmm"
   },
   {
-    "alias": "ArizeAI",
-    "module": "ArizeAI"
-  },
-  {
-    "alias": "LambdaTest",
-    "module": "LambdaTest"
-  },
-  {
     "alias": "Carbon",
     "module": "Carbon"
   },
@@ -967,6 +955,10 @@
   {
     "alias": "CloudHsm",
     "module": "CloudHsm"
+  },
+  {
+    "alias": "CloudHealth",
+    "module": "CloudHealth"
   },
   {
     "alias": "StorageDiscovery",
@@ -1039,5 +1031,13 @@
   {
     "alias": "Mission",
     "module": "Mission"
+  },
+  {
+    "module": "DocumentDB",
+    "alias": "DocumentDB"
+  },
+  {
+    "module": "RedHatOpenShiftHcp",
+    "alias": "RedHatOpenShiftHcp"
   }
 ]

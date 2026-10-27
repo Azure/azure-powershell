@@ -288,6 +288,28 @@ namespace Microsoft.Azure.Commands.Network.Properties
                 return ResourceManager.GetString("ApplicationGatewayRewriteRuleSetName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to advancedRoutingMaps.
+        /// </summary>
+        internal static string ApplicationGatewayAdvancedRoutingMapName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewayAdvancedRoutingMapName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to advancedRoutingConditionSets.
+        /// </summary>
+        internal static string ApplicationGatewayAdvancedRoutingConditionSetName
+        {
+            get
+            {
+                return ResourceManager.GetString("ApplicationGatewayAdvancedRoutingConditionSetName", resourceCulture);
+            }
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to routingRules.
@@ -1041,7 +1063,7 @@ namespace Microsoft.Azure.Commands.Network.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Invalid format version. Supported values are 0, 1 and 2..
+        ///   Looks up a localized string similar to Invalid format version. Supported values are 0, 1, 2 and 5..
         /// </summary>
         internal static string InvalidFlowLogFormatVersion
         {

@@ -40,7 +40,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -59,7 +59,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -78,7 +78,7 @@ RULESETINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -218,6 +218,34 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Delete = 'Az.Cdn.private\Remove-AzFrontDoorCdnRule_Delete';
+        DeleteViaIdentity = 'Az.Cdn.private\Remove-AzFrontDoorCdnRule_DeleteViaIdentity';
+        DeleteViaIdentityProfile = 'Az.Cdn.private\Remove-AzFrontDoorCdnRule_DeleteViaIdentityProfile';
+        DeleteViaIdentityRuleSet = 'Az.Cdn.private\Remove-AzFrontDoorCdnRule_DeleteViaIdentityRuleSet';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

@@ -56,11 +56,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string LastAttemptStatus { get => this._lastAttemptStatus; }
 
         /// <summary>Backing field for <see cref="LastAttemptTimestamp" /> property.</summary>
-        private string _lastAttemptTimestamp;
+        private global::System.DateTime? _lastAttemptTimestamp;
 
         /// <summary>Timestamp of last upgrade attempt</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string LastAttemptTimestamp { get => this._lastAttemptTimestamp; }
+        public global::System.DateTime? LastAttemptTimestamp { get => this._lastAttemptTimestamp; }
 
         /// <summary>Internal Acessors for LastAttemptDesiredVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal.LastAttemptDesiredVersion { get => this._lastAttemptDesiredVersion; set { {_lastAttemptDesiredVersion = value;} } }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal.LastAttemptStatus { get => this._lastAttemptStatus; set { {_lastAttemptStatus = value;} } }
 
         /// <summary>Internal Acessors for LastAttemptTimestamp</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal.LastAttemptTimestamp { get => this._lastAttemptTimestamp; set { {_lastAttemptTimestamp = value;} } }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal.LastAttemptTimestamp { get => this._lastAttemptTimestamp; set { {_lastAttemptTimestamp = value;} } }
 
         /// <summary>Creates an new <see cref="AgentUpgrade" /> instance.</summary>
         public AgentUpgrade()
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Timestamp of last upgrade attempt",
         SerializedName = @"lastAttemptTimestamp",
-        PossibleTypes = new [] { typeof(string) })]
-        string LastAttemptTimestamp { get;  }
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? LastAttemptTimestamp { get;  }
 
     }
     /// The info w.r.t Agent Upgrade.
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Success", "Failed")]
         string LastAttemptStatus { get; set; }
         /// <summary>Timestamp of last upgrade attempt</summary>
-        string LastAttemptTimestamp { get; set; }
+        global::System.DateTime? LastAttemptTimestamp { get; set; }
 
     }
 }

@@ -14,6 +14,35 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface IActivityOperations
     {
         /// <summary>
+        /// Retrieve a list of activities in the module identified by module name.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a list of activities in the module identified by module name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='moduleName'>
+        /// The module name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Activity>>> ListByModuleWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieve the activity in the module identified by module name and activity
         /// name.
         /// </summary>
@@ -22,13 +51,13 @@ namespace Microsoft.Azure.Management.Automation
         /// name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='moduleName'>
-        /// The name of module.
+        /// The module name.
         /// </param>
         /// <param name='activityName'>
         /// The name of activity.
@@ -46,35 +75,6 @@ namespace Microsoft.Azure.Management.Automation
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Activity>> GetWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, string activityName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieve a list of activities in the module identified by module name.
-        /// </summary>
-        /// <remarks>
-        /// Retrieve a list of activities in the module identified by module name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='moduleName'>
-        /// The name of module.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Activity>>> ListByModuleWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string moduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a list of activities in the module identified by module name.

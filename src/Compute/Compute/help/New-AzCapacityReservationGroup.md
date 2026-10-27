@@ -14,8 +14,8 @@ Creates a Capacity Reservation Group
 
 ```
 New-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> -Location <String> [-AsJob]
- [-Tag <Hashtable>] [-Zone <String[]>] [-SharingProfile <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-SharingProfile <String[]>] [-ReservationType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,13 @@ New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Nam
 ```
 
 This command will create a Capacity Reservation Group with given properties. 
+
+### Example 2
+```powershell
+New-AzCapacityReservationGroup -ResourceGroupName "myRG" -Location "eastus" -Name "myCapacityReservationGroup" -ReservationType "Open"
+```
+
+This command will create an Open Capacity Reservation Group. Eligible virtual machines with a matching VM size and zone implicitly consume capacity from this group without being explicitly associated with it.
 
 ## PARAMETERS
 
@@ -86,6 +93,25 @@ Parameter Sets: (All)
 Aliases: CapacityReservationGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ReservationType
+Specifies the type of the capacity reservation group.
+'Targeted' reservations are consumed by virtual machines that are explicitly associated with the group.
+'Block' reservations are consumed only from the capacity block.
+'Open' reservations are implicitly consumed by eligible virtual machines with a matching VM size and zone without associating the group.
+The reservation type cannot be changed after the group is created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

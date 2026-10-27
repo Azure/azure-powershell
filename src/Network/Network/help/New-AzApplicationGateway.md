@@ -29,11 +29,14 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -58,12 +61,15 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-EnableHttp2] [-EnableFIPS] [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
  [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
@@ -87,12 +93,15 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -117,11 +126,14 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
  [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
  [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-AdvancedRoutingMaps <PSApplicationGatewayAdvancedRoutingMap[]>]
+ [-AdvancedRoutingConditionSets <PSApplicationGatewayAdvancedRoutingConditionSet[]>]
  [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
  [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
  [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
@@ -227,6 +239,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdvancedRoutingConditionSets
+The list of AdvancedRoutingConditionSet
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingConditionSet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdvancedRoutingMaps
+The list of AdvancedRoutingMap
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAdvancedRoutingMap[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -357,6 +399,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableDefaultServerHeaderInResponse
+Whether the default server header is disabled in responses.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

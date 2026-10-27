@@ -22,10 +22,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>Internal Acessors for IssueType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).IssueType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.IssueType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).IssueType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).IssueType = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Name { get => this._name; set { {_name = value;} } }
@@ -34,13 +34,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProvisioningIssueProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Severity</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Severity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Severity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Severity = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.Severity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Severity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).Severity = value ?? null; }
 
         /// <summary>Internal Acessors for SuggestedAccessRule</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.SuggestedAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedAccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedAccessRule = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.SuggestedAccessRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedAccessRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedAccessRule = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for SuggestedResourceId</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.SuggestedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedResourceId = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssueInternal.SuggestedResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProvisioningIssuePropertiesInternal)Property).SuggestedResourceId = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

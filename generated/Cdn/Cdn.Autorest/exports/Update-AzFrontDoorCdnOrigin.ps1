@@ -44,7 +44,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -63,7 +63,7 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -77,6 +77,8 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
 
 ORIGINUPDATEPROPERTY <IAfdOriginUpdateParameters>: AFDOrigin properties needed for origin update.
   [AzureOriginId <String>]: Resource ID.
+  [CertificateNameCheckValidationMode <String>]: The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+  [CustomCertificateSubject <List<String>>]: The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.
   [EnabledState <String>]: Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
   [EnforceCertificateNameCheck <Boolean?>]: Whether to enable certificate name check at origin level
   [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
@@ -98,7 +100,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -193,6 +195,29 @@ param(
     [System.String]
     # Resource ID.
     ${AzureOriginId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The validation mode for certificate name check.
+    # Only applicable when enforceCertificateNameCheck is true.
+    ${CertificateNameCheckValidationMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityOriginGroupExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String[]]
+    # The list of custom certificate subjects to validate against.
+    # Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+    # Must contain 1 or 2 entries.
+    ${CustomCertificateSubject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -402,6 +427,38 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        UpdateExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateExpanded';
+        UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaIdentityExpanded';
+        UpdateViaIdentityOriginGroup = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaIdentityOriginGroup';
+        UpdateViaIdentityOriginGroupExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaIdentityOriginGroupExpanded';
+        UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaIdentityProfile';
+        UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaIdentityProfileExpanded';
+        UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaJsonFilePath';
+        UpdateViaJsonString = 'Az.Cdn.private\Update-AzFrontDoorCdnOrigin_UpdateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
 
 begin {
     try {

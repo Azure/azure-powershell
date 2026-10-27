@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Monitor",
-  "ModuleVersion": "8.0.0",
+  "ModuleVersion": "8.1.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Models.RetentionPolicy",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -386,7 +386,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -442,7 +442,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -478,7 +478,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator"
             ]
@@ -538,7 +538,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
             ]
@@ -621,7 +621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
                   "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -681,7 +681,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator"
                   ]
@@ -777,7 +777,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
                   ]
@@ -881,7 +881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
               "Criteria": "Microsoft.Azure.Management.Monitor.Models.MetricAlertCriteria",
@@ -1041,7 +1041,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria"
             ]
@@ -1065,7 +1065,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup"
           },
           "ValidateNotNullOrEmpty": false
@@ -1237,7 +1237,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria"
                   ]
@@ -1273,7 +1273,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
                   "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1513,7 +1513,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria"
                   ]
@@ -1549,7 +1549,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
                   "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1823,7 +1823,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria"
                   ]
@@ -1859,7 +1859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
                   "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2022,7 +2022,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -2162,7 +2162,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
             ]
@@ -2383,7 +2383,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
                   ]
@@ -2487,7 +2487,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Claims": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
               "Properties": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
@@ -3500,7 +3500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Claims": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
               "Properties": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
@@ -3828,7 +3828,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
               "Action": "Microsoft.Azure.Management.Monitor.Models.RuleAction",
@@ -4306,7 +4306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Claims": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
               "Properties": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
@@ -4634,7 +4634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -5045,7 +5045,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -5152,7 +5152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -5316,7 +5316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Id": "System.String",
@@ -5508,7 +5508,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Item": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
               "Count": "System.Int32",
@@ -6223,7 +6223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
               "Data": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricValue]",
@@ -6986,7 +6986,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
               "Criteria": "Microsoft.Azure.Management.Monitor.Models.MetricAlertCriteria",
@@ -7398,7 +7398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
               "Dimensions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.LocalizableString]",
@@ -7657,7 +7657,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleEmailAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleEmailAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleEmailAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomEmails": "System.Collections.Generic.IList`1[System.String]",
               "SendToServiceOwners": "System.Nullable`1[System.Boolean]"
@@ -7904,7 +7904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
             "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleWebhookAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleWebhookAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleWebhookAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ServiceUri": "System.String"
@@ -8149,7 +8149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -8582,7 +8582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScopedResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -8689,7 +8689,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -9010,7 +9010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Id": "System.String",
@@ -9134,7 +9134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CriterionType": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType",
               "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -9195,7 +9195,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDynamicMetricCriteria",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDynamicMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDynamicMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CriterionType": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType",
               "FailingPeriods": "Microsoft.Azure.Management.Monitor.Models.DynamicThresholdFailingPeriods",
@@ -9306,7 +9306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension"
           },
           "ValidateNotNullOrEmpty": false
@@ -9539,7 +9539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9925,7 +9925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -10151,7 +10151,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncludeValues": "System.Collections.Generic.IList`1[System.String]",
               "ExcludeValues": "System.Collections.Generic.IList`1[System.String]",
@@ -11208,7 +11208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -11484,7 +11484,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Id": "System.String",
@@ -11721,7 +11721,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -11933,7 +11933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Id": "System.String",
@@ -12497,7 +12497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
               "Criteria": "Microsoft.Azure.Management.Monitor.Models.MetricAlertCriteria",
@@ -12872,7 +12872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Actions": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
                     "Criteria": "Microsoft.Azure.Management.Monitor.Models.MetricAlertCriteria",
@@ -13135,7 +13135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -13227,7 +13227,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -13438,7 +13438,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMonitorPrivateLinkScope, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Id": "System.String",
@@ -51268,6 +51268,24 @@
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -51443,6 +51461,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -51753,6 +51801,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -51950,6 +52028,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -52140,6 +52248,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -52629,6 +52767,24 @@
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -52805,6 +52961,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -53448,6 +53634,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -53639,6 +53855,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -53844,6 +54090,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -54041,6 +54317,24 @@
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -54204,6 +54498,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -54429,6 +54753,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -54614,6 +54968,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -54792,6 +55176,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -71512,6 +71926,24 @@
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -71709,6 +72141,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -71882,6 +72344,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -72024,6 +72516,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -72194,6 +72716,24 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.ActionPreference",
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -72394,6 +72934,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -72567,6 +73137,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -72709,6 +73309,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -72872,6 +73502,24 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.ActionPreference",
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -73059,6 +73707,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -73232,6 +73910,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -73374,6 +74082,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -85975,6 +86713,24 @@
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
@@ -86266,6 +87022,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -86533,6 +87319,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -86769,6 +87585,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -87250,6 +88096,24 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.ActionPreference",
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -87876,6 +88740,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -88475,6 +89369,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -89050,6 +89974,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         }
@@ -89245,6 +90199,24 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.ActionPreference",
             "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcquirePolicyToken",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ChangeReference",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -89465,6 +90437,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -89671,6 +90673,36 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             }
           ]
         },
@@ -89846,6 +90878,36 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.ActionPreference",
                   "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcquirePolicyToken",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ChangeReference",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -101912,7 +102974,7 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Condition": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
         "Action": "Microsoft.Azure.Management.Monitor.Models.RuleAction",
@@ -101976,7 +103038,7 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleCondition, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DataSource": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource"
       },
@@ -102022,7 +103084,7 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleDataSource, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceUri": "System.String",
         "LegacyResourceId": "System.String",
@@ -102212,7 +103274,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction"
       ]
@@ -102220,7 +103282,7 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "GetType",
@@ -102280,7 +103342,7 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -102372,13 +103434,13 @@
     "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup"
     },
     "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup": {
       "Namespace": "Microsoft.Azure.Management.Monitor.Management.Models",
       "Name": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "WebhookProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "ActionGroupId": "System.String"
@@ -102489,7 +103551,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria"
       ]
@@ -102497,7 +103559,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CriterionType": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType"
       }
@@ -102505,7 +103567,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.CriterionType, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -102664,7 +103726,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Content": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },
@@ -102717,7 +103779,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataAuthorization, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Scope": "System.String",
         "Action": "System.String",
@@ -102757,7 +103819,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSEventDataHttpRequest, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClientId": "System.String",
         "Method": "System.String",
@@ -103064,7 +104126,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Models.RetentionPolicy",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -103122,7 +104184,7 @@
     "System.Collections.ObjectModel.ReadOnlyCollection`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]": {
       "Namespace": "System.Collections.ObjectModel",
       "Name": "System.Collections.ObjectModel.ReadOnlyCollection`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]",
-      "AssemblyQualifiedName": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.ObjectModel.ReadOnlyCollection`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile"
       ]
@@ -103143,7 +104205,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile"
       ]
@@ -103151,7 +104213,7 @@
     "System.Collections.Generic.List`1+Enumerator[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1+Enumerator[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1+Enumerator[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1+Enumerator[[Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile"
       ]
@@ -103159,7 +104221,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile[]": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile[], Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile"
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricValue]": {
@@ -103766,7 +104828,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IncludeValues": "System.Collections.Generic.IList`1[System.String]",
         "ExcludeValues": "System.Collections.Generic.IList`1[System.String]",

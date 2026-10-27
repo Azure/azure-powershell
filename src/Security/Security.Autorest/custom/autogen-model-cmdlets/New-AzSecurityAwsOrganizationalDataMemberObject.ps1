@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMember
 https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamemberobject
 #>
 function New-AzSecurityAwsOrganizationalDataMemberObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Security.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMember')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

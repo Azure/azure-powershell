@@ -98,6 +98,7 @@ Accept wildcard characters: False
 ### -ImmutabilityState
 Immutability State of the vault. Allowed values are "Disabled", "Unlocked", "Locked". 
 Unlocked means Enabled and can be changed, Locked means Enabled and can't be changed.
+When immutability is enabled, its configuration defaults to AsPerPolicy and inherits the immutable duration from the backup policy.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.ImmutabilityState]
@@ -255,5 +256,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzRecoveryServicesVaultSettingsFile](./Get-AzRecoveryServicesVaultSettingsFile.md)
 
 [Remove-AzRecoveryServicesVault](./Remove-AzRecoveryServicesVault.md)
-
 

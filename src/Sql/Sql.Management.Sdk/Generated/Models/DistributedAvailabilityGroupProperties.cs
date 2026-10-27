@@ -57,9 +57,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// scenarios.
         /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
+        /// <param name="linkMode">Specifies whether the link operates in single-database or multi-database
+        /// mode.
+        /// Possible values include: &#39;SingleDatabase&#39;, &#39;MultiDatabase&#39;</param>
+
         /// <param name="databases">Databases in the distributed availability group
         /// </param>
-        public DistributedAvailabilityGroupProperties(string distributedAvailabilityGroupName = default(string), System.Guid? distributedAvailabilityGroupId = default(System.Guid?), string replicationMode = default(string), string partnerLinkRole = default(string), string partnerAvailabilityGroupName = default(string), string partnerEndpoint = default(string), string instanceLinkRole = default(string), string instanceAvailabilityGroupName = default(string), string failoverMode = default(string), string seedingMode = default(string), System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase> databases = default(System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase>))
+        public DistributedAvailabilityGroupProperties(string distributedAvailabilityGroupName = default(string), System.Guid? distributedAvailabilityGroupId = default(System.Guid?), string replicationMode = default(string), string partnerLinkRole = default(string), string partnerAvailabilityGroupName = default(string), string partnerEndpoint = default(string), string instanceLinkRole = default(string), string instanceAvailabilityGroupName = default(string), string failoverMode = default(string), string seedingMode = default(string), string linkMode = default(string), System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase> databases = default(System.Collections.Generic.IList<DistributedAvailabilityGroupDatabase>))
 
         {
             this.DistributedAvailabilityGroupName = distributedAvailabilityGroupName;
@@ -72,6 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.InstanceAvailabilityGroupName = instanceAvailabilityGroupName;
             this.FailoverMode = failoverMode;
             this.SeedingMode = seedingMode;
+            this.LinkMode = linkMode;
             this.Databases = databases;
             CustomInit();
         }
@@ -144,6 +149,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "seedingMode")]
         public string SeedingMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the link operates in single-database or
+        /// multi-database mode. Possible values include: &#39;SingleDatabase&#39;, &#39;MultiDatabase&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linkMode")]
+        public string LinkMode {get; set; }
 
         /// <summary>
         /// Gets or sets databases in the distributed availability group

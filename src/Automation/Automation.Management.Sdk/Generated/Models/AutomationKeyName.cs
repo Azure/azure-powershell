@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class AutomationKeyName
     {
+        /// <summary>
+        /// Primary
+        /// </summary>
         public const string Primary = "Primary";
+        /// <summary>
+        /// Secondary
+        /// </summary>
         public const string Secondary = "Secondary";
     }
 }

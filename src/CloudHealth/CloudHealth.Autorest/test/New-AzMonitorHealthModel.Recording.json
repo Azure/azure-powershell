@@ -1,0 +1,282 @@
+{
+  "New-AzMonitorHealthModel+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p?api-version=2026-11-01",
+      "Content": "{\n  \"tags\": {\n    \"scenario\": \"create\"\n  },\n  \"location\": \"centralus\",\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "121"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"00000000-0000-4000-8000-000000000345\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000291"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000017"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-resource-provider-hint": [
+          "noPolling"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000074*B9033181DA5FE7C8169869F8CF080C72AA2C4F9F7E62138E9E778E96493C7BF7?api-version=2026-11-01&t=639275014523069955&c=SANITIZED_C_001&s=SANITIZED_S_005&h=SANITIZED_H_002"
+        ],
+        "x-ms-async-operation-timeout": [
+          "P6D"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000314"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151732Z:00000000-0000-4000-8000-000000000314"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D6A29B795F5F4DF2B051EEBAEB87711D Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:29Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:31 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "709"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p\",\"name\":\"azps-hm-create-r3wz6p\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{\"scenario\":\"create\"},\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:17:30.3693571Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:17:30.3693571Z\"},\"identity\":{\"principalId\":\"00000000-0000-4000-8000-000000000099\",\"tenantId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModel+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000074*B9033181DA5FE7C8169869F8CF080C72AA2C4F9F7E62138E9E778E96493C7BF7?api-version=2026-11-01&t=639275014523069955&c=SANITIZED_C_001&s=SANITIZED_S_005&h=SANITIZED_H_002+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000074*B9033181DA5FE7C8169869F8CF080C72AA2C4F9F7E62138E9E778E96493C7BF7?api-version=2026-11-01&t=639275014523069955&c=SANITIZED_C_001&s=SANITIZED_S_005&h=SANITIZED_H_002",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "53"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000016"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModel"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModel_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"00000000-0000-4000-8000-000000000011\""
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/westeurope/00000000-0000-4000-8000-000000000030"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000181"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000298"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20261013T151803Z:00000000-0000-4000-8000-000000000298"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F2E429545A9549699AD0D428D930FE70 Ref B: FRA261071505034 Ref C: 2026-10-13T15:18:02Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:18:02 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "633"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/providers/Microsoft.CloudHealth/locations/CENTRALUS/operationStatuses/00000000-0000-4000-8000-000000000074*B9033181DA5FE7C8169869F8CF080C72AA2C4F9F7E62138E9E778E96493C7BF7\",\"name\":\"00000000-0000-4000-8000-000000000074*B9033181DA5FE7C8169869F8CF080C72AA2C4F9F7E62138E9E778E96493C7BF7\",\"resourceId\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-13T15:17:31.3691156Z\",\"endTime\":\"2026-10-13T15:17:33.1794321Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMonitorHealthModel+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p?api-version=2026-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p?api-version=2026-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "54"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-4000-8000-000000000016"
+        ],
+        "CommandName": [
+          "New-AzMonitorHealthModel"
+        ],
+        "FullCommandName": [
+          "New-AzMonitorHealthModel_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.5.4",
+          "Az.CloudHealth/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"00000000-0000-4000-8000-000000000361\""
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000148"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000239"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "249"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151803Z:00000000-0000-4000-8000-000000000239"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: E88A5EF3104A464D9E940ADFB124E08A Ref B: FRA261071505034 Ref C: 2026-10-13T15:18:03Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:18:02 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "710"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-create-r3wz6p\",\"name\":\"azps-hm-create-r3wz6p\",\"type\":\"microsoft.cloudhealth/healthmodels\",\"location\":\"centralus\",\"tags\":{\"scenario\":\"create\"},\"systemData\":{\"createdBy\":\"user-1@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-13T15:17:30.3693571Z\",\"lastModifiedBy\":\"user-1@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-13T15:17:30.3693571Z\"},\"identity\":{\"principalId\":\"00000000-0000-4000-8000-000000000099\",\"tenantId\":\"00000000-0000-4000-8000-000000000002\",\"type\":\"SystemAssigned\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

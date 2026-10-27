@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMissionWorkload'))
 }
 
 Describe 'New-AzMissionWorkload' {
-    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission preview subscription.
+    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission subscription.
     It 'CreateExpanded' -skip {
         {
             $workload = New-AzMissionWorkload -Name $env.workloadName -ResourceGroupName $env.resourceGroup -VirtualEnclaveName $env.enclaveName -Location $env.location -ResourceGroupCollection @($env.workloadResourceGroupId)

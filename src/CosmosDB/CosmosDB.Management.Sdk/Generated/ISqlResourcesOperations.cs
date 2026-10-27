@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlDatabaseGetResults>>> ListSqlDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults>>> ListSqlDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the SQL database under an existing Azure Cosmos DB database account
@@ -129,74 +129,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlDatabaseHeaders>> DeleteSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
-        /// DB database account with the provided name.
-        /// </summary>
-        /// <remarks>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
-        /// DB database account with the provided name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults>> GetSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
-        /// </summary>
-        /// <remarks>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
         /// database.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlDatabaseThroughputHeaders>> UpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -219,13 +157,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToAutoscaleHeaders>> MigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults>>> ListClientEncryptionKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -235,6 +175,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -248,7 +191,44 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToManualThroughputHeaders>> MigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults>> GetClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </summary>
+        /// <remarks>
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        /// <param name='createUpdateClientEncryptionKeyParameters'>
+        /// The parameters to provide for the client encryption key.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults,SqlResourcesCreateUpdateClientEncryptionKeyHeaders>> CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the SQL container under an existing Azure Cosmos DB database account.
@@ -277,7 +257,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlContainerGetResults>>> ListSqlContainersWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlContainerGetResults>>> ListSqlContainersWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the SQL container under an existing Azure Cosmos DB database account.
@@ -374,6 +354,182 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlContainerHeaders>> DeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves continuous backup information for a container resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the continuous backup restore location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation,SqlResourcesRetrieveContinuousBackupInformationHeaders>> RetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults>>> ListSqlStoredProceduresWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <remarks>
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults>> GetSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <remarks>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='createUpdateSqlStoredProcedureParameters'>
+        /// The parameters to provide for the current SQL storedProcedure.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults,SqlResourcesCreateUpdateSqlStoredProcedureHeaders>> CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlStoredProcedureHeaders>> DeleteSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
@@ -514,114 +670,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToManualThroughputHeaders>> MigrateSqlContainerToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <remarks>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
-        /// database.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults>>> ListClientEncryptionKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
-        /// </summary>
-        /// <remarks>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
-        /// database.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults>> GetClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
-        /// </summary>
-        /// <remarks>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
-        /// </param>
-        /// <param name='createUpdateClientEncryptionKeyParameters'>
-        /// The parameters to provide for the client encryption key.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults,SqlResourcesCreateUpdateClientEncryptionKeyHeaders>> CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
-        /// </summary>
-        /// <remarks>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -647,15 +699,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlStoredProcedureGetResults>>> ListSqlStoredProceduresWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlTriggerGetResults>>> ListSqlTriggersWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
+        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
         /// </summary>
         /// <remarks>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
-        /// account.
+        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -669,8 +719,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -684,13 +734,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults>> GetSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults>> GetSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <remarks>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -704,11 +754,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
-        /// <param name='createUpdateSqlStoredProcedureParameters'>
-        /// The parameters to provide for the current SQL storedProcedure.
+        /// <param name='createUpdateSqlTriggerParameters'>
+        /// The parameters to provide for the current SQL trigger.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -722,13 +772,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults,SqlResourcesCreateUpdateSqlStoredProcedureHeaders>> CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults,SqlResourcesCreateUpdateSqlTriggerHeaders>> CreateUpdateSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -742,8 +792,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -754,7 +804,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlStoredProcedureHeaders>> DeleteSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlTriggerHeaders>> DeleteSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
@@ -788,7 +838,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlUserDefinedFunctionGetResults>>> ListSqlUserDefinedFunctionsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults>>> ListSqlUserDefinedFunctionsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database
@@ -898,10 +948,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlUserDefinedFunctionHeaders>> DeleteSqlUserDefinedFunctionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -912,9 +964,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -927,13 +976,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlTriggerGetResults>>> ListSqlTriggersWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults>> GetSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <remarks>
-        /// Gets the SQL trigger under an existing Azure Cosmos DB database account.
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -944,11 +993,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
+        /// <param name='updateThroughputParameters'>
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -962,13 +1009,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults>> GetSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlDatabaseThroughputHeaders>> UpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <remarks>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -979,15 +1026,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        /// <param name='createUpdateSqlTriggerParameters'>
-        /// The parameters to provide for the current SQL trigger.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -1000,13 +1038,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults,SqlResourcesCreateUpdateSqlTriggerHeaders>> CreateUpdateSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToAutoscaleHeaders>> MigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1017,40 +1055,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlTriggerHeaders>> DeleteSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
-        /// with the given Id.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
-        /// with the given Id.
-        /// </remarks>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -1063,71 +1067,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults>> GetSqlRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToManualThroughputHeaders>> MigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
         /// </summary>
         /// <remarks>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
-        /// </remarks>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='createUpdateSqlRoleDefinitionParameters'>
-        /// The properties required to create or update a Role Definition.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults>> CreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
-        /// </remarks>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSqlRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1147,7 +1093,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlRoleDefinitionGetResults>>> ListSqlRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults>>> ListSqlRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
@@ -1157,14 +1103,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
         /// with the given Id.
         /// </remarks>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1178,7 +1124,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults>> GetSqlRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults>> GetSqlRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
@@ -1186,14 +1132,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <remarks>
         /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
         /// </remarks>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
         /// <param name='createUpdateSqlRoleAssignmentParameters'>
         /// The properties required to create or update a Role Assignment.
@@ -1210,7 +1156,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults>> CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults,SqlResourcesCreateUpdateSqlRoleAssignmentHeaders>> CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
@@ -1218,15 +1164,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <remarks>
         /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -1236,13 +1182,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteSqlRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlRoleAssignmentHeaders>> DeleteSqlRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
         /// </summary>
         /// <remarks>
-        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1262,13 +1208,15 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlRoleAssignmentGetResults>>> ListSqlRoleAssignmentsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults>>> ListSqlRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
         /// </summary>
         /// <remarks>
-        /// Retrieves continuous backup information for a container resource.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1276,14 +1224,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='location'>
-        /// The name of the continuous backup restore location.
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1297,7 +1239,65 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation>> RetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults>> GetSqlRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='createUpdateSqlRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults,SqlResourcesCreateUpdateSqlRoleDefinitionHeaders>> CreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlRoleDefinitionHeaders>> DeleteSqlRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update an Azure Cosmos DB SQL database
@@ -1358,10 +1358,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlDatabaseHeaders>> BeginDeleteSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <remarks>
-        /// Update RUs per second of an Azure Cosmos DB SQL database
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1372,9 +1374,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL
-        /// database.
+        /// <param name='clientEncryptionKeyName'>
+        /// Cosmos DB ClientEncryptionKey name.
+        /// </param>
+        /// <param name='createUpdateClientEncryptionKeyParameters'>
+        /// The parameters to provide for the client encryption key.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1388,65 +1392,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlDatabaseThroughputHeaders>> BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
-        /// </summary>
-        /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToAutoscaleHeaders>> BeginMigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </summary>
-        /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToManualThroughputHeaders>> BeginMigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults,SqlResourcesCreateUpdateClientEncryptionKeyHeaders>> BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update an Azure Cosmos DB SQL container
@@ -1511,6 +1457,111 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlContainerHeaders>> BeginDeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves continuous backup information for a container resource.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves continuous backup information for a container resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the continuous backup restore location.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation,SqlResourcesRetrieveContinuousBackupInformationHeaders>> BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </summary>
+        /// <remarks>
+        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='createUpdateSqlStoredProcedureParameters'>
+        /// The parameters to provide for the current SQL storedProcedure.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults,SqlResourcesCreateUpdateSqlStoredProcedureHeaders>> BeginCreateUpdateSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
+        /// </param>
+        /// <param name='containerName'>
+        /// Cosmos DB container name.
+        /// </param>
+        /// <param name='storedProcedureName'>
+        /// Cosmos DB storedProcedure name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlStoredProcedureHeaders>> BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update RUs per second of an Azure Cosmos DB SQL container
@@ -1617,47 +1668,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToManualThroughputHeaders>> BeginMigrateSqlContainerToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </summary>
         /// <remarks>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
-        /// tools such as the Azure Powershell (instead of directly).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='clientEncryptionKeyName'>
-        /// Cosmos DB ClientEncryptionKey name.
-        /// </param>
-        /// <param name='createUpdateClientEncryptionKeyParameters'>
-        /// The parameters to provide for the client encryption key.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults,SqlResourcesCreateUpdateClientEncryptionKeyHeaders>> BeginCreateUpdateClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
-        /// </summary>
-        /// <remarks>
-        /// Create or update an Azure Cosmos DB SQL storedProcedure
+        /// Create or update an Azure Cosmos DB SQL trigger
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1671,11 +1685,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
-        /// <param name='createUpdateSqlStoredProcedureParameters'>
-        /// The parameters to provide for the current SQL storedProcedure.
+        /// <param name='createUpdateSqlTriggerParameters'>
+        /// The parameters to provide for the current SQL trigger.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1689,13 +1703,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlStoredProcedureGetResults,SqlResourcesCreateUpdateSqlStoredProcedureHeaders>> BeginCreateUpdateSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, SqlStoredProcedureCreateUpdateParameters createUpdateSqlStoredProcedureParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults,SqlResourcesCreateUpdateSqlTriggerHeaders>> BeginCreateUpdateSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL storedProcedure.
+        /// Deletes an existing Azure Cosmos DB SQL trigger.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1709,8 +1723,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='containerName'>
         /// Cosmos DB container name.
         /// </param>
-        /// <param name='storedProcedureName'>
-        /// Cosmos DB storedProcedure name.
+        /// <param name='triggerName'>
+        /// Cosmos DB trigger name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1721,7 +1735,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlStoredProcedureHeaders>> BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlTriggerHeaders>> BeginDeleteSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update an Azure Cosmos DB SQL userDefinedFunction
@@ -1794,10 +1808,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlUserDefinedFunctionHeaders>> BeginDeleteSqlUserDefinedFunctionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </summary>
         /// <remarks>
-        /// Create or update an Azure Cosmos DB SQL trigger
+        /// Update RUs per second of an Azure Cosmos DB SQL database
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1808,14 +1822,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='databaseName'>
         /// Cosmos DB database name.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        /// <param name='createUpdateSqlTriggerParameters'>
-        /// The parameters to provide for the current SQL trigger.
+        /// <param name='updateThroughputParameters'>
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1829,13 +1838,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlTriggerGetResults,SqlResourcesCreateUpdateSqlTriggerHeaders>> BeginCreateUpdateSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, SqlTriggerCreateUpdateParameters createUpdateSqlTriggerParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlDatabaseThroughputHeaders>> BeginUpdateSqlDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL trigger.
+        /// Migrate an Azure Cosmos DB SQL database from manual throughput to autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1845,41 +1854,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='databaseName'>
         /// Cosmos DB database name.
-        /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='triggerName'>
-        /// Cosmos DB trigger name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlTriggerHeaders>> BeginDeleteSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
-        /// </remarks>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='createUpdateSqlRoleDefinitionParameters'>
-        /// The properties required to create or update a Role Definition.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1893,22 +1867,22 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults>> BeginCreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToAutoscaleHeaders>> BeginMigrateSqlDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </summary>
         /// <remarks>
-        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// Migrate an Azure Cosmos DB SQL database from autoscale to manual throughput
         /// </remarks>
-        /// <param name='roleDefinitionId'>
-        /// The GUID for the Role Definition.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='databaseName'>
+        /// Cosmos DB database name.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1919,7 +1893,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteSqlRoleDefinitionWithHttpMessagesAsync(string roleDefinitionId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlDatabaseToManualThroughputHeaders>> BeginMigrateSqlDatabaseToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
@@ -1927,14 +1904,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <remarks>
         /// Creates or updates an Azure Cosmos DB SQL Role Assignment.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
         /// </param>
         /// <param name='createUpdateSqlRoleAssignmentParameters'>
         /// The properties required to create or update a Role Assignment.
@@ -1951,7 +1928,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults>> BeginCreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleAssignmentGetResults,SqlResourcesCreateUpdateSqlRoleAssignmentHeaders>> BeginCreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, SqlRoleAssignmentCreateUpdateParameters createUpdateSqlRoleAssignmentParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
@@ -1959,14 +1936,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <remarks>
         /// Deletes an existing Azure Cosmos DB SQL Role Assignment.
         /// </remarks>
-        /// <param name='roleAssignmentId'>
-        /// The GUID for the Role Assignment.
-        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleAssignmentId'>
+        /// The GUID for the Role Assignment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1977,13 +1954,13 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteSqlRoleAssignmentWithHttpMessagesAsync(string roleAssignmentId, string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlRoleAssignmentHeaders>> BeginDeleteSqlRoleAssignmentWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleAssignmentId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves continuous backup information for a container resource.
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
         /// </summary>
         /// <remarks>
-        /// Retrieves continuous backup information for a container resource.
+        /// Creates or updates an Azure Cosmos DB SQL Role Definition.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1991,14 +1968,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
         /// </param>
-        /// <param name='containerName'>
-        /// Cosmos DB container name.
-        /// </param>
-        /// <param name='location'>
-        /// The name of the continuous backup restore location.
+        /// <param name='createUpdateSqlRoleDefinitionParameters'>
+        /// The properties required to create or update a Role Definition.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -2012,7 +1986,223 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupInformation>> BeginRetrieveContinuousBackupInformationWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ContinuousBackupRestoreLocation location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SqlRoleDefinitionGetResults,SqlResourcesCreateUpdateSqlRoleDefinitionHeaders>> BeginCreateUpdateSqlRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, SqlRoleDefinitionCreateUpdateParameters createUpdateSqlRoleDefinitionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </summary>
+        /// <remarks>
+        /// Deletes an existing Azure Cosmos DB SQL Role Definition.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The GUID for the Role Definition.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlRoleDefinitionHeaders>> BeginDeleteSqlRoleDefinitionWithHttpMessagesAsync(string resourceGroupName, string accountName, string roleDefinitionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL databases under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL databases under an existing Azure Cosmos DB database account.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlDatabaseGetResults>>> ListSqlDatabasesNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </summary>
+        /// <remarks>
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ClientEncryptionKeyGetResults>>> ListClientEncryptionKeysNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL container under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL container under an existing Azure Cosmos DB database account.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlContainerGetResults>>> ListSqlContainersNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlStoredProcedureGetResults>>> ListSqlStoredProceduresNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL trigger under an existing Azure Cosmos DB database account.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlTriggerGetResults>>> ListSqlTriggersNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <remarks>
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlUserDefinedFunctionGetResults>>> ListSqlUserDefinedFunctionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Assignments.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlRoleAssignmentGetResults>>> ListSqlRoleAssignmentsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the list of all Azure Cosmos DB SQL Role Definitions.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SqlRoleDefinitionGetResults>>> ListSqlRoleDefinitionsNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

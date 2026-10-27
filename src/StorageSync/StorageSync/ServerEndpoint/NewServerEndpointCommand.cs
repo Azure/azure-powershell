@@ -282,8 +282,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
 
                 // Get Registered Server
+                StorageSyncModels.RegisteredServer registeredServer = null;
                 var serverResourceIdentifier = new ResourceIdentifier(ServerResourceId);
-                StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverResourceIdentifier.ResourceName);
+                if (Guid.TryParse(serverResourceIdentifier.ResourceName, out Guid parsedServerId) && parsedServerId != Guid.Empty)
+                {
+                    registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, parsedServerId);
+                }
 
                 if (registeredServer == null)
                 {

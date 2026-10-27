@@ -73,7 +73,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="deleteOption">Specify what happens to the public IP address when the VM using it is
         /// deleted
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public PublicIPAddressPropertiesFormat(string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), PublicIPAddress servicePublicIPAddress = default(PublicIPAddress), NatGateway natGateway = default(NatGateway), string migrationPhase = default(string), PublicIPAddress linkedPublicIPAddress = default(PublicIPAddress), string deleteOption = default(string))
+
+        /// <param name="upgradedToV2">Whether the public IP address SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </param>
+        public PublicIPAddressPropertiesFormat(string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), PublicIPAddress servicePublicIPAddress = default(PublicIPAddress), NatGateway natGateway = default(NatGateway), string migrationPhase = default(string), PublicIPAddress linkedPublicIPAddress = default(PublicIPAddress), string deleteOption = default(string), bool? upgradedToV2 = default(bool?))
 
         {
             this.PublicIPAllocationMethod = publicIPAllocationMethod;
@@ -92,6 +96,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.MigrationPhase = migrationPhase;
             this.LinkedPublicIPAddress = linkedPublicIPAddress;
             this.DeleteOption = deleteOption;
+            this.UpgradedToV2 = upgradedToV2;
             CustomInit();
         }
 
@@ -202,5 +207,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "deleteOption")]
         public string DeleteOption {get; set; }
+
+        /// <summary>
+        /// Gets whether the public IP address SKU has been upgraded from Standard to
+        /// StandardV2.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradedToV2")]
+        public bool? UpgradedToV2 {get; private set; }
     }
 }

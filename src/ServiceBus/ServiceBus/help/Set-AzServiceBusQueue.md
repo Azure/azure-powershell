@@ -20,7 +20,8 @@ Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-DeadLetteringOnMessageExpiration] [-EnableBatchedOperations] [-EnableExpress] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabytes <Int32>]
  [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -31,7 +32,7 @@ Set-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <Tim
  [-ForwardTo <String>] [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-MaxSizeInMegabytes <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +122,21 @@ InputObject parameter set.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -142,6 +158,21 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

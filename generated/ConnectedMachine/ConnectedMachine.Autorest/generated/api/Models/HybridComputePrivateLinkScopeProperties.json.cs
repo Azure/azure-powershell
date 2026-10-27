@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_privateLinkScopeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("privateLinkScopeId"), out var __jsonPrivateLinkScopeId) ? (string)__jsonPrivateLinkScopeId : (string)_privateLinkScopeId;}
             {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PrivateEndpointConnectionDataModel.FromJson(__u) )) ))() : null : _privateEndpointConnection;}
+            {_serviceExtension = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("serviceExtensions"), out var __jsonServiceExtensions) ? If( __jsonServiceExtensions as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceExtension.FromJson(__p) )) ))() : null : _serviceExtension;}
             AfterFromJson(json);
         }
 
@@ -125,6 +126,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                     }
                     container.Add("privateEndpointConnections",__w);
                 }
+            }
+            if (null != this._serviceExtension)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                foreach( var __s in this._serviceExtension )
+                {
+                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
+                }
+                container.Add("serviceExtensions",__r);
             }
             AfterToJson(ref container);
             return container;

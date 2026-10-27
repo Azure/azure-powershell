@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "azure-AsyncOperation")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
         public string AzureAsyncOperation {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
     }
 }

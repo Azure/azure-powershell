@@ -19,9 +19,70 @@
 --->
 
 ## Upcoming Release
-* Added support to associate a DDoS custom policy (DCP) with a supported Public IP address attachment.
-    - Added the `-DdosCustomPolicyId` parameter to `Set-AzPublicIpAddress`.
-    - Added the `-RemoveDdosCustomPolicy` switch to remove an existing association.
+* Updated Private Link common cmdlets for `Microsoft.DataReplication/replicationVaults` to use API version `2026-05-01`.
+* Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
+    - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.
+* Added cmdlets to manage ExpressRoute link aggregation group (LAG) authorizations and retrieve their authorization keys.
+    - Use `Add-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorization`, `Get-AzExpressRouteLagAuthorizationKey`, and `Remove-AzExpressRouteLagAuthorization`.
+* Added IPv6 / dual-stack (IPv4 + IPv6) support for Managed Network Virtual Appliances (NVA).
+    - Use `-AddressFamily "IPv4","IPv6"` with `New-AzNetworkVirtualAppliance` to create a dual-stack appliance; omitting the parameter defaults to IPv4-only.
+    - Use `-AddressFamily` with `Update-AzNetworkVirtualAppliance` to upgrade or downgrade an existing appliance; omitting the parameter leaves the address family unchanged.
+    - Exposed read-only `AddressFamily`, `AddressPrefixV6`, and `PrivateIpAddressV6` on the appliance and `PublicIpAddressV6`/`PrivateIpAddressV6` on virtual appliance NICs.
+* Upgraded Network SDK to API version `2026-03-01`.
+* Added DDoS custom policy mitigation rule support for TCP and UDP traffic.
+    - Added cmdlets to create, get, add, update, and remove mitigation rules.
+    - Deny and Permit source matches can be configured directly with IP prefix and geographic match parameters.
+    - Added mitigation rule support to `New-AzDdosCustomPolicy`, `Get-AzDdosCustomPolicy`, and `Set-AzDdosCustomPolicy`.
+    - Implements [Azure/azure-rest-api-specs#46716](https://github.com/Azure/azure-rest-api-specs/pull/46716).
+* Added cmdlets to manage Virtual Network Appliance capabilities.
+    - `New-AzVirtualNetworkApplianceCapability`, `Get-AzVirtualNetworkApplianceCapability`, `Remove-AzVirtualNetworkApplianceCapability`.
+* Added `Get-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicyDetectionRule` to retrieve and update detection rules on a DDoS custom policy object.
+    - Extends the DDoS custom policy support for API version 2025-07-01 introduced in [#29387].
+* Fixed Change Safety parameter forwarding in custom read-before-write cmdlets.
+* Added provider-led ExpressRoute cross-connection migration commands.
+* Added First Party Service Tag association support to IP tags used by `New-AzPublicIpPrefix`.
+* Added support for provisioning an ExpressRoute circuit on an `ExpressRouteLag` resource (Microsoft.Network 2026-01-01 API).
+* Added `MigrateGatewayForPointToSiteProfile` as a supported value for the `-MigrationType` parameter of `New-AzVirtualNetworkGatewayMigrationParameter`, and fixed the cmdlet to honor the user-provided `-MigrationType` value.
+* Added Application Gateway advanced routing support.
+* Added `AdvancedRouting` as a supported value for `-RuleType` on `New-AzApplicationGatewayRequestRoutingRule`, `Add-AzApplicationGatewayRequestRoutingRule`, and `Set-AzApplicationGatewayRequestRoutingRule`.
+* Added `-VerifyClientAuthMode` to `New-AzApplicationGatewayClientAuthConfiguration` and `Set-AzApplicationGatewayClientAuthConfiguration` to select the frontend mutual TLS (mTLS) client certificate verification mode.
+* Upgraded Network SDK to API version `2026-01-01`.
+* Fixed `-EnableOnlyIpv6Peering` on `New-AzVirtualHubVnetConnection` so that the `Enabled` and `Disabled` values are correctly translated to the boolean `enableOnlyIPv6Peering` property expected by the service.
+* Added minimum and maximum allocation size bounds to IPAM pool creation, update, and output.
+* Added `Get-AzExpressRouteCircuitAuthorizationKey` and `Get-AzExpressRoutePortAuthorizationKey` to retrieve the authorization key for an ExpressRoute circuit or port authorization (Microsoft.Network 2026-01-01 API).
+* Added WAF (Web Application Firewall) managed rule set display name and managed rule paranoia level to Application Gateway WAF cmdlet output.
+* Added `SourceGeoLocation` and `DestinationGeoLocation` filters to `New-AzFirewallPolicyNetworkRule`.
+* Removed client-side validation of the `-FormatVersion` parameter for `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog`.
+* Added Change Safety support for additional cmdlets.
+* Added the `CAPTCHA` action to Application Gateway WAF policies.
+
+## Version 8.2.0
+* Added `Get-AzExpressRouteLag`, `New-AzExpressRouteLag`, `Set-AzExpressRouteLag`, `Remove-AzExpressRouteLag`, `New-AzExpressRouteLagLOA`, `Get-AzExpressRouteLagLink`, and `Get-AzExpressRouteLagMember` for `ExpressRouteLag` resources (Microsoft.Network 2025-09-01 API).
+    - The cmdlets support CRUD operations, letter of authorization generation, and link and member retrieval.
+    - Added `New-AzExpressRouteLagIdentity`, `Get-AzExpressRouteLagIdentity`, `Set-AzExpressRouteLagIdentity`, and `Remove-AzExpressRouteLagIdentity` for the user-assigned managed identity on an `ExpressRouteLag`.
+* Added `Get-AzAddressPrefixSet`, `New-AzAddressPrefixSet`, `Set-AzAddressPrefixSet`, and `Remove-AzAddressPrefixSet` to manage IPv4 and IPv6 CIDR (Classless Inter-Domain Routing) prefixes for application security groups.
+* Added `Move-AzVirtualNetworkIpConfiguration` to move secondary private IP configurations between network interfaces in a virtual network, and `New-AzMoveIpConfigurationItem` to create source and target pairs. Supports `-AsJob`.
+* Added `-AddressPrefixV6` to `New-AzVirtualHub` and `Update-AzVirtualHub`, and `-EnableOnlyIpv6Peering` to `New-AzVirtualHubVnetConnection`.
+* Added support for managing Kube Selector Groups on a firewall policy.
+    - `Get-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirewallPolicyKubeSelectorGroup`.
+    - Added `New-AzFirewallPolicyKubeLabelSelector` and `New-AzFirewallPolicyLabelSelectorExpression` for pod and namespace label selectors.
+* Exposed read-only AFC (Azure Firewall for Containers) properties: `AfcManaged` on `Get-AzFirewallPolicy` and the `AfcConfiguration.ServiceEndpoint` control-plane endpoint on `Get-AzFirewall`. The endpoint cannot be set through `New-AzFirewall` or `Set-AzFirewall`.
+* Upgraded Network SDK to API version `2025-09-01`; added `DisableDefaultServerHeaderInResponse` to `Get-AzApplicationGateway` output and `-DisableDefaultServerHeaderInResponse` to `New-AzApplicationGateway`.
+* Added read-only `UpgradedToV2` output to `Get-AzPublicIpAddress` and `Get-AzPublicIpPrefix` for Standard-to-StandardV2 SKU upgrades.
+* Added `Get-AzInterconnectGroup` to retrieve one or more InterconnectGroups, and `New-AzInterconnectGroup`, `Set-AzInterconnectGroup`, and `Remove-AzInterconnectGroup` to create, update, and delete them.
+    - Added `Get-AzInterconnectGroupSubgroup` to retrieve one or all subgroups and `Get-AzInterconnectGroupNodeAvailability` to retrieve node availability.
+* Added `-DdosCustomPolicyId` and `-RemoveDdosCustomPolicy` to `Set-AzPublicIpAddress` to add or remove DDoS custom policy (DCP) associations on supported Public IP address attachments, without requiring a specific DDoS protection mode.
+* Added `New-AzFirstPartyServiceTag`, `Get-AzFirstPartyServiceTag`, `Set-AzFirstPartyServiceTag`, and `Remove-AzFirstPartyServiceTag` to create, retrieve, update, and remove First Party Service Tags, and association support to `New-AzPublicIpTag`.
+* Added `Get-AzVirtualNetworkGatewayEffectiveRoute` for Virtual Network Gateway effective routes.
+* Added `-Mode` and `-Scope` to `New-AzLoadBalancer`. Use `-Mode Advanced` with `-Scope Public` or `-Scope Private` to create an advanced (Banksy-based) Standard SKU load balancer; the mode cannot be changed afterward.
+* Added the `-EnableConnectionTracking` switch to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Enables UDP (User Datagram Protocol) flow tracking for the frontend IP configuration so packets in the same flow consistently reach the same backend instance, taking precedence over rule-level settings. Requires a load balancer created with `-Mode Advanced` and `-Scope`.
+* Added multi-cloud ExpressRoute circuit support with the `MultiCloud` value for `-SkuTier`, and `-PartnerAccountId` and `-ActivationKey` on `New-AzExpressRouteCircuit`.
+    - Exposed `PartnerAccountId`, `ActivationKey`, and `ResiliencyLevel` on `PSExpressRouteCircuit`.
+* Added `RoutingConfiguration`, `VirtualHubVnetConnection`, and `VirtualHubVnetConnectionId` parameters to `Add-AzRouteServerPeer` and `Update-AzRouteServerPeer`.
+    - Supports inbound and outbound route maps and a hub virtual network connection by object or resource ID.
+* Added `RoutingConfiguration` parameter to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`.
+    - Supports inbound and outbound route maps.
 
 ## Version 8.1.0
 * Added new cmdlets for ConnectionPolicy management under VirtualHub

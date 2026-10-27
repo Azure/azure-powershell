@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Models
         public string InformationProtectionCloudRoleArn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IInformationProtectionAwsOfferingInformationProtectionInternal)InformationProtection).CloudRoleArn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IInformationProtectionAwsOfferingInformationProtectionInternal)InformationProtection).CloudRoleArn = value ?? null; }
 
         /// <summary>Internal Acessors for Description</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOfferingInternal)__cloudOffering).Description = value ?? null; }
 
         /// <summary>Internal Acessors for InformationProtection</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IInformationProtectionAwsOfferingInformationProtection Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IInformationProtectionAwsOfferingInternal.InformationProtection { get => (this._informationProtection = this._informationProtection ?? new Microsoft.Azure.PowerShell.Cmdlets.Security.Models.InformationProtectionAwsOfferingInformationProtection()); set { {_informationProtection = value;} } }

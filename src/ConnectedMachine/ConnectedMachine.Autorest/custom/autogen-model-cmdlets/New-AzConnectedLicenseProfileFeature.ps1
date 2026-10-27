@@ -26,6 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature
 https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofilefeature
 #>
 function New-AzConnectedLicenseProfileFeature {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

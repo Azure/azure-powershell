@@ -26,7 +26,7 @@ using System;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
-namespace Commands.StorageSync.Interop.Clients
+namespace Microsoft.Azure.Commands.StorageSync.Test.Common
 {
     /// <summary>
     /// Abstract class for ISyncServerRegistration interface.

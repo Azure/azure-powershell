@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// assigned
         /// </param>
 
-        /// <param name="managedIdentityResourceId">Managed Identity Resource Id Optional: Might not be required in the case of
-        /// system assigned managed identity
+        /// <param name="managedIdentityResourceId">Managed Identity Resource Id
+        /// Optional: Might not be required in the case of system assigned managed
+        /// identity
         /// </param>
         public IdentityInfo(bool? isSystemAssignedIdentity = default(bool?), string managedIdentityResourceId = default(string))
 
@@ -53,8 +54,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public bool? IsSystemAssignedIdentity {get; set; }
 
         /// <summary>
-        /// Gets or sets managed Identity Resource Id Optional: Might not be required
-        /// in the case of system assigned managed identity
+        /// Gets or sets managed Identity Resource Id
+        /// Optional: Might not be required in the case of system assigned managed
+        /// identity
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedIdentityResourceId")]
         public string ManagedIdentityResourceId {get; set; }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="extendedInfo">Recovery point tier status.
         /// </param>
-        public RecoveryPointTierInformation(RecoveryPointTierType? type = default(RecoveryPointTierType?), RecoveryPointTierStatus? status = default(RecoveryPointTierStatus?), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
+        public RecoveryPointTierInformation(RecoveryPointTierType? type = default(RecoveryPointTierType?), string status = default(string), System.Collections.Generic.IDictionary<string, string> extendedInfo = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
             this.Type = type;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Gets or sets recovery point tier status. Possible values include: &#39;Invalid&#39;, &#39;Valid&#39;, &#39;Disabled&#39;, &#39;Deleted&#39;, &#39;Rehydrated&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
-        public RecoveryPointTierStatus? Status {get; set; }
+        public string Status {get; set; }
 
         /// <summary>
         /// Gets or sets recovery point tier status.

@@ -19,10 +19,17 @@
 -->
 
 ## Upcoming Release
+* Updated the `-ResourceUrl` help text of `Get-AzAccessToken` to fix grammar and replace the deprecated Azure AD Graph URL example with the Microsoft Graph URL.
+* Updated the `-AzureKeyVaultDnsSuffix` help text of `Add-AzEnvironment` and `Set-AzEnvironment` to describe the expected format instead of a specific host name.
+* Fixed incorrect usage of "log in" and "login".
+
+## Version 5.5.3
+* Fixed `Get-AzSubscription` to throw a clear error instead of returning nothing when `-TenantId` does not match the current Managed Service Identity (MSI) context. [#25710]
 
 ## Version 5.5.2
 * Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
 * Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
+* Upgraded common library to `1.3.114-preview`.
 
 ## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.

@@ -18,10 +18,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing origin within an origin group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}", ApiVersion = "2026-10-01")]
     public partial class UpdateAzFrontDoorCdnOrigin_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext,
+        System.Management.Automation.IDynamicParameters
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -67,8 +68,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
+        /// <summary>
+        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.",
+        SerializedName = @"certificateNameCheckValidationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+        public string CertificateNameCheckValidationMode { get => _originUpdatePropertiesBody.CertificateNameCheckValidationMode ?? null; set => _originUpdatePropertiesBody.CertificateNameCheckValidationMode = value; }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn Client => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Module.Instance.ClientAPI;
+
+        /// <summary>
+        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
+        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.",
+        SerializedName = @"customCertificateSubjects",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] CustomCertificateSubject { get => _originUpdatePropertiesBody.CustomCertificateSubject?.ToArray() ?? null /* fixedArrayOf */; set => _originUpdatePropertiesBody.CustomCertificateSubject = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -467,6 +497,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns the Change Safety dynamic parameters (-AcquirePolicyToken / -ChangeReference) for this write cmdlet.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.Management.Automation.RuntimeDefinedParameterDictionary" /> containing the Change Safety parameters.
+        /// </returns>
+        public object GetDynamicParameters()
+        {
+            var parameters = new global::System.Management.Automation.RuntimeDefinedParameterDictionary();
+            parameters.Add("AcquirePolicyToken", new global::System.Management.Automation.RuntimeDefinedParameter("AcquirePolicyToken", typeof(global::System.Management.Automation.SwitchParameter), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "Acquire an Azure Policy token automatically for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            parameters.Add("ChangeReference", new global::System.Management.Automation.RuntimeDefinedParameter("ChangeReference", typeof(string), new global::System.Collections.ObjectModel.Collection<global::System.Attribute> { new global::System.Management.Automation.ParameterAttribute { HelpMessage = "The change reference resource ID for this resource operation.", ParameterSetName = global::System.Management.Automation.ParameterAttribute.AllParameterSets } }));
+            return parameters;
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
