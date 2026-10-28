@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppNetwork", "AppNetwork\AppNetwork.csproj", "{1CEDE903-6150-4250-BDCC-8E246897AF5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppNetwork", "AppNetwork.Autorest\Az.AppNetwork.csproj", "{1E145E1A-F840-4AF2-9F7B-1627308852C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppNetwork", "..\..\generated\AppNetwork\AppNetwork.Autorest\Az.AppNetwork.csproj", "{1E145E1A-F840-4AF2-9F7B-1627308852C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
