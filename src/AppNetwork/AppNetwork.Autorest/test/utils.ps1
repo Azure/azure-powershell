@@ -88,7 +88,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     if ($TestMode -ne 'playback') {
-        Remove-AzResourceGroup -Name $env.resourceGroup -Force -ErrorAction SilentlyContinue | Out-Null
+        Remove-AzResourceGroup -Name $env.resourceGroup -Confirm:$false -ErrorAction Stop | Out-Null
     }
 }
-
