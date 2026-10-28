@@ -7014,7 +7014,8 @@ param(
                 $IsManagementNode = $True
             }
 
-            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode
+            # Avoid a localhost second hop for local calls while preserving explicit remote targeting.
+            $_, $_, $clusterNodeSession, $_ = Get-SetupLoggingDetails -Credential $Credential -ComputerName $ComputerName -IsManagementNode $IsManagementNode -newSession $IsManagementNode
 
             Confirm-UserAcknowledgmentToUpgradeOS -ClusterNodeSession $clusterNodeSession
 
@@ -8038,7 +8039,8 @@ function Assert-IsObservabilityStackPresent{
     [OutputType([Boolean])]
     param()
 
-    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    # Remote Support callers already run on the node, so reuse the current session.
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -newSession $false
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
     if ($Null -ne $clusterNodeSession)
     {

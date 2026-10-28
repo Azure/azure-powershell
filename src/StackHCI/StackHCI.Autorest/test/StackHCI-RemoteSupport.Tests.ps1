@@ -37,6 +37,9 @@ Describe 'StackHCI Remote Support Functions' {
 
             $result = Assert-IsObservabilityStackPresent
             $result | Should -Be $true
+            Assert-MockCalled Get-SetupLoggingDetails -Times 1 -Scope It -ParameterFilter {
+                $newSession -eq $false
+            }
         }
 
         It 'Should return false when RemoteSupportAgent service does not exist' {
