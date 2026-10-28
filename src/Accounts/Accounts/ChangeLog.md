@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.4
 * Fixed `Get-AzAccessToken -ResourceUrl` help; replaced Azure AD Graph with Microsoft Graph.
 * Clarified `Add-AzEnvironment`/`Set-AzEnvironment -AzureKeyVaultDnsSuffix` format.
 * Fixed login terminology.

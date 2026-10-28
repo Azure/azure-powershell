@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Added `TargetVMSecurityOption` (Standard/TrustedLaunch) and `EnableSecureBoot` to `New-AzMigrateLocalServerReplication` and `Set-AzMigrateLocalServerReplication`. Trusted Launch enables Secure Boot and virtual Trusted Platform Module (vTPM). Trusted Launch/Secure Boot require Generation 2 targets.
 * Blocked disabling source-enabled Secure Boot; skipped checks if source state is unknown.
 * Changed `Initialize-AzMigrateLocalReplicationInfrastructure` cache grants to Storage Account Contributor (was Contributor) for the vault identity/source/target appliance applications.

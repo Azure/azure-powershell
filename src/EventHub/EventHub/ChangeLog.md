@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.8.0
 * Updated default API to 2026-07-01-preview.
 * Added Fabric shortcuts: `Get-AzEventHubFabricShortcut`, `New-AzEventHubFabricShortcut`, `Remove-AzEventHubFabricShortcut`, `Approve-AzEventHubFabricShortcut` and `Invoke-AzEventHubRejectFabricShortcut`.
 * Added `Get-AzEventHubUpgradePreferencesOperation` and `New-AzEventHubUpgradePreferencesOperation`.

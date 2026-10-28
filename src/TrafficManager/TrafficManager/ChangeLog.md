@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Added `New-AzTrafficManagerProfile -RecordType` (A, AAAA or CNAME), returned by profile get/create/set cmdlets [#29711].
 * Updated to API 2026-09-01.
 

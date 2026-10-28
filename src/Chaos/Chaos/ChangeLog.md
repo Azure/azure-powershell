@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Migrated to Chaos Studio V2 API 2026-05-01-preview.
     - Removed V1 experiment, execution, capability, target and model helper cmdlets.
     - Added workspace, recommendation, scenario, configuration, validation, permission, run, discovery, evaluation and model helper cmdlets.

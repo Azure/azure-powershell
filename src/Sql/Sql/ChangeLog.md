@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.3.0
 * Added `LockImmutability`/`ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation (`-Force` skips).
 * Added Managed Instance long-term immutability to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy` and policy/backup output.
 * Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` for time-based immutability.

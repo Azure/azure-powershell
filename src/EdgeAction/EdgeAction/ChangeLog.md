@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability for module Az.EdgeAction
 * Updated parameters; documented tag replacement, JSON-based clearing and immutable properties.
 * Tag updates preserve the default version; switch with `Switch-AzEdgeActionVersionDefault`.

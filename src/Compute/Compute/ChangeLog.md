@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.11.0
 * Added preview FlexProfile support with `PreferredVMSize` for virtual machine creation and updates, and FlexProfile details in `Get-AzVM` model output. Requires feature registration and regional availability.
 * Added soft delete policy controls to Azure Compute Gallery cmdlets, along with recycle-bin discovery and image version restore cmdlets. Permanent deletion can be requested with `-BypassSoftDelete`.
 * Updated Azure Compute Gallery cmdlets to use API version 2026-03-03.

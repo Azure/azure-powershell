@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.6.2
 * Upgraded the Key Vault control plane API version to `2026-05-15`.
     - Added Managed HSM SKU values to `New-AzKeyVaultManagedHsm`.
 * Fixed name availability and managed hardware security module region cmdlets with API 2026-02-01.

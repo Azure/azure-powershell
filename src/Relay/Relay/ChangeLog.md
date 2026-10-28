@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Updated to API 2026-07-01-preview.
 * Added dedicated clusters: `Get-AzRelayCluster`, `New-AzRelayCluster`, `Set-AzRelayCluster`, `Remove-AzRelayCluster`, `Get-AzRelayClusterNamespace`, `Get-AzRelayClusterSku` and `Get-AzRelayClusterAvailableClusterRegion`.
 * Allowed `Set-AzRelayCluster` tag/capacity updates without `Location`/`SkuCapacity`.
