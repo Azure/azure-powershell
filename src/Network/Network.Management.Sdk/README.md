@@ -55,6 +55,31 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.Network
 
 directive:
+# Add deploymentTier from the merged 2026-05-01 Application Gateway contract:
+# https://github.com/Azure/azure-rest-api-specs/pull/47620
+# Contract commit: 9fd2c3e5ccccbb9797ff441f771bc4ad6932caca.
+# Keep the remaining Network SDK on its existing Swagger baseline.
+  - from: swagger-document
+    where: $.definitions.ApplicationGatewayPropertiesFormat.properties
+    transform: >
+      $.deploymentTier = {
+        type: "string",
+        description: "Deployment tier of the application gateway resource. Only valid on Standard_v2 and WAF_v2 SKUs.",
+        enum: ["Standard", "NetworkIsolated", "Accelerated", "Elastic"],
+        "x-ms-enum": {
+          name: "ApplicationGatewayDeploymentTier",
+          modelAsString: true,
+          values: [
+            { name: "Standard", value: "Standard", description: "Default deployment type." },
+            { name: "NetworkIsolated", value: "NetworkIsolated", description: "Management NIC deployment type." },
+            { name: "Accelerated", value: "Accelerated", description: "Accelerated deployment type." },
+            { name: "Elastic", value: "Elastic", description: "Accelerated deployment type with reserved capacity and vertical scaling." }
+          ]
+        }
+      };
+  - from: ApplicationGatewaysOperations.cs
+    where: $
+    transform: $ = $.replace(/string apiVersion = "2026-03-01";/g, 'string apiVersion = "2026-05-01";');
 # Import the merged 2026-03-01 DDoS mitigation-rule schemas without upgrading
 # unrelated virtual network operations. Remove this compatibility transform when
 # the Network module's full Swagger baseline advances to 2026-03-01 or later.

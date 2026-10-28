@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The deployment tier of the application gateway. Only valid on Standard_v2 and WAF_v2 SKUs.")]
+        [ValidateSet("Standard", "NetworkIsolated", "Accelerated", "Elastic")]
+        public string DeploymentTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The SSL policy of application gateway")]
         public virtual PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
@@ -321,6 +328,7 @@ namespace Microsoft.Azure.Commands.Network
             applicationGateway.ResourceGroupName = this.ResourceGroupName;
             applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
+            applicationGateway.DeploymentTier = this.DeploymentTier;
 
             if (this.SslPolicy != null)
             {

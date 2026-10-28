@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added Application Gateway deployment tier support.
+    - Use `-DeploymentTier` with `New-AzApplicationGateway`, or set `DeploymentTier` on a gateway object before calling `Set-AzApplicationGateway`.
+    - Supported values are `Standard`, `NetworkIsolated`, `Accelerated`, and `Elastic` for `Standard_v2` and `WAF_v2` SKUs.
+    - Implements [Azure/azure-rest-api-specs#47620](https://github.com/Azure/azure-rest-api-specs/pull/47620).
 * Updated Private Link common cmdlets for `Microsoft.DataReplication/replicationVaults` to use API version `2026-05-01`.
 * Added support for the `CapacityProvider` property on Virtual Network Appliance resources.
     - Added `-CapacityProviderId` parameter to `New-AzVirtualNetworkAppliance` and `Update-AzVirtualNetworkAppliance` to set or update the resource ID of another Virtual Network Appliance used as the capacity provider.

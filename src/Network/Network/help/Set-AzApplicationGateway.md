@@ -33,6 +33,17 @@ $UpdatedAppGw = Set-AzApplicationGateway -ApplicationGateway $AppGw
 
 These commands update the application gateway with settings in the $AppGw variable and stores the updated gateway in the $UpdatedAppGw variable.
 
+### Example 2: Set the deployment tier
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw.DeploymentTier = "NetworkIsolated"
+$AppGw | Set-AzApplicationGateway
+```
+
+These commands request network-isolated deployment for an existing `Standard_v2` or `WAF_v2` gateway.
+The service validates whether the requested deployment mode and transition are supported.
+Leaving `DeploymentTier` unchanged preserves the value when updating other settings.
+
 ## PARAMETERS
 
 ### -AcquirePolicyToken
