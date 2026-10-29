@@ -198,6 +198,65 @@ function Test-AccountCrud
 
 <#
 .SYNOPSIS
+Refreshes the existing LDAP fixture's bind password without changing its secret or configuration.
+#>
+function Test-AccountLdapBindPasswordRefresh
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $accountName = "na-ldap-test"
+    $account = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $account.ProvisioningState
+    Assert-NotNull $account.LdapConfiguration
+    Assert-AreEqual "Simple" $account.LdapConfiguration.BindAuthenticationLevel
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindDN
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindPasswordAkvConfig.AzureKeyVaultUri
+    Assert-NotNullOrEmpty $account.LdapConfiguration.BindPasswordAkvConfig.SecretName
+    $configurationBefore = $account.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceGroupName $resourceGroup -Name $accountName -PassThru -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 1 $result.Count
+    Assert-AreEqual $true $result[0]
+
+    $result = @(Update-AzNetAppFilesAccountLdapBindPassword -ResourceId $account.Id -PassThru -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 1 $result.Count
+    Assert-AreEqual $true $result[0]
+
+    $result = @($account | Update-AzNetAppFilesAccountLdapBindPassword -Confirm:$false -ErrorAction Stop)
+    Assert-AreEqual 0 $result.Count
+
+    $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $after.ProvisioningState
+    Assert-AreEqual $account.Id $after.Id
+    Assert-AreEqual $configurationBefore ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+}
+
+<#
+.SYNOPSIS
+Reapplies the existing LDAP domain with a partial update and verifies other settings are preserved.
+#>
+function Test-AccountLdapConfigurationUpdate
+{
+    $resourceGroup = "sdk-py-test-rg"
+    $accountName = "na-ldap-test"
+    $before = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $before.ProvisioningState
+    Assert-NotNullOrEmpty $before.LdapConfiguration.Domain
+    Assert-NotNull $before.LdapConfiguration.BindPasswordAkvConfig
+    $configurationBefore = $before.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress
+
+    $updated = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName `
+        -LdapConfiguration @{ Domain = $before.LdapConfiguration.Domain } -Confirm:$false -ErrorAction Stop
+    Assert-AreEqual $before.Id $updated.Id
+    Assert-AreEqual "Succeeded" $updated.ProvisioningState
+    Assert-AreEqual $configurationBefore ($updated.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+
+    $after = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accountName -ErrorAction Stop
+    Assert-AreEqual "Succeeded" $after.ProvisioningState
+    Assert-AreEqual $configurationBefore ($after.LdapConfiguration | ConvertTo-Json -Depth 10 -Compress)
+}
+
+<#
+.SYNOPSIS
 Validates LDAP input binding and password-refresh WhatIf behavior without contacting Azure.
 #>
 function Test-AccountLdapParameterBinding

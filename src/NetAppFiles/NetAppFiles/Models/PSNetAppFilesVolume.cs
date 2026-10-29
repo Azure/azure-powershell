@@ -432,16 +432,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public long? MaximumNumberOfFiles {get; set;}
 
         /// <summary>
-        /// Gets or sets EnableSubvolumes
-        /// </summary>
-        /// <value>
-        /// Gets or sets flag indicating whether subvolume operations are
-        /// enabled on the volume. Possible values include: 'Enabled',
-        /// 'Disabled'
-        /// </value>
-        public string EnableSubvolumes { get; set; }
-
-        /// <summary>
         /// Gets or sets BreakthroughMode.
         /// </summary>
         /// <value>

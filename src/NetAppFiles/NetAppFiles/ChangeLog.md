@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+    - Removed the obsolete `SubvolumeName` alias from volume quota-rule cmdlets.
 * Updated to API version 2026-08-01.
 * Added Lightweight Directory Access Protocol (LDAP) configuration support to `New-AzNetAppFilesAccount`, `Set-AzNetAppFilesAccount`, and `Update-AzNetAppFilesAccount`, and added `LdapConfiguration` to account output.
 * Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.

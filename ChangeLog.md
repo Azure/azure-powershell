@@ -1,5 +1,7 @@
 ## Upcoming Release
 #### Az.NetAppFiles
+* Removed deprecated subvolume cmdlets and aliases, the `EnableSubvolume` volume parameter, and `EnableSubvolumes` output properties.
+    - Removed the obsolete `SubvolumeName` alias from volume quota-rule cmdlets.
 * Updated to API version 2026-08-01.
 * Added Lightweight Directory Access Protocol (LDAP) configuration to account create, set, update, and output.
 * Added `Update-AzNetAppFilesAccountLdapBindPassword` to refresh the LDAP bind password from Azure Key Vault.
