@@ -14,9 +14,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCommvaultStorage'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# The service provisions a storage together with a compliance lock, so only the main create path creates one. The tests
+# that pass the request as JSON or by identity are skipped to avoid provisioning more storages than needed.
 Describe 'New-AzCommvaultStorage' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $storageName = 'azps-stg-new'
+        try {
+            $storage = New-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName -Location $env.Location -StorageClassType 'HOT'
+            $storage.Name | Should -Be $storageName
+            $storage.Class | Should -Be 'HOT'
+            $storage.ProvisioningState | Should -Be 'Succeeded'
+        } finally {
+            Remove-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName
+        }
     }
 
     It 'CreateViaJsonString' -skip {

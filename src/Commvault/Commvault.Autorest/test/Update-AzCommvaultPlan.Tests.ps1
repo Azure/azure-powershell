@@ -14,16 +14,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCommvaultPlan'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# The first test creates the plan that the following tests update. The last test removes it again.
 Describe 'Update-AzCommvaultPlan' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        # Not named $name: the test framework's It function has a parameter called Name that would shadow it.
+        $planName = 'azps-plan-update'
+        $storagePoolId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Commvault.ContentStore/cloudAccounts/$($env.CloudAccountName)/storages/$($env.StorageName)"
+        $storagePlan = @{ Name = $env.StorageName; StoragePoolId = $storagePoolId; CopyName = 'Primary Storage'; CopyPrecedence = 0; RetentionPeriod = 15; RetentionTime = 'daily'; BackupRuleType = 'ALL_FULLS'; ExtendedRetention = @() }
+        $schedule = @{ BackupType = 'INCREMENTAL'; Frequency = 'minutes'; RunsEvery = 30; Time = '' }
     }
 
-    It 'UpdateViaIdentityCloudAccountExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $null = New-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -PlanName $planName -Location $env.Location -StoragePlan $storagePlan -Schedule $schedule -RetentionNumberOfSnapshot 1
+        $plan = Update-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $planName -RetentionNumberOfSnapshot 2
+        $plan.Name | Should -Be $planName
+        $plan.RetentionNumberOfSnapshot | Should -Be 2
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityCloudAccountExpanded' {
+        $account = Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $plan = Update-AzCommvaultPlan -CloudAccountInputObject @{ Id = $account.Id } -Name $planName -RetentionNumberOfSnapshot 3
+        $plan.Name | Should -Be $planName
+        $plan.RetentionNumberOfSnapshot | Should -Be 3
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $existing = Get-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $planName
+        $plan = Update-AzCommvaultPlan -InputObject @{ Id = $existing.Id } -RetentionNumberOfSnapshot 4
+        $plan.Name | Should -Be $planName
+        $plan.RetentionNumberOfSnapshot | Should -Be 4
+    }
+
+    It 'Cleanup' {
+        Remove-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $planName
+        { Get-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $planName -ErrorAction Stop } | Should -Throw
     }
 }

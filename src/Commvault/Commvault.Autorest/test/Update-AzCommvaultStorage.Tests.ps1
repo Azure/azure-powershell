@@ -14,6 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCommvaultStorage'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: the service creates and deletes a storage, but it answers every update of an existing storage with an
+# Internal Server Error (the update is sent as a PUT of the changed storage), so no recording can be made.
 Describe 'Update-AzCommvaultStorage' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

@@ -14,6 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzCommvaultStorageComp
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped on purpose: enabling the compliance lock changes the protection of a storage and the service provisions every
+# storage with a lock already, so a test could not check anything that a recording of the other storage tests does not.
 Describe 'Enable-AzCommvaultStorageComplianceLock' {
     It 'Enable' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

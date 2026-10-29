@@ -14,16 +14,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzCommvaultStorage'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# The first test creates the storage that the sync tests refresh. The last test removes it again.
 Describe 'Sync-AzCommvaultStorage' {
-    It 'Refresh' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        # Not named $name: the test framework's It function has a parameter called Name that would shadow it.
+        $storageName = 'azps-stg-syn'
     }
 
-    It 'RefreshViaIdentityCloudAccount' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Refresh' {
+        $null = New-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName -Location $env.Location -StorageClassType 'HOT'
+        $storage = Sync-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName
+        $storage.Name | Should -Be $storageName
     }
 
-    It 'RefreshViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RefreshViaIdentityCloudAccount' {
+        $account = Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $storage = Sync-AzCommvaultStorage -CloudAccountInputObject @{ Id = $account.Id } -Name $storageName
+        $storage.Name | Should -Be $storageName
+    }
+
+    It 'RefreshViaIdentity' {
+        $existing = Get-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName
+        $storage = Sync-AzCommvaultStorage -InputObject @{ Id = $existing.Id }
+        $storage.Name | Should -Be $storageName
+    }
+
+    It 'Cleanup' {
+        Remove-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName
+        { Get-AzCommvaultStorage -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -CloudAccountName $env.CloudAccountName -Name $storageName -ErrorAction Stop } | Should -Throw
     }
 }

@@ -14,6 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzCommvaultStorageCom
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped on purpose: disabling the compliance lock starts a multi-person authorization approval by email on the
+# partner side, which a test must not trigger.
 Describe 'Disable-AzCommvaultStorageComplianceLock' {
     It 'Disable' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
