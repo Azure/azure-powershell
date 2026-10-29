@@ -412,8 +412,14 @@ function Test-VolumeReplication
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $srcResourceGroup
-        Clean-ResourceGroup $destResourceGroup
+        try
+        {
+            Clean-ResourceGroup $srcResourceGroup
+        }
+        finally
+        {
+            Clean-ResourceGroup $destResourceGroup
+        }
     }
 }
 
@@ -1288,16 +1294,16 @@ function Test-ExtenalReplicationFails
         $peerIpAddresses = '0.0.0.1', '0.0.0.2','0.0.0.3', '0.0.0.4', '0.0.0.5', '0.0.0.6'
 
         # Peer external replication 
-        Assert-Throws{Start-AzNetAppFilesPeerExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -PeerIpAddress $peerIpAddresses}
+        Assert-Throws{Start-AzNetAppFilesPeerExternalCluster -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -PeerIpAddress $peerIpAddresses}
 
         # authorize external replication
-        Assert-Throws{$svmPeeringCommand = Start-AzNetAppFilesAuthorizeReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+        Assert-Throws{Start-AzNetAppFilesAuthorizeExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
 
         # perform external replication transfer
-        Assert-Throws{Start-AzNetAppFilesPerformExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+        Assert-ThrowsContains{Start-AzNetAppFilesPerformExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1} 'replication setup has not been completed'
         
         # Finalize external replication transfer
-        Assert-Throws{Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+        Assert-ThrowsContains{Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1} 'Volume Replication was not found'
 
     }
     finally

@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "The name of the ANF volume",
             ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("SubvolumeName")]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/volumeQuotaRules",
             nameof(ResourceGroupName),

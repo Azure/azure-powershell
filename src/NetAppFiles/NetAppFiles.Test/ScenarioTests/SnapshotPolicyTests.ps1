@@ -116,14 +116,14 @@ function Test-SnapshotPolicyCrud
         Remove-AzNetAppFilesSnapshotPolicy -ResourceId $retrievedSnapshotPolicy.Id
                         
         # but test the WhatIf first, should not be removed
-        Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName1 -WhatIf
+        Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName2 -WhatIf
         $retrievedSnapshotPolicyList = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1
-        Assert-AreEqual 1 $retrievedAcc.Length
+        Assert-AreEqual 1 $retrievedSnapshotPolicyList.Length
         
         #remove by name
-        Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName1
+        Remove-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName2
         $retrievedSnapshotPolicyList = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1
-        Assert-AreEqual 1 $retrievedAcc.Length
+        Assert-AreEqual 0 $retrievedSnapshotPolicyList.Length
     }
     finally
     {

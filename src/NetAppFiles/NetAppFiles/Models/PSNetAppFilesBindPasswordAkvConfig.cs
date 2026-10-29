@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-    public class SubvolumeTests : NetAppFilesTestRunner
+    public class PSNetAppFilesBindPasswordAkvConfig
     {
-        public SubvolumeTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
-        {
-        }
-
-        //[Fact]
-        [Fact(Skip = "Subvolume is being deprecated, skipping subvolume tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSubvolumeCrud()
-        {
-            TestRunner.RunTestScript("Test-SubvolumeCrud");
-        }
-
-
+        public string AzureKeyVaultUri { get; set; }
+        public string SecretName { get; set; }
+        public string UserAssignedIdentity { get; set; }
     }
 }

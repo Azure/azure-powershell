@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             Mandatory = true,
             HelpMessage = "The name of the ANF QuotaRule")]
         [ValidateNotNullOrEmpty]
-        [Alias("SubvolumeName")]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/volumequotarules",
             nameof(ResourceGroupName),
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume object containing the subvolume to return")]
+            HelpMessage = "The volume object containing the quota rule to update")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume VolumeObject { get; set; }
 

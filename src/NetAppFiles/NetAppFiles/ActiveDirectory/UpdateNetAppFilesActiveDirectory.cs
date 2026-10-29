@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
                 var netAppAccountBody = new NetAppAccountPatch()
                 {
-                    ActiveDirectories = anfAccount.ActiveDirectories                    
+                    ActiveDirectories = anfAccount.ActiveDirectories.ConvertToPatch()
                 };
                 try
                 { 

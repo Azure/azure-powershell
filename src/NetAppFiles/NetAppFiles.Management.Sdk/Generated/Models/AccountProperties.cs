@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="multiAdStatus">MultiAD Status for the account
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public AccountProperties(string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string))
+
+        /// <param name="ldapConfiguration">LDAP Configuration for the account.
+        /// </param>
+        public AccountProperties(string provisioningState = default(string), System.Collections.Generic.IList<ActiveDirectory> activeDirectories = default(System.Collections.Generic.IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), string nfsV4IdDomain = default(string), string multiAdStatus = default(string), LdapConfiguration ldapConfiguration = default(LdapConfiguration))
 
         {
             this.ProvisioningState = provisioningState;
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.DisableShowmount = disableShowmount;
             this.NfsV4IdDomain = nfsV4IdDomain;
             this.MultiAdStatus = multiAdStatus;
+            this.LdapConfiguration = ldapConfiguration;
             CustomInit();
         }
 
@@ -100,6 +104,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "multiAdStatus")]
         public string MultiAdStatus {get; private set; }
+
+        /// <summary>
+        /// Gets or sets lDAP Configuration for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ldapConfiguration")]
+        public LdapConfiguration LdapConfiguration {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -135,6 +145,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 }
             }
 
+            if (this.LdapConfiguration != null)
+            {
+                this.LdapConfiguration.Validate();
+            }
         }
     }
 }

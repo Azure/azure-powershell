@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         public PSNetAppFilesAccountEncryption Encryption { get; set; }
 
+        public PSNetAppFilesLdapConfiguration LdapConfiguration { get; set; }
+
         /// <summary>
         /// Gets or sets the identity of the resource.
         /// </summary>
