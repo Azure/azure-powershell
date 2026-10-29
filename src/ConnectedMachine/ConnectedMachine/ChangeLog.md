@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded API version to 2026-06-16-preview
+* Upgraded API version to 2026-07-15
 * Added new cmdlets `Get-AzConnectedExtensionPublisher`, `Get-AzConnectedExtensionType` and `Get-AzConnectedExtensionMetadataV2`
 * Changed the type of `RunAsPassword` on run command cmdlets from `String` to `SecureString`
 * Removed `OSType` and `MetadataName` properties from identity model, and `SystemData*` properties from private link scope model, due to the API version upgrade
