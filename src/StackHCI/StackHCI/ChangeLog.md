@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed node-local Remote Support, virtual machine (VM) attestation, attestation, and logs-directory cmdlets to work without an Azure login.
-    - Avoided unnecessary local remoting sessions in Remote Support checks and `Disable-AzStackHCIAttestation`.
+    - Avoided unnecessary local remoting sessions in Remote Support checks, `Enable-AzStackHCIAttestation`, `Disable-AzStackHCIAttestation`, and `Get-AzStackHCILogsDirectory`.
 
 ## Version 3.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
