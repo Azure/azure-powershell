@@ -1,0 +1,71 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    api-version: "2025-08-01"
+    emitter-output-dir: "{output-dir}/{service-dir}/Dashboard/Dashboard.Autorest"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.3.0
+    prefix: "Az"
+    subject-prefix: "Grafana"
+    service-name: Dashboard
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      # Hide the Operations endpoint from the public interface.
+      - where:
+          subject: Operation
+        hide: true
+      # Default SubscriptionId to the current context.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      # Keep only expanded and JSON Create/Update parameter sets.
+      - where:
+          variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+        remove: true
+      # Remove unsupported Create via identity variants.
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      # Preserve the existing Grafana resource name parameter.
+      - where:
+          subject: Grafana
+          parameter-name: WorkspaceName
+        set:
+          parameter-name: Name
+          alias: GrafanaName
+      # Keep private endpoint connection cmdlets out of this module.
+      - where:
+          subject: PrivateEndpointConnection
+        remove: true
+      # Keep managed private endpoint cmdlets out of this module.
+      - where:
+          subject: ManagedPrivateEndpoint
+        remove: true
+      # Keep private link resource cmdlets out of this module.
+      - where:
+          subject: PrivateLinkResource
+        remove: true
+      # Hide the generated New-AzGrafana cmdlet in favor of the custom cmdlet.
+      - where:
+          verb: New
+          subject: Grafana
+        hide: true
+      # Preserve the existing monitor workspace integration parameter name.
+      - where:
+          parameter-name: GrafanaIntegrationAzureMonitorWorkspaceIntegration
+        set:
+          parameter-name: MonitorWorkspaceIntegration
+      # Preserve the existing helper cmdlet for the integration model.
+      - model-cmdlet:
+          - model-name: AzureMonitorWorkspaceIntegration
+            cmdlet-name: New-AzGrafanaMonitorWorkspaceIntegrationObject
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"
