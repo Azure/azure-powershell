@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracleautonomousdatabasecharacterset
 schema: 2.0.0
@@ -18,23 +18,22 @@ Get-AzOracleAutonomousDatabaseCharacterSet -Location <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzOracleAutonomousDatabaseCharacterSet -Adbscharsetname <String> -LocationInputObject <IOracleIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzOracleAutonomousDatabaseCharacterSet -Adbscharsetname <String> -Location <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzOracleAutonomousDatabaseCharacterSet -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleAutonomousDatabaseCharacterSet -Adbscharsetname <String> -LocationInputObject <IOracleIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +62,7 @@ AutonomousDatabaseCharacterSet name
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityLocation, Get
+Parameter Sets: Get, GetViaIdentityLocation
 Aliases:
 
 Required: True
@@ -109,7 +108,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -140,7 +139,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -164,3 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

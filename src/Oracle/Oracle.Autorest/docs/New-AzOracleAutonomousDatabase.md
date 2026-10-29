@@ -16,16 +16,18 @@ Create a AutonomousDatabase
 ```
 New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AdminPassword <SecureString>] [-AutonomousDatabaseId <String>]
- [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>]
- [-ComputeCount <Single>] [-ComputeModel <String>] [-CpuCoreCount <Int32>]
- [-CustomerContact <ICustomerContact[]>] [-DatabaseEdition <String>] [-DataBaseType <String>]
- [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>] [-DbVersion <String>] [-DbWorkload <String>]
- [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
+ [-AutonomousMaintenanceScheduleType <String>] [-BackupDestination <String>]
+ [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>] [-ComputeCount <Single>]
+ [-ComputeModel <String>] [-CpuCoreCount <Int32>] [-CustomerContact <ICustomerContact[]>]
+ [-DatabaseEdition <String>] [-DataBaseType <String>] [-DataStorageSizeInGb <Int32>]
+ [-DataStorageSizeInTb <Int32>] [-DbVersion <String>] [-DbWorkload <String>] [-DisplayName <String>]
+ [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
  [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted] [-LicenseModel <String>]
- [-NcharacterSet <String>] [-PrivateEndpointIP <String>] [-PrivateEndpointLabel <String>]
+ [-NcharacterSet <String>] [-NetworkAnchorId <String>] [-PrivateEndpointIP <String>]
+ [-PrivateEndpointLabel <String>] [-ResourceAnchorId <String>]
  [-ScheduledOperationsList <IScheduledOperationsType[]>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VnetId <String>] [-WhitelistedIP <String[]>] [-Zone <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -172,6 +174,22 @@ Accept wildcard characters: False
 
 ### -AutonomousMaintenanceScheduleType
 The maintenance schedule type of the Autonomous Database Serverless.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupDestination
+Backup destination for auto and long-term backups.
+Existing backups stay in their original destination when this value changes.
 
 ```yaml
 Type: System.String
@@ -562,6 +580,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkAnchorId
+Azure Network Anchor ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -594,6 +627,21 @@ Accept wildcard characters: False
 
 ### -PrivateEndpointLabel
 The resource's private endpoint label.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceAnchorId
+Azure Resource Anchor ID
 
 ```yaml
 Type: System.String
@@ -707,6 +755,21 @@ Example: ['1.1.1.1','1.1.1.0/24','1.1.2.25']
 
 ```yaml
 Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The logical zone where the Autonomous Database is provisioned.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

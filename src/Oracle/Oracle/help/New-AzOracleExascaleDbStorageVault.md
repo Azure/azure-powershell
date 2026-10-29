@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleexascaledbstoragevault
 schema: 2.0.0
@@ -14,25 +14,26 @@ Create a ExascaleDbStorageVault
 
 ### CreateExpanded (Default)
 ```
-New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-AdditionalFlashCacheInPercent <Int32>] [-Description <String>] [-DisplayName <String>]
- [-ExadataInfrastructureId <String>] [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>]
- [-Tag <Hashtable>] [-TimeZone <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AdditionalFlashCacheInPercent <Int32>] [-AutoscaleLimitInGb <Int32>]
+ [-Description <String>] [-DisplayName <String>] [-ExadataInfrastructureId <String>]
+ [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>] [-IsAutoscaleEnabled] [-Tag <Hashtable>]
+ [-TimeZone <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroup = "PowerShellTestRg"
 
 $exaScaleDbStorageVaultName = "OFake_PowerShellTestExaScaleDbStorage"
-New-AzOracleExascaleDbStorageVault -Name $exaScaleDbStorageVaultName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exaScaleDbStorageVaultName -description "description" -additionalFlashCacheInPercent 100 -TimeZone "UTC"
+New-AzOracleExascaleDbStorageVault -Name $exaScaleDbStorageVaultName -ResourceGroupName $resourceGroup -Location "eastus" -DisplayName $exaScaleDbStorageVaultName -description "description" -additionalFlashCacheInPercent 100 -TimeZone "UTC"  
 ```
 
 ```output
@@ -101,6 +102,21 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoscaleLimitInGb
+Maximum limit storage size in gigabytes, that is applicable for the Database Storage Vault.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -177,6 +193,22 @@ Total Capacity
 
 ```yaml
 Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsAutoscaleEnabled
+Indicates if autoscale feature is enabled for the Storage Vault.
+The default value is: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -382,3 +414,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

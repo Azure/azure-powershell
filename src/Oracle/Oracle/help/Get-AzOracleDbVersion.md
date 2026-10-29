@@ -1,5 +1,5 @@
 ---
-external help file: Az.Oracle-help.xml
+external help file:
 Module Name: Az.Oracle
 online version: https://learn.microsoft.com/powershell/module/az.oracle/get-azoracledbversion
 schema: 2.0.0
@@ -16,8 +16,7 @@ Get a DbVersion
 ```
 Get-AzOracleDbVersion -Location <String> [-SubscriptionId <String[]>] [-DbSystemId <String>]
  [-DbSystemShape <String>] [-IsDatabaseSoftwareImageSupported] [-IsUpgradeSupported] [-ShapeFamily <String>]
- [-StorageManagement <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-StorageManagement <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -26,15 +25,14 @@ Get-AzOracleDbVersion -Location <String> -Sname <String> [-SubscriptionId <Strin
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzOracleDbVersion -Sname <String> -LocationInputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
-Get-AzOracleDbVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>]
+Get-AzOracleDbVersion -InputObject <IOracleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityLocation
+```
+Get-AzOracleDbVersion -LocationInputObject <IOracleIdentity> -Sname <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -62,6 +60,21 @@ IsPreview                                     : True
 ```
 
 Lists the available Oracle Database versions for **eastus2**.
+For more information, execute `Get-Help Get-AzOracleDbVersion`.
+
+### Example 2: List versions for a specific shape
+```powershell
+Get-AzOracleDbVersion -Location eastus2
+```
+
+```output
+Version                                       : 19c
+VersionFull                                   : 19.22.0.0
+IsDefault                                     : True
+IsPreview                                     : False
+```
+
+Filters versions by compute shape.
 For more information, execute `Get-Help Get-AzOracleDbVersion`.
 
 ## PARAMETERS
@@ -164,7 +177,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -242,7 +255,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -266,3 +279,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
