@@ -1,8 +1,8 @@
 {
-  "Get-AzConnectedExtensionType+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-06-16-preview+1": {
+  "Get-AzConnectedExtensionType+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-07-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-06-16-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HybridCompute/locations/eastus/publishers/Microsoft.Azure.NetworkWatcher/extensionTypes?api-version=2026-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
