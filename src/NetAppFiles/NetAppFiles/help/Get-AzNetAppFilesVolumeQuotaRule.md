@@ -76,12 +76,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF Subvolume
+The name of the ANF volume quota rule
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases: SubvolumeName
+Aliases:
 
 Required: False
 Position: Named
