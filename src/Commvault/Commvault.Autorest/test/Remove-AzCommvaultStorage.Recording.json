@@ -1,0 +1,374 @@
+{
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30",
+      "Content": "{\n  \"properties\": {\n    \"location\": \"East US 2\",\n    \"storageType\": \"Air_Gap_Protect\",\n    \"vendor\": \"Azure_Blob_Storage\",\n    \"class\": \"HOT\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "147" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"12005993-0000-0100-0000-6ae3565b0000\"" ],
+        "Location": [ "https://eastus2euap.management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/a7f9a2d4-9e34-4850-b7e4-ca574079ff36" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "dfd36854-a318-4d83-94c6-8bad54094429" ],
+        "x-ms-correlation-request-id": [ "43174630-c7c7-4d2b-95f5-6b02c8ab2ff3" ],
+        "x-ms-client-request-id": [ "abb07666-65dc-4cf5-851d-daccdcea92c5" ],
+        "x-envoy-upstream-service-time": [ "889" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-async-operation-timeout": [ "P6D" ],
+        "x-ms-request-id": [ "e5818933-fda1-4c1a-9183-c81ec46f0678" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T142115Z:43174630-c7c7-4d2b-95f5-6b02c8ab2ff3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 24B8998C33C542ED8BB8F3F75233EE22 Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:21:12Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:21:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "686" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"name\":\"azps-stg-del\",\"type\":\"commvault.contentstore/cloudaccounts/storages\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T14:21:13.2140347Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T14:21:13.2140347Z\"},\"properties\":{\"location\":\"East US 2\",\"storageType\":\"Air_Gap_Protect\",\"vendor\":\"Azure_Blob_Storage\",\"class\":\"HOT\",\"provisioningState\":\"Accepted\",\"complianceLockStatus\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "abb07666-65dc-4cf5-851d-daccdcea92c5" ],
+        "CommandName": [ "New-AzCommvaultStorage" ],
+        "FullCommandName": [ "New-AzCommvaultStorage_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5300680e-0000-0100-0000-6ae3565a0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "b1358464-8bca-4861-930b-59b6eaa055b7" ],
+        "x-ms-correlation-request-id": [ "61df3f5d-f892-4e04-941f-877a347bf358" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20261029T142146Z:61df3f5d-f892-4e04-941f-877a347bf358" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 38DA96361F15461699B0222CBAA5CDFD Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:21:46Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:21:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"name\":\"e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"status\":\"Accepted\",\"startTime\":\"2026-10-29T14:21:14.3643355Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "abb07666-65dc-4cf5-851d-daccdcea92c5" ],
+        "CommandName": [ "New-AzCommvaultStorage" ],
+        "FullCommandName": [ "New-AzCommvaultStorage_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"53009323-0000-0100-0000-6ae356900000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "f3495965-6289-4f3b-91e2-200ab4f358ef" ],
+        "x-ms-correlation-request-id": [ "16f3607b-a2c8-42a2-949c-138338fc04a1" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20261029T142216Z:16f3607b-a2c8-42a2-949c-138338fc04a1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C441812A7B7B470FAA0393859C454709 Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:16Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "627" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"name\":\"e5818933-fda1-4c1a-9183-c81ec46f0678*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T14:21:14.3643355Z\",\"endTime\":\"2026-10-29T14:22:08.0628117Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "abb07666-65dc-4cf5-851d-daccdcea92c5" ],
+        "CommandName": [ "New-AzCommvaultStorage" ],
+        "FullCommandName": [ "New-AzCommvaultStorage_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"af00e1cd-0000-0300-0000-6ae356900000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/d2ef8264-fad6-4f40-970c-bfef014d99fd" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d8bd1807-642b-4d64-b430-65927138ec50" ],
+        "x-ms-correlation-request-id": [ "021b99b4-fe3c-4b9a-bf31-600ce4f8a50a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T142217Z:021b99b4-fe3c-4b9a-bf31-600ce4f8a50a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D5BF437049924836B79672842DF00DD1 Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:17Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "692" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"name\":\"azps-stg-del\",\"type\":\"commvault.contentstore/cloudaccounts/storages\",\"systemData\":{\"createdBy\":\"user@contoso.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-10-29T14:21:13.2140347Z\",\"lastModifiedBy\":\"user@contoso.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-10-29T14:21:13.2140347Z\"},\"properties\":{\"location\":\"East US 2\",\"storageType\":\"Air_Gap_Protect\",\"vendor\":\"Azure_Blob_Storage\",\"class\":\"HOT\",\"provisioningState\":\"Succeeded\",\"complianceLockStatus\":\"Enabled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "c1c64931-f9e7-4f8f-bf9e-08ef90bfda7f" ],
+        "CommandName": [ "Remove-AzCommvaultStorage" ],
+        "FullCommandName": [ "Remove-AzCommvaultStorage_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"12005d9e-0000-0100-0000-6ae3569c0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/fdb98ca8-008e-4a0e-87a1-97ad097124d5" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "2aafb56c-ed94-4cb4-872c-79a17bb7c1a9" ],
+        "x-ms-correlation-request-id": [ "c983621a-c3c0-4a45-b099-858f84e72b8e" ],
+        "x-ms-client-request-id": [ "c1c64931-f9e7-4f8f-bf9e-08ef90bfda7f" ],
+        "x-envoy-upstream-service-time": [ "2237" ],
+        "Azure-AsyncNotification": [ "Enabled" ],
+        "x-ms-resource-provider-hint": [ "noPolling" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted" ],
+        "x-ms-request-id": [ "2e5b74a9-5c0c-40d7-adbf-8becc8950aa6" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T142220Z:c983621a-c3c0-4a45-b099-858f84e72b8e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ED4B480684D04A87BECCD012384C45B2 Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:17Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "c1c64931-f9e7-4f8f-bf9e-08ef90bfda7f" ],
+        "CommandName": [ "Remove-AzCommvaultStorage" ],
+        "FullCommandName": [ "Remove-AzCommvaultStorage_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5300c92e-0000-0100-0000-6ae356ab0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "12daa152-bda0-45e3-a5b0-582f16c4afde" ],
+        "x-ms-correlation-request-id": [ "509ecf12-dd2b-4dbe-aa25-1dc154b81213" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "MALAYSIASOUTH:20261029T142251Z:509ecf12-dd2b-4dbe-aa25-1dc154b81213" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C8A97ED8D477427E8EDFCBDF1DEB2465 Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:51Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"name\":\"2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T14:22:18.306234Z\",\"endTime\":\"2026-10-29T14:22:35.2460752Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE?api-version=2026-09-30\u0026t=0\u0026c=redacted\u0026s=redacted\u0026h=redacted",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "c1c64931-f9e7-4f8f-bf9e-08ef90bfda7f" ],
+        "CommandName": [ "Remove-AzCommvaultStorage" ],
+        "FullCommandName": [ "Remove-AzCommvaultStorage_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5300c92e-0000-0100-0000-6ae356ab0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-request-id": [ "780cb33a-86a8-45cc-a65d-99df2b9b0ab7" ],
+        "x-ms-correlation-request-id": [ "12f69640-961c-4aa1-9244-06c1f1e2f8c5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20261029T142252Z:12f69640-961c-4aa1-9244-06c1f1e2f8c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 822F2DC1606D4163BE821D75189E40DB Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:52Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "626" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Commvault.ContentStore/locations/EASTUS/operationStatuses/2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"name\":\"2e5b74a9-5c0c-40d7-adbf-8becc8950aa6*72CBB347D1EE440877AE4DF6E4D495F5A5C789C19B14DC09316B196103A9C5CE\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\",\"status\":\"Succeeded\",\"startTime\":\"2026-10-29T14:22:18.306234Z\",\"endTime\":\"2026-10-29T14:22:35.2460752Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzCommvaultStorage+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "fe09d7e3-7786-46ba-baf5-d60ef3dbafa5" ],
+        "CommandName": [ "Get-AzCommvaultStorage" ],
+        "FullCommandName": [ "Get-AzCommvaultStorage_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/993ceda1-9424-4117-ad51-546dbf919787" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "f99ae0b6-b157-4c02-ad97-e7b78ddf599c" ],
+        "x-ms-correlation-request-id": [ "188e26c7-cfca-417d-9c83-03cf99ffc58e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T142252Z:188e26c7-cfca-417d-9c83-03cf99ffc58e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45DEB9FAEAD343DC8DCDBEE86177423D Ref B: SG2AA1040520062 Ref C: 2026-10-29T14:22:52Z" ],
+        "Date": [ "Thu, 29 Oct 2026 14:22:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "168" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/storages/azps-stg-del\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

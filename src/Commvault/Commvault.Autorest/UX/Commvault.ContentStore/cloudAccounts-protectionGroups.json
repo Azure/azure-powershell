@@ -1,0 +1,138 @@
+{
+  "resourceType": "cloudAccounts/protectionGroups",
+  "apiVersion": "2026-09-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.commvault"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCommvaultProtectionGroup",
+      "description": "Get a ProtectionGroup",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/protectionGroups/{protectionGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/get-azcommvaultprotectiongroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ProtectionGroup",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.protectionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCommvaultProtectionGroup",
+      "description": "Delete a ProtectionGroup",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/protectionGroups/{protectionGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/remove-azcommvaultprotectiongroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ProtectionGroup",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.protectionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Resume-AzCommvaultProtectionGroupBackup",
+      "description": "Resume Backup for a Protection Group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Commvault.ContentStore/cloudAccounts/{cloudAccountName}/protectionGroups/{protectionGroupName}/resumeBackup",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.commvault/resume-azcommvaultprotectiongroupbackup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudAccountName <String>",
+              "-ProtectionGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Resume Backup for a Protection Group.",
+          "parameters": [
+            {
+              "name": "-CloudAccountName",
+              "value": "[Path.cloudAccountName]"
+            },
+            {
+              "name": "-ProtectionGroupName",
+              "value": "[Path.protectionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
