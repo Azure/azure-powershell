@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultRoleMapping'))
 }
 
 Describe 'Get-AzCommvaultRoleMapping' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $roleMapping = Get-AzCommvaultRoleMapping -CloudAccountName $env.CloudAccountName -ResourceGroupName $env.ResourceGroupName
+        $roleMapping.Name | Should -Be 'default'
+        $roleMapping.ProvisioningState | Should -Be 'Succeeded'
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $roleMapping = Get-AzCommvaultRoleMapping -CloudAccountName $env.CloudAccountName -ResourceGroupName $env.ResourceGroupName
+        $byIdentity = Get-AzCommvaultRoleMapping -InputObject @{ Id = $roleMapping.Id }
+        $byIdentity.Name | Should -Be 'default'
+        $byIdentity.Id | Should -Be $roleMapping.Id
     }
 }

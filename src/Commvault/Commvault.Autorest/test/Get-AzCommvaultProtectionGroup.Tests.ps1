@@ -14,6 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultProtectionGrou
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: listing protection groups returns HTTP 500 because Commvault denies access to the app identity (the call
+# needs a Commvault user context token), so no recording can be made until the RP supports this caller.
 Describe 'Get-AzCommvaultProtectionGroup' {
     It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

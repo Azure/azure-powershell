@@ -44,9 +44,17 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    # The tests read the existing cloud account fixture (ResourceGroupName, CloudAccountName, PlanName and
+    # StorageName) from the committed env.json. Merge it in so that recording does not overwrite it.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
+    }
+    $fixturePath = Join-Path $PSScriptRoot 'env.json'
+    if (Test-Path $fixturePath) {
+        (Get-Content $fixturePath -Raw | ConvertFrom-Json).psobject.properties | Foreach-Object {
+            if (-not $env.Contains($_.Name)) { $env[$_.Name] = $_.Value }
+        }
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

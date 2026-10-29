@@ -14,6 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultProtectedItem'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: protected items belong to a protection group, and protection groups cannot be read with the current
+# caller identity (HTTP 500), so there is nothing to record.
 Describe 'Get-AzCommvaultProtectedItem' {
     It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

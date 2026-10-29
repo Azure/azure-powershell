@@ -14,6 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultProtectedItemC
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: the service rejects the protected item count request for the test user (HTTP 403), so it cannot be recorded.
 Describe 'Get-AzCommvaultProtectedItemCount' {
     It 'CountExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

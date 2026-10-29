@@ -41,7 +41,8 @@ try-require:
   - $(repo)/specification/liftrcommvault/resource-manager/readme.powershell.md
 
 # generate from the stable API version
-tag: package-2026-09-30
+input-file:
+  - $(repo)/specification/liftrcommvault/resource-manager/Commvault.ContentStore/stable/2026-09-30/commvault.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0

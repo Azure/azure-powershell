@@ -15,19 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultCloudAccount')
 }
 
 Describe 'Get-AzCommvaultCloudAccount' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $accounts = @(Get-AzCommvaultCloudAccount)
+        $accounts.Count | Should -BeGreaterOrEqual 1
+        $accounts.Name | Should -Contain $env.CloudAccountName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $account = Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $account.Name | Should -Be $env.CloudAccountName
+        $account.ProvisioningState | Should -Be 'Succeeded'
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $accounts = @(Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName)
+        $accounts.Count | Should -BeGreaterOrEqual 1
+        $accounts.Name | Should -Contain $env.CloudAccountName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $account = Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $byIdentity = Get-AzCommvaultCloudAccount -InputObject @{ Id = $account.Id }
+        $byIdentity.Name | Should -Be $env.CloudAccountName
+        $byIdentity.Id | Should -Be $account.Id
     }
 }

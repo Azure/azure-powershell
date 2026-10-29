@@ -14,6 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Connect-AzCommvaultCloudAccou
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: the linkSaaS operation is not active in the service yet.
 Describe 'Connect-AzCommvaultCloudAccountSaaS' {
     It 'LinkExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

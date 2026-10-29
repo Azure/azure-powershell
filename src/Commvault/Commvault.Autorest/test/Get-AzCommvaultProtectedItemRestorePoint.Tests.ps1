@@ -14,6 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultProtectedItemR
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: restore points are read from a protected item, which cannot be reached with the current caller identity.
 Describe 'Get-AzCommvaultProtectedItemRestorePoint' {
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

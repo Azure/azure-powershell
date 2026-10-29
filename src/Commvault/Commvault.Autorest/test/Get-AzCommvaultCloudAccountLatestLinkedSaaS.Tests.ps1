@@ -14,6 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultCloudAccountLa
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Skipped: the service has no handler for latestLinkedSaaS yet and returns HTTP 500.
 Describe 'Get-AzCommvaultCloudAccountLatestLinkedSaaS' {
     It 'Latest' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
