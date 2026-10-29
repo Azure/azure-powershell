@@ -15,7 +15,7 @@ Update external user configurations for your Elastic monitor resource, enabling 
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EmailId <String>] [-FullName <String>] [-Password <String>] [-Role <String[]>] [-UserName <String>]
+ [-EmailId <String>] [-FullName <String>] [-Password <SecureString>] [-Role <String[]>] [-UserName <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzElasticExternalUser -MonitorName <String> -ResourceGroupName <String> [
 ### UpdateViaIdentityExpanded
 ```
 Update-AzElasticExternalUser -InputObject <IElasticIdentity> [-EmailId <String>] [-FullName <String>]
- [-Password <String>] [-Role <String[]>] [-UserName <String>] [-DefaultProfile <PSObject>]
+ [-Password <SecureString>] [-Role <String[]>] [-UserName <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Password of the user to be created or updated
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
