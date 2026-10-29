@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Isolated role-definition permissions and account offer types from generated SDK model changes.
+    - SQL and Table role definitions return PSPermission objects that can be passed back to the role-definition cmdlets without losing allowed or denied actions.
+    - Account offer types are returned as strings, retaining values such as Standard.
+    - The CLR property types for Permissions and DatabaseAccountOfferType now use PowerShell-facing types. Direct generated SDK constructor compatibility is unchanged.
 
 ## Version 1.22.0
 * Regenerated the Cosmos DB management SDK with stable API version 2026-03-15.

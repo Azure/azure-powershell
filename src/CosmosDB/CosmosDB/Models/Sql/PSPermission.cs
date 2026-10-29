@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -31,5 +32,39 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets DataActions
         /// </summary>
         public IList<string> DataActions { get; set; }
+
+        public string Id { get; set; }
+
+        public IList<string> NotDataActions { get; set; }
+
+        public static PSPermission FromSDKModel(Permission permission)
+        {
+            if (permission == null)
+            {
+                return null;
+            }
+
+            return new PSPermission
+            {
+                Id = permission.Id,
+                DataActions = permission.DataActions == null ? null : new List<string>(permission.DataActions),
+                NotDataActions = permission.NotDataActions == null ? null : new List<string>(permission.NotDataActions)
+            };
+        }
+
+        public static Permission ToSDKModel(PSPermission permission)
+        {
+            if (permission == null)
+            {
+                return null;
+            }
+
+            return new Permission
+            {
+                Id = permission.Id,
+                DataActions = permission.DataActions == null ? null : new List<string>(permission.DataActions),
+                NotDataActions = permission.NotDataActions == null ? null : new List<string>(permission.NotDataActions)
+            };
+        }
     }
 }

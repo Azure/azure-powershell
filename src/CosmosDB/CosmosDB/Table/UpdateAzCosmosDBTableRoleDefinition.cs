@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Type = InputObject.Type;
                 AssignableScope = new List<String>(InputObject.AssignableScopes);
                 Id = InputObject.Id;
-                permissions = new List<Permission>(InputObject.Permissions);
+                permissions = InputObject.Permissions?.Select(PSPermission.ToSDKModel).ToList();
 
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else if (Permission != null)
             {
-                permissions = new List<Permission>(Permission.Select(p => new Permission(dataActions: p.DataActions)));
+                permissions = Permission.Select(PSPermission.ToSDKModel).ToList();
             }
 
             Id = TableRoleHelper.ParseToRoleDefinitionId(Id);

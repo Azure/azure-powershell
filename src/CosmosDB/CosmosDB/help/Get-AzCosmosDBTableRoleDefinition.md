@@ -129,6 +129,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSTableRoleDefinitionGetResults
+The Permissions property contains PSPermission objects with Id, DataActions, and NotDataActions properties.
+These objects can be passed to the Permission parameter of New-AzCosmosDBTableRoleDefinition or Update-AzCosmosDBTableRoleDefinition.
+
 ## NOTES
 
 ## RELATED LINKS
