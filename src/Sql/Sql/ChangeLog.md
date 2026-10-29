@@ -18,15 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added short-term backup immutability support to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`.
-    - Added the `LockImmutability` parameter and `ImmutabilityStatus` output property.
-    - Restricted `LockImmutability` to live Managed Instance databases.
-    - Added an irreversible-action confirmation prompt when locking immutability, which can be bypassed with `-Force`.
-* Added immutability support for Azure SQL Managed Instance long-term retention backups.
-    - Added time-based immutability settings to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy`.
-    - Exposed immutability state in managed database long-term retention policy and backup output.
-    - Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` to manage time-based immutability.
-    - Added `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` to manage legal holds.
+
+## Version 7.3.0
+* Added `LockImmutability`/`ImmutabilityStatus` to `Set-AzSqlDatabaseBackupShortTermRetentionPolicy` and `Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy`. Locking requires live Managed Instance databases and irreversible-action confirmation (`-Force` skips).
+* Added Managed Instance long-term immutability to `Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy` and policy/backup output.
+* Added `Lock-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupImmutability` for time-based immutability.
+* Added legal holds via `Set-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold` and `Remove-AzSqlInstanceDatabaseLongTermRetentionBackupLegalHold`.
 
 ## Version 7.2.0
 * Exposed the backup storage redundancy type in the output of `Get-AzSqlInstanceDatabaseLongTermRetentionBackup`.

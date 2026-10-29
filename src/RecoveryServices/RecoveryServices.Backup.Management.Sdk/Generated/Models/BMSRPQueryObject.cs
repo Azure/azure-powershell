@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="restorePointQueryType">RestorePoint type
         /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;,
         /// &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;,
-        /// &#39;SnapshotCopyOnlyFull&#39;</param>
+        /// &#39;SnapshotCopyOnlyFull&#39;, &#39;Snapshot&#39;, &#39;FullDifferentialAndSnapshot&#39;</param>
 
         /// <param name="extendedInfo">In Get Recovery Point, it tells whether extended information about recovery
         /// point is asked.
@@ -45,7 +45,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="includeSoftDeletedRp">Flag to indicate whether Soft Deleted RPs should be included/excluded from
         /// result.
         /// </param>
-        public BmsrpQueryObject(System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string restorePointQueryType = default(string), bool? extendedInfo = default(bool?), bool? moveReadyRpOnly = default(bool?), bool? includeSoftDeletedRp = default(bool?))
+
+        /// <param name="baseSnapshotRpId">Id of the base snapshot recovery point.
+        /// </param>
+
+        /// <param name="baseRpDatasourceId">Id of the datasource of the base snapshot recovery point.
+        /// </param>
+
+        /// <param name="getLatestRpOnly">Flag to indicate whether to get only the latest recovery point.
+        /// </param>
+        public BmsrpQueryObject(System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string restorePointQueryType = default(string), bool? extendedInfo = default(bool?), bool? moveReadyRpOnly = default(bool?), bool? includeSoftDeletedRp = default(bool?), string baseSnapshotRpId = default(string), string baseRpDatasourceId = default(string), bool? getLatestRpOnly = default(bool?))
 
         {
             this.StartDate = startDate;
@@ -54,6 +63,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ExtendedInfo = extendedInfo;
             this.MoveReadyRpOnly = moveReadyRpOnly;
             this.IncludeSoftDeletedRp = includeSoftDeletedRp;
+            this.BaseSnapshotRpId = baseSnapshotRpId;
+            this.BaseRpDatasourceId = baseRpDatasourceId;
+            this.GetLatestRpOnly = getLatestRpOnly;
             CustomInit();
         }
 
@@ -76,7 +88,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public System.DateTime? EndDate {get; set; }
 
         /// <summary>
-        /// Gets or sets restorePoint type Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;, &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;
+        /// Gets or sets restorePoint type Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;, &#39;FullAndDifferential&#39;, &#39;All&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;, &#39;Snapshot&#39;, &#39;FullDifferentialAndSnapshot&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "restorePointQueryType")]
         public string RestorePointQueryType {get; set; }
@@ -100,5 +112,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "includeSoftDeletedRP")]
         public bool? IncludeSoftDeletedRp {get; set; }
+
+        /// <summary>
+        /// Gets or sets id of the base snapshot recovery point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baseSnapshotRPId")]
+        public string BaseSnapshotRpId {get; set; }
+
+        /// <summary>
+        /// Gets or sets id of the datasource of the base snapshot recovery point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "baseRPDatasourceId")]
+        public string BaseRpDatasourceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate whether to get only the latest recovery
+        /// point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "getLatestRPOnly")]
+        public bool? GetLatestRpOnly {get; set; }
     }
 }

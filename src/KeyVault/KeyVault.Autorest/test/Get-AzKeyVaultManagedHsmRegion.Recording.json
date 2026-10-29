@@ -1,17 +1,17 @@
 {
-  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/f758ac53-3e63-4317-a956-0997793808d7/resourceGroups/ps-kvrec-261013-ad4773/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-261013-ad4773/regions?api-version=2026-02-01+1": {
+  "Get-AzKeyVaultManagedHsmRegion+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/f758ac53-3e63-4317-a956-0997793808d7/resourceGroups/ps-kvrec-261013-ad4773/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-261013-ad4773/regions?api-version=2026-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/dfa259d7-270a-46b7-b73d-d659947dc8be/resourceGroups/mhsm-test/providers/Microsoft.KeyVault/managedHSMs/ps-kvrec-b1-64685/regions?api-version=2026-05-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "edbea4b5-8586-4749-a6a9-6edfdcf1bc0b" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
         "CommandName": [ "Get-AzKeyVaultManagedHsmRegion" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsmRegion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.6.4", "Az.KeyVault/6.3.1" ],
+        "User-Agent": [ "AzurePowershell/v14.3.0", "PSVersion/v7.6.9", "Az.KeyVault/6.3.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,27 +22,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "edbea4b5-8586-4749-a6a9-6edfdcf1bc0b" ],
-        "x-ms-keyvault-service-version": [ "2.2.1192.0" ],
-        "x-ms-request-id": [ "8cbf2374-c58b-4865-8120-b5e4b1ddfb2c" ],
+        "x-ms-client-request-id": [ "e108d286-4cb7-4930-a4c8-55a252fdbb86" ],
+        "x-ms-keyvault-service-version": [ "2.2.1231.0" ],
+        "x-ms-request-id": [ "3751431f-0eed-446b-87f9-a71c5cbe0bfd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-operation-identifier": [ "tenantId=4f00b3b6-2940-4f2c-b037-94637c180d30,objectId=bb83257d-f1d0-412f-85a2-22c2b259e928/westus/01a232c7-24d5-4d38-b020-099614e14c3d" ],
-        "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-correlation-request-id": [ "54e74029-9c42-44cd-ae6f-aa75957d3936" ],
-        "x-ms-routing-request-id": [ "WESTUS:20261013T005643Z:54e74029-9c42-44cd-ae6f-aa75957d3936" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a1b2c3d4-0000-4000-8000-000000000002/eastus/0ef0a6b1-02f3-4bde-8da5-a12937784967" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261027T151515Z:f2e6f534-7d00-408f-b4e1-14f387aaadca" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5BD80DDE27464E5687E4B09EEBF68357 Ref B: SYD281080705031 Ref C: 2026-10-13T00:56:43Z" ],
-        "Date": [ "Tue, 13 Oct 2026 00:56:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 48B3F39722E847ED818CE39083EFA765 Ref B: DUB241062305062 Ref C: 2026-10-27T15:15:14Z" ],
+        "Date": [ "Tue, 27 Oct 2026 15:15:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "150" ],
+        "Content-Length": [ "147" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"westus\",\"provisioningState\":\"Succeeded\",\"isPrimary\":true},{\"name\":\"uksouth\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false}]}",
+      "Content": "{\"value\":[{\"name\":\"westus\",\"provisioningState\":\"Succeeded\",\"isPrimary\":true},{\"name\":\"uksouth\",\"provisioningState\":\"Succeeded\",\"isPrimary\":false}]}",
       "isContentBase64": false
     }
   }
