@@ -11,6 +11,8 @@ import re
 from urllib.parse import quote
 from repository_tools.settings import AAZ_SOURCE_REPOSITORY, TOOL_TITLES, _AAZ_OUTPUT_PATTERN, _BEHAVIOR_SIGNAL, _GENERATED_FILE_PATTERNS, _GENERATION_SOURCE_PATTERNS, _GENERATION_SOURCE_PR, _HELP_COMMAND_PATTERNS, _PARAMETER_DECLARATION, _PATCH_HUNK_HEADER, _RELEASE_NOTE_NAMES, _REVIEW_TEST_PATTERNS, _RISK_CUSTOMER_PATTERN, _RISK_DEPENDENCY_PATTERN, _RISK_OPERATIONS_PATTERN, _RISK_RELIABILITY_PATTERN, _RISK_SECURITY_PATTERN, _RISK_SOVEREIGN_PATTERN, _SWAGGER_PATTERNS, _TAUTOLOGICAL_ASSERTIONS
 from repository_tools.reviewer.azure_powershell.review import _is_powershell_production_file, _is_powershell_autorest_path, _powershell_review_component, _powershell_command_checks, _review_powershell_autorest
+from repository_tools.reviewer.azure_powershell.coverage import _summarize_powershell_coverage
+from repository_tools.reviewer.azure_powershell.policy import _summarize_powershell_review
 
 def _review_added_lines(change):
     """Yield visible added patch lines as ``(line_number, text)`` tuples."""
@@ -235,10 +237,31 @@ def analyze_review_tools(repo_full_name, pr, file_changes, *, head_repo=None, he
     """
     if repo_full_name != 'Azure/azure-powershell':
         raise ValueError('Review policy belongs to a different repository')
-    changes = [change for change in file_changes or [] if change.get('filename')]
+    if not isinstance(pr, dict):
+        raise ValueError('PowerShell review requires the PR details.')
+    if file_changes is None:
+        raise ValueError('PowerShell review requires the PR file changes.')
+    changes = list(file_changes)
+    powershell = _summarize_powershell_review(pr, changes)
+    if head_sha is not None and head_sha != powershell['head_sha']:
+        raise ValueError('Review head SHA does not match the PR snapshot.')
+    head_sha = powershell['head_sha']
+    changes = [
+        dict(change, filename=change['filename'].replace('\\', '/'))
+        for change in changes
+    ]
     production_changes = [change for change in changes if _review_is_production_file(repo_full_name, change['filename'])]
-    findings = []
-    targets = []
+    findings = [
+        {
+            **finding,
+            **_review_location(
+                {'filename': finding['file']}, line=finding['line'],
+                head_repo=head_repo, head_sha=head_sha,
+            ),
+        }
+        for finding in powershell['findings']
+    ]
+    targets = list(powershell['review_targets'])
     release_findings, release_target = _release_artifact_check(repo_full_name, pr or {}, changes, production_changes, head_repo, head_sha)
     findings.extend(release_findings)
     if release_target:
@@ -264,7 +287,21 @@ def analyze_review_tools(repo_full_name, pr, file_changes, *, head_repo=None, he
             status = 'not_applicable'
         checks.append({'tool': tool, 'tool_title': title, 'status': status})
     deduplicated_findings = _deduplicate_findings(findings)
-    return {'repository': repo_full_name, 'finding_count': len(deduplicated_findings), 'findings': deduplicated_findings, 'review_targets': targets, 'checks': checks, 'risk_assessment': _review_risk_assessment(repo_full_name, changes, production_changes)}
+    return {
+        'repository': repo_full_name,
+        'base_sha': powershell['base_sha'],
+        'head_sha': head_sha,
+        'files_complete': powershell['files_complete'],
+        'triage': powershell['triage'],
+        'context_gaps': powershell['context_gaps'],
+        'handoff_items': powershell['handoff_items'],
+        'regression_coverage': _summarize_powershell_coverage(changes),
+        'finding_count': len(deduplicated_findings),
+        'findings': deduplicated_findings,
+        'review_targets': targets,
+        'checks': checks,
+        'risk_assessment': _review_risk_assessment(repo_full_name, changes, production_changes),
+    }
 
 def _review_risk_assessment(repo_full_name, changes, production_changes):
     """Estimate merge risk from bounded reviewable PR diff signals."""
