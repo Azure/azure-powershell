@@ -1,15 +1,15 @@
 {
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview+1": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview",
-      "Content": "{\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"regularPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1,\r\n      \"allocationStrategy\": \"LowestPrice\"\r\n    },\r\n    \"computeProfile\": {\r\n      \"computeApiVersion\": \"2024-03-01\",\r\n      \"baseVirtualMachineProfile\": {\r\n        \"networkProfile\": {\r\n          \"networkInterfaceConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"networkSecurityGroup\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n                },\r\n                \"primary\": true,\r\n                \"enableAcceleratedNetworking\": false,\r\n                \"ipConfigurations\": [\r\n                  {\r\n                    \"properties\": {\r\n                      \"subnet\": {\r\n                        \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                      },\r\n                      \"primary\": true\r\n                    },\r\n                    \"name\": \"ipconfig1\"\r\n                  }\r\n                ]\r\n              },\r\n              \"name\": \"nic1\"\r\n            }\r\n          ],\r\n          \"networkApiVersion\": \"2020-11-01\"\r\n        },\r\n        \"securityProfile\": {\r\n          \"uefiSettings\": {\r\n            \"secureBootEnabled\": true,\r\n            \"vTpmEnabled\": true\r\n          },\r\n          \"securityType\": \"TrustedLaunch\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerNamePrefix\": \"fleetvm\",\r\n          \"adminUsername\": \"testadmin\",\r\n          \"adminPassword\": \"[Sanitized]\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2022-datacenter-azure-edition\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\",\r\n            \"osType\": \"Windows\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"mode\": \"Launch\",\r\n    \"vmNamePrefix\": \"fleetvm\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"regularPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1,\r\n      \"allocationStrategy\": \"LowestPrice\"\r\n    },\r\n    \"computeProfile\": {\r\n      \"computeApiVersion\": \"2024-03-01\",\r\n      \"baseVirtualMachineProfile\": {\r\n        \"networkProfile\": {\r\n          \"networkInterfaceConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"networkSecurityGroup\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n                },\r\n                \"primary\": true,\r\n                \"enableAcceleratedNetworking\": false,\r\n                \"ipConfigurations\": [\r\n                  {\r\n                    \"properties\": {\r\n                      \"subnet\": {\r\n                        \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                      },\r\n                      \"primary\": true\r\n                    },\r\n                    \"name\": \"ipconfig1\"\r\n                  }\r\n                ]\r\n              },\r\n              \"name\": \"nic1\"\r\n            }\r\n          ],\r\n          \"networkApiVersion\": \"2020-11-01\"\r\n        },\r\n        \"securityProfile\": {\r\n          \"uefiSettings\": {\r\n            \"secureBootEnabled\": true,\r\n            \"vTpmEnabled\": true\r\n          },\r\n          \"securityType\": \"TrustedLaunch\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerNamePrefix\": \"fleetvm\",\r\n          \"adminUsername\": \"testadmin\",\r\n          \"adminPassword\": \"[Sanitized]\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2022-datacenter-azure-edition\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\",\r\n            \"osType\": \"Windows\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"mode\": \"Launch\",\r\n    \"vmNamePrefix\": \"fleetvm\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "2428" ]
+        "Content-Length": [ "2451" ]
       }
     },
     "Response": {
@@ -17,44 +17,44 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01" ],
         "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/PutFleet3Min;59,Microsoft.Compute/PutFleet30Min;719" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "491da94d-bcd9-439f-b23d-cfc7911d7be9" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/centralus/7bd21c4a-7a5c-4686-ba5c-69c9aae09f7f" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "784ec17e-1d7f-4890-8f1d-d99ffe1b71cc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/854380d1-2935-4082-a8e2-ff922cfab4b3" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f8c2afe2-75c0-4738-b04d-38cab2b55231" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211253Z:f8c2afe2-75c0-4738-b04d-38cab2b55231" ],
+        "x-ms-correlation-request-id": [ "88108de8-b05a-49d0-9fdd-224feda838a2" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T171843Z:88108de8-b05a-49d0-9fdd-224feda838a2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BA59A4CAFD454D5DAC794FCD153AA582 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:12:51Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:12:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5A5C1BE0265445AA8FBE09048DCBC0B8 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:18:40Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:18:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2394" ],
+        "Content-Length": [ "2423" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:12:53.06292+00:00\",\r\n    \"uniqueId\": \"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:18:42.4790016+00:00\",\r\n    \"uniqueId\": \"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+2": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "03b21b26-472d-4c29-8d7a-cf3699e8b375" ],
+        "x-ms-client-request-id": [ "6101f5bd-1bee-4fd5-b9a5-cc5a286acade" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -64,43 +64,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1195,Microsoft.Compute/GetFleet30Min;7745" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1196,Microsoft.Compute/GetFleet30Min;7796" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "d400c7cd-4185-4ac9-a21e-4b49b310629b" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/277614e0-364f-41d1-9e4f-67d7ee537f97" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "455cae81-d2ab-4397-acdd-3de08fe5cf48" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/b811fb50-aa7c-41d4-b886-5a41f4867cd4" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "8d984ae3-f3fd-4e7e-9133-af761f21fe41" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211324Z:8d984ae3-f3fd-4e7e-9133-af761f21fe41" ],
+        "x-ms-correlation-request-id": [ "d65664b5-ca04-40b5-88de-22bc4e48fe49" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T171914Z:d65664b5-ca04-40b5-88de-22bc4e48fe49" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 19E7F23E54AC48408893E5CC8EB2409D Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:13:24Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:13:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5CF3853552E64D05A3B78A9CC1167E7A Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:19:14Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:19:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "134" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:12:52.0738965+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"491da94d-bcd9-439f-b23d-cfc7911d7be9\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:18:41.0657728+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"784ec17e-1d7f-4890-8f1d-d99ffe1b71cc\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+3": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "03b21b26-472d-4c29-8d7a-cf3699e8b375" ],
+        "x-ms-client-request-id": [ "6101f5bd-1bee-4fd5-b9a5-cc5a286acade" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -110,43 +110,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1193,Microsoft.Compute/GetFleet30Min;7743" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1192,Microsoft.Compute/GetFleet30Min;7792" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "4f732437-c65b-4823-8075-05e86f123c8e" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/543c96d0-5d57-412f-bbc8-a47c52b334f1" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "dfb81226-7a41-4656-a6dd-59af8ef31dd7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/ec158f09-b394-40a7-bdc4-0ef54be7e25e" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "171e8856-fd5e-44f4-96e9-2ae3480b2fb0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211354Z:171e8856-fd5e-44f4-96e9-2ae3480b2fb0" ],
+        "x-ms-correlation-request-id": [ "355d9916-012e-411d-8a5a-a6ff168381ba" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T171944Z:355d9916-012e-411d-8a5a-a6ff168381ba" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 00F148645A64460DA1B65E8AB39AD02A Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:13:54Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:13:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6617BE1F80A04CD8981E2322FAD62B20 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:19:44Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:19:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "134" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:12:52.0738965+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"491da94d-bcd9-439f-b23d-cfc7911d7be9\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:18:41.0657728+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"784ec17e-1d7f-4890-8f1d-d99ffe1b71cc\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+4": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/784ec17e-1d7f-4890-8f1d-d99ffe1b71cc?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "03b21b26-472d-4c29-8d7a-cf3699e8b375" ],
+        "x-ms-client-request-id": [ "6101f5bd-1bee-4fd5-b9a5-cc5a286acade" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -156,89 +156,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1188,Microsoft.Compute/GetFleet30Min;7738" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1189,Microsoft.Compute/GetFleet30Min;7789" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "f8e6b839-0bc8-44c5-af5b-a292f6592917" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/3eea875b-b3ce-4628-8431-00ed4259c282" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "2857febb-32e9-45e6-b94e-fc13c84c72bb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/772b0928-2942-47ac-a9a7-6025b7774da8" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "cfae6e2b-d58f-4a8e-9dff-e454e808faf6" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211425Z:cfae6e2b-d58f-4a8e-9dff-e454e808faf6" ],
+        "x-ms-correlation-request-id": [ "64eba19f-2ca3-44c3-8bc8-6dfaf5cc1b46" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172015Z:64eba19f-2ca3-44c3-8bc8-6dfaf5cc1b46" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 036D66CD3C5248F4B16A261EBAB4E6DA Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:14:25Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:14:24 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "134" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:12:52.0738965+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"491da94d-bcd9-439f-b23d-cfc7911d7be9\"\r\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/491da94d-bcd9-439f-b23d-cfc7911d7be9?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "03b21b26-472d-4c29-8d7a-cf3699e8b375" ],
-        "CommandName": [ "New-AzComputeFleet" ],
-        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1184,Microsoft.Compute/GetFleet30Min;7734" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "2729ba0a-75d8-4d88-92c2-5d20aeb2b46a" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/df5867de-c143-4105-8504-3e8666b1a739" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "3dc381d9-9de1-48c8-b0fb-38ee56f36efe" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211456Z:3dc381d9-9de1-48c8-b0fb-38ee56f36efe" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A2AC1A53E2774757AAE001F1EE74D0E4 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:14:55Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:14:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6F631FE006734D54830AB58C9E2C34F3 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:20:15Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:20:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "184" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:12:52.0738965+00:00\",\r\n  \"endTime\": \"2026-06-09T21:14:33.8998414+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"491da94d-bcd9-439f-b23d-cfc7911d7be9\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:18:41.0657728+00:00\",\r\n  \"endTime\": \"2026-10-16T17:20:03.9086499+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"784ec17e-1d7f-4890-8f1d-d99ffe1b71cc\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview+6": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "03b21b26-472d-4c29-8d7a-cf3699e8b375" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "6101f5bd-1bee-4fd5-b9a5-cc5a286acade" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -248,39 +202,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1183,Microsoft.Compute/GetFleet30Min;7733" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1188,Microsoft.Compute/GetFleet30Min;7788" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "8e2b6bc5-a0c2-440a-bf02-30ef73305076" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "8fbfbf75-c363-4591-a571-55e37ef0ae42" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "775b00bf-2b44-426d-b29e-7aac43cac205" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211456Z:775b00bf-2b44-426d-b29e-7aac43cac205" ],
+        "x-ms-correlation-request-id": [ "1106c0d9-c5fc-45eb-847e-0d991b30c857" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172015Z:1106c0d9-c5fc-45eb-847e-0d991b30c857" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9665EF64143441678D8A4874FC8E0495 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:14:56Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:14:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 90A1019C2D8245B18290DE0F57ABF669 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:20:15Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:20:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2395" ],
+        "Content-Length": [ "2424" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:12:53.06292+00:00\",\r\n    \"uniqueId\": \"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:18:42.4790016+00:00\",\r\n    \"uniqueId\": \"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-04-01-preview+7": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-08-01+6": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-04-01-preview",
-      "Content": "{\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"regularPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1,\r\n      \"allocationStrategy\": \"LowestPrice\"\r\n    },\r\n    \"computeProfile\": {\r\n      \"computeApiVersion\": \"2024-03-01\",\r\n      \"baseVirtualMachineProfile\": {\r\n        \"networkProfile\": {\r\n          \"networkInterfaceConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"networkSecurityGroup\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n                },\r\n                \"primary\": true,\r\n                \"enableAcceleratedNetworking\": false,\r\n                \"ipConfigurations\": [\r\n                  {\r\n                    \"properties\": {\r\n                      \"subnet\": {\r\n                        \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                      },\r\n                      \"primary\": true\r\n                    },\r\n                    \"name\": \"ipconfig1\"\r\n                  }\r\n                ]\r\n              },\r\n              \"name\": \"nic1\"\r\n            }\r\n          ],\r\n          \"networkApiVersion\": \"2020-11-01\"\r\n        },\r\n        \"securityProfile\": {\r\n          \"uefiSettings\": {\r\n            \"secureBootEnabled\": true,\r\n            \"vTpmEnabled\": true\r\n          },\r\n          \"securityType\": \"TrustedLaunch\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerNamePrefix\": \"fleetvm\",\r\n          \"adminUsername\": \"testadmin\",\r\n          \"adminPassword\": \"[Sanitized]\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2022-datacenter-azure-edition\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\",\r\n            \"osType\": \"Windows\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"mode\": \"Launch\",\r\n    \"vmNamePrefix\": \"fleetvm\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-08-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"regularPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1,\r\n      \"allocationStrategy\": \"LowestPrice\"\r\n    },\r\n    \"computeProfile\": {\r\n      \"computeApiVersion\": \"2024-03-01\",\r\n      \"baseVirtualMachineProfile\": {\r\n        \"networkProfile\": {\r\n          \"networkInterfaceConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"networkSecurityGroup\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n                },\r\n                \"primary\": true,\r\n                \"enableAcceleratedNetworking\": false,\r\n                \"ipConfigurations\": [\r\n                  {\r\n                    \"properties\": {\r\n                      \"subnet\": {\r\n                        \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                      },\r\n                      \"primary\": true\r\n                    },\r\n                    \"name\": \"ipconfig1\"\r\n                  }\r\n                ]\r\n              },\r\n              \"name\": \"nic1\"\r\n            }\r\n          ],\r\n          \"networkApiVersion\": \"2020-11-01\"\r\n        },\r\n        \"securityProfile\": {\r\n          \"uefiSettings\": {\r\n            \"secureBootEnabled\": true,\r\n            \"vTpmEnabled\": true\r\n          },\r\n          \"securityType\": \"TrustedLaunch\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerNamePrefix\": \"fleetvm\",\r\n          \"adminUsername\": \"testadmin\",\r\n          \"adminPassword\": \"[Sanitized]\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2022-datacenter-azure-edition\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\",\r\n            \"osType\": \"Windows\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"mode\": \"Launch\",\r\n    \"vmNamePrefix\": \"fleetvm\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "2432" ]
+        "Content-Length": [ "2455" ]
       }
     },
     "Response": {
@@ -288,44 +242,90 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01" ],
         "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/PutFleet3Min;58,Microsoft.Compute/PutFleet30Min;718" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "7488be6d-a246-4b37-8fe0-acdf60b426de" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/centralus/182f88f7-25a7-4378-9f2b-0ff6cb35abca" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "afbc5d80-e8d0-42cc-bba2-705ec034d5a3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/df9e7602-2299-4d23-9346-58976b4cb563" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "0ef0f09b-516c-4e51-96b2-bbd4f5b51392" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211458Z:0ef0f09b-516c-4e51-96b2-bbd4f5b51392" ],
+        "x-ms-correlation-request-id": [ "0cefede7-d87d-4029-8680-ad3bd3b9c92d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172018Z:0cefede7-d87d-4029-8680-ad3bd3b9c92d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 82C542C23B734F82AE3DF8B31AB62ED7 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:14:56Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:14:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 29355FAB6B634D8097D8E6C32535A140 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:20:15Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:20:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2403" ],
+        "Content-Length": [ "2430" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet2\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:14:57.6933006+00:00\",\r\n    \"uniqueId\": \"429bb33f-045c-4a31-9066-265ab13234ad\",\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet2\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:20:17.3914384+00:00\",\r\n    \"uniqueId\": \"7dcee0be-8553-4835-a006-fe900ca526df\",\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+8": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "077fdd46-b04c-4c44-b81f-ac4e6d7570f6" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1181,Microsoft.Compute/GetFleet30Min;7781" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "86c6e65b-c1b0-467e-a16b-da9f07cefb5e" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/55d96c7c-4b93-4522-a7b2-cf67fbbafc73" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "fb79d0a5-a87a-435a-863a-18f6e76e7875" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172048Z:fb79d0a5-a87a-435a-863a-18f6e76e7875" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0445E51D1C5A4B1F9C093EEE77E9D663 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:20:48Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:20:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:20:16.6740529+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"afbc5d80-e8d0-42cc-bba2-705ec034d5a3\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "4c028997-2bc7-4211-9535-684afe0c4f6a" ],
+        "x-ms-client-request-id": [ "077fdd46-b04c-4c44-b81f-ac4e6d7570f6" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -335,43 +335,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1179,Microsoft.Compute/GetFleet30Min;7758" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1178,Microsoft.Compute/GetFleet30Min;7778" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "e068d705-e0a0-48d8-ac2c-ed3314826938" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/8a4cdb7c-b793-42b4-998e-49e695205611" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "62bf7617-5950-440e-808b-c45057d61e77" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/9d12dbcb-c0f9-4ea3-809a-06a3b8acee42" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "3dfce883-77c8-4522-998f-4666ebb7bfc2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211528Z:3dfce883-77c8-4522-998f-4666ebb7bfc2" ],
+        "x-ms-correlation-request-id": [ "1cebbc12-88fd-418e-9da9-6bc1cf576b9a" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172119Z:1cebbc12-88fd-418e-9da9-6bc1cf576b9a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 495590E484664796A2000A4FD147761D Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:15:28Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:15:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DF1E06CDBACE4B8DADC3BC2886091B60 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:21:18Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:21:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "134" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:14:56.8905494+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"7488be6d-a246-4b37-8fe0-acdf60b426de\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:20:16.6740529+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"afbc5d80-e8d0-42cc-bba2-705ec034d5a3\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+9": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "4c028997-2bc7-4211-9535-684afe0c4f6a" ],
+        "x-ms-client-request-id": [ "077fdd46-b04c-4c44-b81f-ac4e6d7570f6" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -381,43 +381,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1178,Microsoft.Compute/GetFleet30Min;7755" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1177,Microsoft.Compute/GetFleet30Min;7774" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "d9b8008b-0bc1-47b2-ba32-c6ba109c292b" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/569640b2-5256-45d8-ad2b-74709e52ea06" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "908bcb19-1d1f-46a8-a62b-7f7de59d5cb1" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/86419fb7-1319-41e3-9086-9c440bae0fcd" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "4217ca47-ca1f-492b-91a8-7e45c4f42ce9" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211559Z:4217ca47-ca1f-492b-91a8-7e45c4f42ce9" ],
+        "x-ms-correlation-request-id": [ "4de3b961-2b9a-4923-9f7d-a276e82f3096" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172149Z:4de3b961-2b9a-4923-9f7d-a276e82f3096" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CCE6D5EDCD0C46EFB77AFFE85D94C4F1 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:15:59Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:15:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 77B8C37CEECA41D9ABE5AD2D979EA7AC Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:21:49Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:21:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "134" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:14:56.8905494+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"7488be6d-a246-4b37-8fe0-acdf60b426de\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:20:16.6740529+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"afbc5d80-e8d0-42cc-bba2-705ec034d5a3\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+10": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/7488be6d-a246-4b37-8fe0-acdf60b426de?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/locations/centralus/operations/afbc5d80-e8d0-42cc-bba2-705ec034d5a3?p=89cf1a84-b3cb-49bd-9da3-734234710887\u0026api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "4c028997-2bc7-4211-9535-684afe0c4f6a" ],
+        "x-ms-client-request-id": [ "077fdd46-b04c-4c44-b81f-ac4e6d7570f6" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -427,43 +427,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1177,Microsoft.Compute/GetFleet30Min;7751" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1176,Microsoft.Compute/GetFleet30Min;7771" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "0f7bfe37-d6f8-4cda-914a-0225d0488e53" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/29a2268e-fe80-4a4c-ab42-7eb45114a17b" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "49e8ee1f-961c-49c2-933f-4da1a9e6410a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=77363a91-8ad2-49b2-b965-c0f4e8768e36/southcentralus/3423b154-b5e1-483e-8a69-1c14fba2d660" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "f326aab1-97e9-4784-a2b2-f94e0c7b9182" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211629Z:f326aab1-97e9-4784-a2b2-f94e0c7b9182" ],
+        "x-ms-correlation-request-id": [ "998204e5-78d2-4aab-93c0-b7e2585aad8f" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172220Z:998204e5-78d2-4aab-93c0-b7e2585aad8f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 28C7EE6B10C04A8AB31C7FFB29C30986 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:29Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6140273E89B1409AB93C71F24B61AB79 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:19Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "184" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"startTime\": \"2026-06-09T21:14:56.8905494+00:00\",\r\n  \"endTime\": \"2026-06-09T21:16:18.3652002+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"7488be6d-a246-4b37-8fe0-acdf60b426de\"\r\n}",
+      "Content": "{\r\n  \"startTime\": \"2026-10-16T17:20:16.6740529+00:00\",\r\n  \"endTime\": \"2026-10-16T17:22:07.9658633+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"afbc5d80-e8d0-42cc-bba2-705ec034d5a3\"\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-04-01-preview+11": {
+  "Get-AzComputeFleet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-08-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "4c028997-2bc7-4211-9535-684afe0c4f6a" ],
+        "x-ms-client-request-id": [ "077fdd46-b04c-4c44-b81f-ac4e6d7570f6" ],
         "CommandName": [ "New-AzComputeFleet" ],
         "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ]
       },
       "ContentHeaders": {
       }
@@ -473,41 +473,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1180,Microsoft.Compute/GetFleet30Min;7750" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1175,Microsoft.Compute/GetFleet30Min;7770" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "299618e9-919b-4213-a17b-d98edf69e609" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "ec50db63-fa0d-42bd-9e35-3c7c195f2955" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "8164fe14-fd17-40df-9ad9-ee670fdfdb36" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211630Z:8164fe14-fd17-40df-9ad9-ee670fdfdb36" ],
+        "x-ms-correlation-request-id": [ "868a2d02-6e22-4910-a394-b31dd2a888b0" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172220Z:868a2d02-6e22-4910-a394-b31dd2a888b0" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 66075AF7855A400A9EC72338B33AD7A6 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:29Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3B4FD87156BF468294F14CAF14D1CA40 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:20Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2404" ],
+        "Content-Length": [ "2431" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet2\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:14:57.6933006+00:00\",\r\n    \"uniqueId\": \"429bb33f-045c-4a31-9066-265ab13234ad\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet2\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:20:17.3914384+00:00\",\r\n    \"uniqueId\": \"7dcee0be-8553-4835-a006-fe900ca526df\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+ListBySubscriptionId+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/fleets?api-version=2026-04-01-preview+1": {
+  "Get-AzComputeFleet+[NoContext]+ListBySubscriptionId+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/fleets?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/fleets?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/providers/Microsoft.AzureFleet/fleets?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "87a158a9-fbf3-4114-a1e8-4bf5f404c9df" ],
+        "x-ms-client-request-id": [ "fdf42ab6-527c-4f25-9e48-b4e63b72fa1a" ],
         "CommandName": [ "Get-AzComputeFleet" ],
         "FullCommandName": [ "Get-AzComputeFleet_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -518,40 +518,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "410bfd55-d325-4374-87d1-27e27b014532", "b2a66b76-ba97-44b2-9c39-2c68068d6850" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "419f3df5-a11e-46dc-8b09-48ae558a2574" ],
-        "x-ms-correlation-request-id": [ "419f3df5-a11e-46dc-8b09-48ae558a2574" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260609T211633Z:419f3df5-a11e-46dc-8b09-48ae558a2574" ],
+        "x-ms-original-request-ids": [ "62fad70b-8a10-425a-9510-30c6c65531d6" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1174,Microsoft.Compute/GetFleet30Min;7769" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "925cb630-43c3-445a-8ef5-ab0976807762" ],
+        "x-ms-correlation-request-id": [ "925cb630-43c3-445a-8ef5-ab0976807762" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20261016T172221Z:925cb630-43c3-445a-8ef5-ab0976807762" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8ADCC6141F054CAF8CDB5B8EC7E8D34E Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:30Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 50181454B93D48CAAC294B2B6111DACE Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:20Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "13748" ],
+        "Content-Length": [ "3440" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"launch-fleet\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/FLEET-GET-TEST-RG/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-06-09T21:12:53.06292+00:00\",\"uniqueId\":\"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"launch-fleet2\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/FLEET-GET-TEST-RG2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-06-09T21:14:57.6933006+00:00\",\"uniqueId\":\"429bb33f-045c-4a31-9066-265ab13234ad\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"ReleaseTestFleet\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TESTNITHINRAMRGRELEASEFLEET/providers/Microsoft.AzureFleet/fleets/ReleaseTestFleet\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"SouthCentralUSSTG\",\"properties\":{\"mode\":\"Managed\",\"spotPriorityProfile\":{\"evictionPolicy\":\"Delete\",\"allocationStrategy\":\"LowestPrice\",\"maintain\":true,\"capacity\":2},\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"},{\"name\":\"Standard_D4s_v3\"},{\"name\":\"Standard_E2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"storageProfile\":{\"imageReference\":{\"publisher\":\"canonical\",\"offer\":\"ubuntu-24_04-lts\",\"sku\":\"ubuntu-pro\",\"version\":\"latest\"},\"osDisk\":{\"createOption\":\"fromImage\",\"caching\":\"ReadWrite\",\"osType\":\"Linux\",\"managedDisk\":{\"storageAccountType\":\"Premium_LRS\"}}},\"licenseType\":\"None\",\"osProfile\":{\"adminUsername\":\"azureuser\",\"computerNamePrefix\":\"releasete\"},\"securityProfile\":{\"securityType\":\"TrustedLaunch\",\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":false}},\"networkProfile\":{\"networkApiVersion\":\"2020-11-01\",\"networkInterfaceConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01\",\"properties\":{\"primary\":true,\"enableAcceleratedNetworking\":false,\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-southcentralusstg-1-nic01\"},\"ipConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01-ipConfig\",\"properties\":{\"primary\":true,\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/virtualNetworks/vnet-southcentralusstg-1/subnets/snet-southcentralusstg-1\"},\"publicIPAddressConfiguration\":{\"name\":\"vnet-southcentralusstg-1-nic01-publicip\",\"properties\":{\"idleTimeoutInMinutes\":15}}}}]}}]}},\"platformFaultDomainCount\":1,\"computeApiVersion\":\"2023-09-01\"},\"timeCreated\":\"2026-06-04T09:40:29.8994363+00:00\",\"uniqueId\":\"974d3eba-3087-41ad-b32c-86f28ddce7f9\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"ReleaseTestFleet2\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TESTNITHINRAMRGRELEASEFLEET/providers/Microsoft.AzureFleet/fleets/ReleaseTestFleet2\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"SouthCentralUSSTG\",\"properties\":{\"mode\":\"Managed\",\"spotPriorityProfile\":{\"evictionPolicy\":\"Delete\",\"allocationStrategy\":\"LowestPrice\",\"maintain\":true,\"capacity\":2},\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":0},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"},{\"name\":\"Standard_D4s_v3\"},{\"name\":\"Standard_E2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"storageProfile\":{\"imageReference\":{\"publisher\":\"AzureRT.PIRCore.TestWAStage\",\"offer\":\"TestUbuntuServer\",\"sku\":\"16.04\",\"version\":\"latest\"},\"osDisk\":{\"createOption\":\"fromImage\",\"caching\":\"ReadWrite\",\"osType\":\"Linux\",\"managedDisk\":{\"storageAccountType\":\"Premium_LRS\"}}},\"licenseType\":\"None\",\"osProfile\":{\"adminUsername\":\"azureuser\",\"computerNamePrefix\":\"releasete\"},\"securityProfile\":{\"securityType\":\"TrustedLaunch\",\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":false}},\"networkProfile\":{\"networkApiVersion\":\"2020-11-01\",\"networkInterfaceConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01\",\"properties\":{\"primary\":true,\"enableAcceleratedNetworking\":false,\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-southcentralusstg-1-nic01\"},\"ipConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01-ipConfig\",\"properties\":{\"primary\":true,\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/virtualNetworks/vnet-southcentralusstg-1/subnets/snet-southcentralusstg-1\"},\"publicIPAddressConfiguration\":{\"name\":\"vnet-southcentralusstg-1-nic01-publicip\",\"properties\":{\"idleTimeoutInMinutes\":15}}}}]}}]}},\"platformFaultDomainCount\":1,\"computeApiVersion\":\"2023-09-01\"},\"timeCreated\":\"2026-06-04T09:47:49.3088661+00:00\",\"uniqueId\":\"253986dc-1905-42cc-a046-866bfe458e3d\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"ReleaseTestFleet3\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TESTNITHINRAMRGRELEASEFLEET/providers/Microsoft.AzureFleet/fleets/ReleaseTestFleet3\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"SouthCentralUSSTG\",\"properties\":{\"mode\":\"Managed\",\"spotPriorityProfile\":{\"evictionPolicy\":\"Delete\",\"allocationStrategy\":\"LowestPrice\",\"maintain\":true,\"capacity\":2},\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":0},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"},{\"name\":\"Standard_D4s_v3\"},{\"name\":\"Standard_E2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"storageProfile\":{\"imageReference\":{\"publisher\":\"AzureRT.PIRCore.TestWAStage\",\"offer\":\"TestUbuntuServer\",\"sku\":\"16.04\",\"version\":\"latest\"},\"osDisk\":{\"createOption\":\"fromImage\",\"caching\":\"ReadWrite\",\"osType\":\"Linux\",\"managedDisk\":{\"storageAccountType\":\"Premium_LRS\"}}},\"licenseType\":\"None\",\"osProfile\":{\"adminUsername\":\"azureuser\",\"computerNamePrefix\":\"releasete\"},\"securityProfile\":{\"securityType\":\"None\",\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":false}},\"networkProfile\":{\"networkApiVersion\":\"2020-11-01\",\"networkInterfaceConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01\",\"properties\":{\"primary\":true,\"enableAcceleratedNetworking\":false,\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-southcentralusstg-1-nic01\"},\"ipConfigurations\":[{\"name\":\"vnet-southcentralusstg-1-nic01-ipConfig\",\"properties\":{\"primary\":true,\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/virtualNetworks/vnet-southcentralusstg-1/subnets/snet-southcentralusstg-1\"},\"publicIPAddressConfiguration\":{\"name\":\"vnet-southcentralusstg-1-nic01-publicip\",\"properties\":{\"idleTimeoutInMinutes\":15}}}}]}}]}},\"platformFaultDomainCount\":1,\"computeApiVersion\":\"2023-09-01\"},\"timeCreated\":\"2026-06-04T09:49:56.9997819+00:00\",\"uniqueId\":\"73094d64-c4c3-426b-bc2a-dc5ac519d33e\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"TestFleetRelease4\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TESTNITHINRAMRGRELEASEFLEET/providers/Microsoft.AzureFleet/fleets/TestFleetRelease4\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"SouthCentralUSSTG\",\"properties\":{\"mode\":\"Managed\",\"spotPriorityProfile\":{\"evictionPolicy\":\"Delete\",\"allocationStrategy\":\"LowestPrice\",\"maintain\":true,\"capacity\":2},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"},{\"name\":\"Standard_D4s_v3\"},{\"name\":\"Standard_E2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"storageProfile\":{\"imageReference\":{\"publisher\":\"canonical\",\"offer\":\"ubuntu-24_04-lts\",\"sku\":\"server\",\"version\":\"latest\"},\"osDisk\":{\"createOption\":\"fromImage\",\"caching\":\"ReadWrite\",\"osType\":\"Linux\",\"managedDisk\":{\"storageAccountType\":\"Premium_LRS\"}}},\"licenseType\":\"None\",\"osProfile\":{\"adminUsername\":\"azureuser\",\"computerNamePrefix\":\"testfleet\"},\"networkProfile\":{\"networkApiVersion\":\"2020-11-01\",\"networkInterfaceConfigurations\":[{\"name\":\"vnet-southcentralusstg-2-nic01\",\"properties\":{\"primary\":true,\"enableAcceleratedNetworking\":false,\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-southcentralusstg-2-nic01\"},\"ipConfigurations\":[{\"name\":\"vnet-southcentralusstg-2-nic01-ipConfig\",\"properties\":{\"primary\":true,\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/virtualNetworks/vnet-southcentralusstg-2/subnets/snet-southcentralusstg-1\"},\"publicIPAddressConfiguration\":{\"name\":\"vnet-southcentralusstg-2-nic01-publicip\",\"properties\":{\"idleTimeoutInMinutes\":15}}}}]}}]}},\"platformFaultDomainCount\":1,\"computeApiVersion\":\"2023-09-01\"},\"timeCreated\":\"2026-06-04T09:54:43.6778419+00:00\",\"uniqueId\":\"67a3227a-39b9-477a-bc50-411d7544a4bc\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"TestFleetRelease5\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TESTNITHINRAMRGRELEASEFLEET/providers/Microsoft.AzureFleet/fleets/TestFleetRelease5\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"SouthCentralUSSTG\",\"properties\":{\"mode\":\"Managed\",\"spotPriorityProfile\":{\"evictionPolicy\":\"Delete\",\"allocationStrategy\":\"LowestPrice\",\"maintain\":true,\"capacity\":3},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"},{\"name\":\"Standard_D4s_v3\"},{\"name\":\"Standard_E2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"storageProfile\":{\"imageReference\":{\"publisher\":\"AzureRT.PIRCore.TestWAStage\",\"offer\":\"TestUbuntuServer\",\"sku\":\"16.04\",\"version\":\"latest\"},\"osDisk\":{\"createOption\":\"fromImage\",\"caching\":\"ReadWrite\",\"osType\":\"Linux\",\"managedDisk\":{\"storageAccountType\":\"Premium_LRS\"}}},\"licenseType\":\"None\",\"osProfile\":{\"adminUsername\":\"azureuser\",\"computerNamePrefix\":\"testfleet\"},\"networkProfile\":{\"networkApiVersion\":\"2020-11-01\",\"networkInterfaceConfigurations\":[{\"name\":\"vnet-southcentralusstg-2-nic01\",\"properties\":{\"primary\":true,\"enableAcceleratedNetworking\":false,\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-southcentralusstg-2-nic01\"},\"ipConfigurations\":[{\"name\":\"vnet-southcentralusstg-2-nic01-ipConfig\",\"properties\":{\"primary\":true,\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/TestNithinRamRGReleaseFleet/providers/Microsoft.Network/virtualNetworks/vnet-southcentralusstg-2/subnets/snet-southcentralusstg-1\"},\"publicIPAddressConfiguration\":{\"name\":\"vnet-southcentralusstg-2-nic01-publicip\",\"properties\":{\"idleTimeoutInMinutes\":15}}}}]}}]}},\"platformFaultDomainCount\":1,\"computeApiVersion\":\"2023-09-01\"},\"timeCreated\":\"2026-06-04T09:56:59.6447209+00:00\",\"uniqueId\":\"ba719902-a24d-402c-af2c-29a9f9d9a1f6\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"name\":\"launch-fleet\",\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/FLEET-GET-TEST-RG/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"capacityType\":\"VM\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-10-16T17:18:42.4790016+00:00\",\"uniqueId\":\"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\"provisioningState\":\"Succeeded\"}},{\"name\":\"launch-fleet2\",\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/FLEET-GET-TEST-RG2/providers/Microsoft.AzureFleet/fleets/launch-fleet2\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"capacityType\":\"VM\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-10-16T17:20:17.3914384+00:00\",\"uniqueId\":\"7dcee0be-8553-4835-a006-fe900ca526df\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+ListFleetsByResourceGroup+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets?api-version=2026-04-01-preview+1": {
+  "Get-AzComputeFleet+[NoContext]+ListFleetsByResourceGroup+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "f93723c9-f1f9-46d5-b671-36c4d5055f1b" ],
+        "x-ms-client-request-id": [ "6c92d996-56df-43b6-b29b-39280c6908a5" ],
         "CommandName": [ "Get-AzComputeFleet" ],
         "FullCommandName": [ "Get-AzComputeFleet_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -562,42 +564,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "a3508ce2-9818-477c-8cb1-0d4ff825b89e" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1176,Microsoft.Compute/GetFleet30Min;7746" ],
+        "x-ms-original-request-ids": [ "f585e17f-55f6-4a72-be25-cbf03950e729" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1173,Microsoft.Compute/GetFleet30Min;7768" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-request-id": [ "179e50e8-f860-41ce-8aaa-e577f6661e15" ],
-        "x-ms-correlation-request-id": [ "179e50e8-f860-41ce-8aaa-e577f6661e15" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211634Z:179e50e8-f860-41ce-8aaa-e577f6661e15" ],
+        "x-ms-request-id": [ "e21d669f-1185-4f83-bdf9-c4201b0febda" ],
+        "x-ms-correlation-request-id": [ "e21d669f-1185-4f83-bdf9-c4201b0febda" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172221Z:e21d669f-1185-4f83-bdf9-c4201b0febda" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F1252DA237A04FBD873C259868EEB54C Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:34Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D157D3843ED848B68BDDC7B40733109B Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:21Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1700" ],
+        "Content-Length": [ "1722" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"launch-fleet\",\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/FLEET-GET-TEST-RG/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-06-09T21:12:53.06292+00:00\",\"uniqueId\":\"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"name\":\"launch-fleet\",\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/FLEET-GET-TEST-RG/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\"type\":\"Microsoft.AzureFleet/fleets\",\"location\":\"centralus\",\"tags\":{\"environment\":\"test\"},\"properties\":{\"mode\":\"Launch\",\"capacityType\":\"VM\",\"regularPriorityProfile\":{\"allocationStrategy\":\"LowestPrice\",\"capacity\":2,\"minCapacity\":1},\"vmSizesProfile\":[{\"name\":\"Standard_D2s_v3\"}],\"computeProfile\":{\"baseVirtualMachineProfile\":{\"networkProfile\":{\"networkInterfaceConfigurations\":[{\"properties\":{\"networkSecurityGroup\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"},\"primary\":true,\"enableAcceleratedNetworking\":false,\"ipConfigurations\":[{\"properties\":{\"subnet\":{\"id\":\"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"},\"primary\":true},\"name\":\"ipconfig1\"}]},\"name\":\"nic1\"}],\"networkApiVersion\":\"2020-11-01\"},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"securityType\":\"TrustedLaunch\"},\"osProfile\":{\"computerNamePrefix\":\"fleetvm\",\"adminUsername\":\"testadmin\"},\"storageProfile\":{\"imageReference\":{\"publisher\":\"MicrosoftWindowsServer\",\"offer\":\"WindowsServer\",\"sku\":\"2022-datacenter-azure-edition\",\"version\":\"latest\"},\"osDisk\":{\"managedDisk\":{\"storageAccountType\":\"Standard_LRS\"},\"caching\":\"ReadWrite\",\"createOption\":\"FromImage\",\"osType\":\"Windows\"}}},\"computeApiVersion\":\"2024-03-01\"},\"timeCreated\":\"2026-10-16T17:18:42.4790016+00:00\",\"uniqueId\":\"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+GetFleet+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview+1": {
+  "Get-AzComputeFleet+[NoContext]+GetFleet+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "1dfabc9d-6669-4a71-b965-e84246feaa1d" ],
+        "x-ms-client-request-id": [ "67511cb4-34bb-444d-9521-13af3ce5d09a" ],
         "CommandName": [ "Get-AzComputeFleet" ],
         "FullCommandName": [ "Get-AzComputeFleet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -608,41 +610,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1175,Microsoft.Compute/GetFleet30Min;7745" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1172,Microsoft.Compute/GetFleet30Min;7767" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "549618cb-d9cd-4ca9-a399-20622b89297d" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "e85afe0c-6599-4d2d-9387-4319a6b4e473" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "3c8075b2-5f15-4955-988c-4fc2b6b9ea52" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211635Z:3c8075b2-5f15-4955-988c-4fc2b6b9ea52" ],
+        "x-ms-correlation-request-id": [ "3ddf00b7-fd19-4e43-a0d0-cc43c895c2b1" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172221Z:3ddf00b7-fd19-4e43-a0d0-cc43c895c2b1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8E9D65D8FB904D8E91815EF4B2CD093F Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:34Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F314C44CF7334FFCA6E679038114691B Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:21Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2395" ],
+        "Content-Length": [ "2424" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:12:53.06292+00:00\",\r\n    \"uniqueId\": \"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:18:42.4790016+00:00\",\r\n    \"uniqueId\": \"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+GetFleetViaIdentity+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview+1": {
+  "Get-AzComputeFleet+[NoContext]+GetFleetViaIdentity+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "2edfe367-d7e6-4720-950e-6b284262b5e2" ],
+        "x-ms-client-request-id": [ "f55e427f-c574-4f9f-8e7e-62144ed7fcbe" ],
         "CommandName": [ "Get-AzComputeFleet" ],
         "FullCommandName": [ "Get-AzComputeFleet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -653,41 +655,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1174,Microsoft.Compute/GetFleet30Min;7744" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1171,Microsoft.Compute/GetFleet30Min;7766" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "57334349-b5f4-4009-9cb7-6b02b9026594" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "2e08411b-3166-4bcf-a9e9-a30ee4b85a7d" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211635Z:2e08411b-3166-4bcf-a9e9-a30ee4b85a7d" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "1a369a92-2274-4c8c-81a3-f9f9773fde0a" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-correlation-request-id": [ "a37e73fb-aaad-4879-8781-61800226a1aa" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172222Z:a37e73fb-aaad-4879-8781-61800226a1aa" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0B84B838E04B4F7E8F5C6022EA0A983C Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:35Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E08F0EBFA4724537B148CE3326C0F913 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:22Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2395" ],
+        "Content-Length": [ "2424" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:12:53.06292+00:00\",\r\n    \"uniqueId\": \"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:18:42.4790016+00:00\",\r\n    \"uniqueId\": \"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzComputeFleet+[NoContext]+GetFleetViaIdentity+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview+2": {
+  "Get-AzComputeFleet+[NoContext]+GetFleetViaIdentity+$GET+https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet?api-version=2026-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "8571e60d-f2c8-4bba-9034-c85c5ed305c4" ],
+        "x-ms-client-request-id": [ "7f80cf2e-854b-4c91-aebe-9d90f04e97e7" ],
         "CommandName": [ "Get-AzComputeFleet" ],
         "FullCommandName": [ "Get-AzComputeFleet_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v14.2.0", "PSVersion/v7.6.7", "Az.ComputeFleet/0.1.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -698,25 +700,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1173,Microsoft.Compute/GetFleet30Min;7743" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1170,Microsoft.Compute/GetFleet30Min;7765" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134242194456383438" ],
-        "x-ms-request-id": [ "d9c8ac73-9a76-4e42-84d0-00609d6a8669" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
-        "x-ms-correlation-request-id": [ "d8467b5d-027c-46b5-aad6-ab3430c6dcf8" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20260609T211635Z:d8467b5d-027c-46b5-aad6-ab3430c6dcf8" ],
+        "x-ms-served-by": [ "89cf1a84-b3cb-49bd-9da3-734234710887_133621052122904128" ],
+        "x-ms-request-id": [ "52bc2a42-f2a9-4f47-898a-36854cc4f7c5" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "0e2d9ed1-6f4f-42bb-a007-db30e6086fec" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20261016T172222Z:0e2d9ed1-6f4f-42bb-a007-db30e6086fec" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BB26E81932D34ED6BE6BF606A7C14EF5 Ref B: CO1AA3060814023 Ref C: 2026-06-09T21:16:35Z" ],
-        "Date": [ "Tue, 09 Jun 2026 21:16:34 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B8BA6886E6F04A408FCC7886DF1BB206 Ref B: SN4AA2022301011 Ref C: 2026-10-16T17:22:22Z" ],
+        "Date": [ "Fri, 16 Oct 2026 17:22:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2395" ],
+        "Content-Length": [ "2424" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-09T21:12:53.06292+00:00\",\r\n    \"uniqueId\": \"0e0c51ea-cab8-46e1-a1a5-c64015549d66\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"launch-fleet\",\r\n  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.AzureFleet/fleets/launch-fleet\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Launch\",\r\n    \"capacityType\": \"VM\",\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/369195ec-b57e-405d-a033-a250c4d6fac4/resourceGroups/fleet-get-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-10-16T17:18:42.4790016+00:00\",\r\n    \"uniqueId\": \"4308b59a-6da1-4cbc-b5dd-2778fc12ff27\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

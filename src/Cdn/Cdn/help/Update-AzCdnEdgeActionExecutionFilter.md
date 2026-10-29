@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnedgeactionexecutionfilter
 schema: 2.0.0
@@ -17,22 +17,21 @@ Update EdgeActionExecutionFilter resource
 Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ExecutionFilterIdentifierHeaderName <String>]
  [-ExecutionFilterIdentifierHeaderValue <String>] [-Tag <Hashtable>] [-VersionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzCdnEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

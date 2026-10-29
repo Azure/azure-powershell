@@ -14,7 +14,7 @@ List VirtualMachine resources of a Launch mode Fleet.
 
 ```
 Get-AzComputeFleetVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Filter <String>] [-Skiptoken <String>] [-DefaultProfile <PSObject>]
+ [-Filter <String>] [-Skiptoken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -25,33 +25,43 @@ List VirtualMachine resources of a Launch mode Fleet.
 
 ### Example 1: List all virtual machines in a Launch mode fleet
 ```powershell
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, OperationStatus
 ```
 
 ```output
 Name                         OperationStatus
 ----                         ---------------
 fleet1prefix_b223f9c1_0      Succeeded
-fleet1prefix_b223f9c1_1      Succeeded
-fleet1prefix_b223f9c1_2      Succeeded
-fleet1prefix_b223f9c1_3      Succeeded
-fleet1prefix_b223f9c1_4      Succeeded
 ```
 
-Lists all virtual machines belonging to the specified Launch mode Compute Fleet. Each VM is named with the fleet's VM name prefix followed by a unique identifier.
+Lists the VMs launched by the fleet and their launch operation status.
+During provisioning, `OperationStatus` can progress through `Launching` and `Creating` before reaching `Succeeded`.
+This is the fleet launch status, not the VM's guest operating system or power state.
 
 ### Example 2: Get full details of virtual machines in a fleet
 ```powershell
-Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Id, OperationStatus
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Id, OperationStatus
 ```
 
 ```output
 Name                    : fleet1prefix_b223f9c1_0
-Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fleet-ps-tst/providers/Microsoft.Compute/virtualMachines/fleet1prefix_b223f9c1_0
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/fleet1prefix_b223f9c1_0
 OperationStatus         : Succeeded
 ```
 
 Retrieves the virtual machines in the fleet and displays their name, full ARM resource ID, and operation status.
+
+### Example 3: Find VM launches that have not succeeded
+```powershell
+Get-AzComputeFleetVirtualMachine -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Where-Object OperationStatus -ne "Succeeded" |
+    Select-Object Name, OperationStatus
+```
+
+Returns pending or unsuccessful launches for inspection.
+No output means every returned VM has reached `Succeeded`; it does not establish that the fleet returned any VMs.
 
 ## PARAMETERS
 
@@ -95,6 +105,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

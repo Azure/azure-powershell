@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>Describes the Machine Extensions List Result.</summary>
+    /// <summary>Paged collection of MachineExtension items</summary>
     [System.ComponentModel.TypeConverter(typeof(MachineExtensionsListResultTypeConverter))]
     public partial class MachineExtensionsListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// Describes the Machine Extensions List Result.
+    /// Paged collection of MachineExtension items
     [System.ComponentModel.TypeConverter(typeof(MachineExtensionsListResultTypeConverter))]
     public partial interface IMachineExtensionsListResult
 

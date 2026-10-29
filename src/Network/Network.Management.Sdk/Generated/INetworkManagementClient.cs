@@ -183,6 +183,11 @@ namespace Microsoft.Azure.Management.Network
         IExpressRouteCrossConnectionPeeringsOperations ExpressRouteCrossConnectionPeerings { get; }
 
         /// <summary>
+        /// Gets the IExpressRouteLagAuthorizationsOperations
+        /// </summary>
+        IExpressRouteLagAuthorizationsOperations ExpressRouteLagAuthorizations { get; }
+
+        /// <summary>
         /// Gets the IExpressRoutePortAuthorizationsOperations
         /// </summary>
         IExpressRoutePortAuthorizationsOperations ExpressRoutePortAuthorizations { get; }
@@ -766,6 +771,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualNetworkAppliancesOperations
         /// </summary>
         IVirtualNetworkAppliancesOperations VirtualNetworkAppliances { get; }
+
+        /// <summary>
+        /// Gets the IVirtualNetworkApplianceCapabilitiesOperations
+        /// </summary>
+        IVirtualNetworkApplianceCapabilitiesOperations VirtualNetworkApplianceCapabilities { get; }
 
         /// <summary>
         /// Gets the IExpressRouteGatewaysOperations

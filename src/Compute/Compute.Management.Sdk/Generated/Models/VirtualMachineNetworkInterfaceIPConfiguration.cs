@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Possible values are: &#39;IPv4&#39; and &#39;IPv6&#39;.
         /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
 
+        /// <param name="privateIPAddressPrefixLength">The private IP address prefix length. If specified and the allocation
+        /// method is dynamic, the service will allocate a CIDR block instead of a
+        /// single IP address.
+        /// </param>
+
         /// <param name="applicationSecurityGroups">Specifies an array of references to application security group.
         /// </param>
 
@@ -57,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// public and one internal load balancer. [Multiple virtual machines cannot
         /// use the same basic sku load balancer].
         /// </param>
-        public VirtualMachineNetworkInterfaceIPConfiguration(string name, SubResource subnet = default(SubResource), bool? primary = default(bool?), VirtualMachinePublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachinePublicIPAddressConfiguration), string privateIPAddressVersion = default(string), System.Collections.Generic.IList<SubResource> applicationSecurityGroups = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> applicationGatewayBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerBackendAddressPools = default(System.Collections.Generic.IList<SubResource>))
+        public VirtualMachineNetworkInterfaceIPConfiguration(string name, SubResource subnet = default(SubResource), bool? primary = default(bool?), VirtualMachinePublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachinePublicIPAddressConfiguration), string privateIPAddressVersion = default(string), int? privateIPAddressPrefixLength = default(int?), System.Collections.Generic.IList<SubResource> applicationSecurityGroups = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> applicationGatewayBackendAddressPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancerBackendAddressPools = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.Name = name;
@@ -65,6 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Primary = primary;
             this.PublicIPAddressConfiguration = publicIPAddressConfiguration;
             this.PrivateIPAddressVersion = privateIPAddressVersion;
+            this.PrivateIPAddressPrefixLength = privateIPAddressPrefixLength;
             this.ApplicationSecurityGroups = applicationSecurityGroups;
             this.ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
             this.LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
@@ -111,6 +117,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         public string PrivateIPAddressVersion {get; set; }
 
         /// <summary>
+        /// Gets or sets the private IP address prefix length. If specified and the
+        /// allocation method is dynamic, the service will allocate a CIDR block
+        /// instead of a single IP address.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateIPAddressPrefixLength")]
+        public int? PrivateIPAddressPrefixLength {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies an array of references to application security
         /// group.
         /// </summary>
@@ -153,6 +167,17 @@ namespace Microsoft.Azure.Management.Compute.Models
                 this.PublicIPAddressConfiguration.Validate();
             }
 
+            if (this.PrivateIPAddressPrefixLength != null)
+            {
+                if (this.PrivateIPAddressPrefixLength > 128)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "PrivateIPAddressPrefixLength", 128);
+                }
+                if (this.PrivateIPAddressPrefixLength < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PrivateIPAddressPrefixLength", 1);
+                }
+            }
 
 
 

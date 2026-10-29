@@ -27,9 +27,9 @@ Describe 'Restore-AzCloudHsm' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Restore' -skip {
+    It 'Restore' {
         #We must skip this test because we need activated resource and this operations can only be executed once per resource. Additional manuall steps must be completed from the dev for this test to run. Run this test locally and then skip. 
-        $restore = Restore-AzCloudHsm -ClusterName chsm1 -ResourceGroupName ps-test -BlobContainerUri "https://pstestbackup.blob.core.windows.net/testbackup" -backupId cloudhsm-eb0e0bf9-9d12-4201-b38c-567c8a452dd5-2025061208354444
+        $restore = Restore-AzCloudHsm -SubscriptionId $env.SubscriptionId -ClusterName $env.cloudHsmName -ResourceGroupName $env.rgName -BlobContainerUri $env.backupContainerUri -BackupId $env.backupId
         $restore.status.Contains("Succeeded") | Should -Be $true
     }
 

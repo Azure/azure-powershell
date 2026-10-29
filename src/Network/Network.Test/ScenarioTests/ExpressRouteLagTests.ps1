@@ -294,3 +294,128 @@ function Test-ExpressRouteLagIdentity
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test managing ExpressRouteLag authorizations and retrieving an authorization key.
+#>
+function Test-ExpressRouteLagAuthorization
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $rname = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/expressRouteLags"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $peeringLocation = "Noida2"
+    $encapsulation = "QinQ"
+    $bandwidthInGbps = 10
+    $numberOfPorts = 2
+    $lacpTimer = "fast"
+    $minimumActivePortsRequired = 2
+    $authorizationName = "testkey1"
+    $circuitResourceGroupName = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $isPlayback = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
+    $lagSubscriptionId = (Get-AzContext).Subscription.Id
+    $secondarySubscriptionId = $env:SECONDARY_SUBSCRIPTION_ID
+
+    if (-not $isPlayback)
+    {
+        if ([string]::IsNullOrWhiteSpace($secondarySubscriptionId))
+        {
+            throw "Set SECONDARY_SUBSCRIPTION_ID to the subscription where the ExpressRoute circuit should be recorded."
+        }
+
+        if ($secondarySubscriptionId -eq $lagSubscriptionId)
+        {
+            throw "SECONDARY_SUBSCRIPTION_ID must differ from the LAG subscription."
+        }
+    }
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        # Create ExpressRouteLag
+        $expressRouteLag = New-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -Location $location -PeeringLocation $peeringLocation -Encapsulation $encapsulation -BandwidthInGbps $bandwidthInGbps -NumberOfPorts $numberOfPorts -MinimumActivePortsRequired $minimumActivePortsRequired -LacpTimer $lacpTimer
+        Assert-NotNull $expressRouteLag
+
+        # Add an authorization
+        $authorization = $expressRouteLag | Add-AzExpressRouteLagAuthorization -Name $authorizationName
+        Assert-NotNull $authorization
+        Assert-True { Check-CmdletReturnType "Add-AzExpressRouteLagAuthorization" $authorization }
+        Assert-AreEqual $authorizationName $authorization.Name
+
+        # Get the authorization
+        $authorization = $expressRouteLag | Get-AzExpressRouteLagAuthorization -Name $authorizationName
+        Assert-NotNull $authorization
+        Assert-True { Check-CmdletReturnType "Get-AzExpressRouteLagAuthorization" $authorization }
+        Assert-AreEqual $authorizationName $authorization.Name
+
+        # List authorizations
+        $authorizations = $expressRouteLag | Get-AzExpressRouteLagAuthorization
+        Assert-AreEqual 1 @($authorizations).Count
+
+        # Get the authorization key by name
+        $key = Get-AzExpressRouteLagAuthorizationKey -ResourceGroupName $rgname -ExpressRouteLagName $rname -Name $authorizationName
+        Assert-NotNull $key
+        Assert-NotNull $key.AuthorizationKey
+
+        # Get the authorization key from the LAG object
+        $keyFromObject = $expressRouteLag | Get-AzExpressRouteLagAuthorizationKey -Name $authorizationName
+        Assert-NotNull $keyFromObject
+        Assert-AreEqual $key.AuthorizationKey $keyFromObject.AuthorizationKey
+
+        # Create a circuit in a different subscription and connect it to the LAG using the authorization key.
+        if (-not $isPlayback)
+        {
+            Set-AzContext -SubscriptionId $secondarySubscriptionId | Out-Null
+        }
+
+        $circuitResourceGroup = New-AzResourceGroup -Name $circuitResourceGroupName -Location $rglocation
+        $circuit = New-AzExpressRouteCircuit -ResourceGroupName $circuitResourceGroupName -Name $circuitName -Location $location -SkuTier Standard -SkuFamily MeteredData -ExpressRouteLag $expressRouteLag -BandwidthInGbps $bandwidthInGbps -AuthorizationKey $key.AuthorizationKey
+        Assert-NotNull $circuit
+        Assert-AreEqual $circuitName $circuit.Name
+        Assert-AreEqual $expressRouteLag.Id $circuit.ExpressRouteLag.Id
+
+        $removedCircuit = Remove-AzExpressRouteCircuit -ResourceGroupName $circuitResourceGroupName -Name $circuitName -PassThru -Force
+        Assert-AreEqual $true $removedCircuit
+
+        if (-not $isPlayback)
+        {
+            Set-AzContext -SubscriptionId $lagSubscriptionId | Out-Null
+        }
+
+        # Remove the authorization
+        $removed = $expressRouteLag | Remove-AzExpressRouteLagAuthorization -Name $authorizationName -PassThru -Force
+        Assert-AreEqual $true $removed
+        $authorizations = $expressRouteLag | Get-AzExpressRouteLagAuthorization
+        Assert-AreEqual 0 @($authorizations).Count
+
+        # Remove ExpressRouteLag
+        $removedLag = Remove-AzExpressRouteLag -ResourceGroupName $rgname -Name $rname -PassThru -Force
+        Assert-AreEqual $true $removedLag
+    }
+    finally
+    {
+        if (-not $isPlayback)
+        {
+            try
+            {
+                Set-AzContext -SubscriptionId $secondarySubscriptionId | Out-Null
+                Clean-ResourceGroup $circuitResourceGroupName
+            }
+            finally
+            {
+                Set-AzContext -SubscriptionId $lagSubscriptionId | Out-Null
+            }
+        }
+        else
+        {
+            Clean-ResourceGroup $circuitResourceGroupName
+        }
+
+        Clean-ResourceGroup $rgname
+    }
+}

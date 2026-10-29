@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List hybrid machine operation response.</summary>
+    /// <summary>The response of a Machine list operation.</summary>
     public partial class MachineListResult
     {
 

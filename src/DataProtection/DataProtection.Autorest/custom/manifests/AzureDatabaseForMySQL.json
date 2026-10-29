@@ -14,7 +14,7 @@
   "datasourceType": "Microsoft.DBforMySQL/flexibleServers",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "RestoreAsFiles" ],
-  "itemLevelRecoveyEnabled": false,
+  "itemLevelRecoveryEnabled": false,
   "fileNamePrefixDisabled": true,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,
