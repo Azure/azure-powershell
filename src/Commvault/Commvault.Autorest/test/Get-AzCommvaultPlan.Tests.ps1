@@ -16,25 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultPlan'))
 
 Describe 'Get-AzCommvaultPlan' {
     It 'List' {
-        $plans = @(Get-AzCommvaultPlan -CloudAccountName $env.CloudAccountName -ResourceGroupName $env.ResourceGroupName)
+        $plans = @(Get-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -CloudAccountName $env.CloudAccountName -ResourceGroupName $env.ResourceGroupName)
         $plans.Count | Should -BeGreaterOrEqual 1
         $plans.Name | Should -Contain $env.PlanName
     }
 
     It 'Get' {
-        $plan = Get-AzCommvaultPlan -CloudAccountName $env.CloudAccountName -Name $env.PlanName -ResourceGroupName $env.ResourceGroupName
+        $plan = Get-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -CloudAccountName $env.CloudAccountName -Name $env.PlanName -ResourceGroupName $env.ResourceGroupName
         $plan.Name | Should -Be $env.PlanName
         $plan.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'GetViaIdentityCloudAccount' {
-        $account = Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $account = Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
         $plan = Get-AzCommvaultPlan -CloudAccountInputObject @{ Id = $account.Id } -Name $env.PlanName
         $plan.Name | Should -Be $env.PlanName
     }
 
     It 'GetViaIdentity' {
-        $plan = Get-AzCommvaultPlan -CloudAccountName $env.CloudAccountName -Name $env.PlanName -ResourceGroupName $env.ResourceGroupName
+        $plan = Get-AzCommvaultPlan -SubscriptionId $env.SubscriptionId -CloudAccountName $env.CloudAccountName -Name $env.PlanName -ResourceGroupName $env.ResourceGroupName
         $byIdentity = Get-AzCommvaultPlan -InputObject @{ Id = $plan.Id }
         $byIdentity.Name | Should -Be $env.PlanName
         $byIdentity.Id | Should -Be $plan.Id

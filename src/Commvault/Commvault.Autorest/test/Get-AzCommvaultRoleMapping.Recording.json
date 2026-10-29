@@ -1,0 +1,149 @@
+{
+  "Get-AzCommvaultRoleMapping+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "ee7dda7d-654a-422f-b633-3c5c7753a3cb" ],
+        "CommandName": [ "Get-AzCommvaultRoleMapping" ],
+        "FullCommandName": [ "Get-AzCommvaultRoleMapping_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/29ff3ca2-16ca-4a87-ba2e-5a7308337b03" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "ad4665fe-cac9-406e-83aa-aff3c77e9c33" ],
+        "x-ms-correlation-request-id": [ "128444aa-5c23-4d13-b30e-eff0c2874e48" ],
+        "x-ms-client-request-id": [ "ee7dda7d-654a-422f-b633-3c5c7753a3cb" ],
+        "x-envoy-upstream-service-time": [ "3725" ],
+        "x-ms-request-id": [ "2e192456-359d-4c6c-a145-c4cf970bfb7a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121641Z:128444aa-5c23-4d13-b30e-eff0c2874e48" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 891DB70E1FB3489AB9EFDD8CBAA86490 Ref B: PNQ241100406025 Ref C: 2026-10-29T12:16:36Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:16:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "744" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default\",\"name\":\"default\",\"type\":\"Commvault.ContentStore/cloudAccounts/roleMappings\",\"properties\":{\"provisioningState\":\"Succeeded\",\"roles\":[{\"roleName\":\"BackupAdmin\",\"entities\":[{\"id\":\"99999999-9999-9999-9999-999999999999\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Admin-Group\",\"entityType\":\"Group\"}]},{\"roleName\":\"BackupOperator\",\"entities\":[{\"id\":\"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Operator-Group\",\"entityType\":\"Group\"}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultRoleMapping+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "029c2b39-23df-4021-ac9c-5599ad1fc4af" ],
+        "CommandName": [ "Get-AzCommvaultRoleMapping" ],
+        "FullCommandName": [ "Get-AzCommvaultRoleMapping_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/4c2826c6-93e3-4bda-9273-57ebcbb489fb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "eb1b006e-ed94-4e65-8464-02285b685c53" ],
+        "x-ms-correlation-request-id": [ "6093f9eb-d33b-485c-809a-9f80330561b5" ],
+        "x-ms-client-request-id": [ "029c2b39-23df-4021-ac9c-5599ad1fc4af" ],
+        "x-envoy-upstream-service-time": [ "5486" ],
+        "x-ms-request-id": [ "f864c48f-542e-4a6d-a80e-73d62611495c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121647Z:6093f9eb-d33b-485c-809a-9f80330561b5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 03663A29DAD8486A9C63592DB8B7F05F Ref B: PNQ241100406025 Ref C: 2026-10-29T12:16:41Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:16:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "744" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default\",\"name\":\"default\",\"type\":\"Commvault.ContentStore/cloudAccounts/roleMappings\",\"properties\":{\"provisioningState\":\"Succeeded\",\"roles\":[{\"roleName\":\"BackupAdmin\",\"entities\":[{\"id\":\"99999999-9999-9999-9999-999999999999\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Admin-Group\",\"entityType\":\"Group\"}]},{\"roleName\":\"BackupOperator\",\"entities\":[{\"id\":\"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Operator-Group\",\"entityType\":\"Group\"}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzCommvaultRoleMapping+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default?api-version=2026-09-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "c5910dd0-8e0f-483c-a4e7-810733588487" ],
+        "CommandName": [ "Get-AzCommvaultRoleMapping" ],
+        "FullCommandName": [ "Get-AzCommvaultRoleMapping_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.Commvault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=11111111-1111-1111-1111-111111111111,objectId=22222222-2222-2222-2222-222222222222/eastus/c616d08e-768d-45a7-a446-4d495e3734dd" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "request-context": [ "appId=cid-v1:726af22e-a98d-41b8-8be8-c1f253ced955" ],
+        "mise-correlation-id": [ "260d4036-8c3a-4b84-bc95-b988f22985af" ],
+        "x-ms-correlation-request-id": [ "882c41b2-5666-4eee-a948-6de287a14e7f" ],
+        "x-ms-client-request-id": [ "c5910dd0-8e0f-483c-a4e7-810733588487" ],
+        "x-envoy-upstream-service-time": [ "2357" ],
+        "x-ms-request-id": [ "64e4d267-1378-4c73-92f6-3122bdd28b55" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20261029T121650Z:882c41b2-5666-4eee-a948-6de287a14e7f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4C43C638B7374F808EC74C8A58A3410C Ref B: PNQ241100406025 Ref C: 2026-10-29T12:16:47Z" ],
+        "Date": [ "Thu, 29 Oct 2026 12:16:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "744" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/commvault-rg-test-14052026/providers/Commvault.ContentStore/cloudAccounts/CCA-Test-Scus-11082026-3/roleMappings/default\",\"name\":\"default\",\"type\":\"Commvault.ContentStore/cloudAccounts/roleMappings\",\"properties\":{\"provisioningState\":\"Succeeded\",\"roles\":[{\"roleName\":\"BackupAdmin\",\"entities\":[{\"id\":\"99999999-9999-9999-9999-999999999999\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Admin-Group\",\"entityType\":\"Group\"}]},{\"roleName\":\"BackupOperator\",\"entities\":[{\"id\":\"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\"displayName\":\"microsoft-11111111-1111-1111-1111-111111111111\\\\Commvault-Test-Backup-Operator-Group\",\"entityType\":\"Group\"}]}]}}",
+      "isContentBase64": false
+    }
+  }
+}

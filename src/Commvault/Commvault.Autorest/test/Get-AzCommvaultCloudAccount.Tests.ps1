@@ -16,25 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCommvaultCloudAccount')
 
 Describe 'Get-AzCommvaultCloudAccount' {
     It 'List' {
-        $accounts = @(Get-AzCommvaultCloudAccount)
+        $accounts = @(Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId)
         $accounts.Count | Should -BeGreaterOrEqual 1
         $accounts.Name | Should -Contain $env.CloudAccountName
     }
 
     It 'Get' {
-        $account = Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $account = Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
         $account.Name | Should -Be $env.CloudAccountName
         $account.ProvisioningState | Should -Be 'Succeeded'
     }
 
     It 'List1' {
-        $accounts = @(Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName)
+        $accounts = @(Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName)
         $accounts.Count | Should -BeGreaterOrEqual 1
         $accounts.Name | Should -Contain $env.CloudAccountName
     }
 
     It 'GetViaIdentity' {
-        $account = Get-AzCommvaultCloudAccount -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
+        $account = Get-AzCommvaultCloudAccount -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.CloudAccountName
         $byIdentity = Get-AzCommvaultCloudAccount -InputObject @{ Id = $account.Id }
         $byIdentity.Name | Should -Be $env.CloudAccountName
         $byIdentity.Id | Should -Be $account.Id
