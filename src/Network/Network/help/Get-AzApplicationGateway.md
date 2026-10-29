@@ -267,6 +267,15 @@ Id                                  : /subscriptions/00000000-0000-0000-0000-000
 
 This command gets a list of all the application gateways in the subscription that start with "ApplicationGateway01" and stores it in the $AppGwList variable.
 
+### Example 5: Retrieve the deployment tier
+```powershell
+Get-AzApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" |
+    Select-Object Name, DeploymentTier
+```
+
+This command displays the deployment tier returned by the service.
+If the service omits the optional property, `DeploymentTier` is empty.
+
 ## PARAMETERS
 
 ### -DefaultProfile

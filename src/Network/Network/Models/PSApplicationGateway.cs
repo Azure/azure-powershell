@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSApplicationGatewaySku Sku { get; set; }
 
+        public string DeploymentTier { get; set; }
+
         [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 

@@ -16,7 +16,7 @@ Creates an application gateway.
 ### IdentityByUserAssignedIdentityId (Default)
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -Sku <PSApplicationGatewaySku> [-DeploymentTier <String>] [-SslPolicy <PSApplicationGatewaySslPolicy>]
  -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
  [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
@@ -35,20 +35,20 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
- [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-ForceFirewallPolicyAssociation] [-Zone <String[]>]
+ [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -Sku <PSApplicationGatewaySku> [-DeploymentTier <String>] [-SslPolicy <PSApplicationGatewaySslPolicy>]
  -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
  [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
@@ -68,19 +68,18 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
- [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-EnableHttp2] [-EnableFIPS] [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-ForceFirewallPolicyAssociation] [-Zone <String[]>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -Sku <PSApplicationGatewaySku> [-DeploymentTier <String>] [-SslPolicy <PSApplicationGatewaySslPolicy>]
  -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
  [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
@@ -100,20 +99,19 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
- [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-ForceFirewallPolicyAssociation] [-Zone <String[]>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### IdentityByIdentityObject
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -Sku <PSApplicationGatewaySku> [-DeploymentTier <String>] [-SslPolicy <PSApplicationGatewaySslPolicy>]
  -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
  [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
@@ -132,13 +130,13 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
- [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-DisableDefaultServerHeaderInResponse <Boolean>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
- [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-DisableDefaultServerHeaderInResponse <Boolean>] [-ForceFirewallPolicyAssociation] [-Zone <String[]>]
+ [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -224,6 +222,15 @@ $Identity = New-AzUserAssignedIdentity -Name "Identity01" -ResourceGroupName "Re
 $AppgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentity $Identity.Id
 $Gateway = New-AzApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -Identity $AppgwIdentity -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIpConfigurations $FrontEndIpConfig  -GatewayIpConfigurations $GatewayIpConfig -FrontendPorts $FrontEndPort -HttpListeners $Listener -RequestRoutingRules $Rule -Sku $Sku
 ```
+
+### Example 3: Specify a deployment tier for a v2 gateway
+```powershell
+$Sku = New-AzApplicationGatewaySku -Name "Standard_v2" -Tier "Standard_v2" -Capacity 2
+New-AzApplicationGateway -Name "AppGateway01" -ResourceGroupName "ResourceGroup01" -Location "West US" -Sku $Sku -DeploymentTier "NetworkIsolated" -GatewayIPConfigurations $GatewayIPConfig -FrontendPorts $FrontEndPort -BackendAddressPools $Pool -BackendHttpSettingsCollection $PoolSetting -FrontendIPConfigurations $FrontEndIPConfig -HttpListeners $Listener -RequestRoutingRules $Rule
+```
+
+This command creates a `Standard_v2` gateway using network-isolated deployment and previously configured gateway components.
+The service validates deployment tier availability and SKU compatibility.
 
 ## PARAMETERS
 
@@ -404,6 +411,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentTier
+Specifies the Application Gateway deployment mode: `Standard` (default deployment mode), `NetworkIsolated` (management NIC deployment), `Accelerated` (accelerated deployment), or `Elastic` (accelerated deployment with reserved capacity and vertical scaling).
+This parameter is valid only for `Standard_v2` and `WAF_v2` SKUs. If omitted, no deployment tier is sent and the service determines the deployment mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, NetworkIsolated, Accelerated, Elastic
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -689,6 +713,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
