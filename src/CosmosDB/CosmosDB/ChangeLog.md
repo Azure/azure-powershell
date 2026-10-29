@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the Key Vault Keys dependency to `4.11.0-beta.5` to support loading alongside the updated Az.KeyVault module.
 
 ## Version 1.22.0
 * Regenerated the Cosmos DB management SDK with stable API version 2026-03-15.

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added External Key Management (EKM) connection management and external key creation for Managed HSM (Hardware Security Module). Related work [#29775].
+* Added preview commands for outbound EKM Private Link endpoints, operation status, and waiting for provisioning or approval.
+* Added the preview `ConnectivityMode` parameter to EKM connection creation and updates.
+* Updated Key Vault Administration and Keys dependencies to support EKM and outbound Private Link.
+    - Update Az.Accounts and Az.CosmosDB from the same release before using these modules together in one PowerShell session.
 * Fixed Key Vault name availability and Managed HSM region cmdlets to use API version `2026-02-01`.
 
 ## Version 6.6.1
