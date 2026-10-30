@@ -65,6 +65,9 @@ Lists key credentials and password credentials for an service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Lists entities from users or get entity from users by key
 
+### [Get-AzBicepVersion](Get-AzBicepVersion.md)
+Lists the Bicep CLI versions currently cached by Azure PowerShell's managed Bicep installer.
+
 ### [Get-AzDataBoundaryScope](Get-AzDataBoundaryScope.md)
 Get data boundary at specified scope
 
@@ -265,6 +268,9 @@ Get deployment operation for deployment at tenant scope
 
 ### [Get-AzTenantDeploymentWhatIfResult](Get-AzTenantDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at tenant scope. 
+
+### [Install-AzBicep](Install-AzBicep.md)
+Installs a specific, or the latest, version of the Bicep CLI into Azure PowerShell's managed cache.
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -699,6 +705,9 @@ Validates a subscription scoped deployment stack.
 
 ### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
 Validates a deployment at tenant scope.
+
+### [Uninstall-AzBicep](Uninstall-AzBicep.md)
+Removes Azure PowerShell's entire managed Bicep installation.
 
 ### [Unregister-AzProviderFeature](Unregister-AzProviderFeature.md)
 Unregisters an Azure provider feature in your account.
