@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -25,7 +26,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 {
     public class UninstallAzBicepCmdletTests
     {
-        private const string FakeProfileDirectory = "/fake/profile";
+        // Built from individual segments so Path.Combine/Path.GetDirectoryName stay consistent
+        // across platforms.
+        private static readonly string FakeProfileDirectory = Path.Combine(Path.DirectorySeparatorChar.ToString(), "fake", "profile");
 
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
         private readonly Mock<IDataStore> dataStoreMock;
