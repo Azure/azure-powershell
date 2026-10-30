@@ -329,6 +329,17 @@ function setupEnv() {
         Location = "eastus2euap"
     }
 
+    $CosmosDBItemLevelRestoreVariables = @{
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        ResourceGroupName = "rg-cosmosilr-ecy-3367e89e"
+        VaultName = "ecyilr-3367e89e-vault"
+        Location = "eastus2euap"
+        SourceCosmosDBAccountName = "ecyilr-3367e89e-src"
+        # The target account must be empty before recording
+        TargetCosmosDBAccountId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourceGroups/rg-cosmosilr-ecy-3367e89e/providers/Microsoft.DocumentDB/databaseAccounts/ecyilr-3367e89e-tgt"
+        UserAssignedIdentityArmId = "/subscriptions/97cda027-4279-4cde-b4ff-19afa0021d87/resourcegroups/rg-cosmosilr-ecy-3367e89e/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ecyilr-3367e89e-uami"
+    }
+
     $CmkEncryptionVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "dataprotectionpstest-rg"
@@ -370,6 +381,7 @@ function setupEnv() {
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
     $env.add("TestCosmosDB", $CosmosDBVariables) | Out-Null
+    $env.add("TestCosmosDBItemLevelRestore", $CosmosDBItemLevelRestoreVariables) | Out-Null
     $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
     $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null

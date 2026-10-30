@@ -20,7 +20,7 @@ The operation to update a hybrid machine.
 .Description
 The operation to update a hybrid machine.
 .Example
-Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri
+Update-AzConnectedMachine -Name "myMachine" -ResourceGroupName "myResourceGroup" -PrivateLinkScopeResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HybridCompute/privateLinkScopes/myScope"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -44,11 +44,9 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [LicenseName <String>]: The name of the license.
   [LicenseProfileName <String>]: The name of the license profile.
-  [Location <String>]: The location of the Extension being received.
+  [Location <String>]: The name of the Azure region.
   [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
   [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
@@ -57,7 +55,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SettingsResourceName <String>]: The name of the settings resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The version of the Extension being received.
 
 OSPROFILE <IOSProfile>: Specifies the operating system settings for the hybrid machine.
@@ -74,7 +72,10 @@ PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [AgentUpgradeCorrelationId <String>]: The correlation ID associated with an agent upgrade operation.
   [AgentUpgradeDesiredVersion <String>]: Specifies the version info w.r.t AgentUpgrade for the machine.
   [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if the machine's agent should be upgraded
-  [IdentityType <String>]: The identity type.
+  [IdentityKeyStore <String>]: Identity key store type of the machine
+  [IdentityType <String>]: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+  [IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [Kind <String>]: Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
   [LocationDataCity <String>]: The city or locality where the resource is located.
   [LocationDataCountryOrRegion <String>]: The country or region where the resource is located
@@ -89,6 +90,7 @@ PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
     [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
   [ParentClusterResourceId <String>]: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   [PrivateLinkScopeResourceId <String>]: The resource id of the private link scope this machine is assigned to, if any.
+  [TpmEkCertificate <String>]: Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
 #>
@@ -310,6 +312,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -337,8 +347,6 @@ begin {
             UpdateViaIdentity = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
         }
         if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath', 'Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -352,6 +360,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

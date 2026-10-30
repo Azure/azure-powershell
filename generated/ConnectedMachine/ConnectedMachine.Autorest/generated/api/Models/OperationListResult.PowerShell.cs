@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>The List Compute Operation operation response.</summary>
+    /// <summary>The List of Operations.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OperationValueTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -134,6 +138,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OperationValueTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -154,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// The List Compute Operation operation response.
+    /// The List of Operations.
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

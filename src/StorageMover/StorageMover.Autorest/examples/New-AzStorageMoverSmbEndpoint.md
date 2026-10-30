@@ -28,3 +28,38 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 
 This command creates a SMB endpoint for a Storage mover named "mystoragemover".
 
+### Example 2: Create an SMB source endpoint for an FSX-SMB source
+```powershell
+New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.6" -ShareName "testshare" -SourceType FSX-SMB -EndpointKind Source
+```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "SmbMount",
+                                 "endpointKind": "Source",
+                                 "provisioningState": "Succeeded",
+                                 "credentials": {
+                                   "type": "AzureKeyVaultSmb"
+                                 },
+                                 "host": "10.0.0.6",
+                                 "shareName": "testshare"
+                               }
+ResourceGroupName            : myresourcegroup
+SystemDataCreatedAt          : 10/19/2026 10:43:59 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:59 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command creates an SMB source endpoint for an FSX-SMB source.
+

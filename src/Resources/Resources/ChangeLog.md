@@ -24,6 +24,10 @@
     - 'Uninstall-AzBicep' removes the entire managed Bicep cache
     - 'Get-AzBicepVersion' lists the Bicep versions currently cached
     - When a Bicep project's 'bicepconfig.json' specifies a 'bicep.version' constraint, Bicep deployment cmdlets now automatically download, cache, and use a compatible Bicep CLI version instead of relying solely on the version found on PATH
+* Improved deployment stack What-If output to show configuration details for resource creates and deletes, including potential changes.
+    - Displays top-level fields such as location, kind, SKU, and tags followed by properties, while omitting redundant resource header fields.
+    - Indented resource details beneath their headings and aligned inline JSON formatting with Azure CLI output.
+    - Aligns with [Azure/azure-cli#34156](https://github.com/Azure/azure-cli/pull/34156).
 * Updated `Microsoft.Extensions.Caching.Memory` dependency from `2.2.0` to `10.0.3`.
 
 ## Version 10.2.1

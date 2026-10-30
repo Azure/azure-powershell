@@ -113,6 +113,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicensePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Tags"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location1 = (string) content.GetValueForProperty("Location1",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location1, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -152,14 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tags"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Detail"))
             {
@@ -230,6 +238,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicensePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Tags"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location1"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location1 = (string) content.GetValueForProperty("Location1",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).Location1, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetryAfter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -269,14 +293,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tags"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Detail"))
             {

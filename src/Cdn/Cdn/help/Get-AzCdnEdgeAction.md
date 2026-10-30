@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgeaction
 schema: 2.0.0
@@ -14,8 +14,7 @@ Get EdgeAction resource
 
 ### List (Default)
 ```
-Get-AzCdnEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzCdnEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

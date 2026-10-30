@@ -23,6 +23,10 @@ Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
+.Example
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AllowedStorageAccount "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount1", "/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/resourceGroups/partnerResourceGroup/providers/Microsoft.Storage/storageAccounts/partnerStorageAccount2"
+.Example
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -EnableCrossTenantTransfer:$false -AllowedStorageAccount @()
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
@@ -90,6 +94,20 @@ param(
     [System.String]
     # A description for the endpoint.
     ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enables or disables using this endpoint as one side of a cross-tenant data transfer.
+    # To disable, set this switch to false.
+    ${EnableCrossTenantTransfer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String[]]
+    # The Azure Resource Manager resource IDs of partner-tenant storage accounts that are allowed to be the other side of a cross-tenant data transfer with this endpoint.
+    # The specified list replaces the existing list; specify an empty array to clear it.
+    ${AllowedStorageAccount},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -48,7 +48,15 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
         $MinimumTlsVersion,
         [Parameter(HelpMessage="Resource reference to the secret. ie. subs/rg/profile/secret.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]
-        $Secret
+        $Secret,
+        [Parameter(HelpMessage="Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SecP256r1MLKEM768", "SecP384r1MLKEM1024", "X25519MLKEM768", "prime256v1", "X25519", "secp384r1", "secp521r1")]
+        [string[]]
+        $ServerTlsGroup,
+        [Parameter(HelpMessage="Server TLS group policy that will be used for Https.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard", "Enhanced", "Custom")]
+        [string]
+        $ServerTlsGroupPolicy
     )
 
     process {
@@ -68,6 +76,12 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('Secret')) {
             $Object.Secret = $Secret
+        }
+        if ($PSBoundParameters.ContainsKey('ServerTlsGroup')) {
+            $Object.ServerTlsGroup = $ServerTlsGroup
+        }
+        if ($PSBoundParameters.ContainsKey('ServerTlsGroupPolicy')) {
+            $Object.ServerTlsGroupPolicy = $ServerTlsGroupPolicy
         }
         return $Object
     }

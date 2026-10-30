@@ -11,17 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     using System;
 
     /// <summary>
-    /// Lists all the hybrid machines in the specified resource group. Use the nextLink property in the response to get the next
+    /// Lists all the hybrid machines in the specified subscription. Use the nextLink property in the response to get the next
     /// page of hybrid machines.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] ListByResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines"
+    /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/machines"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzConnectedMachine_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Lists all the hybrid machines in the specified resource group. Use the nextLink property in the response to get the next page of hybrid machines.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Lists all the hybrid machines in the specified subscription. Use the nextLink property in the response to get the next page of hybrid machines.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines", ApiVersion = "2024-07-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/machines", ApiVersion = "2026-06-16-preview")]
     public partial class GetAzConnectedMachine_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -79,20 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Backing field for <see cref="Expand" /> property.</summary>
-        private string _expand;
-
-        /// <summary>Expands referenced resources.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Expands referenced resources.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Expands referenced resources.",
-        SerializedName = @"$expand",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Query)]
-        public string Expand { get => this._expand; set => this._expand = value; }
-
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -140,33 +126,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.CompleterInfo(
-        Name = @"ResourceGroupName Completer",
-        Description =@"Gets the list of ResourceGroupName's available for this subscription.",
-        Script = @"Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(
@@ -393,13 +361,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.MachinesListByResourceGroup(SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.MachinesListBySubscription(SubscriptionId, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -531,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         {
                             requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Method.Get );
                             await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                            await this.Client.MachinesListByResourceGroup_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                            await this.Client.MachinesListBySubscription_Call(requestMessage, onOk, onDefault, this, Pipeline);
                         }
                     }
                 }

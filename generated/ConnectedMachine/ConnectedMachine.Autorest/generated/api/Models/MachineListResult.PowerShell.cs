@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>The List hybrid machine operation response.</summary>
+    /// <summary>The response of a Machine list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(MachineListResultTypeConverter))]
     public partial class MachineListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// The List hybrid machine operation response.
+    /// The response of a Machine list operation.
     [System.ComponentModel.TypeConverter(typeof(MachineListResultTypeConverter))]
     public partial interface IMachineListResult
 

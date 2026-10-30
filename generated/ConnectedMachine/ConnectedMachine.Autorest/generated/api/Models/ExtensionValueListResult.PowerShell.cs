@@ -106,6 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionValueTypeConverter.ConvertFrom));
             }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("Value"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionValueTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValueListResultInternal)this).NextLink, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
