@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/stop-azresiliencyrecoveryjob
 schema: 2.0.0
@@ -15,70 +15,73 @@ This action attempts to cancel the ongoing recovery orchestration job.
 ### CancelExpanded (Default)
 ```
 Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Cancel
+### CancelViaJsonString
 ```
 Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CancelViaIdentity
+### CancelViaJsonFilePath
 ```
-Stop-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CancelViaIdentityExpanded
-```
-Stop-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CancelViaIdentityRecoveryPlan
-```
-Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CancelViaIdentityRecoveryPlanExpanded
-```
-Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CancelViaIdentityServiceGroup
-```
-Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IRecoveryActionRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelViaIdentityServiceGroupExpanded
 ```
 Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CancelViaJsonFilePath
+### CancelViaIdentityServiceGroup
 ```
-Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IRecoveryActionRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CancelViaJsonString
+### CancelViaIdentityRecoveryPlanExpanded
+```
+Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityRecoveryPlan
+```
+Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Cancel
 ```
 Stop-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityExpanded
+```
+Stop-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CancelViaIdentity
+```
+Stop-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IRecoveryActionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +133,7 @@ Request body for providing user input for a recovery action.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryActionRequest
-Parameter Sets: Cancel, CancelViaIdentity, CancelViaIdentityRecoveryPlan, CancelViaIdentityServiceGroup
+Parameter Sets: CancelViaIdentityServiceGroup, CancelViaIdentityRecoveryPlan, Cancel, CancelViaIdentity
 Aliases:
 
 Required: True
@@ -161,7 +164,7 @@ User-provided input for the action.
 
 ```yaml
 Type: System.String
-Parameter Sets: CancelExpanded, CancelViaIdentityExpanded, CancelViaIdentityRecoveryPlanExpanded, CancelViaIdentityServiceGroupExpanded
+Parameter Sets: CancelExpanded, CancelViaIdentityServiceGroupExpanded, CancelViaIdentityRecoveryPlanExpanded, CancelViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +179,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CancelViaIdentity, CancelViaIdentityExpanded
+Parameter Sets: CancelViaIdentityExpanded, CancelViaIdentity
 Aliases:
 
 Required: True
@@ -221,7 +224,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel, CancelExpanded, CancelViaIdentityRecoveryPlan, CancelViaIdentityRecoveryPlanExpanded, CancelViaIdentityServiceGroup, CancelViaIdentityServiceGroupExpanded, CancelViaJsonFilePath, CancelViaJsonString
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath, CancelViaIdentityServiceGroupExpanded, CancelViaIdentityServiceGroup, CancelViaIdentityRecoveryPlanExpanded, CancelViaIdentityRecoveryPlan, Cancel
 Aliases: RecoveryJobName
 
 Required: True
@@ -266,7 +269,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CancelViaIdentityRecoveryPlan, CancelViaIdentityRecoveryPlanExpanded
+Parameter Sets: CancelViaIdentityRecoveryPlanExpanded, CancelViaIdentityRecoveryPlan
 Aliases:
 
 Required: True
@@ -281,7 +284,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel, CancelExpanded, CancelViaIdentityServiceGroup, CancelViaIdentityServiceGroupExpanded, CancelViaJsonFilePath, CancelViaJsonString
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath, CancelViaIdentityServiceGroupExpanded, CancelViaIdentityServiceGroup, Cancel
 Aliases:
 
 Required: True
@@ -296,7 +299,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CancelViaIdentityServiceGroup, CancelViaIdentityServiceGroupExpanded
+Parameter Sets: CancelViaIdentityServiceGroupExpanded, CancelViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -311,7 +314,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel, CancelExpanded, CancelViaJsonFilePath, CancelViaJsonString
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath, Cancel
 Aliases:
 
 Required: True
@@ -368,4 +371,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

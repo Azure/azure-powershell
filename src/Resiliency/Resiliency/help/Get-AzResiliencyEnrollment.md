@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyenrollment
 schema: 2.0.0
@@ -14,26 +14,26 @@ Get an Enrollment.
 
 ### List (Default)
 ```
-Get-AzResiliencyEnrollment -ResourceGroupName <String> -UsagePlanName <String> [-SubscriptionId <String[]>]
+Get-AzResiliencyEnrollment -ResourceGroupName <String> [-SubscriptionId <String[]>] -UsagePlanName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### GetViaIdentityUsagePlan
 ```
 Get-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -UsagePlanName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +101,7 @@ The name of the enrollment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityUsagePlan
+Parameter Sets: GetViaIdentityUsagePlan, Get
 Aliases: EnrollmentName
 
 Required: True
@@ -117,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +133,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -163,7 +163,7 @@ The name of the usage plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -187,4 +187,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

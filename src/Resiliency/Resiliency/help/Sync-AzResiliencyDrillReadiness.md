@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/sync-azresiliencydrillreadiness
 schema: 2.0.0
@@ -15,20 +15,22 @@ This triggers detection of any drifts from the desired state of Resources and RB
 ### Sync (Default)
 ```
 Sync-AzResiliencyDrillReadiness -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SyncViaIdentity
-```
-Sync-AzResiliencyDrillReadiness -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SyncViaIdentityServiceGroup
 ```
 Sync-AzResiliencyDrillReadiness -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SyncViaIdentity
+```
+Sync-AzResiliencyDrillReadiness -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,4 +243,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

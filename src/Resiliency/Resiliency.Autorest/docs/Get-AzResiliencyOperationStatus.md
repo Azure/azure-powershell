@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of the Azure region.
+The location name.
 
 ```yaml
 Type: System.String

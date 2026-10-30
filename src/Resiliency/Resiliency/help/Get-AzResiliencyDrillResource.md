@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencydrillresource
 schema: 2.0.0
@@ -18,9 +18,21 @@ Get-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> [-S
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyDrillResource -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyDrillResource -DrillName <String> -Name <String> -ServiceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityDrill
+```
+Get-AzResiliencyDrillResource -Name <String> -DrillInputObject <IResiliencyIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -28,18 +40,6 @@ Get-AzResiliencyDrillResource -DrillName <String> -Name <String> -ServiceGroupNa
 ```
 Get-AzResiliencyDrillResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityDrill
-```
-Get-AzResiliencyDrillResource -DrillInputObject <IResiliencyIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyDrillResource -DrillName <String> -Name <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -137,7 +137,7 @@ The name of the DrillResource (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityDrill, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentityDrill
 Aliases: DrillResourceName
 
 Required: True
@@ -167,7 +167,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -221,4 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

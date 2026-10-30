@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/new-azresiliencydrillrunreport
 schema: 2.0.0
@@ -17,28 +17,29 @@ A report that has been finalized is never regenerated.
 ### New (Default)
 ```
 New-AzResiliencyDrillRunReport -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### NewViaIdentity
-```
-New-AzResiliencyDrillRunReport -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### NewViaIdentityDrill
-```
-New-AzResiliencyDrillRunReport -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewViaIdentityServiceGroup
 ```
 New-AzResiliencyDrillRunReport -DrillName <String> -DrillRunName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NewViaIdentityDrill
+```
+New-AzResiliencyDrillRunReport -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NewViaIdentity
+```
+New-AzResiliencyDrillRunReport -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +139,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: New, NewViaIdentityDrill, NewViaIdentityServiceGroup
+Parameter Sets: New, NewViaIdentityServiceGroup, NewViaIdentityDrill
 Aliases:
 
 Required: True
@@ -268,4 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

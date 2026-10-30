@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryplantestfailovercleanup
 schema: 2.0.0
@@ -15,56 +15,59 @@ This action triggers the test failover cleanup operation on the recovery orchest
 ### InvokeExpanded (Default)
 ```
 Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> [-Comment <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> [-Comment <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Invoke
+### InvokeViaJsonString
 ```
 Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <ITestFailoverCleanupRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeViaIdentity
+### InvokeViaJsonFilePath
 ```
-Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <ITestFailoverCleanupRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### InvokeViaIdentityExpanded
-```
-Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -InputObject <IResiliencyIdentity> -OperationId <String>
- [-Comment <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentityServiceGroup
-```
-Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <ITestFailoverCleanupRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityServiceGroupExpanded
 ```
 Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Comment <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InvokeViaJsonFilePath
+### InvokeViaIdentityServiceGroup
 ```
-Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <ITestFailoverCleanupRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InvokeViaJsonString
+### Invoke
 ```
 Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <ITestFailoverCleanupRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
+```
+Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-Comment <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzResiliencyRecoveryPlanTestFailoverCleanup -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <ITestFailoverCleanupRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +119,7 @@ TestFailoverCleanup post action request.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.ITestFailoverCleanupRequest
-Parameter Sets: Invoke, InvokeViaIdentity, InvokeViaIdentityServiceGroup
+Parameter Sets: InvokeViaIdentityServiceGroup, Invoke, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -131,7 +134,7 @@ Comments for test failover cleanup.
 
 ```yaml
 Type: System.String
-Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeExpanded, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -162,7 +165,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentity, InvokeViaIdentityExpanded
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -237,7 +240,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup, Invoke
 Aliases:
 
 Required: True
@@ -252,7 +255,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -267,7 +270,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, Invoke
 Aliases:
 
 Required: True
@@ -324,4 +327,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

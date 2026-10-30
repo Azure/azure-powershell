@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplanfailovercommitvalidation
 schema: 2.0.0
@@ -15,21 +15,22 @@ This action checks if the recovery orchestration plan is eligible for failover c
 ### Test (Default)
 ```
 Test-AzResiliencyRecoveryPlanFailoverCommitValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### TestViaIdentity
-```
-Test-AzResiliencyRecoveryPlanFailoverCommitValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TestViaIdentityServiceGroup
 ```
 Test-AzResiliencyRecoveryPlanFailoverCommitValidation -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzResiliencyRecoveryPlanFailoverCommitValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,4 +228,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

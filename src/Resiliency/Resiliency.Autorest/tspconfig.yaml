@@ -1,0 +1,110 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    package-dir: "Resiliency/Resiliency.Autorest"
+    api-version: "2026-10-01"
+    clear-output-folder: true
+    azure: true
+    module-version: 0.1.0
+    prefix: 'Az'
+    subject-prefix: 'Resiliency'
+    service-name: Resiliency
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    directive:
+      # Local emitter extension: apply the original Swagger renames before command
+      # inference, parameter simplification, Identity variants, and JSON descriptions.
+      # This replaces numbered variant selectors and late naming compensations.
+      - operation-id-mapping:
+          RecoveryPlanActions_CheckReadiness: RecoveryPlanReadiness_Test
+          RecoveryPlanActions_Failover: RecoveryPlanFailover_Invoke
+          RecoveryPlanActions_FailoverCommit: RecoveryPlanFailoverCommit_Invoke
+          RecoveryPlanActions_Finalize: RecoveryPlanFinalize_Invoke
+          RecoveryPlanActions_Reprotect: RecoveryPlanReprotect_Invoke
+          RecoveryPlanActions_TestFailover: RecoveryPlanTestFailover_Invoke
+          RecoveryPlanActions_TestFailoverCleanup: RecoveryPlanTestFailoverCleanup_Invoke
+          RecoveryPlanActions_UpdateResources: RecoveryPlanResource_Update
+          RecoveryPlanActions_ValidateForFailover: RecoveryPlanFailoverValidation_Test
+          RecoveryPlanActions_ValidateForFailoverCommit: RecoveryPlanFailoverCommitValidation_Test
+          RecoveryPlanActions_ValidateForOperation: RecoveryPlanOperationValidation_Test
+          RecoveryPlanActions_ValidateForReprotect: RecoveryPlanReprotectValidation_Test
+          RecoveryPlanActions_ValidateForTestFailover: RecoveryPlanTestFailoverValidation_Test
+          RecoveryPlanActions_ValidateForTestFailoverCleanup: RecoveryPlanTestFailoverCleanupValidation_Test
+          Drills_AddOrUpdateResources: DrillResource_Update
+          Drills_End: Drill_Stop
+          Drills_ResyncReadinessCheck: DrillReadiness_Sync
+          Drills_ValidateForExecution: DrillExecutionValidation_Test
+          DrillRuns_AddNotes: DrillRunNote_Add
+          DrillRuns_FailOver: DrillRunFailover_Invoke
+          DrillRuns_GenerateReport: DrillRunReport_New
+          DrillRuns_ListReportDownloadUrl: DrillRunReportDownloadUrl_Get
+          DrillRuns_MarkAsComplete: DrillRun_Complete
+          DrillRuns_Reprotect: DrillRunReprotect_Invoke
+          DrillRuns_Resume: DrillRun_Resume
+          GoalAssignments_RecommendCapacity: GoalAssignmentCapacity_Get
+          GoalAssignments_RefreshGoalResources: GoalResource_Sync
+          GoalAssignments_UpdateGoalResources: GoalResource_Update
+
+      # Restore the SubscriptionId default from src/readme.azure.noprofile.md,
+      # which the TypeSpec pipeline does not automatically load. Keep the parameter
+      # optional by defaulting to the current context when no subscription is supplied.
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: '(Get-AzContext).Subscription.Id'
+
+      # REQUIRED TO COMPILE - not a style choice. autorest.powershell 4.0.758 mis-generates
+      # the discriminated DrillProperties subtypes from the flattened errorDetails property,
+      # emitting colliding ErrorDetail / ErrorDetails members on RegionalDrillProperties and
+      # ZonalDrillProperties that fail to satisfy IDrillProperties (CS0738/CS0535/CS9333/CS0539).
+      # The property is readOnly; failure detail still surfaces via the operation error response.
+      - where:
+          model-name: ^(Regional|Zonal)DrillProperties$
+          property-name: ^ErrorDetail$
+        set:
+          property-name: ErrorDetailDetails
+      - where:
+          model-name: ^(Regional|Zonal)DrillProperties$
+          property-name: ^ErrorDetails$
+        set:
+          property-name: ErrorDetail
+
+      # A `_Invoke` operation maps to verb Invoke but autorest also leaves Invoke on the
+      # subject, yielding Invoke-AzResiliencyInvokeRecoveryPlanFailover. Strip the duplicate.
+      - where:
+          subject: ^Invoke(?<name>.*)$
+        set:
+          subject: $<name>
+
+      # RecoveryJobs_Retry has no approved-verb mapping, so autorest falls back to
+      # Invoke with `Retry` absorbed into the subject. Reorder for consistency with
+      # the other Invoke-AzResiliency<Resource><Action> cmdlets.
+      - where:
+          subject: ^RetryRecoveryJob$
+        set:
+          subject: RecoveryJobRetry
+
+      - where:
+          verb: ^Get$
+          subject-prefix: ^Resiliency$
+          subject: ^Operation$
+        remove: true
+
+      # Current TypeSpec inference assigns List to the resource-group operation and
+      # List1 to the subscription operation. Rename List first to avoid rematching it.
+      - where:
+          verb: Get
+          subject: ^UsagePlan$
+          variant: ^List$
+        set:
+          variant: ListByResourceGroup
+      - where:
+          verb: Get
+          subject: ^UsagePlan$
+          variant: ^List1$
+        set:
+          variant: List
+linter:
+  extends:
+    - "@azure-tools/typespec-azure-rulesets/resource-manager"

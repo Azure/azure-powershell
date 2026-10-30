@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencyrecoveryplanresource
 schema: 2.0.0
@@ -16,57 +16,59 @@ This action adds or update the resources to be included in the recovery orchestr
 ```
 Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
  -OperationId <String> [-ResourcesToRemove <String[]>] [-ResourcesToUpdate <IRecoveryResource[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IUpdateRecoveryResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzResiliencyRecoveryPlanResource -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IUpdateRecoveryResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzResiliencyRecoveryPlanResource -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ResourcesToRemove <String[]>] [-ResourcesToUpdate <IRecoveryResource[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityServiceGroup
+### UpdateViaJsonFilePath
 ```
-Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IUpdateRecoveryResourcesRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityServiceGroupExpanded
 ```
 Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-ResourcesToRemove <String[]>]
- [-ResourcesToUpdate <IRecoveryResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ResourcesToUpdate <IRecoveryResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityServiceGroup
 ```
-Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IUpdateRecoveryResourcesRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### Update
 ```
 Update-AzResiliencyRecoveryPlanResource -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IUpdateRecoveryResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyRecoveryPlanResource -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ResourcesToRemove <String[]>] [-ResourcesToUpdate <IRecoveryResource[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzResiliencyRecoveryPlanResource -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IUpdateRecoveryResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +120,7 @@ RecoveryResources post action request to update in batch.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IUpdateRecoveryResourcesRequest
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
+Parameter Sets: UpdateViaIdentityServiceGroup, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -149,7 +151,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -224,7 +226,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup, Update
 Aliases:
 
 Required: True
@@ -239,7 +241,7 @@ A list of recovery orchestration resources that need to be removed from the reco
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -254,7 +256,7 @@ A list of recovery orchestration resources whose properties need to be updated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryResource[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -269,7 +271,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -284,7 +286,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -341,4 +343,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

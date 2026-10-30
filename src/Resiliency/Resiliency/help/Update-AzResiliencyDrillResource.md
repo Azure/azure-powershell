@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencydrillresource
 schema: 2.0.0
@@ -18,37 +18,21 @@ Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> 
  -FaultDurationInMin <Int32> [-ForceInclusionAndUpdate <String>] [-ResourceListExcludeResource <String[]>]
  [-ResourceListIncludeResource <IIncludeOrUpdateResource[]>]
  [-ResourceListUpdateResource <IIncludeOrUpdateResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaJsonString
 ```
 Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### UpdateViaJsonFilePath
 ```
-Update-AzResiliencyDrillResource -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzResiliencyDrillResource -InputObject <IResiliencyIdentity> -OperationId <String>
- -FaultDurationInMin <Int32> [-ForceInclusionAndUpdate <String>] [-ResourceListExcludeResource <String[]>]
- [-ResourceListIncludeResource <IIncludeOrUpdateResource[]>]
- [-ResourceListUpdateResource <IIncludeOrUpdateResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityServiceGroup
-```
-Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -OperationId <String> -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> -OperationId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityServiceGroupExpanded
@@ -57,21 +41,37 @@ Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupInputObject <I
  -OperationId <String> -FaultDurationInMin <Int32> [-ForceInclusionAndUpdate <String>]
  [-ResourceListExcludeResource <String[]>] [-ResourceListIncludeResource <IIncludeOrUpdateResource[]>]
  [-ResourceListUpdateResource <IIncludeOrUpdateResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityServiceGroup
 ```
-Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### Update
 ```
 Update-AzResiliencyDrillResource -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyDrillResource -InputObject <IResiliencyIdentity> -OperationId <String>
+ -FaultDurationInMin <Int32> [-ForceInclusionAndUpdate <String>] [-ResourceListExcludeResource <String[]>]
+ [-ResourceListIncludeResource <IIncludeOrUpdateResource[]>]
+ [-ResourceListUpdateResource <IIncludeOrUpdateResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzResiliencyDrillResource -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IAddOrUpdateResourcesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +123,7 @@ Request body of the AddOrUpdateResources API.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IAddOrUpdateResourcesRequest
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
+Parameter Sets: UpdateViaIdentityServiceGroup, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -154,7 +154,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup, Update
 Aliases:
 
 Required: True
@@ -169,7 +169,7 @@ Duration of faults.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -184,7 +184,7 @@ Whether to allow inclusion and update despite attention reasons.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -199,7 +199,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -289,7 +289,7 @@ Excluded resource
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +304,7 @@ Include resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IIncludeOrUpdateResource[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +319,7 @@ Update resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IIncludeOrUpdateResource[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +334,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -349,7 +349,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -406,4 +406,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

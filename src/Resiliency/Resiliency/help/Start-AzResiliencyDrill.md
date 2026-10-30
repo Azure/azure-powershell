@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/start-azresiliencydrill
 schema: 2.0.0
@@ -15,51 +15,56 @@ This starts a new running instance of the Drill.
 ### StartExpanded (Default)
 ```
 Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Start
-```
-Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String>
- -Body <IDrillStartRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### StartViaJsonString
 ```
-Start-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillStartRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StartViaIdentityExpanded
-```
-Start-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### StartViaIdentityServiceGroup
+### StartViaJsonFilePath
 ```
-Start-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IDrillStartRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### StartViaIdentityServiceGroupExpanded
 ```
 Start-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### StartViaJsonFilePath
+### StartViaIdentityServiceGroup
 ```
-Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IDrillStartRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### StartViaJsonString
+### Start
 ```
-Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String>
+ -Body <IDrillStartRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaIdentityExpanded
+```
+Start-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaIdentity
+```
+Start-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillStartRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +116,7 @@ Request body of the Start Action of Drill.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IDrillStartRequest
-Parameter Sets: Start, StartViaIdentity, StartViaIdentityServiceGroup
+Parameter Sets: StartViaIdentityServiceGroup, Start, StartViaIdentity
 Aliases:
 
 Required: True
@@ -142,7 +147,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: StartViaIdentity, StartViaIdentityExpanded
+Parameter Sets: StartViaIdentityExpanded, StartViaIdentity
 Aliases:
 
 Required: True
@@ -187,7 +192,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded, StartViaIdentityServiceGroup, StartViaIdentityServiceGroupExpanded, StartViaJsonFilePath, StartViaJsonString
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, StartViaIdentityServiceGroupExpanded, StartViaIdentityServiceGroup, Start
 Aliases: DrillName
 
 Required: True
@@ -232,7 +237,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: StartViaIdentityServiceGroup, StartViaIdentityServiceGroupExpanded
+Parameter Sets: StartViaIdentityServiceGroupExpanded, StartViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -247,7 +252,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded, StartViaJsonFilePath, StartViaJsonString
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: True
@@ -304,4 +309,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

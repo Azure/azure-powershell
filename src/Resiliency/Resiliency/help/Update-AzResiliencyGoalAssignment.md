@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencygoalassignment
 schema: 2.0.0
@@ -15,33 +15,21 @@ Update a goal assignment.
 ### UpdateExpanded (Default)
 ```
 Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-RequireZonalResiliency]
- [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaJsonString
 ```
-Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Property <IGoalAssignmentUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Property <IGoalAssignmentUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonFilePath
 ```
-Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-RequireZonalResiliency]
- [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityServiceGroup
-```
-Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Property <IGoalAssignmentUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,19 +37,35 @@ Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResi
 ```
 Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
  [-RequireZonalResiliency] [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityServiceGroup
 ```
-Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -Property <IGoalAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### Update
 ```
-Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Property <IGoalAssignment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-RequireZonalResiliency]
+ [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Property <IGoalAssignment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,7 +133,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -174,7 +178,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup, Update
 Aliases: GoalAssignmentName
 
 Required: True
@@ -203,8 +207,8 @@ Accept wildcard characters: False
 A goal assignment resource in the Azure Resilience Management provider.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignmentUpdate
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignment
+Parameter Sets: UpdateViaIdentityServiceGroup, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -219,7 +223,7 @@ Whether zonal resiliency is required for this goal assignment.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -234,7 +238,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -249,7 +253,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -264,7 +268,7 @@ List of service level resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IServiceLevelResource[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -310,7 +314,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignmentUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignment
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
 
@@ -321,4 +325,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

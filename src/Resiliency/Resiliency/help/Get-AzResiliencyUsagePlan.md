@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyusageplan
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get a UsagePlan
 
 ### List (Default)
 ```
-Get-AzResiliencyUsagePlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResiliencyUsagePlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,15 +24,16 @@ Get-AzResiliencyUsagePlan -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzResiliencyUsagePlan -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### ListByResourceGroup
 ```
-Get-AzResiliencyUsagePlan -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResiliencyUsagePlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResiliencyUsagePlan -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,7 +133,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, ListByResourceGroup
+Parameter Sets: List, Get, ListByResourceGroup
 Aliases:
 
 Required: False
@@ -155,4 +157,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

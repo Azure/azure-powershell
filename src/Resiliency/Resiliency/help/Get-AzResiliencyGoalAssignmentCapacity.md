@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencygoalassignmentcapacity
 schema: 2.0.0
@@ -16,54 +16,56 @@ Returns AI-powered capacity assessments and recommendations.
 ### GetExpanded (Default)
 ```
 Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String> -ServiceGroupName <String>
- -ResourceId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaJsonString
 ```
 Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String> -ServiceGroupName <String>
- -Body <IRecommendCapacityRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaJsonFilePath
 ```
-Get-AzResiliencyGoalAssignmentCapacity -InputObject <IResiliencyIdentity> -Body <IRecommendCapacityRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzResiliencyGoalAssignmentCapacity -InputObject <IResiliencyIdentity> -ResourceId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -Body <IRecommendCapacityRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String> -ServiceGroupName <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityServiceGroupExpanded
 ```
 Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -ResourceId <String[]> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaJsonFilePath
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -Body <IRecommendCapacityRequest> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String> -ServiceGroupName <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Body <IRecommendCapacityRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzResiliencyGoalAssignmentCapacity -InputObject <IResiliencyIdentity> -ResourceId <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### GetViaJsonString
+### GetViaIdentity
 ```
-Get-AzResiliencyGoalAssignmentCapacity -GoalAssignmentName <String> -ServiceGroupName <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Get-AzResiliencyGoalAssignmentCapacity -InputObject <IResiliencyIdentity> -Body <IRecommendCapacityRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -118,7 +120,7 @@ Provide specific resource IDs to evaluate, or pass an empty array to let the ser
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecommendCapacityRequest
-Parameter Sets: Get, GetViaIdentity, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentity
 Aliases:
 
 Required: True
@@ -149,7 +151,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaIdentityServiceGroup, GetViaIdentityServiceGroupExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, GetViaIdentityServiceGroupExpanded, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -164,7 +166,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
 Aliases:
 
 Required: True
@@ -226,7 +228,7 @@ Maximum 50 resources per request.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, GetViaIdentityExpanded, GetViaIdentityServiceGroupExpanded
+Parameter Sets: GetExpanded, GetViaIdentityServiceGroupExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -241,7 +243,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: GetViaIdentityServiceGroup, GetViaIdentityServiceGroupExpanded
+Parameter Sets: GetViaIdentityServiceGroupExpanded, GetViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -256,7 +258,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -313,4 +315,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

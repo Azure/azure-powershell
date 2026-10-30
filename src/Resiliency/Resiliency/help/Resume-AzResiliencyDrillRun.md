@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/resume-azresiliencydrillrun
 schema: 2.0.0
@@ -14,27 +14,29 @@ This unblocks a Failover workflow that is paused after the Fault stage, to proce
 
 ### Resume (Default)
 ```
-Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupName <String> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResumeViaIdentityServiceGroup
+```
+Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResumeViaIdentityDrill
+```
+Resume-AzResiliencyDrillRun -Name <String> -DrillInputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResumeViaIdentity
 ```
 Resume-AzResiliencyDrillRun -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityDrill
-```
-Resume-AzResiliencyDrillRun -DrillInputObject <IResiliencyIdentity> -Name <String> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResumeViaIdentityServiceGroup
-```
-Resume-AzResiliencyDrillRun -DrillName <String> -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -148,7 +150,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Resume, ResumeViaIdentityDrill, ResumeViaIdentityServiceGroup
+Parameter Sets: Resume, ResumeViaIdentityServiceGroup, ResumeViaIdentityDrill
 Aliases: DrillRunName
 
 Required: True
@@ -263,4 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

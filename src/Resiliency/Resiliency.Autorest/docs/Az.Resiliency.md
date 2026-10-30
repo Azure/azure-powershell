@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Resiliency
-Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
+Module Guid: fc8aa602-5277-4645-9a9d-09f0f1133f3b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.resiliency
 Help Version: 1.0.0.0
 Locale: en-US

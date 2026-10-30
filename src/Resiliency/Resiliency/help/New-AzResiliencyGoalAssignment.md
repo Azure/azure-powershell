@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/new-azresiliencygoalassignment
 schema: 2.0.0
@@ -15,33 +15,21 @@ Create a goal assignment.
 ### CreateExpanded (Default)
 ```
 New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-RequireZonalResiliency]
- [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonString
 ```
-New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Resource <IGoalAssignment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Resource <IGoalAssignment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonFilePath
 ```
-New-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-RequireZonalResiliency]
- [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityServiceGroup
-```
-New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Resource <IGoalAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,19 +37,35 @@ New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResilie
 ```
 New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
  [-RequireZonalResiliency] [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### CreateViaIdentityServiceGroup
 ```
-New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -Resource <IGoalAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### Create
 ```
-New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Resource <IGoalAssignment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-RequireZonalResiliency]
+ [-ServiceLevelResource <IServiceLevelResource[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Resource <IGoalAssignment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,7 +133,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -174,7 +178,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityServiceGroup, CreateViaIdentityServiceGroupExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityServiceGroup, Create
 Aliases: GoalAssignmentName
 
 Required: True
@@ -204,7 +208,7 @@ Whether zonal resiliency is required for this goal assignment.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -219,7 +223,7 @@ A goal assignment resource in the Azure Resilience Management provider.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignment
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityServiceGroup
+Parameter Sets: CreateViaIdentityServiceGroup, Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -234,7 +238,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentityServiceGroup, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateViaIdentityServiceGroupExpanded, CreateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -249,7 +253,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -264,7 +268,7 @@ List of service level resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IServiceLevelResource[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -321,4 +325,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

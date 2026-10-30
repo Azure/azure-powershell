@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/add-azresiliencydrillrunnote
 schema: 2.0.0
@@ -15,7 +15,37 @@ This enables the user to add notes on this Drill Run.
 ### AddExpanded (Default)
 ```
 Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> [-Note <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -OperationId <String> [-Note <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonString
+```
+Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaJsonFilePath
+```
+Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityServiceGroupExpanded
+```
+Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Note <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AddViaIdentityServiceGroup
+```
+Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillRunAddNotesRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,62 +53,35 @@ Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -Service
 ```
 Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
  -OperationId <String> -Body <IDrillRunAddNotesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentity
-```
-Add-AzResiliencyDrillRunNote -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IDrillRunAddNotesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### AddViaIdentityDrill
-```
-Add-AzResiliencyDrillRunNote -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> -Body <IDrillRunAddNotesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityDrillExpanded
 ```
-Add-AzResiliencyDrillRunNote -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> [-Note <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-AzResiliencyDrillRunNote -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> [-Note <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityDrill
+```
+Add-AzResiliencyDrillRunNote -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IDrillRunAddNotesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzResiliencyDrillRunNote -InputObject <IResiliencyIdentity> -OperationId <String> [-Note <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### AddViaIdentityServiceGroup
+### AddViaIdentity
 ```
-Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillRunAddNotesRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentityServiceGroupExpanded
-```
-Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Note <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaJsonFilePath
-```
-Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaJsonString
-```
-Add-AzResiliencyDrillRunNote -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Add-AzResiliencyDrillRunNote -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IDrillRunAddNotesRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +133,7 @@ Request body for AddNotes API.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IDrillRunAddNotesRequest
-Parameter Sets: Add, AddViaIdentity, AddViaIdentityDrill, AddViaIdentityServiceGroup
+Parameter Sets: AddViaIdentityServiceGroup, Add, AddViaIdentityDrill, AddViaIdentity
 Aliases:
 
 Required: True
@@ -161,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: AddViaIdentityDrill, AddViaIdentityDrillExpanded
+Parameter Sets: AddViaIdentityDrillExpanded, AddViaIdentityDrill
 Aliases:
 
 Required: True
@@ -176,7 +179,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaIdentityServiceGroup, AddViaIdentityServiceGroupExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, AddViaIdentityServiceGroupExpanded, AddViaIdentityServiceGroup, Add
 Aliases:
 
 Required: True
@@ -191,7 +194,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaIdentityDrill, AddViaIdentityDrillExpanded, AddViaIdentityServiceGroup, AddViaIdentityServiceGroupExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, AddViaIdentityServiceGroupExpanded, AddViaIdentityServiceGroup, Add, AddViaIdentityDrillExpanded, AddViaIdentityDrill
 Aliases:
 
 Required: True
@@ -206,7 +209,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
 Aliases:
 
 Required: True
@@ -251,7 +254,7 @@ The notes string.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityDrillExpanded, AddViaIdentityExpanded, AddViaIdentityServiceGroupExpanded
+Parameter Sets: AddExpanded, AddViaIdentityServiceGroupExpanded, AddViaIdentityDrillExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -296,7 +299,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: AddViaIdentityServiceGroup, AddViaIdentityServiceGroupExpanded
+Parameter Sets: AddViaIdentityServiceGroupExpanded, AddViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -311,7 +314,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -368,4 +371,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

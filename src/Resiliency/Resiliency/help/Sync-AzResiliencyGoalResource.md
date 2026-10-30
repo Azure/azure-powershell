@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/sync-azresiliencygoalresource
 schema: 2.0.0
@@ -16,19 +16,21 @@ This operation scans for new resources under the scope of the assignment.
 ### Sync (Default)
 ```
 Sync-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SyncViaIdentity
-```
-Sync-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SyncViaIdentityServiceGroup
 ```
 Sync-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SyncViaIdentity
+```
+Sync-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

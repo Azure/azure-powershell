@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencydrillrunreprotect
 schema: 2.0.0
@@ -16,49 +16,21 @@ This initiates a new Reprotect operation on this Drill Run.
 ```
 Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
  -OperationId <String> [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Invoke
+### InvokeViaJsonString
 ```
 Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeViaIdentity
+### InvokeViaJsonFilePath
 ```
-Invoke-AzResiliencyDrillRunReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### InvokeViaIdentityDrill
-```
-Invoke-AzResiliencyDrillRunReprotect -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentityDrillExpanded
-```
-Invoke-AzResiliencyDrillRunReprotect -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentityExpanded
-```
-Invoke-AzResiliencyDrillRunReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentityServiceGroup
-```
-Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillRunReprotectRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityServiceGroupExpanded
@@ -66,21 +38,50 @@ Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String>
 Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
  [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeViaJsonFilePath
+### InvokeViaIdentityServiceGroup
 ```
-Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillRunReprotectRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InvokeViaJsonString
+### Invoke
 ```
 Invoke-AzResiliencyDrillRunReprotect -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityDrillExpanded
+```
+Invoke-AzResiliencyDrillRunReprotect -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityDrill
+```
+Invoke-AzResiliencyDrillRunReprotect -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
+```
+Invoke-AzResiliencyDrillRunReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzResiliencyDrillRunReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IDrillRunReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +133,7 @@ Request body for Reprotect API.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IDrillRunReprotectRequest
-Parameter Sets: Invoke, InvokeViaIdentity, InvokeViaIdentityDrill, InvokeViaIdentityServiceGroup
+Parameter Sets: InvokeViaIdentityServiceGroup, Invoke, InvokeViaIdentityDrill, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -163,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentityDrill, InvokeViaIdentityDrillExpanded
+Parameter Sets: InvokeViaIdentityDrillExpanded, InvokeViaIdentityDrill
 Aliases:
 
 Required: True
@@ -178,7 +179,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup, Invoke
 Aliases:
 
 Required: True
@@ -193,7 +194,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaIdentityDrill, InvokeViaIdentityDrillExpanded, InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup, Invoke, InvokeViaIdentityDrillExpanded, InvokeViaIdentityDrill
 Aliases:
 
 Required: True
@@ -208,7 +209,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentity, InvokeViaIdentityExpanded
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -284,7 +285,7 @@ If not provided, all qualified resources will be processed.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InvokeExpanded, InvokeViaIdentityDrillExpanded, InvokeViaIdentityExpanded, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeExpanded, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityDrillExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -299,7 +300,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -314,7 +315,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, Invoke
 Aliases:
 
 Required: True
@@ -371,4 +372,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

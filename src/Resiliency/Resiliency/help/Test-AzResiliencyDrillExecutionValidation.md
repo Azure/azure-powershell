@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencydrillexecutionvalidation
 schema: 2.0.0
@@ -15,38 +15,23 @@ This returns eligible resource to be faulted or failed over.
 ### TestExpanded (Default)
 ```
 Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- [-ValidateForExecutionPropertyOperationName <String>]
- [-ValidateForExecutionPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ValidateForExecutionPropertyOperationName <String>] [-ValidateForExecutionPropertySourceLocation <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Test
+### TestViaJsonString
 ```
 Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaIdentity
+### TestViaJsonFilePath
 ```
-Test-AzResiliencyDrillExecutionValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### TestViaIdentityExpanded
-```
-Test-AzResiliencyDrillExecutionValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ValidateForExecutionPropertyOperationName <String>]
- [-ValidateForExecutionPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentityServiceGroup
-```
-Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -OperationId <String> -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupName <String> -OperationId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TestViaIdentityServiceGroupExpanded
@@ -54,21 +39,36 @@ Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupInput
 Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
  -OperationId <String> [-ValidateForExecutionPropertyOperationName <String>]
  [-ValidateForExecutionPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaJsonFilePath
+### TestViaIdentityServiceGroup
+```
+Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Test
 ```
 Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityExpanded
+```
+Test-AzResiliencyDrillExecutionValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ValidateForExecutionPropertyOperationName <String>] [-ValidateForExecutionPropertySourceLocation <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### TestViaJsonString
+### TestViaIdentity
 ```
-Test-AzResiliencyDrillExecutionValidation -DrillName <String> -ServiceGroupName <String> -OperationId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzResiliencyDrillExecutionValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IValidateForExecutionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +120,7 @@ Request body of the Validate For Execute Action of Drill.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IValidateForExecutionRequest
-Parameter Sets: Test, TestViaIdentity, TestViaIdentityServiceGroup
+Parameter Sets: TestViaIdentityServiceGroup, Test, TestViaIdentity
 Aliases:
 
 Required: True
@@ -151,7 +151,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup, Test
 Aliases:
 
 Required: True
@@ -166,7 +166,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityExpanded
+Parameter Sets: TestViaIdentityExpanded, TestViaIdentity
 Aliases:
 
 Required: True
@@ -241,7 +241,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -256,7 +256,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, Test
 Aliases:
 
 Required: True
@@ -272,7 +272,7 @@ This is needed to determine the set of validations to be done for the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,7 +287,7 @@ Physiscal Source locations from where resources to be failed-over or faulted.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -344,4 +344,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

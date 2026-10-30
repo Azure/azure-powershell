@@ -21,13 +21,13 @@ Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-Re
 
 ### Update
 ```
-Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Property <IGoalAssignmentUpdate>
+Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> -Property <IGoalAssignment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Property <IGoalAssignmentUpdate>
+Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> -Property <IGoalAssignment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Update-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-RequireZo
 ### UpdateViaIdentityServiceGroup
 ```
 Update-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Property <IGoalAssignmentUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Property <IGoalAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 A goal assignment resource in the Azure Resilience Management provider.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignmentUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignment
 Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
 Aliases:
 
@@ -310,7 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignmentUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalAssignment
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
 

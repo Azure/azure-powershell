@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencydrillrunreportdownloadurl
 schema: 2.0.0
@@ -15,71 +15,74 @@ The URL expires at the returned expiryTimestamp and grants access to that single
 
 ### GetExpanded (Default)
 ```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
- -ServiceGroupName <String> -OperationId <String> [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaJsonString
 ```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
- -ServiceGroupName <String> -OperationId <String> -Body <IListReportDownloadUrlRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzResiliencyDrillRunReportDownloadUrl -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IListReportDownloadUrlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetViaIdentityDrill
+### GetViaJsonFilePath
 ```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> -Body <IListReportDownloadUrlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityDrillExpanded
-```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillInputObject <IResiliencyIdentity> -DrillRunName <String>
- -OperationId <String> [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzResiliencyDrillRunReportDownloadUrl -InputObject <IResiliencyIdentity> -OperationId <String>
- [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IListReportDownloadUrlRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityServiceGroupExpanded
 ```
 Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-Format <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### GetViaJsonFilePath
+### GetViaIdentityServiceGroup
 ```
 Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
- -ServiceGroupName <String> -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IListReportDownloadUrlRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### GetViaJsonString
+### Get
 ```
-Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String>
- -ServiceGroupName <String> -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillName <String> -DrillRunName <String> -ServiceGroupName <String>
+ -OperationId <String> -Body <IListReportDownloadUrlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityDrillExpanded
+```
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityDrill
+```
+Get-AzResiliencyDrillRunReportDownloadUrl -DrillRunName <String> -DrillInputObject <IResiliencyIdentity>
+ -OperationId <String> -Body <IListReportDownloadUrlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzResiliencyDrillRunReportDownloadUrl -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-Format <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResiliencyDrillRunReportDownloadUrl -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IListReportDownloadUrlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +135,7 @@ Request to mint a short-lived, read-only download URL for a Drill Run report.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IListReportDownloadUrlRequest
-Parameter Sets: Get, GetViaIdentity, GetViaIdentityDrill, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get, GetViaIdentityDrill, GetViaIdentity
 Aliases:
 
 Required: True
@@ -163,7 +166,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: GetViaIdentityDrill, GetViaIdentityDrillExpanded
+Parameter Sets: GetViaIdentityDrillExpanded, GetViaIdentityDrill
 Aliases:
 
 Required: True
@@ -178,7 +181,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaIdentityServiceGroup, GetViaIdentityServiceGroupExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, GetViaIdentityServiceGroupExpanded, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -193,7 +196,7 @@ The name of the DrillRun (GUID).
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaIdentityDrill, GetViaIdentityDrillExpanded, GetViaIdentityServiceGroup, GetViaIdentityServiceGroupExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, GetViaIdentityServiceGroupExpanded, GetViaIdentityServiceGroup, Get, GetViaIdentityDrillExpanded, GetViaIdentityDrill
 Aliases:
 
 Required: True
@@ -209,7 +212,7 @@ Defaults to Html when not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetViaIdentityDrillExpanded, GetViaIdentityExpanded, GetViaIdentityServiceGroupExpanded
+Parameter Sets: GetExpanded, GetViaIdentityServiceGroupExpanded, GetViaIdentityDrillExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -224,7 +227,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
 Aliases:
 
 Required: True
@@ -299,7 +302,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: GetViaIdentityServiceGroup, GetViaIdentityServiceGroupExpanded
+Parameter Sets: GetViaIdentityServiceGroupExpanded, GetViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -314,7 +317,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded, GetViaJsonFilePath, GetViaJsonString
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath, Get
 Aliases:
 
 Required: True
@@ -371,4 +374,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

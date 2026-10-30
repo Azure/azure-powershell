@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/new-azresiliencyrecoveryplan
 schema: 2.0.0
@@ -18,34 +18,21 @@ New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> [-Descrip
  [-EnableSystemAssignedIdentity] [-GroupUniqueId <String>] [-OrderId <Int32>] [-PlanDescription <String>]
  [-PlanType <String>] [-PostAction <IRecoveryGroupBaseAction[]>] [-PreAction <IRecoveryGroupBaseAction[]>]
  [-RecoveryGroupSettingAdditionalGroup <IRecoveryGroup[]>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Create
+### CreateViaJsonString
 ```
-New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -Resource <IRecoveryPlan>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzResiliencyRecoveryPlan -InputObject <IResiliencyIdentity> -Resource <IRecoveryPlan>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonFilePath
 ```
-New-AzResiliencyRecoveryPlan -InputObject <IResiliencyIdentity> [-Description <String>]
- [-EnableSystemAssignedIdentity] [-GroupUniqueId <String>] [-OrderId <Int32>] [-PlanDescription <String>]
- [-PlanType <String>] [-PostAction <IRecoveryGroupBaseAction[]>] [-PreAction <IRecoveryGroupBaseAction[]>]
- [-RecoveryGroupSettingAdditionalGroup <IRecoveryGroup[]>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityServiceGroup
-```
-New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Resource <IRecoveryPlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -55,20 +42,39 @@ New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupInputObject <IResilienc
  [-Description <String>] [-EnableSystemAssignedIdentity] [-GroupUniqueId <String>] [-OrderId <Int32>]
  [-PlanDescription <String>] [-PlanType <String>] [-PostAction <IRecoveryGroupBaseAction[]>]
  [-PreAction <IRecoveryGroupBaseAction[]>] [-RecoveryGroupSettingAdditionalGroup <IRecoveryGroup[]>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityServiceGroup
+```
+New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -Resource <IRecoveryPlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -Resource <IRecoveryPlan>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### CreateViaIdentityExpanded
 ```
-New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyRecoveryPlan -InputObject <IResiliencyIdentity> [-Description <String>]
+ [-EnableSystemAssignedIdentity] [-GroupUniqueId <String>] [-OrderId <Int32>] [-PlanDescription <String>]
+ [-PlanType <String>] [-PostAction <IRecoveryGroupBaseAction[]>] [-PreAction <IRecoveryGroupBaseAction[]>]
+ [-RecoveryGroupSettingAdditionalGroup <IRecoveryGroup[]>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### CreateViaIdentity
 ```
-New-AzResiliencyRecoveryPlan -Name <String> -ServiceGroupName <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResiliencyRecoveryPlan -InputObject <IResiliencyIdentity> -Resource <IRecoveryPlan>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,7 +142,7 @@ A description of the recovery orchestration group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,7 +157,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,7 +172,7 @@ A unique id for the recovery orchestration group, which is a GUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +187,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -226,7 +232,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityServiceGroup, CreateViaIdentityServiceGroupExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityServiceGroup, Create
 Aliases: RecoveryPlanName
 
 Required: True
@@ -256,7 +262,7 @@ The order ID of the recovery orchestration group.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -271,7 +277,7 @@ A description of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -286,7 +292,7 @@ The type of the recovery orchestration plan, which can be set during creation bu
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -301,7 +307,7 @@ Post-actions for the recovery orchestration group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryGroupBaseAction[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -316,7 +322,7 @@ Pre-actions for the recovery orchestration group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryGroupBaseAction[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -331,7 +337,7 @@ Additional recovery orchestration group settings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryGroup[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -346,7 +352,7 @@ Represents a recovery orchestration plan resource in the Azure Resilience Manage
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IRecoveryPlan
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityServiceGroup
+Parameter Sets: CreateViaIdentityServiceGroup, Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -361,7 +367,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: CreateViaIdentityServiceGroup, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateViaIdentityServiceGroupExpanded, CreateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -376,7 +382,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -392,7 +398,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityServiceGroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityServiceGroupExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -449,4 +455,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

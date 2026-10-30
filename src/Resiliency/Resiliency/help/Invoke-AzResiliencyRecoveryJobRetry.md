@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryjobretry
 schema: 2.0.0
@@ -15,28 +15,29 @@ This action retries the ongoing recovery orchestration job for resources that fa
 ### Retry (Default)
 ```
 Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanName <String>
- -ServiceGroupName <String> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RetryViaIdentity
-```
-Invoke-AzResiliencyRecoveryJobRetry -InputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RetryViaIdentityRecoveryPlan
-```
-Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ServiceGroupName <String> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RetryViaIdentityServiceGroup
 ```
 Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RetryViaIdentityRecoveryPlan
+```
+Invoke-AzResiliencyRecoveryJobRetry -RecoveryJobName <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ -OperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RetryViaIdentity
+```
+Invoke-AzResiliencyRecoveryJobRetry -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +150,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryViaIdentityRecoveryPlan, RetryViaIdentityServiceGroup
+Parameter Sets: Retry, RetryViaIdentityServiceGroup, RetryViaIdentityRecoveryPlan
 Aliases:
 
 Required: True
@@ -264,4 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

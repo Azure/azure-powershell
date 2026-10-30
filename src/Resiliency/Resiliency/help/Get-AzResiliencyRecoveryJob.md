@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyrecoveryjob
 schema: 2.0.0
@@ -18,6 +18,19 @@ Get-AzResiliencyRecoveryJob -RecoveryPlanName <String> -ServiceGroupName <String
  [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityRecoveryPlan
+```
+Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGroupName <String>
@@ -28,18 +41,6 @@ Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String> -ServiceGr
 ```
 Get-AzResiliencyRecoveryJob -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityRecoveryPlan
-```
-Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyRecoveryJob -Name <String> -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +108,7 @@ The unique name (GUID) of the recovery job.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityRecoveryPlan, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, GetViaIdentityRecoveryPlan, Get
 Aliases: RecoveryJobName
 
 Required: True
@@ -137,7 +138,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup, List
+Parameter Sets: List, GetViaIdentityServiceGroup, Get
 Aliases:
 
 Required: True
@@ -167,7 +168,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -191,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

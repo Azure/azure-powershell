@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencygoalresource
 schema: 2.0.0
@@ -15,53 +15,57 @@ Update goal resources under a goal assignment.
 ### UpdateViaIdentity (Default)
 ```
 Update-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> -Body <IUpdateGoalResourceRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
- -Body <IUpdateGoalResourceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### UpdateViaJsonString
 ```
-Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
- -Resource <IGoalResource[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> -Resource <IGoalResource[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityServiceGroup
-```
-Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Body <IUpdateGoalResourceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityServiceGroupExpanded
-```
-Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
- -Resource <IGoalResource[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### UpdateViaIdentityServiceGroupExpanded
 ```
-Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -Resource <IGoalResource[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServiceGroup
+```
+Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ -Body <IUpdateGoalResourceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
+ -Resource <IGoalResource[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzResiliencyGoalResource -GoalAssignmentName <String> -ServiceGroupName <String>
+ -Body <IUpdateGoalResourceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyGoalResource -InputObject <IResiliencyIdentity> -Resource <IGoalResource[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +117,7 @@ Request body for updating goal resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IUpdateGoalResourceRequest
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityServiceGroup, Update
 Aliases:
 
 Required: True
@@ -144,7 +148,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup, UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -219,7 +223,7 @@ The goal resources to update.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IGoalResource[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -234,7 +238,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -249,7 +253,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -306,4 +310,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

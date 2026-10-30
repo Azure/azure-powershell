@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/stop-azresiliencydrill
 schema: 2.0.0
@@ -15,54 +15,57 @@ This ends the currently running instance of the Drill.
 ### StopExpanded (Default)
 ```
 Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -Attestation <String>
- -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaJsonString
+```
+Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Stop
+### StopViaJsonFilePath
 ```
-Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String>
- -Body <IDrillEndRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### StopViaIdentity
-```
-Stop-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillEndRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StopViaIdentityExpanded
-```
-Stop-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Attestation <String>
- -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### StopViaIdentityServiceGroup
-```
-Stop-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IDrillEndRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### StopViaIdentityServiceGroupExpanded
 ```
 Stop-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
- -Attestation <String> -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Attestation <String> -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### StopViaJsonFilePath
+### StopViaIdentityServiceGroup
 ```
-Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IDrillEndRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### StopViaJsonString
+### Stop
 ```
-Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -OperationId <String> -Body <IDrillEndRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### StopViaIdentityExpanded
+```
+Stop-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Attestation <String>
+ -AttestationNote <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StopViaIdentity
+```
+Stop-AzResiliencyDrill -InputObject <IResiliencyIdentity> -OperationId <String> -Body <IDrillEndRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +117,7 @@ Attestation Status
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded, StopViaIdentityExpanded, StopViaIdentityServiceGroupExpanded
+Parameter Sets: StopExpanded, StopViaIdentityServiceGroupExpanded, StopViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -129,7 +132,7 @@ Notes
 
 ```yaml
 Type: System.String
-Parameter Sets: StopExpanded, StopViaIdentityExpanded, StopViaIdentityServiceGroupExpanded
+Parameter Sets: StopExpanded, StopViaIdentityServiceGroupExpanded, StopViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -144,7 +147,7 @@ Request body of the End Action of Drill.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IDrillEndRequest
-Parameter Sets: Stop, StopViaIdentity, StopViaIdentityServiceGroup
+Parameter Sets: StopViaIdentityServiceGroup, Stop, StopViaIdentity
 Aliases:
 
 Required: True
@@ -175,7 +178,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: StopViaIdentity, StopViaIdentityExpanded
+Parameter Sets: StopViaIdentityExpanded, StopViaIdentity
 Aliases:
 
 Required: True
@@ -220,7 +223,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded, StopViaIdentityServiceGroup, StopViaIdentityServiceGroupExpanded, StopViaJsonFilePath, StopViaJsonString
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath, StopViaIdentityServiceGroupExpanded, StopViaIdentityServiceGroup, Stop
 Aliases: DrillName
 
 Required: True
@@ -265,7 +268,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: StopViaIdentityServiceGroup, StopViaIdentityServiceGroupExpanded
+Parameter Sets: StopViaIdentityServiceGroupExpanded, StopViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -280,7 +283,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded, StopViaJsonFilePath, StopViaJsonString
+Parameter Sets: StopExpanded, StopViaJsonString, StopViaJsonFilePath, Stop
 Aliases:
 
 Required: True
@@ -337,4 +340,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

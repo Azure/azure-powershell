@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/test-azresiliencyrecoveryplanfailovervalidation
 schema: 2.0.0
@@ -17,36 +17,22 @@ This action checks if the recovery orchestration plan is eligible for failover o
 Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
  -OperationId <String> [-ExecutionConfigurationUserConsent <String>]
  [-FailoverRequestPropertySelectedResourceId <String[]>] [-FailoverRequestPropertySourceLocation <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Test
-```
-Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### TestViaIdentity
-```
-Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### TestViaIdentityExpanded
+### TestViaJsonString
 ```
-Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ExecutionConfigurationUserConsent <String>] [-FailoverRequestPropertySelectedResourceId <String[]>]
- [-FailoverRequestPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaIdentityServiceGroup
+### TestViaJsonFilePath
 ```
-Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IFailoverRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TestViaIdentityServiceGroupExpanded
@@ -55,21 +41,37 @@ Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
  [-ExecutionConfigurationUserConsent <String>] [-FailoverRequestPropertySelectedResourceId <String[]>]
  [-FailoverRequestPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### TestViaJsonFilePath
+### TestViaIdentityServiceGroup
 ```
-Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IFailoverRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### TestViaJsonString
+### Test
 ```
 Test-AzResiliencyRecoveryPlanFailoverValidation -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentityExpanded
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ExecutionConfigurationUserConsent <String>] [-FailoverRequestPropertySelectedResourceId <String[]>]
+ [-FailoverRequestPropertySourceLocation <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzResiliencyRecoveryPlanFailoverValidation -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IFailoverRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +123,7 @@ Failover post action request.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IFailoverRequest
-Parameter Sets: Test, TestViaIdentity, TestViaIdentityServiceGroup
+Parameter Sets: TestViaIdentityServiceGroup, Test, TestViaIdentity
 Aliases:
 
 Required: True
@@ -152,7 +154,7 @@ User consent for performing recovery action.
 
 ```yaml
 Type: System.String
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,7 +170,7 @@ If not provided, all qualified resources based on the source location(s) will be
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +185,7 @@ Source locations from where resources to be failed-over.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TestExpanded, TestViaIdentityExpanded, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestExpanded, TestViaIdentityServiceGroupExpanded, TestViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +200,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityExpanded
+Parameter Sets: TestViaIdentityExpanded, TestViaIdentity
 Aliases:
 
 Required: True
@@ -273,7 +275,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup, Test
 Aliases:
 
 Required: True
@@ -288,7 +290,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: TestViaIdentityServiceGroup, TestViaIdentityServiceGroupExpanded
+Parameter Sets: TestViaIdentityServiceGroupExpanded, TestViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -303,7 +305,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Test, TestExpanded, TestViaJsonFilePath, TestViaJsonString
+Parameter Sets: TestExpanded, TestViaJsonString, TestViaJsonFilePath, Test
 Aliases:
 
 Required: True
@@ -360,4 +362,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

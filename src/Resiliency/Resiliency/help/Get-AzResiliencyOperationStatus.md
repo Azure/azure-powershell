@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencyoperationstatus
 schema: 2.0.0
@@ -18,16 +18,16 @@ Get-AzResiliencyOperationStatus -Location <String> -OperationId <String> [-Defau
  [<CommonParameters>]
 ```
 
+### GetViaIdentityLocation
+```
+Get-AzResiliencyOperationStatus -OperationId <String> -LocationInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzResiliencyOperationStatus -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityLocation
-```
-Get-AzResiliencyOperationStatus -LocationInputObject <IResiliencyIdentity> -OperationId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of the Azure region.
+The location name.
 
 ```yaml
 Type: System.String
@@ -149,4 +149,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/invoke-azresiliencyrecoveryplanreprotect
 schema: 2.0.0
@@ -16,35 +16,21 @@ This action triggers the reprotect operation on the recovery orchestration plan 
 ```
 Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String> -ServiceGroupName <String>
  -OperationId <String> [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Invoke
+### InvokeViaJsonString
 ```
 Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeViaIdentity
+### InvokeViaJsonFilePath
 ```
-Invoke-AzResiliencyRecoveryPlanReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
- -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### InvokeViaIdentityExpanded
-```
-Invoke-AzResiliencyRecoveryPlanReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
- [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InvokeViaIdentityServiceGroup
-```
-Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String>
- -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IReprotectRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String> -ServiceGroupName <String>
+ -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InvokeViaIdentityServiceGroupExpanded
@@ -52,21 +38,36 @@ Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String>
 Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String>
  -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String>
  [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeViaJsonFilePath
+### InvokeViaIdentityServiceGroup
 ```
-Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String>
+ -ServiceGroupInputObject <IResiliencyIdentity> -OperationId <String> -Body <IReprotectRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### InvokeViaJsonString
+### Invoke
 ```
 Invoke-AzResiliencyRecoveryPlanReprotect -RecoveryPlanName <String> -ServiceGroupName <String>
- -OperationId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OperationId <String> -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentityExpanded
+```
+Invoke-AzResiliencyRecoveryPlanReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
+ [-ReprotectRequestPropertySelectedResourceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InvokeViaIdentity
+```
+Invoke-AzResiliencyRecoveryPlanReprotect -InputObject <IResiliencyIdentity> -OperationId <String>
+ -Body <IReprotectRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +119,7 @@ Reprotect post action request.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IReprotectRequest
-Parameter Sets: Invoke, InvokeViaIdentity, InvokeViaIdentityServiceGroup
+Parameter Sets: InvokeViaIdentityServiceGroup, Invoke, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -149,7 +150,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentity, InvokeViaIdentityExpanded
+Parameter Sets: InvokeViaIdentityExpanded, InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -224,7 +225,7 @@ The name of the recovery orchestration plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup, Invoke
 Aliases:
 
 Required: True
@@ -240,7 +241,7 @@ If not provided, all qualified resources will be processed.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InvokeExpanded, InvokeViaIdentityExpanded, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeExpanded, InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,7 +256,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: InvokeViaIdentityServiceGroup, InvokeViaIdentityServiceGroupExpanded
+Parameter Sets: InvokeViaIdentityServiceGroupExpanded, InvokeViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -270,7 +271,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invoke, InvokeExpanded, InvokeViaJsonFilePath, InvokeViaJsonString
+Parameter Sets: InvokeExpanded, InvokeViaJsonString, InvokeViaJsonFilePath, Invoke
 Aliases:
 
 Required: True
@@ -327,4 +328,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencyenrollment
 schema: 2.0.0
@@ -14,41 +14,43 @@ Update an Enrollment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- [-SubscriptionId <String>] [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> -UsagePlanName <String>
- -Resource <IEnrollment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> -Resource <IEnrollment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-ServiceGroupId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityUsagePlan
-```
-Update-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity>
- -Resource <IEnrollment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityUsagePlanExpanded
 ```
 Update-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity>
- [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-ServiceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityUsagePlan
+```
+Update-AzResiliencyEnrollment -Name <String> -UsagePlanInputObject <IResiliencyIdentity>
+ -Resource <IEnrollment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzResiliencyEnrollment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UsagePlanName <String> -Resource <IEnrollment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> [-ServiceGroupId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzResiliencyEnrollment -InputObject <IResiliencyIdentity> -Resource <IEnrollment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -117,7 +119,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -132,7 +134,7 @@ The name of the enrollment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityUsagePlan, UpdateViaIdentityUsagePlanExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityUsagePlanExpanded, UpdateViaIdentityUsagePlan, Update
 Aliases: EnrollmentName
 
 Required: True
@@ -162,7 +164,7 @@ An enrollment that links a usage plan to a service group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IEnrollment
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityUsagePlan
+Parameter Sets: UpdateViaIdentityUsagePlan, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -178,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -193,7 +195,7 @@ ARM resource identifier of the service group associated with this usage plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityUsagePlanExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityUsagePlanExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -209,7 +211,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False
@@ -224,7 +226,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityUsagePlan, UpdateViaIdentityUsagePlanExpanded
+Parameter Sets: UpdateViaIdentityUsagePlanExpanded, UpdateViaIdentityUsagePlan
 Aliases:
 
 Required: True
@@ -239,7 +241,7 @@ The name of the usage plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -296,4 +298,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

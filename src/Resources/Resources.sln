@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -74,6 +74,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Policy.Autorest", "Policy.Autorest", "{0567B7C9-54F9-0997-BF7F-7DE1169E1F14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{FBD5197E-3031-4291-8338-D04CF30AFD90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Resiliency", "..\Resiliency\Resiliency.Autorest\Az.Resiliency.csproj", "{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -433,6 +435,18 @@ Global
 		{FBD5197E-3031-4291-8338-D04CF30AFD90}.Release|x64.Build.0 = Release|Any CPU
 		{FBD5197E-3031-4291-8338-D04CF30AFD90}.Release|x86.ActiveCfg = Release|Any CPU
 		{FBD5197E-3031-4291-8338-D04CF30AFD90}.Release|x86.Build.0 = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Debug|x86.Build.0 = Debug|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|x64.Build.0 = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF70C199-CDAF-4DD6-8805-F8DB051DCDB7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

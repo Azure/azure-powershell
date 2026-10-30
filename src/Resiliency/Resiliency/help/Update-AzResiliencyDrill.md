@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/update-azresiliencydrill
 schema: 2.0.0
@@ -18,7 +18,7 @@ Update-AzResiliencyDrill -Name <String> -ServiceGroupName <String>
  [-ChaosResourceIdentityForFaultType <String>] [-ChaosResourceIdentityForFaultUserAssignedIdentity <String>]
  [-ChaosResourcePropertiesIdentityType <String>]
  [-ChaosResourcePropertiesIdentityUserAssignedIdentity <String>] [-DrillAssetPropertyRegion <String>]
- [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-GoalAssignmentPropertiesIdentityType <String>]
  [-GoalAssignmentPropertiesIdentityUserAssignedIdentity <String>]
  [-HealthModelMonitoringPropertiesIdentityType <String>]
@@ -28,45 +28,8 @@ Update-AzResiliencyDrill -Name <String> -ServiceGroupName <String>
  [-RecoveryPlanPropertiesIdentityType <String>] [-RecoveryPlanPropertiesIdentityUserAssignedIdentity <String>]
  [-SliMonitoringPropertiesIdentityType <String>]
  [-SliMonitoringPropertiesIdentityUserAssignedIdentity <String>] [-SliMonitoringPropertySli <ISliSelection[]>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -Resource <IDrill>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzResiliencyDrill -InputObject <IResiliencyIdentity> -Resource <IDrill> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzResiliencyDrill -InputObject <IResiliencyIdentity> [-ChaosResourceIdentityForFaultType <String>]
- [-ChaosResourceIdentityForFaultUserAssignedIdentity <String>] [-ChaosResourcePropertiesIdentityType <String>]
- [-ChaosResourcePropertiesIdentityUserAssignedIdentity <String>] [-DrillAssetPropertyRegion <String>]
- [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-GoalAssignmentPropertiesIdentityType <String>]
- [-GoalAssignmentPropertiesIdentityUserAssignedIdentity <String>]
- [-HealthModelMonitoringPropertiesIdentityType <String>]
- [-HealthModelMonitoringPropertiesIdentityUserAssignedIdentity <String>]
- [-HealthModelMonitoringPropertyHealthModelId <String>] [-MonitoringPropertiesIdentityType <String>]
- [-MonitoringPropertiesIdentityUserAssignedIdentity <String>] [-RbacSetupMode <String>]
- [-RecoveryPlanPropertiesIdentityType <String>] [-RecoveryPlanPropertiesIdentityUserAssignedIdentity <String>]
- [-SliMonitoringPropertiesIdentityType <String>]
- [-SliMonitoringPropertiesIdentityUserAssignedIdentity <String>] [-SliMonitoringPropertySli <ISliSelection[]>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityServiceGroup
-```
-Update-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -Resource <IDrill>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityServiceGroupExpanded
@@ -75,7 +38,7 @@ Update-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIde
  [-ChaosResourceIdentityForFaultType <String>] [-ChaosResourceIdentityForFaultUserAssignedIdentity <String>]
  [-ChaosResourcePropertiesIdentityType <String>]
  [-ChaosResourcePropertiesIdentityUserAssignedIdentity <String>] [-DrillAssetPropertyRegion <String>]
- [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-GoalAssignmentPropertiesIdentityType <String>]
  [-GoalAssignmentPropertiesIdentityUserAssignedIdentity <String>]
  [-HealthModelMonitoringPropertiesIdentityType <String>]
@@ -85,8 +48,47 @@ Update-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIde
  [-RecoveryPlanPropertiesIdentityType <String>] [-RecoveryPlanPropertiesIdentityUserAssignedIdentity <String>]
  [-SliMonitoringPropertiesIdentityType <String>]
  [-SliMonitoringPropertiesIdentityUserAssignedIdentity <String>] [-SliMonitoringPropertySli <ISliSelection[]>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServiceGroup
+```
+Update-AzResiliencyDrill -Name <String> -ServiceGroupInputObject <IResiliencyIdentity> -Resource <IDrill>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzResiliencyDrill -Name <String> -ServiceGroupName <String> -Resource <IDrill>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResiliencyDrill -InputObject <IResiliencyIdentity> [-ChaosResourceIdentityForFaultType <String>]
+ [-ChaosResourceIdentityForFaultUserAssignedIdentity <String>] [-ChaosResourcePropertiesIdentityType <String>]
+ [-ChaosResourcePropertiesIdentityUserAssignedIdentity <String>] [-DrillAssetPropertyRegion <String>]
+ [-DrillAssetPropertySubscription <String>] [-EnableSystemAssignedIdentity <Boolean>]
+ [-GoalAssignmentPropertiesIdentityType <String>]
+ [-GoalAssignmentPropertiesIdentityUserAssignedIdentity <String>]
+ [-HealthModelMonitoringPropertiesIdentityType <String>]
+ [-HealthModelMonitoringPropertiesIdentityUserAssignedIdentity <String>]
+ [-HealthModelMonitoringPropertyHealthModelId <String>] [-MonitoringPropertiesIdentityType <String>]
+ [-MonitoringPropertiesIdentityUserAssignedIdentity <String>] [-RbacSetupMode <String>]
+ [-RecoveryPlanPropertiesIdentityType <String>] [-RecoveryPlanPropertiesIdentityUserAssignedIdentity <String>]
+ [-SliMonitoringPropertiesIdentityType <String>]
+ [-SliMonitoringPropertiesIdentityUserAssignedIdentity <String>] [-SliMonitoringPropertySli <ISliSelection[]>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzResiliencyDrill -InputObject <IResiliencyIdentity> -Resource <IDrill> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +140,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -153,7 +155,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,7 +170,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +185,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -214,7 +216,7 @@ Region where Drill's internal resources will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -229,7 +231,7 @@ Subscription where Drill's internal resources will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,8 +245,8 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,7 +261,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -274,7 +276,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -289,7 +291,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +306,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +321,7 @@ Full ARM Id of the Azure Health Model selected for Drill monitoring.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +336,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -349,7 +351,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -364,7 +366,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -379,7 +381,7 @@ The name of the Drill
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup, Update
 Aliases: DrillName
 
 Required: True
@@ -409,7 +411,7 @@ RBAC setup mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -424,7 +426,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -439,7 +441,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -454,7 +456,7 @@ Drill resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IDrill
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityServiceGroup
+Parameter Sets: UpdateViaIdentityServiceGroup, Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -469,7 +471,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.IResiliencyIdentity
-Parameter Sets: UpdateViaIdentityServiceGroup, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityServiceGroup
 Aliases:
 
 Required: True
@@ -484,7 +486,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -499,7 +501,7 @@ Identity type linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -514,7 +516,7 @@ User assigned identity id linked with the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -531,7 +533,7 @@ Duplicate types or duplicate SLI Ids are rejected.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resiliency.Models.ISliSelection[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -547,7 +549,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServiceGroupExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityServiceGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -604,4 +606,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

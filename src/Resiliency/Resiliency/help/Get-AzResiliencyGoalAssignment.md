@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Resiliency-help.xml
 Module Name: Az.Resiliency
 online version: https://learn.microsoft.com/powershell/module/az.resiliency/get-azresiliencygoalassignment
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzResiliencyGoalAssignment -ServiceGroupName <String> [-SkipToken <String>] 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityServiceGroup
+```
+Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-DefaultProfile <PSObject>]
@@ -28,12 +34,6 @@ Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupName <String> [-Defau
 ```
 Get-AzResiliencyGoalAssignment -InputObject <IResiliencyIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityServiceGroup
-```
-Get-AzResiliencyGoalAssignment -Name <String> -ServiceGroupInputObject <IResiliencyIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +101,7 @@ The name of the goal assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityServiceGroup
+Parameter Sets: GetViaIdentityServiceGroup, Get
 Aliases: GoalAssignmentName
 
 Required: True
@@ -131,7 +131,7 @@ The name of the service group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -185,4 +185,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
