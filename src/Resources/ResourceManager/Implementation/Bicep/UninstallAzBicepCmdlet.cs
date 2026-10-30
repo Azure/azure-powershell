@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 
             if (ShouldProcess(installer.GetInstallationDirectory(), "Uninstall all managed Bicep installations"))
             {
-                installer.UninstallAll(this.WriteVerbose);
+                var wasUninstalled = installer.UninstallAll(this.WriteVerbose);
 
                 if (this.PassThru.IsPresent)
                 {
-                    WriteObject(true);
+                    WriteObject(wasUninstalled);
                 }
             }
         }

@@ -18,6 +18,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using FluentAssertions;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -29,7 +30,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 {
     public class BicepInstallerTests
     {
-        private const string FakeProfileDirectory = "/fake/profile";
+        // Built from native segments (not a hardcoded "/fake/profile" literal): a literal "/"
+        // gets normalized to "\" by Path.GetDirectoryName on Windows, which made test-computed
+        // and production-computed paths differ only on Windows.
+        private static readonly string FakeProfileDirectory = Path.Combine(Path.DirectorySeparatorChar.ToString(), "fake", "profile");
 
         private static string ExpectedFileName => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep";
 
@@ -91,8 +95,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             result.Should().Be(expectedPath);
             dataStoreMock.Verify(x => x.CreateDirectory(installationDirectory), Times.Once);
             dataStoreMock.Verify(x => x.WriteFile(expectedPath, fakeBytes), Times.Once);
-            verboseMessages.Should().Contain(Properties.Resources.BicepAutoInstallStarting);
-            verboseMessages.Should().Contain(string.Format(Properties.Resources.BicepAutoInstallComplete, "v0.26.54"));
+            verboseMessages.Should().Contain(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepAutoInstallStarting);
+            verboseMessages.Should().Contain(string.Format(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepAutoInstallComplete, "v0.26.54"));
 
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -240,6 +244,31 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetInstalledVersions_skips_directories_with_the_versioned_prefix_but_an_unparsable_version_suffix()
+        {
+            // A directory that matches the "bicep-" prefix but whose suffix isn't a valid semantic version
+            // (e.g. left over from a failed/partial install, or created by something else) should be silently
+            // skipped rather than causing GetInstalledVersions to throw.
+            var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
+            dataStoreMock.Setup(x => x.GetDirectories(installationDirectory)).Returns(new[]
+            {
+                Path.Combine(installationDirectory, "bicep-0.26.0"),
+                Path.Combine(installationDirectory, "bicep-not-a-version"),
+                Path.Combine(installationDirectory, "bicep-"),
+            });
+
+            var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+
+            var versions = installer.GetInstalledVersions();
+
+            versions.Should().ContainSingle();
+            versions.Should().Contain(v => v.ToString() == "0.26.0");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnsureInstalled_with_constraint_reuses_cached_version_without_downloading()
         {
             var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
@@ -366,7 +395,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             result.ToString().Should().Be("0.26.54");
             dataStoreMock.Verify(x => x.WriteFile(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Never);
-            verboseMessages.Should().Contain(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, result));
+            verboseMessages.Should().Contain(string.Format(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepVersionAlreadyInstalled, result));
         }
 
         [Fact]
@@ -471,7 +500,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             result.Should().BeFalse();
             dataStoreMock.Verify(x => x.DeleteDirectory(It.IsAny<string>()), Times.Never);
-            verboseMessages.Should().Contain(Properties.Resources.BicepUninstallNothingInstalled);
+            verboseMessages.Should().Contain(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepUninstallNothingInstalled);
         }
     }
 }

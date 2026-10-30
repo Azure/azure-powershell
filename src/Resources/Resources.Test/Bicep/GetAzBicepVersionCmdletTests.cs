@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using FluentAssertions;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 {
     public class GetAzBicepVersionCmdletTests
     {
-        private const string FakeProfileDirectory = "/fake/profile";
+        private static readonly string FakeProfileDirectory = Path.Combine(Path.DirectorySeparatorChar.ToString(), "fake", "profile");
 
         private static string ExpectedFileName => RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep";
 

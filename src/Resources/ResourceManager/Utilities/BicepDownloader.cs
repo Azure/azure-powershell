@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     using Newtonsoft.Json.Linq;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
 
@@ -62,43 +63,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         public static IBicepDownloader Create()
             => Instance ?? new BicepDownloader();
 
+        private readonly HttpClient httpClient;
+
+        public BicepDownloader()
+            : this(new HttpClient())
+        {
+        }
+
+        /// <summary>
+        /// Lets tests inject an <see cref="HttpClient"/> backed by a fake handler, so they can
+        /// exercise the real parsing logic without hitting the network.
+        /// </summary>
+        internal BicepDownloader(HttpClient httpClient)
+        {
+            this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
+
         public string GetLatestReleaseTag()
         {
-            using (var client = new HttpClient())
-            {
-                var response = client.GetStringAsync(LatestReleaseUrl).GetAwaiter().GetResult();
-                var json = JObject.Parse(response);
-                return json["tag_name"]?.ToString();
-            }
+            var response = httpClient.GetStringAsync(LatestReleaseUrl).GetAwaiter().GetResult();
+            var json = JObject.Parse(response);
+            return json["tag_name"]?.ToString();
         }
 
         public IReadOnlyList<string> GetAvailableReleaseTags()
         {
-            using (var client = new HttpClient())
+            var response = httpClient.GetStringAsync(ReleasesListUrl).GetAwaiter().GetResult();
+            var releases = JArray.Parse(response);
+
+            var tags = new List<string>();
+            foreach (var release in releases)
             {
-                var response = client.GetStringAsync(ReleasesListUrl).GetAwaiter().GetResult();
-                var releases = JArray.Parse(response);
-
-                var tags = new List<string>();
-                foreach (var release in releases)
+                var tag = release["tag_name"]?.ToString();
+                if (!string.IsNullOrEmpty(tag))
                 {
-                    var tag = release["tag_name"]?.ToString();
-                    if (!string.IsNullOrEmpty(tag))
-                    {
-                        tags.Add(tag);
-                    }
+                    tags.Add(tag);
                 }
-
-                return tags;
             }
+
+            return tags;
         }
 
         public byte[] DownloadFile(string url)
         {
-            using (var client = new HttpClient())
-            {
-                return client.GetByteArrayAsync(url).GetAwaiter().GetResult();
-            }
+            return httpClient.GetByteArrayAsync(url).GetAwaiter().GetResult();
         }
     }
 }

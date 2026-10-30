@@ -276,6 +276,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionInvalidFormat, version));
                 }
 
+                // Check the cache before making any network calls: if this exact version is
+                // already installed, there's no need to resolve/validate it against the list
+                // of available releases.
+                if (dataStore.FileExists(GetVersionedInstallationPath(targetVersion)))
+                {
+                    writeVerbose?.Invoke(string.Format(Properties.Resources.BicepVersionAlreadyInstalled, targetVersion));
+                    return targetVersion;
+                }
+
                 IReadOnlyList<string> availableTags;
                 try
                 {

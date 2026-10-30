@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -199,7 +199,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             var match = VersionNumberPattern.Match(output.Stdout ?? string.Empty);
 
             BicepSemanticVersion pathVersion;
-            return match.Success && BicepSemanticVersion.TryParse(match.Value, out pathVersion) && constraint.IsSatisfiedBy(pathVersion);
+            if (!match.Success || !BicepSemanticVersion.TryParse(match.Value, out pathVersion) || !constraint.IsSatisfiedBy(pathVersion))
+            {
+                return false;
+            }
+
+            // We've already invoked "bicep -v" and parsed its version above; cache it here so that
+            // ResolveBicepVersion doesn't need to invoke the same command again to get the same answer.
+            resolvedBicepVersion = match.Value;
+            return true;
         }
 
         private string ResolveBicepVersion(string entrypointFilePath, OutputCallback writeVerbose = null)
@@ -213,6 +221,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             if (executablePath == null)
             {
                 return null;
+            }
+
+            // ResolveBicepExecutablePath may already have resolved (and cached) the version as a side effect,
+            // e.g. via PathExecutableSatisfiesConstraint when a 'bicep.version' constraint applies and the PATH
+            // executable satisfies it. Reuse it instead of invoking "bicep -v" again for the same answer.
+            if (resolvedBicepVersion != null)
+            {
+                return resolvedBicepVersion;
             }
 
             var output = processInvoker.Invoke(new ProcessInput { Executable = executablePath, Arguments = "-v" });
