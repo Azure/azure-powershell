@@ -58,7 +58,7 @@ pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.9.7.2.zip;sourceType=sa]Az.Storage,9.7.2
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.2.0.0.zip;sourceType=sa]Az.StorageAction,2.0.0
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.4.0.zip;sourceType=sa]Az.StorageCache,0.4.0
-pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageDiscovery.1.0.0.zip;sourceType=sa]Az.StorageDiscovery,1.0.0
+pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageDiscovery.1.0.1.zip;sourceType=sa]Az.StorageDiscovery,1.0.1
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.2.1.0.zip;sourceType=sa]Az.StorageMover,2.1.0
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageSync.2.7.0.zip;sourceType=sa]Az.StorageSync,2.7.0
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StreamAnalytics.3.0.0.zip;sourceType=sa]Az.StreamAnalytics,3.0.0
