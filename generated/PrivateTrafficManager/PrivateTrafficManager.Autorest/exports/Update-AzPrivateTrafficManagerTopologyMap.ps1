@@ -20,9 +20,9 @@ Update a Topology Map.
 .Description
 Update a Topology Map.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -CatchAllSiteName "site-westus"
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Tag @{environment="production"; team="networking"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,14 +38,11 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TopologyMapName <String>]: The name of the Topology Map.
-
-SITE <ISite[]>: The list of Sites in the Topology Map.
-  [ProbingGatewayId <List<String>>]: The ARM resource ID of the probing gateway that can be used to monitor health as surrogate to the networks in the Site.
-  [VirtualNetworkId <List<String>>]: The list of Network IDs that forms the Site.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagertopologymap
 #>
@@ -97,16 +94,8 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]]
-    # The list of Sites in the Topology Map.
-    ${Site},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

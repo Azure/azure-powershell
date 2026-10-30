@@ -20,9 +20,9 @@ Update a Traffic Manager health policy.
 .Description
 Update a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" | Update-AzPrivateTrafficManagerHealthPolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +38,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -48,10 +49,19 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TopologyMapName <String>]: The name of the Topology Map.
+
+PROBECONFIGCUSTOMHEADER <ICustomHeader[]>: List of custom headers.
+  [Name <String>]: Header name.
+  [Value <String>]: Header value.
+
+PROBECONFIGEXPECTEDSTATUSCODERANGE <IExpectedStatusCodeRange[]>: List of expected status code ranges.
+  [Max <Int32?>]: Max status code.
+  [Min <Int32?>]: Min status code.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagerhealthpolicy
 #>
@@ -99,6 +109,60 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
     # Identity Parameter
     ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader[]]
+    # List of custom headers.
+    ${ProbeConfigCustomHeader},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange[]]
+    # List of expected status code ranges.
+    ${ProbeConfigExpectedStatusCodeRange},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor interval for endpoints in this profile.
+    # This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
+    # Allowed values: 10 or 30 seconds.
+    ${ProbeConfigIntervalInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The path relative to the endpoint domain name used to probe for endpoint health.
+    ${ProbeConfigPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The TCP port used to probe for endpoint health.
+    ${ProbeConfigPort},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("HTTP", "HTTPS", "TCP")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+    ${ProbeConfigProtocol},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor timeout for endpoints in this profile.
+    # This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
+    ${ProbeConfigTimeoutInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
+    ${ProbeConfigToleratedNumberOfFailure},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

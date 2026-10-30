@@ -14,7 +14,7 @@ This directory contains the PowerShell module for the PrivateTrafficManager serv
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 5.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -32,26 +32,18 @@ module-version: 0.1.0
 title: PrivateTrafficManager
 subject-prefix: $(service-name)
 
-# Using local spec file for private engineering build (API not yet on public ARM)
-# When the API is publicly available, replace with remote commit reference:
-#   commit: dfb4d26996c17aaf42c52593924f027d7c6019e3
-#   require:
-#     - $(this-folder)/../../readme.azure.noprofile.md
-#     - $(repo)/specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/readme.md
+commit: 1e7fff538a7e9d7ca6127b349295c467601362a0
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - ./spec/openapi.json
+  - $(repo)/specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/preview/2026-10-01-preview/privateTrafficManager.json
 
 directive:
-  # Fix polymorphism conflict: ProbeHealthPolicy redefines 'properties' from parent HealthPolicy
-  - from: swagger-document
-    where: $.definitions.ProbeHealthPolicy.properties
-    transform: delete $.properties
   # Remove the unexpanded parameter set
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Keep named creation and parent identity sets without whole-resource identity creation.
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true

@@ -20,9 +20,9 @@ Deletes a Traffic Manager health policy.
 .Description
 Deletes a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerHealthPolicy -Name "https-probe-policy" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Confirm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +38,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -48,6 +49,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"create a Private Traffic Manager profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}", ApiVersion = "2026-10-01-preview")]
     public partial class NewAzPrivateTrafficManagerProfile_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext
@@ -59,17 +59,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PrivateTrafficManager Client => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Module.Instance.ClientAPI;
 
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The experience level of the Private Traffic Manager profile.")]
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The mode for custom topology map of the Private Traffic Manager profile.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The experience level of the Private Traffic Manager profile.",
-        SerializedName = @"customTopologyMap",
+        Description = @"The mode for custom topology map of the Private Traffic Manager profile.",
+        SerializedName = @"customTopologyMapMode",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
-        public string CustomTopologyMap { get => _resourceBody.CustomTopologyMap ?? null; set => _resourceBody.CustomTopologyMap = value; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string CustomTopologyMapMode { get => _resourceBody.CustomTopologyMapMode ?? null; set => _resourceBody.CustomTopologyMapMode = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -254,14 +254,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ARM resource ID of the topology map which has site(s) associated with this probing gateway.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ARM resource ID of the topology map associated with this Private Traffic Manager profile.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ARM resource ID of the topology map which has site(s) associated with this probing gateway.",
+        Description = @"The ARM resource ID of the topology map associated with this Private Traffic Manager profile.",
         SerializedName = @"topologyMapId",
         PossibleTypes = new [] { typeof(string) })]
         public string TopologyMapId { get => _resourceBody.TopologyMapId ?? null; set => _resourceBody.TopologyMapId = value; }
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         Description = @"The traffic routing method of the Private Traffic Manager profile.",
         SerializedName = @"trafficRoutingMethod",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
         public string TrafficRoutingMethod { get => _resourceBody.TrafficRoutingMethod ?? null; set => _resourceBody.TrafficRoutingMethod = value; }
 
         /// <summary>

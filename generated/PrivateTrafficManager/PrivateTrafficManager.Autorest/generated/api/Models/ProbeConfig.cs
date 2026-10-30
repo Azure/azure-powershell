@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
 
         /// <summary>
         /// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health
-        /// of each endpoint in this profile. Allowed values: 5, 10, or 30 seconds.
+        /// of each endpoint in this profile. Allowed values: 10 or 30 seconds.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
         public long? IntervalInSecond { get => this._intervalInSecond; set => this._intervalInSecond = value; }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
         /// <summary>
         /// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health
-        /// of each endpoint in this profile. Allowed values: 5, 10, or 30 seconds.
+        /// of each endpoint in this profile. Allowed values: 10 or 30 seconds.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Allowed values: 5, 10, or 30 seconds.",
+        Description = @"The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Allowed values: 10 or 30 seconds.",
         SerializedName = @"intervalInSeconds",
         PossibleTypes = new [] { typeof(long) })]
         long? IntervalInSecond { get; set; }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange> ExpectedStatusCodeRange { get; set; }
         /// <summary>
         /// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health
-        /// of each endpoint in this profile. Allowed values: 5, 10, or 30 seconds.
+        /// of each endpoint in this profile. Allowed values: 10 or 30 seconds.
         /// </summary>
         long? IntervalInSecond { get; set; }
         /// <summary>

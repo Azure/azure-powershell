@@ -134,6 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).HealthPolicyId = (string) content.GetValueForProperty("HealthPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).HealthPolicyId, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).VirtualNetworkId = (System.Collections.Generic.List<string>) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).VirtualNetworkId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -186,6 +190,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             if (content.Contains("HealthPolicyId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).HealthPolicyId = (string) content.GetValueForProperty("HealthPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).HealthPolicyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).VirtualNetworkId = (System.Collections.Generic.List<string>) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)this).VirtualNetworkId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ProvisioningState"))
             {

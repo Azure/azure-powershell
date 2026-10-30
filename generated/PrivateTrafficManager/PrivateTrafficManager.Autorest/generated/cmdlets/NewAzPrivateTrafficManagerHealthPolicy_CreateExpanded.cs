@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"create a Traffic Manager health policy.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies/{healthPolicyName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies/{healthPolicyName}", ApiVersion = "2026-10-01-preview")]
     public partial class NewAzPrivateTrafficManagerHealthPolicy_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext
@@ -136,6 +136,108 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Path)]
         public string PrivateTrafficManagerProfileName { get => this._privateTrafficManagerProfileName; set => this._privateTrafficManagerProfileName = value; }
+
+        /// <summary>List of custom headers.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of custom headers.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of custom headers.",
+        SerializedName = @"customHeaders",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader[] ProbeConfigCustomHeader { get => _resourceBody.ProbeConfigCustomHeader?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ProbeConfigCustomHeader = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader>(value) : null); }
+
+        /// <summary>List of expected status code ranges.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of expected status code ranges.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of expected status code ranges.",
+        SerializedName = @"expectedStatusCodeRanges",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange[] ProbeConfigExpectedStatusCodeRange { get => _resourceBody.ProbeConfigExpectedStatusCodeRange?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.ProbeConfigExpectedStatusCodeRange = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange>(value) : null); }
+
+        /// <summary>
+        /// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health
+        /// of each endpoint in this profile. Allowed values: 10 or 30 seconds.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Allowed values: 10 or 30 seconds.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Allowed values: 10 or 30 seconds.",
+        SerializedName = @"intervalInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long ProbeConfigIntervalInSecond { get => _resourceBody.ProbeConfigIntervalInSecond ?? default(long); set => _resourceBody.ProbeConfigIntervalInSecond = value; }
+
+        /// <summary>
+        /// The path relative to the endpoint domain name used to probe for endpoint health.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The path relative to the endpoint domain name used to probe for endpoint health.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The path relative to the endpoint domain name used to probe for endpoint health.",
+        SerializedName = @"path",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProbeConfigPath { get => _resourceBody.ProbeConfigPath ?? null; set => _resourceBody.ProbeConfigPath = value; }
+
+        /// <summary>The TCP port used to probe for endpoint health.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The TCP port used to probe for endpoint health.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The TCP port used to probe for endpoint health.",
+        SerializedName = @"port",
+        PossibleTypes = new [] { typeof(long) })]
+        public long ProbeConfigPort { get => _resourceBody.ProbeConfigPort ?? default(long); set => _resourceBody.ProbeConfigPort = value; }
+
+        /// <summary>The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.",
+        SerializedName = @"protocol",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("HTTP", "HTTPS", "TCP")]
+        public string ProbeConfigProtocol { get => _resourceBody.ProbeConfigProtocol ?? null; set => _resourceBody.ProbeConfigProtocol = value; }
+
+        /// <summary>
+        /// The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile
+        /// to response to the health check.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.",
+        SerializedName = @"timeoutInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long ProbeConfigTimeoutInSecond { get => _resourceBody.ProbeConfigTimeoutInSecond ?? default(long); set => _resourceBody.ProbeConfigTimeoutInSecond = value; }
+
+        /// <summary>
+        /// The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile
+        /// Degraded after the next failed health check.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.",
+        SerializedName = @"toleratedNumberOfFailures",
+        PossibleTypes = new [] { typeof(long) })]
+        public long ProbeConfigToleratedNumberOfFailure { get => _resourceBody.ProbeConfigToleratedNumberOfFailure ?? default(long); set => _resourceBody.ProbeConfigToleratedNumberOfFailure = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

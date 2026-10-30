@@ -20,9 +20,9 @@ Gets a Private Traffic Manager endpoint.
 .Description
 Gets a Private Traffic Manager endpoint.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerEndpoint -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +38,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -48,6 +49,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -257,9 +259,9 @@ Gets a Traffic Manager health policy.
 .Description
 Gets a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -275,6 +277,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -285,6 +288,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -490,13 +494,252 @@ end {
 
 <#
 .Synopsis
+Gets a probing gateway associated with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Description
+Gets a probing gateway associated with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Example
+Get-AzPrivateTrafficManagerProfileProbingGateway -PrivateTrafficManagerProfileName "basic-profile" -ResourceGroupName "demo-rg"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+
+PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+.Link
+https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerprofileprobinggateway
+#>
+function Get-AzPrivateTrafficManagerProfileProbingGateway {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateTrafficManagerProfile', Mandatory)]
+    [Alias('ProfileProbingGatewayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the probing gateway association.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the Private Traffic Manager profile.
+    ${PrivateTrafficManagerProfileName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPrivateTrafficManagerProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.PrivateTrafficManager.private\Get-AzPrivateTrafficManagerProfileProbingGateway_Get';
+            GetViaIdentity = 'Az.PrivateTrafficManager.private\Get-AzPrivateTrafficManagerProfileProbingGateway_GetViaIdentity';
+            GetViaIdentityPrivateTrafficManagerProfile = 'Az.PrivateTrafficManager.private\Get-AzPrivateTrafficManagerProfileProbingGateway_GetViaIdentityPrivateTrafficManagerProfile';
+            List = 'Az.PrivateTrafficManager.private\Get-AzPrivateTrafficManagerProfileProbingGateway_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a Private Traffic Manager profile.
 .Description
 Gets a Private Traffic Manager profile.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerProfile -ResourceGroupName "demo-rg"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -512,6 +755,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -707,9 +951,9 @@ Gets a Site.
 .Description
 Gets a Site.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerSite -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -725,6 +969,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -735,6 +980,7 @@ TOPOLOGYMAPINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -944,9 +1190,9 @@ Gets a Topology Map.
 .Description
 Gets a Topology Map.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerTopologyMap -ResourceGroupName "rg-ptm-demo"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -962,6 +1208,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1158,9 +1405,12 @@ Create a Private Traffic Manager endpoint.
 .Description
 Create a Private Traffic Manager endpoint.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Target "primary.contoso.internal." -MonitoringTarget "primary-health.contoso.internal." -EndpointStatus "Enabled" -Weight 60 -Priority 1 -AlwaysServe "Disabled" -HealthPolicyId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/PrivateTrafficManagerProfiles/weighted-profile/healthPolicies/hp1"
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-secondary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -Weight 40 -AlwaysServe "Enabled"
+.Example
+$virtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-east"
+New-AzPrivateTrafficManagerEndpoint -Name "east-endpoint" -PrivateTrafficManagerProfileName "vnet-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -VirtualNetworkId @($virtualNetworkId)
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -1176,6 +1426,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -1266,9 +1517,9 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead.
-    # If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured.
-    # Monitoring Target cannot be an IPv6 address.
+    # Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address.
+    # If not configured, the endpoint target is used.
+    # It is required when the target is IPv6 and cannot itself be an IPv6 address.
     ${MonitoringTarget},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1288,6 +1539,16 @@ param(
     # The fully-qualified DNS name or IP address of the endpoint.
     # Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
     ${Target},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String[]]
+    # The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method.
+    # A virtual network must not be assigned to more than one endpoint in the profile.
+    # A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
+    ${VirtualNetworkId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
@@ -1475,9 +1736,10 @@ Create a Traffic Manager health policy.
 .Description
 Create a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonFilePath "./healthpolicy.json"
 .Example
-{{ Add code here }}
+$jsonString = '{"kind":"Probe","properties":{"probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":30,"timeoutInSeconds":10,"toleratedNumberOfFailures":3}}}'
+New-AzPrivateTrafficManagerHealthPolicy -Name "https-probe-policy" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonString $jsonString
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -1493,10 +1755,19 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TopologyMapName <String>]: The name of the Topology Map.
+
+PROBECONFIGCUSTOMHEADER <ICustomHeader[]>: List of custom headers.
+  [Name <String>]: Header name.
+  [Value <String>]: Header value.
+
+PROBECONFIGEXPECTEDSTATUSCODERANGE <IExpectedStatusCodeRange[]>: List of expected status code ranges.
+  [Max <Int32?>]: Max status code.
+  [Min <Int32?>]: Min status code.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerhealthpolicy
 #>
@@ -1543,6 +1814,68 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
     # Identity Parameter
     ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader[]]
+    # List of custom headers.
+    ${ProbeConfigCustomHeader},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange[]]
+    # List of expected status code ranges.
+    ${ProbeConfigExpectedStatusCodeRange},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor interval for endpoints in this profile.
+    # This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
+    # Allowed values: 10 or 30 seconds.
+    ${ProbeConfigIntervalInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The path relative to the endpoint domain name used to probe for endpoint health.
+    ${ProbeConfigPath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The TCP port used to probe for endpoint health.
+    ${ProbeConfigPort},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("HTTP", "HTTPS", "TCP")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+    ${ProbeConfigProtocol},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor timeout for endpoints in this profile.
+    # This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
+    ${ProbeConfigTimeoutInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
+    ${ProbeConfigToleratedNumberOfFailure},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
@@ -1718,13 +2051,269 @@ end {
 
 <#
 .Synopsis
+Create a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Description
+Create a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Example
+$gatewayId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/probingGateways/gateway-east"
+New-AzPrivateTrafficManagerProfileProbingGateway -Name "gateway-east" -PrivateTrafficManagerProfileName "basic-profile" -ResourceGroupName "demo-rg" -ProbingGatewayId $gatewayId
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+.Link
+https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerprofileprobinggateway
+#>
+function New-AzPrivateTrafficManagerProfileProbingGateway {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ProfileProbingGatewayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the probing gateway association.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the Private Traffic Manager profile.
+    ${PrivateTrafficManagerProfileName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The ARM resource ID of the probing gateway.
+    ${ProbingGatewayId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.PrivateTrafficManager.private\New-AzPrivateTrafficManagerProfileProbingGateway_CreateExpanded';
+            CreateViaIdentityPrivateTrafficManagerProfileExpanded = 'Az.PrivateTrafficManager.private\New-AzPrivateTrafficManagerProfileProbingGateway_CreateViaIdentityPrivateTrafficManagerProfileExpanded';
+            CreateViaJsonFilePath = 'Az.PrivateTrafficManager.private\New-AzPrivateTrafficManagerProfileProbingGateway_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.PrivateTrafficManager.private\New-AzPrivateTrafficManagerProfileProbingGateway_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create a Private Traffic Manager profile.
 .Description
 Create a Private Traffic Manager profile.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Weighted" -ProfileStatus "Enabled" -DnsConfigRecordType "CNAME" -DnsConfigTtl 60 -Tag @{environment="test"; team="networking"}
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Priority" -ProfileStatus "Enabled" -CustomTopologyMapMode "Enabled" -TopologyMapId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/topologyMaps/ptm-topology-demo"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile
@@ -1740,8 +2329,9 @@ ENDPOINT <IProfileEndpoint[]>: The list of endpoints in the Private Traffic Mana
   [EndpointStatus <String>]: The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
   [HealthPolicyId <String>]: The health policy associated with this endpoint.
   [Kind <String>]: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.
+  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.
   [Priority <Int64?>]: The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
+  [VirtualNetworkId <List<String>>]: The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
   [Weight <Int64?>]: The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerprofile
@@ -1778,11 +2368,11 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The experience level of the Private Traffic Manager profile.
-    ${CustomTopologyMap},
+    # The mode for custom topology map of the Private Traffic Manager profile.
+    ${CustomTopologyMapMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("A", "AAAA", "CNAME")]
@@ -1821,11 +2411,11 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+    # The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
     ${TopologyMapId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
     # The traffic routing method of the Private Traffic Manager profile.
@@ -2008,9 +2598,9 @@ Create a Site.
 .Description
 Create a Site.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -VirtualNetworkId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus") -ProbingGatewayId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/probingGateways/pg-eastus")
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-westus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./site-config.json"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -2026,6 +2616,7 @@ TOPOLOGYMAPINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -2271,9 +2862,9 @@ Create a Topology Map.
 .Description
 Create a Topology Map.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Location "global" -CatchAllSiteName "site-default" -Tag @{environment="test"}
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-prod" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./topologymap.json"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap
@@ -2282,7 +2873,8 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SITE <ISite[]>: The list of Sites in the Topology Map.
+SITE <ITopologyMapInlineSite[]>: The list of Sites in the Topology Map.
+  Name <String>: The name of the Site.
   [ProbingGatewayId <List<String>>]: The ARM resource ID of the probing gateway that can be used to monitor health as surrogate to the networks in the Site.
   [VirtualNetworkId <List<String>>]: The list of Network IDs that forms the Site.
 .Link
@@ -2330,7 +2922,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite[]]
     # The list of Sites in the Topology Map.
     ${Site},
 
@@ -2518,9 +3110,9 @@ Deletes a Private Traffic Manager endpoint.
 .Description
 Deletes a Private Traffic Manager endpoint.
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-secondary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Confirm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -2536,6 +3128,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -2546,6 +3139,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -2769,9 +3363,9 @@ Deletes a Traffic Manager health policy.
 .Description
 Deletes a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerHealthPolicy -Name "https-probe-policy" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Confirm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -2787,6 +3381,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -2797,6 +3392,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3016,13 +3612,13 @@ end {
 
 <#
 .Synopsis
-Deletes a Private Traffic Manager profile.
+Deletes a probing gateway association from a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
 .Description
-Deletes a Private Traffic Manager profile.
+Deletes a probing gateway association from a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerProfileProbingGateway -Name "gateway-east" -PrivateTrafficManagerProfileName "basic-profile" -ResourceGroupName "demo-rg"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -3038,6 +3634,260 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+
+PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+.Link
+https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagerprofileprobinggateway
+#>
+function Remove-AzPrivateTrafficManagerProfileProbingGateway {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateTrafficManagerProfile', Mandatory)]
+    [Alias('ProfileProbingGatewayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the probing gateway association.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the Private Traffic Manager profile.
+    ${PrivateTrafficManagerProfileName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateTrafficManagerProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.PrivateTrafficManager.private\Remove-AzPrivateTrafficManagerProfileProbingGateway_Delete';
+            DeleteViaIdentity = 'Az.PrivateTrafficManager.private\Remove-AzPrivateTrafficManagerProfileProbingGateway_DeleteViaIdentity';
+            DeleteViaIdentityPrivateTrafficManagerProfile = 'Az.PrivateTrafficManager.private\Remove-AzPrivateTrafficManagerProfileProbingGateway_DeleteViaIdentityPrivateTrafficManagerProfile';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Deletes a Private Traffic Manager profile.
+.Description
+Deletes a Private Traffic Manager profile.
+.Example
+Remove-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
+.Example
+Remove-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Confirm
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3246,9 +4096,9 @@ Deletes a Site.
 .Description
 Deletes a Site.
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerSite -Name "site-westus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Confirm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -3264,6 +4114,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3274,6 +4125,7 @@ TOPOLOGYMAPINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3497,9 +4349,9 @@ Deletes a Topology Map.
 .Description
 Deletes a Topology Map.
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 .Example
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-prod" -ResourceGroupName "rg-ptm-demo" -Confirm
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -3515,6 +4367,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3724,9 +4577,9 @@ Update a Private Traffic Manager endpoint.
 .Description
 Update a Private Traffic Manager endpoint.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Weight 80
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-secondary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -EndpointStatus "Disabled"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -3742,6 +4595,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3752,6 +4606,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -3845,9 +4700,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityPrivateTrafficManagerProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead.
-    # If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured.
-    # Monitoring Target cannot be an IPv6 address.
+    # Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address.
+    # If not configured, the endpoint target is used.
+    # It is required when the target is IPv6 and cannot itself be an IPv6 address.
     ${MonitoringTarget},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -3869,6 +4724,17 @@ param(
     # The fully-qualified DNS name or IP address of the endpoint.
     # Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
     ${Target},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String[]]
+    # The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method.
+    # A virtual network must not be assigned to more than one endpoint in the profile.
+    # A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
+    ${VirtualNetworkId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -4058,9 +4924,9 @@ Update a Traffic Manager health policy.
 .Description
 Update a Traffic Manager health policy.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" | Update-AzPrivateTrafficManagerHealthPolicy
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -4076,6 +4942,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -4086,10 +4953,19 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TopologyMapName <String>]: The name of the Topology Map.
+
+PROBECONFIGCUSTOMHEADER <ICustomHeader[]>: List of custom headers.
+  [Name <String>]: Header name.
+  [Value <String>]: Header value.
+
+PROBECONFIGEXPECTEDSTATUSCODERANGE <IExpectedStatusCodeRange[]>: List of expected status code ranges.
+  [Max <Int32?>]: Max status code.
+  [Min <Int32?>]: Min status code.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagerhealthpolicy
 #>
@@ -4137,6 +5013,60 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
     # Identity Parameter
     ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader[]]
+    # List of custom headers.
+    ${ProbeConfigCustomHeader},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange[]]
+    # List of expected status code ranges.
+    ${ProbeConfigExpectedStatusCodeRange},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor interval for endpoints in this profile.
+    # This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
+    # Allowed values: 10 or 30 seconds.
+    ${ProbeConfigIntervalInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The path relative to the endpoint domain name used to probe for endpoint health.
+    ${ProbeConfigPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The TCP port used to probe for endpoint health.
+    ${ProbeConfigPort},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("HTTP", "HTTPS", "TCP")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+    ${ProbeConfigProtocol},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The monitor timeout for endpoints in this profile.
+    # This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
+    ${ProbeConfigTimeoutInSecond},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.Int64]
+    # The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
+    ${ProbeConfigToleratedNumberOfFailure},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4299,13 +5229,291 @@ end {
 
 <#
 .Synopsis
+Update a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Description
+Update a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+.Example
+$gatewayId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/probingGateways/gateway-west"
+Update-AzPrivateTrafficManagerProfileProbingGateway -Name "gateway-east" -PrivateTrafficManagerProfileName "basic-profile" -ResourceGroupName "demo-rg" -ProbingGatewayId $gatewayId
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+
+PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
+  [EndpointName <String>]: The name of the Private Traffic Manager endpoint.
+  [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
+  [Id <String>]: Resource identity path
+  [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SiteName <String>]: The name of the Site.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopologyMapName <String>]: The name of the Topology Map.
+.Link
+https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagerprofileprobinggateway
+#>
+function Update-AzPrivateTrafficManagerProfileProbingGateway {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateTrafficManagerProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ProfileProbingGatewayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the probing gateway association.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the Private Traffic Manager profile.
+    ${PrivateTrafficManagerProfileName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateTrafficManagerProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity]
+    # Identity Parameter
+    ${PrivateTrafficManagerProfileInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # The ARM resource ID of the probing gateway.
+    ${ProbingGatewayId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.PrivateTrafficManager.private\Update-AzPrivateTrafficManagerProfileProbingGateway_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.PrivateTrafficManager.private\Update-AzPrivateTrafficManagerProfileProbingGateway_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateTrafficManagerProfileExpanded = 'Az.PrivateTrafficManager.private\Update-AzPrivateTrafficManagerProfileProbingGateway_UpdateViaIdentityPrivateTrafficManagerProfileExpanded';
+            UpdateViaJsonFilePath = 'Az.PrivateTrafficManager.private\Update-AzPrivateTrafficManagerProfileProbingGateway_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.PrivateTrafficManager.private\Update-AzPrivateTrafficManagerProfileProbingGateway_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a Traffic Manager profile.
 .Description
 Update a Traffic Manager profile.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -TrafficRoutingMethod "Priority"
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -ProfileStatus "Disabled"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -4323,8 +5531,9 @@ ENDPOINT <IProfileEndpoint[]>: The list of endpoints in the Private Traffic Mana
   [EndpointStatus <String>]: The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
   [HealthPolicyId <String>]: The health policy associated with this endpoint.
   [Kind <String>]: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.
+  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.
   [Priority <Int64?>]: The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
+  [VirtualNetworkId <List<String>>]: The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
   [Weight <Int64?>]: The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
 
 INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
@@ -4332,6 +5541,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -4378,11 +5588,11 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The experience level of the Private Traffic Manager profile.
-    ${CustomTopologyMap},
+    # The mode for custom topology map of the Private Traffic Manager profile.
+    ${CustomTopologyMapMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -4418,7 +5628,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -4427,12 +5637,12 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+    # The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
     ${TopologyMapId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
     # The traffic routing method of the Private Traffic Manager profile.
@@ -4616,9 +5826,9 @@ Update a Site.
 .Description
 Update a Site.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -VirtualNetworkId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus2")
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./updated-site.json"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -4634,6 +5844,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -4644,6 +5855,7 @@ TOPOLOGYMAPINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -4901,9 +6113,9 @@ Update a Topology Map.
 .Description
 Update a Topology Map.
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -CatchAllSiteName "site-westus"
 .Example
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Tag @{environment="production"; team="networking"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -4919,14 +6131,11 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TopologyMapName <String>]: The name of the Topology Map.
-
-SITE <ISite[]>: The list of Sites in the Topology Map.
-  [ProbingGatewayId <List<String>>]: The ARM resource ID of the probing gateway that can be used to monitor health as surrogate to the networks in the Site.
-  [VirtualNetworkId <List<String>>]: The list of Network IDs that forms the Site.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagertopologymap
 #>
@@ -4978,16 +6187,8 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]]
-    # The list of Sites in the Topology Map.
-    ${Site},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

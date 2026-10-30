@@ -17,8 +17,8 @@ Create a Private Traffic Manager endpoint.
 New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AlwaysServe <String>] [-EndpointStatus <String>]
  [-HealthPolicyId <String>] [-Kind <String>] [-MonitoringTarget <String>] [-Priority <Int64>]
- [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Target <String>] [-VirtualNetworkId <String[]>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateTrafficManagerProfileExpanded
@@ -26,8 +26,8 @@ New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfile
 New-AzPrivateTrafficManagerEndpoint -Name <String>
  -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-AlwaysServe <String>]
  [-EndpointStatus <String>] [-HealthPolicyId <String>] [-Kind <String>] [-MonitoringTarget <String>]
- [-Priority <Int64>] [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Priority <Int64>] [-Target <String>] [-VirtualNetworkId <String[]>] [-Weight <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -74,6 +74,16 @@ web-endpoint-secondary  10.10.10.25  Enabled        40              Succeeded
 ```
 
 This command creates an endpoint that always serves traffic regardless of health status.
+
+### Example 3: Create a virtual network routing endpoint
+```powershell
+$virtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-east"
+New-AzPrivateTrafficManagerEndpoint -Name "east-endpoint" -PrivateTrafficManagerProfileName "vnet-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -VirtualNetworkId @($virtualNetworkId)
+```
+
+This command assigns a virtual network to an endpoint in an existing profile whose TrafficRoutingMethod is VNet.
+Each virtual network can belong to only one endpoint in the profile.
+An endpoint without virtual networks is the fallback; at most one fallback is allowed per profile.
 
 ## PARAMETERS
 
@@ -203,9 +213,9 @@ Accept wildcard characters: False
 ```
 
 ### -MonitoringTarget
-Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead.
-If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured.
-Monitoring Target cannot be an IPv6 address.
+Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address.
+If not configured, the endpoint target is used.
+It is required when the target is IPv6 and cannot itself be an IPv6 address.
 
 ```yaml
 Type: System.String
@@ -335,6 +345,23 @@ Traffic Manager returns this value in DNS responses to direct traffic to this en
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateTrafficManagerProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkId
+The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method.
+A virtual network must not be assigned to more than one endpoint in the profile.
+A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityPrivateTrafficManagerProfileExpanded
 Aliases:
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"update a Topology Map.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}", ApiVersion = "2026-10-01-preview")]
     public partial class UpdateAzPrivateTrafficManagerTopologyMap_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Class representing a Topology Map.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.TopologyMapUpdate();
+        /// <summary>The type used for update operations of the Topology Map.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.TopologyMapPatch();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -143,18 +143,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>The list of Sites in the Topology Map.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Sites in the Topology Map.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of Sites in the Topology Map.",
-        SerializedName = @"sites",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[] Site { get => _propertiesBody.Site?.ToArray() ?? null /* fixedArrayOf */; set => _propertiesBody.Site = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>(value) : null); }
-
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -164,8 +152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatchTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatchTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

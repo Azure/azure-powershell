@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDelete(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsGet(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1057,7 +1057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsGetWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1297,7 +1297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListByParent(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsListByParentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1391,7 +1391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointListResult> EndpointsListByParentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1445,7 +1445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointListResult> EndpointsListByParentWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1627,7 +1627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1676,7 +1676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1736,7 +1736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1800,7 +1800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1849,7 +1849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint> EndpointsUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2278,7 +2278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2327,7 +2327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2387,7 +2387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy> HealthPoliciesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2451,7 +2451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2500,7 +2500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy> HealthPoliciesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2550,7 +2550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy> HealthPoliciesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2928,7 +2928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesDelete(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2972,7 +2972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3209,7 +3209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesGet(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3252,7 +3252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3306,7 +3306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy> HealthPoliciesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3363,7 +3363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy> HealthPoliciesGetWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string healthPolicyName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3546,7 +3546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesListByParent(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3588,7 +3588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task HealthPoliciesListByParentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3640,7 +3640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyListResult> HealthPoliciesListByParentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3694,7 +3694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyListResult> HealthPoliciesListByParentWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3872,7 +3872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3908,7 +3908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3951,7 +3951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3993,7 +3993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4143,6 +4143,2329 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
             }
         }
 
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="jsonString">Json string supplied to the ProfileProbingGatewaysCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="jsonString">Json string supplied to the ProfileProbingGatewaysCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ProfileProbingGatewaysCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ProfileProbingGatewaysCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProfileProbingGatewaysCreateOrUpdate" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateTrafficManagerProfileName),privateTrafficManagerProfileName);
+                await eventListener.AssertRegEx(nameof(privateTrafficManagerProfileName), privateTrafficManagerProfileName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(profileProbingGatewayName),profileProbingGatewayName);
+                await eventListener.AssertRegEx(nameof(profileProbingGatewayName), profileProbingGatewayName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Deletes a probing gateway association from a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysDelete(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Deletes a probing gateway association from a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProfileProbingGatewaysDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProfileProbingGatewaysDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysDelete_Validate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateTrafficManagerProfileName),privateTrafficManagerProfileName);
+                await eventListener.AssertRegEx(nameof(privateTrafficManagerProfileName), privateTrafficManagerProfileName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(profileProbingGatewayName),profileProbingGatewayName);
+                await eventListener.AssertRegEx(nameof(profileProbingGatewayName), profileProbingGatewayName, @"^[a-zA-Z0-9-]{3,24}$");
+            }
+        }
+
+        /// <summary>
+        /// Gets a probing gateway associated with a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode`
+        /// set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysGet(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets a probing gateway associated with a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode`
+        /// set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets a probing gateway associated with a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode`
+        /// set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets a probing gateway associated with a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode`
+        /// set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysGetWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ProfileProbingGatewaysGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProfileProbingGatewaysGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProfileProbingGatewaysGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysGet_Validate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateTrafficManagerProfileName),privateTrafficManagerProfileName);
+                await eventListener.AssertRegEx(nameof(privateTrafficManagerProfileName), privateTrafficManagerProfileName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(profileProbingGatewayName),profileProbingGatewayName);
+                await eventListener.AssertRegEx(nameof(profileProbingGatewayName), profileProbingGatewayName, @"^[a-zA-Z0-9-]{3,24}$");
+            }
+        }
+
+        /// <summary>
+        /// Lists all probing gateways associated with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysListByParent(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysListByParent_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all probing gateways associated with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysListByParentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysListByParent_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all probing gateways associated with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult> ProfileProbingGatewaysListByParentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysListByParentWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all probing gateways associated with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult> ProfileProbingGatewaysListByParentWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysListByParentWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ProfileProbingGatewaysListByParentWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult> ProfileProbingGatewaysListByParentWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProfileProbingGatewaysListByParent" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysListByParent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGatewayListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProfileProbingGatewaysListByParent" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysListByParent_Validate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateTrafficManagerProfileName),privateTrafficManagerProfileName);
+                await eventListener.AssertRegEx(nameof(privateTrafficManagerProfileName), privateTrafficManagerProfileName, @"^[a-zA-Z0-9-]{3,24}$");
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Network/privateTrafficManagerProfiles/(?<privateTrafficManagerProfileName>[^/]+)/probingGateways/(?<profileProbingGatewayName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var privateTrafficManagerProfileName = _match.Groups["privateTrafficManagerProfileName"].Value;
+                var profileProbingGatewayName = _match.Groups["profileProbingGatewayName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + privateTrafficManagerProfileName
+                        + "/probingGateways/"
+                        + profileProbingGatewayName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="jsonString">Json string supplied to the ProfileProbingGatewaysUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProfileProbingGatewaysUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProfileProbingGatewaysUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="jsonString">Json string supplied to the ProfileProbingGatewaysUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update a probing gateway association with a Private Traffic Manager profile. Only available when the parent profile has
+        /// `customTopologyMapMode` set to `Disabled`.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2026-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Network/privateTrafficManagerProfiles/"
+                        + global::System.Uri.EscapeDataString(privateTrafficManagerProfileName)
+                        + "/probingGateways/"
+                        + global::System.Uri.EscapeDataString(profileProbingGatewayName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ProfileProbingGatewaysUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ProfileProbingGatewaysUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway> ProfileProbingGatewaysUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ProfileProbingGatewaysUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGateway>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProbingGateway.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProfileProbingGatewaysUpdate" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="privateTrafficManagerProfileName">The name of the Private Traffic Manager profile.</param>
+        /// <param name="profileProbingGatewayName">The name of the probing gateway association.</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProfileProbingGatewaysUpdate_Validate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, string profileProbingGatewayName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProbingGatewayUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(privateTrafficManagerProfileName),privateTrafficManagerProfileName);
+                await eventListener.AssertRegEx(nameof(privateTrafficManagerProfileName), privateTrafficManagerProfileName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(profileProbingGatewayName),profileProbingGatewayName);
+                await eventListener.AssertRegEx(nameof(profileProbingGatewayName), profileProbingGatewayName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>update a Private Traffic Manager profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -4159,7 +6482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreateOrUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4206,7 +6529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4263,7 +6586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4323,7 +6646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4369,7 +6692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4416,7 +6739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4786,7 +7109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesDelete(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4828,7 +7151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5058,7 +7381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGet(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5099,7 +7422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5150,7 +7473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5203,7 +7526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesGetWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5380,7 +7703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5420,7 +7743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5469,7 +7792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult> ProfilesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5519,7 +7842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult> ProfilesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5693,7 +8016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5731,7 +8054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5777,7 +8100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult> ProfilesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5823,7 +8146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileListResult> ProfilesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5995,7 +8318,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdate(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6042,7 +8365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6099,7 +8422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6159,7 +8482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task ProfilesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6205,7 +8528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6252,7 +8575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile> ProfilesUpdateWithResult(string subscriptionId, string resourceGroupName, string privateTrafficManagerProfileName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6626,7 +8949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesCreateOrUpdate(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6675,7 +8998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6735,7 +9058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6799,7 +9122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6848,7 +9171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6898,7 +9221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7274,7 +9597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesDelete(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7318,7 +9641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7555,7 +9878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesGet(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7598,7 +9921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7652,7 +9975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7709,7 +10032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesGetWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7892,7 +10215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesListByParent(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7934,7 +10257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesListByParentViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7986,7 +10309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteListResult> SitesListByParentViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8040,7 +10363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteListResult> SitesListByParentWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8222,7 +10545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesUpdate(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8271,7 +10594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8331,7 +10654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8395,7 +10718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task SitesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8444,7 +10767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8494,7 +10817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> SitesUpdateWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, string siteName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8872,7 +11195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsCreateOrUpdate(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8919,7 +11242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8976,7 +11299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9036,7 +11359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9082,7 +11405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9129,7 +11452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9501,7 +11824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsDelete(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9543,7 +11866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9773,7 +12096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsGet(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9814,7 +12137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9865,7 +12188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9918,7 +12241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsGetWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10095,7 +12418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10135,7 +12458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10184,7 +12507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult> TopologyMapsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10234,7 +12557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult> TopologyMapsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10408,7 +12731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10446,7 +12769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10492,7 +12815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult> TopologyMapsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10538,7 +12861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapListResult> TopologyMapsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10708,9 +13031,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TopologyMapsUpdate(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task TopologyMapsUpdate(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10755,9 +13078,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TopologyMapsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task TopologyMapsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10812,9 +13135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10874,7 +13197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task TopologyMapsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10920,7 +13243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10965,9 +13288,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsUpdateWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap> TopologyMapsUpdateWithResult(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2026-02-09-preview";
+            var apiVersion = @"2026-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11308,7 +13631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TopologyMapsUpdate_Validate(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapUpdate body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TopologyMapsUpdate_Validate(string subscriptionId, string resourceGroupName, string topologyMapName, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapPatch body, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

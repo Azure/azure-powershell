@@ -134,6 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).HealthPolicyName = (string) content.GetValueForProperty("HealthPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).HealthPolicyName, global::System.Convert.ToString);
             }
+            if (content.Contains("ProfileProbingGatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).ProfileProbingGatewayName = (string) content.GetValueForProperty("ProfileProbingGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).ProfileProbingGatewayName, global::System.Convert.ToString);
+            }
             if (content.Contains("SiteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).SiteName = (string) content.GetValueForProperty("SiteName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).SiteName, global::System.Convert.ToString);
@@ -182,6 +186,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             if (content.Contains("HealthPolicyName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).HealthPolicyName = (string) content.GetValueForProperty("HealthPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).HealthPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProfileProbingGatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).ProfileProbingGatewayName = (string) content.GetValueForProperty("ProfileProbingGatewayName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentityInternal)this).ProfileProbingGatewayName, global::System.Convert.ToString);
             }
             if (content.Contains("SiteName"))
             {

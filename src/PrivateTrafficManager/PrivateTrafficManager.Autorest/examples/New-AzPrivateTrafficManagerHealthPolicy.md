@@ -13,7 +13,7 @@ This command creates a new health policy from a JSON file that defines the probe
 
 ### Example 2: Create a health policy using a JSON string
 ```powershell
-$jsonString = '{"kind":"Probe","properties":{"name":"https-probe","probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":30,"timeoutInSeconds":10,"toleratedNumberOfFailures":3}}}'
+$jsonString = '{"kind":"Probe","properties":{"probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":30,"timeoutInSeconds":10,"toleratedNumberOfFailures":3}}}'
 New-AzPrivateTrafficManagerHealthPolicy -Name "https-probe-policy" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonString $jsonString
 ```
 

@@ -15,10 +15,10 @@ Create a Private Traffic Manager profile.
 ### CreateExpanded (Default)
 ```
 New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-CustomTopologyMap <String>] [-DnsConfigRecordType <String>]
- [-DnsConfigTtl <Int64>] [-Endpoint <IProfileEndpoint[]>] [-ProfileStatus <String>] [-Tag <Hashtable>]
- [-TopologyMapId <String>] [-TrafficRoutingMethod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-CustomTopologyMapMode <String>]
+ [-DnsConfigRecordType <String>] [-DnsConfigTtl <Int64>] [-Endpoint <IProfileEndpoint[]>]
+ [-ProfileStatus <String>] [-Tag <Hashtable>] [-TopologyMapId <String>] [-TrafficRoutingMethod <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -55,7 +55,7 @@ This command creates a new Private Traffic Manager profile with weighted traffic
 
 ### Example 2: Create a Private Traffic Manager profile with a topology map
 ```powershell
-New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Priority" -ProfileStatus "Enabled" -CustomTopologyMap "Enable" -TopologyMapId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/topologyMaps/ptm-topology-demo"
+New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Priority" -ProfileStatus "Enabled" -CustomTopologyMapMode "Enabled" -TopologyMapId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/topologyMaps/ptm-topology-demo"
 ```
 
 ```output
@@ -83,8 +83,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomTopologyMap
-The experience level of the Private Traffic Manager profile.
+### -CustomTopologyMapMode
+The mode for custom topology map of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopologyMapId
-The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
 
 ```yaml
 Type: System.String

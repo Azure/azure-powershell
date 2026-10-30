@@ -171,9 +171,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProfileStatus = (string) content.GetValueForProperty("ProfileStatus",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProfileStatus, global::System.Convert.ToString);
             }
-            if (content.Contains("CustomTopologyMap"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMap = (string) content.GetValueForProperty("CustomTopologyMap",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMap, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomTopologyMapMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMapMode = (string) content.GetValueForProperty("CustomTopologyMapMode",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMapMode, global::System.Convert.ToString);
             }
             if (content.Contains("TopologyMapId"))
             {
@@ -186,10 +190,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).Endpoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint>) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileEndpointTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DnsConfigRecordType"))
             {
@@ -276,9 +276,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProfileStatus = (string) content.GetValueForProperty("ProfileStatus",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProfileStatus, global::System.Convert.ToString);
             }
-            if (content.Contains("CustomTopologyMap"))
+            if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMap = (string) content.GetValueForProperty("CustomTopologyMap",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMap, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomTopologyMapMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMapMode = (string) content.GetValueForProperty("CustomTopologyMapMode",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).CustomTopologyMapMode, global::System.Convert.ToString);
             }
             if (content.Contains("TopologyMapId"))
             {
@@ -291,10 +295,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             if (content.Contains("Endpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).Endpoint = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint>) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileEndpointTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("DnsConfigRecordType"))
             {

@@ -109,13 +109,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Kind"))
+            if (content.Contains("ProbeConfig"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).Kind, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfig = (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProbeConfig) content.GetValueForProperty("ProbeConfig",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfig, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProbeConfigTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigProtocol = (string) content.GetValueForProperty("ProbeConfigProtocol",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPort = (long?) content.GetValueForProperty("ProbeConfigPort",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPort, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPath = (string) content.GetValueForProperty("ProbeConfigPath",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigCustomHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigCustomHeader = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader>) content.GetValueForProperty("ProbeConfigCustomHeader",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigCustomHeader, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.CustomHeaderTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProbeConfigIntervalInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigIntervalInSecond = (long?) content.GetValueForProperty("ProbeConfigIntervalInSecond",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigIntervalInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigTimeoutInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigTimeoutInSecond = (long?) content.GetValueForProperty("ProbeConfigTimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigTimeoutInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigToleratedNumberOfFailure"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigToleratedNumberOfFailure = (long?) content.GetValueForProperty("ProbeConfigToleratedNumberOfFailure",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigToleratedNumberOfFailure, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigExpectedStatusCodeRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigExpectedStatusCodeRange = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange>) content.GetValueForProperty("ProbeConfigExpectedStatusCodeRange",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigExpectedStatusCodeRange, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ExpectedStatusCodeRangeTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -134,13 +166,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Kind"))
+            if (content.Contains("ProbeConfig"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).Kind = (string) content.GetValueForProperty("Kind",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).Kind, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfig = (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProbeConfig) content.GetValueForProperty("ProbeConfig",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfig, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProbeConfigTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigProtocol = (string) content.GetValueForProperty("ProbeConfigProtocol",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPort = (long?) content.GetValueForProperty("ProbeConfigPort",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPort, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPath = (string) content.GetValueForProperty("ProbeConfigPath",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProbeConfigCustomHeader"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigCustomHeader = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader>) content.GetValueForProperty("ProbeConfigCustomHeader",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigCustomHeader, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.CustomHeaderTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProbeConfigIntervalInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigIntervalInSecond = (long?) content.GetValueForProperty("ProbeConfigIntervalInSecond",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigIntervalInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigTimeoutInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigTimeoutInSecond = (long?) content.GetValueForProperty("ProbeConfigTimeoutInSecond",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigTimeoutInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigToleratedNumberOfFailure"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigToleratedNumberOfFailure = (long?) content.GetValueForProperty("ProbeConfigToleratedNumberOfFailure",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigToleratedNumberOfFailure, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ProbeConfigExpectedStatusCodeRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigExpectedStatusCodeRange = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange>) content.GetValueForProperty("ProbeConfigExpectedStatusCodeRange",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyPropertiesInternal)this).ProbeConfigExpectedStatusCodeRange, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ExpectedStatusCodeRangeTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

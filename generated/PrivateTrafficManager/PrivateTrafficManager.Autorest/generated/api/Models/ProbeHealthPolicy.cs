@@ -33,8 +33,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// <summary>Internal Acessors for Kind</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal.Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Kind = value ?? null; }
 
-        /// <summary>Internal Acessors for PropertiesKind</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal.PropertiesKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).PropertiesKind; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).PropertiesKind = value ?? null; }
+        /// <summary>Internal Acessors for ProbeConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProbeConfig Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal.ProbeConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal.Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property = value ?? null /* model class */; }
@@ -77,15 +77,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__healthPolicy).Name; }
 
         /// <summary>
-        /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are
-        /// a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value.
+        /// Probe monitoring settings of the Traffic Manager profile. Only applicable when the parent health policy `kind` is `Probe`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string PropertiesKind { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).PropertiesKind; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProbeConfig ProbeConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfig = value ?? null /* model class */; }
+
+        /// <summary>List of custom headers.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader> ProbeConfigCustomHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigCustomHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigCustomHeader = value ?? null /* arrayOf */; }
+
+        /// <summary>List of expected status code ranges.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange> ProbeConfigExpectedStatusCodeRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigExpectedStatusCodeRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigExpectedStatusCodeRange = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health
+        /// of each endpoint in this profile. Allowed values: 10 or 30 seconds.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public long? ProbeConfigIntervalInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigIntervalInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigIntervalInSecond = value ?? default(long); }
+
+        /// <summary>
+        /// The path relative to the endpoint domain name used to probe for endpoint health.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public string ProbeConfigPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigPath = value ?? null; }
+
+        /// <summary>The TCP port used to probe for endpoint health.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public long? ProbeConfigPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigPort = value ?? default(long); }
+
+        /// <summary>The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public string ProbeConfigProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigProtocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigProtocol = value ?? null; }
+
+        /// <summary>
+        /// The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile
+        /// to response to the health check.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public long? ProbeConfigTimeoutInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigTimeoutInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigTimeoutInSecond = value ?? default(long); }
+
+        /// <summary>
+        /// The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile
+        /// Degraded after the next failed health check.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
+        public long? ProbeConfigToleratedNumberOfFailure { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigToleratedNumberOfFailure; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).ProbeConfigToleratedNumberOfFailure = value ?? default(long); }
 
         /// <summary>The properties of the Traffic Manager health policy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property = value ?? null /* model class */; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties Property { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyInternal)__healthPolicy).Property = value ?? null /* model class */; }
 
         /// <summary>Provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]

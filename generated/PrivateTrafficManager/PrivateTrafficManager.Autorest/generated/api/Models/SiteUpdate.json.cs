@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Extensions;
 
-    /// <summary>Class representing a Site.</summary>
+    /// <summary>The type used for update operations of the Site.</summary>
     public partial class SiteUpdate
     {
 
@@ -77,8 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return;
             }
-            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProxyResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.SiteProperties.FromJson(__jsonProperties) : _property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.SiteUpdateProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 
@@ -101,7 +100,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return container;
             }
-            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

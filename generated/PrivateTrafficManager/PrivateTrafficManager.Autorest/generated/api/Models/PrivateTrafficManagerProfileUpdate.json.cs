@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Extensions;
 
-    /// <summary>Class representing a Private Traffic Manager profile.</summary>
+    /// <summary>The type used for update operations of the PrivateTrafficManagerProfile.</summary>
     public partial class PrivateTrafficManagerProfileUpdate
     {
 
@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProperties.FromJson(__jsonProperties) : _property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.PrivateTrafficManagerProfileUpdateProperties.FromJson(__jsonProperties) : _property;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.PrivateTrafficManagerProfileUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 
@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return container;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
