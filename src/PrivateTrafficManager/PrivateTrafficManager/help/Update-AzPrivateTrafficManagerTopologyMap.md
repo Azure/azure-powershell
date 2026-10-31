@@ -15,8 +15,8 @@ Update a Topology Map.
 ### UpdateExpanded (Default)
 ```
 Update-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CatchAllSiteName <String>] [-Site <ISite[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CatchAllSiteName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -36,8 +36,8 @@ Update-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <Str
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPrivateTrafficManagerTopologyMap -InputObject <IPrivateTrafficManagerIdentity>
- [-CatchAllSiteName <String>] [-Site <ISite[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CatchAllSiteName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,21 +205,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Site
-The list of Sites in the Topology Map.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

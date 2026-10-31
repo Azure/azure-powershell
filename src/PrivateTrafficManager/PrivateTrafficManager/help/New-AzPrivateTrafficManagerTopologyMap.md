@@ -15,7 +15,7 @@ Create a Topology Map.
 ### CreateExpanded (Default)
 ```
 New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-CatchAllSiteName <String>] [-Site <ISite[]>] [-Tag <Hashtable>]
+ -Location <String> [-CatchAllSiteName <String>] [-Site <ITopologyMapInlineSite[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 The list of Sites in the Topology Map.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite[]
 Parameter Sets: CreateExpanded
 Aliases:
 
