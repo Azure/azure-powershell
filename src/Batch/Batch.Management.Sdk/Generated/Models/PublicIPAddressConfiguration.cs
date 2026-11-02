@@ -36,11 +36,21 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// form:
         /// /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/publicIPAddresses/{ip}.
         /// </param>
-        public PublicIPAddressConfiguration(IPAddressProvisioningType? provision = default(IPAddressProvisioningType?), System.Collections.Generic.IList<string> ipAddressIds = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="ipFamilies">IP families are used to determine single-stack or dual-stack pools. For
+        /// single-stack, the expected value is IPv4. For dual-stack, the expected
+        /// values are IPv4 and IPv6.
+        /// </param>
+
+        /// <param name="ipTags">IP Tags that will applied to new Public IPs that Batch creates.
+        /// </param>
+        public PublicIPAddressConfiguration(IPAddressProvisioningType? provision = default(IPAddressProvisioningType?), System.Collections.Generic.IList<string> ipAddressIds = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> ipFamilies = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<IPTag> ipTags = default(System.Collections.Generic.IList<IPTag>))
 
         {
             this.Provision = provision;
             this.IPAddressIds = ipAddressIds;
+            this.IPFamilies = ipFamilies;
+            this.IPTags = ipTags;
             CustomInit();
         }
 
@@ -66,5 +76,20 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipAddressIds")]
         public System.Collections.Generic.IList<string> IPAddressIds {get; set; }
+
+        /// <summary>
+        /// Gets or sets iP families are used to determine single-stack or dual-stack
+        /// pools. For single-stack, the expected value is IPv4. For dual-stack, the
+        /// expected values are IPv4 and IPv6.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipFamilies")]
+        public System.Collections.Generic.IList<string> IPFamilies {get; set; }
+
+        /// <summary>
+        /// Gets or sets iP Tags that will applied to new Public IPs that Batch
+        /// creates.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipTags")]
+        public System.Collections.Generic.IList<IPTag> IPTags {get; set; }
     }
 }

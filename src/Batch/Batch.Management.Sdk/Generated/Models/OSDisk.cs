@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="caching">The type of caching to enable for the disk.
         /// Possible values include: &#39;None&#39;, &#39;ReadOnly&#39;, &#39;ReadWrite&#39;</param>
 
-        /// <param name="managedDisk">
+        /// <param name="managedDisk">The managed disk parameters.
         /// </param>
 
         /// <param name="diskSizeGb">The initial disk size in GB when creating new OS disk.
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Batch.Models
         public CachingType? Caching {get; set; }
 
         /// <summary>
-        /// Gets or sets
+        /// Gets or sets the managed disk parameters.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedDisk")]
         public ManagedDisk ManagedDisk {get; set; }
@@ -91,5 +91,20 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.ManagedDisk != null)
+            {
+                this.ManagedDisk.Validate();
+            }
+        }
     }
 }

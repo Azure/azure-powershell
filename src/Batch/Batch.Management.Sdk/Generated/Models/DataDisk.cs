@@ -43,17 +43,15 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="diskSizeGb">The initial disk size in GB when creating new data disk.
         /// </param>
 
-        /// <param name="storageAccountType">If omitted, the default is &#34;Standard_LRS&#34;. Values are:
-        /// Standard_LRS - The data disk should use standard locally redundant storage.
-        /// Premium_LRS - The data disk should use premium locally redundant storage.
-        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;</param>
-        public DataDisk(int lun, int diskSizeGb, CachingType? caching = default(CachingType?), StorageAccountType? storageAccountType = default(StorageAccountType?))
+        /// <param name="managedDisk">The managed disk parameters.
+        /// </param>
+        public DataDisk(int lun, int diskSizeGb, CachingType? caching = default(CachingType?), ManagedDisk managedDisk = default(ManagedDisk))
 
         {
             this.Lun = lun;
             this.Caching = caching;
             this.DiskSizeGb = diskSizeGb;
-            this.StorageAccountType = storageAccountType;
+            this.ManagedDisk = managedDisk;
             CustomInit();
         }
 
@@ -90,12 +88,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         public int DiskSizeGb {get; set; }
 
         /// <summary>
-        /// Gets or sets if omitted, the default is &#34;Standard_LRS&#34;. Values are:
-        /// Standard_LRS - The data disk should use standard locally redundant storage.
-        /// Premium_LRS - The data disk should use premium locally redundant storage. Possible values include: &#39;Standard_LRS&#39;, &#39;Premium_LRS&#39;, &#39;StandardSSD_LRS&#39;
+        /// Gets or sets the managed disk parameters.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "storageAccountType")]
-        public StorageAccountType? StorageAccountType {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "managedDisk")]
+        public ManagedDisk ManagedDisk {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -105,7 +101,10 @@ namespace Microsoft.Azure.Management.Batch.Models
         public virtual void Validate()
         {
 
-
+            if (this.ManagedDisk != null)
+            {
+                this.ManagedDisk.Validate();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// application.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationPackage : AzureProxyResource
+    public partial class ApplicationPackage : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationPackage class.
@@ -26,13 +26,19 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// Initializes a new instance of the ApplicationPackage class.
         /// </summary>
 
-        /// <param name="id">The ID of the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
@@ -55,10 +61,12 @@ namespace Microsoft.Azure.Management.Batch.Models
 
         /// <param name="lastActivationTime">The time at which the package was last activated, if the package is active.
         /// </param>
-        public ApplicationPackage(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?))
+        public ApplicationPackage(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), PackageState? state = default(PackageState?), string format = default(string), string storageUrl = default(string), System.DateTime? storageUrlExpiry = default(System.DateTime?), System.DateTime? lastActivationTime = default(System.DateTime?))
 
-        : base(id, name, type, etag, tags)
+        : base(id, name, type, systemData)
         {
+            this.Etag = etag;
+            this.Tags = tags;
             this.State = state;
             this.Format = format;
             this.StorageUrl = storageUrl;
@@ -72,6 +80,18 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets the ETag of the resource, used for concurrency statements.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
+        public string Etag {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the tags of the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets the current state of the application package. Possible values include: &#39;Pending&#39;, &#39;Active&#39;
