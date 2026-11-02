@@ -1,9 +1,21 @@
 # Copyright Microsoft Corporation. Licensed under the Apache License, Version 2.0.
-#Requires -Version 7.0
-# Offline fixtures only: no Azure module import or network transport.
-$script:utilsPath = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..' 'EdgeAction.Autorest' 'test' 'utils.ps1')).Path
-. $script:utilsPath
+#Requires -Version 5.1
+if ($TestName -and -not @($TestName | Where-Object { $_ -in 'Fixture recording context isolation', 'Pester 4 recording hook collisions' }).Count) { return }
 
+$offlineModule = New-Module -Name EdgeActionRecordingLifecycleTests -ArgumentList $PSScriptRoot -ScriptBlock {
+param($TestRoot)
+$PSDefaultParameterValues = $PSDefaultParameterValues.Clone()
+$PSDefaultParameterValues.Remove('*:HttpPipelinePrepend')
+# Offline fixtures only: no Azure module import or network transport.
+$script:utilsPath = Join-Path $TestRoot 'utils.ps1'
+$UsePreviousConfigForRecord = $false
+. $script:utilsPath
+Export-ModuleMember
+}
+
+try {
+$offlineModule | Import-Module -Force
+InModuleScope EdgeActionRecordingLifecycleTests {
 Describe 'Fixture recording context isolation' {
     BeforeEach {
         $script:savedDefaults = $PSDefaultParameterValues.Clone()
@@ -118,7 +130,14 @@ class OfflineFixtureRecorder {
 }
 $global:edgeActionOfflineRecorder = [OfflineFixtureRecorder]::new()
 $global:edgeActionOfflineRecorder.Mode = $Mode
-if ($Mode -eq 'Playback') { $global:edgeActionOfflineRecorder.Messages = Get-Content $Recording -Raw | ConvertFrom-Json -AsHashtable }
+if ($Mode -eq 'Playback') {
+    $recorded = Get-Content $Recording -Raw | ConvertFrom-Json
+    foreach ($entry in $recorded.PSObject.Properties) {
+        $global:edgeActionOfflineRecorder.Messages[$entry.Name] = @{
+            NotFound = $entry.Value.NotFound; Value = $entry.Value.Value
+        }
+    }
+}
 $PSDefaultParameterValues['*:HttpPipelinePrepend'] = $global:edgeActionOfflineRecorder
 function It {
     param([string]$Name, [scriptblock]$Test, [switch]$Skip)
@@ -133,7 +152,8 @@ exit $result.FailedCount
 '@ | Set-Content $driver
         foreach ($mode in 'Record', 'Playback') {
             $xml = Join-Path $TestDrive "$Separated-$mode.xml"
-            $childOutput = & (Join-Path $PSHOME 'pwsh') -NoLogo -NoProfile -File $driver (Get-Module Pester).Path `
+            $hostPath = (Get-Process -Id $PID).Path
+            $childOutput = & $hostPath -NoLogo -NoProfile -File $driver (Get-Module Pester).Path `
                 $fixture $script:utilsPath $recording $mode ([int]$Separated) $xml 2>&1
             $code = $LASTEXITCODE
             [xml]$results = Get-Content $xml -Raw
@@ -149,15 +169,19 @@ exit $result.FailedCount
                 $results.'test-results'.ignored | Should -Be 1
             }
         }
-        $messages = Get-Content $recording -Raw | ConvertFrom-Json -AsHashtable
+        $messages = Get-Content $recording -Raw | ConvertFrom-Json
         if ($Separated) {
-            $messages['LifecycleFixture+EdgeActionFixtureSetup+[NoScenario]+$GET+https://example.invalid/parent+1'].NotFound |
+            $messages.'LifecycleFixture+EdgeActionFixtureSetup+[NoScenario]+$GET+https://example.invalid/parent+1'.NotFound |
                 Should -Be $true
-            $messages['LifecycleFixture+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://example.invalid/parent+1'].NotFound |
+            $messages.'LifecycleFixture+EdgeActionFixtureCleanup+[NoScenario]+$GET+https://example.invalid/parent+1'.NotFound |
                 Should -Be $false
         } else {
-            $messages['LifecycleFixture+[NoContext]+[NoScenario]+$GET+https://example.invalid/parent+1'].NotFound |
+            $messages.'LifecycleFixture+[NoContext]+[NoScenario]+$GET+https://example.invalid/parent+1'.NotFound |
                 Should -Be $false
         }
     }
+}
+}
+} finally {
+    Remove-Module -ModuleInfo $offlineModule -Force
 }

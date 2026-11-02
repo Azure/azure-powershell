@@ -1,9 +1,22 @@
 # Copyright Microsoft Corporation. Licensed under the Apache License, Version 2.0.
-#Requires -Version 7.0
+#Requires -Version 5.1
+if ($TestName -and $TestName -notcontains 'Run-owned EdgeAction fixtures') { return }
+
+$offlineModule = New-Module -Name EdgeActionFixtureOwnershipTests -ArgumentList $PSScriptRoot -ScriptBlock {
+param($TestRoot)
+$PSDefaultParameterValues = $PSDefaultParameterValues.Clone()
+$PSDefaultParameterValues.Remove('*:HttpPipelinePrepend')
 # Copy the helper into TestDrive so persistence checks cannot write real test environment files.
-$sourceUtils = Join-Path $PSScriptRoot '..' '..' '..' 'EdgeAction.Autorest' 'test' 'utils.ps1'
+$sourceUtils = Join-Path $TestRoot 'utils.ps1'
+$UsePreviousConfigForRecord = $false
 . $sourceUtils
+. (Join-Path $TestRoot 'OfflineTestHelpers.ps1')
 function Get-AzContext { throw 'Offline tests must mock Azure context.' }
+Export-ModuleMember
+}
+try {
+$offlineModule | Import-Module -Force
+InModuleScope EdgeActionFixtureOwnershipTests {
 
 Describe 'Run-owned EdgeAction fixtures' {
     BeforeEach {
@@ -290,10 +303,12 @@ Describe 'Run-owned EdgeAction fixtures' {
 
     It 'wires all fifteen groups to persisted names and explicit cleanup' {
         $root = Split-Path (Resolve-Path $sourceUtils)
-        $files = @(Get-ChildItem $root -Filter '*.Tests.ps1')
-        $files.Count | Should -Be 15
-        foreach ($file in $files) {
-            $text = Get-Content $file.FullName -Raw
+        $prefixes = Get-EdgeActionTestFixturePrefixes
+        $prefixes.Count | Should -Be 15
+        foreach ($scenario in $prefixes.Keys) {
+            $file = Join-Path $root "$scenario.Tests.ps1"
+            Test-Path -LiteralPath $file | Should -Be $true
+            $text = Get-Content -LiteralPath $file -Raw
             $text | Should -Match 'Get-EdgeActionTestFixtureName'
             $text | Should -Match 'Initialize-EdgeActionTestScenario'
             $text | Should -Match 'Complete-EdgeActionTestScenario'
@@ -424,7 +439,7 @@ Describe 'Run-owned EdgeAction fixtures' {
     }
 
     It 'normalizes RG names through the real recorder and replays without Azure resources' {
-        $binary = Join-Path $PSScriptRoot '..' '..' '..' '..' '..' 'artifacts' 'Debug' 'Az.EdgeAction' 'EdgeAction.Autorest' 'bin' 'Az.EdgeAction.private.dll'
+        $binary = Get-EdgeActionOfflineTestAssembly $TestRoot
         $null = [System.Reflection.Assembly]::LoadFrom((Resolve-Path $binary))
         $path = Join-Path $TestDrive 'Offline.Recording.json'
         $liveName = $env.ResourceGroupName
@@ -445,8 +460,8 @@ Describe 'Run-owned EdgeAction fixtures' {
             $text = Get-Content $path -Raw
             $text | Should -Not -Match $liveName
             $text | Should -Match 'powershellsdk-edgeaction-tests-rgname'
-            $normalized = $text | ConvertFrom-Json -AsHashtable
-            $normalized[$key.Replace($liveName, 'powershellsdk-edgeaction-tests-rgname')].Response.Headers.'Azure-AsyncOperation'[0] |
+            $normalized = $text | ConvertFrom-Json
+            $normalized.($key.Replace($liveName, 'powershellsdk-edgeaction-tests-rgname')).Response.Headers.'Azure-AsyncOperation'[0] |
                 Should -Match 't=keep-t&c=keep-c&s=keep-s&h=keep-h'
             $saved = Get-Content (Join-Path $TestDrive 'env.json') -Raw | ConvertFrom-Json
             $saved.ResourceGroupName | Should -Be 'powershellsdk-edgeaction-tests-rgname'
@@ -509,4 +524,8 @@ Describe 'Run-owned EdgeAction fixtures' {
         { Remove-EdgeActionTestResourceGroup } | Should -Throw 'restricted'
         $script:calls.Count | Should -Be 0
     }
+}
+}
+} finally {
+    Remove-Module -ModuleInfo $offlineModule -Force
 }

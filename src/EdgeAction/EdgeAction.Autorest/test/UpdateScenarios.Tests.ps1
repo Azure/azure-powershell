@@ -1,7 +1,14 @@
 # Copyright Microsoft Corporation. Licensed under the Apache License, Version 2.0.
-#Requires -Version 7.0
+#Requires -Version 5.1
+if ($TestName -and $TestName -notcontains 'Maintained UpdateExpanded scenario bodies') { return }
+
+$offlineModule = New-Module -Name EdgeActionUpdateScenarioTests -ArgumentList $PSScriptRoot -ScriptBlock {
+param($TestRoot)
+$PSDefaultParameterValues = $PSDefaultParameterValues.Clone()
+$PSDefaultParameterValues.Remove('*:HttpPipelinePrepend')
 # Execute maintained scenario bodies with offline command doubles, never their module-loading preambles.
-$script:scenarioRoot = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' '..' 'EdgeAction.Autorest' 'test')).Path
+$script:scenarioRoot = $TestRoot
+$UsePreviousConfigForRecord = $false
 . (Join-Path $script:scenarioRoot 'utils.ps1')
 
 function Get-AzEdgeAction { [CmdletBinding()] param($ResourceGroupName, $Name) throw 'Unmocked fixture command' }
@@ -51,7 +58,12 @@ function Get-UpdateScenarioBlocks {
     $blocks.Count | Should -Be 3
     $blocks
 }
+Export-ModuleMember
+}
 
+try {
+$offlineModule | Import-Module -Force
+InModuleScope EdgeActionUpdateScenarioTests {
 Describe 'Maintained UpdateExpanded scenario bodies' {
     BeforeEach {
         $script:TestMode = 'playback'
@@ -87,7 +99,15 @@ Describe 'Maintained UpdateExpanded scenario bodies' {
         Mock Update-AzEdgeAction {
             # Model the generated wire shape, including its omission of empty expanded objects.
             $body = @{}
-            if ($JsonString) { $body = $JsonString | ConvertFrom-Json -AsHashtable }
+            if ($JsonString) {
+                $json = $JsonString | ConvertFrom-Json
+                foreach ($property in $json.PSObject.Properties) {
+                    $body[$property.Name] = @{}
+                    foreach ($tag in $property.Value.PSObject.Properties) {
+                        $body[$property.Name][$tag.Name] = $tag.Value
+                    }
+                }
+            }
             elseif ($null -ne $Tag -and $Tag.Count) { $body.tags = $Tag }
             if (-not $body.Count) { throw 'The PATCH request body must contain at least one property.' }
             $body.ContainsKey('tags') | Should -Be $true
@@ -251,4 +271,8 @@ Describe 'Maintained UpdateExpanded scenario bodies' {
         $script:cleanupCount | Should -Be 1
         $script:updates.Count | Should -Be 0
     }
+}
+}
+} finally {
+    Remove-Module -ModuleInfo $offlineModule -Force
 }

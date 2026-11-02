@@ -11,8 +11,9 @@ Use the optional EdgeAction development helpers in `src\EdgeAction\tools`, or ru
 | `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
 | `Properties\AssemblyInfo.cs`, generation IDs and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
 | `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
-| `src\EdgeAction\tools` | Reusable generation/test helpers and offline tests, maintained in this developer-tools draft. |
-| `tools\**\*.local.psd1` and `tools\**\*.local.ps1` | Personal configuration/scripts, ignored by `src\EdgeAction\tools\.gitignore`; never commit credentials or local settings. |
+| `EdgeAction.Autorest\test\*.Tests.ps1` | Module scenarios and offline regressions for fixture ownership, cleanup, recording lifecycle, response contracts, and Update behavior. |
+| `src\EdgeAction\tools` | Reusable generation/test helpers and their runner-specific tests, maintained in this developer-tools draft. Module-owned coverage lives in `EdgeAction.Autorest\test`; see the [module regression instructions](../EdgeAction.Autorest/how-to.md#offline-module-regressions). |
+| `src\EdgeAction\tools\**\*.local.psd1` and `src\EdgeAction\tools\**\*.local.ps1` | Personal configuration/scripts, ignored within that subtree by `src\EdgeAction\tools\.gitignore`; never commit credentials or local settings. |
 | `artifacts` and `EdgeAction.Autorest\tools` | Local build and generated Resources-support outputs, not feature-commit content. These are separate from the reusable helpers in `src\EdgeAction\tools`. |
 
 Inspect both the working tree and index before and after generation. Do not collect generated output with `git add -A`, and do not discard local outputs merely to clean Git status. Already-staged files still require review. The [archive pipeline](../../../.azure-pipelines/azure-powershell-ci.yml) owns the separate generated-code archive PR; HTTP scenario recordings are different test inputs.
@@ -110,7 +111,7 @@ The runner reads PowerShell data files, not `.env` files, and does not execute i
 
 Omit `-TestName` for a complete matching recording set. After Record and cleanup succeed, run the Playback command in a fresh terminal without rebuilding. Results remain in artifacts: the helper does not automatically run Playback or copy recordings to source. Follow the recording review and copy-back steps below. RG-name normalization is automatic after confirmed cleanup; async polling query values remain unchanged.
 
-The reusable tools also include offline regression suites. Run them in a disposable PowerShell process; these suites exercise command doubles and temporary fixtures, not live Azure resources:
+The reusable tools also include offline regressions for the generation and test runners. Module-owned lifecycle, cleanup, and Update coverage is under `EdgeAction.Autorest\test`; run it using the [module regression instructions](../EdgeAction.Autorest/how-to.md#offline-module-regressions). Run the tools suites below from `src\EdgeAction\EdgeAction.Autorest` in a disposable PowerShell process; they exercise command doubles and temporary fixtures, not live Azure resources:
 
 ```powershell
 Import-Module Pester -RequiredVersion 4.10.1
@@ -132,7 +133,7 @@ input-file:
 
 Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes; do not invent replacement IDs or discard intentional edits.
 
-Use the shared repository helpers. AutoRest can replace this guide with its scaffold, so retain this file while preparing.
+Use the shared repository helpers. AutoRest can replace the module's guide with its scaffold and change the working directory. Preserve that guide, resolve script paths against `$repo`, and restore the repository root in `finally`.
 
 **Run from: repository root**, in the same shell with `$repo`, `$source`, and the feed configuration initialized.
 
@@ -140,12 +141,13 @@ Use the shared repository helpers. AutoRest can replace this guide with its scaf
 $guidePath = Join-Path $source 'how-to.md'
 $guide = [IO.File]::ReadAllBytes($guidePath)
 try {
-    & .\tools\BuildScripts\PrepareAutorestModule.ps1 -RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate
+    & (Join-Path $repo 'tools\BuildScripts\PrepareAutorestModule.ps1') -RepoRoot $repo -ModuleRootName EdgeAction -ForceRegenerate
     if ($LASTEXITCODE -ne 0) { throw "Preparation failed (exit $LASTEXITCODE)." }
 } finally {
     [IO.File]::WriteAllBytes($guidePath, $guide)
+    Set-Location -LiteralPath $repo
 }
-& .\tools\BuildScripts\BuildModules.ps1 -RepoRoot $repo -Configuration Debug -TargetModule EdgeAction
+& (Join-Path $repo 'tools\BuildScripts\BuildModules.ps1') -RepoRoot $repo -Configuration Debug -TargetModule EdgeAction
 if ($LASTEXITCODE -ne 0) { throw "Build failed (exit $LASTEXITCODE)." }
 ```
 
