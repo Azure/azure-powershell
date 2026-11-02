@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Storage.Management\Storage.Management.csproj" />
     <ProjectReference Include="..\Storage.Management.Sdk\Storage.Management.Sdk.csproj" />
   </ItemGroup>
 

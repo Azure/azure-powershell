@@ -16,15 +16,18 @@ Creates a Storage blob container
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
+ [-BlobAccessPointConfigurationName <String>] [-BlobAccessPointConfigurationUniqueId <String>]
  [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountNameEncryptionScope
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
+ [-Metadata <Hashtable>] [-RootSquash <String>] [-BlobAccessPointConfigurationName <String>]
+ [-BlobAccessPointConfigurationUniqueId <String>] [-EnableImmutableStorageWithVersioning]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,7 +35,8 @@ New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <St
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
+ [-Metadata <Hashtable>] [-RootSquash <String>] [-BlobAccessPointConfigurationName <String>]
+ [-BlobAccessPointConfigurationUniqueId <String>] [-EnableImmutableStorageWithVersioning]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,8 +45,10 @@ New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-Pub
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
  -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RootSquash <String>] [-BlobAccessPointConfigurationName <String>]
+ [-BlobAccessPointConfigurationUniqueId <String>] [-EnableImmutableStorageWithVersioning]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,7 +130,45 @@ testcontainer None         2021-07-19 08:26:19Z False        False              
 This command creates a storage container and enable immutable Storage with versioning.
 The command only works when the Storage account has already enabled blob versioning.
 
+### Example 6: Attach a Blob Access Point configuration when creating a container
+```powershell
+$configuration = Get-AzStorageBlobAccessPointConfiguration -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name "myaccesspoint"
+New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -StorageAccountName "mystorageaccount" -Name "mycontainer" -BlobAccessPointConfigurationName $configuration.Name -BlobAccessPointConfigurationUniqueId $configuration.UniqueId
+```
+
+Creates the container attached to the specified Blob Access Point configuration. The unique ID is optional, but requires the configuration name when supplied.
+
 ## PARAMETERS
+
+### -BlobAccessPointConfigurationName
+Name of the Blob Access Point configuration to attach to the container.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlobAccessPointConfigurationUniqueId
+Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultEncryptionScope
 Default the container to use specified encryption scope for all writes.

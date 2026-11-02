@@ -66,6 +66,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableNfsV3 = storageAccount.EnableNfsV3;
             this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
+            this.AllowSharedKeyAccessForServices = storageAccount.AllowSharedKeyAccessForServices;
+            this.AllowCrossTenantDelegationSas = storageAccount.AllowCrossTenantDelegationSas;
+            this.AllowBlobAccessPoints = storageAccount.DataCollaborationPolicyProperties?.AllowBlobAccessPoints;
+            this.TurboTier = storageAccount.TurboTier;
             this.KeyCreationTime = storageAccount.KeyCreationTime is null ? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
             this.KeyPolicy = storageAccount.KeyPolicy;
             this.SasPolicy = storageAccount.SasPolicy;
@@ -164,6 +168,14 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? EnableLocalUser { get; set; }
 
         public bool? AllowSharedKeyAccess { get; set; }
+
+        public StorageAccountSharedKeyAccessProperties AllowSharedKeyAccessForServices { get; set; }
+
+        public bool? AllowCrossTenantDelegationSas { get; set; }
+
+        public bool? AllowBlobAccessPoints { get; set; }
+
+        public TurboTier TurboTier { get; set; }
 
         public PSExtendedLocation ExtendedLocation { get; set; }
 

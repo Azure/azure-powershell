@@ -154,6 +154,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             RootSquashType.AllSquash,
             IgnoreCase = true)]
         public string RootSquash { get; set; }
+
+        [Parameter(HelpMessage = "Name of the Blob Access Point configuration to attach to the container.")]
+        [ValidateNotNullOrEmpty]
+        public string BlobAccessPointConfigurationName { get; set; }
+
+        [Parameter(HelpMessage = "Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.")]
+        [ValidateNotNullOrEmpty]
+        public string BlobAccessPointConfigurationUniqueId { get; set; }
         
         [Parameter(HelpMessage = "Enable object level immutability at the container level.", Mandatory = false)]
         public SwitchParameter EnableImmutableStorageWithVersioning { get; set; }        
@@ -161,6 +169,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (BlobAccessPointConfigurationUniqueId != null && BlobAccessPointConfigurationName == null)
+            {
+                throw new ArgumentException("Specify -BlobAccessPointConfigurationName with -BlobAccessPointConfigurationUniqueId.");
+            }
 
             if (ShouldProcess(this.Name, "Create container"))
             {
@@ -206,7 +219,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 metadata: MetadataDictionary,
                                 immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null,
                                 enableNfsV3RootSquash: enableNfsV3RootSquash,
-                                enableNfsV3AllSquash: enableNfsV3AllSquash));
+                                enableNfsV3AllSquash: enableNfsV3AllSquash,
+                                blobAccessPointConfiguration: BlobAccessPointConfigurationName == null ? null :
+                                    new BlobAccessPointConfigurationConnection(BlobAccessPointConfigurationName, BlobAccessPointConfigurationUniqueId)));
 
                 container =
                     this.StorageClient.BlobContainers.Get(

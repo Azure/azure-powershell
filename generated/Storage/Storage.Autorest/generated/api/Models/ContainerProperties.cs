@@ -30,6 +30,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public bool? AllowProtectedAppendWritesAll { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutabilityPolicyPropertiesInternal)ImmutabilityPolicy).AllowProtectedAppendWritesAll; }
 
+        /// <summary>Backing field for <see cref="BlobAccessPointConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection _blobAccessPointConfiguration;
+
+        /// <summary>
+        /// Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container
+        /// whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after
+        /// container creation.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection BlobAccessPointConfiguration { get => (this._blobAccessPointConfiguration = this._blobAccessPointConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobAccessPointConfigurationConnection()); set => this._blobAccessPointConfiguration = value; }
+
+        /// <summary>Name of the Blob Access Point Configuration to connect to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string BlobAccessPointConfigurationBlobAccessPointConfigurationName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnectionInternal)BlobAccessPointConfiguration).BlobAccessPointConfigurationName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnectionInternal)BlobAccessPointConfiguration).BlobAccessPointConfigurationName = value ?? null; }
+
+        /// <summary>
+        /// System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the
+        /// service looks up and persists the current unique id.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnectionInternal)BlobAccessPointConfiguration).BlobAccessPointConfigurationUniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnectionInternal)BlobAccessPointConfiguration).BlobAccessPointConfigurationUniqueId = value ?? null; }
+
         /// <summary>Backing field for <see cref="DefaultEncryptionScope" /> property.</summary>
         private string _defaultEncryptionScope;
 
@@ -202,6 +224,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for AllowProtectedAppendWritesAll</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal.AllowProtectedAppendWritesAll { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutabilityPolicyPropertiesInternal)ImmutabilityPolicy).AllowProtectedAppendWritesAll; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IImmutabilityPolicyPropertiesInternal)ImmutabilityPolicy).AllowProtectedAppendWritesAll = value ?? default(bool); }
 
+        /// <summary>Internal Acessors for BlobAccessPointConfiguration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal.BlobAccessPointConfiguration { get => (this._blobAccessPointConfiguration = this._blobAccessPointConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobAccessPointConfigurationConnection()); set { {_blobAccessPointConfiguration = value;} } }
+
         /// <summary>Internal Acessors for Deleted</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IContainerPropertiesInternal.Deleted { get => this._deleted; set { {_deleted = value;} } }
 
@@ -358,6 +383,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"allowProtectedAppendWritesAll",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AllowProtectedAppendWritesAll { get;  }
+        /// <summary>Name of the Blob Access Point Configuration to connect to.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Name of the Blob Access Point Configuration to connect to.",
+        SerializedName = @"blobAccessPointConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string BlobAccessPointConfigurationBlobAccessPointConfigurationName { get; set; }
+        /// <summary>
+        /// System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the
+        /// service looks up and persists the current unique id.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the service looks up and persists the current unique id.",
+        SerializedName = @"blobAccessPointConfigurationUniqueId",
+        PossibleTypes = new [] { typeof(string) })]
+        string BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId { get; set; }
         /// <summary>Default the container to use specified encryption scope for all writes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -706,6 +756,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
         /// </summary>
         bool? AllowProtectedAppendWritesAll { get; set; }
+        /// <summary>
+        /// Configuration that attaches this container to a Blob Access Point. If set, the container is a read-only virtual container
+        /// whose read/list requests are forwarded to the connected backing data store. Cannot be changed, removed, or added after
+        /// container creation.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobAccessPointConfigurationConnection BlobAccessPointConfiguration { get; set; }
+        /// <summary>Name of the Blob Access Point Configuration to connect to.</summary>
+        string BlobAccessPointConfigurationBlobAccessPointConfigurationName { get; set; }
+        /// <summary>
+        /// System-generated unique identifier of the Blob Access Point Configuration to connect to. If not provided on create, the
+        /// service looks up and persists the current unique id.
+        /// </summary>
+        string BlobAccessPointConfigurationBlobAccessPointConfigurationUniqueId { get; set; }
         /// <summary>Default the container to use specified encryption scope for all writes.</summary>
         string DefaultEncryptionScope { get; set; }
         /// <summary>Indicates whether the blob container was deleted.</summary>

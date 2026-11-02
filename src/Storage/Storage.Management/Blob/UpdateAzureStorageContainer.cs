@@ -119,9 +119,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
             IgnoreCase = true)]
         public string RootSquash { get; set; }
 
+        [Parameter(HelpMessage = "Name of the Blob Access Point configuration to attach. Omit to leave the existing connection unchanged.")]
+        [ValidateNotNullOrEmpty]
+        public string BlobAccessPointConfigurationName { get; set; }
+
+        [Parameter(HelpMessage = "Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.")]
+        [ValidateNotNullOrEmpty]
+        public string BlobAccessPointConfigurationUniqueId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (BlobAccessPointConfigurationUniqueId != null && BlobAccessPointConfigurationName == null)
+            {
+                throw new ArgumentException("Specify -BlobAccessPointConfigurationName with -BlobAccessPointConfigurationUniqueId.");
+            }
 
             switch (ParameterSetName)
             {
@@ -171,7 +184,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                         publicAccess: (PublicAccess?)this.publicAccess,
                                         metadata: MetadataDictionary,
                                         enableNfsV3RootSquash: enableNfsV3RootSquash,
-                                        enableNfsV3AllSquash: enableNfsV3AllSquash));
+                                        enableNfsV3AllSquash: enableNfsV3AllSquash,
+                                        blobAccessPointConfiguration: BlobAccessPointConfigurationName == null ? null :
+                                            new BlobAccessPointConfigurationConnection(BlobAccessPointConfigurationName, BlobAccessPointConfigurationUniqueId)));
 
                 WriteObject(new PSContainer(container));
             }
