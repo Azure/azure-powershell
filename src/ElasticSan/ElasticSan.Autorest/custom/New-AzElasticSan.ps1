@@ -81,7 +81,7 @@ param(
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Premium_LRS", "Premium_ZRS", "ElasticSAN_LRS")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The sku name.
@@ -122,13 +122,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Base size of the Elastic San appliance in TiB. Default value is 20.
+    # Base size of the Elastic San appliance in TiB. Defaults to 20 for V1.
     ${BaseSizeTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
-    # Extended size of the Elastic San appliance in TiB. Default value is 0.
+    # Extended size of the Elastic San appliance in TiB. Defaults to 0 for V1.
     ${ExtendedCapacitySizeTiB},
 
     [Parameter()]
@@ -152,6 +152,33 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Alias('TotalIop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned IOPS of the Elastic San appliance. Required for V2; read-only for V1.
+    ${TotalIops},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total provisioned throughput of the Elastic San appliance in MBps. Required for V2; read-only for V1.
+    ${TotalMBps},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Total size of the Elastic San appliance in TiB. Required for V2; read-only for V1.
+    ${TotalSizeTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("V1", "V2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Elastic San appliance version. Defaults to V1 if not specified.
+    # V2 requires TotalSizeTiB, TotalIops and TotalMBps; V1 capacity defaults are not added for V2.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -215,14 +242,22 @@ param(
 )
 
 process {
-    if ($PSBoundParameters.ContainsKey('BaseSizeTiB') -eq $false) {
-        $PSBoundParameters.BaseSizeTiB = 20
-      }
+    if ($Version -eq 'V2') {
+        foreach ($parameterName in @('TotalSizeTiB', 'TotalIops', 'TotalMBps')) {
+            if (-not $PSBoundParameters.ContainsKey($parameterName)) {
+                throw "Parameter '$parameterName' is required when Version is V2."
+            }
+        }
+    } else {
+        if (-not $PSBoundParameters.ContainsKey('BaseSizeTiB')) {
+            $PSBoundParameters.BaseSizeTiB = 20
+        }
 
-      if ($PSBoundParameters.ContainsKey("ExtendedCapacitySizeTiB") -eq $false) {      
-        $PSBoundParameters.ExtendedCapacitySizeTiB = 0
-      }
-      
+        if (-not $PSBoundParameters.ContainsKey('ExtendedCapacitySizeTiB')) {
+            $PSBoundParameters.ExtendedCapacitySizeTiB = 0
+        }
+    }
+
     Az.ElasticSan.internal\New-AzElasticSan @PSBoundParameters
 }
 }

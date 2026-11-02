@@ -18,8 +18,9 @@ Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -Resource
  [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-ReservedIops <Int32>]
+ [-ReservedMBps <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityElasticSanExpanded
@@ -28,8 +29,9 @@ Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Nam
  [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-EnforceDataIntegrityCheckForIscsi <Boolean>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-ReservedIops <Int32>]
+ [-ReservedMBps <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,8 +40,8 @@ Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <
  [-EncryptionUserAssignedIdentity <String>] [-EnforceDataIntegrityCheckForIscsi <Boolean>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
  [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProtocolType <String>] [-ReservedIops <Int32>] [-ReservedMBps <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,6 +225,14 @@ Type                                                   : Microsoft.ElasticSan/el
 ```
 
 This command disables EnforceDataIntegrityCheckForIscsi on a volume group.
+
+### Example 6: Update performance reservations
+```powershell
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsanv2 -Name myperformancegroup -ReservedIops 20000 -ReservedMBps 800
+```
+
+This command updates the reserved IOPS and throughput of an existing PerformanceCritical volume group.
+The quality of service tier is selected during creation and is not an update input.
 
 ## PARAMETERS
 
@@ -476,6 +486,38 @@ Type of storage target
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedIops
+Reserved IOPS for the volume group.
+Applicable to PerformanceCritical volume groups only.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: ReservedIop
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedMBps
+Reserved throughput in MBps for the volume group.
+Applicable to PerformanceCritical volume groups only.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

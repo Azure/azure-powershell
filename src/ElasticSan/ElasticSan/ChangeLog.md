@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed identity-based background jobs in `New-AzElasticSan`, `New-AzElasticSanVolumeGroup` and `Update-AzElasticSanVolumeGroup`.
+* Added `EncryptionInTransit` to `New-AzElasticSanVolumeGroup` for iSCSI volume groups.
+* Standardized reservation output properties to `ReservedIops` and `TotalReservedIops`.
+    - Preserved `ReservedIop` and `TotalReservedIop` as compatibility properties.
+* Added `ElasticSAN_LRS` to SKU name completion in `New-AzElasticSan`.
+* Added `DirectAttach` to protocol completion in `New-AzElasticSanVolumeGroup` and `Update-AzElasticSanVolumeGroup`.
+* Added V2 volume-group quality of service and performance reservation inputs.
+    - Supported `QualityOfService`, `ReservedIops` and `ReservedMBps` in `New-AzElasticSanVolumeGroup`.
+    - Supported `ReservedIops` and `ReservedMBps` in `Update-AzElasticSanVolumeGroup`.
+* Standardized the SAN creation and update parameter name to `TotalIops`.
+    - Preserved `TotalIop` as an alias for compatibility with existing scripts.
+* Added V2 creation inputs to `New-AzElasticSan`.
+    - Supported `Version`, `TotalSizeTiB`, `TotalIops` and `TotalMBps`.
+    - Preserved default base and extended capacities for V1 without adding them to V2 requests.
+    - Reported a clear error before sending V2 creation requests when a required total capacity or performance input is omitted.
 * Added support for restoring soft-deleted volumes.
     - `Restore-AzElasticSanVolume`
     - Supported identity-based restore operations running as background jobs.

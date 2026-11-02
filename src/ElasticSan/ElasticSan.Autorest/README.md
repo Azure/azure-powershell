@@ -87,10 +87,36 @@ directive:
       parameter-name: SnapshotName
     set:
       parameter-name: Name
+  # Preserve the IOPS acronym in model property names.
   - where:
       property-name: TotalIop
     set:
       property-name: TotalIops
+  # Preserve the IOPS acronym on reservation outputs; custom partial models retain the singular compatibility properties.
+  - where:
+      property-name: ^ReservedIop$
+    set:
+      property-name: ReservedIops
+  - where:
+      property-name: ^TotalReservedIop$
+    set:
+      property-name: TotalReservedIops
+  # Use the same IOPS name on SAN cmdlets while preserving the original preview parameter as an alias.
+  - where:
+      subject: ^ElasticSan$
+      verb: ^New$|^Update$
+      parameter-name: ^TotalIop$
+    set:
+      parameter-name: TotalIops
+      alias: TotalIop
+  # Keep the IOPS acronym consistent on volume-group inputs without changing the REST field.
+  - where:
+      subject: ^VolumeGroup$
+      verb: ^New$|^Update$
+      parameter-name: ^ReservedIop$
+    set:
+      parameter-name: ReservedIops
+      alias: ReservedIop
   - where:
       verb: Get
       subject: Sku
@@ -198,6 +224,26 @@ directive:
   - from: IdentityUserAssignedIdentities.dictionary.cs
     where: $
     transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
+  # Preserve the SAN identity when V1 or V2 creation runs as a background job.
+  - from: NewAzElasticSan_CreateViaIdentityExpanded.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.InputObject = this.InputObject;');
+  # Preserve the volume-group identity, including encryption settings, when creation runs as a background job.
+  - from: NewAzElasticSanVolumeGroup_CreateViaIdentityExpanded.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.InputObject = this.InputObject;');
+  # Preserve the parent SAN identity when volume-group creation runs as a background job.
+  - from: NewAzElasticSanVolumeGroup_CreateViaIdentityElasticSanExpanded.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.ElasticSanInputObject = this.ElasticSanInputObject;');
+  # Preserve the volume-group identity, including reservation updates, when update runs as a background job.
+  - from: UpdateAzElasticSanVolumeGroup_UpdateViaIdentityExpanded.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.InputObject = this.InputObject;');
+  # Preserve the parent SAN identity when volume-group update runs as a background job.
+  - from: UpdateAzElasticSanVolumeGroup_UpdateViaIdentityElasticSanExpanded.cs
+    where: $
+    transform: $ = $.replace('clone.Pipeline = this.Pipeline;', 'clone.Pipeline = this.Pipeline;\n            clone.ElasticSanInputObject = this.ElasticSanInputObject;');
   # Preserve volume identity when Restore is cloned for background jobs.
   - from: RestoreAzElasticSanVolume_RestoreViaIdentity.cs
     where: $

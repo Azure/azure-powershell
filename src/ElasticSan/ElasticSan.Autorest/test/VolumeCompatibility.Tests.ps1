@@ -2,6 +2,137 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 
 Describe 'Elastic SAN volume compatibility' {
+    It 'Loads the complete parent manifest surface and private assembly from the imported module' {
+        $module = Get-Module Az.ElasticSan -ErrorAction Stop
+        $manifestPath = Join-Path $module.ModuleBase 'Az.ElasticSan.psd1'
+        $manifest = Test-ModuleManifest -Path $manifestPath -ErrorAction Stop
+        $manifest.Name | Should -Be 'Az.ElasticSan'
+        $data = Import-PowerShellDataFile $manifestPath
+        Compare-Object @($data.FunctionsToExport | Sort-Object) @($module.ExportedFunctions.Keys | Sort-Object) | Should -BeNullOrEmpty
+        $expectedAssembly = Join-Path (Join-Path (Join-Path $module.ModuleBase 'ElasticSan.Autorest') 'bin') 'Az.ElasticSan.private.dll'
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Volume].Assembly.Location | Should -Be (Resolve-Path $expectedAssembly).Path
+    }
+
+    Describe 'Elastic SAN IOPS output compatibility' {
+        $models = @(
+            @{ Model = 'ElasticSan'; Property = 'TotalReservedIops'; Alias = 'TotalReservedIop'; WireName = 'totalReservedIops'; Nested = $true; Writable = $false },
+            @{ Model = 'ElasticSanProperties'; Property = 'TotalReservedIops'; Alias = 'TotalReservedIop'; WireName = 'totalReservedIops'; Nested = $false; Writable = $false },
+            @{ Model = 'VolumeGroup'; Property = 'ReservedIops'; Alias = 'ReservedIop'; WireName = 'reservedIops'; Nested = $true; Writable = $true },
+            @{ Model = 'VolumeGroupProperties'; Property = 'ReservedIops'; Alias = 'ReservedIop'; WireName = 'reservedIops'; Nested = $false; Writable = $true },
+            @{ Model = 'VolumeGroupUpdate'; Property = 'ReservedIops'; Alias = 'ReservedIop'; WireName = 'reservedIops'; Nested = $true; Writable = $true },
+            @{ Model = 'VolumeGroupUpdateProperties'; Property = 'ReservedIops'; Alias = 'ReservedIop'; WireName = 'reservedIops'; Nested = $false; Writable = $true }
+        )
+
+        It '<Model> exposes plural and legacy properties with matching types and accessors on the public interface' -TestCases $models {
+            param($Model, $Property, $Alias, $Writable)
+
+            $interface = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.I$Model" -as [type]
+            foreach ($name in @($Property, $Alias)) {
+                $metadata = $interface.GetProperty($name)
+                $metadata | Should -Not -BeNullOrEmpty
+                $metadata.PropertyType | Should -Be ([Nullable[int]])
+                $metadata.CanRead | Should -Be $true
+                $metadata.CanWrite | Should -Be $Writable
+            }
+        }
+
+        It '<Model> deserializes plural REST fields without changing the wire format' -TestCases @($models | Where-Object Model -NotMatch 'Update') {
+            param($Model, $Property, $Alias, $WireName, $Nested)
+
+            $type = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.$Model" -as [type]
+            foreach ($value in @(0, 10000, [int]::MaxValue)) {
+                $json = '{"' + $WireName + '":' + $value + '}'
+                if ($Nested) {
+                    $json = '{"properties":' + $json + '}'
+                }
+                $resource = $type::FromJsonString($json)
+                $resource.$Property | Should -Be $value
+                $resource.$Alias | Should -Be $value
+                $body = $resource.ToJsonString() | ConvertFrom-Json
+                if ($Nested) {
+                    $body = $body.properties
+                }
+                $body.$WireName | Should -Be $value
+                $body.PSObject.Properties.Name | Should -Not -Contain ($WireName -replace 's$')
+            }
+            $empty = $type::FromJsonString('{}')
+            $empty.$Property | Should -BeNullOrEmpty
+            $empty.$Alias | Should -BeNullOrEmpty
+        }
+
+        $inputCases = foreach ($model in $models) {
+            foreach ($kind in @('Dictionary', 'PSObject')) {
+                foreach ($names in @('Canonical', 'Alias', 'Both')) {
+                    $case = $model.Clone()
+                    $case.Kind = $kind
+                    $case.Names = $names
+                    $case
+                }
+            }
+        }
+        It '<Model> accepts <Names> properties from <Kind> inputs' -TestCases $inputCases {
+            param($Model, $Property, $Alias, $Kind, $Names)
+
+            $type = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.$Model" -as [type]
+            foreach ($value in @(0, 10000, [int]::MaxValue)) {
+                $inputProperties = @{}
+                if ($Names -in @('Canonical', 'Both')) {
+                    $inputProperties[$Property] = $value
+                }
+                if ($Names -in @('Alias', 'Both')) {
+                    $inputProperties[$Alias] = $value
+                }
+                $canonical = $type::DeserializeFromDictionary(@{ $Property = $value })
+                $resource = if ($Kind -eq 'Dictionary') {
+                    $type::DeserializeFromDictionary($inputProperties)
+                } else {
+                    $type::DeserializeFromPSObject([pscustomobject]$inputProperties)
+                }
+                $resource.$Property | Should -Be $canonical.$Property
+                $resource.$Alias | Should -Be $canonical.$Property
+            }
+        }
+
+        It '<Model> serializes either name using only the plural REST field' -TestCases $models {
+            param($Model, $Property, $Alias, $WireName, $Nested)
+
+            $type = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.$Model" -as [type]
+            foreach ($name in @($Property, $Alias)) {
+                $resource = $type::DeserializeFromDictionary(@{ $name = 10000 })
+                $body = $resource.ToJsonString() | ConvertFrom-Json
+                if ($Nested) {
+                    $body = $body.properties
+                }
+                $body.$WireName | Should -Be 10000
+                $body.PSObject.Properties.Name | Should -Not -Contain ($WireName -replace 's$')
+            }
+        }
+
+        It '<Model> rejects conflicting names and invalid legacy values' -TestCases $models {
+            param($Model, $Property, $Alias)
+
+            $type = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.$Model" -as [type]
+            $conflict = @{ $Property = 10000; $Alias = 20000 }
+            { $type::DeserializeFromDictionary($conflict) } | Should -Throw "Specify matching values for $Alias and $Property"
+            { $type::DeserializeFromPSObject([pscustomobject]$conflict) } | Should -Throw "Specify matching values for $Alias and $Property"
+            { $type::DeserializeFromDictionary(@{ $Alias = 'invalid' }) } | Should -Throw
+            { $type::DeserializeFromPSObject([pscustomobject]@{ $Alias = 'invalid' }) } | Should -Throw
+        }
+
+        It '<Model> keeps writable aliases synchronized in both directions' -TestCases @($models | Where-Object Writable) {
+            param($Model, $Property, $Alias)
+
+            $type = "Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.$Model" -as [type]
+            $resource = [Activator]::CreateInstance($type)
+            $resource.$Alias = 10000
+            $resource.$Property | Should -Be 10000
+            $resource.$Property = 20000
+            $resource.$Alias | Should -Be 20000
+            $resource.$Alias = $null
+            $resource.$Property | Should -Be $resource.$Alias
+        }
+    }
+
     It 'Retains the writable string property on IVolume' {
         $property = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume].GetProperty('ManagedByResourceId')
         $property.PropertyType | Should -Be ([string])
