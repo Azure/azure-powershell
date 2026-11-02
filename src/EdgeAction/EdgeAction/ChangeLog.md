@@ -25,6 +25,8 @@
     - Version tag updates preserve the default version; use `Switch-AzEdgeActionVersionDefault` to change it.
     - Clarified the JSON parameter path for clearing tags on EdgeActions, versions, and execution filters when expanded parameters omit empty objects.
     - Expanded test coverage for asynchronous operations and resource responses.
+    - Included offline fixture lifecycle, cleanup, and Update regression coverage with the module tests, including expected child-process failures when native-command errors are terminating.
+    - Fixed developer-runner artifact refresh to include the offline test helper.
     - Fixed test recording normalization compatibility with Windows PowerShell 5.1.
     - Clarified subscription selection for version code retrieval and default-version switching.
 

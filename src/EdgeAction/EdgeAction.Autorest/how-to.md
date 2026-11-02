@@ -168,7 +168,7 @@ The artifact harness supports `-Record`, `-Playback`, `-Live`, `-NotIsolated`, `
 
 ### Refresh scenario-only edits
 
-If only scenario scripts or `utils.ps1` changed and current build artifacts exist, no regeneration is required. Explicitly copy the maintained scripts before starting the harness.
+If only test scripts or their helpers changed and current build artifacts exist, no regeneration is required. Explicitly copy the maintained suites and both helpers before starting the harness.
 
 **Run from: repository root.**
 
@@ -178,6 +178,7 @@ $artifactTest = Join-Path (Get-Location) 'artifacts\Debug\Az.EdgeAction\EdgeActi
 if (-not (Test-Path $artifactTest)) { throw 'Build EdgeAction first; the artifact test directory is missing.' }
 Get-ChildItem $sourceTest -Filter '*.Tests.ps1' | Copy-Item -Destination $artifactTest -Force
 Copy-Item (Join-Path $sourceTest 'utils.ps1') $artifactTest -Force
+Copy-Item (Join-Path $sourceTest 'OfflineTestHelpers.ps1') $artifactTest -Force
 ```
 
 This does not copy recordings, environment files, results or binaries. If a scenario was removed or renamed, inspect the corresponding orphan artifact script before running; do not execute stale tests. Changes to cmdlets/runtime or other fixture files require an appropriate build or separately reviewed fixture refresh.
@@ -247,7 +248,7 @@ PowerShell scenarios also check that accepted/pending HTTP 202 responses are emp
 
 ### Response-contract checks in Pester
 
-The maintained `test\utils.ps1` checks raw successful API responses before generated model conversion can hide a mismatched envelope. The checks run during scenario teardown in both Record and Playback, including pipelines that select this module. Local wrappers invoke the same maintained tests; there is no separate local-only schema gate, OAV installation, schema download, or pipeline dependency.
+The maintained `test\utils.ps1` checks raw successful API responses before generated model conversion can hide a mismatched envelope. The checks run during scenario teardown in both Record and Playback, including pipelines that select this module. No OAV installation, schema download, or additional pipeline dependency is required.
 
 The focused schema subset follows the stable `2026-10-01` Swagger pinned in the source README and its common resource definitions:
 
@@ -271,7 +272,20 @@ if ($result.FailedCount) { throw 'Response-contract regression tests failed.' }
 
 This focused run does not replace full scenario Playback against reviewed recordings.
 
-`test\RecordingNormalization.Tests.ps1` exercises Record cleanup and normalization recovery offline, including case-sensitive lookup keys and collision detection. Run it with Pester 4.10.1 on both Windows PowerShell 5.1 and PowerShell 7 when changing recording normalization; Playback alone does not exercise this path.
+### Offline module regressions
+
+Run the module regressions with Pester 4.10.1 on Windows PowerShell 5.1 or PowerShell 7. The suites below require an existing module build but no Azure authentication or resource operations. See the [test README](test/README.md#offline-module-regressions) for suite coverage and execution details.
+
+**Run from: repository root, after building the module, in a fresh shell.**
+
+```powershell
+Import-Module Pester -RequiredVersion 4.10.1 -Force
+$testRoot = Join-Path (Get-Location) 'src\EdgeAction\EdgeAction.Autorest\test'
+$suites = 'FixtureOwnership', 'ScenarioCleanup', 'RecordingLifecycle', 'UpdateScenarios', 'UpdateSerialization'
+$paths = $suites | ForEach-Object { Join-Path $testRoot "$_.Tests.ps1" }
+$result = Invoke-Pester -Script $paths -PassThru
+if ($result.FailedCount) { throw 'Offline module regression tests failed.' }
+```
 
 **Record all groups without `-TestName` before publishing a replacement fixture set.** A filtered Record is useful for debugging but generates a new environment mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
 
