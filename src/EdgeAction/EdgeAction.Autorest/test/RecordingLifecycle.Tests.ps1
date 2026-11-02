@@ -58,10 +58,13 @@ Describe 'Fixture recording context isolation' {
 }
 
 Describe 'Pester 4 recording hook collisions' {
-    It 'replays hooks after a trailing skipped test only with context isolation: <Separated>' -TestCases @(
-        @{ Separated = $false }, @{ Separated = $true }
+    It 'replays hooks after a trailing skipped test with context isolation <Separated> and native errors <NativeErrors>' -TestCases @(
+        @{ Separated = $false; NativeErrors = $false }, @{ Separated = $false; NativeErrors = $true }
+        @{ Separated = $true; NativeErrors = $false }, @{ Separated = $true; NativeErrors = $true }
     ) {
-        param($Separated)
+        param($Separated, $NativeErrors)
+        $ErrorActionPreference = 'Stop'
+        $PSNativeCommandUseErrorActionPreference = $NativeErrors
         $fixture = Join-Path $TestDrive "recording-$Separated.Tests.ps1"
         $driver = Join-Path $TestDrive "recording-$Separated-driver.ps1"
         $recording = Join-Path $TestDrive "recording-$Separated.json"
@@ -153,9 +156,16 @@ exit $result.FailedCount
         foreach ($mode in 'Record', 'Playback') {
             $xml = Join-Path $TestDrive "$Separated-$mode.xml"
             $hostPath = (Get-Process -Id $PID).Path
-            $childOutput = & $hostPath -NoLogo -NoProfile -File $driver (Get-Module Pester).Path `
-                $fixture $script:utilsPath $recording $mode ([int]$Separated) $xml 2>&1
-            $code = $LASTEXITCODE
+            $nativeErrorPreference = Get-Variable PSNativeCommandUseErrorActionPreference -ValueOnly -ErrorAction Ignore
+            try {
+                $PSNativeCommandUseErrorActionPreference = $false
+                $childOutput = & $hostPath -NoLogo -NoProfile -File $driver (Get-Module Pester).Path `
+                    $fixture $script:utilsPath $recording $mode ([int]$Separated) $xml 2>&1
+                $code = $LASTEXITCODE
+            } finally {
+                $PSNativeCommandUseErrorActionPreference = $nativeErrorPreference
+            }
+            $PSNativeCommandUseErrorActionPreference | Should -Be $NativeErrors
             [xml]$results = Get-Content $xml -Raw
             if ($mode -eq 'Playback' -and -not $Separated) {
                 $code | Should -BeGreaterThan 0

@@ -398,10 +398,14 @@ Describe 'Scenario cleanup wiring' {
 }
 
 Describe 'Pester 4 cleanup result propagation' {
-    It 'retains <Failure> failure alongside teardown failure in the process exit and XML' -TestCases @(
-        @{ Failure = 'scenario' }, @{ Failure = 'setup' }, @{ Failure = 'none' }
+    It 'retains <Failure> failure alongside teardown failure with native errors <NativeErrors>' -TestCases @(
+        @{ Failure = 'scenario'; NativeErrors = $false }, @{ Failure = 'scenario'; NativeErrors = $true }
+        @{ Failure = 'setup'; NativeErrors = $false }, @{ Failure = 'setup'; NativeErrors = $true }
+        @{ Failure = 'none'; NativeErrors = $false }, @{ Failure = 'none'; NativeErrors = $true }
     ) {
-        param($Failure)
+        param($Failure, $NativeErrors)
+        $ErrorActionPreference = 'Stop'
+        $PSNativeCommandUseErrorActionPreference = $NativeErrors
         $fixture = Join-Path $TestDrive "$Failure.Tests.ps1"
         $driver = Join-Path $TestDrive "$Failure-driver.ps1"
         $xml = Join-Path $TestDrive "$Failure.xml"
@@ -448,8 +452,15 @@ Invoke-Pester -Script @{ Path=$Fixture; Parameters=@{ Failure=$Failure } } -Outp
 '@ | Set-Content $driver
         $pester = (Get-Module Pester).Path
         $hostPath = (Get-Process -Id $PID).Path
-        $null = & $hostPath -NoLogo -NoProfile -File $driver $pester $fixture $script:utilsPath $Failure $xml 2>&1
-        $childExit = $LASTEXITCODE
+        $nativeErrorPreference = Get-Variable PSNativeCommandUseErrorActionPreference -ValueOnly -ErrorAction Ignore
+        try {
+            $PSNativeCommandUseErrorActionPreference = $false
+            $null = & $hostPath -NoLogo -NoProfile -File $driver $pester $fixture $script:utilsPath $Failure $xml 2>&1
+            $childExit = $LASTEXITCODE
+        } finally {
+            $PSNativeCommandUseErrorActionPreference = $nativeErrorPreference
+        }
+        $PSNativeCommandUseErrorActionPreference | Should -Be $NativeErrors
         $childExit | Should -BeGreaterThan 0
         [xml]$results = Get-Content $xml -Raw
         $messages = @($results.SelectNodes('//test-case/failure/message') | ForEach-Object InnerText) -join "`n"

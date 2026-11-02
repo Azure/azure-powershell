@@ -247,7 +247,7 @@ PowerShell scenarios also check that accepted/pending HTTP 202 responses are emp
 
 ### Response-contract checks in Pester
 
-The maintained `test\utils.ps1` checks raw successful API responses before generated model conversion can hide a mismatched envelope. The checks run during scenario teardown in both Record and Playback, including pipelines that select this module. Local wrappers invoke the same maintained tests; there is no separate local-only schema gate, OAV installation, schema download, or pipeline dependency.
+The maintained `test\utils.ps1` checks raw successful API responses before generated model conversion can hide a mismatched envelope. The checks run during scenario teardown in both Record and Playback, including pipelines that select this module. No OAV installation, schema download, or additional pipeline dependency is required.
 
 The focused schema subset follows the stable `2026-10-01` Swagger pinned in the source README and its common resource definitions:
 
@@ -273,17 +273,7 @@ This focused run does not replace full scenario Playback against reviewed record
 
 ### Offline module regressions
 
-Module-owned regressions live beside the scenarios in `EdgeAction.Autorest\test`, not under the optional developer tools. They run with Pester 4.10.1 on Windows PowerShell 5.1 and PowerShell 7. Fixture persistence uses `TestDrive`; command doubles and helper state are isolated in temporary modules. Lifecycle fixtures run in child processes of the current PowerShell edition. No Azure authentication or resource operations are needed.
-
-| Suite | Coverage |
-| --- | --- |
-| `FixtureOwnership.Tests.ps1` | Run-owned fixtures and resource groups, persisted cleanup state, and recorder round trips. |
-| `ScenarioCleanup.Tests.ps1` | Module cleanup ordering, error handling, scenario wiring, and cleanup failures in Pester results. |
-| `RecordingLifecycle.Tests.ps1` | Setup/cleanup recording contexts and replay after skipped scenarios. |
-| `UpdateScenarios.Tests.ps1` | Maintained Update scenario bodies with offline command doubles. |
-| `UpdateSerialization.Tests.ps1` | Generated client request bodies through an in-memory transport. |
-
-The fixture recorder and serialization tests require an existing module build. In artifacts they use the module's `bin` directory (or its already-loaded runtime); from source they use `artifacts\Debug\Az.EdgeAction\EdgeAction.Autorest\bin`. They do not generate or build the module automatically. The normal artifact harness discovers these suites too; selecting a cmdlet with `-TestName` excludes the unrelated offline groups.
+Run the module regressions with Pester 4.10.1 on Windows PowerShell 5.1 or PowerShell 7. The suites below require an existing module build but no Azure authentication or resource operations. See the [test README](test/README.md#offline-module-regressions) for suite coverage and execution details.
 
 **Run from: repository root, after building the module, in a fresh shell.**
 
@@ -295,10 +285,6 @@ $paths = $suites | ForEach-Object { Join-Path $testRoot "$_.Tests.ps1" }
 $result = Invoke-Pester -Script $paths -PassThru
 if ($result.FailedCount) { throw 'Offline module regression tests failed.' }
 ```
-
-Tests for the optional runner's configuration, artifact refresh, child execution, and recording handoff remain in `tools\TestScripts\tests`. Its cleanup-result tests check runner rejection of failed results; the module suite independently checks that real cleanup failures produce those results.
-
-`test\RecordingNormalization.Tests.ps1` exercises Record cleanup and normalization recovery offline, including case-sensitive lookup keys and collision detection. Run it with Pester 4.10.1 on both Windows PowerShell 5.1 and PowerShell 7 when changing recording normalization; Playback alone does not exercise this path.
 
 **Record all groups without `-TestName` before publishing a replacement fixture set.** A filtered Record is useful for debugging but generates a new environment mapping; do not copy that `env.json` over metadata used by the other groups' recordings. Publish a complete matching set from a full run.
 

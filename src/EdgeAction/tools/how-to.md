@@ -9,7 +9,8 @@ Use the optional EdgeAction development helpers in `src\EdgeAction\tools`, or ru
 | AutoRest `README.md`, `custom`, `examples`, scenario scripts and `test\utils.ps1` | Maintained inputs; commit intentional changes. |
 | `EdgeAction.Autorest\docs` and `EdgeAction\help` | Review meaningful generated help changes for the feature commit. |
 | `test\*.Recording.json` and compatible `test\env.json` | Review and sanitize recorded HTTP fixtures before committing. |
-| `Properties\AssemblyInfo.cs`, generation IDs and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
+| `generate-info.json` | Refresh and commit the source generation ID when generation inputs change so CI regenerates the module. |
+| `Properties\AssemblyInfo.cs` and module GUIDs | Preserve existing metadata. Release automation owns assembly versions; omit formatting/GUID-only churn. |
 | `generated\EdgeAction` | Required local build input, but changes do not belong in this feature PR. Repository automation archives generated output separately. |
 | `EdgeAction.Autorest\test\*.Tests.ps1` | Module scenarios and offline regressions for fixture ownership, cleanup, recording lifecycle, response contracts, and Update behavior. |
 | `src\EdgeAction\tools` | Reusable generation/test helpers and their runner-specific tests, maintained in this developer-tools draft. Module-owned coverage lives in `EdgeAction.Autorest\test`; see the [module regression instructions](../EdgeAction.Autorest/how-to.md#offline-module-regressions). |
@@ -111,7 +112,9 @@ The runner reads PowerShell data files, not `.env` files, and does not execute i
 
 Omit `-TestName` for a complete matching recording set. After Record and cleanup succeed, run the Playback command in a fresh terminal without rebuilding. Results remain in artifacts: the helper does not automatically run Playback or copy recordings to source. Follow the recording review and copy-back steps below. RG-name normalization is automatic after confirmed cleanup; async polling query values remain unchanged.
 
-The reusable tools also include offline regressions for the generation and test runners. Module-owned lifecycle, cleanup, and Update coverage is under `EdgeAction.Autorest\test`; run it using the [module regression instructions](../EdgeAction.Autorest/how-to.md#offline-module-regressions). Run the tools suites below from `src\EdgeAction\EdgeAction.Autorest` in a disposable PowerShell process; they exercise command doubles and temporary fixtures, not live Azure resources:
+The reusable tools also include offline regressions for the generation and test runners. `TestScripts\tests` covers runner configuration, artifact refresh, child execution, and recording handoff. Its cleanup-result tests check that the runner rejects failed results; the [module cleanup tests](../EdgeAction.Autorest/test/README.md#offline-module-regressions) independently check that real cleanup failures produce those results. Module-owned lifecycle, cleanup, and Update coverage runs independently of these optional tools using the [module regression instructions](../EdgeAction.Autorest/how-to.md#offline-module-regressions).
+
+Run the tools suites below from `src\EdgeAction\EdgeAction.Autorest` in a disposable PowerShell process; they exercise command doubles and temporary fixtures, not live Azure resources:
 
 ```powershell
 Import-Module Pester -RequiredVersion 4.10.1
@@ -131,7 +134,16 @@ input-file:
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/EdgeActions/stable/2026-10-01/openapi.json
 ```
 
-Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes; do not invent replacement IDs or discard intentional edits.
+Preserve `generate-info.json` and `Properties\AssemblyInfo.cs` before preparation. Generation IDs are not specification SHAs. If metadata was deleted by a previous bare AutoRest run, compare with this branch's tracked version and recover only the unintended changes.
+
+When the specification pin or other generation inputs change, refresh the source generation ID with `New-GenerateInfoJson` and commit `src\EdgeAction\EdgeAction.Autorest\generate-info.json`. CI compares source and generated IDs; equal IDs can cause it to reuse a stale generated client even when a local `-ForceRegenerate` build succeeds. Do not restore the old source ID after an intentional refresh or commit the generated copy.
+
+**Run from: repository root**, with `$repo` and `$source` initialized above.
+
+```powershell
+Import-Module (Join-Path $repo 'tools\BuildScripts\BuildScripts.psm1')
+New-GenerateInfoJson -GeneratedDirectory $source
+```
 
 Use the shared repository helpers. AutoRest can replace the module's guide with its scaffold and change the working directory. Preserve that guide, resolve script paths against `$repo`, and restore the repository root in `finally`.
 
