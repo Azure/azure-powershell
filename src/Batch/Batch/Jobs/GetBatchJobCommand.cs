@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [GenericBreakingChangeWithVersion("The Batch service retired task authentication tokens on 30 September 2024, so the AuthenticationTokenSettings property of PSJobManagerTask (in the JobManagerTask property of the returned PSCloudJob) is being deprecated.", "18.0.0", "5.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {
