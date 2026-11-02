@@ -779,7 +779,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             $sourceTest = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
             $artifactTest = Join-Path $script:Artifact 'test'
             $null = New-Item -ItemType Directory -Path $sourceTest, $artifactTest -Force
-            foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1') {
+            foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1', 'OfflineTestHelpers.ps1') {
                 Set-Content (Join-Path $sourceTest $name) "# current $name"
                 Set-Content (Join-Path $artifactTest $name) "# stale $name"
             }
@@ -787,7 +787,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             Mock Write-Host { $script:refreshMessages.Add([string]$Object) }
             Mock Get-EdgeActionTestConfig { @{ SubscriptionId = '00000000-0000-0000-0000-000000000001' } }
             Mock Invoke-EdgeActionTestChild {
-                foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1') {
+                foreach ($name in 'Get-AzEdgeAction.Tests.ps1', 'New-AzEdgeAction.Tests.ps1', 'utils.ps1', 'OfflineTestHelpers.ps1') {
                     (Get-FileHash (Join-Path $artifactTest $name)).Hash |
                         Should -Be (Get-FileHash (Join-Path $sourceTest $name)).Hash
                 }
@@ -808,7 +808,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
                 ConfigPath = (Join-Path $TestDrive 'nonexistent-fixture-settings.psd1')
             }
             Assert-MockCalled Invoke-EdgeActionTestChild -Times 1 -Exactly -Scope It
-            ($script:refreshMessages -join '|') | Should -Match 'Starting artifact test-script refresh.*Completed artifact test-script refresh: 3 updated, 0 unchanged'
+            ($script:refreshMessages -join '|') | Should -Match 'Starting artifact test-script refresh.*Completed artifact test-script refresh: 4 updated, 0 unchanged'
         }
         It 'does not rewrite matching files on a subsequent refresh' {
             $first = Update-EdgeActionArtifactTests
@@ -823,7 +823,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
                 $second[$name] | Should -Be $first[$name]
                 (Get-Item (Join-Path $artifactTest $name)).LastWriteTimeUtc | Should -Be $timestamps[$name]
             }
-            $script:refreshMessages[-1] | Should -Match '0 updated, 3 unchanged'
+            $script:refreshMessages[-1] | Should -Match '0 updated, 4 unchanged'
         }
         It 'preserves recordings, metadata, results, binaries, and unrelated artifact files during refresh' {
             $excluded = @('Get-AzEdgeAction.Recording.json', 'env.json', 'localEnv.json',
@@ -842,13 +842,17 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
         It 'copies newly added maintained scenario scripts' {
             Set-Content (Join-Path $sourceTest 'Added.Tests.ps1') '# new fixture'
             $state = Update-EdgeActionArtifactTests
-            $state.Count | Should -Be 4
+            $state.Count | Should -Be 5
             (Get-FileHash (Join-Path $artifactTest 'Added.Tests.ps1')).Hash | Should -Be $state['Added.Tests.ps1']
         }
-        It 'restores a missing artifact helper from maintained source' {
-            Remove-Item (Join-Path $artifactTest 'utils.ps1')
+        It 'restores a missing artifact helper <Helper> from maintained source' -TestCases @(
+            @{ Helper = 'utils.ps1' }
+            @{ Helper = 'OfflineTestHelpers.ps1' }
+        ) {
+            param($Helper)
+            Remove-Item (Join-Path $artifactTest $Helper)
             $state = Update-EdgeActionArtifactTests
-            (Get-FileHash (Join-Path $artifactTest 'utils.ps1')).Hash | Should -Be $state['utils.ps1']
+            (Get-FileHash (Join-Path $artifactTest $Helper)).Hash | Should -Be $state[$Helper]
         }
         It 'rejects orphan artifact scenarios including a nested same-name file: <RelativePath>' -TestCases @(
             @{ RelativePath = 'Removed.Tests.ps1' }
@@ -868,6 +872,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             @{ Missing = 'artifact' }
             @{ Missing = 'source' }
             @{ Missing = 'utils' }
+            @{ Missing = 'offline helper' }
             @{ Missing = 'scenarios' }
         ) {
             param($Missing)
@@ -875,6 +880,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
                 'artifact' { Rename-Item $artifactTest 'saved-test' }
                 'source' { Rename-Item $sourceTest 'saved-test' }
                 'utils' { Remove-Item (Join-Path $sourceTest 'utils.ps1') }
+                'offline helper' { Remove-Item (Join-Path $sourceTest 'OfflineTestHelpers.ps1') }
                 'scenarios' {
                     Remove-Item (Join-Path $sourceTest 'Get-AzEdgeAction.Tests.ps1')
                     Remove-Item (Join-Path $sourceTest 'New-AzEdgeAction.Tests.ps1')
@@ -927,6 +933,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
             foreach ($folder in $artifactTest, $sourceTest) {
                 Set-Content (Join-Path $folder 'env.json') $metadata
                 Set-Content (Join-Path $folder 'utils.ps1') '# fixture helper'
+                Set-Content (Join-Path $folder 'OfflineTestHelpers.ps1') '# fixture offline helper'
                 foreach ($group in 'Get-AzEdgeAction', 'New-AzEdgeAction') {
                     Set-Content (Join-Path $folder "$group.Recording.json") '{}'
                     Set-Content (Join-Path $folder "$group.Tests.ps1") '# fixture test'
@@ -998,6 +1005,7 @@ if ($TestName -contains 'fail') { throw 'Fixture harness failure' }
         It 'blocks recording handoff when maintained <File> changes during the run' -TestCases @(
             @{ File = 'Get-AzEdgeAction.Tests.ps1' }
             @{ File = 'utils.ps1' }
+            @{ File = 'OfflineTestHelpers.ps1' }
             @{ File = 'Added.Tests.ps1' }
         ) {
             param($File)
@@ -1283,6 +1291,8 @@ Describe 'Isolated runner integration with a local fixture harness' {
         $null = New-Item -ItemType Directory -Path $scripts, (Join-Path $source 'test'), (Join-Path $artifact 'test'), $accounts -Force
         '# maintained fixture scenario' | Set-Content (Join-Path $source 'test' 'fixture.Tests.ps1')
         '# maintained fixture helper' | Set-Content (Join-Path $source 'test' 'utils.ps1')
+        "function Get-OfflineRefreshMarker { 'refreshed offline helper' }" |
+            Set-Content (Join-Path $source 'test' 'OfflineTestHelpers.ps1')
         foreach ($file in @('Test-EdgeAction.ps1', 'EdgeAction.TestRunner.psm1', 'TestSettings.psd1')) {
             Copy-Item (Join-Path $PSScriptRoot '..' $file) (Join-Path $scripts $file)
         }
@@ -1444,8 +1454,11 @@ if ((Get-Command Invoke-Pester).Module.Version -ne [version]'4.10.1') { throw 'W
 'fixture recording' | Set-Content (Join-Path $PSScriptRoot 'test' 'fixture.Recording.json')
 Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -EnableExit -OutputFile (Join-Path $PSScriptRoot 'test' 'Az.EdgeAction-TestResults.xml')
 '@ | Set-Content $harness
-        "Describe 'fixture' { It 'passes' { 1 | Should -Be 1 } }" |
-            Set-Content (Join-Path $source 'test' 'fixture.Tests.ps1')
+        @'
+. (Join-Path $PSScriptRoot 'OfflineTestHelpers.ps1')
+Describe 'fixture' { It 'passes' { Get-OfflineRefreshMarker | Should -Be 'refreshed offline helper' } }
+'@ | Set-Content (Join-Path $source 'test' 'fixture.Tests.ps1')
+        Test-Path (Join-Path $artifact 'test' 'OfflineTestHelpers.ps1') | Should -Be $false
         # Use a command to pass an actual array through the public wrapper.
         $command = "& '$($runner.Replace("'", "''"))' -TestName 'one','two'"
         $messages = @(& $pwsh -NoProfile -Command $command)
@@ -1455,7 +1468,7 @@ Invoke-Pester -Script (Join-Path $PSScriptRoot 'test' 'fixture.Tests.ps1') -Enab
             'Starting test configuration validation.'
             'Completed test configuration validation.'
             'Starting artifact test-script refresh.'
-            'Completed artifact test-script refresh: 2 updated, 0 unchanged.'
+            'Completed artifact test-script refresh: 3 updated, 0 unchanged.'
             'Starting test dependency validation and loading.'
             'Completed test dependency validation and loading.'
             'Starting Playback scenario harness.'

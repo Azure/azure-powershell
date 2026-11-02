@@ -406,9 +406,11 @@ function Get-EdgeActionTestScriptState {
     $source = Join-Path $script:RepoRoot 'src' 'EdgeAction' 'EdgeAction.Autorest' 'test'
     $files = @(Get-ChildItem -LiteralPath $source -Filter '*.Tests.ps1' -File -ErrorAction Stop)
     if (-not $files.Count) { throw "No maintained scenario scripts found in '$source'." }
-    $utils = Join-Path $source 'utils.ps1'
-    if (-not (Test-Path -LiteralPath $utils -PathType Leaf)) { throw "Maintained test helper is missing: '$utils'." }
-    $files += Get-Item -LiteralPath $utils -ErrorAction Stop
+    foreach ($name in 'utils.ps1', 'OfflineTestHelpers.ps1') {
+        $helper = Join-Path $source $name
+        if (-not (Test-Path -LiteralPath $helper -PathType Leaf)) { throw "Maintained test helper is missing: '$helper'." }
+        $files += Get-Item -LiteralPath $helper -ErrorAction Stop
+    }
     $state = [hashtable]::new([StringComparer]::Ordinal)
     foreach ($file in $files) {
         $state[$file.Name] = (Get-FileHash -LiteralPath $file.FullName -ErrorAction Stop).Hash

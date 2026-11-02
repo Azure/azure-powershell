@@ -96,7 +96,7 @@ For scenario-only edits, use the test helper without regenerating:
 ..\tools\TestScripts\Test-EdgeAction.ps1 -Mode Playback
 ```
 
-Before each mode, this helper refreshes maintained `test\*.Tests.ps1` and `test\utils.ps1` into existing artifacts and verifies their hashes. It refuses missing artifacts and orphan artifact scenarios instead of silently rebuilding or running stale tests. Recordings, environment files, binaries, and other fixtures are not refreshed.
+Before each mode, this helper refreshes maintained `test\*.Tests.ps1`, `test\utils.ps1`, and `test\OfflineTestHelpers.ps1` into existing artifacts and verifies their hashes. It refuses missing artifacts, missing maintained helpers, and orphan artifact scenarios instead of silently rebuilding or running stale tests. Recordings, environment files, binaries, and other fixtures are not refreshed.
 
 Shared settings in `..\tools\TestScripts\TestSettings.psd1` select AzureCloud and leave the subscription empty. For personal AzureCloud settings, copy that file to `TestSettings.local.psd1` beside it and edit only the copy. For an approved Brazilus environment, copy `TestSettings.local.example.psd1` instead. The local file overrides shared defaults; `-ConfigPath` selects a different data file, and `-SubscriptionId` overrides its subscription. `PesterPath` may identify an installed Pester 4.10.1 manifest.
 
@@ -215,7 +215,7 @@ The artifact harness supports `-Record`, `-Playback`, `-Live`, `-NotIsolated`, `
 
 ### Refresh scenario-only edits
 
-If only scenario scripts or `utils.ps1` changed and current build artifacts exist, no regeneration is required. Explicitly copy the maintained scripts before starting the harness.
+If only test scripts or their helpers changed and current build artifacts exist, no regeneration is required. Explicitly copy the maintained suites and both helpers before starting the harness.
 
 **Run from: repository root.**
 
@@ -225,6 +225,7 @@ $artifactTest = Join-Path (Get-Location) 'artifacts\Debug\Az.EdgeAction\EdgeActi
 if (-not (Test-Path $artifactTest)) { throw 'Build EdgeAction first; the artifact test directory is missing.' }
 Get-ChildItem $sourceTest -Filter '*.Tests.ps1' | Copy-Item -Destination $artifactTest -Force
 Copy-Item (Join-Path $sourceTest 'utils.ps1') $artifactTest -Force
+Copy-Item (Join-Path $sourceTest 'OfflineTestHelpers.ps1') $artifactTest -Force
 ```
 
 This does not copy recordings, environment files, results or binaries. If a scenario was removed or renamed, inspect the corresponding orphan artifact script before running; do not execute stale tests. Changes to cmdlets/runtime or other fixture files require an appropriate build or separately reviewed fixture refresh.
