@@ -1,91 +1,189 @@
 {
-  "Get-AzPrivateTrafficManagerEndpoint+[NoContext]+Get - should retrieve a specific endpoint by name+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z?api-version=2026-02-09-preview+1": {
+  "Get-AzPrivateTrafficManagerEndpoint+[NoContext]+Get - should retrieve a specific endpoint by name+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "9f6a83b5-329b-4529-8369-687f49f83645" ],
-        "CommandName": [ "Get-AzPrivateTrafficManagerEndpoint" ],
-        "FullCommandName": [ "Get-AzPrivateTrafficManagerEndpoint_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "26"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Get-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Get-AzPrivateTrafficManagerEndpoint_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "884" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/40aba0c3-5e7f-4b39-8728-6c73df0c50b5" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "278b18fd-7fdf-4c22-96c0-d6d8238a9015" ],
-        "x-ms-correlation-request-id": [ "278b18fd-7fdf-4c22-96c0-d6d8238a9015" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084828Z:278b18fd-7fdf-4c22-96c0-d6d8238a9015" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0A587F5222DD4A9094D3BF9E13CD8830 Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:27Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:48:27 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "560"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000004"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122747Z:00000000-0000-0000-0000-000000000005"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 55FD8946E1854B158D5892B8FF910740 Ref B: MWH011020806029 Ref C: 2026-11-03T12:27:46Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:27:46 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "453" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "447"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"properties\":{\"target\":\"app1.contoso.internal\",\"monitoringTarget\":\"app1.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":1,\"alwaysServe\":\"Disabled\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z\",\"name\":\"ptm-ep-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}",
+      "Content": "{\"properties\":{\"target\":\"app1.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":1,\"alwaysServe\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z\",\"name\":\"ptm-ep-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzPrivateTrafficManagerEndpoint+[NoContext]+List - should list endpoints in a profile+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints?api-version=2026-02-09-preview+1": {
+  "Get-AzPrivateTrafficManagerEndpoint+[NoContext]+List - should list endpoints in a profile+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "3c452041-d84d-4787-b1e4-311bb545fb87" ],
-        "CommandName": [ "Get-AzPrivateTrafficManagerEndpoint" ],
-        "FullCommandName": [ "Get-AzPrivateTrafficManagerEndpoint_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "27"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "CommandName": [
+          "Get-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Get-AzPrivateTrafficManagerEndpoint_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "845" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/d5d26179-76a1-468a-bf4d-90d35490d98c" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "01c82055-743d-4eac-aafb-13a837f92671" ],
-        "x-ms-correlation-request-id": [ "01c82055-743d-4eac-aafb-13a837f92671" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084830Z:01c82055-743d-4eac-aafb-13a837f92671" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FFF34FF3CD334577A14F2EC2D6386374 Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:29Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:48:29 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "518"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122748Z:00000000-0000-0000-0000-000000000008"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 867ECD3A19DF40388D18BE23BC998E04 Ref B: MWH011020806029 Ref C: 2026-11-03T12:27:47Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:27:47 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "927" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "915"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"target\":\"app1.contoso.internal\",\"monitoringTarget\":\"app1.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":1,\"alwaysServe\":\"Disabled\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z\",\"name\":\"ptm-ep-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"},{\"properties\":{\"target\":\"app2.contoso.internal\",\"monitoringTarget\":\"app2.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":2,\"alwaysServe\":\"Disabled\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z\",\"name\":\"ptm-ep-del-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"target\":\"app1.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":1,\"alwaysServe\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-70ad8z\",\"name\":\"ptm-ep-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"},{\"properties\":{\"target\":\"app2.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":50,\"priority\":2,\"alwaysServe\":\"Disabled\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z\",\"name\":\"ptm-ep-del-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}]}",
       "isContentBase64": false
     }
   }

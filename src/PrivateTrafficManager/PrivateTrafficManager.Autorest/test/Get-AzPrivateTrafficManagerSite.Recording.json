@@ -1,91 +1,189 @@
 {
-  "Get-AzPrivateTrafficManagerSite+[NoContext]+Get - should retrieve a specific site by name+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z?api-version=2026-02-09-preview+1": {
+  "Get-AzPrivateTrafficManagerSite+[NoContext]+Get - should retrieve a specific site by name+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "a9be69a8-2ed5-401d-9a72-be414750d758" ],
-        "CommandName": [ "Get-AzPrivateTrafficManagerSite" ],
-        "FullCommandName": [ "Get-AzPrivateTrafficManagerSite_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "33"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Get-AzPrivateTrafficManagerSite"
+        ],
+        "FullCommandName": [
+          "Get-AzPrivateTrafficManagerSite_Get"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "333" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/fdb5bab1-5567-4dab-83fa-9a54922b5e5f" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "bd3d5a27-2d54-4810-8ee1-6d342bc8a694" ],
-        "x-ms-correlation-request-id": [ "bd3d5a27-2d54-4810-8ee1-6d342bc8a694" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084850Z:bd3d5a27-2d54-4810-8ee1-6d342bc8a694" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D289AF6EADEC4367A716C70247F4D110 Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:49Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:48:49 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "319"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000004"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122822Z:00000000-0000-0000-0000-000000000005"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6EB564AD5F59429485F9A1154795A76A Ref B: MWH011020806029 Ref C: 2026-11-03T12:28:21Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:28:21 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "337" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "666"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"properties\":{\"probingGatewayIds\":[],\"virtualNetworkIds\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}",
+      "Content": "{\"properties\":{\"probingGatewayIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/recording-gateways/providers/microsoft.network/probinggateways/recording-gateway\"],\"virtualNetworkIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/ptm-october-validation/providers/microsoft.network/virtualnetworks/validation-vnet\"],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzPrivateTrafficManagerSite+[NoContext]+List - should list sites in a topology map+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites?api-version=2026-02-09-preview+1": {
+  "Get-AzPrivateTrafficManagerSite+[NoContext]+List - should list sites in a topology map+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "c0820072-86ec-4b61-9c41-a462ec89b0c0" ],
-        "CommandName": [ "Get-AzPrivateTrafficManagerSite" ],
-        "FullCommandName": [ "Get-AzPrivateTrafficManagerSite_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "34"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "CommandName": [
+          "Get-AzPrivateTrafficManagerSite"
+        ],
+        "FullCommandName": [
+          "Get-AzPrivateTrafficManagerSite_List"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "332" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/c1accbca-8955-47a1-9fe2-af437e1bdd70" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-request-id": [ "6387fb20-e90a-4f60-8de1-31eb1f6ce202" ],
-        "x-ms-correlation-request-id": [ "6387fb20-e90a-4f60-8de1-31eb1f6ce202" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084851Z:6387fb20-e90a-4f60-8de1-31eb1f6ce202" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D693372AD9474A58AD4354041751F1C3 Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:50Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:48:50 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "327"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122823Z:00000000-0000-0000-0000-000000000008"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D2674A29508F47029DDD4930F1DD156E Ref B: MWH011020806029 Ref C: 2026-11-03T12:28:22Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:28:22 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "695" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "1201"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"probingGatewayIds\":[],\"virtualNetworkIds\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"},{\"properties\":{\"probingGatewayIds\":[],\"virtualNetworkIds\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-del-70ad8z\",\"name\":\"ptm-site-del-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"probingGatewayIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/recording-gateways/providers/microsoft.network/probinggateways/recording-gateway\"],\"virtualNetworkIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/ptm-october-validation/providers/microsoft.network/virtualnetworks/validation-vnet\"],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"},{\"properties\":{\"probingGatewayIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/recording-gateways/providers/microsoft.network/probinggateways/recording-gateway\"],\"virtualNetworkIds\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-del-70ad8z\",\"name\":\"ptm-site-del-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}]}",
       "isContentBase64": false
     }
   }

@@ -6,7 +6,8 @@ param(
     [Parameter(Mandatory)]
     [string]$OutputPath,
     [Parameter(Mandatory)]
-    [string]$SubscriptionId
+    [string]$SubscriptionId,
+    [string]$OwnedResourceGroupName
 )
 
 $ErrorActionPreference = 'Stop'
@@ -48,6 +49,19 @@ function Convert-RecordingValue {
 }
 
 $recording = Get-Content $InputPath -Raw | ConvertFrom-Json -AsHashtable
+if ($OwnedResourceGroupName) {
+    foreach ($exchange in $recording.Values) {
+        if ($exchange -isnot [System.Collections.IDictionary] -or -not $exchange.Contains('Request')) { continue }
+        $uri = [uri]$exchange.Request.RequestUri
+        if ($exchange.Request.Method -eq 'GET' -and $uri.AbsolutePath -match '^/subscriptions/[^/]+/providers/Microsoft.Network/privateTrafficManagerProfiles/?$') {
+            $content = $exchange.Response.Content | ConvertFrom-Json -AsHashtable
+            $ownedPrefix = "/subscriptions/$SubscriptionId/resourceGroups/$OwnedResourceGroupName/"
+            $content.value = @($content.value | Where-Object { $_.id.StartsWith($ownedPrefix, [StringComparison]::OrdinalIgnoreCase) })
+            $exchange.Response.Content = ConvertTo-Json -InputObject $content -Depth 100 -Compress
+            $exchange.Response.ContentHeaders.Remove('Content-Length')
+        }
+    }
+}
 $sanitized = Convert-RecordingValue $recording
 $json = ConvertTo-Json -InputObject $sanitized -Depth 100
 if ($json -match 'eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+') {

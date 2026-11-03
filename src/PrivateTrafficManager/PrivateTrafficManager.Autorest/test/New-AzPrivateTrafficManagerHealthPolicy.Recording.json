@@ -1,127 +1,258 @@
 {
-  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$PUT+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview+1": {
+  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview",
-      "Content": "{\r\n  \"kind\": \"Probe\",\r\n  \"properties\": {\r\n    \"name\": \"ptm-hp-new-70ad8z\",\r\n    \"probeConfig\": {\r\n      \"path\": \"/status\",\r\n      \"timeoutInSeconds\": 10,\r\n      \"port\": 8443,\r\n      \"protocol\": \"HTTPS\",\r\n      \"intervalInSeconds\": 30,\r\n      \"toleratedNumberOfFailures\": 3\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"probeConfig\": {\r\n      \"path\": \"/status\",\r\n      \"intervalInSeconds\": 30,\r\n      \"port\": 8443,\r\n      \"protocol\": \"HTTPS\",\r\n      \"timeoutInSeconds\": 10,\r\n      \"toleratedNumberOfFailures\": 3\r\n    }\r\n  },\r\n  \"kind\": \"Probe\"\r\n}",
       "isContentBase64": false,
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "287" ]
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "253"
+        ]
       }
     },
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "710" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/48edaa73-63b5-4e0e-bea4-87a775fad621" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "f77ae6c5-b59c-44e8-893e-faf883aa0cf5" ],
-        "x-ms-correlation-request-id": [ "f77ae6c5-b59c-44e8-893e-faf883aa0cf5" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084943Z:f77ae6c5-b59c-44e8-893e-faf883aa0cf5" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CD75815CBFC54C628FA28FF55D5D71E1 Ref B: MAA211070117031 Ref C: 2026-06-19T08:49:42Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:49:42 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "1097"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000002/westcentralus/00000000-0000-0000-0000-000000000003"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000004"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000004"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122856Z:00000000-0000-0000-0000-000000000004"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 0B7CCD3346C847B390435935A974506E Ref B: MWH011020806029 Ref C: 2026-11-03T12:28:54Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:28:55 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "472" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "477"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":8443,\"path\":\"/status\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z\",\"name\":\"ptm-hp-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}",
+      "Content": "{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":8443,\"path\":\"/status\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z\",\"name\":\"ptm-hp-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview+2": {
+  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "b4a83808-38b8-42af-a734-489296df3d2c" ],
-        "CommandName": [ "New-AzPrivateTrafficManagerHealthPolicy" ],
-        "FullCommandName": [ "New-AzPrivateTrafficManagerHealthPolicy_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "44"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "CommandName": [
+          "New-AzPrivateTrafficManagerHealthPolicy"
+        ],
+        "FullCommandName": [
+          "New-AzPrivateTrafficManagerHealthPolicy_CreateViaJsonString"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "844" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/724c36de-b8b4-4283-b83e-c6f1ed09cbb4" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "2ac776ed-257c-4944-a4a9-dd4763aa89b0" ],
-        "x-ms-correlation-request-id": [ "2ac776ed-257c-4944-a4a9-dd4763aa89b0" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085014Z:2ac776ed-257c-4944-a4a9-dd4763aa89b0" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B20FC1D1A6C456FA3F55A538D9C3D37 Ref B: MAA211070117031 Ref C: 2026-06-19T08:50:13Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:50:14 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "476"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000002/westcentralus/00000000-0000-0000-0000-000000000006"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122927Z:00000000-0000-0000-0000-000000000007"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 7B0D98130F184CCEAFF94C4BC2EF6B6C Ref B: MWH011020806029 Ref C: 2026-11-03T12:29:26Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:29:26 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "472" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "477"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
-      "Content": "{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":8443,\"path\":\"/status\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z\",\"name\":\"ptm-hp-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}",
+      "Content": "{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":8443,\"path\":\"/status\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z\",\"name\":\"ptm-hp-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$DELETE+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview+3": {
+  "New-AzPrivateTrafficManagerHealthPolicy+[NoContext]+CreateViaJsonString - should create a new health policy+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-new-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "709d5dd1-588f-4547-9fa4-9c08208c5162" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerHealthPolicy" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerHealthPolicy_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "45"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerHealthPolicy"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerHealthPolicy_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 204,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "676" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/377be322-36f4-4960-bd12-363b9bb1f71e" ],
-        "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
-        "x-ms-request-id": [ "b9ba66ee-0afd-4f69-bb97-90d3b4ad4da1" ],
-        "x-ms-correlation-request-id": [ "b9ba66ee-0afd-4f69-bb97-90d3b4ad4da1" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085016Z:b9ba66ee-0afd-4f69-bb97-90d3b4ad4da1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9B8076D597E640179BC508DEE1A3A666 Ref B: MAA211070117031 Ref C: 2026-06-19T08:50:15Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:50:16 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "889"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000001,objectId=00000000-0000-0000-0000-000000000002/westcentralus/00000000-0000-0000-0000-000000000009"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T122928Z:00000000-0000-0000-0000-000000000010"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EF7D6F145A89422E9A691D45448A40BB Ref B: MWH011020806029 Ref C: 2026-11-03T12:29:27Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:29:28 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ]
+        "Expires": [
+          "-1"
+        ]
       },
       "Content": null,
       "isContentBase64": false

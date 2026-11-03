@@ -78,6 +78,8 @@ Describe 'Private Traffic Manager model contracts' {
         }.GetNewClosure()
         $module = [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Module]::Instance
         $onNewRequest = $module.OnNewRequest
+        $playback = [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock]::new((Join-Path $PSScriptRoot 'OctoberApi-Sanitized.Recording.json'))
+        $playback.SetPlayback()
         try {
             $module.OnNewRequest = $null
             $parameters = @{
@@ -85,7 +87,7 @@ Describe 'Private Traffic Manager model contracts' {
                 PrivateTrafficManagerProfileName = 'profile'
                 ResourceGroupName = 'test-rg'
                 SubscriptionId = '00000000-0000-0000-0000-000000000000'
-                HttpPipelinePrepend = $pipeline
+                HttpPipelinePrepend = @($playback, $pipeline)
                 ErrorAction = 'Stop'
             }
             if ($verb -in @('New', 'Update')) {
@@ -132,9 +134,11 @@ Describe 'Private Traffic Manager model contracts' {
         }.GetNewClosure()
         $module = [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Module]::Instance
         $onNewRequest = $module.OnNewRequest
+        $playback = [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.PipelineMock]::new((Join-Path $PSScriptRoot 'OctoberApi-Sanitized.Recording.json'))
+        $playback.SetPlayback()
         try {
             $module.OnNewRequest = $null
-            $null = Update-AzPrivateTrafficManagerHealthPolicy -Name 'policy' -PrivateTrafficManagerProfileName 'profile' -ResourceGroupName 'test-rg' -SubscriptionId '00000000-0000-0000-0000-000000000000' -ProbeConfigPath '/ready' -HttpPipelinePrepend $pipeline -Confirm:$false -ErrorAction Stop
+            $null = Update-AzPrivateTrafficManagerHealthPolicy -Name 'policy' -PrivateTrafficManagerProfileName 'profile' -ResourceGroupName 'test-rg' -SubscriptionId '00000000-0000-0000-0000-000000000000' -ProbeConfigPath '/ready' -HttpPipelinePrepend @($playback, $pipeline) -Confirm:$false -ErrorAction Stop
             $requests.Count | Should -Be 4
             $requests[0].Method | Should -Be 'GET'
             $requests[1].Method | Should -Be 'PUT'
