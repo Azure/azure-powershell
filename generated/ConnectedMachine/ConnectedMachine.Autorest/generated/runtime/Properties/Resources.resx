@@ -1705,7 +1705,7 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
   </data>
   <data name="BreakingChangesAttributesInEffectByVersion" xml:space="preserve">
     <value>
-- The change is expected to take effect from version : '{0}'</value>
+- The change is expected to take effect in '{0}' from version : '{1}'</value>
   </data>
   <data name="BreakingChangesAttributesUsageChangeMessage" xml:space="preserve">
     <value>```powershell

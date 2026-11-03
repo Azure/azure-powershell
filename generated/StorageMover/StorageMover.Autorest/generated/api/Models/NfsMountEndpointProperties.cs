@@ -61,6 +61,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Inherited)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)__endpointBaseProperties).ProvisioningState; }
 
+        /// <summary>Backing field for <see cref="SourceType" /> property.</summary>
+        private string _sourceType;
+
+        /// <summary>
+        /// Source type to differentiate NFSMount and FSX-SMB endpoints. Default is NFSMount.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string SourceType { get => this._sourceType; set => this._sourceType = value; }
+
         /// <summary>Creates an new <see cref="NfsMountEndpointProperties" /> instance.</summary>
         public NfsMountEndpointProperties()
         {
@@ -116,8 +125,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Description = @"The NFS protocol version.",
         SerializedName = @"nfsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4", "NFSv4_1")]
         string NfsVersion { get; set; }
+        /// <summary>
+        /// Source type to differentiate NFSMount and FSX-SMB endpoints. Default is NFSMount.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Source type to differentiate NFSMount and FSX-SMB endpoints. Default is NFSMount.",
+        SerializedName = @"sourceType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NfsMount", "FSX-EFS")]
+        string SourceType { get; set; }
 
     }
     /// The properties of NFS share endpoint.
@@ -129,8 +152,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>The host name or IP address of the server exporting the file system.</summary>
         string Host { get; set; }
         /// <summary>The NFS protocol version.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NFSauto", "NFSv3", "NFSv4", "NFSv4_1")]
         string NfsVersion { get; set; }
+        /// <summary>
+        /// Source type to differentiate NFSMount and FSX-SMB endpoints. Default is NFSMount.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("NfsMount", "FSX-EFS")]
+        string SourceType { get; set; }
 
     }
 }

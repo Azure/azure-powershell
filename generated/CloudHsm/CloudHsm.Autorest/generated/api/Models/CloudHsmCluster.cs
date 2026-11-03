@@ -14,10 +14,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource"
-        /// />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource __cloudHsmClusterResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.TrackedResource();
 
         /// <summary>State of security domain activation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
@@ -35,47 +34,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Id; }
+
+        /// <summary>Backing field for <see cref="Identity" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity _identity;
 
         /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Identity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Identity = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentity()); set => this._identity = value; }
 
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityPrincipalId; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>
         /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityTenantId; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
 
         /// <summary>
         /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityType = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
 
         /// <summary>
         /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
         /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityUserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityUserAssignedIdentity = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__cloudHsmClusterResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__cloudHsmClusterResource).Location = value ?? null; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__trackedResource).Location = value ?? null; }
 
         /// <summary>Internal Acessors for ActivationState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.ActivationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).ActivationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).ActivationState = value ?? null; }
 
         /// <summary>Internal Acessors for Hsm</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmProperties> Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.Hsm { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).Hsm; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).Hsm = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for Identity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
+
+        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityTenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.PrivateEndpointConnection { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).PrivateEndpointConnection; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).PrivateEndpointConnection = value ?? null /* arrayOf */; }
@@ -86,57 +97,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
+        /// <summary>Internal Acessors for Sku</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSku()); set { {_sku = value;} } }
+
+        /// <summary>Internal Acessors for SkuFamily</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Family = value ?? null; }
+
         /// <summary>Internal Acessors for StatusMessage</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterInternal.StatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).StatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterPropertiesInternal)Property).StatusMessage = value ?? null; }
 
-        /// <summary>Internal Acessors for Identity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal.Identity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Identity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Identity = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityPrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityPrincipalId = value ?? null; }
-
-        /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).IdentityTenantId = value ?? null; }
-
-        /// <summary>Internal Acessors for Sku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal.Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Sku = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for SkuFamily</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal.SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuFamily; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuFamily = value ?? null; }
-
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Id = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Name = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemData = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedBy = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedByType = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Type = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Name; }
 
         /// <summary>List of private endpoint connection resources</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
@@ -161,21 +163,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>Backing field for <see cref="Sku" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku _sku;
+
         /// <summary>SKU details</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku Sku { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Sku; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).Sku = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterSku()); set => this._sku = value; }
 
         /// <summary>Sku capacity</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public int? SkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuCapacity = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public int? SkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Capacity = value ?? default(int); }
 
         /// <summary>Sku family of the Cloud HSM Cluster</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuFamily; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Family; }
 
         /// <summary>Sku name of the Cloud HSM Cluster</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal)__cloudHsmClusterResource).SkuName = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSkuInternal)Sku).Name = value ?? null; }
 
         /// <summary>Cloud HSM Cluster status message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inlined)]
@@ -185,41 +190,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemData = value ?? null /* model class */; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemData = value ?? null /* model class */; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedAt; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedBy; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataCreatedByType; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataCreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedAt; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedBy; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).SystemDataLastModifiedByType; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__cloudHsmClusterResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__cloudHsmClusterResource).Tag = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__cloudHsmClusterResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IResourceInternal)__trackedResource).Type; }
 
         /// <summary>Creates an new <see cref="CloudHsmCluster" /> instance.</summary>
         public CloudHsmCluster()
@@ -235,14 +240,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__cloudHsmClusterResource), __cloudHsmClusterResource);
-            await eventListener.AssertObjectIsValid(nameof(__cloudHsmClusterResource), __cloudHsmClusterResource);
+            await eventListener.AssertNotNull(nameof(__trackedResource), __trackedResource);
+            await eventListener.AssertObjectIsValid(nameof(__trackedResource), __trackedResource);
         }
     }
     /// Resource information with extended details.
     public partial interface ICloudHsmCluster :
         Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResource
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResource
     {
         /// <summary>State of security domain activation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
@@ -279,6 +284,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         SerializedName = @"hsms",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmProperties) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmProperties> Hsm { get;  }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityPrincipalId { get;  }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityTenantId { get;  }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>List of private endpoint connection resources</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
@@ -314,6 +374,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>Sku capacity</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Sku capacity",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        int? SkuCapacity { get; set; }
+        /// <summary>Sku family of the Cloud HSM Cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Sku family of the Cloud HSM Cluster",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuFamily { get;  }
+        /// <summary>Sku name of the Cloud HSM Cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Sku name of the Cloud HSM Cluster",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
+        string SkuName { get; set; }
         /// <summary>Cloud HSM Cluster status message</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Info(
         Required = false,
@@ -329,7 +423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
     }
     /// Resource information with extended details.
     internal partial interface ICloudHsmClusterInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ITrackedResourceInternal
     {
         /// <summary>State of security domain activation</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("NotDefined", "NotActivated", "Active", "Failed", "Unknown")]
@@ -339,6 +433,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         string AutoGeneratedDomainNameLabelScope { get; set; }
         /// <summary>An array of Cloud HSM Cluster's HSMs</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmProperties> Hsm { get; set; }
+        /// <summary>Managed service identity (system assigned and/or user assigned identities)</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentity Identity { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityPrincipalId { get; set; }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityTenantId { get; set; }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>List of private endpoint connection resources</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Properties of the Cloud HSM Cluster</summary>
@@ -349,6 +464,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>The Cloud HSM Cluster public network access</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>SKU details</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.ICloudHsmClusterSku Sku { get; set; }
+        /// <summary>Sku capacity</summary>
+        int? SkuCapacity { get; set; }
+        /// <summary>Sku family of the Cloud HSM Cluster</summary>
+        string SkuFamily { get; set; }
+        /// <summary>Sku name of the Cloud HSM Cluster</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
+        string SkuName { get; set; }
         /// <summary>Cloud HSM Cluster status message</summary>
         string StatusMessage { get; set; }
 

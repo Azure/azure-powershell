@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).Export = (string) content.GetValueForProperty("Export",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).Export, global::System.Convert.ToString);
             }
+            if (content.Contains("SourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).SourceType = (string) content.GetValueForProperty("SourceType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).SourceType, global::System.Convert.ToString);
+            }
             if (content.Contains("EndpointType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType = (string) content.GetValueForProperty("EndpointType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpointBasePropertiesInternal)this).EndpointType, global::System.Convert.ToString);
@@ -165,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("Export"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).Export = (string) content.GetValueForProperty("Export",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).Export, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).SourceType = (string) content.GetValueForProperty("SourceType",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.INfsMountEndpointPropertiesInternal)this).SourceType, global::System.Convert.ToString);
             }
             if (content.Contains("EndpointType"))
             {

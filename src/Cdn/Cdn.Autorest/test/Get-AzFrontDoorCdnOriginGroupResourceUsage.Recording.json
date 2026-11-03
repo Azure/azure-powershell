@@ -1,8 +1,8 @@
 {
-  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview+1": {
+  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"loadBalancingSettings\": {\r\n      \"sampleSize\": 5,\r\n      \"successfulSamplesRequired\": 4,\r\n      \"additionalLatencyInMilliseconds\": 200\r\n    },\r\n    \"healthProbeSettings\": {\r\n      \"probePath\": \"/\",\r\n      \"probeRequestType\": \"GET\",\r\n      \"probeProtocol\": \"Https\",\r\n      \"probeIntervalInSeconds\": 1\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,41 +18,41 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "af53d6b1-00ac-4a9a-a4e3-24194ef137c9" ],
-        "x-ms-client-request-id": [ "04b2ac08-8184-4170-a514-c15d7e14c6a0" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/08193a07-c2af-41f7-a7df-435bd131dd12" ],
+        "x-ms-request-id": [ "2c89036e-768a-4cd5-9e5a-1e3e2f8625db" ],
+        "x-ms-client-request-id": [ "29fbf8e4-3c2a-4646-92f3-619a269eb449" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8871dc6f-c573-4e06-8461-b5924fcedf31/westus/9237136f-efe2-443f-b6ac-60b4ad64c844" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "17d8f0c5-0f41-47b1-b8cf-30546b9f0bf9" ],
-        "x-ms-routing-request-id": [ "WESTUS:20260623T033401Z:17d8f0c5-0f41-47b1-b8cf-30546b9f0bf9" ],
+        "x-ms-correlation-request-id": [ "574f6d05-9a4b-4e46-b29a-c789bc75e4ae" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261021T091330Z:574f6d05-9a4b-4e46-b29a-c789bc75e4ae" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8492714FB5E34C6BB879171AD0D1909F Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:33:59Z" ],
-        "Date": [ "Tue, 23 Jun 2026 03:34:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 284169D98A6647F69E04A5FFFC700D6D Ref B: SG2AA1040512052 Ref C: 2026-10-21T09:13:28Z" ],
+        "Date": [ "Wed, 21 Oct 2026 09:13:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "686" ],
+        "Content-Length": [ "650" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview+2": {
+  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "246" ],
-        "x-ms-client-request-id": [ "04b2ac08-8184-4170-a514-c15d7e14c6a0" ],
+        "x-ms-unique-id": [ "158" ],
+        "x-ms-client-request-id": [ "29fbf8e4-3c2a-4646-92f3-619a269eb449" ],
         "CommandName": [ "New-AzFrontDoorCdnOriginGroup" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOriginGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.7", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -63,41 +63,41 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "3aa0b7f9-6793-4b54-b221-0113bc7ddafa" ],
-        "x-ms-client-request-id": [ "04b2ac08-8184-4170-a514-c15d7e14c6a0" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/9e66436f-5cd1-4df2-9c21-b2ee713ac630" ],
+        "x-ms-request-id": [ "3cb36b8e-2f09-414e-9575-81c9632709d0" ],
+        "x-ms-client-request-id": [ "29fbf8e4-3c2a-4646-92f3-619a269eb449" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8871dc6f-c573-4e06-8461-b5924fcedf31/westus/d0b34a75-fdf3-4f0a-82c9-92cce1788570" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "1e66fa27-66af-4a79-bde9-690c52ddd973" ],
-        "x-ms-routing-request-id": [ "WESTUS:20260623T033432Z:1e66fa27-66af-4a79-bde9-690c52ddd973" ],
+        "x-ms-correlation-request-id": [ "c6b03f79-dc18-45dd-9720-a6185c0f5177" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261021T091400Z:c6b03f79-dc18-45dd-9720-a6185c0f5177" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0A076552AC1C4B51B682C30874A08CDA Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:34:31Z" ],
-        "Date": [ "Tue, 23 Jun 2026 03:34:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 21D35759E00148BF9006E317DB739700 Ref B: SG2AA1040512052 Ref C: 2026-10-21T09:14:00Z" ],
+        "Date": [ "Wed, 21 Oct 2026 09:14:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "686" ],
+        "Content-Length": [ "650" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview+3": {
+  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "247" ],
-        "x-ms-client-request-id": [ "04b2ac08-8184-4170-a514-c15d7e14c6a0" ],
+        "x-ms-unique-id": [ "159" ],
+        "x-ms-client-request-id": [ "29fbf8e4-3c2a-4646-92f3-619a269eb449" ],
         "CommandName": [ "New-AzFrontDoorCdnOriginGroup" ],
         "FullCommandName": [ "New-AzFrontDoorCdnOriginGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.7", "Az.Cdn/6.0.2" ]
       },
       "ContentHeaders": {
       }
@@ -108,40 +108,40 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "44e47fc7-c8c4-4fe8-ac95-fe662336118c" ],
-        "x-ms-client-request-id": [ "04b2ac08-8184-4170-a514-c15d7e14c6a0" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/797af7d1-f3a7-4563-af44-31f7f2415080" ],
+        "x-ms-request-id": [ "cb22cfa9-e1f5-4c5e-9997-2d841399da2e" ],
+        "x-ms-client-request-id": [ "29fbf8e4-3c2a-4646-92f3-619a269eb449" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8871dc6f-c573-4e06-8461-b5924fcedf31/westus/28d2bf64-c348-4cbc-b4ea-a3d0a81d0aad" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "1cd83248-6d4f-4156-9025-c75c4ae49f2a" ],
-        "x-ms-routing-request-id": [ "WESTUS:20260623T033433Z:1cd83248-6d4f-4156-9025-c75c4ae49f2a" ],
+        "x-ms-correlation-request-id": [ "e0436ad7-7b6f-46d6-ba9e-17eb4e4a2a2b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261021T091401Z:e0436ad7-7b6f-46d6-ba9e-17eb4e4a2a2b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FCE0EA5090714AF98770A9017B78765A Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:34:32Z" ],
-        "Date": [ "Tue, 23 Jun 2026 03:34:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D12815756CC649B99096D4E745923298 Ref B: SG2AA1040512052 Ref C: 2026-10-21T09:14:01Z" ],
+        "Date": [ "Wed, 21 Oct 2026 09:14:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "686" ],
+        "Content-Length": [ "650" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200,\"capacityDistributionSettings\":null},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/origingroups/org-pstest030\",\"type\":\"Microsoft.Cdn/profiles/origingroups\",\"name\":\"org-pstest030\",\"properties\":{\"loadBalancingSettings\":{\"sampleSize\":5,\"successfulSamplesRequired\":4,\"additionalLatencyInMilliseconds\":200},\"healthProbeSettings\":{\"probePath\":\"/\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":1},\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"sessionAffinityState\":\"Disabled\",\"authentication\":null,\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030/usages?api-version=2026-04-01-preview+4": {
+  "Get-AzFrontDoorCdnOriginGroupResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030/usages?api-version=2026-10-01+4": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030/usages?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-39dh/providers/Microsoft.Cdn/profiles/fdp-qlbsed/originGroups/org-pstest030/usages?api-version=2026-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "248" ],
-        "x-ms-client-request-id": [ "5ace5baa-e19d-4382-913b-3219525ae043" ],
+        "x-ms-unique-id": [ "160" ],
+        "x-ms-client-request-id": [ "2e7a7380-2c71-47d2-94e1-60f6312050e4" ],
         "CommandName": [ "Get-AzFrontDoorCdnOriginGroupResourceUsage" ],
         "FullCommandName": [ "Get-AzFrontDoorCdnOriginGroupResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.3", "Az.Cdn/6.0.2" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.6.7", "Az.Cdn/6.0.2" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -153,17 +153,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "367dc64a-d2ad-4c50-b51c-ba76e0bfc676" ],
-        "x-ms-client-request-id": [ "5ace5baa-e19d-4382-913b-3219525ae043" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/0b4e30e6-5604-457f-bf4a-2b4b298ff9ce" ],
+        "x-ms-request-id": [ "83311c70-d0a0-4f38-8ed0-38dc78ce0003" ],
+        "x-ms-client-request-id": [ "2e7a7380-2c71-47d2-94e1-60f6312050e4" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8871dc6f-c573-4e06-8461-b5924fcedf31/westus/171b6255-2ea9-4479-9abb-e98a19d826a2" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "c0da4976-0778-4408-80cc-e11c03c1ec3b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20260623T033434Z:c0da4976-0778-4408-80cc-e11c03c1ec3b" ],
+        "x-ms-correlation-request-id": [ "84b049e9-18e7-4d7b-bd27-ed1cc8bef180" ],
+        "x-ms-routing-request-id": [ "WESTUS:20261021T091402Z:84b049e9-18e7-4d7b-bd27-ed1cc8bef180" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E17C6EF920B04D2C9F92F8F6E5292A5C Ref B: SYD03EDGE1418 Ref C: 2026-06-23T03:34:33Z" ],
-        "Date": [ "Tue, 23 Jun 2026 03:34:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3EC405D5C0824ED388B04A44625ED4EF Ref B: SG2AA1040512052 Ref C: 2026-10-21T09:14:01Z" ],
+        "Date": [ "Wed, 21 Oct 2026 09:14:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "268" ],

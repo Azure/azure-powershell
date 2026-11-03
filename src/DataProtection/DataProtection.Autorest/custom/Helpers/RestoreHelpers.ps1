@@ -70,12 +70,12 @@ function ValidateRestoreOptions {
 			throw $errormsg
 		}
 
-		if(!($manifest.itemLevelRecoveyEnabled) -and $ItemLevelRecovery){
+		if(!($manifest.itemLevelRecoveryEnabled) -and $ItemLevelRecovery){
 			$errormsg = "Specified DatasourceType " + $DatasourceType + " doesn't support item level recovery"
 			throw $errormsg
 		}
 		
-		#  if RestoreAsFiles and itemLevelRecovey passed together
+		#  if RestoreAsFiles and ItemLevelRecovery passed together
 		if(($RestoreTargetType -eq "RestoreAsFiles") -and $ItemLevelRecovery){
 			$errormsg = "RestoreType RestoreAsFiles doesn't support item level recovery"
 			throw $errormsg

@@ -18,7 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The URL of the resource used to check the status of the asynchronous operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
+        public string Location { get => this._location; }
+
+        /// <summary>Internal Acessors for Location</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationReconcileResultInternal.Location { get => this._location; set { {_location = value;} } }
 
         /// <summary>
         /// Creates an new <see cref="NetworkSecurityPerimeterConfigurationReconcileResult" /> instance.

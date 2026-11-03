@@ -25,12 +25,20 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSDdosCustomPolicyDetectionRule> DetectionRules { get; set; }
 
+        public List<PSDdosCustomPolicyMitigationRule> MitigationRules { get; set; }
+
         public List<PSResourceId> FrontEndIPConfiguration { get; set; }
 
         [JsonIgnore]
         public string DetectionRulesText
         {
             get { return JsonConvert.SerializeObject(DetectionRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string MitigationRulesText
+        {
+            get { return JsonConvert.SerializeObject(MitigationRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

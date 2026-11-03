@@ -1,0 +1,123 @@
+{
+  "resourceType": "hcpOpenShiftClusters",
+  "apiVersion": "2026-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRedHatOpenShiftHcpCluster",
+      "description": "Get a HcpOpenShiftCluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp/get-azredhatopenshifthcpcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a HcpOpenShiftCluster",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.hcpOpenShiftClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzRedHatOpenShiftHcpCluster",
+      "description": "Delete a HcpOpenShiftCluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp/remove-azredhatopenshifthcpcluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a HcpOpenShiftCluster",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.hcpOpenShiftClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Revoke-AzRedHatOpenShiftHcpClusterCredentials",
+      "description": "Revoke all credentials issued by requestAdminCredential",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}/revokeCredentials",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp/revoke-azredhatopenshifthcpclustercredentials"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HcpOpenShiftClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Revoke all credentials issued by requestAdminCredential",
+          "parameters": [
+            {
+              "name": "-HcpOpenShiftClusterName",
+              "value": "[Path.hcpOpenShiftClusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

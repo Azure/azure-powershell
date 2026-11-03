@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_correlationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("correlationId"), out var __jsonCorrelationId) ? (string)__jsonCorrelationId : (string)_correlationId;}
             {_enableAutomaticUpgrade = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonBoolean>("enableAutomaticUpgrade"), out var __jsonEnableAutomaticUpgrade) ? (bool?)__jsonEnableAutomaticUpgrade : _enableAutomaticUpgrade;}
             {_lastAttemptDesiredVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("lastAttemptDesiredVersion"), out var __jsonLastAttemptDesiredVersion) ? (string)__jsonLastAttemptDesiredVersion : (string)_lastAttemptDesiredVersion;}
-            {_lastAttemptTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("lastAttemptTimestamp"), out var __jsonLastAttemptTimestamp) ? (string)__jsonLastAttemptTimestamp : (string)_lastAttemptTimestamp;}
+            {_lastAttemptTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("lastAttemptTimestamp"), out var __jsonLastAttemptTimestamp) ? global::System.DateTime.TryParse((string)__jsonLastAttemptTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastAttemptTimestampValue) ? __jsonLastAttemptTimestampValue : _lastAttemptTimestamp : _lastAttemptTimestamp;}
             {_lastAttemptStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("lastAttemptStatus"), out var __jsonLastAttemptStatus) ? (string)__jsonLastAttemptStatus : (string)_lastAttemptStatus;}
             {_lastAttemptMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("lastAttemptMessage"), out var __jsonLastAttemptMessage) ? (string)__jsonLastAttemptMessage : (string)_lastAttemptMessage;}
             AfterFromJson(json);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._lastAttemptTimestamp)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._lastAttemptTimestamp.ToString()) : null, "lastAttemptTimestamp" ,container.Add );
+                AddIf( null != this._lastAttemptTimestamp ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._lastAttemptTimestamp?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "lastAttemptTimestamp" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {

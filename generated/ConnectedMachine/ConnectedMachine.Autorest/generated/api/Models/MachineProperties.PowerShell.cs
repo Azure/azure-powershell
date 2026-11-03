@@ -145,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).NetworkProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfile) content.GetValueForProperty("NetworkProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).NetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.NetworkProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StatusReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StatusReason = (string) content.GetValueForProperty("StatusReason",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StatusReason, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -180,6 +184,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("ClientPublicKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ClientPublicKey = (string) content.GetValueForProperty("ClientPublicKey",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ClientPublicKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityKeyStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).IdentityKeyStore = (string) content.GetValueForProperty("IdentityKeyStore",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).IdentityKeyStore, global::System.Convert.ToString);
+            }
+            if (content.Contains("TpmEkCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).TpmEkCertificate = (string) content.GetValueForProperty("TpmEkCertificate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).TpmEkCertificate, global::System.Convert.ToString);
             }
             if (content.Contains("OSName"))
             {
@@ -229,13 +241,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ParentClusterResourceId = (string) content.GetValueForProperty("ParentClusterResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ParentClusterResourceId, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareResourceId = (string) content.GetValueForProperty("HardwareResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareResourceId, global::System.Convert.ToString);
+            }
             if (content.Contains("MssqlDiscovered"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).MssqlDiscovered = (string) content.GetValueForProperty("MssqlDiscovered",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).MssqlDiscovered, global::System.Convert.ToString);
             }
             if (content.Contains("DetectedProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachinePropertiesDetectedPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("OSProfile"))
             {
@@ -351,7 +367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AgentUpgradeLastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (string) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("AgentUpgradeLastAttemptStatus"))
             {
@@ -430,6 +446,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).NetworkProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfile) content.GetValueForProperty("NetworkProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).NetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.NetworkProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("StatusReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StatusReason = (string) content.GetValueForProperty("StatusReason",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StatusReason, global::System.Convert.ToString);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -465,6 +485,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("ClientPublicKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ClientPublicKey = (string) content.GetValueForProperty("ClientPublicKey",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ClientPublicKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityKeyStore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).IdentityKeyStore = (string) content.GetValueForProperty("IdentityKeyStore",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).IdentityKeyStore, global::System.Convert.ToString);
+            }
+            if (content.Contains("TpmEkCertificate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).TpmEkCertificate = (string) content.GetValueForProperty("TpmEkCertificate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).TpmEkCertificate, global::System.Convert.ToString);
             }
             if (content.Contains("OSName"))
             {
@@ -514,13 +542,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ParentClusterResourceId = (string) content.GetValueForProperty("ParentClusterResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ParentClusterResourceId, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareResourceId = (string) content.GetValueForProperty("HardwareResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareResourceId, global::System.Convert.ToString);
+            }
             if (content.Contains("MssqlDiscovered"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).MssqlDiscovered = (string) content.GetValueForProperty("MssqlDiscovered",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).MssqlDiscovered, global::System.Convert.ToString);
             }
             if (content.Contains("DetectedProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesDetectedProperties) content.GetValueForProperty("DetectedProperty",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).DetectedProperty, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachinePropertiesDetectedPropertiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("OSProfile"))
             {
@@ -636,7 +668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AgentUpgradeLastAttemptTimestamp"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (string) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp = (global::System.DateTime?) content.GetValueForProperty("AgentUpgradeLastAttemptTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentUpgradeLastAttemptTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("AgentUpgradeLastAttemptStatus"))
             {

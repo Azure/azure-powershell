@@ -189,6 +189,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).PreservePermission = (bool?) content.GetValueForProperty("PreservePermission",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).PreservePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("IsCrossTenantJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).IsCrossTenantJob = (bool?) content.GetValueForProperty("IsCrossTenantJob",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).IsCrossTenantJob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CrossTenantEndpointTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointTenantId = (string) content.GetValueForProperty("CrossTenantEndpointTenantId",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CrossTenantEndpointResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointResourceId = (string) content.GetValueForProperty("CrossTenantEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).SyncMode = (string) content.GetValueForProperty("SyncMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).SyncMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoverSyncedUntil"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).MoverSyncedUntil = (global::System.DateTime?) content.GetValueForProperty("MoverSyncedUntil",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).MoverSyncedUntil, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ScheduleFrequency"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleFrequency, global::System.Convert.ToString);
@@ -224,6 +244,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ScheduleEndDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleRepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleRepeatInterval = (string) content.GetValueForProperty("ScheduleRepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleRepeatInterval, global::System.Convert.ToString);
             }
             if (content.Contains("ExecutionTimeMinute"))
             {
@@ -330,6 +354,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).PreservePermission = (bool?) content.GetValueForProperty("PreservePermission",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).PreservePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("IsCrossTenantJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).IsCrossTenantJob = (bool?) content.GetValueForProperty("IsCrossTenantJob",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).IsCrossTenantJob, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CrossTenantEndpointTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointTenantId = (string) content.GetValueForProperty("CrossTenantEndpointTenantId",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CrossTenantEndpointResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointResourceId = (string) content.GetValueForProperty("CrossTenantEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).CrossTenantEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).SyncMode = (string) content.GetValueForProperty("SyncMode",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).SyncMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("MoverSyncedUntil"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).MoverSyncedUntil = (global::System.DateTime?) content.GetValueForProperty("MoverSyncedUntil",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).MoverSyncedUntil, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ScheduleFrequency"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleFrequency = (string) content.GetValueForProperty("ScheduleFrequency",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleFrequency, global::System.Convert.ToString);
@@ -365,6 +409,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("ScheduleEndDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleEndDate = (global::System.DateTime?) content.GetValueForProperty("ScheduleEndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ScheduleRepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleRepeatInterval = (string) content.GetValueForProperty("ScheduleRepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionPropertiesInternal)this).ScheduleRepeatInterval, global::System.Convert.ToString);
             }
             if (content.Contains("ExecutionTimeMinute"))
             {
