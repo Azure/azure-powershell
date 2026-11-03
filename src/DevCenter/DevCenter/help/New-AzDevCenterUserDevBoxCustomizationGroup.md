@@ -202,7 +202,7 @@ To include them, use the `include=tasks` queryparameter.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup
 
 ## NOTES
 

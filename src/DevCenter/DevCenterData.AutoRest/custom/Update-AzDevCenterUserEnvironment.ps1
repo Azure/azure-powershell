@@ -45,11 +45,11 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentPatchProperties
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironmentPatchProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -81,7 +81,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment
 #>
 function Update-AzDevCenterUserEnvironment {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IEnvironment])]
   [CmdletBinding(DefaultParameterSetName = 'PatchExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'PatchExpanded', Mandatory)]

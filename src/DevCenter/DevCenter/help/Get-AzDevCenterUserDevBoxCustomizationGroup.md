@@ -15,7 +15,7 @@ Gets a customization group.
 ### List (Default)
 ```
 Get-AzDevCenterUserDevBoxCustomizationGroup -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-Include <ListCustomizationGroupsIncludeProperty>] [-DefaultProfile <PSObject>]
+ [-UserId <String>] [-Include <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Get-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName <String> -InputObject
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-Include <ListCustomizationGroupsIncludeProperty>] [-DefaultProfile <PSObject>]
+ [-UserId <String>] [-Include <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 Optional query parameter to specify what properties should be included in the response.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty
+Type: System.String
 Parameter Sets: List, ListByDevCenter
 Aliases:
 
@@ -250,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ICustomizationGroup
 
 ## NOTES
 

@@ -41,7 +41,7 @@ Get-AzDevCenterUserSchedule -DevCenterName Contoso -ProjectName DevProject -Pool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -70,7 +70,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserschedule
 #>
 function Get-AzDevCenterUserSchedule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ISchedule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.ISchedule])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

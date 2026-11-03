@@ -27,7 +27,7 @@ Gets the signed-in user's permitted abilities in a project.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProjectAbilities
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IProjectAbilities
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserprojectability
 #>
 function Get-AzDevCenterUserProjectAbility {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProjectAbilities])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IProjectAbilities])]
     [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
