@@ -471,18 +471,32 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void UninstallAll_deletes_installation_directory_when_it_exists()
+        public void UninstallAll_deletes_unpinned_install_and_all_versioned_subdirectories_only()
         {
             var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var unpinnedPath = Path.Combine(installationDirectory, ExpectedFileName);
+            var versionedDirectory1 = Path.Combine(installationDirectory, "bicep-0.26.0");
+            var versionedDirectory2 = Path.Combine(installationDirectory, "bicep-0.30.1");
+            var unrelatedDirectory = Path.Combine(installationDirectory, "some-other-tool");
+
             var dataStoreMock = new Mock<IDataStore>();
             dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(unpinnedPath)).Returns(true);
+            dataStoreMock.Setup(x => x.GetDirectories(installationDirectory))
+                .Returns(new[] { versionedDirectory1, versionedDirectory2, unrelatedDirectory });
 
             var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
 
             var result = installer.UninstallAll();
 
             result.Should().BeTrue();
-            dataStoreMock.Verify(x => x.DeleteDirectory(installationDirectory), Times.Once);
+            dataStoreMock.Verify(x => x.DeleteFile(unpinnedPath), Times.Once);
+            dataStoreMock.Verify(x => x.DeleteDirectory(versionedDirectory1), Times.Once);
+            dataStoreMock.Verify(x => x.DeleteDirectory(versionedDirectory2), Times.Once);
+            // The unrelated directory doesn't match the "bicep-" prefix and must be left alone.
+            dataStoreMock.Verify(x => x.DeleteDirectory(unrelatedDirectory), Times.Never);
+            // The whole installation directory itself must never be deleted outright.
+            dataStoreMock.Verify(x => x.DeleteDirectory(installationDirectory), Times.Never);
         }
 
         [Fact]
@@ -499,6 +513,31 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var result = installer.UninstallAll(msg => verboseMessages.Add(msg));
 
             result.Should().BeFalse();
+            dataStoreMock.Verify(x => x.DeleteFile(It.IsAny<string>()), Times.Never);
+            dataStoreMock.Verify(x => x.DeleteDirectory(It.IsAny<string>()), Times.Never);
+            verboseMessages.Should().Contain(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepUninstallNothingInstalled);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UninstallAll_returns_false_when_directory_exists_but_contains_no_bicep_installs()
+        {
+            var installationDirectory = Path.Combine(FakeProfileDirectory, "bin");
+            var unpinnedPath = Path.Combine(installationDirectory, ExpectedFileName);
+            var unrelatedDirectory = Path.Combine(installationDirectory, "some-other-tool");
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.DirectoryExists(installationDirectory)).Returns(true);
+            dataStoreMock.Setup(x => x.FileExists(unpinnedPath)).Returns(false);
+            dataStoreMock.Setup(x => x.GetDirectories(installationDirectory)).Returns(new[] { unrelatedDirectory });
+
+            var installer = new BicepInstaller(Mock.Of<IBicepDownloader>(), dataStoreMock.Object, Mock.Of<IProcessInvoker>(), FakeProfileDirectory);
+
+            var verboseMessages = new List<string>();
+            var result = installer.UninstallAll(msg => verboseMessages.Add(msg));
+
+            result.Should().BeFalse();
+            dataStoreMock.Verify(x => x.DeleteFile(It.IsAny<string>()), Times.Never);
             dataStoreMock.Verify(x => x.DeleteDirectory(It.IsAny<string>()), Times.Never);
             verboseMessages.Should().Contain(Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.BicepUninstallNothingInstalled);
         }

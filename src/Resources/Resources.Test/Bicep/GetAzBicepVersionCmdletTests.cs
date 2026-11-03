@@ -23,12 +23,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 {
-    public class GetAzBicepVersionCmdletTests
+    public class GetAzBicepVersionCmdletTests : RMTestBase
     {
         private static readonly string FakeProfileDirectory = Path.Combine(Path.DirectorySeparatorChar.ToString(), "fake", "profile");
 

@@ -330,8 +330,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         }
 
         /// <summary>
-        /// Removes the entire managed Bicep installation directory (all cached versions),
-        /// backing the 'Uninstall-AzBicep' cmdlet.
+        /// Removes all managed Bicep installations (the unpinned install and every cached
+        /// pinned version), backing the 'Uninstall-AzBicep' cmdlet. Only Bicep's own files/
+        /// subdirectories within the installation directory are removed; anything else that
+        /// happens to live alongside them in that directory is left untouched.
         /// </summary>
         /// <returns>True if anything was removed; false if there was no managed installation to remove.</returns>
         public bool UninstallAll(BicepUtility.OutputCallback writeVerbose = null)
@@ -343,7 +345,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 return false;
             }
 
-            dataStore.DeleteDirectory(baseDirectory);
+            var removedAnything = false;
+
+            var unpinnedPath = GetInstallationPath();
+            if (dataStore.FileExists(unpinnedPath))
+            {
+                dataStore.DeleteFile(unpinnedPath);
+                removedAnything = true;
+            }
+
+            foreach (var directory in dataStore.GetDirectories(baseDirectory))
+            {
+                var name = Path.GetFileName(directory);
+                if (name != null && name.StartsWith(VersionedDirectoryPrefix, StringComparison.OrdinalIgnoreCase))
+                {
+                    dataStore.DeleteDirectory(directory);
+                    removedAnything = true;
+                }
+            }
+
+            if (!removedAnything)
+            {
+                writeVerbose?.Invoke(Properties.Resources.BicepUninstallNothingInstalled);
+                return false;
+            }
+
             writeVerbose?.Invoke(string.Format(Properties.Resources.BicepUninstallComplete, baseDirectory));
             return true;
         }

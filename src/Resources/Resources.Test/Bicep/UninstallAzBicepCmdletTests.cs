@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep;
@@ -54,13 +55,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ExecuteCmdlet_deletes_installation_directory_when_something_is_installed()
+        public void ExecuteCmdlet_deletes_unpinned_install_and_versioned_subdirectories_when_something_is_installed()
         {
+            var unpinnedPath = Path.Combine(this.installationDirectory, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+            var versionedDirectory = Path.Combine(this.installationDirectory, "bicep-0.26.0");
+
             this.dataStoreMock.Setup(x => x.DirectoryExists(this.installationDirectory)).Returns(true);
+            this.dataStoreMock.Setup(x => x.FileExists(unpinnedPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.GetDirectories(this.installationDirectory)).Returns(new[] { versionedDirectory });
 
             this.cmdlet.ExecuteCmdlet();
 
-            this.dataStoreMock.Verify(x => x.DeleteDirectory(this.installationDirectory), Times.Once);
+            this.dataStoreMock.Verify(x => x.DeleteFile(unpinnedPath), Times.Once);
+            this.dataStoreMock.Verify(x => x.DeleteDirectory(versionedDirectory), Times.Once);
+            this.dataStoreMock.Verify(x => x.DeleteDirectory(this.installationDirectory), Times.Never);
         }
 
         [Fact]
@@ -71,6 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
 
             this.cmdlet.ExecuteCmdlet();
 
+            this.dataStoreMock.Verify(x => x.DeleteFile(It.IsAny<string>()), Times.Never);
             this.dataStoreMock.Verify(x => x.DeleteDirectory(It.IsAny<string>()), Times.Never);
         }
 
@@ -78,8 +87,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCmdlet_writes_true_when_PassThru_and_something_removed()
         {
+            var unpinnedPath = Path.Combine(this.installationDirectory, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+
             this.cmdlet.PassThru = true;
             this.dataStoreMock.Setup(x => x.DirectoryExists(this.installationDirectory)).Returns(true);
+            this.dataStoreMock.Setup(x => x.FileExists(unpinnedPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.GetDirectories(this.installationDirectory)).Returns(new string[0]);
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -102,7 +115,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Bicep
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCmdlet_does_not_write_object_when_PassThru_is_not_set()
         {
+            var unpinnedPath = Path.Combine(this.installationDirectory, RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "bicep.exe" : "bicep");
+
             this.dataStoreMock.Setup(x => x.DirectoryExists(this.installationDirectory)).Returns(true);
+            this.dataStoreMock.Setup(x => x.FileExists(unpinnedPath)).Returns(true);
+            this.dataStoreMock.Setup(x => x.GetDirectories(this.installationDirectory)).Returns(new string[0]);
 
             this.cmdlet.ExecuteCmdlet();
 
