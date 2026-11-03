@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <para>Gets or sets the AutoscaleSettingResourceName of the object.</para>
         /// <para>This property hides a property of the super class for it not to be displayed since it is in the process of deprecation</para>
         /// </summary>
-        private new string AutoscaleSettingResourceName { get; set; }
+        private string AutoscaleSettingResourceName { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the PSAutoscaleSetting class.
