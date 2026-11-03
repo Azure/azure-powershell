@@ -12,12 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace RecoveryServices.SiteRecovery.Test
@@ -476,6 +481,204 @@ namespace RecoveryServices.SiteRecovery.Test
                 BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
             return method.Invoke(null, new object[] { disk });
+        }
+
+        // --- Outgoing request serialization -----------------------------------
+
+        /// <summary>
+        /// The enable request must carry the identity and both per-disk confidential
+        /// DES ids at the JSON paths the service reads.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EnableRequest_SerializesConfidentialIdentityAndDiskEncryptionSets()
+        {
+            var request = new EnableProtectionInput
+            {
+                Properties = new EnableProtectionInputProperties
+                {
+                    ProviderSpecificDetails = new A2AEnableProtectionInput
+                    {
+                        FabricObjectId = "/subscriptions/sub-1/resourceGroups/src-rg/providers/Microsoft.Compute/virtualMachines/cvm-1",
+                        VMManagedDisks = new List<A2AVmManagedDiskInputDetails>
+                        {
+                            Utilities.CreateA2AVmManagedDiskInputDetails(CreateConfidentialDisk(), includeDiskEncryption: true),
+                        },
+                        RecoveryConfidentialDataDiskEncryptionIdentity = CddeIdentityId,
+                    },
+                },
+            };
+
+            var provider = SerializeRequest(request)["properties"]["providerSpecificDetails"];
+
+            Assert.Equal("A2A", (string)provider["instanceType"]);
+            Assert.Equal(CddeIdentityId, (string)provider["recoveryConfidentialDataDiskEncryptionIdentity"]);
+            AssertConfidentialDiskEncryptionInfo(provider["vmManagedDisks"][0], ReplicaDesId, TargetDesId);
+        }
+
+        /// <summary>
+        /// A non-confidential enable request must omit both confidential fields, so
+        /// existing callers send the same payload as before.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EnableRequest_OmitsConfidentialFieldsForNonConfidentialVm()
+        {
+            var request = new EnableProtectionInput
+            {
+                Properties = new EnableProtectionInputProperties
+                {
+                    ProviderSpecificDetails = new A2AEnableProtectionInput
+                    {
+                        VMManagedDisks = new List<A2AVmManagedDiskInputDetails>
+                        {
+                            Utilities.CreateA2AVmManagedDiskInputDetails(
+                                new ASRAzuretoAzureDiskReplicationConfig
+                                {
+                                    DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                                    RecoveryResourceGroupId = "/subscriptions/sub-1/resourceGroups/target-rg",
+                                },
+                                includeDiskEncryption: true),
+                        },
+                    },
+                },
+            };
+
+            var provider = (JObject)SerializeRequest(request)["properties"]["providerSpecificDetails"];
+
+            Assert.Null(provider.Property("recoveryConfidentialDataDiskEncryptionIdentity"));
+            Assert.Null(((JObject)provider["vmManagedDisks"][0]).Property("confidentialDiskEncryptionInfo"));
+        }
+
+        /// <summary>
+        /// The add-disk request must carry both per-disk confidential DES ids.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddDisksRequest_SerializesConfidentialDiskEncryptionSets()
+        {
+            var request = new AddDisksInput
+            {
+                Properties = new AddDisksInputProperties
+                {
+                    ProviderSpecificDetails = new A2AAddDisksInput
+                    {
+                        VMManagedDisks = new List<A2AVmManagedDiskInputDetails>
+                        {
+                            Utilities.CreateA2AVmManagedDiskInputDetails(CreateConfidentialDisk(), includeDiskEncryption: false),
+                        },
+                    },
+                },
+            };
+
+            var provider = SerializeRequest(request)["properties"]["providerSpecificDetails"];
+
+            Assert.Equal("A2A", (string)provider["instanceType"]);
+            AssertConfidentialDiskEncryptionInfo(provider["vmManagedDisks"][0], ReplicaDesId, TargetDesId);
+        }
+
+        /// <summary>
+        /// The update request must carry the identity and only the target confidential
+        /// DES id, because the replica DES cannot change after enable.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdateRequest_SerializesIdentityAndTargetConfidentialDiskEncryptionSetOnly()
+        {
+            var diskUpdate = (A2AVmManagedDiskUpdateDetails)InvokeCreateManagedDiskUpdateDetails(
+                new ASRAzuretoAzureDiskReplicationConfig
+                {
+                    DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                    IsManagedDisk = true,
+                    TargetConfidentialDiskEncryptionSetId = TargetDesId,
+                });
+            var request = new UpdateReplicationProtectedItemInput
+            {
+                Properties = new UpdateReplicationProtectedItemInputProperties
+                {
+                    ProviderSpecificDetails = new A2AUpdateReplicationProtectedItemInput
+                    {
+                        ManagedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails> { diskUpdate },
+                        RecoveryConfidentialDataDiskEncryptionIdentity = CddeIdentityId,
+                    },
+                },
+            };
+
+            var provider = SerializeRequest(request)["properties"]["providerSpecificDetails"];
+
+            Assert.Equal("A2A", (string)provider["instanceType"]);
+            Assert.Equal(CddeIdentityId, (string)provider["recoveryConfidentialDataDiskEncryptionIdentity"]);
+            AssertConfidentialDiskEncryptionInfo(provider["managedDiskUpdateDetails"][0], null, TargetDesId);
+        }
+
+        /// <summary>
+        /// The reprotect (switch protection) request must carry the identity and both
+        /// per-disk confidential DES ids.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReprotectRequest_SerializesConfidentialIdentityAndDiskEncryptionSets()
+        {
+            var request = new SwitchProtectionInput
+            {
+                Properties = new SwitchProtectionInputProperties
+                {
+                    ReplicationProtectedItemName = "cvm-1",
+                    ProviderSpecificDetails = new A2ASwitchProtectionInput
+                    {
+                        VMManagedDisks = new List<A2AVmManagedDiskInputDetails>
+                        {
+                            Utilities.CreateA2AVmManagedDiskInputDetails(CreateConfidentialDisk(), includeDiskEncryption: true),
+                        },
+                        RecoveryConfidentialDataDiskEncryptionIdentity = CddeIdentityId,
+                    },
+                },
+            };
+
+            var provider = SerializeRequest(request)["properties"]["providerSpecificDetails"];
+
+            Assert.Equal("A2A", (string)provider["instanceType"]);
+            Assert.Equal(CddeIdentityId, (string)provider["recoveryConfidentialDataDiskEncryptionIdentity"]);
+            AssertConfidentialDiskEncryptionInfo(provider["vmManagedDisks"][0], ReplicaDesId, TargetDesId);
+        }
+
+        private static ASRAzuretoAzureDiskReplicationConfig CreateConfidentialDisk()
+        {
+            return new ASRAzuretoAzureDiskReplicationConfig
+            {
+                DiskId = "/subscriptions/sub-1/disks/osdisk-1",
+                RecoveryResourceGroupId = "/subscriptions/sub-1/resourceGroups/target-rg",
+                ReplicaConfidentialDiskEncryptionSetId = ReplicaDesId,
+                TargetConfidentialDiskEncryptionSetId = TargetDesId,
+            };
+        }
+
+        /// <summary>
+        /// Serializes a request body with the SDK client's own serialization settings,
+        /// so polymorphic discriminators and JSON names match what goes on the wire.
+        /// </summary>
+        private static JObject SerializeRequest(object request)
+        {
+            using (var client = new SiteRecoveryManagementClient(new TokenCredentials("unit-test")))
+            {
+                return JObject.Parse(SafeJsonConvert.SerializeObject(request, client.SerializationSettings));
+            }
+        }
+
+        private static void AssertConfidentialDiskEncryptionInfo(JToken disk, string expectedReplicaDesId, string expectedTargetDesId)
+        {
+            var info = (JObject)disk["confidentialDiskEncryptionInfo"];
+            Assert.NotNull(info);
+            if (expectedReplicaDesId == null)
+            {
+                Assert.Null(info.Property("recoveryReplicaConfidentialDiskEncryptionSetId"));
+            }
+            else
+            {
+                Assert.Equal(expectedReplicaDesId, (string)info["recoveryReplicaConfidentialDiskEncryptionSetId"]);
+            }
+
+            Assert.Equal(expectedTargetDesId, (string)info["recoveryTargetConfidentialDiskEncryptionSetId"]);
         }
     }
 }
