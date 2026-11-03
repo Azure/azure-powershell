@@ -19,9 +19,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProxyResource();
 
         /// <summary>The fabric specific settings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -31,13 +31,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string FabricSpecificSettingInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).FabricSpecificSettingInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).FabricSpecificSettingInstanceType = value ?? null; }
 
-        /// <summary>Resource Id</summary>
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
 
         /// <summary>Resource Location</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Location = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for FabricSpecificSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingFabricSpecificSettings Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingInternal.FabricSpecificSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).FabricSpecificSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).FabricSpecificSetting = value ?? null /* model class */; }
@@ -46,17 +51,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.NetworkMappingProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Id = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Name = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Type = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
-        /// <summary>Resource Name</summary>
+        /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>The primary fabric friendly name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -101,9 +127,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string State { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingPropertiesInternal)Property).State = value ?? null; }
 
-        /// <summary>Resource Type</summary>
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__resource).Type; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="NetworkMapping" /> instance.</summary>
         public NetworkMapping()
@@ -119,8 +177,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__resource), __resource);
-            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
         }
     }
     /// Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels
@@ -129,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     /// with references to base models to facilitate extensions in subsequent versions.
     public partial interface INetworkMapping :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource
     {
         /// <summary>Gets the Instance type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
@@ -142,6 +200,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"instanceType",
         PossibleTypes = new [] { typeof(string) })]
         string FabricSpecificSettingInstanceType { get; set; }
+        /// <summary>Resource Location</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource Location",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>The primary fabric friendly name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -237,12 +306,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     /// and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety
     /// with references to base models to facilitate extensions in subsequent versions.
     internal partial interface INetworkMappingInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResourceInternal
     {
         /// <summary>The fabric specific settings.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.INetworkMappingFabricSpecificSettings FabricSpecificSetting { get; set; }
         /// <summary>Gets the Instance type.</summary>
         string FabricSpecificSettingInstanceType { get; set; }
+        /// <summary>Resource Location</summary>
+        string Location { get; set; }
         /// <summary>The primary fabric friendly name.</summary>
         string PrimaryFabricFriendlyName { get; set; }
         /// <summary>The primary network friendly name.</summary>

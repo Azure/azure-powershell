@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Management.TrafficManager
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UserMetricsModel>> GetWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a subscription-level key used for Real User Metrics collection.
+        /// Create or update a subscription-level key used for Real User Metrics
+        /// collection.
         /// </summary>
         /// <remarks>
-        /// Create or update a subscription-level key used for Real User Metrics collection.
+        /// Create or update a subscription-level key used for Real User Metrics
+        /// collection.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -71,7 +71,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="applicationGatewayForContainers">A collection of references to application gateway for containers.
         /// </param>
-        public WebApplicationFirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), PolicySettings policySettings = default(PolicySettings), string provisioningState = default(string), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string resourceState = default(string), ManagedRulesDefinition managedRules = default(ManagedRulesDefinition), System.Collections.Generic.IList<SubResource> httpListeners = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathBasedRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> applicationGatewayForContainers = default(System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition>))
+
+        /// <param name="tier">Tier of a web application firewall policy.
+        /// Possible values include: &#39;Standard&#39;, &#39;Basic&#39;</param>
+        public WebApplicationFirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), PolicySettings policySettings = default(PolicySettings), string provisioningState = default(string), System.Collections.Generic.IList<WebApplicationFirewallCustomRule> customRules = default(System.Collections.Generic.IList<WebApplicationFirewallCustomRule>), System.Collections.Generic.IList<ApplicationGateway> applicationGateways = default(System.Collections.Generic.IList<ApplicationGateway>), string resourceState = default(string), ManagedRulesDefinition managedRules = default(ManagedRulesDefinition), System.Collections.Generic.IList<SubResource> httpListeners = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> pathBasedRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> applicationGatewayForContainers = default(System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition>), string tier = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -85,6 +88,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.HttpListeners = httpListeners;
             this.PathBasedRules = pathBasedRules;
             this.ApplicationGatewayForContainers = applicationGatewayForContainers;
+            this.Tier = tier;
             CustomInit();
         }
 
@@ -155,6 +159,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationGatewayForContainers")]
         public System.Collections.Generic.IList<ApplicationGatewayForContainersReferenceDefinition> ApplicationGatewayForContainers {get; private set; }
+
+        /// <summary>
+        /// Gets or sets tier of a web application firewall policy. Possible values include: &#39;Standard&#39;, &#39;Basic&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tier")]
+        public string Tier {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -206,6 +216,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     }
                 }
             }
+
         }
     }
 }

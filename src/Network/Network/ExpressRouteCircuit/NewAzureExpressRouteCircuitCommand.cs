@@ -99,13 +99,27 @@ namespace Microsoft.Azure.Commands.Network
         public PSExpressRoutePort ExpressRoutePort { get; set; }
 
         [Parameter(
+            ParameterSetName = "ExpressRouteLag",
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        public PSExpressRouteLag ExpressRouteLag { get; set; }
+
+        [Parameter(
              ParameterSetName = "ExpressRoutePort",
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+             ParameterSetName = "ExpressRouteLag",
              Mandatory = true,
              ValueFromPipelineByPropertyName = true)]
         public double BandwidthInGbps { get; set; }
 
         [Parameter(
              ParameterSetName = "ExpressRoutePort",
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+             ParameterSetName = "ExpressRouteLag",
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
         public string AuthorizationKey { get; set; }
@@ -209,6 +223,13 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ExpressRoutePort != null)
             {
                 circuit.ExpressRoutePort = this.ExpressRoutePort;
+                circuit.BandwidthInGbps = this.BandwidthInGbps;
+            }
+
+            // construct the ExpressRouteLag properties
+            if (this.ExpressRouteLag != null)
+            {
+                circuit.ExpressRouteLag = this.ExpressRouteLag;
                 circuit.BandwidthInGbps = this.BandwidthInGbps;
             }
 

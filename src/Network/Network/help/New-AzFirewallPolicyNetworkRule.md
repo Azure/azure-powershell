@@ -16,16 +16,24 @@ Create a new Azure Firewall Policy Network Rule
 ```
 New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
  [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>] -DestinationPort <String[]>
- [-DestinationFqdn <String[]>] -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DestinationFqdn <String[]>] [-DestinationGeoLocation <String[]>] -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SourceIpGroup
 ```
 New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
  [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>] -DestinationPort <String[]>
- [-DestinationFqdn <String[]>] -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DestinationFqdn <String[]>] [-DestinationGeoLocation <String[]>] -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SourceGeoLocation
+```
+New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] [-SourceGeoLocation <String[]>]
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>] -DestinationPort <String[]>
+ [-DestinationFqdn <String[]>] [-DestinationGeoLocation <String[]>] -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +97,21 @@ Accept wildcard characters: False
 
 ### -DestinationFqdn
 The destination FQDN of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationGeoLocation
+The destination geographic location filters (ISO 3166-1 alpha-2 country codes, e.g. "US", "CA") of the rule
 
 ```yaml
 Type: System.String[]
@@ -172,6 +195,21 @@ Parameter Sets: SourceAddress
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceGeoLocation
+The source geographic location filters (ISO 3166-1 alpha-2 country codes, e.g. "US", "CA") of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceGeoLocation
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, int> createTime,
-            bool compulsoryLocation = false) where TModel : Resource
+            bool compulsoryLocation = false) where TModel : TrackedResource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Web", provider),
                 getOperations: getOperations,

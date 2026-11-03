@@ -141,6 +141,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).EndDate = (global::System.DateTime?) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).EndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("RepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).RepeatInterval = (string) content.GetValueForProperty("RepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).RepeatInterval, global::System.Convert.ToString);
+            }
             if (content.Contains("ExecutionTimeMinute"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).ExecutionTimeMinute = (float?) content.GetValueForProperty("ExecutionTimeMinute",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).ExecutionTimeMinute, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
@@ -197,6 +201,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("EndDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).EndDate = (global::System.DateTime?) content.GetValueForProperty("EndDate",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).EndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("RepeatInterval"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).RepeatInterval = (string) content.GetValueForProperty("RepeatInterval",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal)this).RepeatInterval, global::System.Convert.ToString);
             }
             if (content.Contains("ExecutionTimeMinute"))
             {

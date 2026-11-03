@@ -15,7 +15,7 @@ Gets all versions for an Azure extension.
 
 ```
 Get-AzVMExtensionImage -Location <String> -PublisherName <String> -Type <String> [-FilterExpression <String>]
- [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Version <String>] [-Expand <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -108,6 +108,22 @@ VMScaleSetEnabled          : False
 
 This command gets all the versions of the extension image for the specified location, publisher, type, and version.
 
+### Example 4: Get extension image versions with release metadata
+```powershell
+Get-AzVMExtensionImage -Location "East US" -PublisherName "Microsoft.Compute" -Type "CustomScriptExtension" -Expand Properties |
+    Select-Object Version, ReleaseCategory, UrgencyLevel, RunProfile
+```
+
+This command gets extension image versions and expands their release category, urgency level, and run profile metadata.
+
+### Example 5: Get complete metadata for a specific extension image version
+```powershell
+Get-AzVMExtensionImage -Location "East US" -PublisherName "Microsoft.Compute" -Type "CustomScriptExtension" -Version "1.10.15" |
+    Format-List Version, ReleaseNotes, ReleaseCategory, UrgencyLevel, RunProfile, ExtensionFeatureMetadata
+```
+
+This command gets the complete release and feature metadata for a specific extension image version. The **Expand** parameter is not required when an exact version is specified.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -122,6 +138,24 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+Requests release metadata when listing extension image versions.
+The only supported value is `Properties`.
+This parameter applies when **Version** is omitted or contains a wildcard; an exact version returns complete metadata without this parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Properties
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

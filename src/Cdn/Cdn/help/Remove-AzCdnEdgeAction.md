@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnedgeaction
 schema: 2.0.0
@@ -14,8 +14,7 @@ Delete EdgeAction resource
 
 ```
 Remove-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

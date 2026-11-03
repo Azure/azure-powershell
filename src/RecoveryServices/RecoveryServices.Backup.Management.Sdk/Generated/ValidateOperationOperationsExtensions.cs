@@ -24,12 +24,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void Trigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
+        public static ValidateOperationTriggerHeaders Trigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
         {
-                ((IValidateOperationOperations)operations).TriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
+                return ((IValidateOperationOperations)operations).TriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,15 +43,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task TriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ValidateOperationTriggerHeaders> TriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Validate operation for specified backed up item in the form of an
@@ -66,12 +67,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static void BeginTrigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
+        public static ValidateOperationTriggerHeaders BeginTrigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
         {
-                ((IValidateOperationOperations)operations).BeginTriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
+                return ((IValidateOperationOperations)operations).BeginTriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -86,15 +86,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginTriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ValidateOperationTriggerHeaders> BeginTriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

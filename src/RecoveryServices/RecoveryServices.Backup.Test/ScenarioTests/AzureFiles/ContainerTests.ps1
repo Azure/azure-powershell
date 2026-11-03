@@ -124,8 +124,144 @@ function Test-AzureFSUnregisterContainer
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-FriendlyName $saName
-	Assert-Null $container	
+	Assert-NotNull $container
+	Assert-AreEqual $container.Status "SoftDeleted"
+}
 
-	$item = Enable-Protection $vault $fileShareFriendlyName $saName
-	Assert-True {$item.FriendlyName -eq $fileShareFriendlyName}
+function Test-AzureFSRegisterParameterValidation
+{
+	$resourceGroupName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_RESOURCE_GROUP" `
+		-PlaybackValue "afs-msi-test-rg"
+	$vaultName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
+		-PlaybackValue "afs-msi-test-vault"
+	$vault = Get-AzRecoveryServicesVault `
+		-ResourceGroupName $resourceGroupName `
+		-Name $vaultName
+	$resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/test-vm"
+	$uamiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ResourceId $resourceId `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "Azure Files registration requires -StorageAccountName"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-StorageAccountName supports Azure Files registration only"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType IdentityBased `
+			-IsSystemAssignedIdentity `
+			-UserAssignedIdentityArmUrl $uamiId `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "Both -IsSystemAssignedIdentity and -UserAssignedIdentityArmUrl"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "An identity was specified without -AccessType"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType IdentityBased `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'IdentityBased' requires an identity"
+
+	Assert-ThrowsContains {
+		Register-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-StorageAccountName $saName `
+			-BackupManagementType AzureStorage `
+			-WorkloadType AzureFiles `
+			-AccessType KeyBased `
+			-IsSystemAssignedIdentity `
+			-Confirm:$false `
+			-ErrorAction Stop
+	} "-AccessType 'KeyBased' cannot be combined with an identity"
+}
+
+function Test-AzureFSManagedIdentityRegisterAndReregister
+{
+	$resourceGroupName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_RESOURCE_GROUP" `
+		-PlaybackValue "afs-msi-test-rg"
+	$vaultName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_VAULT_NAME" `
+		-PlaybackValue "afs-msi-test-vault"
+	$storageAccountName = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_REGISTER_STORAGE_ACCOUNT" `
+		-PlaybackValue "afsmsiregistersa"
+	$uamiId = Get-AzureFSMsiTestValue `
+		-Name "AZURE_TEST_AFS_MSI_UAMI_ID" `
+		-PlaybackValue "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/afs-msi-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/afs-msi-test-uami"
+
+	$vault = Get-AzRecoveryServicesVault `
+		-ResourceGroupName $resourceGroupName `
+		-Name $vaultName
+
+	$uamiContainer = Register-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-StorageAccountName $storageAccountName `
+		-AccessType IdentityBased `
+		-UserAssignedIdentityArmUrl $uamiId `
+		-Force `
+		-Confirm:$false
+	Assert-AreEqual "IdentityBased" $uamiContainer.AccessType
+	Assert-AreEqual $uamiId $uamiContainer.IdentityInfo.ManagedIdentityResourceId
+
+	$samiContainer = Register-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-StorageAccountName $storageAccountName `
+		-AccessType IdentityBased `
+		-IsSystemAssignedIdentity `
+		-Force `
+		-Confirm:$false
+	Assert-AreEqual "IdentityBased" $samiContainer.AccessType
+	Assert-True { $samiContainer.IdentityInfo.IsSystemAssignedIdentity }
+
+	$uamiContainer = Register-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-StorageAccountName $storageAccountName `
+		-AccessType IdentityBased `
+		-UserAssignedIdentityArmUrl $uamiId `
+		-Force `
+		-Confirm:$false
+	Assert-AreEqual "IdentityBased" $uamiContainer.AccessType
+	Assert-AreEqual $uamiId $uamiContainer.IdentityInfo.ManagedIdentityResourceId
 }

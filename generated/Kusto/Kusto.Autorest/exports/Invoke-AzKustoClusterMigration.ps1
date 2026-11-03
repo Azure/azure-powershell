@@ -189,6 +189,36 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
+dynamicparam {
+    $parameterSet = $PSCmdlet.ParameterSetName
+    $mapping = @{
+        Migrate = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_Migrate';
+        MigrateExpanded = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateExpanded';
+        MigrateViaIdentity = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaIdentity';
+        MigrateViaIdentityExpanded = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaIdentityExpanded';
+        MigrateViaJsonFilePath = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaJsonFilePath';
+        MigrateViaJsonString = 'Az.Kusto.private\Invoke-AzKustoClusterMigration_MigrateViaJsonString';
+    }
+    if (-not $mapping.ContainsKey($parameterSet)) { $parameterSet = @($mapping.Keys)[0] }
+    try {
+        $targetCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet -bor [System.Management.Automation.CommandTypes]::Function, $PSBoundParameters)
+        $dynamicParams = @($targetCmd.Parameters.GetEnumerator() | Microsoft.PowerShell.Core\Where-Object { $_.Value.IsDynamic })
+        if ($dynamicParams.Length -gt 0) {
+            $paramDictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            foreach ($param in $dynamicParams) {
+                $param = $param.Value
+                if (-not $MyInvocation.MyCommand.Parameters.ContainsKey($param.Name)) {
+                    $dynParam = [System.Management.Automation.RuntimeDefinedParameter]::new($param.Name, $param.ParameterType, $param.Attributes)
+                    $paramDictionary.Add($param.Name, $dynParam)
+                }
+            }
+            return $paramDictionary
+        }
+    } catch {
+        throw
+    }
+}
+
 begin {
     try {
         $outBuffer = $null

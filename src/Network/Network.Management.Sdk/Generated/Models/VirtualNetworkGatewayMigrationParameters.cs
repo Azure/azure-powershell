@@ -24,20 +24,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the VirtualNetworkGatewayMigrationParameters class.
         /// </summary>
 
+        /// <param name="migrationType">MigrationType for the virtual network gateway.
+        /// Possible values include: &#39;UpgradeDeploymentToStandardIP&#39;,
+        /// &#39;UpgradeGatewayToDualStack&#39;, &#39;MigrateGatewayForPointToSiteProfile&#39;</param>
+
         /// <param name="resourceUrl">Resource url that needs to be passed in to migration.
         /// </param>
-        public VirtualNetworkGatewayMigrationParameters(string resourceUrl = default(string))
+        public VirtualNetworkGatewayMigrationParameters(string migrationType, string resourceUrl = default(string))
 
         {
+            this.MigrationType = migrationType;
             this.ResourceUrl = resourceUrl;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for VirtualNetworkGatewayMigrationParameters class.
-        /// </summary>
-        static VirtualNetworkGatewayMigrationParameters()
-        {
-            MigrationType = "UpgradeDeploymentToStandardIP";
         }
 
         /// <summary>
@@ -47,14 +45,30 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
+        /// Gets or sets migrationType for the virtual network gateway. Possible values include: &#39;UpgradeDeploymentToStandardIP&#39;, &#39;UpgradeGatewayToDualStack&#39;, &#39;MigrateGatewayForPointToSiteProfile&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "migrationType")]
+        public string MigrationType {get; set; }
+
+        /// <summary>
         /// Gets or sets resource url that needs to be passed in to migration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceUrl")]
         public string ResourceUrl {get; set; }
         /// <summary>
-        /// Gets or sets migrationType for the virtual network gateway.
+        /// Validate the object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "migrationType")]
-        public static string MigrationType {get; private set; }
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.MigrationType == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "MigrationType");
+            }
+
+
+        }
     }
 }

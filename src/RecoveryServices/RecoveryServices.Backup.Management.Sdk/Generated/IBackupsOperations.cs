@@ -15,29 +15,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Triggers backup for specified backed up item. This is an asynchronous
-        /// operation. To know the status of the operation, call
-        /// GetProtectedItemOperationResult API.
+        /// operation. To know the status of the
+        /// operation, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
         /// Triggers backup for specified backed up item. This is an asynchronous
-        /// operation. To know the status of the operation, call
-        /// GetProtectedItemOperationResult API.
+        /// operation. To know the status of the
+        /// operation, call GetProtectedItemOperationResult API.
         /// </remarks>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backup item.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backup item.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backup item for which backup needs to be triggered.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='parameters'>
         /// resource backup request
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, BackupRequestResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TriggerWithHttpMessagesAsync(string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, BackupRequestResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

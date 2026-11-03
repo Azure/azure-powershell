@@ -14,19 +14,19 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface IHybridRunbookWorkerGroupOperations
     {
         /// <summary>
-        /// Delete a hybrid runbook worker group.
+        /// Retrieve a list of hybrid runbook worker groups.
         /// </summary>
         /// <remarks>
-        /// Delete a hybrid runbook worker group.
+        /// Retrieve a list of hybrid runbook worker groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='hybridRunbookWorkerGroupName'>
-        /// The hybrid runbook worker group name
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +37,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<HybridRunbookWorkerGroup>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a hybrid runbook worker group.
@@ -46,7 +49,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Retrieve a hybrid runbook worker group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Create a hybrid runbook worker group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -107,7 +110,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Update a hybrid runbook worker group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -133,19 +136,19 @@ namespace Microsoft.Azure.Management.Automation
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<HybridRunbookWorkerGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, HybridRunbookWorkerGroupCreateOrUpdateParameters hybridRunbookWorkerGroupUpdationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieve a list of hybrid runbook worker groups.
+        /// Delete a hybrid runbook worker group.
         /// </summary>
         /// <remarks>
-        /// Retrieve a list of hybrid runbook worker groups.
+        /// Delete a hybrid runbook worker group.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='hybridRunbookWorkerGroupName'>
+        /// The hybrid runbook worker group name
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -156,10 +159,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<HybridRunbookWorkerGroup>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<HybridRunbookWorkerGroup> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<HybridRunbookWorkerGroup>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a list of hybrid runbook worker groups.

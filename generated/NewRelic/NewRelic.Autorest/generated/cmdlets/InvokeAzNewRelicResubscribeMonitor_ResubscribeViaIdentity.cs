@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using System;
 
     /// <summary>
-    /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+    /// Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Resubscribe=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/resubscribe"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzNewRelicResubscribeMonitor_ResubscribeViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/resubscribe", ApiVersion = "2025-05-01-preview")]
     public partial class InvokeAzNewRelicResubscribeMonitor_ResubscribeViaIdentity : global::System.Management.Automation.PSCmdlet,

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRelationshipsDepende
 Describe 'Remove-AzRelationshipsDependencyOfRelationship' {
     It 'Delete' {
         Remove-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDelete
-        { Get-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDelete } | Should -Throw
+        { Get-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDelete -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
@@ -26,6 +26,6 @@ Describe 'Remove-AzRelationshipsDependencyOfRelationship' {
             Name = $env.DepRelNameToDeleteViaIdentity
         }
         Remove-AzRelationshipsDependencyOfRelationship -InputObject $identity
-        { Get-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDeleteViaIdentity } | Should -Throw
+        { Get-AzRelationshipsDependencyOfRelationship -ResourceUri $env.DepResourceGroupResourceUri -Name $env.DepRelNameToDeleteViaIdentity -ErrorAction Stop } | Should -Throw
     }
 }

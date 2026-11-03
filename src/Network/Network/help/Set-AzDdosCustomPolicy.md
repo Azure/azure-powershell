@@ -19,7 +19,7 @@ Set-AzDdosCustomPolicy -DdosCustomPolicy <PSDdosCustomPolicy> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-The **Set-AzDdosCustomPolicy** cmdlet persists changes made to a DDoS custom policy object back to Azure. After modifying a policy object (such as removing or adding detection rules), use this cmdlet to save the changes to Azure.
+The **Set-AzDdosCustomPolicy** cmdlet persists changes made to a DDoS custom policy object back to Azure. After modifying detection rules or mitigation rules, use this cmdlet to save the changes to Azure. The policy must contain at least one detection rule or mitigation rule.
 
 This cmdlet is typically used in a pipeline after modifying a policy object retrieved with **Get-AzDdosCustomPolicy** or created with **New-AzDdosCustomPolicy**.
 
@@ -50,6 +50,15 @@ $policy | Remove-AzDdosCustomPolicyDetectionRule -Name "tcpRule1" | Set-AzDdosCu
 ```
 
 This example shows how to preview the changes without actually updating the policy in Azure.
+
+### Example 4: Add and persist a mitigation rule
+```powershell
+Get-AzDdosCustomPolicy -ResourceGroupName "myRG" -Name "myPolicy" |
+  Add-AzDdosCustomPolicyMitigationRule -Name "udpRule" -TrafficScope Udp -UdpPacketsPerSecond 90000 |
+  Set-AzDdosCustomPolicy
+```
+
+This example adds a UDP mitigation rule to the in-memory policy and persists the updated policy.
 
 ## PARAMETERS
 
@@ -167,3 +176,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzDdosCustomPolicy](Remove-AzDdosCustomPolicy.md)
 
 [Remove-AzDdosCustomPolicyDetectionRule](Remove-AzDdosCustomPolicyDetectionRule.md)
+
+[Add-AzDdosCustomPolicyMitigationRule](Add-AzDdosCustomPolicyMitigationRule.md)
+
+[Set-AzDdosCustomPolicyMitigationRule](Set-AzDdosCustomPolicyMitigationRule.md)
+
+[Remove-AzDdosCustomPolicyMitigationRule](Remove-AzDdosCustomPolicyMitigationRule.md)

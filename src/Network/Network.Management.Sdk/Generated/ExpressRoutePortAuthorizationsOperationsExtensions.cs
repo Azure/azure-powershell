@@ -184,6 +184,53 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Gets the authorization key associated with the specified express route port
+        /// authorization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        public static ExpressRouteAuthorizationKey ListKeys(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName)
+        {
+                return ((IExpressRoutePortAuthorizationsOperations)operations).ListKeysAsync(resourceGroupName, expressRoutePortName, authorizationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the authorization key associated with the specified express route port
+        /// authorization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteAuthorizationKey> ListKeysAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates an authorization in the specified express route port.
         /// </summary>
         /// <param name='operations'>

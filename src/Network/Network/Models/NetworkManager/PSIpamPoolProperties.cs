@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
         public System.Collections.Generic.IList<string> AddressPrefixes { get; set; }
 
+        public string MinAllocationSize { get; set; }
+
+        public string MaxAllocationSize { get; set; }
+
         [JsonIgnore]
         public string AddressPrefixesText
         {

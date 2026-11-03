@@ -15,8 +15,8 @@ Creates an SMB endpoint resource, which represents a data transfer source or des
 ```
 New-AzStorageMoverSmbEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] -Host <String> -ShareName <String> [-CredentialsUsernameUri <String>]
- [-CredentialsPasswordUri <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CredentialsPasswordUri <String>] [-Description <String>] [-EndpointKind <String>] [-SourceType <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,41 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
 This command creates a SMB endpoint for a Storage mover named "mystoragemover".
+
+### Example 2: Create an SMB source endpoint for an FSX-SMB source
+```powershell
+New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.6" -ShareName "testshare" -SourceType FSX-SMB -EndpointKind Source
+```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "SmbMount",
+                                 "endpointKind": "Source",
+                                 "provisioningState": "Succeeded",
+                                 "credentials": {
+                                   "type": "AzureKeyVaultSmb"
+                                 },
+                                 "host": "10.0.0.6",
+                                 "shareName": "testshare"
+                               }
+ResourceGroupName            : myresourcegroup
+SystemDataCreatedAt          : 10/19/2026 10:43:59 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:59 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command creates an SMB source endpoint for an FSX-SMB source.
 
 ## PARAMETERS
 
@@ -105,6 +140,22 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String
@@ -173,6 +224,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceType
+The source type of the SMB mount endpoint, either SmbMount or FSX-SMB.
+Defaults to SmbMount.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

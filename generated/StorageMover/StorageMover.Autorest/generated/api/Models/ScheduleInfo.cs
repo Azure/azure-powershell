@@ -78,6 +78,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         /// <summary>Internal Acessors for ExecutionTime</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ISchedulerTime Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IScheduleInfoInternal.ExecutionTime { get => (this._executionTime = this._executionTime ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SchedulerTime()); set { {_executionTime = value;} } }
 
+        /// <summary>Backing field for <see cref="RepeatInterval" /> property.</summary>
+        private string _repeatInterval;
+
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PropertyOrigin.Owned)]
+        public string RepeatInterval { get => this._repeatInterval; set => this._repeatInterval = value; }
+
         /// <summary>Backing field for <see cref="StartDate" /> property.</summary>
         private global::System.DateTime? _startDate;
 
@@ -177,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         Description = @"Type of schedule — Monthly, Weekly, or Daily",
         SerializedName = @"frequency",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         string Frequency { get; set; }
         /// <summary>Whether the schedule is currently active</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
@@ -190,6 +197,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsActive { get; set; }
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Repeat interval used for sub-daily schedules.",
+        SerializedName = @"repeatInterval",
+        PossibleTypes = new [] { typeof(string) })]
+        string RepeatInterval { get; set; }
         /// <summary>Specific one-time execution date and time</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
         Required = false,
@@ -228,10 +246,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("0", "30")]
         float? ExecutionTimeMinute { get; set; }
         /// <summary>Type of schedule — Monthly, Weekly, or Daily</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         string Frequency { get; set; }
         /// <summary>Whether the schedule is currently active</summary>
         bool? IsActive { get; set; }
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        string RepeatInterval { get; set; }
         /// <summary>Specific one-time execution date and time</summary>
         global::System.DateTime? StartDate { get; set; }
 

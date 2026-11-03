@@ -1,0 +1,92 @@
+{
+  "Get-AzRelationshipsContainsRelationship+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/providers/Microsoft.Relationships/contains?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/providers/Microsoft.Relationships/contains?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "3ed4bd9e-4eac-42be-a4d1-c26dd25c5949" ],
+        "CommandName": [ "Get-AzRelationshipsContainsRelationship" ],
+        "FullCommandName": [ "Get-AzRelationshipsContainsRelationship_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/southcentralus/99016294-e0d3-45e7-bdd5-c844b4652869" ],
+        "Request-Id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "d023be9a-ea77-4594-8d36-d6783831a651" ],
+        "x-ms-correlation-request-id": [ "d023be9a-ea77-4594-8d36-d6783831a651" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T013545Z:d023be9a-ea77-4594-8d36-d6783831a651" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6E82733FA8D64C74ADEB511B76D6B11F Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:45Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "205" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"The tenant \u002772f988bf-86f1-41af-91ab-2d7cd011db47\u0027 or subscription \u00278fa5bc9b-4c52-4046-9d1b-4e6766092b0b\u0027 is not enabled to perform action \u0027GET\u0027 on relationships.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelationshipsContainsRelationship+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/contains?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n/providers/Microsoft.Relationships/contains?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "79b4cc6b-f39c-472d-8448-bb09f7ccf167" ],
+        "CommandName": [ "Get-AzRelationshipsContainsRelationship" ],
+        "FullCommandName": [ "Get-AzRelationshipsContainsRelationship_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/3aab8f48-20b0-4cb0-9430-200b79b85d13" ],
+        "Request-Id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-request-id": [ "026f6458-a81b-4f03-8605-75c89dbca33f" ],
+        "x-ms-correlation-request-id": [ "026f6458-a81b-4f03-8605-75c89dbca33f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260924T013546Z:026f6458-a81b-4f03-8605-75c89dbca33f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E4E82A2D24854184B42B221E4A9485EC Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:46Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "205" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"The tenant \u002772f988bf-86f1-41af-91ab-2d7cd011db47\u0027 or subscription \u00278fa5bc9b-4c52-4046-9d1b-4e6766092b0b\u0027 is not enabled to perform action \u0027GET\u0027 on relationships.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

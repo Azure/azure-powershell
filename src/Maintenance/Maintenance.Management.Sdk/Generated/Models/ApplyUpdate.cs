@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     /// Apply Update request
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplyUpdate : Resource
+    public partial class ApplyUpdate : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplyUpdate class.
@@ -25,13 +25,15 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// Initializes a new instance of the ApplyUpdate class.
         /// </summary>
 
-        /// <param name="id">Fully qualified identifier of the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Name of the resource
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Type of the resource
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
         /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PowerShell;
 
-    /// <summary>The response of the list hybrid connection operation.</summary>
+    /// <summary>The response of a HybridConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(HybridConnectionListResultTypeConverter))]
     public partial class HybridConnectionListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             return ToJsonString();
         }
     }
-    /// The response of the list hybrid connection operation.
+    /// The response of a HybridConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(HybridConnectionListResultTypeConverter))]
     public partial interface IHybridConnectionListResult
 

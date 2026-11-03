@@ -111,6 +111,32 @@ param(
     ${IsDynamicMemoryEnabled},
 
     [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether to migrate the server as an Azure Arc-enabled VM.
+    # When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+    ${MigrateAsArcVM},
+
+    [Parameter()]
+    [ArgumentCompleter({ "Standard", "TrustedLaunch" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the security type of the target VM.
+    # 'TrustedLaunch' enables Secure Boot and vTPM, implies -EnableSecureBoot 'true', and requires a Generation 2 target VM.
+    # 'Standard' is accepted for either generation and on its own leaves the target inheriting the source.
+    ${TargetVMSecurityOption},
+
+    [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether Secure Boot is enabled on the target VM.
+    # Enabling it requires a Generation 2 target VM; 'false' is accepted for either generation.
+    # When omitted and -TargetVMSecurityOption is not 'TrustedLaunch', the target VM inherits the Secure Boot setting of the source server.
+    ${EnableSecureBoot},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.Int64]
     # Specifies the target RAM size in MB.

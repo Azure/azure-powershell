@@ -1,3 +1,809 @@
+## 16.4.0 - October 2026
+#### Az.Automation 1.12.1 
+* Added cmdlet `Get-AzAutomationRuntimeEnvironment`, `Get-AzAutomationRuntimeEnvironmentPackage`, `New-AzAutomationRuntimeEnvironment`, `New-AzAutomationRuntimeEnvironmentPackage`, `Remove-AzAutomationRuntimeEnvironment`, `Remove-AzAutomationRuntimeEnvironmentPackage`, `Set-AzAutomationRuntimeEnvironment`, `Set-AzAutomationRuntimeEnvironmentPackage`
+#### Az.Compute 11.10.0 
+* Modified cmdlet `Get-AzVMExtensionImage`
+   - Added parameter `-Expand`
+* Modified cmdlet `New-AzCapacityReservation`
+   - Added parameters `-ScheduleProfileStart`, `-MinimumCommitmentDayCount`
+* Modified cmdlet `New-AzVmssIpTagConfig`
+   - Added parameter `-FirstPartyServiceTagId`
+* Added cmdlet `Add-AzVMNetworkInterfaceConfiguration`, `New-AzVMIpConfig`, `New-AzVMIpTagConfig`
+#### Az.ContainerInstance 5.1.0 
+* Modified cmdlet `Add-AzContainerInstanceOutput`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzContainerInstanceCommand`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerInstanceContainerGroupProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerInstanceContainerGroupProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerInstanceSubnetServiceAssociationLink`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Restart-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Stop-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerInstanceContainerGroupProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.ContainerRegistry 5.2.0 
+* Modified cmdlet `Import-AzContainerRegistryImage`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistry`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistryAgentPool`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistryExportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistryImportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistryScopeMap`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzContainerRegistryToken`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistry`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryAgentPool`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryExportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryImportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryReplication`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryScopeMap`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryToken`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzContainerRegistryWebhook`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistry`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryAgentPool`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryExportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryImportPipeline`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryScopeMap`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryToken`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzContainerRegistryWebhook`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.EventGrid 2.3.0 
+* Modified cmdlet `Disable-AzEventGridPartnerTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Enable-AzEventGridPartnerDestination`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Enable-AzEventGridPartnerTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Grant-AzEventGridPartnerConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridCaCertificate`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridChannel`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridClient`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridClientGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridDomainEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridDomainKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridDomainTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridDomainTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridNamespaceKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridNamespaceTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridNamespaceTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridNamespaceTopicKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerDestination`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerNamespaceKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerRegistration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPartnerTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridPermissionBinding`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridSystemTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridSystemTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridTopicKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventGridTopicSpace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridCaCertificate`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridChannel`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridClient`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridClientGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridDomainEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridDomainTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridDomainTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridNamespaceTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridNamespaceTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerDestination`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerRegistration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPartnerTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridPermissionBinding`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridSystemTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridSystemTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventGridTopicSpace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Revoke-AzEventGridPartnerConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridChannel`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridClient`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridClientGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridDomainEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridDomainTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridNamespaceTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridNamespaceTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPartnerConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPartnerDestination`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPartnerNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPartnerTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPartnerTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridPermissionBinding`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridSystemTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridSystemTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridTopicEventSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzEventGridTopicSpace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.EventHub 5.7.0 
+* Modified cmdlet `Approve-AzEventHubPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Deny-AzEventHubPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHub`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubApplicationGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubConsumerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubGeoDRConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzEventHubSchemaGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHub`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubApplicationGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubConsumerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubGeoDRConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzEventHubSchemaGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHub`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubApplicationGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubConsumerGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubGeoDRConfigurationBreakPair`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubGeoDRConfigurationFailOver`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzEventHubNetworkRuleSet`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzEventHubNamespaceFailOver`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.Kusto 3.1.0 
+* Modified cmdlet `Add-AzKustoClusterCalloutPolicy`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Add-AzKustoClusterLanguageExtension`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Add-AzKustoDatabasePrincipal`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzKustoClusterMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzKustoDetachClusterFollowerDatabase`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzKustoDiagnoseClusterVirtualNetwork`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzKustoInviteDatabaseFollower`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoAttachedDatabaseConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoClusterPrincipalAssignment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoDatabase`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoDatabasePrincipalAssignment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoManagedPrivateEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoSandboxCustomImage`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzKustoScript`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoAttachedDatabaseConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoClusterCalloutPolicy`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoClusterLanguageExtension`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoClusterPrincipalAssignment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoDatabase`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoDatabasePrincipal`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoDatabasePrincipalAssignment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoDataConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoManagedPrivateEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoSandboxCustomImage`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzKustoScript`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzKustoCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Stop-AzKustoCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzKustoCluster`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzKustoDatabase`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzKustoManagedPrivateEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzKustoSandboxCustomImage`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzKustoScript`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.ManagedServiceIdentity 2.1.0 
+* Modified cmdlet `New-AzFederatedIdentityCredential`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzUserAssignedIdentity`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFederatedIdentityCredential`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzUserAssignedIdentity`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFederatedIdentityCredential`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzUserAssignedIdentity`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.Migrate 3.1.0 
+* Modified cmdlet `New-AzMigrateLocalServerReplication`
+   - Added parameter `-MigrateAsArcVM`
+#### Az.Monitor 8.1.0 
+* Modified cmdlet `New-AzDataCollectionEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzDataCollectionRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzDataCollectionRuleAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzDataCollectionEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzDataCollectionRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzDataCollectionRuleAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzDataCollectionEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzDataCollectionRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzDataCollectionRuleAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.Network 8.3.0 
+* Modified cmdlet `Add-AzApplicationGatewayRequestRoutingRule`
+   - Added parameters `-AdvancedRoutingMapId`, `-AdvancedRoutingMap`
+* Modified cmdlet `New-AzApplicationGateway`
+   - Added parameters `-AdvancedRoutingMaps`, `-AdvancedRoutingConditionSets`
+* Modified cmdlet `New-AzApplicationGatewayClientAuthConfiguration`
+   - Added parameter `-VerifyClientAuthMode`
+* Modified cmdlet `New-AzApplicationGatewayFirewallPolicySetting`
+   - Added parameter `-CaptchaExpirationInMins`
+* Modified cmdlet `New-AzApplicationGatewayRequestRoutingRule`
+   - Added parameters `-AdvancedRoutingMapId`, `-AdvancedRoutingMap`
+* Modified cmdlet `New-AzExpressRouteCircuit`
+   - Added parameter `-ExpressRouteLag`
+* Modified cmdlet `New-AzFirewallPolicyNetworkRule`
+   - Added parameters `-SourceGeoLocation`, `-DestinationGeoLocation`, `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkManagerIpamPool`
+   - Added parameters `-MinAllocationSize`, `-MaxAllocationSize`
+* Modified cmdlet `Set-AzApplicationGatewayClientAuthConfiguration`
+   - Added parameter `-VerifyClientAuthMode`
+* Modified cmdlet `Set-AzApplicationGatewayRequestRoutingRule`
+   - Added parameters `-AdvancedRoutingMapId`, `-AdvancedRoutingMap`
+* Modified cmdlet `Set-AzNetworkManagerIpamPool`
+   - Added parameters `-MinAllocationSize`, `-MaxAllocationSize`
+* Modified cmdlet `New-AzNetworkSecurityPerimeter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkSecurityPerimeterAccessRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkSecurityPerimeterAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkSecurityPerimeterLink`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkSecurityPerimeterLoggingConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzNetworkSecurityPerimeterProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterAccessRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterLink`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterLinkReference`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterLoggingConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzNetworkSecurityPerimeterProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzNetworkSecurityPerimeter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzNetworkSecurityPerimeterAccessRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzNetworkSecurityPerimeterAssociation`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzNetworkSecurityPerimeterLink`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzNetworkSecurityPerimeterLoggingConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Added cmdlet `Add-AzApplicationGatewayAdvancedRoutingConditionSet`, `Add-AzApplicationGatewayAdvancedRoutingMap`, `Get-AzApplicationGatewayAdvancedRoutingConditionSet`, `Get-AzApplicationGatewayAdvancedRoutingMap`, `Get-AzExpressRouteCircuitAuthorizationKey`, `Get-AzExpressRouteCrossConnectionMigrationInfo`, `Get-AzExpressRoutePortAuthorizationKey`, `Invoke-AzExpressRouteCrossConnectionCommitMigration`, `Invoke-AzExpressRouteCrossConnectionMigration`, `Invoke-AzExpressRouteCrossConnectionPrepareMigration`, `Invoke-AzExpressRouteCrossConnectionRestoreBgpForMigration`, `Invoke-AzExpressRouteCrossConnectionRollbackMigration`, `Invoke-AzExpressRouteCrossConnectionShutDownBgpForMigration`, `New-AzApplicationGatewayAdvancedRoutingCondition`, `New-AzApplicationGatewayAdvancedRoutingConditionSet`, `New-AzApplicationGatewayAdvancedRoutingMap`, `New-AzApplicationGatewayAdvancedRoutingRuleConfig`, `New-AzExpressRouteCrossConnectionPortMapping`, `Remove-AzApplicationGatewayAdvancedRoutingConditionSet`, `Remove-AzApplicationGatewayAdvancedRoutingMap`, `Set-AzApplicationGatewayAdvancedRoutingConditionSet`, `Set-AzApplicationGatewayAdvancedRoutingMap`, `Test-AzExpressRouteCrossConnectionMigration`
+#### Az.RecoveryServices 7.15.0 
+* Modified cmdlet `Enable-AzRecoveryServicesBackupProtection`
+   - Added parameters `-AccessType`, `-IsSystemAssignedIdentity`, `-UserAssignedIdentityArmUrl`, `-Force`
+* Modified cmdlet `Register-AzRecoveryServicesBackupContainer`
+   - Added parameters `-StorageAccountName`, `-AccessType`, `-IsSystemAssignedIdentity`, `-UserAssignedIdentityArmUrl`
+* Modified cmdlet `Restore-AzRecoveryServicesBackupItem`
+   - Added parameters `-IsSystemAssignedIdentity`, `-UserAssignedIdentityArmUrl`
+* Modified cmdlet `Update-AzRecoveryServicesVault`
+   - Added parameter `-SourceScanState`
+* Added cmdlet `Set-AzRecoveryServicesBackupItemSourceScanConfiguration`
+#### Az.ServiceBus 4.4.0 
+* Modified cmdlet `Approve-AzServiceBusPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Complete-AzServiceBusMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Deny-AzServiceBusPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusGeoDRConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusKey`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusQueue`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzServiceBusTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusGeoDRConfiguration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusPrivateEndpointConnection`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusQueue`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzServiceBusTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusAuthorizationRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusGeoDRConfigurationBreakPair`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusGeoDRConfigurationFailOver`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusNamespace`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusNetworkRuleSet`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusQueue`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusSubscription`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Set-AzServiceBusTopic`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzServiceBusMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzServiceBusNamespaceFailOver`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Stop-AzServiceBusMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.Sql 7.2.0 
+* Modified cmdlet `Set-AzSqlDatabaseAudit`
+   - Added parameter `-RequiredFields`
+* Modified cmdlet `Set-AzSqlServerAudit`
+   - Added parameter `-RequiredFields`
+#### Az.StorageSync 2.7.0 
+* Modified cmdlet `New-AzStorageSyncCloudEndpoint`
+   - Added parameter `-ChangeEnumerationIntervalDay`
+* Added cmdlet `Set-AzStorageSyncCloudEndpoint`
+
+## 16.3.0 - September 2026
+#### Az.Cdn 6.2.0 
+* Modified cmdlet `Add-AzCdnEdgeActionAttachment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Clear-AzCdnEndpointContent`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Clear-AzFrontDoorCdnEndpointContent`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Deploy-AzCdnEdgeActionVersionCode`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Disable-AzCdnCustomDomainCustomHttps`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Enable-AzCdnCustomDomainCustomHttps`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Enable-AzFrontDoorCdnProfileMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Import-AzCdnEndpointContent`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzCdnAbortProfileToAFDMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Invoke-AzCdnCommitProfileToAFDMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Move-AzCdnProfileToAFD`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnCustomDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnEdgeAction`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnEdgeActionExecutionFilter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnEdgeActionVersion`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnCustomDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnRoute`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnRuleSet`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnSecret`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `New-AzFrontDoorCdnSecurityPolicy`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnCustomDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnEdgeAction`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnEdgeActionAttachment`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnEdgeActionExecutionFilter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnEdgeActionVersion`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnCustomDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnRoute`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnRuleSet`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnSecret`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Remove-AzFrontDoorCdnSecurityPolicy`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Start-AzCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Stop-AzCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Test-AzFrontDoorCdnProfileMigration`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnEdgeAction`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnEdgeActionExecutionFilter`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnEdgeActionVersion`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnCustomDomain`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnCustomDomainValidationToken`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnEndpoint`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnOrigin`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnOriginGroup`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnProfile`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnProfileSku`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnRoute`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnRule`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnRuleSet`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnSecret`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+* Modified cmdlet `Update-AzFrontDoorCdnSecurityPolicy`
+   - Added parameters `-AcquirePolicyToken`, `-ChangeReference`
+#### Az.Compute 11.9.0 
+* Modified cmdlet `New-AzCapacityReservationGroup`
+   - Added parameter `-ReservationType`
+* Modified cmdlet `New-AzVM`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Modified cmdlet `New-AzVMConfig`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Modified cmdlet `Set-AzVMProxyAgentSetting`
+   - Added parameters `-WireServerUseLocalFileRules`, `-ImdsUseLocalFileRules`
+* Modified cmdlet `Set-AzVmssProxyAgentSetting`
+   - Added parameters `-WireServerUseLocalFileRules`, `-ImdsUseLocalFileRules`
+* Modified cmdlet `Stop-AzVM`
+   - Added parameter `-ForceDeallocate`
+* Modified cmdlet `Update-AzCapacityReservationGroup`
+   - Added parameter `-ReservationType`
+* Modified cmdlet `Update-AzVM`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Modified cmdlet `Update-AzVmss`
+   - Added parameters `-DisableCapacityReservationAssignment`, `-ProcessorMode`
+* Added cmdlet `Set-AzVMZoneMovement`
+#### Az.CosmosDB 1.22.0 
+* Modified cmdlet `Restore-AzCosmosDBAccount`
+   - Added parameter `-DisableLocalAuth`
+#### Az.Network 8.2.0 
+* Modified cmdlet `Add-AzLoadBalancerFrontendIpConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Modified cmdlet `Add-AzRouteServerPeer`
+   - Added parameters `-RoutingConfiguration`, `-VirtualHubVnetConnection`, `-VirtualHubVnetConnectionId`
+* Modified cmdlet `New-AzApplicationGateway`
+   - Added parameter `-DisableDefaultServerHeaderInResponse`
+* Modified cmdlet `New-AzExpressRouteCircuit`
+   - Added parameters `-PartnerAccountId`, `-ActivationKey`
+* Modified cmdlet `New-AzLoadBalancer`
+   - Added parameters `-Mode`, `-Scope`
+* Modified cmdlet `New-AzLoadBalancerFrontendIpConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Modified cmdlet `New-AzPublicIpTag`
+   - Added parameter `-FirstPartyServiceTagId`
+* Modified cmdlet `New-AzVirtualHub`
+   - Added parameter `-AddressPrefixV6`
+* Modified cmdlet `New-AzVirtualHubVnetConnection`
+   - Added parameter `-EnableOnlyIpv6Peering`
+* Modified cmdlet `New-AzVirtualNetworkGatewayConnection`
+   - Added parameter `-RoutingConfiguration`
+* Modified cmdlet `Set-AzLoadBalancerFrontendIpConfig`
+   - Added parameter `-EnableConnectionTracking`
+* Modified cmdlet `Set-AzPublicIpAddress`
+   - Added parameters `-DdosCustomPolicyId`, `-RemoveDdosCustomPolicy`
+* Modified cmdlet `Set-AzVirtualNetworkGatewayConnection`
+   - Added parameter `-RoutingConfiguration`
+* Modified cmdlet `Update-AzRouteServerPeer`
+   - Added parameters `-RoutingConfiguration`, `-VirtualHubVnetConnection`, `-VirtualHubVnetConnectionId`
+* Modified cmdlet `Update-AzVirtualHub`
+   - Added parameter `-AddressPrefixV6`
+* Added cmdlet `Get-AzAddressPrefixSet`, `Get-AzExpressRouteLag`, `Get-AzExpressRouteLagIdentity`, `Get-AzExpressRouteLagLink`, `Get-AzExpressRouteLagMember`, `Get-AzFirewallPolicyKubeSelectorGroup`, `Get-AzFirstPartyServiceTag`, `Get-AzInterconnectGroup`, `Get-AzInterconnectGroupNodeAvailability`, `Get-AzInterconnectGroupSubgroup`, `Get-AzVirtualNetworkGatewayEffectiveRoute`, `Move-AzVirtualNetworkIpConfiguration`, `New-AzAddressPrefixSet`, `New-AzExpressRouteLag`, `New-AzExpressRouteLagIdentity`, `New-AzExpressRouteLagLOA`, `New-AzFirewallPolicyKubeLabelSelector`, `New-AzFirewallPolicyKubeSelectorGroup`, `New-AzFirewallPolicyLabelSelectorExpression`, `New-AzFirstPartyServiceTag`, `New-AzInterconnectGroup`, `New-AzMoveIpConfigurationItem`, `Remove-AzAddressPrefixSet`, `Remove-AzExpressRouteLag`, `Remove-AzExpressRouteLagIdentity`, `Remove-AzFirewallPolicyKubeSelectorGroup`, `Remove-AzFirstPartyServiceTag`, `Remove-AzInterconnectGroup`, `Set-AzAddressPrefixSet`, `Set-AzExpressRouteLag`, `Set-AzExpressRouteLagIdentity`, `Set-AzFirewallPolicyKubeSelectorGroup`, `Set-AzFirstPartyServiceTag`, `Set-AzInterconnectGroup`
+#### Az.Resources 10.2.0 
+* Modified cmdlet `New-AzManagementGroupDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `New-AzResourceGroupDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `New-AzSubscriptionDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `Set-AzManagementGroupDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `Set-AzResourceGroupDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `Set-AzSubscriptionDeploymentStackWhatIfResult`
+   - Removed parameter `-DenySettingsApplyToChildScope`
+   - Added parameters `-DenySettingsApplyToChildScopes`, `-ResourcesWithoutDeleteSupport`, `-Tag`
+* Modified cmdlet `Get-AzPolicyDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `Get-AzPolicySetDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `New-AzPolicyDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `New-AzPolicySetDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `Remove-AzPolicyDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `Remove-AzPolicySetDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `Update-AzPolicyDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Modified cmdlet `Update-AzPolicySetDefinition`
+   - Removed parameter `-ManagementGroupName`
+   - Added parameter `-ManagementGroupId`
+* Added cmdlet `Get-AzPolicyEnrollment`, `New-AzPolicyEnrollment`, `Remove-AzPolicyEnrollment`, `Update-AzPolicyEnrollment`#### Az.Security 1.10.0 
+, `Add-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Get-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Get-AzSecuritySqlVulnerabilityAssessmentScan`, `Get-AzSecuritySqlVulnerabilityAssessmentScanRuleResult`, `Get-AzSecuritySqlVulnerabilityAssessmentSetting`, `Invoke-AzSecurityInitiateSqlVulnerabilityAssessmentScan`, `New-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `New-AzSecuritySqlVulnerabilityAssessmentSetting`, `Remove-AzSecuritySqlVulnerabilityAssessmentBaselineRule`, `Remove-AzSecuritySqlVulnerabilityAssessmentSetting`, `Update-AzSecuritySqlVulnerabilityAssessmentSetting`
+#### Az.Sql 7.1.0 
+* Modified cmdlet `New-AzSqlInstanceLink`
+   - Added parameter `-LinkMode`
+* Modified cmdlet `Update-AzSqlInstanceLink`
+   - Added parameter `-Database`
+
 ## 16.2.0 - August 2026
 #### Az.Cdn 6.1.0 
 * Modified cmdlet `New-AzCdnEdgeAction`
@@ -7092,6 +7898,8 @@
    - Changed the type of parameter `-StagingEnvironmentPolicy` from `StagingEnvironmentPolicy` to `String`
 * Modified cmdlet `Update-AzStaticWebAppUser`
    - Added parameters `-AuthproviderInputObject`, `-StaticSiteInputObject`, `-StaticSiteUserEnvelope`, `-JsonFilePath`, `-JsonString`
+
+
 
 
 

@@ -1,0 +1,33 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+// Changes may cause incorrect behavior and will be lost if the code is regenerated.
+namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.Extensions;
+
+    /// <summary>Optional set of tags (key-value pairs)</summary>
+    public partial class EntityPropertiesTags :
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesTags,
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Models.IEntityPropertiesTagsInternal
+    {
+
+        /// <summary>Creates an new <see cref="EntityPropertiesTags" /> instance.</summary>
+        public EntityPropertiesTags()
+        {
+
+        }
+    }
+    /// Optional set of tags (key-value pairs)
+    public partial interface IEntityPropertiesTags :
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.CloudHealth.Runtime.IAssociativeArray<string>
+    {
+
+    }
+    /// Optional set of tags (key-value pairs)
+    internal partial interface IEntityPropertiesTagsInternal
+
+    {
+
+    }
+}

@@ -14,13 +14,68 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface IScheduleOperations
     {
         /// <summary>
+        /// Retrieve a list of schedules.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve a list of schedules.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Schedule>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieve the schedule identified by schedule name.
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the schedule identified by schedule name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='scheduleName'>
+        /// The schedule name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Schedule>> GetWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string scheduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Create a schedule.
         /// </summary>
         /// <remarks>
         /// Create a schedule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -52,7 +107,7 @@ namespace Microsoft.Azure.Management.Automation
         /// Update the schedule identified by schedule name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -78,42 +133,13 @@ namespace Microsoft.Azure.Management.Automation
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Schedule>> UpdateWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string scheduleName, ScheduleUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieve the schedule identified by schedule name.
-        /// </summary>
-        /// <remarks>
-        /// Retrieve the schedule identified by schedule name.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='scheduleName'>
-        /// The schedule name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Schedule>> GetWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string scheduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Delete the schedule identified by schedule name.
         /// </summary>
         /// <remarks>
         /// Delete the schedule identified by schedule name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -131,32 +157,6 @@ namespace Microsoft.Azure.Management.Automation
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string scheduleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieve a list of schedules.
-        /// </summary>
-        /// <remarks>
-        /// Retrieve a list of schedules.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Schedule>>> ListByAutomationAccountWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieve a list of schedules.

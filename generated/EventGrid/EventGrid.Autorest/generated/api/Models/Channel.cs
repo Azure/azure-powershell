@@ -54,16 +54,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         public string MessageForActivation { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).MessageForActivation; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).MessageForActivation = value ?? null; }
 
         /// <summary>Internal Acessors for PartnerDestinationInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerDestinationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerDestinationInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerDestinationInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PartnerDestinationInfoEndpointType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerDestinationInfoEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfoEndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfoEndpointType = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerDestinationInfoEndpointType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfoEndpointType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerDestinationInfoEndpointType = value ?? null; }
 
         /// <summary>Internal Acessors for PartnerTopicInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerTopicInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopicInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerTopicInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PartnerTopicInfoEventTypeInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventTypeInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerTopicInfoEventTypeInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfoEventTypeInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfoEventTypeInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventTypeInfo Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.PartnerTopicInfoEventTypeInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfoEventTypeInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelPropertiesInternal)Property).PartnerTopicInfoEventTypeInfo = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelProperties Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ChannelProperties()); set { {_property = value;} } }
@@ -71,14 +71,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Id = value ?? null; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Name = value ?? null; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceInternal)__resource).Type = value ?? null; }
 
         /// <summary>Name of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inherited)]
@@ -175,27 +193,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedAt; }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedBy; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).CreatedByType; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedAt; }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedBy; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemDataInternal)SystemData).LastModifiedByType; }
 
         /// <summary>Type of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PropertyOrigin.Inherited)]

@@ -1,0 +1,79 @@
+{
+  "Add-AzMonitorHealthModelEntityDataAnnotation+[NoContext]+AddExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/addDataAnnotation?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/addDataAnnotation?api-version=2026-11-01",
+      "Content": "{\n  \"annotationDetails\": {\n    \"ticket\": \"CH-1001\",\n    \"source\": \"test\"\n  },\n  \"description\": \"annotation created by test\"\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "125"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000317"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000229"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000358"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "199"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151715Z:00000000-0000-4000-8000-000000000358"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: BDE659A4C633421992BB116026B41CE9 Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:14Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:14 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "203"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"annotationId\":\"00000000-0000-4000-8000-000000000142\",\"createdAt\":\"2026-10-13T15:17:14.9703938+00:00\",\"annotationDetails\":{\"ticket\":\"CH-1001\",\"source\":\"test\"},\"description\":\"annotation created by test\"}",
+      "isContentBase64": false
+    }
+  }
+}

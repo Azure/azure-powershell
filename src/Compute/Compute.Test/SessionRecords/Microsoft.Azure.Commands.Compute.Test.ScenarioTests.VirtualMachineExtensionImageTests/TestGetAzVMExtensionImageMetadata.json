@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/providers/Microsoft.Compute/locations/centraluseuap/publishers/Microsoft.Cplat.Core/artifacttypes/vmextension/types/NullWindows2/versions/2.17.0?api-version=2026-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODdjMTU4Y2EtMzg3My00ODUwLTk1NjctNTBhNWIwYTNjMmVmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvY2VudHJhbHVzZXVhcC9wdWJsaXNoZXJzL01pY3Jvc29mdC5DcGxhdC5Db3JlL2FydGlmYWN0dHlwZXMvdm1leHRlbnNpb24vdHlwZXMvTnVsbFdpbmRvd3MyL3ZlcnNpb25zLzIuMTcuMD9hcGktdmVyc2lvbj0yMDI2LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "e241af0c-b5cc-4597-9e59-23b015e03b29"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.3126.42015",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/11.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/GetVMExtension3Min;9999,Microsoft.Compute/GetVMExtension30Min;21998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "d1085ba5-b7ac-47b7-baa5-472fd5837661_134341933741129068"
+        ],
+        "x-ms-request-id": [
+          "de6e9541-e03a-4e14-adf5-505e9d77b127"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=d4cf561b-5aae-49e9-a42f-faef2354e23e/centralindia/28bff1bc-2525-457a-a142-ad7358db35e1"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-correlation-request-id": [
+          "8856c82a-9b01-4c26-b9b4-0043ba4894a4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20260921T103851Z:8856c82a-9b01-4c26-b9b4-0043ba4894a4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 07B97127A31145D9A616AB04B948CA7D Ref B: PNQ231110908060 Ref C: 2026-09-21T10:38:49Z"
+        ],
+        "Date": [
+          "Mon, 21 Sep 2026 10:38:51 GMT"
+        ],
+        "Content-Length": [
+          "1108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"operatingSystem\": \"Windows\",\r\n    \"computeRole\": \"IaaS\",\r\n    \"architecture\": [\r\n      \"x64\",\r\n      \"arm64\"\r\n    ],\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportsMultipleExtensions\": false,\r\n    \"supportsMigration\": false,\r\n    \"rollbackSupported\": false,\r\n    \"isSoftDeleted\": false,\r\n    \"isInternalExtension\": false,\r\n    \"isJsonExtension\": true,\r\n    \"deprecationStatus\": {\r\n      \"extensionState\": \"Active\"\r\n    },\r\n    \"releaseNotes\": \"Null extension release used to validate extension version metadata (property bag) end to end.\",\r\n    \"releaseCategory\": \"BugFix\",\r\n    \"urgencyLevel\": \"Regular\",\r\n    \"runProfile\": \"RunOnce\",\r\n    \"extensionFeatureMetadata\": {\r\n      \"extensionFeatureTags\": [\r\n        {\r\n          \"key\": \"fipsCompliantVersion\",\r\n          \"value\": \"140-3\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"CentralUSEUAP\",\r\n  \"name\": \"2.17.0\",\r\n  \"id\": \"/Subscriptions/87c158ca-3873-4850-9567-50a5b0a3c2ef/Providers/Microsoft.Compute/Locations/CentralUSEUAP/Publishers/Microsoft.Cplat.Core/ArtifactTypes/VMExtension/Types/NullWindows2/Versions/2.17.0\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "87c158ca-3873-4850-9567-50a5b0a3c2ef"
+  }
+}

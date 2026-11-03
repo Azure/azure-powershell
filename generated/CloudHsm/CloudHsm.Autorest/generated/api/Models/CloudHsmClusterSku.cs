@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         Description = @"Sku name of the Cloud HSM Cluster",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
         string Name { get; set; }
 
     }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
         /// <summary>Sku family of the Cloud HSM Cluster</summary>
         string Family { get; set; }
         /// <summary>Sku name of the Cloud HSM Cluster</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.PSArgumentCompleterAttribute("Standard_B1", "Standard B10", "Standard_B1v2", "Standard_B5v2", "Standard_B10v2", "Standard_B15v2", "Standard_B20v2")]
         string Name { get; set; }
 
     }

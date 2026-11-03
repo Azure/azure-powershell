@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         public global::System.DateTime? LastActionAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).LastActionAt; }
 
         /// <summary>Internal Acessors for FailureReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.FailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).FailureReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).FailureReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.FailureReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).FailureReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).FailureReason = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for LastActionAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.LastActionAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).LastActionAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).LastActionAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.LastActionAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).LastActionAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).LastActionAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Name { get => this._name; set { {_name = value;} } }
@@ -43,20 +43,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionDetailsProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).ProvisioningState = value ?? null; }
+
         /// <summary>Internal Acessors for RunInformation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesRunInformation Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.RunInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformation = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesRunInformation Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.RunInformation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformation = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for RunInformationStep</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStepStatus> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.RunInformationStep { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformationStep; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformationStep = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStepStatus> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.RunInformationStep { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformationStep; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).RunInformationStep = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StartedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StartedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Status</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).Status = value ?? null; }
 
         /// <summary>Internal Acessors for StoppedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StoppedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StoppedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsInternal.Type { get => this._type; set { {_type = value;} } }
@@ -75,6 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentExecutionDetailsProperties()); }
 
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).ProvisioningState; }
+
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
@@ -85,15 +92,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>String that represents the start date time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StartedAt; }
+        public global::System.DateTime? StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StartedAt; }
 
         /// <summary>The status of the execution.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).Status; }
+        public string Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).Status; }
 
         /// <summary>String that represents the stop date time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
-        public global::System.DateTime? StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionPropertiesInternal)Property).StoppedAt; }
+        public global::System.DateTime? StoppedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesInternal)Property).StoppedAt; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -156,6 +163,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Resource provisioning state. Not currently in use for executions.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get;  }
         /// <summary>The steps of the experiment run.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
@@ -227,6 +246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         string Name { get; set; }
         /// <summary>The properties of the experiment execution details.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsProperties Property { get; set; }
+        /// <summary>Resource provisioning state. Not currently in use for executions.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Creating", "Updating", "Deleting", "Running")]
+        string ProvisioningState { get; set; }
         /// <summary>The information of the experiment run.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperimentExecutionDetailsPropertiesRunInformation RunInformation { get; set; }
         /// <summary>The steps of the experiment run.</summary>

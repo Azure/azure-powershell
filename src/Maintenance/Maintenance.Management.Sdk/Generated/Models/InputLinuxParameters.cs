@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// <param name="packageNameMasksToInclude">Package names to be included for patching.
         /// </param>
 
-        /// <param name="classificationsToInclude">Classification category of patches to be patched
+        /// <param name="classificationsToInclude">Classification category of patches to be patched. Allowed values are
+        /// &#39;Critical&#39;, &#39;Security&#39;, and &#39;Other&#39;.
         /// </param>
         public InputLinuxParameters(System.Collections.Generic.IList<string> packageNameMasksToExclude = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> packageNameMasksToInclude = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> classificationsToInclude = default(System.Collections.Generic.IList<string>))
 
@@ -60,7 +61,8 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         public System.Collections.Generic.IList<string> PackageNameMasksToInclude {get; set; }
 
         /// <summary>
-        /// Gets or sets classification category of patches to be patched
+        /// Gets or sets classification category of patches to be patched. Allowed
+        /// values are &#39;Critical&#39;, &#39;Security&#39;, and &#39;Other&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "classificationsToInclude")]
         public System.Collections.Generic.IList<string> ClassificationsToInclude {get; set; }

@@ -48,5 +48,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ExpressRouteLagIdentity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteLagAuthorization()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteLagAuthorization");
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to delete a hybrid machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-07-31-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2026-06-16-preview")]
     public partial class RemoveAzConnectedMachine_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -40,14 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -103,6 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -182,14 +186,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
             ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
         }
 
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of RemoveAzConnectedMachine_DeleteViaIdentity</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets.RemoveAzConnectedMachine_DeleteViaIdentity Clone()
+        {
+            var clone = new RemoveAzConnectedMachine_DeleteViaIdentity();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            return clone;
+        }
+
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -240,8 +259,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.Debug:
@@ -279,6 +298,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         });
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.DelayBeforePolling:
+                    {
+                        var data = messageData();
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
+                        break;
+                    }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
@@ -299,9 +352,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                 // work
                 if (ShouldProcess($"Call remote 'MachinesDelete' operation"))
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token) )
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token);
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token);
+                        }
                     }
                 }
             }
@@ -351,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.MachinesDeleteViaIdentity(InputObject.Id, onOk, onNoContent, onDefault, this, Pipeline);
+                        await this.Client.MachinesDeleteViaIdentity(InputObject.Id, onNoContent, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -368,7 +433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.MachineName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.MachinesDelete(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MachineName ?? null, onOk, onNoContent, onDefault, this, Pipeline);
+                        await this.Client.MachinesDelete(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MachineName ?? null, onNoContent, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -475,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     return ;
                 }
                 // onNoContent - response for 204 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }
@@ -499,7 +564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

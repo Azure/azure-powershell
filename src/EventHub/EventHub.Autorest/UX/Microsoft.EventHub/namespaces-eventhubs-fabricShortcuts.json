@@ -1,0 +1,201 @@
+{
+  "resourceType": "namespaces/eventhubs/fabricShortcuts",
+  "apiVersion": "2026-07-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
+  },
+  "commands": [
+    {
+      "name": "Approve-AzEventHubFabricShortcut",
+      "description": "Approves a Microsoft Fabric shortcut.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/fabricShortcuts/{fabricShortcutName}/approve",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/approve-azeventhubfabricshortcut"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventHubName <String>",
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Approves a Microsoft Fabric shortcut.",
+          "parameters": [
+            {
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.fabricShortcutName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventHubFabricShortcut",
+      "description": "Gets a Microsoft Fabric shortcut.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/fabricShortcuts/{fabricShortcutName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubfabricshortcut"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventHubName <String>",
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Microsoft Fabric shortcut.",
+          "parameters": [
+            {
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.fabricShortcutName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzEventHubRejectFabricShortcut",
+      "description": "Rejects a Microsoft Fabric shortcut.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/fabricShortcuts/{fabricShortcutName}/reject",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubrejectfabricshortcut"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventHubName <String>",
+              "-FabricShortcutName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Rejects a Microsoft Fabric shortcut.",
+          "parameters": [
+            {
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
+            },
+            {
+              "name": "-FabricShortcutName",
+              "value": "[Path.fabricShortcutName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventHubFabricShortcut",
+      "description": "Deletes a Microsoft Fabric shortcut.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/fabricShortcuts/{fabricShortcutName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubfabricshortcut"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventHubName <String>",
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Microsoft Fabric shortcut.",
+          "parameters": [
+            {
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.fabricShortcutName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

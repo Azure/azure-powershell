@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>The response of the list hybrid connection operation.</summary>
+    /// <summary>The response of a HybridConnection list operation.</summary>
     public partial class HybridConnectionListResult
     {
 

@@ -18,7 +18,7 @@ New-AzExpressRouteLag -ResourceGroupName <String> -Name <String> -PeeringLocatio
  -BandwidthInGbps <Int32> [-Encapsulation <String>] -Location <String> [-NumberOfPorts <Int32>]
  [-MinimumActivePortsRequired <Int32>] [-LacpTimer <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-Identity <PSManagedServiceIdentity>] [-BillingType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzExpressRouteLag -ResourceGroupName <String> -Name <String> -PeeringLocatio
 New-AzExpressRouteLag -ResourceId <String> -PeeringLocation <String> -BandwidthInGbps <Int32>
  [-Encapsulation <String>] -Location <String> [-NumberOfPorts <Int32>] [-MinimumActivePortsRequired <Int32>]
  [-LacpTimer <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Identity <PSManagedServiceIdentity>]
- [-BillingType <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-BillingType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -338,21 +338,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

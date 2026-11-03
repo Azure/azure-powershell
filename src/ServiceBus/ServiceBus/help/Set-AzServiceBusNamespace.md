@@ -21,7 +21,7 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
  [-Tag <Hashtable>] [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
  [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-IPAddressType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -33,7 +33,7 @@ Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
  [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-IPAddressType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -291,6 +291,21 @@ Created a namespace with UserAssignedIdentity and use Set-Az cmdlet to set Ident
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AlternateName
 Alternate name for namespace
 
@@ -311,6 +326,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

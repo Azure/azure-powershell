@@ -39,9 +39,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="sensitivity">The string representation of the web application firewall rule sensitivity.
         /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
+        /// <param name="paranoiaLevel">OWASP CRS paranoia level of a managed rule. Applicable only for DRS and
+        /// OWASP rules.
+        /// Possible values include: &#39;PL1&#39;, &#39;PL2&#39;, &#39;PL3&#39;, &#39;PL4&#39;</param>
+
         /// <param name="description">The description of the web application firewall rule.
         /// </param>
-        public ApplicationGatewayFirewallRule(int ruleId, string ruleIdString = default(string), string state = default(string), string action = default(string), string sensitivity = default(string), string description = default(string))
+        public ApplicationGatewayFirewallRule(int ruleId, string ruleIdString = default(string), string state = default(string), string action = default(string), string sensitivity = default(string), string paranoiaLevel = default(string), string description = default(string))
 
         {
             this.RuleId = ruleId;
@@ -49,6 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.State = state;
             this.Action = action;
             this.Sensitivity = sensitivity;
+            this.ParanoiaLevel = paranoiaLevel;
             this.Description = description;
             CustomInit();
         }
@@ -94,6 +99,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Sensitivity {get; set; }
 
         /// <summary>
+        /// Gets or sets oWASP CRS paranoia level of a managed rule. Applicable only
+        /// for DRS and OWASP rules. Possible values include: &#39;PL1&#39;, &#39;PL2&#39;, &#39;PL3&#39;, &#39;PL4&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "paranoiaLevel")]
+        public string ParanoiaLevel {get; set; }
+
+        /// <summary>
         /// Gets or sets the description of the web application firewall rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
@@ -106,6 +118,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

@@ -34,17 +34,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="ruleSetVersion">The version of the web application firewall rule set type.
         /// </param>
 
+        /// <param name="displayName">Human-readable display name for the managed rule set version (e.g.,
+        /// &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </param>
+
         /// <param name="ruleGroups">The rule groups of the web application firewall rule set.
         /// </param>
 
         /// <param name="tiers">Tier of an application gateway that support the rule set.
         /// </param>
-        public ApplicationGatewayFirewallRuleSetPropertiesFormat(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string provisioningState = default(string), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayFirewallRuleSetPropertiesFormat(string ruleSetType, string ruleSetVersion, System.Collections.Generic.IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string provisioningState = default(string), string displayName = default(string), System.Collections.Generic.IList<string> tiers = default(System.Collections.Generic.IList<string>))
 
         {
             this.ProvisioningState = provisioningState;
             this.RuleSetType = ruleSetType;
             this.RuleSetVersion = ruleSetVersion;
+            this.DisplayName = displayName;
             this.RuleGroups = ruleGroups;
             this.Tiers = tiers;
             CustomInit();
@@ -73,6 +78,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ruleSetVersion")]
         public string RuleSetVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets human-readable display name for the managed rule set version
+        /// (e.g., &#39;Default Ruleset 2.2 (Latest, Recommended)&#39;).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
+        public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets the rule groups of the web application firewall rule set.
@@ -105,6 +117,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RuleGroups");
             }
+
 
 
 

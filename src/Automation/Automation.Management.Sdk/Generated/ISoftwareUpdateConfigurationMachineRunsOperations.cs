@@ -14,45 +14,13 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface ISoftwareUpdateConfigurationMachineRunsOperations
     {
         /// <summary>
-        /// Get a single software update configuration machine run by Id.
-        /// </summary>
-        /// <remarks>
-        /// Get a single software update configuration machine run by Id.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
-        /// </param>
-        /// <param name='automationAccountName'>
-        /// The name of the automation account.
-        /// </param>
-        /// <param name='softwareUpdateConfigurationMachineRunId'>
-        /// The Id of the software update configuration machine run.
-        /// </param>
-        /// <param name='clientRequestId'>
-        /// Identifies this specific client request.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SoftwareUpdateConfigurationMachineRun>> GetByIdWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Return list of software update configuration machine runs
         /// </summary>
         /// <remarks>
         /// Return list of software update configuration machine runs
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -84,6 +52,38 @@ namespace Microsoft.Azure.Management.Automation
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SoftwareUpdateConfigurationMachineRunListResult>> ListWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string clientRequestId = default(string), string filter = default(string), string skip = default(string), string top = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a single software update configuration machine run by Id.
+        /// </summary>
+        /// <remarks>
+        /// Get a single software update configuration machine run by Id.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='automationAccountName'>
+        /// The name of the automation account.
+        /// </param>
+        /// <param name='softwareUpdateConfigurationMachineRunId'>
+        /// The Id of the software update configuration machine run.
+        /// </param>
+        /// <param name='clientRequestId'>
+        /// Identifies this specific client request.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SoftwareUpdateConfigurationMachineRun>> GetByIdWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, System.Guid softwareUpdateConfigurationMachineRunId, string clientRequestId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

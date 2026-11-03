@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters",
-  "apiVersion": "2026-01-01",
+  "apiVersion": "2026-07-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
   },
@@ -53,6 +53,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventHubUpgradePreferencesOperation",
+      "description": "Gets the upgrade preferences for an Event Hubs Dedicated cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/upgradePreferences/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubupgradepreferencesoperation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the upgrade preferences for an Event Hubs Dedicated cluster.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
               "value": "[Path.clusterName]"
             },
             {

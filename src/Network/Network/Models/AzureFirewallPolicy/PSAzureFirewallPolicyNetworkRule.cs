@@ -41,6 +41,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("destinationFqdns")]
         public List<string> DestinationFqdns { get; set; }
 
+        [JsonProperty("sourceGeoLocations")]
+        public List<string> SourceGeoLocations { get; set; }
+
+        [JsonProperty("destinationGeoLocations")]
+        public List<string> DestinationGeoLocations { get; set; }
+
         [JsonProperty("description")]
         public string Description { get; set; }
 
@@ -84,6 +90,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationFqdnsText
         {
             get { return JsonConvert.SerializeObject(DestinationFqdns, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string SourceGeoLocationsText
+        {
+            get { return JsonConvert.SerializeObject(SourceGeoLocations, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationGeoLocationsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationGeoLocations, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType)

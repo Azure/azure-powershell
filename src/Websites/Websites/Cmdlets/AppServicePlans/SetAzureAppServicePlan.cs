@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlan"), OutputType(typeof(PSAppServicePlan))]
-    public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
+    public class SetAzureAppServicePlanCmdlet : AppServicePlanConfigurationBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the admin web app")]
         [ValidateNotNullOrEmpty]
@@ -66,7 +66,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                         WorkerSize,
                         this.IsParameterBound(c => c.Tier) && !string.IsNullOrWhiteSpace(Tier),
                         this.IsParameterBound(c => c.WorkerSize) && !string.IsNullOrWhiteSpace(WorkerSize));
-                    AppServicePlan.PerSiteScaling = PerSiteScaling;
+                    if (this.IsParameterBound(c => c.PerSiteScaling))
+                    {
+                        AppServicePlan.PerSiteScaling = PerSiteScaling;
+                    }
                     if (Tag != null && AppServicePlan.Tags != null)
                         CmdletHelpers.ConvertToStringDictionary(Tag).ForEach(item =>
                         {
@@ -90,6 +93,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
                 AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
             }
+
+            if (AppServicePlan.IsCustomMode == true && AppServicePlan.PerSiteScaling == true)
+            {
+                throw new System.ArgumentException("Managed Instance plans do not support per-site scaling.", nameof(PerSiteScaling));
+            }
+
+            ApplyManagedInstanceConfiguration(AppServicePlan);
 
             WriteObject(new PSAppServicePlan(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, AppServicePlan)), true);
         }

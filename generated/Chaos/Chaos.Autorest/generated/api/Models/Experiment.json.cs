@@ -66,8 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.TrackedResource(json);
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ResourceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ExperimentProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -102,10 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
                 return container;
             }
             __trackedResource?.ToJson(container, serializationMode);
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
-            }
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);

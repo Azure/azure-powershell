@@ -152,7 +152,15 @@ param(
     # List of auto-protection exclusion rules.
     # Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
     # Use this parameter along with -AutoProtection.
-    ${AutoProtectionExclusionRule}
+    ${AutoProtectionExclusionRule},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # List of resource selectors (volume names) to be backed up.
+    # Use this parameter for DatasourceType AzureElasticSAN.
+    # The service currently supports exactly one volume per backup instance.
+    ${ResourceSelector}
 )
 
 begin {

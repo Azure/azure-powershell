@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ResourceGraph", "..\..\generated\ResourceGraph\ResourceGraph.Autorest\Az.ResourceGraph.csproj", "{570206A0-A3F2-4203-8295-DB82E5CDA92A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C70FFE-D31B-40C7-8D1F-9D24BCAD63FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570206A0-A3F2-4203-8295-DB82E5CDA92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570206A0-A3F2-4203-8295-DB82E5CDA92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570206A0-A3F2-4203-8295-DB82E5CDA92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570206A0-A3F2-4203-8295-DB82E5CDA92A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,5 +143,6 @@ Global
 		{B6142316-FB56-4E11-937D-706D409C5149} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{EAAF6FA4-CCCF-472E-9671-2724923916F6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{371AAFEC-7F5B-45BD-89EE-E55B9180CD2D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{570206A0-A3F2-4203-8295-DB82E5CDA92A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 EndGlobal

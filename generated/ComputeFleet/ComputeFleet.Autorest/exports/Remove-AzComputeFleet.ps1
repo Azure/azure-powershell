@@ -20,9 +20,12 @@ Delete a Fleet
 .Description
 Delete a Fleet
 .Example
-Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst"
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
 .Example
-Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" -PassThru
+Remove-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup" -PassThru
+.Example
+$fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
+Remove-AzComputeFleet -InputObject $fleet -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity

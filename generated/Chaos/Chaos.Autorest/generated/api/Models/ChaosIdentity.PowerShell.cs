@@ -83,6 +83,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("ExperimentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId = (string) content.GetValueForProperty("ExecutionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).VersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetTypeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName = (string) content.GetValueForProperty("TargetTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapabilityTypeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName = (string) content.GetValueForProperty("CapabilityTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateAccessName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateAccessName = (string) content.GetValueForProperty("PrivateAccessName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateAccessName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
             if (content.Contains("ParentProviderNamespace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ParentProviderNamespace = (string) content.GetValueForProperty("ParentProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ParentProviderNamespace, global::System.Convert.ToString);
@@ -103,33 +147,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityName = (string) content.GetValueForProperty("CapabilityName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityName, global::System.Convert.ToString);
             }
-            if (content.Contains("LocationName"))
+            if (content.Contains("DiscoveredResourceName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).LocationName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).DiscoveredResourceName = (string) content.GetValueForProperty("DiscoveredResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).DiscoveredResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("TargetTypeName"))
+            if (content.Contains("ScenarioName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName = (string) content.GetValueForProperty("TargetTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioName = (string) content.GetValueForProperty("ScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioName, global::System.Convert.ToString);
             }
-            if (content.Contains("CapabilityTypeName"))
+            if (content.Contains("ScenarioConfigurationName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName = (string) content.GetValueForProperty("CapabilityTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioConfigurationName = (string) content.GetValueForProperty("ScenarioConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioConfigurationName, global::System.Convert.ToString);
             }
-            if (content.Contains("ExperimentName"))
+            if (content.Contains("RunId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId = (string) content.GetValueForProperty("ExecutionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("AsyncOperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).AsyncOperationId = (string) content.GetValueForProperty("AsyncOperationId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).AsyncOperationId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).RunId = (string) content.GetValueForProperty("RunId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).RunId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -160,6 +192,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("ExperimentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExecutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId = (string) content.GetValueForProperty("ExecutionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VersionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).VersionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetTypeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName = (string) content.GetValueForProperty("TargetTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CapabilityTypeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName = (string) content.GetValueForProperty("CapabilityTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateAccessName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateAccessName = (string) content.GetValueForProperty("PrivateAccessName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateAccessName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
             if (content.Contains("ParentProviderNamespace"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ParentProviderNamespace = (string) content.GetValueForProperty("ParentProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ParentProviderNamespace, global::System.Convert.ToString);
@@ -180,33 +256,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityName = (string) content.GetValueForProperty("CapabilityName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityName, global::System.Convert.ToString);
             }
-            if (content.Contains("LocationName"))
+            if (content.Contains("DiscoveredResourceName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).LocationName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).DiscoveredResourceName = (string) content.GetValueForProperty("DiscoveredResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).DiscoveredResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("TargetTypeName"))
+            if (content.Contains("ScenarioName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName = (string) content.GetValueForProperty("TargetTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).TargetTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioName = (string) content.GetValueForProperty("ScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioName, global::System.Convert.ToString);
             }
-            if (content.Contains("CapabilityTypeName"))
+            if (content.Contains("ScenarioConfigurationName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName = (string) content.GetValueForProperty("CapabilityTypeName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).CapabilityTypeName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioConfigurationName = (string) content.GetValueForProperty("ScenarioConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ScenarioConfigurationName, global::System.Convert.ToString);
             }
-            if (content.Contains("ExperimentName"))
+            if (content.Contains("RunId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName = (string) content.GetValueForProperty("ExperimentName",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExperimentName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExecutionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId = (string) content.GetValueForProperty("ExecutionId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).ExecutionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("AsyncOperationId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).AsyncOperationId = (string) content.GetValueForProperty("AsyncOperationId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).AsyncOperationId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).RunId = (string) content.GetValueForProperty("RunId",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentityInternal)this).RunId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

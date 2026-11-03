@@ -24,13 +24,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the SoftwareUpdateConfigurationMachineRunListResult class.
         /// </summary>
 
-        /// <param name="value">outer object returned when listing all software update configuration
-        /// machine runs
+        /// <param name="value">The softwareUpdateConfigurationMachineRun items on this page
         /// </param>
 
-        /// <param name="nextLink">link to next page of results.
+        /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public SoftwareUpdateConfigurationMachineRunListResult(System.Collections.Generic.IList<SoftwareUpdateConfigurationMachineRun> value = default(System.Collections.Generic.IList<SoftwareUpdateConfigurationMachineRun>), string nextLink = default(string))
+        public SoftwareUpdateConfigurationMachineRunListResult(System.Collections.Generic.IList<SoftwareUpdateConfigurationMachineRun> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -45,16 +44,30 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets outer object returned when listing all software update
-        /// configuration machine runs
+        /// Gets or sets the softwareUpdateConfigurationMachineRun items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public System.Collections.Generic.IList<SoftwareUpdateConfigurationMachineRun> Value {get; set; }
 
         /// <summary>
-        /// Gets or sets link to next page of results.
+        /// Gets or sets the link to the next page of items
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Value == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Value");
+            }
+
+
+        }
     }
 }

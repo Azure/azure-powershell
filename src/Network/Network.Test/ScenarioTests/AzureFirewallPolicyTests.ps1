@@ -252,11 +252,13 @@ function Test-AzureFirewallPolicyCRUD {
         $result = $azureFirewallPolicyAsJob | Wait-Job
         Assert-AreEqual "Completed" $result.State
     }
+
     finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
 }
+
 
 <#
 .SYNOPSIS
@@ -2496,6 +2498,114 @@ function Test-AzureFirewallPolicyKubeSelectorGroupCRUD {
         # Verify removal
         $listAfter = Get-AzFirewallPolicyKubeSelectorGroup -ResourceGroupName $rgname -AzureFirewallPolicyName $azureFirewallPolicyName
         Assert-AreEqual 0 @($listAfter).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
+Tests AzureFirewallPolicy CRUD with Network Rule source/destination Geo Locations.
+#>
+function Test-AzureFirewallPolicyCRUDWithNetworkRuleGeoLocations {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "eastus2euap"
+
+    $ruleGroupName = Get-ResourceName
+
+    # AzureFirewallPolicyNetworkRuleCollection
+    $networkRcName = "networkRc"
+    $networkRcPriority = 200
+    $networkRcActionType = "Deny"
+
+    # AzureFirewallPolicyNetworkRule 1 - source geo location
+    $networkRule1Name = "networkRuleSourceGeo"
+    $networkRule1Desc = "desc1"
+    $networkRule1Protocol1 = "TCP"
+    $networkRule1SourceGeo1 = "US"
+    $networkRule1SourceGeo2 = "CA"
+    $networkRule1DestinationAddress1 = "10.10.10.1"
+    $networkRule1DestinationPort1 = "90"
+
+    # AzureFirewallPolicyNetworkRule 2 - destination geo location
+    $networkRule2Name = "networkRuleDestinationGeo"
+    $networkRule2Desc = "desc2"
+    $networkRule2Protocol1 = "TCP"
+    $networkRule2SourceAddress1 = "192.168.0.0/16"
+    $networkRule2DestinationGeo1 = "US"
+    $networkRule2DestinationGeo2 = "GB"
+    $networkRule2DestinationPort1 = "443"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+
+        # Create Network Rule with source Geo Locations
+        $networkRule1 = New-AzFirewallPolicyNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1 -SourceGeoLocation $networkRule1SourceGeo1, $networkRule1SourceGeo2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
+
+        # Create Network Rule with destination Geo Locations
+        $networkRule2 = New-AzFirewallPolicyNetworkRule -Name $networkRule2Name -Description $networkRule2Desc -Protocol $networkRule2Protocol1 -SourceAddress $networkRule2SourceAddress1 -DestinationGeoLocation $networkRule2DestinationGeo1, $networkRule2DestinationGeo2 -DestinationPort $networkRule2DestinationPort1
+
+        # Create a Filter Rule Collection with the two network rules
+        $networkRc = New-AzFirewallPolicyFilterRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule1, $networkRule2 -ActionType $networkRcActionType
+
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $networkRc -FirewallPolicyObject $azureFirewallPolicy
+
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+
+        # Check rule collection groups count
+        Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
+
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+        Assert-AreEqual 1 @($getRg.properties.ruleCollection).Count
+
+        $filterRuleCollection = $getRg.Properties.GetRuleCollectionByName($networkRcName)
+        Assert-AreEqual $networkRcName $filterRuleCollection.Name
+        Assert-AreEqual $networkRcPriority $filterRuleCollection.Priority
+        Assert-AreEqual $networkRcActionType $filterRuleCollection.Action.Type
+        Assert-AreEqual 2 $filterRuleCollection.Rules.Count
+
+        # Verify network rule 1 - source geo locations
+        $networkRule1Get = $filterRuleCollection.GetRuleByName($networkRule1Name)
+        Assert-AreEqual $networkRule1Name $networkRule1Get.Name
+        Assert-AreEqual 2 $networkRule1Get.SourceGeoLocations.Count
+        Assert-AreEqual $networkRule1SourceGeo1 $networkRule1Get.SourceGeoLocations[0]
+        Assert-AreEqual $networkRule1SourceGeo2 $networkRule1Get.SourceGeoLocations[1]
+        Assert-AreEqual 1 $networkRule1Get.DestinationAddresses.Count
+        Assert-AreEqual $networkRule1DestinationAddress1 $networkRule1Get.DestinationAddresses[0]
+
+        # Verify network rule 2 - destination geo locations
+        $networkRule2Get = $filterRuleCollection.GetRuleByName($networkRule2Name)
+        Assert-AreEqual $networkRule2Name $networkRule2Get.Name
+        Assert-AreEqual 1 $networkRule2Get.SourceAddresses.Count
+        Assert-AreEqual $networkRule2SourceAddress1 $networkRule2Get.SourceAddresses[0]
+        Assert-AreEqual 2 $networkRule2Get.DestinationGeoLocations.Count
+        Assert-AreEqual $networkRule2DestinationGeo1 $networkRule2Get.DestinationGeoLocations[0]
+        Assert-AreEqual $networkRule2DestinationGeo2 $networkRule2Get.DestinationGeoLocations[1]
+
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State
     }
     finally {
         # Cleanup

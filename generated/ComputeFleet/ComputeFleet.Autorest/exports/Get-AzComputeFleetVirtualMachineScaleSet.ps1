@@ -20,9 +20,11 @@ List VirtualMachineScaleSet resources by Fleet
 .Description
 List VirtualMachineScaleSet resources by Fleet
 .Example
-Get-AzComputeFleetVirtualMachineScaleSet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001"
+Get-AzComputeFleetVirtualMachineScaleSet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, OperationStatus
 .Example
-Get-AzComputeFleetVirtualMachineScaleSet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Select-Object Name, Id, OperationStatus
+Get-AzComputeFleetVirtualMachineScaleSet -Name "managedFleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Id, OperationStatus
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet

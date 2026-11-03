@@ -1,0 +1,139 @@
+{
+  "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "7d7de5f3-6ace-4d44-8ded-aad809e35f1f" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "103b7ccd-1639-4885-9dd7-4b8c6c3781b1" ],
+        "x-ms-correlation-request-id": [ "c619a948-577b-4c00-a2d6-61290c9a9b64" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T013548Z:c619a948-577b-4c00-a2d6-61290c9a9b64" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C1122DEF01E48E0BBDE13F236887E44 Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:48Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6525" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetg14qua\",\"name\":\"sgdeprelgetg14qua\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:12:26.7191843Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:12:26.7191843Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-g14qua\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreluptg14qua\",\"name\":\"sgdepreluptg14qua\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:14:06.2365561Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:26:25.213084Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-g14qua\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelnewg14qua\",\"name\":\"sgdeprelnewg14qua\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:20:15.8706889Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:20:15.8706889Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-g14qua\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n\",\"name\":\"sgdeprelgetgr2f8n\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:51.6692523Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:51.6692523Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreluptgr2f8n\",\"name\":\"sgdepreluptgr2f8n\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:32:29.2993905Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:32:29.2993905Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdepreldelgr2f8n\",\"name\":\"sgdepreldelgr2f8n\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:35:13.07541Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:35:13.07541Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}},{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelnewg14quaidentity\",\"name\":\"sgdeprelnewg14quaidentity\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:20:48.4381129Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:20:48.4381129Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-g14qua\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "887fee7c-a7bc-4d2e-af32-d7dc99bd3016" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a047c84-0000-1100-0000-6ab47d4c0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9e573d3a-5355-42e7-a519-23eea78f5ef3" ],
+        "x-ms-correlation-request-id": [ "ff7c1b78-3d46-4451-8d6e-8a8fe62d4db2" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T013549Z:ff7c1b78-3d46-4451-8d6e-8a8fe62d4db2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D8A3DAEFF2184792BC7598E19625FC93 Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:49Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "928" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n\",\"name\":\"sgdeprelgetgr2f8n\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:51.6692523Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:51.6692523Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n?api-version=2026-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n?api-version=2026-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "9b26c01c-89f6-4256-9871-a5d3a615d6ba" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationshipsByServiceGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.6", "Az.Relationships/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a047c84-0000-1100-0000-6ab47d4c0000\"" ],
+        "x-ms-operation-identifier": [ "" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bdac3e7f-c0f8-44b6-a880-8235c3e91678" ],
+        "x-ms-correlation-request-id": [ "4450ced9-dff3-48d9-b866-386198c75fa0" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20260924T013549Z:4450ced9-dff3-48d9-b866-386198c75fa0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D417FE7FD7CB4B3BB505969AABEC2D3B Ref B: SN4AA2022304025 Ref C: 2026-09-24T01:35:49Z" ],
+        "Date": [ "Thu, 24 Sep 2026 01:35:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "928" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e/providers/Microsoft.Relationships/dependencyOf/sgdeprelgetgr2f8n\",\"name\":\"sgdeprelgetgr2f8n\",\"type\":\"microsoft.relationships/dependencyof\",\"systemData\":{\"createdBy\":\"meghanagupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-09-24T01:30:51.6692523Z\",\"lastModifiedBy\":\"meghanagupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-09-24T01:30:51.6692523Z\"},\"properties\":{\"targetId\":\"/subscriptions/8fa5bc9b-4c52-4046-9d1b-4e6766092b0b/resourceGroups/rg-rel-sgm-gr2f8n\",\"sourceId\":\"/providers/Microsoft.Management/serviceGroups/SDKTestsSG-udu83e\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Management/serviceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

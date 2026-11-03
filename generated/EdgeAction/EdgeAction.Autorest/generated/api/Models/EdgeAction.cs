@@ -13,7 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     public partial class EdgeAction :
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeAction,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IValidates,
+        Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IHeaderSerializable
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ITrackedResource" />
@@ -23,6 +24,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         /// <summary>A list of attachments for the edge action</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment> Attachment { get => ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionPropertiesInternal)Property).Attachment; }
+
+        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
+        private string _azureAsyncOperation;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
+        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -96,6 +103,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.FormatTable]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
+        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
+        private int? _retryAfter;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Origin(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PropertyOrigin.Owned)]
+        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
+
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuType _sku;
 
@@ -164,6 +177,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
 
         }
 
+        /// <param name="headers"></param>
+        void Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
+        {
+            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
+            }
+            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader1))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader1) is string __headerRetryAfterHeader1 ? int.TryParse( __headerRetryAfterHeader1, out int __headerRetryAfterHeader1Value ) ? __headerRetryAfterHeader1Value : default(int?) : default(int?);
+            }
+        }
+
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
@@ -192,6 +218,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         SerializedName = @"attachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment> Attachment { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"Azure-AsyncOperation",
+        PossibleTypes = new [] { typeof(string) })]
+        string AzureAsyncOperation { get; set; }
         /// <summary>The provisioning state of the edge action</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = false,
@@ -204,6 +241,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"Retry-After",
+        PossibleTypes = new [] { typeof(int) })]
+        int? RetryAfter { get; set; }
         /// <summary>The name of the SKU</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Info(
         Required = true,
@@ -234,11 +282,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models
     {
         /// <summary>A list of attachments for the edge action</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionAttachment> Attachment { get; set; }
+
+        string AzureAsyncOperation { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionProperties Property { get; set; }
         /// <summary>The provisioning state of the edge action</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Upgrading")]
         string ProvisioningState { get; set; }
+
+        int? RetryAfter { get; set; }
         /// <summary>The sku type of the edge action</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.ISkuType Sku { get; set; }
         /// <summary>The name of the SKU</summary>

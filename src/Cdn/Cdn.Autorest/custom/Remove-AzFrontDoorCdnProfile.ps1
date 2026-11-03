@@ -176,9 +176,11 @@ function Remove-AzFrontDoorCdnProfile {
         $hasPassThru = $PSBoundParameters.Remove('PassThru')
 
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzFrontDoorCdnProfile' -BoundParameters $PSBoundParameters
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @readParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
+            $readParameters = Get-AzCdnReadParameters -CommandName 'Get-AzFrontDoorCdnProfile' -BoundParameters $PSBoundParameters
+            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @readParameters
         } else {
             throw "Not supported ParameterSetName."
         }

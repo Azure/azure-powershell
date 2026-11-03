@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-A long-running resource action.
+Get the version code for the edge action version.
 .Description
-A long-running resource action.
+Get the version code for the edge action version.
 .Example
 Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 .Example

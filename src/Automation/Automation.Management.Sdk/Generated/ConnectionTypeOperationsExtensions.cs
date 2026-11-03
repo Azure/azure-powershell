@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class ConnectionTypeOperationsExtensions
     {
         /// <summary>
-        /// Delete the connection type.
+        /// Retrieve a list of connection types.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='connectionTypeName'>
-        /// The name of connection type.
-        /// </param>
-        public static void Delete(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, string connectionTypeName)
+        public static Microsoft.Rest.Azure.IPage<ConnectionType> ListByAutomationAccount(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName)
         {
-                ((IConnectionTypeOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, connectionTypeName).GetAwaiter().GetResult();
+                return ((IConnectionTypeOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the connection type.
+        /// Retrieve a list of connection types.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
-        /// </param>
-        /// <param name='connectionTypeName'>
-        /// The name of connection type.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, string connectionTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionType>> ListByAutomationAccountAsync(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, connectionTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieve the connection type identified by connection type name.
@@ -61,7 +58,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -106,13 +103,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='connectionTypeName'>
-        /// The parameters supplied to the create or update connection type operation.
+        /// The name of connection type.
         /// </param>
         public static ConnectionType CreateOrUpdate(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, string connectionTypeName, ConnectionTypeCreateOrUpdateParameters parameters)
         {
@@ -126,13 +123,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='connectionTypeName'>
-        /// The parameters supplied to the create or update connection type operation.
+        /// The name of connection type.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,43 +142,46 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of connection types.
+        /// Delete the connection type.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ConnectionType> ListByAutomationAccount(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName)
+        /// <param name='connectionTypeName'>
+        /// The name of connection type.
+        /// </param>
+        public static void Delete(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, string connectionTypeName)
         {
-                return ((IConnectionTypeOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName).GetAwaiter().GetResult();
+                ((IConnectionTypeOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, connectionTypeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of connection types.
+        /// Delete the connection type.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
+        /// </param>
+        /// <param name='connectionTypeName'>
+        /// The name of connection type.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionType>> ListByAutomationAccountAsync(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IConnectionTypeOperations operations, string resourceGroupName, string automationAccountName, string connectionTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, connectionTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of connection types.

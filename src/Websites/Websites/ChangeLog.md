@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for creating and updating App Service Environment plans with Isolated v4 and memory-optimized Isolated v4 SKUs.
+* Added Managed Instance support to `New-AzAppServicePlan` and `Set-AzAppServicePlan`, including managed identities, installation scripts, storage mounts, registry adapters, virtual network integration, and Remote Desktop Protocol (RDP) settings.
+* Added `Get-AzAppServicePlanManagedInstance` to list Managed Instance workers and their IP addresses and status.
+* Added `Restart-AzAppServicePlanManagedInstance` to recycle individual Managed Instance workers.
+* Added `Get-AzAppServicePlanRdpCredential` to retrieve secure Remote Desktop Protocol (RDP) credentials for Managed Instance plans.
+* Removed the unsupported identity and JSON parameter sets from `New-AzStaticWebApp`.
+
+## Version 4.2.0
+* Upgraded the Microsoft.Web API version from 2021-01-15 to 2025-05-01. Microsoft.CertificateRegistration and Microsoft.DomainRegistration remain on 2021-01-15.
+
+## Version 4.1.0
+* Added App Service Environment plan create and update support for Isolated v4 and memory-optimized Isolated v4 SKUs.
 
 ## Version 4.0.0
 * Added ChangeSafety Support

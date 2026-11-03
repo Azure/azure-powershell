@@ -74,5 +74,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceScanConfiguration")]
         public SourceScanConfiguration SourceScanConfiguration {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.ImmutabilitySettings != null)
+            {
+                this.ImmutabilitySettings.Validate();
+            }
+
+
+
+        }
     }
 }

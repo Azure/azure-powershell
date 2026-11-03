@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Mission.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Mission.Models.ICommunityEndpointResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Description(@"update a CommunityEndpointResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}", ApiVersion = "2026-03-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}", ApiVersion = "2026-04-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Mission.NotSuggestDefaultParameterSet]
     public partial class UpdateAzMissionCommunityEndpoint_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Mission.Runtime.IEventListener,

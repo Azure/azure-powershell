@@ -1,6 +1,6 @@
 {
   "resourceType": "storageMovers/projects/jobDefinitions",
-  "apiVersion": "2025-12-01",
+  "apiVersion": "2026-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storagemover"
   },
@@ -31,6 +31,54 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.jobDefinitionName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzStorageMoverReconcileJobDefinition",
+      "description": "Post action to reconcile the running job.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/reconcileJob",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagemover/invoke-azstoragemoverreconcilejobdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-JobDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageMoverName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Post action to reconcile the running job.",
+          "parameters": [
+            {
+              "name": "-JobDefinitionName",
               "value": "[Path.jobDefinitionName]"
             },
             {

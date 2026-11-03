@@ -8,15 +8,20 @@ schema: 2.0.0
 # Update-AzEdgeActionExecutionFilter
 
 ## SYNOPSIS
-Update a EdgeActionExecutionFilter
+Update the properties and tags of an Edge Action execution filter.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags; the current expanded serializer omits `-Tag @{}`.
+Null tags are rejected.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ExecutionFilterIdentifierHeaderName <String>]
+ [-ExecutionFilterIdentifierHeaderValue <String>] [-Tag <Hashtable>] [-VersionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -36,7 +41,8 @@ Update-AzEdgeActionExecutionFilter -EdgeActionName <String> -ExecutionFilter <St
 ### UpdateViaIdentityEdgeActionExpanded
 ```
 Update-AzEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObject <IEdgeActionIdentity>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,13 +55,17 @@ Update-AzEdgeActionExecutionFilter -ExecutionFilter <String> -EdgeActionInputObj
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzEdgeActionExecutionFilter -InputObject <IEdgeActionIdentity>
+ [-ExecutionFilterIdentifierHeaderName <String>] [-ExecutionFilterIdentifierHeaderValue <String>]
+ [-Tag <Hashtable>] [-VersionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a EdgeActionExecutionFilter
+Update the properties and tags of an Edge Action execution filter.
+Omitted tags are preserved, an empty tags object clears all tags, and supplied tags replace the entire tag collection.
+Use `-JsonString '{"tags":{}}'` to clear tags. The current expanded serializer omits `-Tag @{}`, so an expanded update does not send the empty tags object required for clearing.
+Null tags are rejected.
 
 ## EXAMPLES
 
@@ -72,6 +82,13 @@ myFilter global   Succeeded
 
 Updates the specified execution filter with the provided tags.
 
+### Example 2: Clear all tags with an explicit JSON body
+```powershell
+Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ExecutionFilter "myFilter" -JsonString '{"tags":{}}'
+```
+
+Removes all tags without changing the execution filter properties. Use the JSON parameter set because the expanded serializer omits an empty `-Tag @{}` object.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -79,7 +96,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -95,7 +112,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -144,6 +161,36 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Upda
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionFilterIdentifierHeaderName
+Custom Header Key associated with the execution filter
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionFilterIdentifierHeaderValue
+Custom Header Value associated with the execution filter
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,7 +247,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Concrete tracked resource types can be created by aliasing this type using a specific property type.
+The type used for update operations of the EdgeActionExecutionFilter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate
@@ -272,12 +319,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VersionId
+The referenced versionId of the edgeaction version
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: cf
 
 Required: False
@@ -293,7 +355,7 @@ The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEdgeActionExpanded, UpdateViaIdentityEdgeAction, UpdateViaIdentityExpanded
 Aliases: wi
 
 Required: False

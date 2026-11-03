@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMissionWorkload'))
 }
 
 Describe 'Get-AzMissionWorkload' {
-    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission preview subscription.
+    # NOTE: Skipped until a Recording.json is captured against a live Microsoft.Mission subscription.
     It 'Get' -skip {
         {
             $workload = Get-AzMissionWorkload -Name $env.workloadName -ResourceGroupName $env.resourceGroup -VirtualEnclaveName $env.enclaveName

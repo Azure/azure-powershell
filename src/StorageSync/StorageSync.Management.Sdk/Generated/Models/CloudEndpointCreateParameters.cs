@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
         /// <param name="friendlyName">Friendly Name
         /// </param>
-        public CloudEndpointCreateParameters(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string friendlyName = default(string))
+
+        /// <param name="changeEnumerationIntervalDays">The interval for enumerating changes on the cloud endpoint.
+        /// </param>
+        public CloudEndpointCreateParameters(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string storageAccountResourceId = default(string), string azureFileShareName = default(string), string storageAccountTenantId = default(string), string friendlyName = default(string), int? changeEnumerationIntervalDays = default(int?))
 
         : base(id, name, type, systemData)
         {
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             this.AzureFileShareName = azureFileShareName;
             this.StorageAccountTenantId = storageAccountTenantId;
             this.FriendlyName = friendlyName;
+            this.ChangeEnumerationIntervalDays = changeEnumerationIntervalDays;
             CustomInit();
         }
 
@@ -91,5 +95,35 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.friendlyName")]
         public string FriendlyName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the interval for enumerating changes on the cloud endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.changeEnumerationIntervalDays")]
+        public int? ChangeEnumerationIntervalDays {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+            if (this.ChangeEnumerationIntervalDays != null)
+            {
+                if (this.ChangeEnumerationIntervalDays > 20)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ChangeEnumerationIntervalDays", 20);
+                }
+                if (this.ChangeEnumerationIntervalDays < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ChangeEnumerationIntervalDays", 1);
+                }
+            }
+        }
     }
 }

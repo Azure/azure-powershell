@@ -14,65 +14,63 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use GetProtectedItemOperationResult
-        /// API.
+        /// To know the status of this API call, use
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents the backed up data to be restored.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
         /// </param>
-        public static void Trigger(this IRestoresOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string))
+        public static RestoresTriggerHeaders Trigger(this IRestoresOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                ((IRestoresOperations)operations).TriggerAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
+                return ((IRestoresOperations)operations).TriggerAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use GetProtectedItemOperationResult
-        /// API.
+        /// To know the status of this API call, use
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents the backed up data to be restored.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -80,71 +78,72 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task TriggerAsync(this IRestoresOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RestoresTriggerHeaders> TriggerAsync(this IRestoresOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.TriggerWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use GetProtectedItemOperationResult
-        /// API.
+        /// To know the status of this API call, use
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents the backed up data to be restored.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
         /// </param>
-        public static void BeginTrigger(this IRestoresOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string))
+        public static RestoresTriggerHeaders BeginTrigger(this IRestoresOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                ((IRestoresOperations)operations).BeginTriggerAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
+                return ((IRestoresOperations)operations).BeginTriggerAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use GetProtectedItemOperationResult
-        /// API.
+        /// To know the status of this API call, use
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='fabricName'>
-        /// Fabric name associated with the backed up items.
+        /// The name of the BackupFabricResource
         /// </param>
         /// <param name='containerName'>
-        /// Container name associated with the backed up items.
+        /// Name of the container whose details need to be fetched.
         /// </param>
         /// <param name='protectedItemName'>
-        /// Backed up item to be restored.
+        /// Backed up item name whose details are to be fetched.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents the backed up data to be restored.
+        /// RecoveryPointID represents the backed up data to be fetched.
         /// </param>
         /// <param name='xMsAuthorizationAuxiliary'>
         /// 
@@ -152,9 +151,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginTriggerAsync(this IRestoresOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RestoresTriggerHeaders> BeginTriggerAsync(this IRestoresOperations operations, string resourceGroupName, string vaultName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginTriggerWithHttpMessagesAsync(resourceGroupName, vaultName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

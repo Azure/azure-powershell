@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class LinuxUpdateClasses
     {
+        /// <summary>
+        /// Unclassified
+        /// </summary>
         public const string Unclassified = "Unclassified";
+        /// <summary>
+        /// Critical
+        /// </summary>
         public const string Critical = "Critical";
+        /// <summary>
+        /// Security
+        /// </summary>
         public const string Security = "Security";
+        /// <summary>
+        /// Other
+        /// </summary>
         public const string Other = "Other";
     }
 }

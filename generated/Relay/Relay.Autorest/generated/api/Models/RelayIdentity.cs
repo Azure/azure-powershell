@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string AuthorizationRuleName { get => this._authorizationRuleName; set => this._authorizationRuleName = value; }
 
+        /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
+        private string _clusterName;
+
+        /// <summary>The name of the Relay cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
+        public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
+
         /// <summary>Backing field for <see cref="HybridConnectionName" /> property.</summary>
         private string _hybridConnectionName;
 
@@ -50,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="PrivateLinkResourceName" /> property.</summary>
         private string _privateLinkResourceName;
 
-        /// <summary>The PrivateLinkResource name</summary>
+        /// <summary>The name of the private link resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string PrivateLinkResourceName { get => this._privateLinkResourceName; set => this._privateLinkResourceName = value; }
 
@@ -64,17 +71,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -98,6 +102,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         SerializedName = @"authorizationRuleName",
         PossibleTypes = new [] { typeof(string) })]
         string AuthorizationRuleName { get; set; }
+        /// <summary>The name of the Relay cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Relay cluster.",
+        SerializedName = @"clusterName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ClusterName { get; set; }
         /// <summary>The hybrid connection name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
@@ -142,14 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The PrivateLinkResource name</summary>
+        /// <summary>The name of the private link resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The PrivateLinkResource name",
+        Description = @"The name of the private link resource.",
         SerializedName = @"privateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkResourceName { get; set; }
@@ -164,28 +179,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         SerializedName = @"relayName",
         PossibleTypes = new [] { typeof(string) })]
         string RelayName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -196,6 +208,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     {
         /// <summary>The authorization rule name.</summary>
         string AuthorizationRuleName { get; set; }
+        /// <summary>The name of the Relay cluster.</summary>
+        string ClusterName { get; set; }
         /// <summary>The hybrid connection name.</summary>
         string HybridConnectionName { get; set; }
         /// <summary>Resource identity path</summary>
@@ -204,16 +218,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         string NamespaceName { get; set; }
         /// <summary>The PrivateEndpointConnection name</summary>
         string PrivateEndpointConnectionName { get; set; }
-        /// <summary>The PrivateLinkResource name</summary>
+        /// <summary>The name of the private link resource.</summary>
         string PrivateLinkResourceName { get; set; }
         /// <summary>The relay name.</summary>
         string RelayName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

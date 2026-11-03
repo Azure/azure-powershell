@@ -10,8 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
     /// <summary>Replication protection Cluster.</summary>
     public partial class ReplicationProtectionCluster :
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionCluster,
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProxyResource();
 
         /// <summary>The Current active location of the Protection cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -53,12 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHealthError> HealthError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).HealthError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).HealthError = value ?? null /* arrayOf */; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
-
-        /// <summary>The protection cluster Id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id; }
 
         /// <summary>ARM Id of the job being executed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -74,12 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
 
         /// <summary>Internal Acessors for CurrentScenario</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ICurrentScenarioDetails Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.CurrentScenario { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).CurrentScenario; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).CurrentScenario = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.Id { get => this._id; set { {_id = value;} } }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.Name { get => this._name; set { {_name = value;} } }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterProperties Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ReplicationProtectionClusterProperties()); set { {_property = value;} } }
@@ -99,15 +97,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Internal Acessors for SharedDiskPropertySharedDiskProviderSpecificDetail</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISharedDiskReplicationProviderSpecificSettings Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.SharedDiskPropertySharedDiskProviderSpecificDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).SharedDiskPropertySharedDiskProviderSpecificDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).SharedDiskPropertySharedDiskProviderSpecificDetail = value ?? null /* model class */; }
 
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterInternal.Type { get => this._type; set { {_type = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>The name of the protection cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>The name of Policy governing this PE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
@@ -238,6 +260,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public global::System.DateTime? StartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).StartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).StartTime = value ?? default(global::System.DateTime); }
 
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
         /// <summary>The Test failover state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string TestFailoverState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).TestFailoverState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).TestFailoverState = value ?? null; }
@@ -246,22 +298,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inlined)]
         public string TestFailoverStateDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).TestFailoverStateDescription; set => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IReplicationProtectionClusterPropertiesInternal)Property).TestFailoverStateDescription = value ?? null; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
-
-        /// <summary>The Type of the object.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="ReplicationProtectionCluster" /> instance.</summary>
         public ReplicationProtectionCluster()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
     /// Replication protection Cluster.
     public partial interface IReplicationProtectionCluster :
-        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResource
     {
         /// <summary>The Current active location of the Protection cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
@@ -373,17 +437,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"healthErrors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHealthError) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHealthError> HealthError { get; set; }
-        /// <summary>The protection cluster Id.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The protection cluster Id.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
         /// <summary>ARM Id of the job being executed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -417,17 +470,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"lastSuccessfulTestFailoverTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastSuccessfulTestFailoverTime { get; set; }
-        /// <summary>The name of the protection cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The name of the protection cluster.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
         /// <summary>The name of Policy governing this PE.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -742,22 +784,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"testFailoverStateDescription",
         PossibleTypes = new [] { typeof(string) })]
         string TestFailoverStateDescription { get; set; }
-        /// <summary>The Type of the object.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The Type of the object.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
 
     }
     /// Replication protection Cluster.
-    internal partial interface IReplicationProtectionClusterInternal
-
+    internal partial interface IReplicationProtectionClusterInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProxyResourceInternal
     {
         /// <summary>The Current active location of the Protection cluster.</summary>
         string ActiveLocation { get; set; }
@@ -781,16 +812,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string CurrentScenarioName { get; set; }
         /// <summary>List of health errors.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHealthError> HealthError { get; set; }
-        /// <summary>The protection cluster Id.</summary>
-        string Id { get; set; }
         /// <summary>ARM Id of the job being executed.</summary>
         string JobId { get; set; }
         /// <summary>The last successful failover time.</summary>
         global::System.DateTime? LastSuccessfulFailoverTime { get; set; }
         /// <summary>The last successful test failover time.</summary>
         global::System.DateTime? LastSuccessfulTestFailoverTime { get; set; }
-        /// <summary>The name of the protection cluster.</summary>
-        string Name { get; set; }
         /// <summary>The name of Policy governing this PE.</summary>
         string PolicyFriendlyName { get; set; }
         /// <summary>The Policy Id.</summary>
@@ -863,8 +890,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string TestFailoverState { get; set; }
         /// <summary>The Test failover state description.</summary>
         string TestFailoverStateDescription { get; set; }
-        /// <summary>The Type of the object.</summary>
-        string Type { get; set; }
 
     }
 }

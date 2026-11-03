@@ -37,5 +37,25 @@ namespace Commands.Network.Test.UnitTests
             var mappedPublicIpTag = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpTag>(sdkIpTag);
             Assert.Equal(serviceTagId, mappedPublicIpTag.FirstPartyServiceTagId);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PublicIpPrefixFirstPartyServiceTagIdIsPreservedThroughSdkMapping()
+        {
+            const string serviceTagId =
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firstPartyServiceTags/service-tag";
+            var publicIpPrefixTag = new PSPublicIpPrefixTag
+            {
+                IpTagType = "FirstPartyUsage",
+                Tag = "/Sql",
+                FirstPartyServiceTagId = serviceTagId
+            };
+
+            var sdkIpTag = NetworkResourceManagerProfile.Mapper.Map<IpTag>(publicIpPrefixTag);
+            Assert.Equal(serviceTagId, sdkIpTag.FirstPartyServiceTagId);
+
+            var mappedPublicIpPrefixTag = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpPrefixTag>(sdkIpTag);
+            Assert.Equal(serviceTagId, mappedPublicIpPrefixTag.FirstPartyServiceTagId);
+        }
     }
 }

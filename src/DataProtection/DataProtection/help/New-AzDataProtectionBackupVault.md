@@ -16,12 +16,12 @@ Creates or updates a BackupVault resource belonging to a resource group.
 New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
  -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>]
  [-EnableSystemAssignedIdentity] [-AzureMonitorAlertsForAllJobFailure <String>] [-ImmutabilityState <String>]
- [-CrossRegionRestoreState <String>] [-CrossSubscriptionRestoreState <String>]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-CmkEncryptionState <String>] [-CmkInfrastructureEncryption <String>]
- [-CmkIdentityType <String>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CostManagementGranularity <String>] [-CrossRegionRestoreState <String>]
+ [-CrossSubscriptionRestoreState <String>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-CmkEncryptionState <String>] [-CmkInfrastructureEncryption <String>] [-CmkIdentityType <String>]
+ [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +176,22 @@ Accept wildcard characters: False
 ### -CmkUserAssignedIdentityId
 This parameter is required if the identity type is UserAssigned.
 Add the user assigned managed identity id to be used which has access permissions to the Key Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CostManagementGranularity
+Cost Management Granularity of the vault.
+Allowed values are VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag.
 
 ```yaml
 Type: System.String

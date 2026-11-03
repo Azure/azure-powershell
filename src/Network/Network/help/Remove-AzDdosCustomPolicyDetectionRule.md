@@ -175,6 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzDdosCustomPolicy](Get-AzDdosCustomPolicy.md)
 
+[Get-AzDdosCustomPolicyDetectionRule](Get-AzDdosCustomPolicyDetectionRule.md)
+
+[Set-AzDdosCustomPolicyDetectionRule](Set-AzDdosCustomPolicyDetectionRule.md)
+
 [New-AzDdosCustomPolicy](New-AzDdosCustomPolicy.md)
 
 [Add-AzDdosCustomPolicyDetectionRule](Add-AzDdosCustomPolicyDetectionRule.md)

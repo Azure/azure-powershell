@@ -3065,10 +3065,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -3078,10 +3096,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -3157,28 +3193,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ApplianceQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ApplianceQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ProviderType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ProviderType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -4479,46 +4493,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SendToOwner</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ConnectionDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ConnectionDetails#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LinkIdentifier</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MemberName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateIPAddress</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LinkIdentifier</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MemberName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateIPAddress</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6325,10 +6299,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -6338,10 +6330,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -6653,70 +6663,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>InstanceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.EventQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.EventQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AffectedObjectCorrelationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AffectedObjectFriendlyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EndTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EventCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EventType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FabricName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Severity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTime</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AffectedObjectCorrelationId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AffectedObjectFriendlyName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EndTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EventCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EventType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FabricName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Severity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -7448,70 +7394,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.FabricQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.FabricQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BiosId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DiscoveryType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExtendedLocationMapping</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FetchAgentDetail</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Fqdn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LocationDetail</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OSType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ZoneToZoneMapping</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BiosId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DiscoveryType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExtendedLocationMapping</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FetchAgentDetail</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Fqdn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LocationDetail</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OSType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ZoneToZoneMapping</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.FabricReplicationGroupTaskDetails</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.FabricReplicationGroupTaskDetails#Multiple</TypeName>
@@ -7989,52 +7871,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VmwareReadThroughput</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.GroupConnectivityInformation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.GroupConnectivityInformation#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>GroupId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InternalFqdn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MemberName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrivateLinkServiceArmRegion</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RedirectMapId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>GroupId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InternalFqdn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MemberName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateLinkServiceArmRegion</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RedirectMapId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -11617,6 +11453,9 @@
             <Label>ActiveLocation</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConvertToGen2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CustomLocationRegion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -11647,6 +11486,9 @@
             <Label>LastReplicationUpdateTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MigrateAsArcVM</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OSName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -11657,6 +11499,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RunAsAccountId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityOption</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SourceApplianceName</Label>
@@ -11726,6 +11571,9 @@
                 <PropertyName>ActiveLocation</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConvertToGen2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CustomLocationRegion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -11756,6 +11604,9 @@
                 <PropertyName>LastReplicationUpdateTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MigrateAsArcVM</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OSName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -11766,6 +11617,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RunAsAccountId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityOption</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SourceApplianceName</PropertyName>
@@ -11840,10 +11694,19 @@
             <Label>InstanceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConvertToGen2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsDynamicRam</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MigrateAsArcVM</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityOption</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TargetCpuCore</Label>
@@ -11859,10 +11722,19 @@
                 <PropertyName>InstanceType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConvertToGen2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IsDynamicRam</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MigrateAsArcVM</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityOption</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TargetCpuCore</PropertyName>
@@ -16422,90 +16294,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetails#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ErrorCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ErrorMessage</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PossibleCaus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RecommendedAction</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ErrorCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ErrorMessage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PossibleCaus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RecommendedAction</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetailsErrorMessageParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetailsErrorMessageParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetailsErrorTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentReinstallErrorDetailsErrorTags#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentUpgradeErrorDetails</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.InMageRcmLastAgentUpgradeErrorDetails#Multiple</TypeName>
@@ -19351,10 +19139,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -19364,10 +19170,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -20102,9 +19926,6 @@
             <Label>PrivateEndpointConnectionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PrivateEndpointConnectionProxyName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>PrivateLinkResourceName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -20251,9 +20072,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrivateEndpointConnectionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrivateEndpointConnectionProxyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrivateLinkResourceName</PropertyName>
@@ -20686,40 +20504,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrationItemsQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrationItemsQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>InstanceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceContainerName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceFabricName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>InstanceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceContainerName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceFabricName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrationProviderSpecificSettings</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrationProviderSpecificSettings#Multiple</TypeName>
@@ -20749,10 +20533,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -20762,10 +20564,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -20867,10 +20687,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -20880,10 +20718,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -20923,10 +20779,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -20936,10 +20810,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -21989,10 +21881,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -22002,10 +21912,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -22320,120 +22248,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxy</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxy#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Etag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxyListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxyListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxyProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionProxyProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionResponseProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateEndpointConnectionResponseProperties#Multiple</TypeName>
@@ -22563,34 +22377,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateLinkServiceConnection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PrivateLinkServiceConnection#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequestMessage</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequestMessage</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -23075,10 +22861,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -23088,10 +22892,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -23157,62 +22979,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ReplicationProtectedItemId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectableItemQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectableItemQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedClustersQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedClustersQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>InstanceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceFabricLocation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceFabricName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>InstanceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceFabricLocation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceFabricName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -23606,70 +23372,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemsQueryParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemsQueryParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>FabricObjectId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InstanceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>MultiVMGroupCreateOption</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProcessServerId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RecoveryPlanName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceFabricLocation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceFabricName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VCenterName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>FabricObjectId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InstanceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>MultiVMGroupCreateOption</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProcessServerId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RecoveryPlanName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceFabricLocation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceFabricName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VCenterName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectionContainer</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectionContainer#Multiple</TypeName>
@@ -23677,10 +23379,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -23690,10 +23410,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -23755,10 +23493,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -23768,10 +23524,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -24275,10 +24049,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -24288,10 +24080,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -25173,10 +24983,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -25186,10 +25014,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -25443,10 +25289,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -25456,10 +25320,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -25898,6 +25780,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -25906,6 +25806,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -26143,10 +26061,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -26156,10 +26092,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -26374,6 +26328,24 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -26382,6 +26354,24 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -26569,10 +26559,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -26582,10 +26590,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -26901,34 +26927,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ResourceAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ResourceAutoGenerated#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -27131,46 +27129,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>InstanceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.RoleAssignment</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.RoleAssignment#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RoleDefinitionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RoleDefinitionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -28147,10 +28105,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -28160,10 +28136,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -28203,10 +28197,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -28216,10 +28228,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -28381,10 +28411,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -28394,10 +28442,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -29657,10 +29723,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -29670,10 +29754,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -29811,7 +29913,13 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>PrivateEndpointState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicNetworkAccess</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceResourceId</Label>
@@ -29824,7 +29932,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>PrivateEndpointState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicNetworkAccess</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceResourceId</PropertyName>
@@ -29889,26 +30003,74 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location1</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetryAfter</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetryAfter</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -30029,10 +30191,28 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -30042,10 +30222,28 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -33721,6 +33919,9 @@
             <Label>ActiveLocation</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConvertToGen2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CustomLocationRegion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -33749,6 +33950,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastReplicationUpdateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MigrateAsArcVM</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MigrationProgressPercentage</Label>
@@ -33782,6 +33986,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RunAsAccountId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityOption</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SourceApplianceName</Label>
@@ -33851,6 +34058,9 @@
                 <PropertyName>ActiveLocation</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConvertToGen2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CustomLocationRegion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -33879,6 +34089,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastReplicationUpdateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MigrateAsArcVM</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MigrationProgressPercentage</PropertyName>
@@ -33912,6 +34125,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RunAsAccountId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityOption</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SourceApplianceName</PropertyName>
@@ -33986,10 +34202,19 @@
             <Label>InstanceType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConvertToGen2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsDynamicRam</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>MigrateAsArcVM</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityOption</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TargetCpuCore</Label>
@@ -34005,10 +34230,19 @@
                 <PropertyName>InstanceType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConvertToGen2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>IsDynamicRam</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>MigrateAsArcVM</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityOption</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TargetCpuCore</PropertyName>

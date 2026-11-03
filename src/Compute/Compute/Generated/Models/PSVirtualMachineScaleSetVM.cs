@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IDictionary<string, string> Tags { get; set; }
         public string UserData { get; set; }
         public string ResilientVMDeletionStatus { get; set; }
+        public CapacityReservationProfile CapacityReservation { get; set; }
 
     }
 }

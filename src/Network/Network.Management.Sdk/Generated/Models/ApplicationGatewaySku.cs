@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="name">Name of an application gateway SKU.
         /// Possible values include: &#39;Standard_Small&#39;, &#39;Standard_Medium&#39;,
         /// &#39;Standard_Large&#39;, &#39;WAF_Medium&#39;, &#39;WAF_Large&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;,
-        /// &#39;Basic&#39;</param>
+        /// &#39;Basic&#39;, &#39;Basic_v2&#39;, &#39;Basic_WAF_v2&#39;</param>
 
         /// <param name="tier">Tier of an application gateway.
         /// Possible values include: &#39;Standard&#39;, &#39;WAF&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;,
-        /// &#39;Basic&#39;</param>
+        /// &#39;Basic&#39;, &#39;Basic_v2&#39;, &#39;Basic_WAF_v2&#39;</param>
 
         /// <param name="capacity">Capacity (instance count) of an application gateway.
         /// </param>
@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets name of an application gateway SKU. Possible values include: &#39;Standard_Small&#39;, &#39;Standard_Medium&#39;, &#39;Standard_Large&#39;, &#39;WAF_Medium&#39;, &#39;WAF_Large&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;, &#39;Basic&#39;
+        /// Gets or sets name of an application gateway SKU. Possible values include: &#39;Standard_Small&#39;, &#39;Standard_Medium&#39;, &#39;Standard_Large&#39;, &#39;WAF_Medium&#39;, &#39;WAF_Large&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;, &#39;Basic&#39;, &#39;Basic_v2&#39;, &#39;Basic_WAF_v2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets tier of an application gateway. Possible values include: &#39;Standard&#39;, &#39;WAF&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;, &#39;Basic&#39;
+        /// Gets or sets tier of an application gateway. Possible values include: &#39;Standard&#39;, &#39;WAF&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;, &#39;Basic&#39;, &#39;Basic_v2&#39;, &#39;Basic_WAF_v2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tier")]
         public string Tier {get; set; }

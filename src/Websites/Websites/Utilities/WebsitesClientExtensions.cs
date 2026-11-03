@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Management.WebSites
         {
             return webApp.CreateOrUpdateSlot(resourceGroupName,
                 name,
-                siteEnvelope,
-                slot);
+                slot,
+                siteEnvelope);
         }
 
         public static Site CreateOrUpdateSite(this IWebAppsOperations webApp,
@@ -195,8 +195,8 @@ namespace Microsoft.Azure.Management.WebSites
         {
             return webApp.ListPublishingProfileXmlWithSecretsSlot(resourceGroupName,
             name,
-            publishingProfileOptions,
-            slot);
+            slot,
+            publishingProfileOptions);
         }
 
         public static Stream ListSitePublishingProfileXml(this IWebAppsOperations webApp,
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.WebSites
             SiteConfigResource siteConfig, 
             string slot)
         {
-            return webApp.UpdateConfigurationSlot(resourceGroupName, name, siteConfig, slot);
+            return webApp.UpdateConfigurationSlot(resourceGroupName, name, slot, siteConfig);
         }
 
         public static StringDictionary UpdateSiteAppSettingsSlot(this IWebAppsOperations webApp,
@@ -222,13 +222,13 @@ namespace Microsoft.Azure.Management.WebSites
             StringDictionary appSettings, 
             string slot)
         {
-            return webApp.UpdateApplicationSettingsSlot(resourceGroupName, name, appSettings, slot);
+            return webApp.UpdateApplicationSettingsSlot(resourceGroupName, name, slot, appSettings);
         }
         
         public static ConnectionStringDictionary UpdateSiteConnectionStringsSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, ConnectionStringDictionary connectionStrings, string slot)
         {
-            return webApp.UpdateConnectionStringsSlot(resourceGroupName, name, connectionStrings, slot);
+            return webApp.UpdateConnectionStringsSlot(resourceGroupName, name, slot, connectionStrings);
         }
 
         public static SiteConfigResource UpdateSiteConfig(this IWebAppsOperations webApp,
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.WebSites
         public static BackupRequest UpdateSiteBackupConfigurationSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, BackupRequest request, string slot)
         {
-            return webApp.UpdateBackupConfigurationSlot(resourceGroupName, name, request, slot);
+            return webApp.UpdateBackupConfigurationSlot(resourceGroupName, name, slot, request);
         }
 
         public static BackupRequest UpdateSiteBackupConfiguration(this IWebAppsOperations webApp,
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.WebSites
         public static BackupItem BackupSiteSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, BackupRequest request, string slot)
         {
-            return webApp.BackupSlot(resourceGroupName, name, request, slot);
+            return webApp.BackupSlot(resourceGroupName, name, slot, request);
         }
 
         public static BackupItem BackupSite(this IWebAppsOperations webApp,
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.WebSites
         public static void RestoreSiteSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, string backupId, RestoreRequest request, string slot)
         {
-            webApp.RestoreSlot(resourceGroupName, name, backupId, request, slot);
+            webApp.RestoreSlot(resourceGroupName, name, backupId, slot, request);
         }
 
         public static void RestoreSite(this IWebAppsOperations webApp,
@@ -386,13 +386,13 @@ namespace Microsoft.Azure.Management.WebSites
         public static void SwapSlotsSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot)
         {
-            webApp.SwapSlotSlot(resourceGroupName, name, slotSwapEntity, slot);
+            webApp.SwapSlot(resourceGroupName, name, slot, slotSwapEntity);
         }
 
         public static void ApplySlotConfigSlot(this IWebAppsOperations webApp,
             string resourceGroupName, string name, CsmSlotEntity slotSwapEntity, string slot)
         {
-            webApp.ApplySlotConfigurationSlot(resourceGroupName, name, slotSwapEntity, slot);
+            webApp.ApplySlotConfigurationSlot(resourceGroupName, name, slot, slotSwapEntity);
         }
 
         public static void ResetSlotConfigSlot(this IWebAppsOperations webApp,

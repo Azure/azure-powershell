@@ -99,7 +99,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetStorageAccountName,
         TargetFileShareName,
         TargetFolder,
-        MultipleSourceFilePath
+        MultipleSourceFilePath,
+        IsSystemAssignedIdentity,
+        UserAssignedIdentityArmUrl,
+        TargetSubscriptionId
     }
     public enum RestoreWLBackupItemParams
     {
@@ -169,7 +172,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ExclusionDisksList,
         ResetExclusionSettings,
         ExcludeAllDataDisks,
-        ContainerSubscriptionId
+        ContainerSubscriptionId,
+        AccessType,
+        IsSystemAssignedIdentity,
+        UserAssignedIdentityArmUrl,
+        ForceReregister,
+        ConfirmReregister
     }
 
     public enum ProtectionCheckParams

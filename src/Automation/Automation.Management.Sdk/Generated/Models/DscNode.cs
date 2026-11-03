@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the DscNode class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="lastSeen">Gets or sets the last seen time of the node.
@@ -63,9 +69,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="propertiesNodeConfigurationName">Gets or sets the name of the dsc node configuration.
         /// </param>
-        public DscNode(string id = default(string), string name = default(string), string type = default(string), System.DateTimeOffset lastSeen = default(System.DateTimeOffset), System.DateTimeOffset registrationTime = default(System.DateTimeOffset), string ip = default(string), string accountId = default(string), string status = default(string), string nodeId = default(string), string etag = default(string), int? totalCount = default(int?), System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty> extensionHandler = default(System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty>), string propertiesNodeConfigurationName = default(string))
+        public DscNode(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTimeOffset? lastSeen = default(System.DateTimeOffset?), System.DateTimeOffset? registrationTime = default(System.DateTimeOffset?), string ip = default(string), string accountId = default(string), string status = default(string), string nodeId = default(string), string etag = default(string), int? totalCount = default(int?), System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty> extensionHandler = default(System.Collections.Generic.IList<DscNodeExtensionHandlerAssociationProperty>), string propertiesNodeConfigurationName = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.LastSeen = lastSeen;
             this.RegistrationTime = registrationTime;
@@ -90,13 +96,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the last seen time of the node.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastSeen")]
-        public System.DateTimeOffset LastSeen {get; set; }
+        public System.DateTimeOffset? LastSeen {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the registration time of the node.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registrationTime")]
-        public System.DateTimeOffset RegistrationTime {get; set; }
+        public System.DateTimeOffset? RegistrationTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the ip of the node.

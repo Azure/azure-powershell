@@ -15,8 +15,9 @@ Create Azure Relay namespace.
 ### CreateExpanded (Default)
 ```
 New-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterArmId <String>] [-MinimumTlsVersion <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -35,9 +36,9 @@ New-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId
 
 ### CreateViaIdentityExpanded
 ```
-New-AzRelayNamespace -InputObject <IRelayIdentity> -Location <String> [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzRelayNamespace -InputObject <IRelayIdentity> -Location <String> [-ClusterArmId <String>]
+ [-MinimumTlsVersion <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +70,21 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterArmId
+Cluster ARM ID of the Namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resource location.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -148,6 +164,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version for the namespace.Supported values are 1.2 and 1.3.The service defaults to 1.2 when the property is omitted.Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,7 +216,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -215,8 +247,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Removes the policy.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}", ApiVersion = "2024-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}", ApiVersion = "2026-05-01")]
     public partial class RemoveAzMigratePolicy_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IContext

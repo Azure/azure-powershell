@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"update a managed HSM Pool in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2024-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/managedHSMs/{name}", ApiVersion = "2026-02-01")]
     public partial class UpdateAzKeyVaultManagedHsm_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IContext
@@ -165,6 +165,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The geo-location where the resource lives",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -213,6 +224,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         SerializedName = @"ipRules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule) })]
         public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule[] NetworkAclsIPRule { get => _parametersBody.NetworkAclsIPRule?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.NetworkAclsIPRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule>(value) : null); }
+
+        /// <summary>The list of service tags.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of service tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of service tags.",
+        SerializedName = @"serviceTags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule[] NetworkAclsServiceTag { get => _parametersBody.NetworkAclsServiceTag?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.NetworkAclsServiceTag = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmServiceTagRule>(value) : null); }
 
         /// <summary>The list of virtual network rules.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -317,17 +340,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         PossibleTypes = new [] { typeof(int) })]
         public int SoftDeleteRetentionInDay { get => _parametersBody.SoftDeleteRetentionInDay ?? default(int); set => _parametersBody.SoftDeleteRetentionInDay = value; }
 
-        /// <summary>Resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsmTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.

@@ -16,9 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCloudHsm'))
 
 Describe 'New-AzCloudHsm' {
     It 'CreateExpanded' {
-        $cloudHsm = New-AzCloudHsm -Name $env.cloudHsmName -ResourceGroupName $env.rgName -location ukwest -Tag @{ UseMockHfc = "true"; MockHfcDelayInMs = "1"}
-        $cloudHsm.name.Contains($env.cloudHsmName) | Should -Be $true
-        $cloudHsm.location.Contains("ukwest") | Should -Be $true
+        $cloudHsm = New-AzCloudHsm -SubscriptionId $env.SubscriptionId -Name $env.cloudHsmName -ResourceGroupName $env.rgName -Location $env.location -Sku Standard_B1 -UserAssignedIdentity $env.userAssignedIdentityId
+        $cloudHsm.name | Should -Be $env.cloudHsmName
+        $cloudHsm.location | Should -Be $env.location
+        $cloudHsm.ProvisioningState | Should -Be "Succeeded"
     }
 
     It 'CreateViaJsonFilePath' -skip {

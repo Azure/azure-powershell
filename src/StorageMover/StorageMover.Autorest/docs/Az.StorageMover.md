@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: 6ada34e0-8668-4ac4-b5fe-753062600db9
+Module Guid: 50582a30-ecde-4bc9-b567-609953dffac2
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,6 +32,9 @@ Gets a Job Run resource.
 ### [Get-AzStorageMoverProject](Get-AzStorageMoverProject.md)
 Gets a Project resource.
 
+### [Invoke-AzStorageMoverReconcileJobDefinition](Invoke-AzStorageMoverReconcileJobDefinition.md)
+Post action to reconcile the running job.
+
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Create a top-level Storage Mover resource.
 
@@ -60,7 +63,7 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 Create a Project resource, which is a logical grouping of related jobs.
 
 ### [New-AzStorageMoverS3WithHmacEndpoint](New-AzStorageMoverS3WithHmacEndpoint.md)
-Creates an S3-compatible endpoint with HMAC credentials, which represents a data transfer source.
+Creates an S3 with HMAC endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
@@ -129,7 +132,7 @@ Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverS3WithHmacEndpoint](Update-AzStorageMoverS3WithHmacEndpoint.md)
-Updates properties for an S3-compatible endpoint with HMAC credentials.
+Updates properties for an S3 with HMAC endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)

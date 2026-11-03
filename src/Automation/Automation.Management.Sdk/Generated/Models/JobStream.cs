@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="value">Gets or sets the values of the job stream.
         /// </param>
-        public JobStream(string id = default(string), string jobStreamId = default(string), System.DateTimeOffset time = default(System.DateTimeOffset), string streamType = default(string), string streamText = default(string), string summary = default(string), System.Collections.Generic.IDictionary<string, object> value = default(System.Collections.Generic.IDictionary<string, object>))
+        public JobStream(string id = default(string), string jobStreamId = default(string), System.DateTimeOffset? time = default(System.DateTimeOffset?), string streamType = default(string), string streamText = default(string), string summary = default(string), System.Collections.Generic.IDictionary<string, object> value = default(System.Collections.Generic.IDictionary<string, object>))
 
         {
             this.Id = id;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the creation time of the job.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.time")]
-        public System.DateTimeOffset Time {get; set; }
+        public System.DateTimeOffset? Time {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the stream type. Possible values include: &#39;Progress&#39;, &#39;Output&#39;, &#39;Warning&#39;, &#39;Error&#39;, &#39;Debug&#39;, &#39;Verbose&#39;, &#39;Any&#39;

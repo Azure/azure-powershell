@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models
                 return;
             }
             __extensionResource = new Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ExtensionResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipProperties.FromJson(__jsonProperties) : _property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Relationships.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Relationships.Models.ServiceGroupMemberRelationshipPropertiesV2.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 

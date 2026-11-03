@@ -52,12 +52,12 @@ function Set-AzServiceBusNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
         ${AlternateName},
-        
+
         [Parameter(HelpMessage = "This property disables SAS authentication for the Service Bus namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableLocalAuth},
-		
+
         [Parameter(HelpMessage = "Properties of KeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
@@ -176,6 +176,21 @@ function Set-AzServiceBusNamespace{
         [System.String]
         ${IPAddressType}
 	)
+    dynamicparam {
+        # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
+        # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command -Name 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) {
+                    $dynamicParameters.Add($entry.Key, $entry.Value)
+                }
+            }
+        }
+        return $dynamicParameters
+    }
 	process{
 	    try{
                 $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
@@ -196,8 +211,8 @@ function Set-AzServiceBusNamespace{
                 $hasNoWait = $PSBoundParameters.Remove('NoWait')
                 $null = $PSBoundParameters.Remove('WhatIf')
                 $null = $PSBoundParameters.Remove('Confirm')
-                $serviceBusNamespace = Get-AzServiceBusNamespace @PSBoundParameters
-
+                $readParameters = Get-AzServiceBusReadParameters -CommandName 'Get-AzServiceBusNamespace' -BoundParameters $PSBoundParameters
+                $serviceBusNamespace = Get-AzServiceBusNamespace @readParameters
                 # 2. PUT
                 $null = $PSBoundParameters.Remove('InputObject')
                 $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -223,11 +238,11 @@ function Set-AzServiceBusNamespace{
                 }
                 if ($hasUserAssignedIdentityId) {
                     $identityHashTable = @{}
-	            
+
 		    foreach ($resourceID in $UserAssignedIdentityId){
 		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.UserAssignedIdentity]::new())
 	            }
-                    
+
 		    $serviceBusNamespace.UserAssignedIdentity = $identityHashTable
                }
                if ($hasMinimumTlsVersion) {

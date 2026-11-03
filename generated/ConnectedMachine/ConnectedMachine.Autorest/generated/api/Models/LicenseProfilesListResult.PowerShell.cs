@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell;
 
-    /// <summary>The List hybrid machine license profile operation response.</summary>
+    /// <summary>Paged collection of LicenseProfile items</summary>
     [System.ComponentModel.TypeConverter(typeof(LicenseProfilesListResultTypeConverter))]
     public partial class LicenseProfilesListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             return ToJsonString();
         }
     }
-    /// The List hybrid machine license profile operation response.
+    /// Paged collection of LicenseProfile items
     [System.ComponentModel.TypeConverter(typeof(LicenseProfilesListResultTypeConverter))]
     public partial interface ILicenseProfilesListResult
 

@@ -16,24 +16,25 @@ Gets a backup short term retention policy.
 ```
 Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DatabaseName] <String> [-DeletionDate <DateTime>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
 Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -InputObject <AzureSqlManagedDatabaseBaseModel>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
 Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy** cmdlet gets the short term retention policy registered to this database.
-The policy is the retention period, in days, for point-in-time restore backups.
+The policy includes the retention period in days for point-in-time restore backups.
+The returned `ImmutabilityStatus` property indicates the current backup immutability status and can be `Disabled`, `Enabled`, or `Locked`.
 
 ## EXAMPLES
 
@@ -48,6 +49,7 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      :
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 ```
 
 This command gets the short term retention policy for database01.
@@ -63,6 +65,7 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      :
 RetentionDays     : 7
+ImmutabilityStatus: Locked
 ```
 
 This command gets the short term retention policy for database01 via piping in a database object.
@@ -78,12 +81,14 @@ InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      : 2019-03-03 12:00:17 AM
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 
 ResourceGroupName : resourcegroup01
 InstanceName      : instance01
 DatabaseName      : database01
 DeletionDate      : 2019-03-02 11:00:16 PM
 RetentionDays     : 7
+ImmutabilityStatus: Enabled
 ```
 
 This command gets the short term retention policy for all deleted databases named database01 via piping in a deleted database object.
@@ -161,6 +166,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

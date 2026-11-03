@@ -13,25 +13,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to retrieve the next page of Capability resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> _value;
 
-        /// <summary>List of Capability resources.</summary>
+        /// <summary>The Capability items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="CapabilityListResult" /> instance.</summary>
         public CapabilityListResult()
@@ -43,37 +37,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     public partial interface ICapabilityListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
     {
-        /// <summary>URL to retrieve the next page of Capability resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to retrieve the next page of Capability resources.",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of Capability resources.</summary>
+        string NextLink { get; set; }
+        /// <summary>The Capability items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of Capability resources.",
+        Create = true,
+        Update = true,
+        Description = @"The Capability items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Value { get; set; }
 
     }
     /// Model that represents a list of Capability resources and a link for pagination.
     internal partial interface ICapabilityListResultInternal
 
     {
-        /// <summary>URL to retrieve the next page of Capability resources.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of Capability resources.</summary>
+        /// <summary>The Capability items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapability> Value { get; set; }
 
     }

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCloudHsm'))
 
 Describe 'Remove-AzCloudHsm' {
     It 'Delete' {
-        Remove-AzCloudHsm -Subscription $env.subscriptionId -ResourceGroupName $env.rgName -Name $env.cloudHsmName
+        Remove-AzCloudHsm -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.rgName -Name $env.cloudHsmName
     }
 
     It 'DeleteViaIdentity' -skip {

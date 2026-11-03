@@ -160,6 +160,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of AdvancedRoutingMap")]
+        public PSApplicationGatewayAdvancedRoutingMap[] AdvancedRoutingMaps { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of AdvancedRoutingConditionSet")]
+        public PSApplicationGatewayAdvancedRoutingConditionSet[] AdvancedRoutingConditionSets { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }
 
@@ -389,6 +401,16 @@ namespace Microsoft.Azure.Commands.Network
             if (this.UrlPathMaps != null)
             {
                 applicationGateway.UrlPathMaps = this.UrlPathMaps?.ToList();
+            }
+
+            if (this.AdvancedRoutingMaps != null)
+            {
+                applicationGateway.AdvancedRoutingMaps = this.AdvancedRoutingMaps?.ToList();
+            }
+
+            if (this.AdvancedRoutingConditionSets != null)
+            {
+                applicationGateway.AdvancedRoutingConditionSets = this.AdvancedRoutingConditionSets?.ToList();
             }
 
             if (this.RequestRoutingRules != null)

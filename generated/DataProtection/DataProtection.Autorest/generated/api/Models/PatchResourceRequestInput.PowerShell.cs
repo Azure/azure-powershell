@@ -149,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppIdentityDetailsUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.DppIdentityDetailsUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceGuardOperationRequest"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).ResourceGuardOperationRequest = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceGuardOperationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).ResourceGuardOperationRequest, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -160,6 +164,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("EncryptionSetting"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).EncryptionSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings) content.GetValueForProperty("EncryptionSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).EncryptionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.EncryptionSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("MonitoringSettingAzureMonitorAlertSetting"))
             {
@@ -258,6 +266,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppIdentityDetailsUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.DppIdentityDetailsUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CostManagementSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICostManagementSettings) content.GetValueForProperty("CostManagementSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.CostManagementSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ResourceGuardOperationRequest"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).ResourceGuardOperationRequest = (System.Collections.Generic.List<string>) content.GetValueForProperty("ResourceGuardOperationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).ResourceGuardOperationRequest, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -269,6 +281,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("EncryptionSetting"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).EncryptionSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings) content.GetValueForProperty("EncryptionSetting",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).EncryptionSetting, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.EncryptionSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CostManagementSettingGranularityLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSettingGranularityLevel = (string) content.GetValueForProperty("CostManagementSettingGranularityLevel",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IPatchResourceRequestInputInternal)this).CostManagementSettingGranularityLevel, global::System.Convert.ToString);
             }
             if (content.Contains("MonitoringSettingAzureMonitorAlertSetting"))
             {
