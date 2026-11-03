@@ -23,6 +23,8 @@ Creates a database for a Redis Enterprise cache.
 New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -Module "{name:RedisBloom, args:`"ERROR_RATE 0.00 INITIAL_SIZE 400`"}","{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RediSearch}" -ClientProtocol "Plaintext" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -Port 10000 -AofPersistenceEnabled -AofPersistenceFrequency "always"
 .Example
 New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
+.Example
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -NotifyKeyspaceEvents "AKE"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase
@@ -159,6 +161,16 @@ param(
     ${AccessKeysAuthentication},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Specifies which keyspace events should trigger notifications.
+    # Default is an empty string, meaning this feature is disabled.
+    # When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+    # For example, 'AKE' enables all standard events.
+    # See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+    ${NotifyKeyspaceEvents},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Azure')]
@@ -225,7 +237,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-        
+
         $testPlayback = $false
         $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
@@ -236,7 +248,7 @@ begin {
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
+        }
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
@@ -311,5 +323,5 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-} 
+}
 }

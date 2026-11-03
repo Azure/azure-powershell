@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Extensions;
 
-    /// <summary>The Private Endpoint Connection resource.</summary>
+    /// <summary>The private endpoint connection resource.</summary>
     public partial class PrivateEndpointConnection :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnection,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionInternal,
@@ -19,11 +19,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Resource();
 
+        /// <summary>The group ids for the private endpoint resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId; }
+
         /// <summary>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Id; }
+
+        /// <summary>Internal Acessors for GroupId</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).GroupId = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for PrivateEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionInternal.PrivateEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpoint = value ?? null /* model class */; }
@@ -46,6 +53,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Name = value ?? null; }
 
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedByType = value ?? null; }
+
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Type = value ?? null; }
 
@@ -53,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).Name; }
 
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inlined)]
         public string PrivateEndpointId { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpointConnectionPropertiesInternal)Property).PrivateEndpointId; }
 
@@ -89,6 +117,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
         /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; }
+
+        /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PropertyOrigin.Inherited)]
@@ -112,19 +170,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
-    /// The Private Endpoint Connection resource.
+    /// The private endpoint connection resource.
     public partial interface IPrivateEndpointConnection :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResource
     {
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The group ids for the private endpoint resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The ARM identifier for Private Endpoint",
+        Description = @"The group ids for the private endpoint resource.",
+        SerializedName = @"groupIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> GroupId { get;  }
+        /// <summary>The ARM identifier for private endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The ARM identifier for private endpoint.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointId { get;  }
@@ -180,13 +249,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
         string ProvisioningState { get;  }
 
     }
-    /// The Private Endpoint Connection resource.
+    /// The private endpoint connection resource.
     internal partial interface IPrivateEndpointConnectionInternal :
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IResourceInternal
     {
-        /// <summary>The resource of private end point.</summary>
+        /// <summary>The group ids for the private endpoint resource.</summary>
+        System.Collections.Generic.List<string> GroupId { get; set; }
+        /// <summary>The private endpoint resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IPrivateEndpoint PrivateEndpoint { get; set; }
-        /// <summary>The ARM identifier for Private Endpoint</summary>
+        /// <summary>The ARM identifier for private endpoint.</summary>
         string PrivateEndpointId { get; set; }
         /// <summary>
         /// A collection of information about the state of the connection between service consumer and provider.

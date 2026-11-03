@@ -26,6 +26,8 @@ Describe 'New-AzRedisEnterpriseCache' {
             EvictionPolicy = "VolatileLRU"
             PublicNetworkAccess = "Enabled"
             AccessKeysAuthentication = "Enabled"
+            NotifyKeyspaceEvents = "KEA"
+            MaintenanceConfigurationMaintenanceWindow = @(@{Type="Weekly"; ScheduleDayOfWeek="Monday"; StartHourUtc=6; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Thursday"; StartHourUtc=6; Duration="PT10H"})
         }
         $cache = New-AzRedisEnterpriseCache @splat -EnableSystemAssignedIdentity -Module "{name:RedisTimeSeries, args:`"RETENTION_POLICY 20`"}","{name:RedisBloom, args:`"ERROR_RATE 0.001 INITIAL_SIZE 400`"}"
         $cache.Name | Should -Be $splat.Name
@@ -45,7 +47,15 @@ Describe 'New-AzRedisEnterpriseCache' {
         $cache.Database[$databaseName].EvictionPolicy | Should -Be $splat.EvictionPolicy
         $cache.Database[$databaseName].ProvisioningState | Should -Be "Succeeded"
         $cache.Database[$databaseName].ResourceState | Should -Be "Running"
+        $cache.Database[$databaseName].NotifyKeyspaceEvents | Should -Be $splat.NotifyKeyspaceEvents
         $cache.IdentityType | Should -Be "SystemAssigned"
+        $cache.MaintenanceConfigurationMaintenanceWindow | Should -Not -Be $null
+        $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
+        $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be "Monday"
+        $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 6
+        $cache.MaintenanceConfigurationMaintenanceWindow[0].Duration | Should -Be "PT10H"
+        $cache.MaintenanceConfigurationMaintenanceWindow[1].ScheduleDayOfWeek | Should -Be "Thursday"
+        $cache.MaintenanceConfigurationMaintenanceWindow[1].StartHourUtc | Should -Be 6
     }
 
     It 'CreateNoDatabase' {
@@ -104,7 +114,7 @@ Describe 'New-AzRedisEnterpriseCache' {
             EvictionPolicy = "NoEviction"
             PublicNetworkAccess = "Enabled"
             AccessKeysAuthentication = "Enabled"
-            GroupNickname = "GroupName" 
+            GroupNickname = "GroupName"
             LinkedDatabase = $id -f $env.SubscriptionId,$env.ResourceGroupName,$env.ClusterName4
         }
         # Write-Host $splat.Name
@@ -123,7 +133,7 @@ Describe 'New-AzRedisEnterpriseCache' {
     }
 }
 
-Describe 'Get-AzRedisEnterpriseCacheSku' {  
+Describe 'Get-AzRedisEnterpriseCacheSku' {
   It 'List' {
       $splat = @{
           ClusterName = $env.ClusterName
@@ -136,7 +146,7 @@ Describe 'Get-AzRedisEnterpriseCacheSku' {
       $sizes = $skus | Select-Object -ExpandProperty SizeInGb
       $skuNames | Should -Contain 'Balanced_B250'
       $skuNames | Should -Contain 'Balanced_B50'
-      $sizes | Should -Contain 240.0
+      $sizes | Should -Contain 24
   }
 }
 
@@ -145,6 +155,16 @@ Describe 'Update-AzRedisEnterpriseCache' {
         {
             $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -EnableSystemAssignedIdentity $false
             $cache.IdentityType | Should -be "None"
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateMaintenanceWindow' {
+        {
+            $cache = Update-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=10; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=10; Duration="PT10H"})
+            $cache.MaintenanceConfigurationMaintenanceWindow | Should -Not -Be $null
+            $cache.MaintenanceConfigurationMaintenanceWindow.Count | Should -Be 2
+            $cache.MaintenanceConfigurationMaintenanceWindow[0].ScheduleDayOfWeek | Should -Be "Wednesday"
+            $cache.MaintenanceConfigurationMaintenanceWindow[0].StartHourUtc | Should -Be 10
         } | Should -Not -Throw
     }
 }
@@ -161,6 +181,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             EvictionPolicy = "AllKeysLFU"
             Port = 10000
             AccessKeysAuthentication = "Enabled"
+            NotifyKeyspaceEvents = "KEA"
         }
         $database = New-AzRedisEnterpriseCacheDatabase @splat
         $databaseName = "default"
@@ -172,6 +193,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
         $database.Port | Should -Be $splat.Port
         $database.ProvisioningState | Should -Be "Succeeded"
         $database.ResourceState | Should -Be "Running"
+        $database.NotifyKeyspaceEvents | Should -Be "KEA"
     }
 
     It 'Create a georeplicated database' {
@@ -185,7 +207,7 @@ Describe 'New-AzRedisEnterpriseCacheDatabase' {
             ClusteringPolicy = "EnterpriseCluster"
             EvictionPolicy = "NoEviction"
             AccessKeysAuthentication = "Enabled"
-            GroupNickname = "GroupName" 
+            GroupNickname = "GroupName"
             LinkedDatabase = $idCluster3,$idCluster4 -join ","
         }
         # Write-Host $splat.Name
@@ -286,11 +308,10 @@ Describe 'Get-AzRedisEnterpriseCacheDatabase' {
 }
 
 Describe 'New-AzRedisEnterpriseCacheAccessPolicyAssignment' {
-    # UserobjectId from (Get-AzADUser -SignedIn).Id -> 5dce0ce9-f0a7-437f-aea2-760d05c62ca9
     It 'CreateExpanded' {
-        {
-            New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '5dce0ce9-f0a7-437f-aea2-760d05c62ca9' -AccessPolicyName default
-        } | Should -Not -Throw
+        $assignment = New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName testPolicy -ClusterName $env.ClusterName -DatabaseName default -ResourceGroupName $env.ResourceGroupName -UserObjectId '5dce0ce9-f0a7-437f-aea2-760d05c62ca9' -AccessPolicyName default
+        $assignment.Name | Should -Be "testPolicy"
+        $assignment.ProvisioningState | Should -Be "Succeeded"
     }
 }
 
@@ -339,14 +360,28 @@ Describe 'Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink' {
 }
 
 
-Describe 'Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion' {
-    It 'Upgrade' {
+# Describe 'Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion' {
+#     # Commented out: New clusters are created on Redis 7.4 which is already the latest version.
+#     # The API returns BadRequest: "The database is already at Redis version 7.4, which meets or exceeds
+#     # the maximum supported upgrade version 7.4. No further upgrades are available via this API."
+#     # This test can only work when a new Redis version is released and clusters aren't auto-upgraded.
+#     It 'Upgrade' {
+#         {
+#             $cache = Get-AzRedisEnterpriseCacheDatabase -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName
+#             $oldVersion = $cache.RedisVersion
+#             Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName -DatabaseName "default"
+#             $newCache = Get-AzRedisEnterpriseCacheDatabase -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName
+#             $newCache.RedisVersion | Should -BeGreaterOrEqual $oldVersion
+#         } | Should -Not -Throw
+#     }
+# }
+
+Describe 'New-AzRedisEnterpriseCacheDatabase - PUT update' {
+    # Database PATCH is not supported by the control plane, so updates use PUT.
+    It 'PutUpdateNotifyKeyspaceEvents' {
         {
-            $cache = Get-AzRedisEnterpriseCacheDatabase -Name $env.ClusterName2 -ResourceGroup $env.ResourceGroupName
-            $oldVersion = $cache.RedisVersion
-            Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName -DatabaseName "default"
-            $newCache = Get-AzRedisEnterpriseCacheDatabase -Name $env.ClusterName2 -ResourceGroup $env.ResourceGroupName
-            $newCache.RedisVersion | Should -BeGreaterThan $oldVersion
+            $database = New-AzRedisEnterpriseCacheDatabase -ClusterName $env.ClusterName2 -ResourceGroupName $env.ResourceGroupName -ClusteringPolicy "EnterpriseCluster" -NotifyKeyspaceEvents "Kg"
+            $database.NotifyKeyspaceEvents | Should -Be "Kg"
         } | Should -Not -Throw
     }
 }

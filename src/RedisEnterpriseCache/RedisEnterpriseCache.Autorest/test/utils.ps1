@@ -30,19 +30,81 @@ function Start-TestSleep {
     }
 }
 
+function Get-MigrationResource {
+    param(
+        [Parameter(Mandatory)]
+        [scriptblock] $Operation
+    )
+
+    try {
+        return & $Operation
+    } catch {
+        $statusCode = $_.Exception.Response.StatusCode
+        if (($null -ne $statusCode -and [int] $statusCode -eq 404) -or
+            $_.Exception.Message -match 'NotFound|could not be found') {
+            return $null
+        }
+
+        throw
+    }
+}
+
+function Wait-ForMigrationResources {
+    param(
+        [Parameter(Mandatory)]
+        [string] $ResourceGroupName,
+
+        [Parameter(Mandatory)]
+        [string] $OssCacheName,
+
+        [Parameter(Mandatory)]
+        [string] $ClusterName
+    )
+
+    if ($TestMode -eq 'playback') {
+        return
+    }
+
+    $deadline = (Get-Date).AddMinutes(30)
+    do {
+        $ossCache = Get-MigrationResource {
+            Get-AzRedisCache -ResourceGroupName $ResourceGroupName -Name $OssCacheName -ErrorAction Stop
+        }
+        $cluster = Get-MigrationResource {
+            Get-AzRedisEnterpriseCache -ResourceGroupName $ResourceGroupName -Name $ClusterName -ErrorAction Stop
+        }
+        $database = Get-MigrationResource {
+            Get-AzRedisEnterpriseCacheDatabase -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -ErrorAction Stop
+        }
+
+        if ($ossCache.ProvisioningState -eq 'Succeeded' -and
+            $cluster.ProvisioningState -eq 'Succeeded' -and
+            $cluster.ResourceState -eq 'Running' -and
+            $database.ProvisioningState -eq 'Succeeded' -and
+            $database.ResourceState -eq 'Running') {
+            return
+        }
+
+        Start-TestSleep -Seconds 30
+    } while ((Get-Date) -lt $deadline)
+
+    $ossState = if ($ossCache) { $ossCache.ProvisioningState } else { 'NotFound' }
+    $clusterState = if ($cluster) { "$($cluster.ProvisioningState)/$($cluster.ResourceState)" } else { 'NotFound' }
+    $databaseState = if ($database) { "$($database.ProvisioningState)/$($database.ResourceState)" } else { 'NotFound' }
+    throw "Migration resources did not become ready within 30 minutes. OSS provisioning: $ossState; cluster provisioning/resource: $clusterState; database provisioning/resource: $databaseState."
+}
+
 $env = @{}
 function setupEnv() {
-    # Preload subscriptionId and tenant from context, which will be used in test
-    # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
     $env.ClusterName  = 'ps-cache-test1-' + (RandomString -allChars $false -len 8)
     $env.ClusterName2 = 'ps-cache-test2-' + (RandomString -allChars $false -len 8)
     $env.ClusterName3  = 'ps-cache-test3-' + (RandomString -allChars $false -len 8)
     $env.ClusterName4 = 'ps-cache-test4-' + (RandomString -allChars $false -len 8)
+    $env.OssCacheName = 'ps-oss-cache-' + (RandomString -allChars $false -len 8)
     $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
-    $env.Location = 'eastus'
+    $env.Location = 'eastus2euap'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     $envFile = 'env.json'
@@ -50,9 +112,35 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+
+    $migrationTestNames = @(
+        'Test-AzRedisEnterpriseCacheMigration'
+        'Start-AzRedisEnterpriseCacheMigration'
+        'Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint'
+    )
+    $selectedTestNames = @($TestName)
+    $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
+    $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint'
+    $needsOssCache = ($null -eq $TestName) -or $isTargetedMigrationTest
+
+    if ($needsOssCache) {
+        $redisCacheModulePath = $env:AZURE_POWERSHELL_REDIS_CACHE_MODULE_PATH
+        if ($redisCacheModulePath) {
+            Import-Module $redisCacheModulePath -Force -ErrorAction Stop
+        } else {
+            Import-Module Az.RedisCache -ErrorAction Stop
+        }
+        New-AzRedisCache -ResourceGroupName $env.ResourceGroupName -Name $env.OssCacheName -Location $env.Location -Sku "Basic" -Size "C0" | Out-Null
+    }
+
+    if ($isTargetedMigrationTest) {
+        New-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -Sku "Balanced_B1" -ClientProtocol "Encrypted" -ClusteringPolicy "OSSCluster" -EvictionPolicy "VolatileLRU" -PublicNetworkAccess "Enabled" -ErrorAction Stop | Out-Null
+        Wait-ForMigrationResources -ResourceGroupName $env.ResourceGroupName -OssCacheName $env.OssCacheName -ClusterName $env.ClusterName
+    } elseif ($isClusterUnlinkTest) {
+        New-AzRedisEnterpriseCache -Name $env.ClusterName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -Sku "Enterprise_E1" -ClientProtocol "Encrypted" -ClusteringPolicy "EnterpriseCluster" -EvictionPolicy "NoEviction" -PublicNetworkAccess "Enabled" -ErrorAction Stop | Out-Null
+    }
+
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroupName | Out-Null
+    Az.Resources\Remove-AzResourceGroup -Name $env.ResourceGroupName -Force -ErrorAction SilentlyContinue | Out-Null
 }
-

@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Added support for API version 2026-09-01
+* Added `Get-AzRedisEnterpriseCacheMigration` cmdlet to get information about a migration in a Redis Enterprise cluster
+* Added `Start-AzRedisEnterpriseCacheMigration` cmdlet to start a new migration
+* Added `Undo-AzRedisEnterpriseCacheMigration` cmdlet to cancel or rollback a migration operation in a Redis Enterprise cluster
+* Added `Test-AzRedisEnterpriseCacheMigration` cmdlet to validate if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource
+* Added cmdlets to unlink endpoints after a migration
+* Added `MaintenanceConfigurationMaintenanceWindow` parameter to `New-AzRedisEnterpriseCache` and `Update-AzRedisEnterpriseCache` for configuring maintenance windows
+* Added `NotifyKeyspaceEvents` parameter to `New-AzRedisEnterpriseCache`, `New-AzRedisEnterpriseCacheDatabase`, and `Update-AzRedisEnterpriseCacheDatabase` for configuring keyspace notifications
 
 ## Version 2.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
@@ -58,4 +67,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.RedisEnterpriseCache
-

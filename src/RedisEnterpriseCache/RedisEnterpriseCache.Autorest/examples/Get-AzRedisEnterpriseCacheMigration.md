@@ -1,0 +1,17 @@
+### Example 1: Get migration status for a cache
+```powershell
+Get-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1" |
+    Format-List Name, ProvisioningState, SourceType, TargetResourceId, CreationTime, LastModifiedTime, RollbackEligibleUntil
+```
+
+```output
+Name                  : cache1/default
+ProvisioningState     : Succeeded
+SourceType            : AzureCacheForRedis
+TargetResourceId      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1
+CreationTime          : 30-10-2026 11:09:22
+LastModifiedTime      : 30-10-2026 11:14:35
+RollbackEligibleUntil : 29-11-2026 11:14:35
+```
+
+Returns the current migration state and rollback eligibility for the specified Azure Managed Redis cluster.

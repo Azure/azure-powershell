@@ -1,0 +1,39 @@
+{
+  "Test-AzRedisEnterpriseCacheMigration+[NoContext]+Reports a clustering warning for a non-clustered source+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-n4r2t3gz/migrations/default/validate?api-version=2026-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-n4r2t3gz/migrations/default/validate?api-version=2026-09-01",
+      "Content": "{\r\n  \"sourceResourceId\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/ps-redisenterprise-rg-pe326rlg/providers/Microsoft.Cache/redis/ps-oss-cache-5r32fati\",\r\n  \"skipDataMigration\": true\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "211" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=4a61ce1e-5539-4162-b647-101733293495/eastus2euap/18ea258d-769b-440a-af04-8a9c1c4738b8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "91e7c9d5-264e-4928-95a4-25892ec297fb" ],
+        "x-ms-request-id": [ "933cb0cf-7d92-4558-9fe6-6fc03a7024b7" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "47056ece-b658-404d-98d3-56ee39225e49" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261030T102841Z:47056ece-b658-404d-98d3-56ee39225e49" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7DB4585767994C10987B11CDA8EA26E3 Ref B: PNQ231110906054 Ref C: 2026-10-30T10:28:40Z" ],
+        "Date": [ "Fri, 30 Oct 2026 10:28:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "438" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\n  \"isValid\": false,\n  \"errors\": [\n    {\n      \"disparities\": []\n    }\n  ],\n  \"warnings\": [\n    {\n      \"disparities\": [\n        {\n          \"category\": \"Clustering Mode\",\n          \"message\": \"The target resource has a clustering policy, but the source resource is not clustered. Please ensure your client library is cluster-aware before migration, or select a target resource without a clustering policy.\"\n        }\n      ]\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  }
+}

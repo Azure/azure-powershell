@@ -32,38 +32,60 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
+# Pin the stable 2026-09-01 specification commit for reproducible generation.
+commit: 14c9159287e432eb9dfec9f51b0adc119270d693
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-# lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2025-07-01/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2026-09-01/redisenterprise.json
 
-module-version: 1.0.0
+module-version: 3.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
 directive:
+  # Require the access policy assignment properties envelope expected by the service.
   - from: swagger-document
     where: $.definitions.AccessPolicyAssignment
     transform: $['required'] = ['properties']
+  # Require the user object ID nested in the assignment request model.
   - from: swagger-document
-    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    where: $.definitions.AccessPolicyAssignmentPropertiesUser
     transform: $['required'] = ['objectId']
+  # Require both geo-replication inputs used by the force-link operation.
   - from: swagger-document
-    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    where: $.definitions.ForceLinkParametersGeoReplication
     transform: $['required'] = ['linkedDatabases','groupNickname']
+  # Force these parameters as mandatory since swagger required on $ref definitions
+  # doesn't always propagate to cmdlet parameters in autorest.powershell
+  - where:
+      verb: New
+      subject: AccessPolicyAssignment
+      parameter-name: UserObjectId
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GroupNickname
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: LinkedDatabase
+    required: true
 
+  # Normalize the assignment operation name to generate New-* instead of Set-*.
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
     transform: $['operationId'] = 'AccessPolicyAssignment_CreateOrUpdate'
+  # Use user-facing create-or-update wording in generated help.
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
     transform: $['description'] = 'Creates or updates a particular access policy assignment for a database'
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
   - where:
-      subject: (^RedisEnterprise)(.*) 
+      subject: (^RedisEnterprise)(.*)
     set:
       subject: $2
 
@@ -111,7 +133,6 @@ directive:
       subject: ^$
     set:
       alias: Export-AzRedisEnterpriseCacheDatabase
-
   # Parameter renames and aliases
   - where:
       verb: Get|Update|Remove
@@ -184,6 +205,16 @@ directive:
       parameter-name: PersistenceRdbFrequency
     set:
       parameter-name: RdbPersistenceFrequency
+  # Use the plural form exposed by Redis for the keyspace notification setting.
+  - where:
+      parameter-name: NotifyKeyspaceEvent
+    set:
+      parameter-name: NotifyKeyspaceEvents
+  # Keep the output/model property name consistent with the input parameter (plural)
+  - where:
+      property-name: NotifyKeyspaceEvent
+    set:
+      property-name: NotifyKeyspaceEvents
 
   # Remove unused variants
   - where:
@@ -200,8 +231,14 @@ directive:
     remove: true
   - where:
       verb: Update
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^Update$|ViaIdentity$
+    remove: true
+  # Remove only the new UpgradeViaIdentity variant for DatabaseDbRedisVersion (didn't exist in v2.0.0)
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: UpgradeViaIdentity
     remove: true
   - where:
       verb: Get
@@ -220,17 +257,41 @@ directive:
       variant: ^(Flush|Force)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: AccessPolicyAssignment
       variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Test-Migration (validate) ships as generated. Keep only the standard
+  # Expanded/JsonFilePath/JsonString variants (module convention).
+  - where:
+      verb: Test
+      subject: Migration
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+    remove: true
+  # Remove generated variants for Start-Migration except ViaJsonString (which the custom wrapper calls internally).
+  # The generated Expanded variant doesn't nest the discriminated union body under "properties" envelope.
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^Start$|^StartExpanded$|^StartViaIdentity$|^StartViaIdentityExpanded$|^StartViaJsonFilePath$
+    remove: true
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^StartViaJsonString$
+    hide: true
   # Remove because cannot update
   - where:
       verb: Set|Update
       subject: AccessPolicyAssignment
+    remove: true
+  # Remove Update-Migration as there is no update to take place for an ongoing migration
+  - where:
+      verb: Update
+      subject: Migration
     remove: true
 
   # Hide cmdlets
