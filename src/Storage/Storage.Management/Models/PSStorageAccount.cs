@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
             this.AllowSharedKeyAccessForServices = storageAccount.AllowSharedKeyAccessForServices;
             this.AllowCrossTenantDelegationSas = storageAccount.AllowCrossTenantDelegationSas;
+            this.DualStackEndpointPreference = storageAccount.DualStackEndpointPreference;
             this.AllowBlobAccessPoints = storageAccount.DataCollaborationPolicyProperties?.AllowBlobAccessPoints;
             this.TurboTier = storageAccount.TurboTier;
             this.KeyCreationTime = storageAccount.KeyCreationTime is null ? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
@@ -172,6 +173,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public StorageAccountSharedKeyAccessProperties AllowSharedKeyAccessForServices { get; set; }
 
         public bool? AllowCrossTenantDelegationSas { get; set; }
+
+        public DualStackEndpointPreference DualStackEndpointPreference { get; set; }
 
         public bool? AllowBlobAccessPoints { get; set; }
 

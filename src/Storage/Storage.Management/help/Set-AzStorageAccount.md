@@ -16,6 +16,7 @@ Modifies a Storage account.
 ### StorageEncryption (Default)
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
@@ -39,6 +40,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 ### KeyvaultEncryption
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
  -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
@@ -63,6 +65,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 ### AzureActiveDirectoryKerberosForFile
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
@@ -86,6 +89,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 ### ActiveDirectoryDomainServicesForFile
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-PublishIpv6Endpoint <Boolean>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
@@ -528,6 +532,18 @@ Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccoun
 ```
 
 Enables Blob Access Points without changing other existing collaboration policy settings.
+
+### Example 28: Enable or disable IPv6 endpoint publishing
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -PublishIpv6Endpoint $true
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+
+Set-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -PublishIpv6Endpoint $false
+```
+
+Enables IPv6 storage endpoint publishing, reads the updated preference, and then disables publishing.
+The subscription must have access to the IPv6 endpoint publishing feature.
+Updates that omit PublishIpv6Endpoint leave this setting unchanged.
 
 ## PARAMETERS
 
@@ -1274,6 +1290,23 @@ Accept wildcard characters: False
 
 ### -PublishInternetEndpoint
 Indicates whether internet  routing storage endpoints are to be published
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublishIpv6Endpoint
+Specifies whether IPv6 storage endpoints are published. Set to true to enable publishing or false to disable it.
+When omitted, the property is not sent and the existing setting is unchanged.
+The subscription must have access to the IPv6 endpoint publishing feature.
 
 ```yaml
 Type: System.Boolean

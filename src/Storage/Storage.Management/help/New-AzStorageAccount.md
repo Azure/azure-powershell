@@ -16,6 +16,7 @@ Creates a Storage account.
 ### AzureActiveDirectoryDomainServicesForFile (Default)
 ```
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
+ [-PublishIpv6Endpoint <Boolean>]
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
@@ -42,6 +43,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
 ### AzureActiveDirectoryKerberosForFile
 ```
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
+ [-PublishIpv6Endpoint <Boolean>]
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
@@ -69,6 +71,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
 ### ActiveDirectoryDomainServicesForFile
 ```
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
+ [-PublishIpv6Endpoint <Boolean>]
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
@@ -478,6 +481,16 @@ New-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "myturboaccount"
 ```
 
 Enables Turbo Tier with a target fill percentage of 20. Supported target percentages are 10 through 100. If the target is omitted, the service applies its default.
+
+### Example 26: Create a Storage account that publishes IPv6 endpoints
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -Location "eastus" -SkuName Standard_LRS -Kind StorageV2 -PublishIpv6Endpoint $true
+$account.DualStackEndpointPreference.PublishIpv6Endpoint
+$account.PrimaryEndpoints.Ipv6Endpoints
+```
+
+Creates an account that publishes IPv6 storage endpoints and reads its publishing preference and endpoint URLs.
+The subscription must have access to the IPv6 endpoint publishing feature.
 
 ## PARAMETERS
 
@@ -1339,6 +1352,23 @@ Accept wildcard characters: False
 
 ### -PublishInternetEndpoint
 Indicates whether internet  routing storage endpoints are to be published
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublishIpv6Endpoint
+Specifies whether IPv6 storage endpoints are published. Set to true to enable publishing or false to disable it.
+When omitted, the property is not sent and the service default applies.
+The subscription must have access to the IPv6 endpoint publishing feature.
 
 ```yaml
 Type: System.Boolean

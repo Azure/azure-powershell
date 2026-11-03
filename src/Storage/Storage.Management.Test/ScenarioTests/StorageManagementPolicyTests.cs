@@ -35,6 +35,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageAccountIpv6Endpoints()
+        {
+            TestRunner.RunTestScript("Test-StorageAccountIpv6Endpoints");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccountTurboTier()
         {
             TestRunner.RunTestScript("Test-StorageAccountTurboTier");

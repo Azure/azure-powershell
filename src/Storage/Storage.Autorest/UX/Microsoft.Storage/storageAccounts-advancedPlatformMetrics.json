@@ -7,8 +7,8 @@
   "commands": [
     {
       "name": "Get-AzStorageAdvancedPlatformMetricsRule",
-      "description": "Get the advanced platform metrics rule for the storage account by rule type.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+      "description": "List the advanced platform metrics rules for the storage account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstorageadvancedplatformmetricsrule"
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get the advanced platform metrics rule for the storage account by rule type.",
+          "description": "List the advanced platform metrics rules for the storage account.",
           "parameters": [
             {
               "name": "-AccountName",
@@ -45,8 +45,8 @@
     },
     {
       "name": "Remove-AzStorageAdvancedPlatformMetricsRule",
-      "description": "Delete the advanced platform metrics rule for the storage account by rule type.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+      "description": "Delete the container-level capacity metrics rule for the storage account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/ContainerLevelCapacityMetrics",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageadvancedplatformmetricsrule"
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Delete the advanced platform metrics rule for the storage account by rule type.",
+          "description": "Delete the container-level capacity metrics rule for the storage account.",
           "parameters": [
             {
               "name": "-AccountName",

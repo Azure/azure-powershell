@@ -105,6 +105,56 @@ function Test-StorageAccountManagementPolicy
     }
 }
 
+function Test-StorageAccountIpv6Endpoints
+{
+    $rgname = Get-StorageManagementTestResourceName
+    $stoname = 'sto' + $rgname
+    $disabledName = 'ipv' + $rgname
+    $location = Get-ProviderLocation_Canary ResourceManagement
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $location
+
+        $account = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $location `
+            -SkuName Standard_LRS -Kind StorageV2 -PublishIpv6Endpoint $true
+        Assert-AreEqual $true $account.DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-NotNull $account.PrimaryEndpoints.Ipv6Endpoints
+
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $true $account.DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-NotNull $account.PrimaryEndpoints.Ipv6Endpoints
+
+        $account = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Tag @{ purpose = 'ipv6-preservation' }
+        Assert-AreEqual $true $account.DualStackEndpointPreference.PublishIpv6Endpoint
+
+        $account = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishIpv6Endpoint $false
+        Assert-AreEqual $false $account.DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-Null $account.PrimaryEndpoints.Ipv6Endpoints
+
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $false $account.DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-Null $account.PrimaryEndpoints.Ipv6Endpoints
+
+        $account = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -PublishIpv6Endpoint $true
+        Assert-AreEqual $true $account.DualStackEndpointPreference.PublishIpv6Endpoint
+
+        $account = New-AzStorageAccount -ResourceGroupName $rgname -Name $disabledName -Location $location `
+            -SkuName Standard_LRS -Kind StorageV2 -PublishIpv6Endpoint $false
+        Assert-AreEqual $false $account.DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-Null $account.PrimaryEndpoints.Ipv6Endpoints
+
+        $accounts = @(Get-AzStorageAccount -ResourceGroupName $rgname)
+        Assert-AreEqual 2 $accounts.Count
+        Assert-AreEqual $true ($accounts | Where-Object StorageAccountName -EQ $stoname).DualStackEndpointPreference.PublishIpv6Endpoint
+        Assert-AreEqual $false ($accounts | Where-Object StorageAccountName -EQ $disabledName).DualStackEndpointPreference.PublishIpv6Endpoint
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
 function Test-StorageAccountTurboTier
 {
     $rgname = Get-StorageManagementTestResourceName

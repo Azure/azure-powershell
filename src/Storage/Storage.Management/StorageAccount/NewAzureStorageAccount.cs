@@ -601,6 +601,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowCrossTenantDelegationSas;
 
+        [Parameter(HelpMessage = "Publish IPv6 storage endpoints. When omitted, the service default is used.")]
+        public bool PublishIpv6Endpoint
+        {
+            get => publishIpv6Endpoint.GetValueOrDefault();
+            set => publishIpv6Endpoint = value;
+        }
+        private bool? publishIpv6Endpoint;
+
         [Parameter(HelpMessage = "Require user-bound user delegation shared access signatures. Specify SasExpirationPeriod to create the SAS policy.")]
         public bool RequireUserBoundUserDelegationSas
         {
@@ -1054,6 +1062,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (allowCrossTenantDelegationSas != null)
             {
                 createParameters.AllowCrossTenantDelegationSas = allowCrossTenantDelegationSas;
+            }
+            if (publishIpv6Endpoint != null)
+            {
+                createParameters.DualStackEndpointPreference = new DualStackEndpointPreference(publishIpv6Endpoint);
             }
             if (allowBlobAccessPoints != null)
             {
