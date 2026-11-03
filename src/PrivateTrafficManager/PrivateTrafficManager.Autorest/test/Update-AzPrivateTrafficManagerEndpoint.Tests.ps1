@@ -52,6 +52,11 @@ Describe 'Update-AzPrivateTrafficManagerEndpoint' {
             -ResourceGroupName $env.resourceGroupName `
             -Weight 75
         $result | Should -Not -BeNullOrEmpty
+        $result = Get-AzPrivateTrafficManagerEndpoint `
+            -Name $env.endpointName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
         $result.Name | Should -Be $env.endpointName
+        $result.Weight | Should -Be 75
     }
 }

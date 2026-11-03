@@ -86,6 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {_priority = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNumber>("priority"), out var __jsonPriority) ? (long?)__jsonPriority : _priority;}
             {_alwaysServe = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("alwaysServe"), out var __jsonAlwaysServe) ? (string)__jsonAlwaysServe : (string)_alwaysServe;}
             {_healthPolicyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("healthPolicyId"), out var __jsonHealthPolicyId) ? (string)__jsonHealthPolicyId : (string)_healthPolicyId;}
+            {_virtualNetworkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonArray>("virtualNetworkIds"), out var __jsonVirtualNetworkIds) ? If( __jsonVirtualNetworkIds as Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _virtualNetworkId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -121,6 +122,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             AddIf( null != this._priority ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNumber((long)this._priority) : null, "priority" ,container.Add );
             AddIf( null != (((object)this._alwaysServe)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(this._alwaysServe.ToString()) : null, "alwaysServe" ,container.Add );
             AddIf( null != (((object)this._healthPolicyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(this._healthPolicyId.ToString()) : null, "healthPolicyId" ,container.Add );
+            if (null != this._virtualNetworkId)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.XNodeArray();
+                foreach( var __x in this._virtualNetworkId )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("virtualNetworkIds",__w);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

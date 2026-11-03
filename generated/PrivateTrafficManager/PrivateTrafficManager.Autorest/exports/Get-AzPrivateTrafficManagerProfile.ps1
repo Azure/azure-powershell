@@ -20,9 +20,9 @@ Gets a Private Traffic Manager profile.
 .Description
 Gets a Private Traffic Manager profile.
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 .Example
-{{ Add code here }}
+Get-AzPrivateTrafficManagerProfile -ResourceGroupName "demo-rg"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +38,7 @@ INPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.

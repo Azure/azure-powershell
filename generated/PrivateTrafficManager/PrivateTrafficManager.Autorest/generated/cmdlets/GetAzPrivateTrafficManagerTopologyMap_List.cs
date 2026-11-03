@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"Lists all Topology Maps within a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/topologyMaps", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Network/topologyMaps", ApiVersion = "2026-10-01-preview")]
     public partial class GetAzPrivateTrafficManagerTopologyMap_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext

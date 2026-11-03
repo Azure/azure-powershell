@@ -7,183 +7,84 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Extensions;
 
-    /// <summary>Class representing a Private Traffic Manager profile.</summary>
+    /// <summary>The type used for update operations of the PrivateTrafficManagerProfile.</summary>
     public partial class PrivateTrafficManagerProfileUpdate :
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdate,
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate();
 
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string CustomTopologyMap { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).CustomTopologyMap; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).CustomTopologyMap = value ?? null; }
+        public string CustomTopologyMapMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).CustomTopologyMapMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).CustomTopologyMapMode = value ?? null; }
 
         /// <summary>The record type of the Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string DnsConfigRecordType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfigRecordType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfigRecordType = value ?? null; }
+        public string DnsConfigRecordType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfigRecordType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfigRecordType = value ?? null; }
 
         /// <summary>The TTL of the DNS records in seconds.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public long? DnsConfigTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfigTtl; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfigTtl = value ?? default(long); }
+        public long? DnsConfigTtl { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfigTtl; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfigTtl = value ?? default(long); }
 
         /// <summary>The list of endpoints in the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint> Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).Endpoint = value ?? null /* arrayOf */; }
-
-        /// <summary>
-        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileEndpoint> Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).Endpoint = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for DnsConfig</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal.DnsConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).DnsConfig = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal.DnsConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).DnsConfig = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProperties Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProperties()); set { {_property = value;} } }
-
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).ProvisioningState = value ?? null; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Id = value ?? null; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemData</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy = value ?? null; }
-
-        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType = value ?? null; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type = value ?? null; }
-
-        /// <summary>The name of the resource</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Name; }
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.PrivateTrafficManagerProfileUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>The status of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string ProfileStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).ProfileStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).ProfileStatus = value ?? null; }
+        public string ProfileStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).ProfileStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).ProfileStatus = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProperties _property;
+        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateProperties _property;
 
-        /// <summary>The properties of the Private Traffic Manager profile.</summary>
+        /// <summary>The resource-specific properties for this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProfileProperties()); set => this._property = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.PrivateTrafficManagerProfileUpdateProperties()); set => this._property = value; }
 
-        /// <summary>Provisioning state of the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).ProvisioningState; }
-
-        /// <summary>
-        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemData = value ?? null /* model class */; }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedAt; }
-
-        /// <summary>The identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedBy; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataCreatedByType; }
-
-        /// <summary>The timestamp of resource last modification (UTC)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedAt; }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedBy; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).SystemDataLastModifiedByType; }
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags _tag;
 
         /// <summary>Resource tags.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Tag = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.PrivateTrafficManagerProfileUpdateTags()); set => this._tag = value; }
 
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string TopologyMapId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).TopologyMapId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).TopologyMapId = value ?? null; }
+        public string TopologyMapId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).TopologyMapId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).TopologyMapId = value ?? null; }
 
         /// <summary>The traffic routing method of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
-        public string TrafficRoutingMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).TrafficRoutingMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)Property).TrafficRoutingMethod = value ?? null; }
-
-        /// <summary>
-        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__azureResourceManagerCommonTypesTrackedResourceUpdate).Type; }
+        public string TrafficRoutingMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).TrafficRoutingMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdatePropertiesInternal)Property).TrafficRoutingMethod = value ?? null; }
 
         /// <summary>Creates an new <see cref="PrivateTrafficManagerProfileUpdate" /> instance.</summary>
         public PrivateTrafficManagerProfileUpdate()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-            await eventListener.AssertObjectIsValid(nameof(__azureResourceManagerCommonTypesTrackedResourceUpdate), __azureResourceManagerCommonTypesTrackedResourceUpdate);
-        }
     }
-    /// Class representing a Private Traffic Manager profile.
+    /// The type used for update operations of the PrivateTrafficManagerProfile.
     public partial interface IPrivateTrafficManagerProfileUpdate :
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdate
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IJsonSerializable
     {
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The experience level of the Private Traffic Manager profile.",
-        SerializedName = @"customTopologyMap",
+        Description = @"The mode for custom topology map of the Private Traffic Manager profile.",
+        SerializedName = @"customTopologyMapMode",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
-        string CustomTopologyMap { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string CustomTopologyMapMode { get; set; }
         /// <summary>The record type of the Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -230,20 +131,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string ProfileStatus { get; set; }
-        /// <summary>Provisioning state of the resource.</summary>
+        /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Provisioning state of the resource.",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
-        string ProvisioningState { get;  }
+        Create = true,
+        Update = true,
+        Description = @"Resource tags.",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags Tag { get; set; }
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -251,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ARM resource ID of the topology map which has site(s) associated with this probing gateway.",
+        Description = @"The ARM resource ID of the topology map associated with this Private Traffic Manager profile.",
         SerializedName = @"topologyMapId",
         PossibleTypes = new [] { typeof(string) })]
         string TopologyMapId { get; set; }
@@ -265,17 +165,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"The traffic routing method of the Private Traffic Manager profile.",
         SerializedName = @"trafficRoutingMethod",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
         string TrafficRoutingMethod { get; set; }
 
     }
-    /// Class representing a Private Traffic Manager profile.
-    internal partial interface IPrivateTrafficManagerProfileUpdateInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IAzureResourceManagerCommonTypesTrackedResourceUpdateInternal
+    /// The type used for update operations of the PrivateTrafficManagerProfile.
+    internal partial interface IPrivateTrafficManagerProfileUpdateInternal
+
     {
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
-        string CustomTopologyMap { get; set; }
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string CustomTopologyMapMode { get; set; }
         /// <summary>The DNS related configuration properties of the Private Traffic Manager</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig DnsConfig { get; set; }
         /// <summary>The record type of the Traffic Manager profile.</summary>
@@ -288,17 +188,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// <summary>The status of the Private Traffic Manager profile.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string ProfileStatus { get; set; }
-        /// <summary>The properties of the Private Traffic Manager profile.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfileProperties Property { get; set; }
-        /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
-        string ProvisioningState { get; set; }
+        /// <summary>The resource-specific properties for this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateProperties Property { get; set; }
+        /// <summary>Resource tags.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfileUpdateTags Tag { get; set; }
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         string TopologyMapId { get; set; }
         /// <summary>The traffic routing method of the Private Traffic Manager profile.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
         string TrafficRoutingMethod { get; set; }
 
     }

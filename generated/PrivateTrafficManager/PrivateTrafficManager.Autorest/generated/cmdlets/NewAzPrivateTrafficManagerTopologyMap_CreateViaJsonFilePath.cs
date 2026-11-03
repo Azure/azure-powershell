@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"create a Topology Map.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}", ApiVersion = "2026-10-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.NotSuggestDefaultParameterSet]
     public partial class NewAzPrivateTrafficManagerTopologyMap_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,

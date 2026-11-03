@@ -178,17 +178,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Site"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>) content.GetValueForProperty("Site",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.SiteTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite>) content.GetValueForProperty("Site",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.TopologyMapInlineSiteTypeConverter.ConvertFrom));
             }
             if (content.Contains("CatchAllSiteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).CatchAllSiteName = (string) content.GetValueForProperty("CatchAllSiteName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).CatchAllSiteName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -259,17 +259,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Site"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>) content.GetValueForProperty("Site",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.SiteTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite>) content.GetValueForProperty("Site",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).Site, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite>(__y, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.TopologyMapInlineSiteTypeConverter.ConvertFrom));
             }
             if (content.Contains("CatchAllSiteName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).CatchAllSiteName = (string) content.GetValueForProperty("CatchAllSiteName",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).CatchAllSiteName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -20,9 +20,9 @@ Create a Private Traffic Manager profile.
 .Description
 Create a Private Traffic Manager profile.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Weighted" -ProfileStatus "Enabled" -DnsConfigRecordType "CNAME" -DnsConfigTtl 60 -Tag @{environment="test"; team="networking"}
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Location "global" -TrafficRoutingMethod "Priority" -ProfileStatus "Enabled" -CustomTopologyMapMode "Enabled" -TopologyMapId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/topologyMaps/ptm-topology-demo"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerProfile
@@ -38,8 +38,9 @@ ENDPOINT <IProfileEndpoint[]>: The list of endpoints in the Private Traffic Mana
   [EndpointStatus <String>]: The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
   [HealthPolicyId <String>]: The health policy associated with this endpoint.
   [Kind <String>]: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.
+  [MonitoringTarget <String>]: Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.
   [Priority <Int64?>]: The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
+  [VirtualNetworkId <List<String>>]: The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
   [Weight <Int64?>]: The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
 .Link
 https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerprofile
@@ -76,11 +77,11 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The experience level of the Private Traffic Manager profile.
-    ${CustomTopologyMap},
+    # The mode for custom topology map of the Private Traffic Manager profile.
+    ${CustomTopologyMapMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("A", "AAAA", "CNAME")]
@@ -119,11 +120,11 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+    # The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
     ${TopologyMapId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
     # The traffic routing method of the Private Traffic Manager profile.

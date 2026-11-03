@@ -1,358 +1,540 @@
 {
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$PUT+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview+1": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"sites\": []\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"catchAllSiteName\": \"ptm-site-70ad8z\",\r\n    \"sites\": [\r\n      {\r\n        \"properties\": {\r\n          \"probingGatewayIds\": [\r\n            \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/recording-gateways/providers/Microsoft.Network/probinggateways/recording-gateway\"\r\n          ],\r\n          \"virtualNetworkIds\": [\r\n            \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/virtualNetworks/validation-vnet\"\r\n          ]\r\n        },\r\n        \"name\": \"ptm-site-70ad8z\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"global\"\r\n}",
       "isContentBase64": false,
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "70" ]
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "657"
+        ]
       }
     },
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM" ],
-        "Retry-After": [ "10" ],
-        "Azure-AsyncOperation": [ "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM" ],
-        "x-envoy-upstream-service-time": [ "1167" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/677a23ed-4357-460d-91a5-a7dfa52107de" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "d5708d2e-6b51-4af2-8db1-00af0f83efda" ],
-        "x-ms-correlation-request-id": [ "d5708d2e-6b51-4af2-8db1-00af0f83efda" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085314Z:d5708d2e-6b51-4af2-8db1-00af0f83efda" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9ADD145CD1454D07897E9F3D1890EAEC Ref B: MAA211070117031 Ref C: 2026-06-19T08:53:12Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:53:13 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000001?api-version=2026-10-01-preview&t=639293058320128379&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=bB8WX6Qt7uIoUCn3RTFXjD9bYpgMzE2N8jG_BCDZdnIRJaTOk2rrl7kiZKLw1o7VcHzmZNQCBmgv57TjAw6Jeh6q06i1GnaM0kJuSDqHCUVGbKUGxfR_H4HtB34P5KU-RxeUtO1s8PfFHOPprJhxpaBXFj6Erd7nrNJaDS5mvBulF9ebl9y9M1Z6dKC8Yu8c2k29mYGvvvyIQGAn9E6RTWV5g5chr5cyGD00wrqoxTuKWZV6iWlJ27efIJ5HIdmWff0Tif0DctziqYhaMliSQRIJbBYIOLFCJXLf-nxrEaxTCInhsC9tXiPchVtSR6VUP35VC1DuE-N5LEgWuT-s6Q&h=LJdaoDS_fpKJ0ydAEwtDQIFicCzRiV4yuHSm-PFOnLQ"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000001?api-version=2026-10-01-preview&t=639293058319972117&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=J7yw23BJg2A-8C0ldvxrigGoNXnT4MUym72EsOvUZozqZkUHZsjDNf1tcHyopw177bl7H04SEGoAy1EMcVV7bs69SDs4kiqAqwpRl7BUfsu82e2q6siDZIxM-HU1AEWzKNAxLEf3SlTqSNf775CILzubo_R0XTCuzPOvCyrKunHifygKVog63WNz3Y2N8ljcO6R72LqrTkBytAlP7rz1jWr81ddM88FdjqfoJu_c-gscH3Wc3i7Av73nuZUSg27fPyIk9PnWOF3-QkTsjDCIhh-CHmWqZvmGXShgRoCKGK_Z4glH9w1RUuk2PC8TnP1ZGQutN2jteSKbfmeGGd-JYA&h=JneflJ_HMrQ-bj0KbITQL8O05TPOqrIy6Q8QCXwJPhs"
+        ],
+        "x-envoy-upstream-service-time": [
+          "1634"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000004"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123032Z:00000000-0000-0000-0000-000000000005"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DBC8B24E9D0146829395E818366F9EE8 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:25Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:31 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "47" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "47"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
       "Content": "{\"properties\":{\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM+2": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000001?api-version=2026-10-01-preview&t=639293058319972117&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=J7yw23BJg2A-8C0ldvxrigGoNXnT4MUym72EsOvUZozqZkUHZsjDNf1tcHyopw177bl7H04SEGoAy1EMcVV7bs69SDs4kiqAqwpRl7BUfsu82e2q6siDZIxM-HU1AEWzKNAxLEf3SlTqSNf775CILzubo_R0XTCuzPOvCyrKunHifygKVog63WNz3Y2N8ljcO6R72LqrTkBytAlP7rz1jWr81ddM88FdjqfoJu_c-gscH3Wc3i7Av73nuZUSg27fPyIk9PnWOF3-QkTsjDCIhh-CHmWqZvmGXShgRoCKGK_Z4glH9w1RUuk2PC8TnP1ZGQutN2jteSKbfmeGGd-JYA&h=JneflJ_HMrQ-bj0KbITQL8O05TPOqrIy6Q8QCXwJPhs+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000001?api-version=2026-10-01-preview&t=639293058319972117&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=J7yw23BJg2A-8C0ldvxrigGoNXnT4MUym72EsOvUZozqZkUHZsjDNf1tcHyopw177bl7H04SEGoAy1EMcVV7bs69SDs4kiqAqwpRl7BUfsu82e2q6siDZIxM-HU1AEWzKNAxLEf3SlTqSNf775CILzubo_R0XTCuzPOvCyrKunHifygKVog63WNz3Y2N8ljcO6R72LqrTkBytAlP7rz1jWr81ddM88FdjqfoJu_c-gscH3Wc3i7Av73nuZUSg27fPyIk9PnWOF3-QkTsjDCIhh-CHmWqZvmGXShgRoCKGK_Z4glH9w1RUuk2PC8TnP1ZGQutN2jteSKbfmeGGd-JYA&h=JneflJ_HMrQ-bj0KbITQL8O05TPOqrIy6Q8QCXwJPhs",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "65" ],
-        "x-ms-client-request-id": [ "bbcdcce5-aef8-47a4-9603-fdc1bec7851c" ],
-        "CommandName": [ "New-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "New-AzPrivateTrafficManagerTopologyMap_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "59"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "CommandName": [
+          "New-AzPrivateTrafficManagerTopologyMap"
+        ],
+        "FullCommandName": [
+          "New-AzPrivateTrafficManagerTopologyMap_CreateViaJsonString"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "163" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/3cec0e04-7016-4cd4-bd17-0ab79ec6fc3e" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "da3d7a42-13e9-4dc5-871e-8ed0ffa111c4" ],
-        "x-ms-correlation-request-id": [ "da3d7a42-13e9-4dc5-871e-8ed0ffa111c4" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085324Z:da3d7a42-13e9-4dc5-871e-8ed0ffa111c4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7531C8DAC67F45EC850D73B5C5628705 Ref B: MAA211070117031 Ref C: 2026-06-19T08:53:24Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:53:24 GMT" ]
+        "x-envoy-upstream-service-time": [
+          "158"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123043Z:00000000-0000-0000-0000-000000000008"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: B8A5F78A982B465A98A9A93E930E2A24 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:42Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:42 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "20" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"status\":\"Running\"}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/01c17360-d04c-479f-b289-832e36e185a6?api-version=2026-02-09-preview\u0026t=639174559942891220\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=IBweJeBVELJdMgoMz5UtUs8Hw0KSXNSrCyo_tBbRMLbcVWNx-3jBmpnTnJDkdl5DDBqc35oTHpGb_lTXBTCTFbA76TnjZDCvpCzaIce6mvnADMSbql-0i61wk_BadPfZOLd6VumzwPAZOiyL4EUYWCzEPOoBouo79ARxXbH6RbKHbT-z4_YzqWg0aMCEguRnKTHPJQvBDCykrsEEhQ3Pb20YvU9qL9yfPlWSQF98fj0hM1Vv1IyltfMFhNksQCctll1SWQB01HWfhGFKmf2TkFaOO6KJJ66F5KYk0CWwsfN7UZBgo4QVmQ9m-2bZcRYMGgpOvuKsI5COmPNpGQc1LA\u0026h=JwxZPGa2g5Ll5ImQTAT61nXWriFu1iYoGR2ih6RekqM",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "66" ],
-        "x-ms-client-request-id": [ "bbcdcce5-aef8-47a4-9603-fdc1bec7851c" ],
-        "CommandName": [ "New-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "New-AzPrivateTrafficManagerTopologyMap_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "163" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/81e4c3b7-478a-4019-bbf9-2eaf71197d25" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "29e0ac91-a025-4b80-a49b-b8f072bac9bd" ],
-        "x-ms-correlation-request-id": [ "29e0ac91-a025-4b80-a49b-b8f072bac9bd" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085355Z:29e0ac91-a025-4b80-a49b-b8f072bac9bd" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 977875487A7B449389441CC876AE7218 Ref B: MAA211070117031 Ref C: 2026-06-19T08:53:55Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:53:55 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "22" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
       },
       "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview+4": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "67" ],
-        "x-ms-client-request-id": [ "bbcdcce5-aef8-47a4-9603-fdc1bec7851c" ],
-        "CommandName": [ "New-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "New-AzPrivateTrafficManagerTopologyMap_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "60"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "CommandName": [
+          "New-AzPrivateTrafficManagerTopologyMap"
+        ],
+        "FullCommandName": [
+          "New-AzPrivateTrafficManagerTopologyMap_CreateViaJsonString"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "331" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "f8e5ad2d-6b92-4a4c-aa3d-d01db4556207" ],
-        "x-ms-correlation-request-id": [ "f8e5ad2d-6b92-4a4c-aa3d-d01db4556207" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085356Z:f8e5ad2d-6b92-4a4c-aa3d-d01db4556207" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 664A223C392645F0BCF0A9BAE1600AE7 Ref B: MAA211070117031 Ref C: 2026-06-19T08:53:55Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:53:55 GMT" ]
+        "x-envoy-upstream-service-time": [
+          "342"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000009"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000009"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123044Z:00000000-0000-0000-0000-000000000009"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 66963C8C36B74D1588BB875EFA304520 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:43Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:43 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "302" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "1014"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
       },
-      "Content": "{\"properties\":{\"sites\":[],\"provisioningState\":\"Succeeded\"},\"location\":\"global\",\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z\",\"name\":\"ptm-topo-new-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps\"}",
+      "Content": "{\"properties\":{\"sites\":[{\"properties\":{\"probingGatewayIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/recording-gateways/providers/microsoft.network/probinggateways/recording-gateway\"],\"virtualNetworkIds\":[\"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/ptm-october-validation/providers/microsoft.network/virtualnetworks/validation-vnet\"],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}],\"catchAllSiteName\":\"ptm-site-70ad8z\",\"provisioningState\":\"Succeeded\"},\"location\":\"global\",\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z\",\"name\":\"ptm-topo-new-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps\"}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$DELETE+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview+5": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMaps/ptm-topo-new-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "68" ],
-        "x-ms-client-request-id": [ "deff2148-2c4a-46fa-a1e2-16e72927417c" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "61"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 202,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk" ],
-        "Retry-After": [ "10" ],
-        "Azure-AsyncOperation": [ "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk" ],
-        "x-envoy-upstream-service-time": [ "681" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/e54750e2-f6c1-4f52-82ae-755a3de3e203" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
-        "x-ms-request-id": [ "fa1ea526-0263-400d-9fdf-8db649f8d38c" ],
-        "x-ms-correlation-request-id": [ "fa1ea526-0263-400d-9fdf-8db649f8d38c" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085359Z:fa1ea526-0263-400d-9fdf-8db649f8d38c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9A63A885244A4A01A477C103D79E3FF3 Ref B: MAA211070117031 Ref C: 2026-06-19T08:53:57Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:53:58 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=FSShOAgsLtziPVq96wkk4526-btgZ338XV1WSg2KRP_z8ECszCQgyYXzryj-TepBkL06Dixol5ArNRMfFJaoPZGu2zjd6BGdT4MzZfYuOM0ZzRa9jrXsYnZxSBurAemCOhbS9n9_uUsWeXnjCH1IbfO2Z9C00KAEaquLwWxTmaKSJd-OGVMxIdUSHepAHF6VJxhXsmjuB-HRmSGO2Avk1Cl9CZGBCLjVD5kziByuQqKBBWDT7ocOJ_A9YQ2A4-FWFH1J7tcP9-aw8Z5Sqe-ZK1ZnFtbs-V46seAWzmXSiqXhe_ubI5eWXKU1LMDMDxLuHQ2luxdRXonw0_BR9VGWEg&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=GP9_a53UcdFnLDUyx6H0RNXqzaGWqzU8grJvsq0WRZ_VUr8ltZc0eQMJ_3Xz6gFUt58TjYqf3p0hkek1B6iufN9t4Me6vIx-y8ASmcfx8Z1inlfMUCKmFJJR804xes-NyacAuAoRRTksQLnhgVJXSA2kMof6R8pKYMh2TFbBPKqkhhOZiw2t1chipBrS_mC7PgVQL8jbIEGSC-Ip0AKgVHm4wQ0q_0yQgRiwOQmxyidbkgrzubsEUu-I-xMvx_e7EK0wjejQ6hsfmcfKSVTvcga-QtDdiHx4hMXVAAa5JOVvjAg184Mwy_qhX3GzMYAU-hom7eexbqhZdb0nVCT2iQ&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk"
+        ],
+        "x-envoy-upstream-service-time": [
+          "1033"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000012"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000013"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000013"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123045Z:00000000-0000-0000-0000-000000000013"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5B3B870BE2CD48D88B1BB56C9428A939 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:44Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:44 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk+6": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=GP9_a53UcdFnLDUyx6H0RNXqzaGWqzU8grJvsq0WRZ_VUr8ltZc0eQMJ_3Xz6gFUt58TjYqf3p0hkek1B6iufN9t4Me6vIx-y8ASmcfx8Z1inlfMUCKmFJJR804xes-NyacAuAoRRTksQLnhgVJXSA2kMof6R8pKYMh2TFbBPKqkhhOZiw2t1chipBrS_mC7PgVQL8jbIEGSC-Ip0AKgVHm4wQ0q_0yQgRiwOQmxyidbkgrzubsEUu-I-xMvx_e7EK0wjejQ6hsfmcfKSVTvcga-QtDdiHx4hMXVAAa5JOVvjAg184Mwy_qhX3GzMYAU-hom7eexbqhZdb0nVCT2iQ&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=GP9_a53UcdFnLDUyx6H0RNXqzaGWqzU8grJvsq0WRZ_VUr8ltZc0eQMJ_3Xz6gFUt58TjYqf3p0hkek1B6iufN9t4Me6vIx-y8ASmcfx8Z1inlfMUCKmFJJR804xes-NyacAuAoRRTksQLnhgVJXSA2kMof6R8pKYMh2TFbBPKqkhhOZiw2t1chipBrS_mC7PgVQL8jbIEGSC-Ip0AKgVHm4wQ0q_0yQgRiwOQmxyidbkgrzubsEUu-I-xMvx_e7EK0wjejQ6hsfmcfKSVTvcga-QtDdiHx4hMXVAAa5JOVvjAg184Mwy_qhX3GzMYAU-hom7eexbqhZdb0nVCT2iQ&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "69" ],
-        "x-ms-client-request-id": [ "deff2148-2c4a-46fa-a1e2-16e72927417c" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "62"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "175" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/36f0e6f9-2605-462f-a96d-048a29c5ab90" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "0bfa28fc-de50-400d-ae6c-8d219cb59876" ],
-        "x-ms-correlation-request-id": [ "0bfa28fc-de50-400d-ae6c-8d219cb59876" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085409Z:0bfa28fc-de50-400d-ae6c-8d219cb59876" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4D64022CB40345F98B10C98C7A8739E3 Ref B: MAA211070117031 Ref C: 2026-06-19T08:54:09Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:54:09 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "159"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000014"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000015"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000015"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123055Z:00000000-0000-0000-0000-000000000015"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C0BA16613BCA4210AF0571661FDAE3D2 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:55Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:54 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "20" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"status\":\"Running\"}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "deff2148-2c4a-46fa-a1e2-16e72927417c" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "162" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/b28c8bf9-fe99-43e4-ae4b-414f0f6b0051" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "a28d528b-8d0e-4448-9a7b-82491edb8906" ],
-        "x-ms-correlation-request-id": [ "a28d528b-8d0e-4448-9a7b-82491edb8906" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085440Z:a28d528b-8d0e-4448-9a7b-82491edb8906" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EF282F921A604C11A57E5BDBCAA297CB Ref B: MAA211070117031 Ref C: 2026-06-19T08:54:40Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:54:39 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "22" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
       "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   },
-  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk+8": {
+  "New-AzPrivateTrafficManagerTopologyMap+[NoContext]+CreateExpanded - should create a new topology map+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=FSShOAgsLtziPVq96wkk4526-btgZ338XV1WSg2KRP_z8ECszCQgyYXzryj-TepBkL06Dixol5ArNRMfFJaoPZGu2zjd6BGdT4MzZfYuOM0ZzRa9jrXsYnZxSBurAemCOhbS9n9_uUsWeXnjCH1IbfO2Z9C00KAEaquLwWxTmaKSJd-OGVMxIdUSHepAHF6VJxhXsmjuB-HRmSGO2Avk1Cl9CZGBCLjVD5kziByuQqKBBWDT7ocOJ_A9YQ2A4-FWFH1J7tcP9-aw8Z5Sqe-ZK1ZnFtbs-V46seAWzmXSiqXhe_ubI5eWXKU1LMDMDxLuHQ2luxdRXonw0_BR9VGWEg&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMapsOperations/798dca5e-02dc-471c-a5a3-f235f9a27ad2?api-version=2026-02-09-preview\u0026t=639174560390470632\u0026c=MIIHlTCCBn2gAwIBAgIRAPJcAXyj4PVuWaPsZt01Ea8wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjA0MTMxMDI3MjdaFw0yNjEwMDgxNjI3MjdaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGh44O6OT9eV5zBoE7LVtpq9r87ylQlFliZM7nTFJS6yTj-Ehw3wVWNvnoX-mNFNhmSwdl67kN8W7qk2b-xaDQGvIByXgc0l_A0_66drbjOLw0cVSofjs2VuaxmZRXhJFvM-pt3sXePdevW81JLjMk1YjICdX1r66KxgNYw9bCx-F6txnRsnbEUxeVuuTSII1T4pd9kSGMoM0XsK6OuAWsqAD44880TL7KnfxAAzvx4vR90NSV3y0uLJa8HaKT-yziXCH7CgXY0sGB68jGkpbM3IU2ZOoV259sHfU5b9LAPFIMS11xuvr6G4i-bYfmc-Yd9iBvPW4J94HCylLRHUMQIDAQABo4IEkjCCBI4wgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUC7Fq4o2xVsICe40dVrso6r4tnS4wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGyBgNVHR8EggGpMIIBpTBpoGegZYZjaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMGugaaBnhmVodHRwOi8vc2Vjb25kYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS82OC9jdXJyZW50LmNybDBaoFigVoZUaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzY4L2N1cnJlbnQuY3JsMG-gbaBrhmlodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvNjgvY3VycmVudC5jcmwwggG3BggrBgEFBQcBAQSCAakwggGlMGwGCCsGAQUFBzAChmBodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwbgYIKwYBBQUHMAKGYmh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY2FjZXJ0cy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxL2NlcnQuY2VyMF0GCCsGAQUFBzAChlFodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwZgYIKwYBBQUHMAKGWmh0dHA6Ly9jY21ld2VzdHVzMnBraS53ZXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZXdlc3R1czJpY2EwMTANBgkqhkiG9w0BAQsFAAOCAQEAdA_pc38CxGkQIQwsCCkLD0bJLoyzIBBC9aOoZt_62ikFeWcKd4MODmGv5o67rlzoqG9qLks5cPaFQwJhg3L5V1bsM5ZXEPy95fL7WHprXALxsLOSFbQBHXan_PGzM8uR9YuYncRSDnWjShzs9tbd9T0Q67l77KYnEN9Hd0eLLkAPXn2AZVICXD1p0uIWNRLn1zDuKStSoEt2WiHS5Yt--0O_iZ77Bdk_aJ83VwOt8SKlGc74nyEIqYek4f2bSDaw99S97Zm10aCosKcDSLj7j7TNKhKPcgpic_bQq12NL8Nlh0jxmzIbSLV3LIjmpBqH1257FEVU4DUx_nJAP03fEg\u0026s=Hi5gCYbSqieioSBUA3T08zTGVQXysiVEOnGOa0Y3TLPMl-aJa7_FK5hDvAmoAgNVJA-nk_xyHnq9NJSR97dLwFuvzy7ebiuPuD7wdIwYR_7-64mLz0eCHnRbfLxIrDDKI-5a-m1V9cjIi1kVhrw7tfHw8eirHwl6vi-di4cW_InfIb6dXVeK6fnUjxS-jytvjRRa4qgomFkwv1JSKwANkyIKl6f3fox6aGcji6QZT63yG85ATCMDHNSWMoHd8X7IKHHW85H33e7WP8VJWHfNzMBFJsW-AuYxvwRxSpOgWCtD_76jBYdfHJTr6Z9mWGo1siF_ViAA1K4Vs-bdCENhGg\u0026h=7Ua0zcukiGT2VdhBN0CwHACpxFbquzFB2KIfDFiuQnk",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/topologyMapsOperations/00000000-0000-0000-0000-000000000011?api-version=2026-10-01-preview&t=639293058454312022&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=FSShOAgsLtziPVq96wkk4526-btgZ338XV1WSg2KRP_z8ECszCQgyYXzryj-TepBkL06Dixol5ArNRMfFJaoPZGu2zjd6BGdT4MzZfYuOM0ZzRa9jrXsYnZxSBurAemCOhbS9n9_uUsWeXnjCH1IbfO2Z9C00KAEaquLwWxTmaKSJd-OGVMxIdUSHepAHF6VJxhXsmjuB-HRmSGO2Avk1Cl9CZGBCLjVD5kziByuQqKBBWDT7ocOJ_A9YQ2A4-FWFH1J7tcP9-aw8Z5Sqe-ZK1ZnFtbs-V46seAWzmXSiqXhe_ubI5eWXKU1LMDMDxLuHQ2luxdRXonw0_BR9VGWEg&h=bR7zkuLS231W5sgAmFXCXRnlCvaoT7bSEtEaAWOHVOk",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "71" ],
-        "x-ms-client-request-id": [ "deff2148-2c4a-46fa-a1e2-16e72927417c" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerTopologyMap_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "63"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerTopologyMap_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "180" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/84d22523-0be7-447d-97c1-f54199c88ca6" ],
-        "x-ms-throttling-version": [ "v1" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
-        "x-ms-request-id": [ "0e85a699-dfe5-4142-946f-180bb1cea0cb" ],
-        "x-ms-correlation-request-id": [ "0e85a699-dfe5-4142-946f-180bb1cea0cb" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085441Z:0e85a699-dfe5-4142-946f-180bb1cea0cb" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7050E40A64534512BF0B0763228AF627 Ref B: MAA211070117031 Ref C: 2026-06-19T08:54:40Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:54:40 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "171"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000002,objectId=00000000-0000-0000-0000-000000000003/westcentralus/00000000-0000-0000-0000-000000000016"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000017"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000017"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123056Z:00000000-0000-0000-0000-000000000017"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: FBA75C10E9FF434282E2EEF6A9498DC9 Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:55Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:55 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "22" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
       },
       "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false

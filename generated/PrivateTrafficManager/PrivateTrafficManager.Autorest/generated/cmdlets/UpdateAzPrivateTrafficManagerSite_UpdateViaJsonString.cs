@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"update a Site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}", ApiVersion = "2026-10-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.NotSuggestDefaultParameterSet]
     public partial class UpdateAzPrivateTrafficManagerSite_UpdateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,

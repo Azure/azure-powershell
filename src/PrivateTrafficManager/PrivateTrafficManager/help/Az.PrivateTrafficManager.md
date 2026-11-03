@@ -20,6 +20,10 @@ Gets a Traffic Manager health policy.
 ### [Get-AzPrivateTrafficManagerProfile](Get-AzPrivateTrafficManagerProfile.md)
 Gets a Private Traffic Manager profile.
 
+### [Get-AzPrivateTrafficManagerProfileProbingGateway](Get-AzPrivateTrafficManagerProfileProbingGateway.md)
+Gets a probing gateway associated with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+
 ### [Get-AzPrivateTrafficManagerSite](Get-AzPrivateTrafficManagerSite.md)
 Gets a Site.
 
@@ -34,6 +38,10 @@ Create a Traffic Manager health policy.
 
 ### [New-AzPrivateTrafficManagerProfile](New-AzPrivateTrafficManagerProfile.md)
 Create a Private Traffic Manager profile.
+
+### [New-AzPrivateTrafficManagerProfileProbingGateway](New-AzPrivateTrafficManagerProfileProbingGateway.md)
+Create a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
 
 ### [New-AzPrivateTrafficManagerSite](New-AzPrivateTrafficManagerSite.md)
 Create a Site.
@@ -50,6 +58,10 @@ Deletes a Traffic Manager health policy.
 ### [Remove-AzPrivateTrafficManagerProfile](Remove-AzPrivateTrafficManagerProfile.md)
 Deletes a Private Traffic Manager profile.
 
+### [Remove-AzPrivateTrafficManagerProfileProbingGateway](Remove-AzPrivateTrafficManagerProfileProbingGateway.md)
+Deletes a probing gateway association from a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
+
 ### [Remove-AzPrivateTrafficManagerSite](Remove-AzPrivateTrafficManagerSite.md)
 Deletes a Site.
 
@@ -64,6 +76,10 @@ Update a Traffic Manager health policy.
 
 ### [Update-AzPrivateTrafficManagerProfile](Update-AzPrivateTrafficManagerProfile.md)
 Update a Traffic Manager profile.
+
+### [Update-AzPrivateTrafficManagerProfileProbingGateway](Update-AzPrivateTrafficManagerProfileProbingGateway.md)
+Update a probing gateway association with a Private Traffic Manager profile.
+Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.
 
 ### [Update-AzPrivateTrafficManagerSite](Update-AzPrivateTrafficManagerSite.md)
 Update a Site.

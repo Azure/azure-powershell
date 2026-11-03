@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"create a Private Traffic Manager endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints/{endpointName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints/{endpointName}", ApiVersion = "2026-10-01-preview")]
     public partial class NewAzPrivateTrafficManagerEndpoint_CreateViaIdentityPrivateTrafficManagerProfileExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext
@@ -151,16 +151,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
-        /// Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured
-        /// EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring
-        /// Target cannot be an IPv6 address.
+        /// Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target,
+        /// for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the
+        /// target is IPv6 and cannot itself be an IPv6 address.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.",
+        Description = @"Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.",
         SerializedName = @"monitoringTarget",
         PossibleTypes = new [] { typeof(string) })]
         public string MonitoringTarget { get => _resourceBody.MonitoringTarget ?? null; set => _resourceBody.MonitoringTarget = value; }
@@ -247,6 +247,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
         public string Target { get => _resourceBody.Target ?? null; set => _resourceBody.Target = value; }
+
+        /// <summary>
+        /// The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual
+        /// network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint;
+        /// an endpoint with no virtual networks is that fallback.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category(global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.",
+        SerializedName = @"virtualNetworkIds",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] VirtualNetworkId { get => _resourceBody.VirtualNetworkId?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.VirtualNetworkId = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.

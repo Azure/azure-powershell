@@ -40,9 +40,16 @@ Describe 'New-AzPrivateTrafficManagerTopologyMap' {
         $newTopoJson = @{
             location = "global"
             properties = @{
-                sites = @()
+                catchAllSiteName = $env.siteName
+                sites = @(@{
+                    name = $env.siteName
+                    properties = @{
+                        probingGatewayIds = @($env.gatewayId)
+                        virtualNetworkIds = @($env.virtualNetworkId)
+                    }
+                })
             }
-        } | ConvertTo-Json -Depth 5
+        } | ConvertTo-Json -Depth 10
         $result = New-AzPrivateTrafficManagerTopologyMap `
             -Name $newTopoName `
             -ResourceGroupName $env.resourceGroupName `

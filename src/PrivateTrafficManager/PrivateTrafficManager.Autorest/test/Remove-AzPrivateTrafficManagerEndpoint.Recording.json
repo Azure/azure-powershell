@@ -1,44 +1,383 @@
 {
-  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$DELETE+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-02-09-preview+1": {
+  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-10-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-02-09-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "72" ],
-        "x-ms-client-request-id": [ "eef056e4-a120-4a6c-b6f0-cab9be7c67c8" ],
-        "CommandName": [ "Remove-AzPrivateTrafficManagerEndpoint" ],
-        "FullCommandName": [ "Remove-AzPrivateTrafficManagerEndpoint_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": [
+          "64"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
-      "StatusCode": 204,
+      "StatusCode": 202,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-envoy-upstream-service-time": [ "1004" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/764757b5-a937-4746-8f96-0776b3b19814" ],
-        "x-ms-throttling-version": [ "v2" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
-        "x-ms-request-id": [ "19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
-        "x-ms-correlation-request-id": [ "19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085444Z:19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5C8C55BC3B174A52B4AA4480EBCAF901 Ref B: MAA211070117031 Ref C: 2026-06-19T08:54:43Z" ],
-        "Date": [ "Fri, 19 Jun 2026 08:54:44 GMT" ]
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592291519&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=gO5nhZCzs8Y-1oLFJhqa6K9gHIIRKR1O2WaWvSKVwO6or84c0pwsROWvdwaUcFDBVco1ub_brGtDBLPjjN1ef7OPKvbeoYbMupzSF2lXAgRFQZ-YmoseQtS9wZSAvw2YZEzmrypymhllChz6mhpZP4ukC5xiWk7s7ANEOVSwqTbECLQcFFbgvbZL596miXvoSURv-MZMFrUoFa1CqB5_BFUaw6q3-zNvWQTOxS3y9XBoAEU6uE_KKHdpVZGLF5qAhkPAIvDGe6FlE1gWlKRS0-38kGmSSQ5fJTJY0mQ1mpzjYuBkU8wv36XoLqVy_oO9Z-chjOD7QpKcGsNtrxAoDQ&h=imN9GihWVqc4Kcm8-KWMFPIBnr0gpJeNbmqvZj-UL3Q"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592096985&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=mzrbwKoPEnPpjZGTh37oAD5-VBrPfgYGI9XYANJOdt8dIUFSMplALsUUDhFLPU52vtZKUNuC6lrKpRWFWdlP_uEBXfZ5gtMztwVMKxitQqmgemsm5chcjJ6nwnrkVRaDE423-Bl8-RUW3QA64MsNbykrEw3nKulQW2u7JB4uHGOQh1R8wgzd7GBRl_Lszm00EGAJiD2Z8VqEOVR3X-qDjN53BWyujT4rks7uw579lBrdRjFh1Yipweg8kS1eZMt6qN8oFGqFuRTFwC82cAcenQip5dlRhkGAD_4ODmiSAwlFbp6M7eHo5qNOdJS-gzrWEHFdoP5XlptlKS9SctxRZw&h=phoNzKebbh9jepsTNuLeGe8irITapTi1fMWJTBljg3k"
+        ],
+        "x-envoy-upstream-service-time": [
+          "806"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000003,objectId=00000000-0000-0000-0000-000000000004/westcentralus/00000000-0000-0000-0000-000000000005"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "799"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000006"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123059Z:00000000-0000-0000-0000-000000000006"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F26B9304DEF24C8D953C8A86C986F74E Ref B: MWH011020806029 Ref C: 2026-11-03T12:30:56Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:30:58 GMT"
+        ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ]
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
       },
       "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592096985&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=mzrbwKoPEnPpjZGTh37oAD5-VBrPfgYGI9XYANJOdt8dIUFSMplALsUUDhFLPU52vtZKUNuC6lrKpRWFWdlP_uEBXfZ5gtMztwVMKxitQqmgemsm5chcjJ6nwnrkVRaDE423-Bl8-RUW3QA64MsNbykrEw3nKulQW2u7JB4uHGOQh1R8wgzd7GBRl_Lszm00EGAJiD2Z8VqEOVR3X-qDjN53BWyujT4rks7uw579lBrdRjFh1Yipweg8kS1eZMt6qN8oFGqFuRTFwC82cAcenQip5dlRhkGAD_4ODmiSAwlFbp6M7eHo5qNOdJS-gzrWEHFdoP5XlptlKS9SctxRZw&h=phoNzKebbh9jepsTNuLeGe8irITapTi1fMWJTBljg3k+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592096985&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=mzrbwKoPEnPpjZGTh37oAD5-VBrPfgYGI9XYANJOdt8dIUFSMplALsUUDhFLPU52vtZKUNuC6lrKpRWFWdlP_uEBXfZ5gtMztwVMKxitQqmgemsm5chcjJ6nwnrkVRaDE423-Bl8-RUW3QA64MsNbykrEw3nKulQW2u7JB4uHGOQh1R8wgzd7GBRl_Lszm00EGAJiD2Z8VqEOVR3X-qDjN53BWyujT4rks7uw579lBrdRjFh1Yipweg8kS1eZMt6qN8oFGqFuRTFwC82cAcenQip5dlRhkGAD_4ODmiSAwlFbp6M7eHo5qNOdJS-gzrWEHFdoP5XlptlKS9SctxRZw&h=phoNzKebbh9jepsTNuLeGe8irITapTi1fMWJTBljg3k",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "65"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "173"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000003,objectId=00000000-0000-0000-0000-000000000004/westcentralus/00000000-0000-0000-0000-000000000007"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000008"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123110Z:00000000-0000-0000-0000-000000000008"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EEEC3F0CF3764D3AAC57A416DD4D82F8 Ref B: MWH011020806029 Ref C: 2026-11-03T12:31:09Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:31:09 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "20"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"status\":\"Running\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592096985&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=mzrbwKoPEnPpjZGTh37oAD5-VBrPfgYGI9XYANJOdt8dIUFSMplALsUUDhFLPU52vtZKUNuC6lrKpRWFWdlP_uEBXfZ5gtMztwVMKxitQqmgemsm5chcjJ6nwnrkVRaDE423-Bl8-RUW3QA64MsNbykrEw3nKulQW2u7JB4uHGOQh1R8wgzd7GBRl_Lszm00EGAJiD2Z8VqEOVR3X-qDjN53BWyujT4rks7uw579lBrdRjFh1Yipweg8kS1eZMt6qN8oFGqFuRTFwC82cAcenQip5dlRhkGAD_4ODmiSAwlFbp6M7eHo5qNOdJS-gzrWEHFdoP5XlptlKS9SctxRZw&h=phoNzKebbh9jepsTNuLeGe8irITapTi1fMWJTBljg3k+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592096985&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=mzrbwKoPEnPpjZGTh37oAD5-VBrPfgYGI9XYANJOdt8dIUFSMplALsUUDhFLPU52vtZKUNuC6lrKpRWFWdlP_uEBXfZ5gtMztwVMKxitQqmgemsm5chcjJ6nwnrkVRaDE423-Bl8-RUW3QA64MsNbykrEw3nKulQW2u7JB4uHGOQh1R8wgzd7GBRl_Lszm00EGAJiD2Z8VqEOVR3X-qDjN53BWyujT4rks7uw579lBrdRjFh1Yipweg8kS1eZMt6qN8oFGqFuRTFwC82cAcenQip5dlRhkGAD_4ODmiSAwlFbp6M7eHo5qNOdJS-gzrWEHFdoP5XlptlKS9SctxRZw&h=phoNzKebbh9jepsTNuLeGe8irITapTi1fMWJTBljg3k",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "66"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "162"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000003,objectId=00000000-0000-0000-0000-000000000004/westcentralus/00000000-0000-0000-0000-000000000009"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000010"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123140Z:00000000-0000-0000-0000-000000000010"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 58187224C2E24BF3A1C6071646B4AD37 Ref B: MWH011020806029 Ref C: 2026-11-03T12:31:40Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:31:39 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592291519&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=gO5nhZCzs8Y-1oLFJhqa6K9gHIIRKR1O2WaWvSKVwO6or84c0pwsROWvdwaUcFDBVco1ub_brGtDBLPjjN1ef7OPKvbeoYbMupzSF2lXAgRFQZ-YmoseQtS9wZSAvw2YZEzmrypymhllChz6mhpZP4ukC5xiWk7s7ANEOVSwqTbECLQcFFbgvbZL596miXvoSURv-MZMFrUoFa1CqB5_BFUaw6q3-zNvWQTOxS3y9XBoAEU6uE_KKHdpVZGLF5qAhkPAIvDGe6FlE1gWlKRS0-38kGmSSQ5fJTJY0mQ1mpzjYuBkU8wv36XoLqVy_oO9Z-chjOD7QpKcGsNtrxAoDQ&h=imN9GihWVqc4Kcm8-KWMFPIBnr0gpJeNbmqvZj-UL3Q+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ptm-october-validation/providers/Microsoft.Network/PrivateTrafficManagerProfilesoperations/00000000-0000-0000-0000-000000000002?api-version=2026-10-01-preview&t=639293058592291519&c=MIIHlDCCBnygAwIBAgIQa2ej0SDo67sCLhMF906GlzANBgkqhkiG9w0BAQsFADA2MTQwMgYDVQQDEytDQ01FIEcxIFRMUyBSU0EgMjA0OCBTSEEyNTYgMjA0OSBFVVMyIENBIDAxMB4XDTI2MTAyNDE3NTk0OVoXDTI3MDExOTIzNTk0OVowQDE-MDwGA1UEAxM1YXN5bmNvcGVyYXRpb25zaWduaW5nY2VydGlmaWNhdGUubWFuYWdlbWVudC5henVyZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCr6dzpqmMSID9SmTuObKkgVJFml6Cjg0AUzWwjRzSX5nJTK9giFVBy5PE_XauJ3Y58R9tTjhBc9y2FbXxNxOR-Q3psoq8TI9cjtC5NxAYYlE2esN4mYp18x4mufYIn1mrTDBqM_e-fLP9BRtgigEVOjlWQb8Lcdv-6Bm-DszEyh-gBmp_H4Yyuir9Z7vMyhKimrFJ_uNUs_SQdoIHK_DkgrUM0yITMMd1XANOKUf-eL2aJ9QQ4rGu-s7e0_3AM9pDHjjRJCP1o1RNHKBe48AzGI8MaSg9CgY1Q4lEE1vTWRnpLFIDn9H_AAbYhIc_ypWQfpd0Z8FdqOTqZ_PqBU86RAgMBAAGjggSSMIIEjjCBnQYDVR0gBIGVMIGSMAwGCisGAQQBgjd7AQEwZgYKKwYBBAGCN3sCAjBYMFYGCCsGAQUFBwICMEoeSAAzADMAZQAwADEAOQAyADEALQA0AGQANgA0AC0ANABmADgAYwAtAGEAMAA1ADUALQA1AGIAZABhAGYAZgBkADUAZQAzADMAZDAMBgorBgEEAYI3ewMCMAwGCisGAQQBgjd7BAIwDAYDVR0TAQH_BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDgYDVR0PAQH_BAQDAgWgMB0GA1UdDgQWBBQdxGGRygaUz5Thbe77GCNAlh4GpDAfBgNVHSMEGDAWgBT87D7bqnwfgh4FuKEG-UPnArMKuTCCAbIGA1UdHwSCAakwggGlMGmgZ6BlhmNodHRwOi8vcHJpbWFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwa6BpoGeGZWh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L2Vhc3R1czIvY3Jscy9jY21lZWFzdHVzMnBraS9jY21lZWFzdHVzMmljYTAxLzU5L2N1cnJlbnQuY3JsMFqgWKBWhlRodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vZWFzdHVzMi9jcmxzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvNTkvY3VycmVudC5jcmwwb6BtoGuGaWh0dHA6Ly9jY21lZWFzdHVzMnBraS5lYXN0dXMyLnBraS5jb3JlLndpbmRvd3MubmV0L2NlcnRpZmljYXRlQXV0aG9yaXRpZXMvY2NtZWVhc3R1czJpY2EwMS81OS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvZWFzdHVzMi9jYWNlcnRzL2NjbWVlYXN0dXMycGtpL2NjbWVlYXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9lYXN0dXMyL2NhY2VydHMvY2NtZWVhc3R1czJwa2kvY2NtZWVhc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWVlYXN0dXMycGtpLmVhc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21lZWFzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQBDSRxalT1NqfMaTv2NmvkFJhUE9LAHMmIG5ipJgtNvtY7ZOixOyv8rcsWqZVxz9R_cchgrSXlyWQhjHgB4WOROXfo9qpPJfEwMK8DetxEmXsY7H5RWq77Zmcs9e_t8mHurjq2pk3_41-1zQE9gRFKeqs3AtVbxU2WKcvRzMx2icc9ZLKy3zK9yqFBwLHsQE8K1kbGOCI-MfOdeEzSjIZnhh_4BrwOlZGHwFojBXvMziyio004AVhH8dNhPfD11v4A63o_OGmJaJJymzFvyp7fEpGAcW717hT_Z4cjX7fGs_d8BvrMqLkFJZHu1Yh-Ncq7Jm_qe3QwLxC64pPuI-s2R&s=gO5nhZCzs8Y-1oLFJhqa6K9gHIIRKR1O2WaWvSKVwO6or84c0pwsROWvdwaUcFDBVco1ub_brGtDBLPjjN1ef7OPKvbeoYbMupzSF2lXAgRFQZ-YmoseQtS9wZSAvw2YZEzmrypymhllChz6mhpZP4ukC5xiWk7s7ANEOVSwqTbECLQcFFbgvbZL596miXvoSURv-MZMFrUoFa1CqB5_BFUaw6q3-zNvWQTOxS3y9XBoAEU6uE_KKHdpVZGLF5qAhkPAIvDGe6FlE1gWlKRS0-38kGmSSQ5fJTJY0mQ1mpzjYuBkU8wv36XoLqVy_oO9Z-chjOD7QpKcGsNtrxAoDQ&h=imN9GihWVqc4Kcm8-KWMFPIBnr0gpJeNbmqvZj-UL3Q",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "67"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint"
+        ],
+        "FullCommandName": [
+          "Remove-AzPrivateTrafficManagerEndpoint_Delete"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v13.0.0",
+          "PSVersion/v7.6.9",
+          "Az.PrivateTrafficManager/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-envoy-upstream-service-time": [
+          "200"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-0000-0000-000000000003,objectId=00000000-0000-0000-0000-000000000004/westcentralus/00000000-0000-0000-0000-000000000011"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000012"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000012"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20261103T123141Z:00000000-0000-0000-0000-000000000012"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 6EDC382480DE49F38B1AE8D41B2E441B Ref B: MWH011020806029 Ref C: 2026-11-03T12:31:41Z"
+        ],
+        "Date": [
+          "Tue, 03 Nov 2026 12:31:40 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   }

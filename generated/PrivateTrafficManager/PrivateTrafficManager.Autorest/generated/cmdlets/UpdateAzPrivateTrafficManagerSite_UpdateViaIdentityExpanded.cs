@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Description(@"update a Site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}", ApiVersion = "2026-02-09-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}", ApiVersion = "2026-10-01-preview")]
     public partial class UpdateAzPrivateTrafficManagerSite_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IContext
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Class representing a Site.</summary>
+        /// <summary>The type used for update operations of the Site.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteUpdate _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.SiteUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>

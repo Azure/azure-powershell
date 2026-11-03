@@ -46,6 +46,11 @@ Describe 'Update-AzPrivateTrafficManagerProfile' {
             -ResourceGroupName $env.resourceGroupName `
             -Tag @{ "env" = "test"; "updated" = "true" }
         $result | Should -Not -BeNullOrEmpty
+        $result = Get-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
         $result.Name | Should -Be $env.profileName
+        $result.Tag['env'] | Should -Be 'test'
+        $result.Tag['updated'] | Should -Be 'true'
     }
 }

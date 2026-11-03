@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateTrafficManagerProfiles/probingGateways",
+  "apiVersion": "2026-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerProfileProbingGateway",
+      "description": "Gets a probing gateway associated with a Private Traffic Manager profile.\nOnly available when the parent profile has `customTopologyMapMode` set to `Disabled`.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerprofileprobinggateway"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a probing gateway associated with a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.profileProbingGatewayName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerProfileProbingGateway",
+      "description": "Deletes a probing gateway association from a Private Traffic Manager profile.\nOnly available when the parent profile has `customTopologyMapMode` set to `Disabled`.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/probingGateways/{profileProbingGatewayName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagerprofileprobinggateway"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a probing gateway association from a Private Traffic Manager profile. Only available when the parent profile has `customTopologyMapMode` set to `Disabled`.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.profileProbingGatewayName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

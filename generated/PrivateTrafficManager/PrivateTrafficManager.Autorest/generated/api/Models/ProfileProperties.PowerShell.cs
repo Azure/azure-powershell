@@ -113,9 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).DnsConfig = (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig) content.GetValueForProperty("DnsConfig",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).DnsConfig, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.DnsConfigTypeConverter.ConvertFrom);
             }
-            if (content.Contains("CustomTopologyMap"))
+            if (content.Contains("CustomTopologyMapMode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMap = (string) content.GetValueForProperty("CustomTopologyMap",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMap, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMapMode = (string) content.GetValueForProperty("CustomTopologyMapMode",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMapMode, global::System.Convert.ToString);
             }
             if (content.Contains("TopologyMapId"))
             {
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).DnsConfig = (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig) content.GetValueForProperty("DnsConfig",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).DnsConfig, Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.DnsConfigTypeConverter.ConvertFrom);
             }
-            if (content.Contains("CustomTopologyMap"))
+            if (content.Contains("CustomTopologyMapMode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMap = (string) content.GetValueForProperty("CustomTopologyMap",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMap, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMapMode = (string) content.GetValueForProperty("CustomTopologyMapMode",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal)this).CustomTopologyMapMode, global::System.Convert.ToString);
             }
             if (content.Contains("TopologyMapId"))
             {

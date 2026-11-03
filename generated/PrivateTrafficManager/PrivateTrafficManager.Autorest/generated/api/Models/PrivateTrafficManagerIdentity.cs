@@ -40,6 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
         public string PrivateTrafficManagerProfileName { get => this._privateTrafficManagerProfileName; set => this._privateTrafficManagerProfileName = value; }
 
+        /// <summary>Backing field for <see cref="ProfileProbingGatewayName" /> property.</summary>
+        private string _profileProbingGatewayName;
+
+        /// <summary>The name of the probing gateway association.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
+        public string ProfileProbingGatewayName { get => this._profileProbingGatewayName; set => this._profileProbingGatewayName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -121,6 +128,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         SerializedName = @"privateTrafficManagerProfileName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateTrafficManagerProfileName { get; set; }
+        /// <summary>The name of the probing gateway association.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the probing gateway association.",
+        SerializedName = @"profileProbingGatewayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProfileProbingGatewayName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -178,6 +196,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         string Id { get; set; }
         /// <summary>The name of the Private Traffic Manager profile.</summary>
         string PrivateTrafficManagerProfileName { get; set; }
+        /// <summary>The name of the probing gateway association.</summary>
+        string ProfileProbingGatewayName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Site.</summary>

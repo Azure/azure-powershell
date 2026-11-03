@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Site" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> _site;
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite> _site;
 
         /// <summary>The list of Sites in the Topology Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> Site { get => this._site; set => this._site = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite> Site { get => this._site; set => this._site = value; }
 
         /// <summary>Creates an new <see cref="TopologyMapProperties" /> instance.</summary>
         public TopologyMapProperties()
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"The provisioning state of the TopologyMap resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
         /// <summary>The list of Sites in the Topology Map.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Update = true,
         Description = @"The list of Sites in the Topology Map.",
         SerializedName = @"sites",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> Site { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite> Site { get; set; }
 
     }
     /// Class representing the Topology Map properties.
@@ -90,10 +90,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// <summary>The Name of the CatchAll site. There is only one CatchAll site in a TopologyMap</summary>
         string CatchAllSiteName { get; set; }
         /// <summary>The provisioning state of the TopologyMap resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
         /// <summary>The list of Sites in the Topology Map.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite> Site { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite> Site { get; set; }
 
     }
 }

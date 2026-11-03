@@ -1,3 +1,8 @@
+## Upcoming Release
+#### Az.PrivateTrafficManager 0.1.0
+* Updated Private Traffic Manager to API version 2026-10-01-preview, adding profile probing gateway associations, VNet (virtual network) routing, and expanded health policy probe parameters.
+* Changed the preview profile parameter `CustomTopologyMap` to `CustomTopologyMapMode`, accepting `Enabled` or `Disabled`.
+
 ## 16.0.0 - June 2026
 #### Az.Accounts 5.5.0
 * Added ChangeSafety Support

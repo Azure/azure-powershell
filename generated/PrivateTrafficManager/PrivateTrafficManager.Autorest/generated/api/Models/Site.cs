@@ -172,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"Provisioning state of the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
         /// <summary>The list of Network IDs that forms the Site.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// <summary>The properties of the Site.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISiteProperties Property { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
         /// <summary>The list of Network IDs that forms the Site.</summary>
         System.Collections.Generic.List<string> VirtualNetworkId { get; set; }

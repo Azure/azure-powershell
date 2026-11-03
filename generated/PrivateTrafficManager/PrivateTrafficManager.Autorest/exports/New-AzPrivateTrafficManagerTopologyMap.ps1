@@ -20,9 +20,9 @@ Create a Topology Map.
 .Description
 Create a Topology Map.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Location "global" -CatchAllSiteName "site-default" -Tag @{environment="test"}
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-prod" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./topologymap.json"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMap
@@ -31,7 +31,8 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SITE <ISite[]>: The list of Sites in the Topology Map.
+SITE <ITopologyMapInlineSite[]>: The list of Sites in the Topology Map.
+  Name <String>: The name of the Site.
   [ProbingGatewayId <List<String>>]: The ARM resource ID of the probing gateway that can be used to monitor health as surrogate to the networks in the Site.
   [VirtualNetworkId <List<String>>]: The list of Network IDs that forms the Site.
 .Link
@@ -79,7 +80,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ISite[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ITopologyMapInlineSite[]]
     # The list of Sites in the Topology Map.
     ${Site},
 

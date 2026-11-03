@@ -150,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).AlwaysServe = (string) content.GetValueForProperty("AlwaysServe",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).AlwaysServe, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Target"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).Target, global::System.Convert.ToString);
@@ -178,9 +182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).HealthPolicyId = (string) content.GetValueForProperty("HealthPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).HealthPolicyId, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
+            if (content.Contains("VirtualNetworkId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).VirtualNetworkId = (System.Collections.Generic.List<string>) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).VirtualNetworkId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializeDictionary(content);
         }
@@ -247,6 +251,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).AlwaysServe = (string) content.GetValueForProperty("AlwaysServe",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).AlwaysServe, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Target"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).Target, global::System.Convert.ToString);
@@ -275,9 +283,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).HealthPolicyId = (string) content.GetValueForProperty("HealthPolicyId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).HealthPolicyId, global::System.Convert.ToString);
             }
-            if (content.Contains("ProvisioningState"))
+            if (content.Contains("VirtualNetworkId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).VirtualNetworkId = (System.Collections.Generic.List<string>) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointInternal)this).VirtualNetworkId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

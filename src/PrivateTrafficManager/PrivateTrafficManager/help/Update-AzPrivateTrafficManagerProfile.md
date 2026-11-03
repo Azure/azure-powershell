@@ -15,7 +15,7 @@ Update a Traffic Manager profile.
 ### UpdateExpanded (Default)
 ```
 Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CustomTopologyMap <String>] [-DnsConfigRecordType <String>]
+ [-SubscriptionId <String>] [-CustomTopologyMapMode <String>] [-DnsConfigRecordType <String>]
  [-DnsConfigTtl <Int64>] [-Endpoint <IProfileEndpoint[]>] [-ProfileStatus <String>] [-Tag <Hashtable>]
  [-TopologyMapId <String>] [-TrafficRoutingMethod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,7 +38,7 @@ Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String>
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPrivateTrafficManagerProfile -InputObject <IPrivateTrafficManagerIdentity>
- [-CustomTopologyMap <String>] [-DnsConfigRecordType <String>] [-DnsConfigTtl <Int64>]
+ [-CustomTopologyMapMode <String>] [-DnsConfigRecordType <String>] [-DnsConfigTtl <Int64>]
  [-Endpoint <IProfileEndpoint[]>] [-ProfileStatus <String>] [-Tag <Hashtable>] [-TopologyMapId <String>]
  [-TrafficRoutingMethod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -92,8 +92,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomTopologyMap
-The experience level of the Private Traffic Manager profile.
+### -CustomTopologyMapMode
+The mode for custom topology map of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
@@ -306,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### -TopologyMapId
-The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
 
 ```yaml
 Type: System.String

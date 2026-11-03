@@ -20,9 +20,9 @@ Create a Site.
 .Description
 Create a Site.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -VirtualNetworkId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus") -ProbingGatewayId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/probingGateways/pg-eastus")
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-westus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./site-config.json"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +38,7 @@ TOPOLOGYMAPINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identity Parameter
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.

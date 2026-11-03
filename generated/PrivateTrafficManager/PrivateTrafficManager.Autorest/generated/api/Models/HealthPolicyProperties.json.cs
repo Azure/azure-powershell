@@ -55,8 +55,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
 
         /// <summary>
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties.
-        /// Note: the Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties interface is polymorphic,
-        /// and the precise model class that will get deserialized is determined at runtime based on the payload.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
@@ -64,20 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicyProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode node)
         {
-            if (!(node is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json))
-            {
-                return null;
-            }
-            // Polymorphic type -- select the appropriate constructor using the discriminator
-
-            switch ( json.StringProperty("kind") )
-            {
-                case "Probe":
-                {
-                    return new ProbeHealthPolicyProperties(json);
-                }
-            }
-            return new HealthPolicyProperties(json);
+            return node is Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject json ? new HealthPolicyProperties(json) : null;
         }
 
         /// <summary>
@@ -92,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return;
             }
-            {_kind = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("kind"), out var __jsonKind) ? (string)__jsonKind : (string)_kind;}
+            {_probeConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonObject>("probeConfig"), out var __jsonProbeConfig) ? Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ProbeConfig.FromJson(__jsonProbeConfig) : _probeConfig;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -116,10 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._kind)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(this._kind.ToString()) : null, "kind" ,container.Add );
-            }
+            AddIf( null != this._probeConfig ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) this._probeConfig.ToJson(null,serializationMode) : null, "probeConfig" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

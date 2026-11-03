@@ -20,9 +20,12 @@ Create a Private Traffic Manager endpoint.
 .Description
 Create a Private Traffic Manager endpoint.
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Target "primary.contoso.internal." -MonitoringTarget "primary-health.contoso.internal." -EndpointStatus "Enabled" -Weight 60 -Priority 1 -AlwaysServe "Disabled" -HealthPolicyId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/PrivateTrafficManagerProfiles/weighted-profile/healthPolicies/hp1"
 .Example
-{{ Add code here }}
+New-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-secondary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -Weight 40 -AlwaysServe "Enabled"
+.Example
+$virtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-east"
+New-AzPrivateTrafficManagerEndpoint -Name "east-endpoint" -PrivateTrafficManagerProfileName "vnet-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -VirtualNetworkId @($virtualNetworkId)
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
@@ -38,6 +41,7 @@ PRIVATETRAFFICMANAGERPROFILEINPUTOBJECT <IPrivateTrafficManagerIdentity>: Identi
   [HealthPolicyName <String>]: The name of the Traffic Manager health policy.
   [Id <String>]: Resource identity path
   [PrivateTrafficManagerProfileName <String>]: The name of the Private Traffic Manager profile.
+  [ProfileProbingGatewayName <String>]: The name of the probing gateway association.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SiteName <String>]: The name of the Site.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
@@ -128,9 +132,9 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
     [System.String]
-    # Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead.
-    # If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured.
-    # Monitoring Target cannot be an IPv6 address.
+    # Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address.
+    # If not configured, the endpoint target is used.
+    # It is required when the target is IPv6 and cannot itself be an IPv6 address.
     ${MonitoringTarget},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -150,6 +154,16 @@ param(
     # The fully-qualified DNS name or IP address of the endpoint.
     # Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
     ${Target},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Category('Body')]
+    [System.String[]]
+    # The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method.
+    # A virtual network must not be assigned to more than one endpoint in the profile.
+    # A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.
+    ${VirtualNetworkId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityPrivateTrafficManagerProfileExpanded')]

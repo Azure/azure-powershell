@@ -24,3 +24,11 @@ web-endpoint-secondary  10.10.10.25  Enabled        40              Succeeded
 
 This command creates an endpoint that always serves traffic regardless of health status.
 
+### Example 3: Create a virtual network routing endpoint
+```powershell
+$virtualNetworkId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-east"
+New-AzPrivateTrafficManagerEndpoint -Name "east-endpoint" -PrivateTrafficManagerProfileName "vnet-profile" -ResourceGroupName "demo-rg" -Target "10.10.10.25" -EndpointStatus "Enabled" -VirtualNetworkId @($virtualNetworkId)
+```
+
+This command assigns a virtual network to an endpoint in an existing profile whose TrafficRoutingMethod is VNet. Each virtual network can belong to only one endpoint in the profile. An endpoint without virtual networks is the fallback; at most one fallback is allowed per profile.
+

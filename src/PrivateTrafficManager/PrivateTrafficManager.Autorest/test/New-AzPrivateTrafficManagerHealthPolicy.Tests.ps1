@@ -44,7 +44,6 @@ Describe 'New-AzPrivateTrafficManagerHealthPolicy' {
         $newHpName = "ptm-hp-new-$($env.randomStr)"
         $hpJson = @{
             properties = @{
-                name = $newHpName
                 probeConfig = @{
                     protocol = "HTTPS"
                     port = 8443

@@ -25,5 +25,8 @@ if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
 $env = @{}
 if (Test-Path -Path $envFilePath) {
     $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
-    $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
+    $PSDefaultParameterValues=@{
+        "*:Tenant" = $env.Tenant
+        "*-AzPrivateTrafficManager*:SubscriptionId" = $env.SubscriptionId
+    }
 }

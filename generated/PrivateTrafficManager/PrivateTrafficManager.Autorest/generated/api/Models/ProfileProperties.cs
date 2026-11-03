@@ -13,12 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IProfilePropertiesInternal
     {
 
-        /// <summary>Backing field for <see cref="CustomTopologyMap" /> property.</summary>
-        private string _customTopologyMap;
+        /// <summary>Backing field for <see cref="CustomTopologyMapMode" /> property.</summary>
+        private string _customTopologyMapMode;
 
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
-        public string CustomTopologyMap { get => this._customTopologyMap; set => this._customTopologyMap = value; }
+        public string CustomTopologyMapMode { get => this._customTopologyMapMode; set => this._customTopologyMapMode = value; }
 
         /// <summary>Backing field for <see cref="DnsConfig" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig _dnsConfig;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         private string _topologyMapId;
 
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Owned)]
         public string TopologyMapId { get => this._topologyMapId; set => this._topologyMapId = value; }
@@ -88,18 +88,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
     public partial interface IProfileProperties :
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.IJsonSerializable
     {
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The experience level of the Private Traffic Manager profile.",
-        SerializedName = @"customTopologyMap",
+        Description = @"The mode for custom topology map of the Private Traffic Manager profile.",
+        SerializedName = @"customTopologyMapMode",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
-        string CustomTopologyMap { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string CustomTopologyMapMode { get; set; }
         /// <summary>The record type of the Traffic Manager profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -156,10 +156,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"Provisioning state of the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ARM resource ID of the topology map which has site(s) associated with this probing gateway.",
+        Description = @"The ARM resource ID of the topology map associated with this Private Traffic Manager profile.",
         SerializedName = @"topologyMapId",
         PossibleTypes = new [] { typeof(string) })]
         string TopologyMapId { get; set; }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"The traffic routing method of the Private Traffic Manager profile.",
         SerializedName = @"trafficRoutingMethod",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
         string TrafficRoutingMethod { get; set; }
 
     }
@@ -189,9 +189,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
     internal partial interface IProfilePropertiesInternal
 
     {
-        /// <summary>The experience level of the Private Traffic Manager profile.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disable", "Enable")]
-        string CustomTopologyMap { get; set; }
+        /// <summary>The mode for custom topology map of the Private Traffic Manager profile.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string CustomTopologyMapMode { get; set; }
         /// <summary>The DNS related configuration properties of the Private Traffic Manager</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IDnsConfig DnsConfig { get; set; }
         /// <summary>The record type of the Traffic Manager profile.</summary>
@@ -205,14 +205,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string ProfileStatus { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
         /// <summary>
-        /// The ARM resource ID of the topology map which has site(s) associated with this probing gateway.
+        /// The ARM resource ID of the topology map associated with this Private Traffic Manager profile.
         /// </summary>
         string TopologyMapId { get; set; }
         /// <summary>The traffic routing method of the Private Traffic Manager profile.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Priority", "Weighted", "VNet")]
         string TrafficRoutingMethod { get; set; }
 
     }

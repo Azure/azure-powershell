@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         string Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>
-        /// Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured
-        /// EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring
-        /// Target cannot be an IPv6 address.
+        /// Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target,
+        /// for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the
+        /// target is IPv6 and cannot itself be an IPv6 address.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
         public string MonitoringTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)Property).MonitoringTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)Property).MonitoringTarget = value ?? null; }
@@ -164,6 +164,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>
+        /// The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual
+        /// network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint;
+        /// an endpoint with no virtual networks is that fallback.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> VirtualNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)Property).VirtualNetworkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointPropertiesInternal)Property).VirtualNetworkId = value ?? null /* arrayOf */; }
+
+        /// <summary>
         /// The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Origin(Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PropertyOrigin.Inlined)]
@@ -233,9 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Endpoint")]
         string Kind { get; set; }
         /// <summary>
-        /// Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured
-        /// EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring
-        /// Target cannot be an IPv6 address.
+        /// Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target,
+        /// for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the
+        /// target is IPv6 and cannot itself be an IPv6 address.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
         Required = false,
@@ -243,7 +251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address.",
+        Description = @"Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target, for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the target is IPv6 and cannot itself be an IPv6 address.",
         SerializedName = @"monitoringTarget",
         PossibleTypes = new [] { typeof(string) })]
         string MonitoringTarget { get; set; }
@@ -272,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         Description = @"Provisioning state of the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get;  }
         /// <summary>
         /// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic
@@ -303,6 +311,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         SerializedName = @"target",
         PossibleTypes = new [] { typeof(string) })]
         string Target { get; set; }
+        /// <summary>
+        /// The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual
+        /// network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint;
+        /// an endpoint with no virtual networks is that fallback.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint; an endpoint with no virtual networks is that fallback.",
+        SerializedName = @"virtualNetworkIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> VirtualNetworkId { get; set; }
         /// <summary>
         /// The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
         /// </summary>
@@ -336,9 +359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Endpoint")]
         string Kind { get; set; }
         /// <summary>
-        /// Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured
-        /// EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring
-        /// Target cannot be an IPv6 address.
+        /// Monitoring target is where Private Traffic Manager will gather health information.It can differ from the endpoint target,
+        /// for example when the target is an IPv6 address. If not configured, the endpoint target is used. It is required when the
+        /// target is IPv6 and cannot itself be an IPv6 address.
         /// </summary>
         string MonitoringTarget { get; set; }
         /// <summary>
@@ -350,7 +373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// <summary>The properties of the Private Traffic Manager endpoint.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IEndpointProperties Property { get; set; }
         /// <summary>Provisioning state of the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic
@@ -363,6 +386,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models
         /// traffic to this endpoint.
         /// </summary>
         string Target { get; set; }
+        /// <summary>
+        /// The virtual network ARM resource IDs assigned to this endpoint when using the 'VNet' traffic routing method. A virtual
+        /// network must not be assigned to more than one endpoint in the profile. A profile can have at most one fallback endpoint;
+        /// an endpoint with no virtual networks is that fallback.
+        /// </summary>
+        System.Collections.Generic.List<string> VirtualNetworkId { get; set; }
         /// <summary>
         /// The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
         /// </summary>

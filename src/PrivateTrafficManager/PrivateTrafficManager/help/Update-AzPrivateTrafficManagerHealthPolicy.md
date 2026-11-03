@@ -15,20 +15,33 @@ Update a Traffic Manager health policy.
 ### UpdateExpanded (Default)
 ```
 Update-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ProbeConfigCustomHeader <ICustomHeader[]>]
+ [-ProbeConfigExpectedStatusCodeRange <IExpectedStatusCodeRange[]>] [-ProbeConfigIntervalInSecond <Int64>]
+ [-ProbeConfigPath <String>] [-ProbeConfigPort <Int64>] [-ProbeConfigProtocol <String>]
+ [-ProbeConfigTimeoutInSecond <Int64>] [-ProbeConfigToleratedNumberOfFailure <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateTrafficManagerProfileExpanded
 ```
 Update-AzPrivateTrafficManagerHealthPolicy -Name <String>
- -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity>
+ [-ProbeConfigCustomHeader <ICustomHeader[]>]
+ [-ProbeConfigExpectedStatusCodeRange <IExpectedStatusCodeRange[]>] [-ProbeConfigIntervalInSecond <Int64>]
+ [-ProbeConfigPath <String>] [-ProbeConfigPort <Int64>] [-ProbeConfigProtocol <String>]
+ [-ProbeConfigTimeoutInSecond <Int64>] [-ProbeConfigToleratedNumberOfFailure <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPrivateTrafficManagerHealthPolicy -InputObject <IPrivateTrafficManagerIdentity>
+ [-ProbeConfigCustomHeader <ICustomHeader[]>]
+ [-ProbeConfigExpectedStatusCodeRange <IExpectedStatusCodeRange[]>] [-ProbeConfigIntervalInSecond <Int64>]
+ [-ProbeConfigPath <String>] [-ProbeConfigPort <Int64>] [-ProbeConfigProtocol <String>]
+ [-ProbeConfigTimeoutInSecond <Int64>] [-ProbeConfigToleratedNumberOfFailure <Int64>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -167,6 +180,129 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigCustomHeader
+List of custom headers.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.ICustomHeader[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigExpectedStatusCodeRange
+List of expected status code ranges.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IExpectedStatusCodeRange[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigIntervalInSecond
+The monitor interval for endpoints in this profile.
+This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
+Allowed values: 10 or 30 seconds.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigPath
+The path relative to the endpoint domain name used to probe for endpoint health.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigPort
+The TCP port used to probe for endpoint health.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigProtocol
+The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigTimeoutInSecond
+The monitor timeout for endpoints in this profile.
+This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeConfigToleratedNumberOfFailure
+The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
