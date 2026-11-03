@@ -6,6 +6,13 @@ Describe 'Elastic SAN volume compatibility' {
         $parentModules = @(Get-Module -All Az.ElasticSan -ErrorAction Stop | Where-Object {
             $_.NestedModules | Where-Object Name -EQ 'Az.ElasticSan'
         })
+        if ($parentModules.Count -eq 0) {
+            $packageRoot = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
+            Import-Module (Join-Path $packageRoot 'Az.ElasticSan.psd1') -ErrorAction Stop
+            $parentModules = @(Get-Module -All Az.ElasticSan -ErrorAction Stop | Where-Object {
+                $_.NestedModules | Where-Object Name -EQ 'Az.ElasticSan'
+            })
+        }
         $parentModules.Count | Should -Be 1 -Because 'exactly one parent module must be loaded for package validation'
         $module = $parentModules[0]
         $manifestPath = Join-Path $module.ModuleBase 'Az.ElasticSan.psd1'
