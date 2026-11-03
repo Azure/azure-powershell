@@ -21,6 +21,9 @@ Get the advanced platform metrics rule for the storage account by rule type.
 Get the advanced platform metrics rule for the storage account by rule type.
 .Example
 Get-AzStorageAdvancedPlatformMetricsRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"
+.Example
+$rules = Get-AzStorageAdvancedPlatformMetricsRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"
+Get-AzStorageAdvancedPlatformMetricsRule -InputObject @{ Id = $rules[0].Id }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
@@ -62,9 +65,14 @@ https://learn.microsoft.com/powershell/module/az.storage/get-azstorageadvancedpl
 #>
 function Get-AzStorageAdvancedPlatformMetricsRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAdvancedPlatformMetricsRule])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
@@ -72,7 +80,6 @@ param(
     # Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
     ${AccountName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [System.String]
@@ -80,7 +87,6 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -88,12 +94,6 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
-    # Identity Parameter
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,7 +151,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-
+        
         $testPlayback = $false
         $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
@@ -162,7 +162,7 @@ begin {
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }
+        }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
@@ -178,11 +178,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Storage.private\Get-AzStorageAdvancedPlatformMetricsRule_Get';
             GetViaIdentity = 'Az.Storage.private\Get-AzStorageAdvancedPlatformMetricsRule_GetViaIdentity';
             List = 'Az.Storage.private\Get-AzStorageAdvancedPlatformMetricsRule_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -239,5 +238,5 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

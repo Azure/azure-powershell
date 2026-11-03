@@ -12,7 +12,7 @@ Get the advanced platform metrics rule for the storage account by rule type.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzStorageAdvancedPlatformMetricsRule -AccountName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -24,23 +24,27 @@ Get-AzStorageAdvancedPlatformMetricsRule -InputObject <IStorageIdentity> [-Defau
  [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzStorageAdvancedPlatformMetricsRule -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get the advanced platform metrics rule for the storage account by rule type.
 
 ## EXAMPLES
 
-### Example 1: Get the container capacity metrics rule
+### Example 1: List the capacity metrics rules for an account
 ```powershell
 Get-AzStorageAdvancedPlatformMetricsRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"
 ```
 
-Gets the container-level capacity metrics rule for the storage account.
+Lists the metrics rules for the storage account.
+An account without configured rules returns no results.
+
+### Example 2: Get a metrics rule by resource identity
+```powershell
+$rules = Get-AzStorageAdvancedPlatformMetricsRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"
+Get-AzStorageAdvancedPlatformMetricsRule -InputObject @{ Id = $rules[0].Id }
+```
+
+Retrieves a specific existing rule using its resource identity.
+This example requires at least one configured rule.
 
 ## PARAMETERS
 
@@ -50,7 +54,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -97,7 +101,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -113,7 +117,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -137,3 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

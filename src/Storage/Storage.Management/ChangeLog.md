@@ -21,6 +21,7 @@
 * Updated Storage management operations to API version 2026-09-01.
 * Added per-service Shared Key controls, cross-tenant delegation SAS (shared access signature) controls, user-bound delegation SAS enforcement, Blob Access Point enablement, and Turbo Tier settings to `New-AzStorageAccount` and `Set-AzStorageAccount`.
 * Added commands to manage context caches, their managed identities and containers, and advanced platform metrics rules.
+    - Made `Get-AzStorageAdvancedPlatformMetricsRule` list rules by default and retrieve a specific rule through its resource identity.
 * Added commands to manage Blob Access Point configurations and test proposed or existing connections.
 * Added Blob Access Point attachment parameters to `New-AzRmStorageContainer` and `Update-AzRmStorageContainer` and attachment details to container output.
 * Added file share guardrail limits and network security perimeter service tags to management output.

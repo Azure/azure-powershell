@@ -71,6 +71,12 @@ directive:
       subject: ^AdvancedPlatformMetric$
     set:
       subject: AdvancedPlatformMetricsRule
+  # List rules by default; the singleton GET remains available through its resource identity.
+  - where:
+      subject: ^AdvancedPlatformMetricsRule$
+      verb: Get
+      variant: ^Get$
+    remove: true
   # Distinguish testing a stored configuration from testing a proposed connection.
   - where:
       subject: ^BlobAccessPointConfigurationExistingConnection$

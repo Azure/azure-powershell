@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </exception>
         internal BlobAccessPointConfigurationsOperations (StorageManagementClient client)
         {
-            if (client == null)
+            if (client == null) 
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BlobAccessPointConfiguration>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobAccessPointConfiguration>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (resource == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resource");
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobAccessPointConfiguration,BlobAccessPointConfigurationsCreateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobAccessPointConfiguration,BlobAccessPointConfigurationsUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1421,7 +1421,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<BlobAccessPointConfigurationsDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1498,7 +1498,7 @@ namespace Microsoft.Azure.Management.Storage
 
 
 
-
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1682,7 +1682,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<BlobAccessPointConnectionTestResponse,BlobAccessPointConfigurationsTestExistingConnectionHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1771,7 +1771,7 @@ namespace Microsoft.Azure.Management.Storage
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
-
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByStorageAccountNext", tracingParameters);
@@ -1872,7 +1872,7 @@ namespace Microsoft.Azure.Management.Storage
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BlobAccessPointConfiguration>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
