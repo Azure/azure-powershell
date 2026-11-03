@@ -14,29 +14,33 @@ The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed d
 
 ### WeeklyRetentionRequired (Default)
 ```
-Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-InstanceName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String>
+ [-TimeBasedImmutability <String>] [-TimeBasedImmutabilityMode <String>] [-InstanceName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemovePolicy
 ```
-Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-InstanceName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-TimeBasedImmutability <String>]
+ [-TimeBasedImmutabilityMode <String>] [-InstanceName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MonthlyRetentionRequired
 ```
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -MonthlyRetention <String>
- [-InstanceName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TimeBasedImmutability <String>] [-TimeBasedImmutabilityMode <String>] [-InstanceName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### YearlyRetentionRequired
 ```
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-MonthlyRetention <String>]
- -YearlyRetention <String> -WeekOfYear <Int32> [-InstanceName] <String> [-DatabaseName] <String>
+ -YearlyRetention <String> -WeekOfYear <Int32> [-TimeBasedImmutability <String>]
+ [-TimeBasedImmutabilityMode <String>] [-InstanceName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,6 +64,8 @@ MonthlyRetention    : PT0S
 YearlyRetention     : PT0S
 WeekOfYear          : 0
 Location            :
+TimeBasedImmutability     : Disabled
+TimeBasedImmutabilityMode : Unlocked
 ```
 
 Configures the database's long term retention weekly policy to one week.
@@ -78,6 +84,8 @@ MonthlyRetention    : PT0S
 YearlyRetention     : PT0S
 WeekOfYear          : 0
 Location            :
+TimeBasedImmutability     : Disabled
+TimeBasedImmutabilityMode : Unlocked
 ```
 
 This command removes the long term retention policy from the database.
@@ -90,6 +98,46 @@ The Set-AzSqlInstanceDatabaseLongTermRetentionBackup cmdlet sets a managed datab
 ```powershell
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -DatabaseName target1 -InstanceName testInstance -MonthlyRetention P24W -ResourceGroupName testResourceGroup -WeekOfYear 26 -WeeklyRetention 'P1W' -YearlyRetention P10Y
 ```
+
+### Example 4: Enable unlocked time-based immutability for future LTR backups
+```powershell
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -YearlyRetention P10Y -WeekOfYear 26 -TimeBasedImmutability Enabled
+```
+
+```output
+ResourceGroupName          : testResourceGroup
+ManagedInstanceName        : testInstance
+DatabaseName               : test
+WeeklyRetention            : PT0S
+MonthlyRetention           : PT0S
+YearlyRetention            : P10Y
+WeekOfYear                 : 26
+Location                   :
+TimeBasedImmutability      : Enabled
+TimeBasedImmutabilityMode  : Unlocked
+```
+
+Configures future LTR backups with unlocked time-based immutability. Their immutability can later be locked or removed.
+
+### Example 5: Enable locked time-based immutability for future LTR backups
+```powershell
+Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -ResourceGroupName testResourceGroup -InstanceName testInstance -DatabaseName test -YearlyRetention P10Y -WeekOfYear 26 -TimeBasedImmutability Enabled -TimeBasedImmutabilityMode Locked
+```
+
+```output
+ResourceGroupName          : testResourceGroup
+ManagedInstanceName        : testInstance
+DatabaseName               : test
+WeeklyRetention            : PT0S
+MonthlyRetention           : PT0S
+YearlyRetention            : P10Y
+WeekOfYear                 : 26
+Location                   :
+TimeBasedImmutability      : Enabled
+TimeBasedImmutabilityMode  : Locked
+```
+
+Configures future LTR backups with locked time-based immutability. Locked immutability cannot be removed, and the backups cannot be manually deleted.
 
 ## PARAMETERS
 
@@ -192,6 +240,38 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TimeBasedImmutability
+When set, future backups will have TimeBasedImmutability enabled.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TimeBasedImmutabilityMode
+The setting for time-based immutability mode for future backups. Only effective if TimeBasedImmutability is enabled. Value can be either Locked or Unlocked. Caution: Immutability of LTR backup cannot be removed if TimeBasedImmutabilityMode is Locked.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Unlocked, Locked
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

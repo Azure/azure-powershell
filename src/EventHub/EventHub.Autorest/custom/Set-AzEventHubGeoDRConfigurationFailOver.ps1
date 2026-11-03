@@ -54,7 +54,7 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-		
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -114,14 +114,25 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
 	)
-	process{
+    dynamicparam {
+        $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+        $wrapped = Get-Command 'Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail' -ErrorAction Ignore
+        if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
+            $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
+            foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
+                if (-not $dynamicParameters.ContainsKey($entry.Key)) { $dynamicParameters.Add($entry.Key, $entry.Value) }
+            }
+        }
+        return $dynamicParameters
+    }
+    process{
 		try{
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $drConfig = Get-AzEventHubGeoDRConfiguration @PSBoundParameters
-
+            $readParameters = Get-AzEventHubReadParameters -CommandName 'Get-AzEventHubGeoDRConfiguration' -BoundParameters $PSBoundParameters
+            $drConfig = Get-AzEventHubGeoDRConfiguration @readParameters
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
 
@@ -155,6 +166,8 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
                 if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
                     $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
                 }
+
+                Add-AzEventHubBoundDynamicParameter -CommandName 'Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail' -BoundParameters $PSBoundParameters -TargetParameters $EnvPSBoundParameters -ExcludedParameter InputObject, Name, NamespaceName, ResourceGroupName, SubscriptionId
 
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id

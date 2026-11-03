@@ -63,6 +63,8 @@
 
   # Tweaks the pipeline per call
   $instance.OnNewRequest = $VTable.OnNewRequest
+  # Tweaks the pipeline per call (Change Safety policy-token step)
+  $instance.AddChangeSafetyPolicyTokenHandler = $VTable.AddChangeSafetyPolicyTokenHandler
 
   # Gets shared parameter values
   $instance.GetParameterValue = $VTable.GetParameterValue

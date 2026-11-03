@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get all deleted apps for a subscription at location
         /// </remarks>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// Description for Get deleted app for a subscription at location.
         /// </remarks>
         /// <param name='location'>
-        /// 
+        /// The name of the Azure region.
         /// </param>
         /// <param name='deletedSiteId'>
         /// The numeric ID of the deleted app, e.g. 12345

@@ -21,7 +21,8 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-PublicNetworkAccess <String>] [-SkuCapacity <Int64>] [-Tag <Hashtable>]
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>]
  [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,6 +185,21 @@ Create a standard EventHub namespace `myNamespace` with Auto Inflate enabled.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AlternateName
 Alternate name specified when alias and namespace names are same
 
@@ -204,6 +220,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

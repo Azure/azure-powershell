@@ -65,6 +65,54 @@ function GetSubscriptionNameFromArmId {
     }
 }
 
+function GetParentResourceIdFromArmId {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Id,
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $ParentResourceType
+    )
+
+    process {
+        $idSegments = @($Id.Split('/') | Where-Object { $_ -ne '' })
+        $typeSegments = @($ParentResourceType.Split('/') | Where-Object { $_ -ne '' })
+
+        if ($typeSegments.Count -lt 2) {
+            throw "Parent resource type '$ParentResourceType' is not a valid ARM resource type."
+        }
+
+        $providerNamespace = $typeSegments[0]
+        $resourceTypes = @($typeSegments[1..($typeSegments.Count - 1)])
+        $providerIndex = -1
+
+        for ($index = 0; $index -lt ($idSegments.Count - 1); $index++) {
+            if ($idSegments[$index] -ieq 'providers' -and $idSegments[$index + 1] -ieq $providerNamespace) {
+                $providerIndex = $index
+            }
+        }
+
+        $parentLastIndex = $providerIndex + 1 + (2 * $resourceTypes.Count)
+        if ($providerIndex -lt 0 -or $parentLastIndex -ge $idSegments.Count) {
+            throw "Resource ID '$Id' does not contain parent resource type '$ParentResourceType'."
+        }
+
+        for ($index = 0; $index -lt $resourceTypes.Count; $index++) {
+            $resourceTypeIndex = $providerIndex + 2 + (2 * $index)
+            if ($idSegments[$resourceTypeIndex] -ine $resourceTypes[$index]) {
+                throw "Resource ID '$Id' does not contain parent resource type '$ParentResourceType'."
+            }
+        }
+
+        return '/' + [System.String]::Join('/', $idSegments[0..$parentLastIndex])
+    }
+}
+
 
 function GetResourceNameFromArmId {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]

@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of the registration for the Azure Static Web
     /// Apps provider
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureStaticWebAppsRegistration : ProxyOnlyResource
+    public partial class AzureStaticWebAppsRegistration
     {
         /// <summary>
         /// Initializes a new instance of the AzureStaticWebAppsRegistration class.
@@ -26,23 +25,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the AzureStaticWebAppsRegistration class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="clientId">The Client ID of the app used for login.
         /// </param>
-        public AzureStaticWebAppsRegistration(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string clientId = default(string))
+        public AzureStaticWebAppsRegistration(string clientId = default(string))
 
-        : base(id, name, kind, type)
         {
             this.ClientId = clientId;
             CustomInit();
@@ -57,7 +43,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the Client ID of the app used for login.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientId")]
         public string ClientId {get; set; }
     }
 }

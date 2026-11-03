@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Static Site Custom Domain Overview ARM resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class StaticSiteCustomDomainOverviewARMResource : ProxyOnlyResource
+    public partial class StaticSiteCustomDomainOverviewARMResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the StaticSiteCustomDomainOverviewARMResource class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the StaticSiteCustomDomainOverviewARMResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="domainName">The domain name for the static site custom domain.
@@ -46,17 +52,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="status">The status of the custom domain
         /// Possible values include: &#39;RetrievingValidationToken&#39;, &#39;Validating&#39;,
-        /// &#39;Adding&#39;, &#39;Ready&#39;, &#39;Failed&#39;, &#39;Deleting&#39;</param>
+        /// &#39;Adding&#39;, &#39;Ready&#39;, &#39;Failed&#39;, &#39;Deleting&#39;, &#39;Unhealthy&#39;</param>
 
         /// <param name="validationToken">The TXT record validation token
         /// </param>
 
         /// <param name="errorMessage">
         /// </param>
-        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?), string status = default(string), string validationToken = default(string), string errorMessage = default(string))
+        public StaticSiteCustomDomainOverviewARMResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string domainName = default(string), System.DateTime? createdOn = default(System.DateTime?), string status = default(string), string validationToken = default(string), string errorMessage = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.DomainName = domainName;
             this.CreatedOn = createdOn;
             this.Status = status;
@@ -72,6 +79,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
         /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
         /// Gets the domain name for the static site custom domain.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.domainName")]
@@ -85,7 +98,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.DateTime? CreatedOn {get; private set; }
 
         /// <summary>
-        /// Gets the status of the custom domain Possible values include: &#39;RetrievingValidationToken&#39;, &#39;Validating&#39;, &#39;Adding&#39;, &#39;Ready&#39;, &#39;Failed&#39;, &#39;Deleting&#39;
+        /// Gets the status of the custom domain Possible values include: &#39;RetrievingValidationToken&#39;, &#39;Validating&#39;, &#39;Adding&#39;, &#39;Ready&#39;, &#39;Failed&#39;, &#39;Deleting&#39;, &#39;Unhealthy&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
         public string Status {get; private set; }

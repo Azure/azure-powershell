@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of the nonce used in the login flow.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Nonce : ProxyOnlyResource
+    public partial class Nonce
     {
         /// <summary>
         /// Initializes a new instance of the Nonce class.
@@ -25,27 +24,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the Nonce class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="validateNonce">&lt;code&gt;false&lt;/code&gt; if the nonce should not be validated while completing
         /// the login flow; otherwise, &lt;code&gt;true&lt;/code&gt;.
         /// </param>
 
         /// <param name="nonceExpirationInterval">The time after the request is made when the nonce should expire.
         /// </param>
-        public Nonce(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? validateNonce = default(bool?), string nonceExpirationInterval = default(string))
+        public Nonce(bool? validateNonce = default(bool?), string nonceExpirationInterval = default(string))
 
-        : base(id, name, kind, type)
         {
             this.ValidateNonce = validateNonce;
             this.NonceExpirationInterval = nonceExpirationInterval;
@@ -62,14 +48,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets &lt;code&gt;false&lt;/code&gt; if the nonce should not be validated while
         /// completing the login flow; otherwise, &lt;code&gt;true&lt;/code&gt;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.validateNonce")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "validateNonce")]
         public bool? ValidateNonce {get; set; }
 
         /// <summary>
         /// Gets or sets the time after the request is made when the nonce should
         /// expire.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nonceExpirationInterval")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nonceExpirationInterval")]
         public string NonceExpirationInterval {get; set; }
     }
 }

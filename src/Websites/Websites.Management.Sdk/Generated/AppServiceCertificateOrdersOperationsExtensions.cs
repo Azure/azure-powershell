@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.WebSites
     public static partial class AppServiceCertificateOrdersOperationsExtensions
     {
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Validate information for a certificate order.
+        /// Validate information for a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Validate information for a certificate order.
+        /// Validate information for a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.ValidatePurchaseInformationWithHttpMessagesAsync(appServiceCertificateOrder, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Get a certificate order.
+        /// Get a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get a certificate order.
+        /// Get a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Delete an existing certificate order.
+        /// Delete an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Delete an existing certificate order.
+        /// Delete an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, certificateOrderName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Get the certificate associated with a certificate order.
+        /// Get the certificate associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get the certificate associated with a certificate order.
+        /// Get the certificate associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -334,8 +334,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -355,8 +354,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -381,7 +379,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Delete the certificate associated with a certificate order.
+        /// Delete the certificate associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -401,7 +399,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Delete the certificate associated with a certificate order.
+        /// Delete the certificate associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -423,8 +421,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.DeleteCertificateWithHttpMessagesAsync(resourceGroupName, certificateOrderName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -444,8 +441,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -470,7 +466,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Reissue an existing certificate order.
+        /// Reissue an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -487,7 +483,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Reissue an existing certificate order.
+        /// Reissue an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -506,7 +502,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.ReissueWithHttpMessagesAsync(resourceGroupName, certificateOrderName, reissueCertificateOrderRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Renew an existing certificate order.
+        /// Renew an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -523,7 +519,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Renew an existing certificate order.
+        /// Renew an existing certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -542,7 +538,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.RenewWithHttpMessagesAsync(resourceGroupName, certificateOrderName, renewCertificateOrderRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Resend certificate email.
+        /// Resend certificate email.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -559,7 +555,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Resend certificate email.
+        /// Resend certificate email.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -578,7 +574,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.ResendEmailWithHttpMessagesAsync(resourceGroupName, certificateOrderName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -595,7 +591,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -614,7 +610,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.ResendRequestEmailsWithHttpMessagesAsync(resourceGroupName, certificateOrderName, nameIdentifier, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -631,7 +627,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -653,7 +649,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -670,7 +666,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Verify domain ownership for this certificate order.
+        /// Verify domain ownership for this certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -689,7 +685,7 @@ namespace Microsoft.Azure.Management.WebSites
             (await operations.VerifyDomainOwnershipWithHttpMessagesAsync(resourceGroupName, certificateOrderName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Description for Retrieve the list of certificate actions.
+        /// Retrieve the list of certificate actions.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -706,7 +702,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Retrieve the list of certificate actions.
+        /// Retrieve the list of certificate actions.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -728,7 +724,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Retrieve email history.
+        /// Retrieve email history.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -745,7 +741,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Retrieve email history.
+        /// Retrieve email history.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -767,7 +763,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -784,7 +780,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Create or update a certificate purchase order.
+        /// Create or update a certificate purchase order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -806,8 +802,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -827,8 +822,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Creates or updates a certificate and associates with key
-        /// vault secret.
+        /// Creates or updates a certificate and associates with key vault secret.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -853,7 +847,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -867,7 +861,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for List all certificate orders in a subscription.
+        /// List all certificate orders in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -886,7 +880,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -900,7 +894,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for Get certificate orders in a resource group.
+        /// Get certificate orders in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -919,7 +913,7 @@ namespace Microsoft.Azure.Management.WebSites
             }
         }
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -933,7 +927,7 @@ namespace Microsoft.Azure.Management.WebSites
         }
 
         /// <summary>
-        /// Description for List all certificates associated with a certificate order.
+        /// List all certificates associated with a certificate order.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

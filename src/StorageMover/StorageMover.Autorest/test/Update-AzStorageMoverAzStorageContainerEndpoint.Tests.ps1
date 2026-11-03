@@ -28,4 +28,21 @@ Describe 'Update-AzStorageMoverAzStorageContainerEndpoint' {
         $endpoint.Property.Description | Should -Be $updateDescription
         $endpoint.Name | Should -Be $endpointName
     }
+
+    It 'UpdateExpandedCrossTenant' {
+        $endpointName = "blobxt"
+        New-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -StorageAccountResourceId $env.EndpointStorageAccountId -BlobContainerName $env.EndpointContainerName -EndpointKind Target -EnableCrossTenantTransfer -AllowedStorageAccount $env.PartnerStorageAccountId | Out-Null
+
+        $endpoint = Update-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -AllowedStorageAccount $env.PartnerStorageAccountId, $env.CrossTenantStorageAccountId
+        $endpoint.Property.EnableCrossTenantTransfer | Should -Be $true
+        @($endpoint.Property.AllowedStorageAccount).Count | Should -Be 2
+
+        $endpoint = Update-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName -EnableCrossTenantTransfer:$false -AllowedStorageAccount @()
+        $endpoint.Property.EnableCrossTenantTransfer | Should -Be $false
+        @($endpoint.Property.AllowedStorageAccount).Count | Should -Be 0
+
+        $endpoint = Get-AzStorageMoverEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.EndpointStoMoverName
+        $endpoint.Property.EndpointKind | Should -Be "Target"
+        $endpoint.Property.EnableCrossTenantTransfer | Should -Be $false
+    }
 }

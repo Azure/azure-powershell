@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Azure proxy only resource. This resource is not tracked by Azure Resource
     /// Manager.
     /// </summary>
-    public partial class ProxyOnlyResource : Microsoft.Rest.Azure.IResource
+    public partial class ProxyOnlyResource
     {
         /// <summary>
         /// Initializes a new instance of the ProxyOnlyResource class.

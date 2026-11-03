@@ -19,6 +19,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.ProxyResource();
 
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.PropertyOrigin.Inlined)]
+        public int? AttributeCriticality { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).AttributeCriticality; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).AttributeCriticality = value ?? default(int); }
+
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.PropertyOrigin.Inlined)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).DisplayName = value ?? null; }
@@ -65,6 +71,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
+
+        /// <summary>Internal Acessors for Attribute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupInternal.Attribute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).Attribute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).Attribute = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Parent</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IParentServiceGroupProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupInternal.Parent { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).Parent; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupPropertiesInternal)Property).Parent = value ?? null /* model class */; }
@@ -166,6 +175,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IProxyResource
     {
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The criticality designation of the service group. Valid values range from 0 through 4.",
+        SerializedName = @"criticality",
+        PossibleTypes = new [] { typeof(int) })]
+        int? AttributeCriticality { get; set; }
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Runtime.Info(
         Required = false,
@@ -230,6 +252,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models
     internal partial interface IServiceGroupInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IProxyResourceInternal
     {
+        /// <summary>The attributes of the serviceGroup.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceGroups.Models.IServiceGroupAttributes Attribute { get; set; }
+        /// <summary>
+        /// The criticality designation of the service group. Valid values range from 0 through 4.
+        /// </summary>
+        int? AttributeCriticality { get; set; }
         /// <summary>The display name of the serviceGroup. For example, ServiceGroupTest1</summary>
         string DisplayName { get; set; }
         /// <summary>The kind of the serviceGroup.</summary>

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Description of site key vault references.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApiKVReference : ProxyOnlyResource
+    public partial class ApiKVReference : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ApiKVReference class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ApiKVReference class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="reference">
@@ -66,10 +72,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="activeVersion">
         /// </param>
-        public ApiKVReference(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), ManagedServiceIdentity identityType = default(ManagedServiceIdentity), string details = default(string), ConfigReferenceSource? source = default(ConfigReferenceSource?), string activeVersion = default(string))
+        public ApiKVReference(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string reference = default(string), ResolveStatus? status = default(ResolveStatus?), string vaultName = default(string), string secretName = default(string), string secretVersion = default(string), ManagedServiceIdentity identityType = default(ManagedServiceIdentity), string details = default(string), ApiKVReferencePropertiesSource? source = default(ApiKVReferencePropertiesSource?), string activeVersion = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.Reference = reference;
             this.Status = status;
             this.VaultName = vaultName;
@@ -87,6 +94,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -134,7 +147,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Gets or sets Possible values include: &#39;KeyVault&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.source")]
-        public ConfigReferenceSource? Source {get; set; }
+        public ApiKVReferencePropertiesSource? Source {get; set; }
 
         /// <summary>
         /// Gets or sets

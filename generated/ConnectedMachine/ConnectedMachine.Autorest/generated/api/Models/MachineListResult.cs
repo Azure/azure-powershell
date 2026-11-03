@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List hybrid machine operation response.</summary>
+    /// <summary>The response of a Machine list operation.</summary>
     public partial class MachineListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineListResultInternal
@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of hybrid machines.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine> _value;
 
-        /// <summary>The list of hybrid machines.</summary>
+        /// <summary>The Machine items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine> Value { get => this._value; set => this._value = value; }
 
@@ -35,45 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// The List hybrid machine operation response.
+    /// The response of a Machine list operation.
     public partial interface IMachineListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of hybrid machines.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of hybrid machines.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of hybrid machines.</summary>
+        /// <summary>The Machine items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of hybrid machines.",
+        Description = @"The Machine items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine> Value { get; set; }
 
     }
-    /// The List hybrid machine operation response.
+    /// The response of a Machine list operation.
     internal partial interface IMachineListResultInternal
 
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of hybrid machines.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of hybrid machines.</summary>
+        /// <summary>The Machine items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine> Value { get; set; }
 
     }

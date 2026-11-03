@@ -16,11 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRelayNamespaceNetworkRuleSet_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties = new string[] {"IPRule"}, NewOutputProperties = new string[] {"List[IPRule]" } )]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Description(@"create NetworkRuleSet for a Namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default", ApiVersion = "2021-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default", ApiVersion = "2026-07-01-preview")]
     public partial class NewAzRelayNamespaceNetworkRuleSet_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IContext
@@ -167,6 +166,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
         public string PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? null; set => _parametersBody.PublicNetworkAccess = value; }
+
+        /// <summary>Value that indicates whether Trusted Service Access is Enabled or not.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Value that indicates whether Trusted Service Access is Enabled or not.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Relay.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Value that indicates whether Trusted Service Access is Enabled or not.",
+        SerializedName = @"trustedServiceAccessEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter TrustedServiceAccessEnabled { get => _parametersBody.TrustedServiceAccessEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.TrustedServiceAccessEnabled = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

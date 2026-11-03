@@ -1,0 +1,73 @@
+{
+  "Invoke-AzMonitorHealthModelIngestEntityHealthReport+[NoContext]+IngestExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-4000-8000-000000000001/resourceGroups/azps-ch-rg-r3wz6p/providers/Microsoft.CloudHealth/healthmodels/azps-hm-shared-r3wz6p/entities/azps-ent-shared-r3wz6p/ingestHealthReport?api-version=2026-11-01",
+      "Content": "{\n  \"signalName\": \"azps-sig-shared-r3wz6p\",\n  \"healthState\": \"Healthy\",\n  \"value\": 88.8,\n  \"expiresInMinutes\": 60\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "115"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-providerhub-traffic": [
+          "True"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-4000-8000-000000000066"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=00000000-0000-4000-8000-000000000002,objectId=00000000-0000-4000-8000-000000000088/centralus/00000000-0000-4000-8000-000000000273"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "198"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-4000-8000-000000000022"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20261013T151729Z:00000000-0000-4000-8000-000000000022"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A08678EE8B27448CA03BF688C2BB204A Ref B: FRA261071505034 Ref C: 2026-10-13T15:17:29Z"
+        ],
+        "Date": [
+          "Tue, 13 Oct 2026 15:17:28 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

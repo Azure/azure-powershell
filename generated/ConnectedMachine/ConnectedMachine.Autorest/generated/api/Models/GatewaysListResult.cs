@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List license operation response.</summary>
+    /// <summary>Paged collection of Gateway items</summary>
     public partial class GatewaysListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewaysListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGatewaysListResultInternal
@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI to fetch the next page of Gateways. Call ListNext() with this URI to fetch the next page of Gateways.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGateway> _value;
 
-        /// <summary>The list of Gateways.</summary>
+        /// <summary>The Gateway items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGateway> Value { get => this._value; set => this._value = value; }
 
@@ -35,45 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// The List license operation response.
+    /// Paged collection of Gateway items
     public partial interface IGatewaysListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI to fetch the next page of Gateways. Call ListNext() with this URI to fetch the next page of Gateways.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI to fetch the next page of Gateways. Call ListNext() with this URI to fetch the next page of Gateways.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of Gateways.</summary>
+        /// <summary>The Gateway items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of Gateways.",
+        Description = @"The Gateway items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGateway) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGateway> Value { get; set; }
 
     }
-    /// The List license operation response.
+    /// Paged collection of Gateway items
     internal partial interface IGatewaysListResultInternal
 
     {
-        /// <summary>
-        /// The URI to fetch the next page of Gateways. Call ListNext() with this URI to fetch the next page of Gateways.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of Gateways.</summary>
+        /// <summary>The Gateway items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IGateway> Value { get; set; }
 
     }

@@ -20,11 +20,18 @@ Get a Fleet
 .Description
 Get a Fleet
 .Example
-Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
+Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
 .Example
-Get-AzComputeFleet -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode
+Get-AzComputeFleet -ResourceGroupName "myResourceGroup" |
+    Select-Object Name, Location, ProvisioningState, Mode
 .Example
-Get-AzComputeFleet | Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
+Get-AzComputeFleet -SubscriptionId (Get-AzContext).Subscription.Id |
+    Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
+.Example
+$fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
+Get-AzComputeFleet -InputObject $fleet |
+    Select-Object Name, Mode, ProvisioningState
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity

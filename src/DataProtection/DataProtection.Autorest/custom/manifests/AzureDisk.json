@@ -14,7 +14,7 @@
   "datasourceType": "Microsoft.Compute/disks",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
-  "itemLevelRecoveyEnabled": false,
+  "itemLevelRecoveryEnabled": false,
   "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,

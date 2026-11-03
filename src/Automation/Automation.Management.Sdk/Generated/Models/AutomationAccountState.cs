@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Automation.Models
 
     public static class AutomationAccountState
     {
+        /// <summary>
+        /// Ok
+        /// </summary>
         public const string Ok = "Ok";
+        /// <summary>
+        /// Unavailable
+        /// </summary>
         public const string Unavailable = "Unavailable";
+        /// <summary>
+        /// Suspended
+        /// </summary>
         public const string Suspended = "Suspended";
     }
 }

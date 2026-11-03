@@ -243,6 +243,12 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_D2s_v3";
 
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "The preferred VM size. Azure may deploy a compatible alternative. Cannot be used with Size.")]
+        [AllowEmptyString]
+        public string PreferredVMSize { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AvailabilitySetName { get; set; }
@@ -287,10 +293,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string VmssId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
-        [PSArgumentCompleter("Regular", "Spot")]
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot', 'SpotPlus' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'SpotPlus' is the next generation of spot virtual machine, which offers higher reliability and longer running time than 'Spot'. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot", "SpotPlus")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -545,6 +551,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.Size) && this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("-Size and -PreferredVMSize cannot be used together.");
+            }
+
             if (this.IsParameterBound(c => c.CapacityReservationGroupId) && this.IsParameterBound(c => c.DisableCapacityReservationAssignment))
             {
                 throw new ArgumentException("Parameters '-CapacityReservationGroupId' and '-DisableCapacityReservationAssignment' cannot be used together. '-DisableCapacityReservationAssignment' opts the virtual machine out of any capacity reservation.");
@@ -699,7 +710,7 @@ namespace Microsoft.Azure.Commands.Compute
                     openPorts: _cmdlet.OpenPorts);
 
                 bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
-                    ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
+                    ImageAndOsType, _cmdlet.IsParameterBound(c => c.PreferredVMSize) ? _cmdlet.PreferredVMSize ?? string.Empty : _cmdlet.Size, Location, DefaultLocation);
 
                 ResourceConfig<NetworkInterface> networkInterface;
                 if (string.IsNullOrEmpty(publicIpAddress.Name))
@@ -804,7 +815,8 @@ namespace Microsoft.Azure.Commands.Compute
                         addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
                         scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
                         enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
-                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null
+                        disableCapacityReservationAssignment: _cmdlet.DisableCapacityReservationAssignment.IsPresent ? true : (bool?)null,
+                        flexProfile: _cmdlet.IsParameterBound(c => c.PreferredVMSize) ? new FlexProfile(_cmdlet.PreferredVMSize) : null
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.
@@ -876,7 +888,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
             
             // Information message if the default Size value is used. 
-            if (!this.IsParameterBound(c => c.Size))
+            if (!this.IsParameterBound(c => c.Size) && !this.IsParameterBound(c => c.PreferredVMSize))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
@@ -1025,6 +1037,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
                         HardwareProfile = this.VM.HardwareProfile,
+                        FlexProfile = this.VM.FlexProfile,
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
@@ -1096,25 +1109,35 @@ namespace Microsoft.Azure.Commands.Compute
 
 					if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
 					{
-						var currentBginfoVersion = GetBginfoExtension();
-
-						if (!string.IsNullOrEmpty(currentBginfoVersion))
+						// The BGInfo extension is a convenience add-on and the virtual machine has
+						// already been created at this point, so a failure to look it up or install
+						// it must not fail the cmdlet.
+						try
 						{
-							var extensionParameters = new VirtualMachineExtension
-							{
-								Location = this.Location,
-								Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-								VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-								TypeHandlerVersion = currentBginfoVersion,
-								AutoUpgradeMinorVersion = true,
-							};
+							var currentBginfoVersion = GetBginfoExtension();
 
-							var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-								this.ResourceGroupName,
-								this.VM.Name,
-								VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, 
-								extensionParameters).GetAwaiter().GetResult();
-							psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+							if (!string.IsNullOrEmpty(currentBginfoVersion))
+							{
+								var extensionParameters = new VirtualMachineExtension
+								{
+									Location = this.Location,
+									Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+									VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+									TypeHandlerVersion = currentBginfoVersion,
+									AutoUpgradeMinorVersion = true,
+								};
+
+								var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+									this.ResourceGroupName,
+									this.VM.Name,
+									VirtualMachineBGInfoExtensionContext.ExtensionDefaultName, 
+									extensionParameters).GetAwaiter().GetResult();
+								psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+							}
+						}
+						catch (Exception bginfoEx)
+						{
+							WriteWarning(string.Format(Properties.Resources.ErrorDuringInstallingBginfoExtension, bginfoEx.Message));
 						}
 					}
 
@@ -1273,49 +1296,46 @@ namespace Microsoft.Azure.Commands.Compute
         {
             var canonicalizedLocation = this.Location.Canonicalize();
 
-            var publishers =
-                ComputeClient.ComputeManagementClient.VirtualMachineImages.ListPublishers(canonicalizedLocation);
-
-            var publisher = publishers.FirstOrDefault(e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher));
-
-            if (publisher == null || !publisher.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher))
+            // The publisher and extension type are well-known constants, so the image catalogue is
+            // only consulted to discover the latest available version. Those lookups live under
+            // 'locations/publishers', which lags the api-version the Compute client targets, so a
+            // failure there must fall back to the default version rather than skip the extension
+            // or fail the cmdlet after the virtual machine has already been created.
+            try
             {
-                return null;
-            }
+                var bginfoVersions =
+                    ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages.ListVersions(
+                        canonicalizedLocation,
+                        VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                        VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
 
-            var virtualMachineImageClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages;
-
-
-            var imageTypes =
-                virtualMachineImageClient.ListTypes(canonicalizedLocation,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher);
-
-            var extensionType = imageTypes.FirstOrDefault(
-                e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName));
-
-            if (extensionType == null || !extensionType.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName))
-            {
-                return null;
-            }
-
-            var bginfoVersions =
-                virtualMachineImageClient.ListVersions(canonicalizedLocation,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-
-            if (bginfoVersions != null
-                && bginfoVersions.Count > 0)
-            {
-                return bginfoVersions.Max(ver =>
+                if (bginfoVersions != null
+                    && bginfoVersions.Count > 0)
                 {
-                    Version result;
-                    return (Version.TryParse(ver.Name, out result))
-                        ? string.Format("{0}.{1}", result.Major, result.Minor)
-                        : VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
-                });
+                    Version latestVersion = bginfoVersions
+                        .Select(ver =>
+                        {
+                            Version parsed;
+                            return Version.TryParse(ver.Name, out parsed) ? parsed : null;
+                        })
+                        .Where(parsed => parsed != null)
+                        .Max();
+
+                    if (latestVersion != null)
+                    {
+                        return string.Format("{0}.{1}", latestVersion.Major, latestVersion.Minor);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteVerbose(string.Format(
+                    Properties.Resources.BginfoExtensionVersionLookupFailed,
+                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
+                    ex.Message));
             }
 
-            return null;
+            return VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
         }
 
         private bool IsLinuxOs()

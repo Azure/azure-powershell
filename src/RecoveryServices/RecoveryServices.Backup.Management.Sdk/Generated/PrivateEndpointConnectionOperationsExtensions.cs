@@ -18,19 +18,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static PrivateEndpointConnectionResource Get(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName)
+        public static PrivateEndpointConnectionResource Get(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName)
         {
-                return ((IPrivateEndpointConnectionOperations)operations).GetAsync(vaultName, resourceGroupName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).GetAsync(resourceGroupName, vaultName, privateEndpointConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -39,12 +38,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -52,9 +50,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> GetAsync(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> GetAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -66,19 +64,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static PrivateEndpointConnectionResource Put(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters)
+        public static PrivateEndpointConnectionResource Put(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters)
         {
-                return ((IPrivateEndpointConnectionOperations)operations).PutAsync(vaultName, resourceGroupName, privateEndpointConnectionName, parameters).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).PutAsync(resourceGroupName, vaultName, privateEndpointConnectionName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -88,12 +85,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -101,9 +97,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> PutAsync(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> PutAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PutWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -114,19 +110,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static void Delete(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName)
+        public static PrivateEndpointConnectionDeleteHeaders Delete(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName)
         {
-                ((IPrivateEndpointConnectionOperations)operations).DeleteAsync(vaultName, resourceGroupName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).DeleteAsync(resourceGroupName, vaultName, privateEndpointConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -135,12 +130,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -148,9 +142,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionDeleteHeaders> DeleteAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Approve or Reject Private Endpoint requests. This call is made by Backup
@@ -159,19 +156,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static PrivateEndpointConnectionResource BeginPut(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters)
+        public static PrivateEndpointConnectionResource BeginPut(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters)
         {
-                return ((IPrivateEndpointConnectionOperations)operations).BeginPutAsync(vaultName, resourceGroupName, privateEndpointConnectionName, parameters).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).BeginPutAsync(resourceGroupName, vaultName, privateEndpointConnectionName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -181,12 +177,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -194,9 +189,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> BeginPutAsync(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionResource> BeginPutAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, PrivateEndpointConnectionResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginPutWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginPutWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -207,19 +202,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
         /// </param>
-        public static void BeginDelete(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName)
+        public static PrivateEndpointConnectionDeleteHeaders BeginDelete(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName)
         {
-                ((IPrivateEndpointConnectionOperations)operations).BeginDeleteAsync(vaultName, resourceGroupName, privateEndpointConnectionName).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionOperations)operations).BeginDeleteAsync(resourceGroupName, vaultName, privateEndpointConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -228,12 +222,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the VaultResource
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection.
@@ -241,9 +234,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateEndpointConnectionOperations operations, string vaultName, string resourceGroupName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnectionDeleteHeaders> BeginDeleteAsync(this IPrivateEndpointConnectionOperations operations, string resourceGroupName, string vaultName, string privateEndpointConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(vaultName, resourceGroupName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

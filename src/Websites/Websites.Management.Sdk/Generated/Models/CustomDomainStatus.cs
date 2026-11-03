@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public const string Ready = "Ready";
         public const string Failed = "Failed";
         public const string Deleting = "Deleting";
+        public const string Unhealthy = "Unhealthy";
     }
 }

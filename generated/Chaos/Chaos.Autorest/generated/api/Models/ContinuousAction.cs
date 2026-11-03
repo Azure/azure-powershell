@@ -14,9 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentAction"
+        /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction __action = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.Action();
+        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentAction __chaosExperimentAction = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ChaosExperimentAction();
 
         /// <summary>Backing field for <see cref="Duration" /> property.</summary>
         private global::System.TimeSpan _duration;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 
         /// <summary>String that represents a Capability URN.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)__action).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)__action).Name = value ; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)__chaosExperimentAction).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)__chaosExperimentAction).Name = value ; }
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IKeyValuePair> _parameter;
@@ -43,15 +44,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
         public string SelectorId { get => this._selectorId; set => this._selectorId = value; }
 
-        /// <summary>Enum that discriminates between action models.</summary>
+        /// <summary>Chaos experiment action discriminator type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
-        public string Type { get => "continuous"; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal)__action).Type = "continuous"; }
+        public string Type { get => "continuous"; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal)__chaosExperimentAction).Type = "continuous"; }
 
         /// <summary>Creates an new <see cref="ContinuousAction" /> instance.</summary>
         public ContinuousAction()
         {
-            this.__action.Type = "continuous";
+            this.__chaosExperimentAction.Type = "continuous";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
@@ -62,14 +63,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__action), __action);
-            await eventListener.AssertObjectIsValid(nameof(__action), __action);
+            await eventListener.AssertNotNull(nameof(__chaosExperimentAction), __chaosExperimentAction);
+            await eventListener.AssertObjectIsValid(nameof(__chaosExperimentAction), __chaosExperimentAction);
         }
     }
     /// Model that represents a continuous action.
     public partial interface IContinuousAction :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentAction
     {
         /// <summary>ISO8601 formatted string that represents a duration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
     }
     /// Model that represents a continuous action.
     internal partial interface IContinuousActionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosExperimentActionInternal
     {
         /// <summary>ISO8601 formatted string that represents a duration.</summary>
         global::System.TimeSpan Duration { get; set; }

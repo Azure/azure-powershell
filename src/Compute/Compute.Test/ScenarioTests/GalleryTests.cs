@@ -102,6 +102,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGallerySoftDeletePolicy()
+        {
+            TestRunner.RunTestScript("Test-GallerySoftDeletePolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGalleryWithSystemAssignedIdentity()
         {
             TestRunner.RunTestScript("Test-GalleryWithSystemAssignedIdentity");

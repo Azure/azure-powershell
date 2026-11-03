@@ -14,10 +14,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs when the
-        /// operation is complete.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs when the operation is
+        /// complete.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -26,8 +27,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the operation.
@@ -39,10 +39,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Fetches the status of an operation such as triggering a backup, restore.
-        /// The status can be in progress, completed or failed. You can refer to the
-        /// OperationStatus enum for all the possible states of an operation. Some
-        /// operations create jobs. This method returns the list of jobs when the
-        /// operation is complete.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the OperationStatus enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs when the operation is
+        /// complete.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,8 +52,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the operation.

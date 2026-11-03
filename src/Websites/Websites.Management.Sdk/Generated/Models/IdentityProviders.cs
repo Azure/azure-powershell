@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// The configuration settings of each of the identity providers used to
     /// configure App Service Authentication/Authorization.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class IdentityProviders : ProxyOnlyResource
+    public partial class IdentityProviders
     {
         /// <summary>
         /// Initializes a new instance of the IdentityProviders class.
@@ -26,16 +25,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the IdentityProviders class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="azureActiveDirectory">The configuration settings of the Azure Active directory provider.
         /// </param>
 
         /// <param name="facebook">The configuration settings of the Facebook provider.
@@ -47,38 +37,34 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="google">The configuration settings of the Google provider.
         /// </param>
 
+        /// <param name="legacyMicrosoftAccount">The configuration settings of the legacy Microsoft Account provider.
+        /// </param>
+
         /// <param name="twitter">The configuration settings of the Twitter provider.
         /// </param>
 
         /// <param name="apple">The configuration settings of the Apple provider.
         /// </param>
 
-        /// <param name="azureActiveDirectory">The configuration settings of the Azure Active directory provider.
+        /// <param name="azureStaticWebApps">The configuration settings of the Azure Static Web Apps provider.
         /// </param>
 
         /// <param name="customOpenIdConnectProviders">The map of the name of the alias of each custom Open ID Connect provider to
         /// the
         /// configuration settings of the custom Open ID Connect provider.
         /// </param>
+        public IdentityProviders(AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), LegacyMicrosoftAccount legacyMicrosoftAccount = default(LegacyMicrosoftAccount), Twitter twitter = default(Twitter), Apple apple = default(Apple), AzureStaticWebApps azureStaticWebApps = default(AzureStaticWebApps), System.Collections.Generic.IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(System.Collections.Generic.IDictionary<string, CustomOpenIdConnectProvider>))
 
-        /// <param name="legacyMicrosoftAccount">The configuration settings of the legacy Microsoft Account provider.
-        /// </param>
-
-        /// <param name="azureStaticWebApps">The configuration settings of the Azure Static Web Apps provider.
-        /// </param>
-        public IdentityProviders(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), Facebook facebook = default(Facebook), GitHub gitHub = default(GitHub), Google google = default(Google), Twitter twitter = default(Twitter), Apple apple = default(Apple), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), System.Collections.Generic.IDictionary<string, CustomOpenIdConnectProvider> customOpenIdConnectProviders = default(System.Collections.Generic.IDictionary<string, CustomOpenIdConnectProvider>), LegacyMicrosoftAccount legacyMicrosoftAccount = default(LegacyMicrosoftAccount), AzureStaticWebApps azureStaticWebApps = default(AzureStaticWebApps))
-
-        : base(id, name, kind, type)
         {
+            this.AzureActiveDirectory = azureActiveDirectory;
             this.Facebook = facebook;
             this.GitHub = gitHub;
             this.Google = google;
+            this.LegacyMicrosoftAccount = legacyMicrosoftAccount;
             this.Twitter = twitter;
             this.Apple = apple;
-            this.AzureActiveDirectory = azureActiveDirectory;
-            this.CustomOpenIdConnectProviders = customOpenIdConnectProviders;
-            this.LegacyMicrosoftAccount = legacyMicrosoftAccount;
             this.AzureStaticWebApps = azureStaticWebApps;
+            this.CustomOpenIdConnectProviders = customOpenIdConnectProviders;
             CustomInit();
         }
 
@@ -89,62 +75,62 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
         /// <summary>
+        /// Gets or sets the configuration settings of the Azure Active directory
+        /// provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "azureActiveDirectory")]
+        public AzureActiveDirectory AzureActiveDirectory {get; set; }
+
+        /// <summary>
         /// Gets or sets the configuration settings of the Facebook provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.facebook")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "facebook")]
         public Facebook Facebook {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the GitHub provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.gitHub")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gitHub")]
         public GitHub GitHub {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Google provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.google")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "google")]
         public Google Google {get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration settings of the legacy Microsoft Account
+        /// provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "legacyMicrosoftAccount")]
+        public LegacyMicrosoftAccount LegacyMicrosoftAccount {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Twitter provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.twitter")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "twitter")]
         public Twitter Twitter {get; set; }
 
         /// <summary>
         /// Gets or sets the configuration settings of the Apple provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.apple")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "apple")]
         public Apple Apple {get; set; }
 
         /// <summary>
-        /// Gets or sets the configuration settings of the Azure Active directory
+        /// Gets or sets the configuration settings of the Azure Static Web Apps
         /// provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.azureActiveDirectory")]
-        public AzureActiveDirectory AzureActiveDirectory {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "azureStaticWebApps")]
+        public AzureStaticWebApps AzureStaticWebApps {get; set; }
 
         /// <summary>
         /// Gets or sets the map of the name of the alias of each custom Open ID
         /// Connect provider to the
         /// configuration settings of the custom Open ID Connect provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customOpenIdConnectProviders")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customOpenIdConnectProviders")]
         public System.Collections.Generic.IDictionary<string, CustomOpenIdConnectProvider> CustomOpenIdConnectProviders {get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration settings of the legacy Microsoft Account
-        /// provider.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.legacyMicrosoftAccount")]
-        public LegacyMicrosoftAccount LegacyMicrosoftAccount {get; set; }
-
-        /// <summary>
-        /// Gets or sets the configuration settings of the Azure Static Web Apps
-        /// provider.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.azureStaticWebApps")]
-        public AzureStaticWebApps AzureStaticWebApps {get; set; }
     }
 }

@@ -19,7 +19,7 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
  [-ResourceModifierReference <NamespacedNameResource>] [-StagingResourceGroupId <String>]
- [-StagingStorageAccountId <String>] [<CommonParameters>]
+ [-StagingStorageAccountId <String>] [-ResourceIdentifier <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,15 @@ KubernetesClusterRestoreCriteria Skip           {excludeNS1, excludeNS2}        
 
 This command can be used to create a restore configuration client object used for Kubernetes cluster restore.
 RestoreHookReferences is a list of references to RestoreHooks that should be executed during restore.
+
+### Example 2: Create a RestoreConfiguration for item level restore with AzureCosmosDB
+```powershell
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
+```
+
+This command creates a restore configuration client object for Azure Cosmos DB item level restore.
+The -ResourceIdentifier parameter is required for AzureCosmosDB and lists database names or database/container names; this example selects containers col1 and col2 in database db1, and the whole database db2.
+Pass this object to Initialize-AzDataProtectionRestoreRequest with -RestoreConfiguration, together with -ItemLevelRecovery.
 
 ## PARAMETERS
 
@@ -189,6 +198,23 @@ Default value is RestoreWithVolumeData
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceIdentifier
+List of source volume names (AzureElasticSAN) or database and database/container names (AzureCosmosDB) to be restored.
+Required for DatasourceType AzureElasticSAN and AzureCosmosDB.
+For AzureElasticSAN, the service currently supports exactly one volume per restore request.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

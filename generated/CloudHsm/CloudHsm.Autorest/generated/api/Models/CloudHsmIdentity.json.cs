@@ -67,8 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
             {_cloudHsmClusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("cloudHsmClusterName"), out var __jsonCloudHsmClusterName) ? (string)__jsonCloudHsmClusterName : (string)_cloudHsmClusterName;}
-            {_peConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("peConnectionName"), out var __jsonPeConnectionName) ? (string)__jsonPeConnectionName : (string)_peConnectionName;}
             {_jobId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("jobId"), out var __jsonJobId) ? (string)__jsonJobId : (string)_jobId;}
+            {_peConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("peConnectionName"), out var __jsonPeConnectionName) ? (string)__jsonPeConnectionName : (string)_peConnectionName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -107,8 +107,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._cloudHsmClusterName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._cloudHsmClusterName.ToString()) : null, "cloudHsmClusterName" ,container.Add );
-            AddIf( null != (((object)this._peConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._peConnectionName.ToString()) : null, "peConnectionName" ,container.Add );
             AddIf( null != (((object)this._jobId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._jobId.ToString()) : null, "jobId" ,container.Add );
+            AddIf( null != (((object)this._peConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._peConnectionName.ToString()) : null, "peConnectionName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

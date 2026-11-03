@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Premier add-on.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PremierAddOn : Resource
+    public partial class PremierAddOn : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the PremierAddOn class.
@@ -25,22 +25,28 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the PremierAddOn class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="kind">Kind of resource.
         /// </param>
 
         /// <param name="sku">Premier add on SKU.
@@ -57,10 +63,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="marketplaceOffer">Premier add on Marketplace offer.
         /// </param>
-        public PremierAddOn(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+        public PremierAddOn(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string kind = default(string), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
 
-        : base(location, id, name, kind, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
+            this.Kind = kind;
             this.Sku = sku;
             this.Product = product;
             this.Vendor = vendor;
@@ -74,6 +81,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets premier add on SKU.
@@ -113,6 +126,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public override void Validate()
         {
             base.Validate();
+
 
 
 

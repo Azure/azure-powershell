@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.PublishRunbook = sourceControl.PublishRunbook ?? false;
             this.Branch = (sourceControl.Branch != null) ? sourceControl.Branch : null;
             this.Description = (sourceControl.Description != null) ? sourceControl.Description : null;
-            this.CreationTime = sourceControl.CreationTime.ToLocalTime();
-            this.LastModifiedTime = sourceControl.LastModifiedTime.ToLocalTime();
+            this.CreationTime = sourceControl.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = sourceControl.LastModifiedTime.GetValueOrDefault().ToLocalTime();
         }
 
         /// <summary>

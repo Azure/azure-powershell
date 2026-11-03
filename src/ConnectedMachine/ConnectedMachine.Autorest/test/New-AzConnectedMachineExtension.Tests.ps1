@@ -17,9 +17,9 @@ Describe 'New-AzConnectedMachineExtension' {
 
     It 'Create' {
         $customSplat = @{
-            MachineName = $env.MachineName
-            ResourceGroupName = $env.ResourceGroupName
-            Location = $env.Location
+            MachineName = "LAPTOP-4GNU2K3H"
+            ResourceGroupName = "yao_test"
+            Location = "eastus2euap"
             Name = "networkWatcher"
         }
     

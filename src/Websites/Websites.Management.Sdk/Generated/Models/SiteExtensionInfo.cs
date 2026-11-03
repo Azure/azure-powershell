@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Site Extension Information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SiteExtensionInfo : ProxyOnlyResource
+    public partial class SiteExtensionInfo : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SiteExtensionInfo class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the SiteExtensionInfo class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="extensionId">Site extension ID.
@@ -97,10 +103,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="comment">Site Extension comment.
         /// </param>
-        public SiteExtensionInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string extensionId = default(string), string title = default(string), SiteExtensionType? extensionType = default(SiteExtensionType?), string summary = default(string), string description = default(string), string version = default(string), string extensionUrl = default(string), string projectUrl = default(string), string iconUrl = default(string), string licenseUrl = default(string), string feedUrl = default(string), System.Collections.Generic.IList<string> authors = default(System.Collections.Generic.IList<string>), string installerCommandLineParams = default(string), System.DateTime? publishedDateTime = default(System.DateTime?), int? downloadCount = default(int?), bool? localIsLatestVersion = default(bool?), string localPath = default(string), System.DateTime? installedDateTime = default(System.DateTime?), string provisioningState = default(string), string comment = default(string))
+        public SiteExtensionInfo(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string extensionId = default(string), string title = default(string), SiteExtensionType? extensionType = default(SiteExtensionType?), string summary = default(string), string description = default(string), string version = default(string), string extensionUrl = default(string), string projectUrl = default(string), string iconUrl = default(string), string licenseUrl = default(string), string feedUrl = default(string), System.Collections.Generic.IList<string> authors = default(System.Collections.Generic.IList<string>), string installerCommandLineParams = default(string), System.DateTime? publishedDateTime = default(System.DateTime?), int? downloadCount = default(int?), bool? localIsLatestVersion = default(bool?), string localPath = default(string), System.DateTime? installedDateTime = default(System.DateTime?), string provisioningState = default(string), string comment = default(string))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.ExtensionId = extensionId;
             this.Title = title;
             this.ExtensionType = extensionType;
@@ -129,6 +136,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets site extension ID.

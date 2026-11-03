@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"update properties for a Job Definition resource. Properties not specified in the request body will be unchanged.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}", ApiVersion = "2025-12-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}", ApiVersion = "2026-05-01")]
     public partial class UpdateAzStorageMoverJobDefinition_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IContext
@@ -187,6 +187,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>The last time the mover was synchronized.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The last time the mover was synchronized.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The last time the mover was synchronized.",
+        SerializedName = @"moverSyncedUntil",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime MoverSyncedUntil { get => _jobDefinitionBody.MoverSyncedUntil ?? default(global::System.DateTime); set => _jobDefinitionBody.MoverSyncedUntil = value; }
+
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
@@ -306,7 +317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         Description = @"Type of schedule — Monthly, Weekly, or Daily",
         SerializedName = @"frequency",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monthly", "Weekly", "Daily", "Onetime", "None", "Hourly")]
         public string ScheduleFrequency { get => _jobDefinitionBody.ScheduleFrequency ?? null; set => _jobDefinitionBody.ScheduleFrequency = value; }
 
         /// <summary>Whether the schedule is currently active</summary>
@@ -319,6 +330,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         SerializedName = @"isActive",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter ScheduleIsActive { get => _jobDefinitionBody.ScheduleIsActive ?? default(global::System.Management.Automation.SwitchParameter); set => _jobDefinitionBody.ScheduleIsActive = value; }
+
+        /// <summary>Repeat interval used for sub-daily schedules.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Repeat interval used for sub-daily schedules.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Repeat interval used for sub-daily schedules.",
+        SerializedName = @"repeatInterval",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ScheduleRepeatInterval { get => _jobDefinitionBody.ScheduleRepeatInterval ?? null; set => _jobDefinitionBody.ScheduleRepeatInterval = value; }
 
         /// <summary>Specific one-time execution date and time</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specific one-time execution date and time")]
@@ -363,6 +385,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>The synchronization mode for the Job Definition.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The synchronization mode for the Job Definition.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The synchronization mode for the Job Definition.",
+        SerializedName = @"syncMode",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SyncMode { get => _jobDefinitionBody.SyncMode ?? null; set => _jobDefinitionBody.SyncMode = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

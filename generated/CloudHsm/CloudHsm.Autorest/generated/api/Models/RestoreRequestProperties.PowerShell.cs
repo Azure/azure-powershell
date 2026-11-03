@@ -119,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             }
             if (content.Contains("Token"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token = (string) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token = (System.Security.SecureString) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models
             }
             if (content.Contains("Token"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token = (string) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token = (System.Security.SecureString) content.GetValueForProperty("Token",((Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.IBackupRestoreRequestBasePropertiesInternal)this).Token, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }

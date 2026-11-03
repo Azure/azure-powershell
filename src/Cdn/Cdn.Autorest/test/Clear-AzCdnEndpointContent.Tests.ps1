@@ -30,7 +30,7 @@ Describe 'Clear-AzCdnEndpointContent' {
             Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath
 
             # Purge content on non-existing endpoint should fail
-            { Clear-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath } | Should -Throw
+            { Clear-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
 
             # Purge via ViaIdentity
             $endpoint = Get-AzCdnEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName
@@ -38,7 +38,7 @@ Describe 'Clear-AzCdnEndpointContent' {
 
             # Stop endpoint, purge should fail
             Stop-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName
-            { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath } | Should -Throw
+            { Clear-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath -ErrorAction Stop } | Should -Throw
         }
         finally {
             Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue

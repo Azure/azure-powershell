@@ -43,7 +43,10 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="state">State of the storage account.
         /// Possible values include: &#39;Ok&#39;, &#39;InvalidCredentials&#39;, &#39;InvalidShare&#39;,
         /// &#39;NotValidated&#39;</param>
-        public AzureStorageInfoValue(AzureStorageType? type = default(AzureStorageType?), string accountName = default(string), string shareName = default(string), string accessKey = default(string), string mountPath = default(string), AzureStorageState? state = default(AzureStorageState?))
+
+        /// <param name="protocol">Mounting protocol to use for the storage account.
+        /// Possible values include: &#39;Smb&#39;, &#39;Http&#39;, &#39;Nfs&#39;</param>
+        public AzureStorageInfoValue(AzureStorageType? type = default(AzureStorageType?), string accountName = default(string), string shareName = default(string), string accessKey = default(string), string mountPath = default(string), AzureStorageState? state = default(AzureStorageState?), string protocol = default(string))
 
         {
             this.Type = type;
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.AccessKey = accessKey;
             this.MountPath = mountPath;
             this.State = state;
+            this.Protocol = protocol;
             CustomInit();
         }
 
@@ -97,5 +101,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
         public AzureStorageState? State {get; private set; }
+
+        /// <summary>
+        /// Gets or sets mounting protocol to use for the storage account. Possible values include: &#39;Smb&#39;, &#39;Http&#39;, &#39;Nfs&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
+        public string Protocol {get; set; }
     }
 }

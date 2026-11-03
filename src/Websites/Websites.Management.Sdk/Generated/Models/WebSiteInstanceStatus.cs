@@ -7,8 +7,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Concrete proxy resource types can be created by aliasing this type using a
+    /// specific property type.
+    /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class WebSiteInstanceStatus : ProxyOnlyResource
+    public partial class WebSiteInstanceStatus : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the WebSiteInstanceStatus class.
@@ -22,16 +26,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the WebSiteInstanceStatus class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="state">
@@ -51,16 +61,21 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="containers">Dictionary of &lt;ContainerInfo&gt;
         /// </param>
-        public WebSiteInstanceStatus(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), SiteRuntimeState? state = default(SiteRuntimeState?), string statusUrl = default(string), string detectorUrl = default(string), string consoleUrl = default(string), string healthCheckUrl = default(string), System.Collections.Generic.IDictionary<string, ContainerInfo> containers = default(System.Collections.Generic.IDictionary<string, ContainerInfo>))
 
-        : base(id, name, kind, type)
+        /// <param name="physicalZone">The physical zone that the instance is in
+        /// </param>
+        public WebSiteInstanceStatus(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), SiteRuntimeState? state = default(SiteRuntimeState?), string statusUrl = default(string), string detectorUrl = default(string), string consoleUrl = default(string), string healthCheckUrl = default(string), System.Collections.Generic.IDictionary<string, ContainerInfo> containers = default(System.Collections.Generic.IDictionary<string, ContainerInfo>), string physicalZone = default(string))
+
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.State = state;
             this.StatusUrl = statusUrl;
             this.DetectorUrl = detectorUrl;
             this.ConsoleUrl = consoleUrl;
             this.HealthCheckUrl = healthCheckUrl;
             this.Containers = containers;
+            this.PhysicalZone = physicalZone;
             CustomInit();
         }
 
@@ -69,6 +84,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets Possible values include: &#39;READY&#39;, &#39;STOPPED&#39;, &#39;UNKNOWN&#39;
@@ -105,5 +126,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.containers")]
         public System.Collections.Generic.IDictionary<string, ContainerInfo> Containers {get; set; }
+
+        /// <summary>
+        /// Gets or sets the physical zone that the instance is in
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.physicalZone")]
+        public string PhysicalZone {get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
         /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
         /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
-        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;</param>
 
         /// <param name="containerName">Unique name of container
         /// </param>
@@ -84,9 +84,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
         /// </param>
 
+        /// <param name="sourceLocation">Source location of the protected item datasource.
+        /// </param>
+
         /// <param name="vaultId">ID of the vault which protects this item
         /// </param>
-        public ProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string vaultId = default(string))
+
+        /// <param name="sourceSideScanInfo">Source side threat information
+        /// </param>
+        public ProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string sourceLocation = default(string), string vaultId = default(string), SourceSideScanInfo sourceSideScanInfo = default(SourceSideScanInfo))
 
         {
             this.BackupManagementType = backupManagementType;
@@ -106,7 +112,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.IsArchiveEnabled = isArchiveEnabled;
             this.PolicyName = policyName;
             this.SoftDeleteRetentionPeriodInDays = softDeleteRetentionPeriodInDays;
+            this.SourceLocation = sourceLocation;
             this.VaultId = vaultId;
+            this.SourceSideScanInfo = sourceSideScanInfo;
             CustomInit();
         }
 
@@ -123,7 +131,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string BackupManagementType {get; private set; }
 
         /// <summary>
-        /// Gets type of workload this item represents. Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;, &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;, &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;, &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;
+        /// Gets type of workload this item represents. Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;, &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;, &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;, &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;, &#39;SQLInstance&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workloadType")]
         public string WorkloadType {get; private set; }
@@ -226,9 +234,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public int? SoftDeleteRetentionPeriodInDays {get; set; }
 
         /// <summary>
+        /// Gets source location of the protected item datasource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceLocation")]
+        public string SourceLocation {get; private set; }
+
+        /// <summary>
         /// Gets iD of the vault which protects this item
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vaultId")]
         public string VaultId {get; private set; }
+
+        /// <summary>
+        /// Gets or sets source side threat information
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sourceSideScanInfo")]
+        public SourceSideScanInfo SourceSideScanInfo {get; set; }
     }
 }

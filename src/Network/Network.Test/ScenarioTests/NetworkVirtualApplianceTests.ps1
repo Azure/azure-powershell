@@ -197,13 +197,96 @@ function Test-NVAInVnetCRUD
         Assert-NotNull $getnva
         Assert-NotNull $getnva.NvaInterfaceConfigurations
 
-        Start-Sleep -Seconds 600
-        Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
-   	}   
-    finally{
-        # Clean up.
-        Clean-ResourceGroup $rgname
+		Start-Sleep -Seconds 600
+		Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
+	}   
+	finally{
+		# Clean up.
+		Clean-ResourceGroup $rgname
 	  }
+}
+
+<#
+.SYNOPSIS
+Test creating a dual-stack (IPv4 + IPv6) NetworkVirtualAppliance in a Virtual Hub
+#>
+function Test-NetworkVirtualApplianceDualStackHub
+{
+	# Uses a pre-existing dual-stack Virtual Hub (IPv4 + IPv6) to avoid slow hub provisioning during recording.
+	$rgname = "dev2-testingipv6"
+	$location = "australiaeast"
+	$nvaname = Get-ResourceName
+	$hubname = "chainhub-03"
+	$vendor = "ciscosdwan"
+	$scaleunit = 2
+	$version = '17.18.02'
+	$asn = 65222
+	try{
+		$sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+		Assert-NotNull $sku
+
+		$hub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $hubname
+		Assert-NotNull $hub
+
+		$nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo hi" -AddressFamily "IPv4","IPv6"
+		Assert-NotNull $nva
+
+		$getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
+		Assert-NotNull $getnva
+		Assert-NotNull $getnva.AddressFamily
+		Assert-True { $getnva.AddressFamily -contains "IPv4" }
+		Assert-True { $getnva.AddressFamily -contains "IPv6" }
+	}   
+	finally{
+		# Clean up only the NVA created by this test; the shared hub is left intact.
+		Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+Test creating a dual-stack (IPv4 + IPv6) NetworkVirtualAppliance deployed in a VNet
+#>
+function Test-NetworkVirtualApplianceDualStackVnet
+{
+	# Uses a pre-existing dual-stack VNet (IPv4 + IPv6 subnets) to avoid slow VNet provisioning during recording.
+	$rgname = "dev2-testingipv6"
+	$location = "australiaeast"
+	$nvaname = Get-ResourceName
+	$vendor = "ciscosdwan"
+	$scaleunit = 2
+	$version = '17.18.02'
+	$asn = 65222
+	$vnetName = "vnet-v6"
+	$publicSubnetName = "subnet2"
+	$privateSubnetName = "subnet1"
+	try{
+		$sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+		Assert-NotNull $sku
+
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$publicSubnetId = ($vnet.Subnets | Where-Object { $_.Name -eq $publicSubnetName }).Id
+		$privateSubnetId = ($vnet.Subnets | Where-Object { $_.Name -eq $privateSubnetName }).Id
+		Assert-NotNull $publicSubnetId
+		Assert-NotNull $privateSubnetId
+
+		$privateNicConfig = New-AzNvaInterfaceConfiguration -NicType "PrivateNic" -Name "privateInterface" -SubnetId $privateSubnetId
+		$publicNicConfig = New-AzNvaInterfaceConfiguration -NicType "PublicNic" -Name "publicInterface" -SubnetId $publicSubnetId
+
+		$nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -NvaInterfaceConfiguration $privateNicConfig,$publicNicConfig -Sku $sku -CloudInitConfiguration "echo hi" -AddressFamily "IPv4","IPv6"
+		$getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
+		Assert-NotNull $getnva
+		Assert-NotNull $getnva.NvaInterfaceConfigurations
+		Assert-NotNull $getnva.AddressFamily
+		Assert-True { $getnva.AddressFamily -contains "IPv4" }
+		Assert-True { $getnva.AddressFamily -contains "IPv6" }
+		Start-Sleep -Seconds 900
+		Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force
+	}   
+	finally{
+		# Best-effort cleanup in case the try block exited before the delete above.
+		Remove-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Force -ErrorAction SilentlyContinue
+	}
 }
 
 

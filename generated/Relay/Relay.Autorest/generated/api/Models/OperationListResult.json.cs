@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
     /// <summary>
-    /// Result of the request to list Relay operations. It contains a list of operations and a URL link to get the next set of
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
     /// results.
     /// </summary>
     public partial class OperationListResult

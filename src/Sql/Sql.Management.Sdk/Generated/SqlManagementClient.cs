@@ -310,6 +310,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; private set; }
         /// <summary>
+        /// Gets the IManagedInstanceLongTermRetentionBackupsOperations
+        /// </summary>
+        public virtual IManagedInstanceLongTermRetentionBackupsOperations ManagedInstanceLongTermRetentionBackups { get; private set; }
+        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations
         /// </summary>
         public virtual IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; private set; }
@@ -742,6 +746,7 @@ namespace Microsoft.Azure.Management.Sql
             this.Usages = new UsagesOperations(this);
             this.LongTermRetentionBackups = new LongTermRetentionBackupsOperations(this);
             this.LongTermRetentionManagedInstanceBackups = new LongTermRetentionManagedInstanceBackupsOperations(this);
+            this.ManagedInstanceLongTermRetentionBackups = new ManagedInstanceLongTermRetentionBackupsOperations(this);
             this.RestorableDroppedManagedDatabases = new RestorableDroppedManagedDatabasesOperations(this);
             this.DistributedAvailabilityGroups = new DistributedAvailabilityGroupsOperations(this);
             this.ServerTrustCertificates = new ServerTrustCertificatesOperations(this);

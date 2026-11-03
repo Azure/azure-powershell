@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
@@ -22,7 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
     {
         protected readonly ITestRunner TestRunner;
 
-        protected RecoveryServicesBackupTestRunner(ITestOutputHelper output)
+        static RecoveryServicesBackupTestRunner()
+        {
+            RecorderUtilities.JsonPathSanitizers.Add("$..accessTokenString");
+        }
+
+        protected RecoveryServicesBackupTestRunner(ITestOutputHelper output, string resourceManagementApiVersion = "2016-02-01")
         {
             TestRunner = TestManager.CreateInstance(output)
                 .WithProjectSubfolderForTests("ScenarioTests")
@@ -42,8 +48,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
                     {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                        {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-02-01"}
+                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", resourceManagementApiVersion},
+                        {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", resourceManagementApiVersion}
                     },
                     resourceProviders: new Dictionary<string, string>
                     {

@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     response = this.automationManagementClient.DscNode.ListByAutomationAccount(
                                     resourceGroupName,
                                     automationAccountName,
-                                    oDataFilter);
+                                    oDataFilter.Filter);
                 }
                 else
                 {

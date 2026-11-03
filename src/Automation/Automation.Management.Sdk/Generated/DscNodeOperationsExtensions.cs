@@ -13,46 +13,67 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class DscNodeOperationsExtensions
     {
         /// <summary>
-        /// Delete the dsc node identified by node id.
+        /// Retrieve a list of dsc nodes.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='nodeId'>
-        /// The node id.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
         /// </param>
-        public static void Delete(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string nodeId)
+        /// <param name='skip'>
+        /// The number of rows to skip.
+        /// </param>
+        /// <param name='top'>
+        /// The number of rows to take.
+        /// </param>
+        /// <param name='inlinecount'>
+        /// Return total rows.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DscNode> ListByAutomationAccount(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string))
         {
-                ((IDscNodeOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, nodeId).GetAwaiter().GetResult();
+                return ((IDscNodeOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, filter, skip, top, inlinecount).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Delete the dsc node identified by node id.
+        /// Retrieve a list of dsc nodes.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='nodeId'>
-        /// The node id.
+        /// <param name='filter'>
+        /// The filter to apply on the operation.
+        /// </param>
+        /// <param name='skip'>
+        /// The number of rows to skip.
+        /// </param>
+        /// <param name='top'>
+        /// The number of rows to take.
+        /// </param>
+        /// <param name='inlinecount'>
+        /// Return total rows.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscNode>> ListByAutomationAccountAsync(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string filter = default(string), int? skip = default(int?), int? top = default(int?), string inlinecount = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, nodeId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, filter, skip, top, inlinecount, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Retrieve the dsc node identified by node id.
@@ -61,7 +82,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -81,7 +102,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
@@ -106,13 +127,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// Parameters supplied to the update dsc node.
+        /// The node id.
         /// </param>
         public static DscNode Update(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string nodeId, DscNodeUpdateParameters dscNodeUpdateParameters)
         {
@@ -126,13 +147,13 @@ namespace Microsoft.Azure.Management.Automation
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
         /// <param name='nodeId'>
-        /// Parameters supplied to the update dsc node.
+        /// The node id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,55 +166,46 @@ namespace Microsoft.Azure.Management.Automation
             }
         }
         /// <summary>
-        /// Retrieve a list of dsc nodes.
+        /// Delete the dsc node identified by node id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='inlinecount'>
-        /// Return total rows.
+        /// <param name='nodeId'>
+        /// The node id.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DscNode> ListByAutomationAccount(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<DscNode> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscNode>), string inlinecount = default(string))
+        public static void Delete(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string nodeId)
         {
-                return ((IDscNodeOperations)operations).ListByAutomationAccountAsync(resourceGroupName, automationAccountName, odataQuery, inlinecount).GetAwaiter().GetResult();
+                ((IDscNodeOperations)operations).DeleteAsync(resourceGroupName, automationAccountName, nodeId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Retrieve a list of dsc nodes.
+        /// Delete the dsc node identified by node id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// Name of an Azure Resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='automationAccountName'>
         /// The name of the automation account.
         /// </param>
-        /// <param name='inlinecount'>
-        /// Return total rows.
+        /// <param name='nodeId'>
+        /// The node id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DscNode>> ListByAutomationAccountAsync(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, Microsoft.Rest.Azure.OData.ODataQuery<DscNode> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DscNode>), string inlinecount = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IDscNodeOperations operations, string resourceGroupName, string automationAccountName, string nodeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByAutomationAccountWithHttpMessagesAsync(resourceGroupName, automationAccountName, odataQuery, inlinecount, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationAccountName, nodeId, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Retrieve a list of dsc nodes.

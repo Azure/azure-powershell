@@ -66,10 +66,24 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="userProvidedFunctionApps">User provided function apps registered with the static site
         /// </param>
 
+        /// <param name="linkedBackends">Backends linked to the static side
+        /// </param>
+
         /// <param name="provider">The provider that submitted the last deployment to the primary environment
         /// of the static site.
         /// </param>
-        public StaticSite(string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), System.Collections.Generic.IList<string> customDomains = default(System.Collections.Generic.IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection>), StagingEnvironmentPolicy? stagingEnvironmentPolicy = default(StagingEnvironmentPolicy?), bool? allowConfigFileUpdates = default(bool?), StaticSiteTemplateOptions templateProperties = default(StaticSiteTemplateOptions), string contentDistributionEndpoint = default(string), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp>), string provider = default(string))
+
+        /// <param name="enterpriseGradeCdnStatus">State indicating the status of the enterprise grade CDN serving traffic to
+        /// the static web app.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Enabling&#39;, &#39;Disabled&#39;, &#39;Disabling&#39;</param>
+
+        /// <param name="publicNetworkAccess">State indicating whether public traffic are allowed or not for a static web
+        /// app. Allowed Values: &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </param>
+
+        /// <param name="databaseConnections">Database connections for the static site
+        /// </param>
+        public StaticSite(string defaultHostname = default(string), string repositoryUrl = default(string), string branch = default(string), System.Collections.Generic.IList<string> customDomains = default(System.Collections.Generic.IList<string>), string repositoryToken = default(string), StaticSiteBuildProperties buildProperties = default(StaticSiteBuildProperties), System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ResponseMessageEnvelopeRemotePrivateEndpointConnection>), StagingEnvironmentPolicy? stagingEnvironmentPolicy = default(StagingEnvironmentPolicy?), bool? allowConfigFileUpdates = default(bool?), StaticSiteTemplateOptions templateProperties = default(StaticSiteTemplateOptions), string contentDistributionEndpoint = default(string), string keyVaultReferenceIdentity = default(string), System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> userProvidedFunctionApps = default(System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp>), System.Collections.Generic.IList<StaticSiteLinkedBackend> linkedBackends = default(System.Collections.Generic.IList<StaticSiteLinkedBackend>), string provider = default(string), string enterpriseGradeCdnStatus = default(string), string publicNetworkAccess = default(string), System.Collections.Generic.IList<DatabaseConnectionOverview> databaseConnections = default(System.Collections.Generic.IList<DatabaseConnectionOverview>))
 
         {
             this.DefaultHostname = defaultHostname;
@@ -85,7 +99,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.ContentDistributionEndpoint = contentDistributionEndpoint;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
             this.UserProvidedFunctionApps = userProvidedFunctionApps;
+            this.LinkedBackends = linkedBackends;
             this.Provider = provider;
+            this.EnterpriseGradeCdnStatus = enterpriseGradeCdnStatus;
+            this.PublicNetworkAccess = publicNetworkAccess;
+            this.DatabaseConnections = databaseConnections;
             CustomInit();
         }
 
@@ -177,10 +195,36 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Collections.Generic.IList<StaticSiteUserProvidedFunctionApp> UserProvidedFunctionApps {get; private set; }
 
         /// <summary>
-        /// Gets the provider that submitted the last deployment to the primary
+        /// Gets backends linked to the static side
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linkedBackends")]
+        public System.Collections.Generic.IList<StaticSiteLinkedBackend> LinkedBackends {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the provider that submitted the last deployment to the primary
         /// environment of the static site.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provider")]
-        public string Provider {get; private set; }
+        public string Provider {get; set; }
+
+        /// <summary>
+        /// Gets or sets state indicating the status of the enterprise grade CDN
+        /// serving traffic to the static web app. Possible values include: &#39;Enabled&#39;, &#39;Enabling&#39;, &#39;Disabled&#39;, &#39;Disabling&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enterpriseGradeCdnStatus")]
+        public string EnterpriseGradeCdnStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets state indicating whether public traffic are allowed or not for
+        /// a static web app. Allowed Values: &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets database connections for the static site
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "databaseConnections")]
+        public System.Collections.Generic.IList<DatabaseConnectionOverview> DatabaseConnections {get; private set; }
     }
 }

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="rawErrors">Gets or sets the unparsed errors for the node report.
         /// </param>
-        public DscNodeReport(System.DateTimeOffset? endTime = default(System.DateTimeOffset?), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), string type = default(string), string reportId = default(string), string status = default(string), string refreshMode = default(string), string rebootRequested = default(string), string reportFormatVersion = default(string), string configurationVersion = default(string), string id = default(string), System.Collections.Generic.IList<DscReportError> errors = default(System.Collections.Generic.IList<DscReportError>), System.Collections.Generic.IList<DscReportResource> resources = default(System.Collections.Generic.IList<DscReportResource>), DscMetaConfiguration metaConfiguration = default(DscMetaConfiguration), string hostName = default(string), System.Collections.Generic.IList<string> iPv4Addresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> iPv6Addresses = default(System.Collections.Generic.IList<string>), int? numberOfResources = default(int?), string rawErrors = default(string))
+        public DscNodeReport(System.DateTimeOffset? endTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), System.DateTimeOffset? startTime = default(System.DateTimeOffset?), string type = default(string), string reportId = default(string), string status = default(string), string refreshMode = default(string), string rebootRequested = default(string), string reportFormatVersion = default(string), string configurationVersion = default(string), string id = default(string), System.Collections.Generic.IList<DscReportError> errors = default(System.Collections.Generic.IList<DscReportError>), System.Collections.Generic.IList<DscReportResource> resources = default(System.Collections.Generic.IList<DscReportResource>), DscMetaConfiguration metaConfiguration = default(DscMetaConfiguration), string hostName = default(string), System.Collections.Generic.IList<string> iPv4Addresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> iPv6Addresses = default(System.Collections.Generic.IList<string>), int? numberOfResources = default(int?), string rawErrors = default(string))
 
         {
             this.EndTime = endTime;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets or sets gets or sets the lastModifiedTime of the node report.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; set; }
+        public System.DateTimeOffset? LastModifiedTime {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets the start time of the node report.

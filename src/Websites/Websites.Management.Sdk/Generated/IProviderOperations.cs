@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// for location
         /// </remarks>
         /// <param name='location'>
-        /// Function App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.WebSites
         /// location
         /// </remarks>
         /// <param name='location'>
-        /// Web App stack location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='stackOsType'>
         /// Stack OS Type

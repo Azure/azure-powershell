@@ -7,6 +7,7 @@
     ]
   },
   "Variables": {
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "SubscriptionId": "ce4a7590-4722-4bcf-a2c6-e473e9f11778"
   }
 }

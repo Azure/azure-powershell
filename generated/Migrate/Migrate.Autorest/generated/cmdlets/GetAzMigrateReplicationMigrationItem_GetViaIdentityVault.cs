@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// <summary>Backing field for <see cref="FabricName" /> property.</summary>
         private string _fabricName;
 
-        /// <summary>Fabric unique name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Fabric unique name.")]
+        /// <summary>Fabric name.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Fabric name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Fabric unique name.",
+        Description = @"Fabric name.",
         SerializedName = @"fabricName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.ParameterCategory.Path)]

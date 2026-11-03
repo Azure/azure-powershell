@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 6.3.0
+* Updated Front Door to API 2026-10-01; added server TLS (Transport Layer Security) groups, post-quantum key exchange, origin certificate name validation and EdgeAction `ClientResponse`. Preserved existing features/URL signing compatibility.
+* Kept classic CDN on API 2026-04-01-preview and standalone EdgeAction on 2024-07-22-preview. Use Az.EdgeAction for the stable API.
+* Fixed Change Safety parameter forwarding.
+* Announced standalone EdgeAction removal in Az.Cdn 7.0.0/Az 17.0.0 on November 15, 2026; no behavior changes/warnings yet. Delivery-rule actions and URL signing are unaffected.
+* Added classic Front Door/Microsoft CDN migration cutover guidance.
+
 ## Version 6.2.0
 * Added ChangeSafety Support
 
@@ -156,4 +163,3 @@ Fixed enabling CDN custom domain HTTPS for Microsoft and Akamai SKU's
 
 ## Version 1.0.0
 * General availability of `Az.Cdn` module
-

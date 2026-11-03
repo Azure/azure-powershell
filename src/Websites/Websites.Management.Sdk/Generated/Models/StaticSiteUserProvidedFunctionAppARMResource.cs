@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Static Site User Provided Function App ARM resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class StaticSiteUserProvidedFunctionAppARMResource : ProxyOnlyResource
+    public partial class StaticSiteUserProvidedFunctionAppARMResource : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the StaticSiteUserProvidedFunctionAppARMResource class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the StaticSiteUserProvidedFunctionAppARMResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="functionAppResourceId">The resource id of the function app registered with the static site
@@ -46,10 +52,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="createdOn">The date and time on which the function app was registered with the static
         /// site.
         /// </param>
-        public StaticSiteUserProvidedFunctionAppARMResource(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionAppResourceId = default(string), string functionAppRegion = default(string), System.DateTime? createdOn = default(System.DateTime?))
+        public StaticSiteUserProvidedFunctionAppARMResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string functionAppResourceId = default(string), string functionAppRegion = default(string), System.DateTime? createdOn = default(System.DateTime?))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.FunctionAppResourceId = functionAppResourceId;
             this.FunctionAppRegion = functionAppRegion;
             this.CreatedOn = createdOn;
@@ -61,6 +68,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the function app registered with the static

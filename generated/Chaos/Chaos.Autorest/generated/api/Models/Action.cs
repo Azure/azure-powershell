@@ -7,68 +7,320 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Extensions;
 
-    /// <summary>Model that represents the base action model. 9 total per experiment.</summary>
+    /// <summary>Model that represents an Action resource.</summary>
     public partial class Action :
         Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAction,
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ProxyResource();
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
+        /// <summary>The short name of the action (e.g., "Shutdown").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string ActionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionName; }
 
-        /// <summary>String that represents a Capability URN.</summary>
+        /// <summary>The type of the action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string ActionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionType; }
+
+        /// <summary>Canonical identifier of the action (e.g., "microsoft-compute-shutdown/1.0").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string CanonicalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).CanonicalId; }
+
+        /// <summary>Description of what this action does.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Description; }
+
+        /// <summary>Human-readable display name of the action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).DisplayName; }
+
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Internal Acessors for ActionName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.ActionName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionName = value ?? null; }
+
+        /// <summary>Internal Acessors for ActionType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.ActionType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ActionType = value ?? null; }
+
+        /// <summary>Internal Acessors for CanonicalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.CanonicalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).CanonicalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).CanonicalId = value ?? null; }
+
+        /// <summary>Internal Acessors for Description</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Description = value ?? null; }
+
+        /// <summary>Internal Acessors for DisplayName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).DisplayName = value ?? null; }
+
+        /// <summary>Internal Acessors for ParametersSchema</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAny Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.ParametersSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ParametersSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ParametersSchema = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Property</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionProperties Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionProperties()); set { {_property = value;} } }
+
+        /// <summary>Internal Acessors for RecommendedRole</summary>
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.RecommendedRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).RecommendedRole; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).RecommendedRole = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for SupportedTargetType</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionSupportedTargetType> Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.SupportedTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).SupportedTargetType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).SupportedTargetType = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for Version</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionInternal.Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Version = value ?? null; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
+
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Name; }
+
+        /// <summary>JSON Schema describing the parameters for this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAny ParametersSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).ParametersSchema; }
+
+        /// <summary>Backing field for <see cref="Property" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionProperties _property;
+
+        /// <summary>The properties of the action resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string Name { get => this._name; set => this._name = value; }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ActionProperties()); set => this._property = value; }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
+        /// <summary>Recommended Azure RBAC role definition GUIDs for this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RecommendedRole { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).RecommendedRole; }
 
-        /// <summary>Enum that discriminates between action models.</summary>
+        /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Owned)]
-        public string Type { get => this._type; set => this._type = value; }
+        public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
+
+        /// <summary>List of target types supported by this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionSupportedTargetType> SupportedTargetType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).SupportedTargetType; }
+
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IResourceInternal)__proxyResource).Type; }
+
+        /// <summary>The version of the action (e.g., "1.0.0").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Origin(Microsoft.Azure.PowerShell.Cmdlets.Chaos.PropertyOrigin.Inlined)]
+        public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionPropertiesInternal)Property).Version; }
 
         /// <summary>Creates an new <see cref="Action" /> instance.</summary>
         public Action()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
-    /// Model that represents the base action model. 9 total per experiment.
+    /// Model that represents an Action resource.
     public partial interface IAction :
-        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IProxyResource
     {
-        /// <summary>String that represents a Capability URN.</summary>
+        /// <summary>The short name of the action (e.g., "Shutdown").</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
+        Required = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"String that represents a Capability URN.",
-        SerializedName = @"name",
+        Create = false,
+        Update = false,
+        Description = @"The short name of the action (e.g., ""Shutdown"").",
+        SerializedName = @"actionName",
         PossibleTypes = new [] { typeof(string) })]
-        string Name { get; set; }
-        /// <summary>Enum that discriminates between action models.</summary>
+        string ActionName { get;  }
+        /// <summary>The type of the action.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
+        Required = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Enum that discriminates between action models.",
-        SerializedName = @"type",
+        Create = false,
+        Update = false,
+        Description = @"The type of the action.",
+        SerializedName = @"actionType",
         PossibleTypes = new [] { typeof(string) })]
-        string Type { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Discrete", "Continuous", "Cancelable")]
+        string ActionType { get;  }
+        /// <summary>Canonical identifier of the action (e.g., "microsoft-compute-shutdown/1.0").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Canonical identifier of the action (e.g., ""microsoft-compute-shutdown/1.0"").",
+        SerializedName = @"canonicalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string CanonicalId { get;  }
+        /// <summary>Description of what this action does.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Description of what this action does.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get;  }
+        /// <summary>Human-readable display name of the action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Human-readable display name of the action.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get;  }
+        /// <summary>JSON Schema describing the parameters for this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"JSON Schema describing the parameters for this action.",
+        SerializedName = @"parametersSchema",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAny) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAny ParametersSchema { get;  }
+        /// <summary>Recommended Azure RBAC role definition GUIDs for this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Recommended Azure RBAC role definition GUIDs for this action.",
+        SerializedName = @"recommendedRoles",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RecommendedRole { get;  }
+        /// <summary>List of target types supported by this action.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"List of target types supported by this action.",
+        SerializedName = @"supportedTargetTypes",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionSupportedTargetType) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionSupportedTargetType> SupportedTargetType { get;  }
+        /// <summary>The version of the action (e.g., "1.0.0").</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Chaos.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The version of the action (e.g., ""1.0.0"").",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        string Version { get;  }
 
     }
-    /// Model that represents the base action model. 9 total per experiment.
-    internal partial interface IActionInternal
-
+    /// Model that represents an Action resource.
+    internal partial interface IActionInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IProxyResourceInternal
     {
-        /// <summary>String that represents a Capability URN.</summary>
-        string Name { get; set; }
-        /// <summary>Enum that discriminates between action models.</summary>
-        string Type { get; set; }
+        /// <summary>The short name of the action (e.g., "Shutdown").</summary>
+        string ActionName { get; set; }
+        /// <summary>The type of the action.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Chaos.PSArgumentCompleterAttribute("Discrete", "Continuous", "Cancelable")]
+        string ActionType { get; set; }
+        /// <summary>Canonical identifier of the action (e.g., "microsoft-compute-shutdown/1.0").</summary>
+        string CanonicalId { get; set; }
+        /// <summary>Description of what this action does.</summary>
+        string Description { get; set; }
+        /// <summary>Human-readable display name of the action.</summary>
+        string DisplayName { get; set; }
+        /// <summary>JSON Schema describing the parameters for this action.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IAny ParametersSchema { get; set; }
+        /// <summary>The properties of the action resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionProperties Property { get; set; }
+        /// <summary>Recommended Azure RBAC role definition GUIDs for this action.</summary>
+        System.Collections.Generic.List<string> RecommendedRole { get; set; }
+        /// <summary>List of target types supported by this action.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IActionSupportedTargetType> SupportedTargetType { get; set; }
+        /// <summary>The version of the action (e.g., "1.0.0").</summary>
+        string Version { get; set; }
 
     }
 }

@@ -31,7 +31,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpTagConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpTagConfig",
+        DefaultParameterSetName = ParameterAttribute.AllParameterSets, SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSetIpTag))]
     public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -47,9 +48,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string FirstPartyServiceTagId { get; set; }
+
         protected override void ProcessRecord()
         {
-            Run();
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
         }
 
         private void Run()
@@ -58,6 +67,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vIpTags.IpTagType = this.IsParameterBound(c => c.IpTagType) ? this.IpTagType : null;
             vIpTags.Tag = this.IsParameterBound(c => c.Tag) ? this.Tag : null;
+            if (this.IsParameterBound(c => c.FirstPartyServiceTagId))
+            {
+                vIpTags.FirstPartyServiceTagId = this.FirstPartyServiceTagId;
+            }
 
             WriteObject(vIpTags);
         }

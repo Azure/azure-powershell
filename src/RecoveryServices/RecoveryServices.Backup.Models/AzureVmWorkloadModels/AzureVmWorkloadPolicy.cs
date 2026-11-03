@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmWorkloadPolicy : AzureDbPolicy
     {
+        public string VMWorkloadPolicyType { get; set; }
+
+        public SnapshotBackupAdditionalDetails SnapshotBackupAdditionalDetails { get; set; }
+
         /// <summary>
         /// Object defining the number of associated items for the policy
         /// </summary>

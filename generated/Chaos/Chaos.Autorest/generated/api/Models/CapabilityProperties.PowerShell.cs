@@ -96,6 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).Urn = (string) content.GetValueForProperty("Urn",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).Urn, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -132,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models
             if (content.Contains("Urn"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).Urn = (string) content.GetValueForProperty("Urn",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).Urn, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ICapabilityPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

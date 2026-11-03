@@ -81,6 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_credentials = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonObject>("credentials"), out var __jsonCredentials) ? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureKeyVaultSmbCredentials.FromJson(__jsonCredentials) : _credentials;}
             {_host = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("host"), out var __jsonHost) ? (string)__jsonHost : (string)_host;}
             {_shareName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("shareName"), out var __jsonShareName) ? (string)__jsonShareName : (string)_shareName;}
+            {_sourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("sourceType"), out var __jsonSourceType) ? (string)__jsonSourceType : (string)_sourceType;}
             AfterFromJson(json);
         }
 
@@ -113,6 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 AddIf( null != (((object)this._shareName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._shareName.ToString()) : null, "shareName" ,container.Add );
             }
+            AddIf( null != (((object)this._sourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._sourceType.ToString()) : null, "sourceType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

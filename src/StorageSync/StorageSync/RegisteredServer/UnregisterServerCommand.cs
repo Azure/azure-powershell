@@ -139,6 +139,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 var resourceName = default(string);
                 var resourceGroupName = default(string);
                 var parentResourceName = default(string);
+                Guid serverId = Guid.Empty;
 
                 if (this.IsParameterBound(c => c.ResourceId))
                 {
@@ -152,18 +153,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     resourceName = resourceIdentifier.ResourceName;
                     resourceGroupName = resourceIdentifier.ResourceGroupName;
                     parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName);
+
+                    if (!Guid.TryParse(resourceName, out serverId) || serverId == Guid.Empty)
+                    {
+                        throw new PSArgumentException(nameof(ResourceId));
+                    }
                 }
                 else if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerId;
                     resourceGroupName = InputObject.ResourceGroupName;
                     parentResourceName = InputObject.StorageSyncServiceName;
+
+                    if (!Guid.TryParse(resourceName, out serverId) || serverId == Guid.Empty)
+                    {
+                        throw new PSArgumentException(nameof(InputObject));
+                    }
                 }
                 else
                 {
                     resourceName = ServerId.ToString();
                     resourceGroupName = ResourceGroupName;
                     parentResourceName = StorageSyncServiceName;
+
+                    if (!Guid.TryParse(resourceName, out serverId) || serverId == Guid.Empty)
+                    {
+                        throw new PSArgumentException(nameof(ServerId));
+                    }
                 }
 
                 Target = string.Join("/", resourceGroupName, parentResourceName, resourceName);
@@ -172,7 +188,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 {
                     if (Force || ShouldContinue(string.Format("Remove Sync Server '{0}' and all content in it", resourceName), ""))
                     {
-                        StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Delete(resourceGroupName, parentResourceName, resourceName);
+                        StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Delete(resourceGroupName, parentResourceName, serverId);
                     }
                 }
             });

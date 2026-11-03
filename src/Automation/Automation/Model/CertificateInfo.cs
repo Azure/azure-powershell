@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             if (certificate == null) return;
             this.Name = certificate.Name;
             this.Description = certificate.Description;
-            this.CreationTime = certificate.CreationTime.ToLocalTime();
-            this.LastModifiedTime = certificate.LastModifiedTime.ToLocalTime();
-            this.ExpiryTime = certificate.ExpiryTime.ToLocalTime();
+            this.CreationTime = certificate.CreationTime.GetValueOrDefault().ToLocalTime();
+            this.LastModifiedTime = certificate.LastModifiedTime.GetValueOrDefault().ToLocalTime();
+            this.ExpiryTime = certificate.ExpiryTime.GetValueOrDefault().ToLocalTime();
             this.Thumbprint = certificate.Thumbprint;
-            this.Exportable = certificate.IsExportable;
+            this.Exportable = certificate.IsExportable ?? false;
         }
 
         /// <summary>

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="description">Gets or sets the description.
         /// </param>
-        public CertificateProperties(string thumbprint = default(string), System.DateTimeOffset expiryTime = default(System.DateTimeOffset), bool isExportable = default(bool), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string))
+        public CertificateProperties(string thumbprint = default(string), System.DateTimeOffset? expiryTime = default(System.DateTimeOffset?), bool? isExportable = default(bool?), System.DateTimeOffset? creationTime = default(System.DateTimeOffset?), System.DateTimeOffset? lastModifiedTime = default(System.DateTimeOffset?), string description = default(string))
 
         {
             this.Thumbprint = thumbprint;
@@ -69,25 +69,25 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Gets gets the expiry time of the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expiryTime")]
-        public System.DateTimeOffset ExpiryTime {get; private set; }
+        public System.DateTimeOffset? ExpiryTime {get; private set; }
 
         /// <summary>
         /// Gets gets the is exportable flag of the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isExportable")]
-        public bool IsExportable {get; private set; }
+        public bool? IsExportable {get; private set; }
 
         /// <summary>
         /// Gets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
-        public System.DateTimeOffset CreationTime {get; private set; }
+        public System.DateTimeOffset? CreationTime {get; private set; }
 
         /// <summary>
         /// Gets gets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedTime")]
-        public System.DateTimeOffset LastModifiedTime {get; private set; }
+        public System.DateTimeOffset? LastModifiedTime {get; private set; }
 
         /// <summary>
         /// Gets or sets gets or sets the description.

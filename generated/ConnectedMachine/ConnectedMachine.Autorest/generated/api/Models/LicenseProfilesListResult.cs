@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
 
-    /// <summary>The List hybrid machine license profile operation response.</summary>
+    /// <summary>Paged collection of LicenseProfile items</summary>
     public partial class LicenseProfilesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilesListResult,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfilesListResultInternal
@@ -16,16 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile> _value;
 
-        /// <summary>The list of license profiles.</summary>
+        /// <summary>The LicenseProfile items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile> Value { get => this._value; set => this._value = value; }
 
@@ -35,45 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         }
     }
-    /// The List hybrid machine license profile operation response.
+    /// Paged collection of LicenseProfile items
     public partial interface ILicenseProfilesListResult :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of license profiles.</summary>
+        /// <summary>The LicenseProfile items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of license profiles.",
+        Description = @"The LicenseProfile items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile> Value { get; set; }
 
     }
-    /// The List hybrid machine license profile operation response.
+    /// Paged collection of LicenseProfile items
     internal partial interface ILicenseProfilesListResultInternal
 
     {
-        /// <summary>
-        /// The URI to fetch the next page of Machines. Call ListNext() with this URI to fetch the next page of license profile.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of license profiles.</summary>
+        /// <summary>The LicenseProfile items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfile> Value { get; set; }
 
     }

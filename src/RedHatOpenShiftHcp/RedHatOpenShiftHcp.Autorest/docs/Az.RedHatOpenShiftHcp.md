@@ -1,0 +1,58 @@
+---
+Module Name: Az.RedHatOpenShiftHcp
+Module Guid: 66909593-1ab6-4a71-9280-664e034ef7ab
+Download Help Link: https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp
+Help Version: 1.0.0.0
+Locale: en-US
+---
+
+# Az.RedHatOpenShiftHcp Module
+## Description
+Microsoft Azure PowerShell: RedHatOpenShiftHcp cmdlets
+
+## Az.RedHatOpenShiftHcp Cmdlets
+### [Get-AzRedHatOpenShiftHcpCluster](Get-AzRedHatOpenShiftHcpCluster.md)
+Get a HcpOpenShiftCluster
+
+### [Get-AzRedHatOpenShiftHcpExternalAuth](Get-AzRedHatOpenShiftHcpExternalAuth.md)
+Get a ExternalAuth
+
+### [Get-AzRedHatOpenShiftHcpNodePool](Get-AzRedHatOpenShiftHcpNodePool.md)
+Get a NodePool
+
+### [Get-AzRedHatOpenShiftHcpVersion](Get-AzRedHatOpenShiftHcpVersion.md)
+List installable HCP OpenShift versions, with optional control-plane / node-pool views.
+
+### [New-AzRedHatOpenShiftHcpCluster](New-AzRedHatOpenShiftHcpCluster.md)
+Create an ARO-HCP cluster, auto-wiring the identity list and etcd KMS encryption type.
+
+### [New-AzRedHatOpenShiftHcpExternalAuth](New-AzRedHatOpenShiftHcpExternalAuth.md)
+Create a ExternalAuth
+
+### [New-AzRedHatOpenShiftHcpNodePool](New-AzRedHatOpenShiftHcpNodePool.md)
+Create a NodePool
+
+### [Remove-AzRedHatOpenShiftHcpCluster](Remove-AzRedHatOpenShiftHcpCluster.md)
+Delete a HcpOpenShiftCluster
+
+### [Remove-AzRedHatOpenShiftHcpExternalAuth](Remove-AzRedHatOpenShiftHcpExternalAuth.md)
+Delete a ExternalAuth
+
+### [Remove-AzRedHatOpenShiftHcpNodePool](Remove-AzRedHatOpenShiftHcpNodePool.md)
+Delete a NodePool
+
+### [Request-AzRedHatOpenShiftHcpClusterAdminCredential](Request-AzRedHatOpenShiftHcpClusterAdminCredential.md)
+Request a temporary admin kubeconfig for the cluster and write it ready-to-use.
+
+### [Revoke-AzRedHatOpenShiftHcpClusterCredentials](Revoke-AzRedHatOpenShiftHcpClusterCredentials.md)
+Revoke all credentials issued by requestAdminCredential
+
+### [Update-AzRedHatOpenShiftHcpCluster](Update-AzRedHatOpenShiftHcpCluster.md)
+Update an ARO-HCP cluster, auto-wiring the identity list when operator identities change.
+
+### [Update-AzRedHatOpenShiftHcpExternalAuth](Update-AzRedHatOpenShiftHcpExternalAuth.md)
+Update a ExternalAuth
+
+### [Update-AzRedHatOpenShiftHcpNodePool](Update-AzRedHatOpenShiftHcpNodePool.md)
+Update a NodePool
+

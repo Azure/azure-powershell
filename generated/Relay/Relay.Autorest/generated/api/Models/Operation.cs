@@ -7,41 +7,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>A Relay REST API operation</summary>
+    /// <summary>
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
+    /// </summary>
     public partial class Operation :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation,
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal
     {
 
+        /// <summary>Backing field for <see cref="ActionType" /> property.</summary>
+        private string _actionType;
+
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
+        public string ActionType { get => this._actionType; }
+
         /// <summary>Backing field for <see cref="Display" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplay _display;
 
-        /// <summary>Display of the operation</summary>
+        /// <summary>Localized display information for this particular operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplay Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.OperationDisplay()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplay Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.OperationDisplay()); set => this._display = value; }
 
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplayInternal)Display).Description; }
 
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplayInternal)Display).Operation; }
 
-        /// <summary>Resource provider of the operation</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplayInternal)Display).Provider; }
 
-        /// <summary>Resource of the operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Inlined)]
         public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplayInternal)Display).Resource; }
 
         /// <summary>Backing field for <see cref="IsDataAction" /> property.</summary>
         private bool? _isDataAction;
 
-        /// <summary>Indicates whether the operation is a data action</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public bool? IsDataAction { get => this._isDataAction; }
+
+        /// <summary>Internal Acessors for ActionType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal.ActionType { get => this._actionType; set { {_actionType = value;} } }
 
         /// <summary>Internal Acessors for Display</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.OperationDisplay()); set { {_display = value;} } }
@@ -70,23 +96,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Operation name: {provider}/{resource}/{operation}</summary>
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
         /// <summary>Backing field for <see cref="Origin" /> property.</summary>
         private string _origin;
 
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string Origin { get => this._origin; }
-
-        /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny _property;
-
-        /// <summary>Properties of the operation</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Any()); set => this._property = value; }
 
         /// <summary>Creates an new <see cref="Operation" /> instance.</summary>
         public Operation()
@@ -94,122 +119,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 
         }
     }
-    /// A Relay REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     public partial interface IOperation :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable
     {
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly description for the operation",
+        Description = @"Enum. Indicates the action type. ""Internal"" refers to actions that are for internal only APIs.",
+        SerializedName = @"actionType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Internal")]
+        string ActionType { get;  }
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The short, localized friendly description of the operation; suitable for tool tips and detailed views.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayDescription { get;  }
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly name for the operation",
+        Description = @"The concise, localized friendly name for the operation; suitable for dropdowns. E.g. ""Create or Update Virtual Machine"", ""Restart Virtual Machine"".",
         SerializedName = @"operation",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayOperation { get;  }
-        /// <summary>Resource provider of the operation</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Resource provider of the operation",
+        Description = @"The localized friendly form of the resource provider name, e.g. ""Microsoft Monitoring Insights"" or ""Microsoft Compute"".",
         SerializedName = @"provider",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayProvider { get;  }
-        /// <summary>Resource of the operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Resource of the operation",
+        Description = @"The localized friendly name of the resource type related to this operation. E.g. ""Virtual Machines"" or ""Job Schedule Collections"".",
         SerializedName = @"resource",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayResource { get;  }
-        /// <summary>Indicates whether the operation is a data action</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Indicates whether the operation is a data action",
+        Description = @"Whether the operation applies to data-plane. This is ""true"" for data-plane operations and ""false"" for ARM/control-plane operations.",
         SerializedName = @"isDataAction",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsDataAction { get;  }
-        /// <summary>Operation name: {provider}/{resource}/{operation}</summary>
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Operation name: {provider}/{resource}/{operation}",
+        Description = @"The name of the operation, as per Resource-Based Access Control (RBAC). Examples: ""Microsoft.Compute/virtualMachines/write"", ""Microsoft.Compute/virtualMachines/capture/action""",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Origin of the operation",
+        Description = @"The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is ""user,system""",
         SerializedName = @"origin",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("user", "system", "user,system")]
         string Origin { get;  }
-        /// <summary>Properties of the operation</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Properties of the operation",
-        SerializedName = @"properties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny Property { get; set; }
 
     }
-    /// A Relay REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     internal partial interface IOperationInternal
 
     {
-        /// <summary>Display of the operation</summary>
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Internal")]
+        string ActionType { get; set; }
+        /// <summary>Localized display information for this particular operation.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperationDisplay Display { get; set; }
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
         string DisplayDescription { get; set; }
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         string DisplayOperation { get; set; }
-        /// <summary>Resource provider of the operation</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         string DisplayProvider { get; set; }
-        /// <summary>Resource of the operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         string DisplayResource { get; set; }
-        /// <summary>Indicates whether the operation is a data action</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         bool? IsDataAction { get; set; }
-        /// <summary>Operation name: {provider}/{resource}/{operation}</summary>
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
         string Name { get; set; }
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("user", "system", "user,system")]
         string Origin { get; set; }
-        /// <summary>Properties of the operation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAny Property { get; set; }
 
     }
 }

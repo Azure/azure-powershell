@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// A web app, a mobile app backend, or an API app.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Site : Resource
+    public partial class Site : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the Site class.
@@ -25,22 +25,25 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the Site class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="kind">Kind of resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource Location.
-        /// </param>
-
-        /// <param name="type">Resource type.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="identity">Managed service identity.
@@ -49,11 +52,27 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="extendedLocation">Extended Location.
         /// </param>
 
+        /// <param name="kind">Kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </param>
+
         /// <param name="usageState">State indicating whether the app has exceeded its quota usage. Read-only.
         /// Possible values include: &#39;Normal&#39;, &#39;Exceeded&#39;</param>
 
-        /// <param name="siteConfig">Configuration of the app.
+        /// <param name="siteConfig">Configuration of an App Service app. This property is not returned in
+        /// response to normal create and read requests since it may contain sensitive
+        /// information.
         /// </param>
+
+        /// <param name="daprConfig">Dapr configuration of the app.
+        /// </param>
+
+        /// <param name="resourceConfig">Function app resource requirements.
+        /// </param>
+
+        /// <param name="ipMode">Specifies the IP mode of the app.
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;IPv4AndIPv6&#39;</param>
 
         /// <param name="cloningInfo">If specified during app creation, the app is cloned from a source app.
         /// </param>
@@ -103,6 +122,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="lastModifiedTimeUtc">Last time the app was modified, in UTC. Read-only.
         /// </param>
 
+        /// <param name="dnsConfiguration">Property to configure various DNS related settings for a site.
+        /// </param>
+
+        /// <param name="outboundVnetRouting">Property to configure various outbound traffic routing options over virtual
+        /// network for a site
+        /// </param>
+
+        /// <param name="functionAppConfig">Configuration specific of the Azure Function app.
+        /// </param>
+
+        /// <param name="workloadProfileName">Workload profile name for function app to execute on.
+        /// </param>
+
         /// <param name="trafficManagerHostNames">Azure Traffic Manager hostnames associated with the app. Read-only.
         /// </param>
 
@@ -121,6 +153,17 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// session to the same instance. Default is &lt;code&gt;true&lt;/code&gt;.
         /// </param>
 
+        /// <param name="clientAffinityPartitioningEnabled">&lt;code&gt;true&lt;/code&gt; to enable client affinity partitioning using CHIPS
+        /// cookies, this will add the &lt;code&gt;partitioned&lt;/code&gt; property to the
+        /// affinity cookies; &lt;code&gt;false&lt;/code&gt; to stop sending partitioned affinity
+        /// cookies. Default is &lt;code&gt;false&lt;/code&gt;.
+        /// </param>
+
+        /// <param name="clientAffinityProxyEnabled">&lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain with
+        /// X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default domain.
+        /// Default is &lt;code&gt;false&lt;/code&gt;.
+        /// </param>
+
         /// <param name="clientCertEnabled">&lt;code&gt;true&lt;/code&gt; to enable client certificate authentication (TLS mutual
         /// authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is
         /// &lt;code&gt;false&lt;/code&gt;.
@@ -135,6 +178,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Possible values include: &#39;Required&#39;, &#39;Optional&#39;, &#39;OptionalInteractiveUser&#39;</param>
 
         /// <param name="clientCertExclusionPaths">client certificate authentication comma-separated exclusion paths
+        /// </param>
+
+        /// <param name="endToEndEncryptionEnabled">Whether to use end to end encryption between the FrontEnd and the Worker
+        /// </param>
+
+        /// <param name="sshEnabled">Whether to enable ssh access.
         /// </param>
 
         /// <param name="hostNamesDisabled">&lt;code&gt;true&lt;/code&gt; to disable the public hostnames of the app; otherwise,
@@ -191,25 +240,48 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="inProgressOperationId">Specifies an operation id if this site has a pending operation.
         /// </param>
 
+        /// <param name="publicNetworkAccess">Property to allow or block all public traffic. Allowed Values: &#39;Enabled&#39;,
+        /// &#39;Disabled&#39; or an empty string.
+        /// </param>
+
         /// <param name="storageAccountRequired">Checks if Customer provided storage account is required
         /// </param>
 
         /// <param name="keyVaultReferenceIdentity">Identity to use for Key Vault Reference authentication.
         /// </param>
 
+        /// <param name="autoGeneratedDomainNameLabelScope">Specifies the scope of uniqueness for the default hostname during resource
+        /// creation
+        /// Possible values include: &#39;TenantReuse&#39;, &#39;SubscriptionReuse&#39;,
+        /// &#39;ResourceGroupReuse&#39;, &#39;NoReuse&#39;</param>
+
         /// <param name="virtualNetworkSubnetId">Azure Resource Manager ID of the Virtual network and subnet to be joined by
         /// Regional VNET Integration.
         /// This must be of the form
         /// /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
         /// </param>
-        public Site(string location, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ExtendedLocation extendedLocation = default(ExtendedLocation), UsageState? usageState = default(UsageState?), SiteConfig siteConfig = default(SiteConfig), CloningInfo cloningInfo = default(CloningInfo), RedundancyMode? redundancyMode = default(RedundancyMode?), string state = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<string> enabledHostNames = default(System.Collections.Generic.IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), System.Collections.Generic.IList<HostNameSslState> hostNameSslStates = default(System.Collections.Generic.IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), System.Collections.Generic.IList<string> trafficManagerHostNames = default(System.Collections.Generic.IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIPAddresses = default(string), string possibleOutboundIPAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), System.Guid? inProgressOperationId = default(System.Guid?), bool? storageAccountRequired = default(bool?), string keyVaultReferenceIdentity = default(string), string virtualNetworkSubnetId = default(string))
 
-        : base(location, id, name, kind, type, tags)
+        /// <param name="managedEnvironmentId">Azure Resource Manager ID of the customer&#39;s selected Managed Environment on
+        /// which to host this app. This must be of the form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </param>
+
+        /// <param name="sku">Current SKU of application based on associated App Service Plan. Some valid
+        /// SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard,
+        /// Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
+        /// </param>
+        public Site(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ExtendedLocation extendedLocation = default(ExtendedLocation), string kind = default(string), UsageState? usageState = default(UsageState?), SiteConfig siteConfig = default(SiteConfig), DaprConfig daprConfig = default(DaprConfig), ResourceConfig resourceConfig = default(ResourceConfig), IPMode? ipMode = default(IPMode?), CloningInfo cloningInfo = default(CloningInfo), RedundancyMode? redundancyMode = default(RedundancyMode?), string state = default(string), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>), string repositorySiteName = default(string), bool? enabled = default(bool?), System.Collections.Generic.IList<string> enabledHostNames = default(System.Collections.Generic.IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), System.Collections.Generic.IList<HostNameSslState> hostNameSslStates = default(System.Collections.Generic.IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), bool? hyperV = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteDnsConfig dnsConfiguration = default(SiteDnsConfig), OutboundVnetRouting outboundVnetRouting = default(OutboundVnetRouting), FunctionAppConfig functionAppConfig = default(FunctionAppConfig), string workloadProfileName = default(string), System.Collections.Generic.IList<string> trafficManagerHostNames = default(System.Collections.Generic.IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientAffinityPartitioningEnabled = default(bool?), bool? clientAffinityProxyEnabled = default(bool?), bool? clientCertEnabled = default(bool?), ClientCertMode? clientCertMode = default(ClientCertMode?), string clientCertExclusionPaths = default(string), bool? endToEndEncryptionEnabled = default(bool?), bool? sshEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string customDomainVerificationId = default(string), string outboundIPAddresses = default(string), string possibleOutboundIPAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), System.Guid? inProgressOperationId = default(System.Guid?), string publicNetworkAccess = default(string), bool? storageAccountRequired = default(bool?), string keyVaultReferenceIdentity = default(string), AutoGeneratedDomainNameLabelScope? autoGeneratedDomainNameLabelScope = default(AutoGeneratedDomainNameLabelScope?), string virtualNetworkSubnetId = default(string), string managedEnvironmentId = default(string), string sku = default(string))
+
+        : base(location, id, name, type, systemData, tags)
         {
             this.Identity = identity;
             this.ExtendedLocation = extendedLocation;
+            this.Kind = kind;
             this.UsageState = usageState;
             this.SiteConfig = siteConfig;
+            this.DaprConfig = daprConfig;
+            this.ResourceConfig = resourceConfig;
+            this.IPMode = ipMode;
             this.CloningInfo = cloningInfo;
             this.RedundancyMode = redundancyMode;
             this.State = state;
@@ -224,14 +296,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.IsXenon = isXenon;
             this.HyperV = hyperV;
             this.LastModifiedTimeUtc = lastModifiedTimeUtc;
+            this.DnsConfiguration = dnsConfiguration;
+            this.OutboundVnetRouting = outboundVnetRouting;
+            this.FunctionAppConfig = functionAppConfig;
+            this.WorkloadProfileName = workloadProfileName;
             this.TrafficManagerHostNames = trafficManagerHostNames;
             this.ScmSiteAlsoStopped = scmSiteAlsoStopped;
             this.TargetSwapSlot = targetSwapSlot;
             this.HostingEnvironmentProfile = hostingEnvironmentProfile;
             this.ClientAffinityEnabled = clientAffinityEnabled;
+            this.ClientAffinityPartitioningEnabled = clientAffinityPartitioningEnabled;
+            this.ClientAffinityProxyEnabled = clientAffinityProxyEnabled;
             this.ClientCertEnabled = clientCertEnabled;
             this.ClientCertMode = clientCertMode;
             this.ClientCertExclusionPaths = clientCertExclusionPaths;
+            this.EndToEndEncryptionEnabled = endToEndEncryptionEnabled;
+            this.SshEnabled = sshEnabled;
             this.HostNamesDisabled = hostNamesDisabled;
             this.CustomDomainVerificationId = customDomainVerificationId;
             this.OutboundIpAddresses = outboundIPAddresses;
@@ -246,9 +326,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
             this.SlotSwapStatus = slotSwapStatus;
             this.HttpsOnly = httpsOnly;
             this.InProgressOperationId = inProgressOperationId;
+            this.PublicNetworkAccess = publicNetworkAccess;
             this.StorageAccountRequired = storageAccountRequired;
             this.KeyVaultReferenceIdentity = keyVaultReferenceIdentity;
+            this.AutoGeneratedDomainNameLabelScope = autoGeneratedDomainNameLabelScope;
             this.VirtualNetworkSubnetId = virtualNetworkSubnetId;
+            this.ManagedEnvironmentId = managedEnvironmentId;
+            this.Sku = sku;
             CustomInit();
         }
 
@@ -271,6 +355,14 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public ExtendedLocation ExtendedLocation {get; set; }
 
         /// <summary>
+        /// Gets or sets kind of resource. If the resource is an app, you can refer to
+        /// https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference
+        /// for details supported values for kind.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
+
+        /// <summary>
         /// Gets state indicating whether the app has exceeded its quota usage.
         /// Read-only. Possible values include: &#39;Normal&#39;, &#39;Exceeded&#39;
         /// </summary>
@@ -278,10 +370,30 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public UsageState? UsageState {get; private set; }
 
         /// <summary>
-        /// Gets or sets configuration of the app.
+        /// Gets or sets configuration of an App Service app. This property is not
+        /// returned in response to normal create and read requests since it may
+        /// contain sensitive information.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.siteConfig")]
         public SiteConfig SiteConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets dapr configuration of the app.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.daprConfig")]
+        public DaprConfig DaprConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets function app resource requirements.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceConfig")]
+        public ResourceConfig ResourceConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the IP mode of the app. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;, &#39;IPv4AndIPv6&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipMode")]
+        public IPMode? IPMode {get; set; }
 
         /// <summary>
         /// Gets or sets if specified during app creation, the app is cloned from a
@@ -375,6 +487,31 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.DateTime? LastModifiedTimeUtc {get; private set; }
 
         /// <summary>
+        /// Gets or sets property to configure various DNS related settings for a site.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsConfiguration")]
+        public SiteDnsConfig DnsConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets property to configure various outbound traffic routing options
+        /// over virtual network for a site
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.outboundVnetRouting")]
+        public OutboundVnetRouting OutboundVnetRouting {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration specific of the Azure Function app.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.functionAppConfig")]
+        public FunctionAppConfig FunctionAppConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets workload profile name for function app to execute on.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.workloadProfileName")]
+        public string WorkloadProfileName {get; set; }
+
+        /// <summary>
         /// Gets azure Traffic Manager hostnames associated with the app. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trafficManagerHostNames")]
@@ -409,6 +546,23 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public bool? ClientAffinityEnabled {get; set; }
 
         /// <summary>
+        /// Gets or sets &lt;code&gt;true&lt;/code&gt; to enable client affinity partitioning using
+        /// CHIPS cookies, this will add the &lt;code&gt;partitioned&lt;/code&gt; property to the
+        /// affinity cookies; &lt;code&gt;false&lt;/code&gt; to stop sending partitioned affinity
+        /// cookies. Default is &lt;code&gt;false&lt;/code&gt;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientAffinityPartitioningEnabled")]
+        public bool? ClientAffinityPartitioningEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets &lt;code&gt;true&lt;/code&gt; to override client affinity cookie domain
+        /// with X-Forwarded-Host request header. &lt;code&gt;false&lt;/code&gt; to use default
+        /// domain. Default is &lt;code&gt;false&lt;/code&gt;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientAffinityProxyEnabled")]
+        public bool? ClientAffinityProxyEnabled {get; set; }
+
+        /// <summary>
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; to enable client certificate authentication
         /// (TLS mutual authentication); otherwise, &lt;code&gt;false&lt;/code&gt;. Default is
         /// &lt;code&gt;false&lt;/code&gt;.
@@ -433,6 +587,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientCertExclusionPaths")]
         public string ClientCertExclusionPaths {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to use end to end encryption between the FrontEnd and
+        /// the Worker
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endToEndEncryptionEnabled")]
+        public bool? EndToEndEncryptionEnabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable ssh access.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sshEnabled")]
+        public bool? SshEnabled {get; set; }
 
         /// <summary>
         /// Gets or sets &lt;code&gt;true&lt;/code&gt; to disable the public hostnames of the app;
@@ -532,6 +699,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public System.Guid? InProgressOperationId {get; private set; }
 
         /// <summary>
+        /// Gets or sets property to allow or block all public traffic. Allowed Values:
+        /// &#39;Enabled&#39;, &#39;Disabled&#39; or an empty string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
         /// Gets or sets checks if Customer provided storage account is required
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageAccountRequired")]
@@ -544,6 +718,13 @@ namespace Microsoft.Azure.Management.WebSites.Models
         public string KeyVaultReferenceIdentity {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the scope of uniqueness for the default hostname
+        /// during resource creation Possible values include: &#39;TenantReuse&#39;, &#39;SubscriptionReuse&#39;, &#39;ResourceGroupReuse&#39;, &#39;NoReuse&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoGeneratedDomainNameLabelScope")]
+        public AutoGeneratedDomainNameLabelScope? AutoGeneratedDomainNameLabelScope {get; set; }
+
+        /// <summary>
         /// Gets or sets azure Resource Manager ID of the Virtual network and subnet to
         /// be joined by Regional VNET Integration.
         /// This must be of the form
@@ -551,6 +732,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetworkSubnetId")]
         public string VirtualNetworkSubnetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets azure Resource Manager ID of the customer&#39;s selected Managed
+        /// Environment on which to host this app. This must be of the form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.managedEnvironmentId")]
+        public string ManagedEnvironmentId {get; set; }
+
+        /// <summary>
+        /// Gets current SKU of application based on associated App Service Plan. Some
+        /// valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption,
+        /// Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sku")]
+        public string Sku {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -563,14 +760,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
 
 
+
             if (this.SiteConfig != null)
             {
                 this.SiteConfig.Validate();
             }
+
+
+
             if (this.CloningInfo != null)
             {
                 this.CloningInfo.Validate();
             }
+
+
+
+
+
+
+
+
 
 
 

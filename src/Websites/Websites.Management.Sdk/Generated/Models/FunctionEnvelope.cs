@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// Function information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FunctionEnvelope : ProxyOnlyResource
+    public partial class FunctionEnvelope : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the FunctionEnvelope class.
@@ -25,16 +25,22 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the FunctionEnvelope class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource Name.
+        /// <param name="name">The name of the resource
+        /// </param>
+
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="functionAppId">Function App ID.
@@ -75,10 +81,11 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="isDisabled">Gets or sets a value indicating whether the function is disabled
         /// </param>
-        public FunctionEnvelope(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string testDataHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), System.Collections.Generic.IDictionary<string, string> files = default(System.Collections.Generic.IDictionary<string, string>), string testData = default(string), string invokeUrlTemplate = default(string), string language = default(string), bool? isDisabled = default(bool?))
+        public FunctionEnvelope(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string testDataHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), System.Collections.Generic.IDictionary<string, string> files = default(System.Collections.Generic.IDictionary<string, string>), string testData = default(string), string invokeUrlTemplate = default(string), string language = default(string), bool? isDisabled = default(bool?))
 
-        : base(id, name, kind, type)
+        : base(id, name, type, systemData)
         {
+            this.Kind = kind;
             this.FunctionAppId = functionAppId;
             this.ScriptRootPathHref = scriptRootPathHref;
             this.ScriptHref = scriptHref;
@@ -100,6 +107,12 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
+        public string Kind {get; set; }
 
         /// <summary>
         /// Gets or sets function App ID.

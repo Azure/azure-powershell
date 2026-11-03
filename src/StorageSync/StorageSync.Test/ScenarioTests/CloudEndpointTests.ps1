@@ -562,6 +562,93 @@ function Test-GetCloudEndpointParentResourceId
 
 <#
 .SYNOPSIS
+Test SetCloudEndpoint
+.DESCRIPTION
+SmokeTest
+#>
+function Test-SetCloudEndpoint
+{
+    # Setup
+    $resourceGroupName = Get-ResourceGroupName
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $syncGroupName = Get-ResourceName("sg")
+        $cloudEndpointName = Get-ResourceName("cep")
+        $resourceGroupLocation = Get-ResourceGroupLocation
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
+        $AzureFileShareName = "testfs"
+        $StorageAccountName = Get-ResourceName("sa")
+        $StorageAccountTenantId = Get-TenantId
+        $initialChangeEnumerationIntervalDays = 5
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
+        New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
+
+        Write-Verbose "Resource: $syncGroupName | Loc: $resourceLocation | Type : SyncGroup"
+        New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
+        New-AzStorageAccount -StorageAccountName $StorageAccountName -Location $resourceLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
+        $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+        $context = Create-StorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $key[0].Value
+        $azureFileShareName = Create-StorageShare -Name $AzureFileShareName -Context $context
+
+        Write-Verbose "Create CloudEndpoint with ChangeEnumerationIntervalDay"
+        $cloudEndpoint = New-AzStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -StorageAccountResourceId $storageAccount.Id -AzureFileShareName $azureFileShareName -StorageAccountTenantId $StorageAccountTenantId -ChangeEnumerationIntervalDay $initialChangeEnumerationIntervalDays
+        Assert-AreEqual $initialChangeEnumerationIntervalDays $cloudEndpoint.ChangeEnumerationIntervalDays
+
+        Write-Verbose "Set CloudEndpoint by name using the minimum ChangeEnumerationIntervalDay"
+        $cloudEndpoint = Set-AzStorageSyncCloudEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $cloudEndpointName -ChangeEnumerationIntervalDay 1
+        Assert-AreEqual 1 $cloudEndpoint.ChangeEnumerationIntervalDays
+
+        Write-Verbose "Set CloudEndpoint by ResourceId using the maximum ChangeEnumerationIntervalDay"
+        $cloudEndpoint = Set-AzStorageSyncCloudEndpoint -ResourceId $cloudEndpoint.ResourceId -ChangeEnumerationIntervalDay 20
+        Assert-AreEqual 20 $cloudEndpoint.ChangeEnumerationIntervalDays
+
+        Write-Verbose "Set CloudEndpoint by InputObject"
+        $cloudEndpoint = Set-AzStorageSyncCloudEndpoint -InputObject $cloudEndpoint -ChangeEnumerationIntervalDay 10
+        Assert-AreEqual 10 $cloudEndpoint.ChangeEnumerationIntervalDays
+
+        Write-Verbose "Validate ChangeEnumerationIntervalDay range"
+        Assert-Throws { Set-AzStorageSyncCloudEndpoint -InputObject $cloudEndpoint -ChangeEnumerationIntervalDay 0 }
+        Assert-Throws { Set-AzStorageSyncCloudEndpoint -InputObject $cloudEndpoint -ChangeEnumerationIntervalDay 21 }
+
+        Write-Verbose "Removing CloudEndpoint: $cloudEndpointName"
+        Remove-AzStorageSyncCloudEndpoint -Force -InputObject $cloudEndpoint
+
+        Write-Verbose "Removing SyncGroup: $syncGroupName"
+        Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
+
+        Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
+        Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName
+
+        if(IsLive)
+        {
+            Write-Verbose "Removing: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
+            Remove-StorageShare -Name $AzureFileShareName -Context $context | Out-Null
+        }
+
+        Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
+        Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Test RemoveCloudEndpoint
 .DESCRIPTION
 SmokeTest

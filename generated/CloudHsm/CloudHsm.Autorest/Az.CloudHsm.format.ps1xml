@@ -11,18 +11,12 @@
           <TableColumnHeader>
             <Label>AzureStorageBlobContainerUri</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Token</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AzureStorageBlobContainerUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Token</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -85,18 +79,12 @@
           <TableColumnHeader>
             <Label>AzureStorageBlobContainerUri</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Token</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AzureStorageBlobContainerUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Token</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -209,28 +197,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>IdentityPrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityTenantId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IdentityType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuCapacity</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuFamily</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SkuName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SystemDataCreatedAt</Label>
@@ -258,28 +228,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>IdentityPrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityTenantId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IdentityType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuCapacity</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuFamily</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SkuName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SystemDataCreatedAt</PropertyName>
@@ -413,70 +365,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StatusMessage</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.CloudHsm.Models.CloudHsmClusterResource#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1110,9 +998,6 @@
             <Label>AzureStorageBlobContainerUri</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Token</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>BackupId</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1121,9 +1006,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AzureStorageBlobContainerUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Token</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>BackupId</PropertyName>

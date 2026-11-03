@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.ArtifactSigning.Models
 {
     internal class ArtifactSigningServiceClient : IArtifactSigningServiceClient
     {
+        internal const string ArtifactSigningResource = "https://codesigning.azure.net";
+
         /// <summary>
         /// Parameterless constructor for Mocking.
         /// </summary>
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.ArtifactSigning.Models
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {
-            user_creds = new UserSuppliedCredential(new ArtifactSigningServiceCredential(authFactory, context, "https://codesigning.azure.net/"));
+            user_creds = new UserSuppliedCredential(new ArtifactSigningServiceCredential(authFactory, context, ArtifactSigningResource));
         }
 
         private void GetCertificateProfileClient(string endpoint)

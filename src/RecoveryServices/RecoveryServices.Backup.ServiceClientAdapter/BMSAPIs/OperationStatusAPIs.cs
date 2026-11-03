@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,6 +41,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 operationId).Result;
         }
 
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetScopedProtectedItemOperationStatus(
+                string containerName,
+                string protectedItemName,
+                string operationId,
+                string vaultName = null,
+                string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.ProtectedItemOperationStatuses.GetWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                operationId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
         /// <summary>
         /// Gets status of a generic operation on the protected item using the operation ID
         /// </summary>
@@ -73,8 +91,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 string resourceGroupName = null)
         {
             return BmsAdapter.Client.ProtectionPolicyOperationStatuses.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 policyName,
                 operationId).Result;
         }
@@ -120,8 +138,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 .Client
                 .ProtectionContainerOperationResults
                 .GetWithHttpMessagesAsync(
-                    vaultName ?? BmsAdapter.GetResourceName(),
                     resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
                     AzureFabricName,
                     containerName,
                     operationId).Result;
@@ -141,8 +159,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.GetOperationStatusWithHttpMessagesAsync(
-                                vaultName,
-                                resourceGroupName,
+                                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                                vaultName ?? BmsAdapter.GetResourceName(),
                                 operationId).Result;
         }
 
@@ -160,8 +178,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             var prepareResponseBase = BmsAdapter.Client.BmsPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
-                                vaultName,
-                                resourceGroupName,
+                                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                                vaultName ?? BmsAdapter.GetResourceName(),
                                 operationId).Result.Body;
 
             var prepareResponseSerialized = JsonConvert.SerializeObject(prepareResponseBase);
@@ -183,8 +201,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string resourceGroupName = null)
         {
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
                 AzureFabricName,
                 operationId).Result;
         }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return SetAuditingPolicyInternal(() =>
             {
                 SqlManagementClient client = GetCurrentSqlClient();
-                AzureOperationResponse<ServerBlobAuditingPolicy> response =
+                var response =
                     client.ServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
                         resourceGroupName, serverName, policy).Result;
                 return client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result.Response.IsSuccessStatusCode;
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return SetAuditingPolicyInternal(() =>
             {
                 SqlManagementClient client = GetCurrentSqlClient();
-                AzureOperationResponse<ExtendedServerBlobAuditingPolicy> response =
+                var response =
                     client.ExtendedServerBlobAuditingPolicies.BeginCreateOrUpdateWithHttpMessagesAsync(
                     resourceGroupName, serverName, policy).Result;
                 return client.GetLongRunningOperationResultAsync(response, null,

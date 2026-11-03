@@ -418,7 +418,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
-                HighAvailabilityReplicaCount = HAReplicaCount,
+                HighAvailabilityReplicaCount = ResolveHighAvailabilityReplicaCount(
+                    this.IsParameterBound(p => p.HAReplicaCount),
+                    HAReplicaCount),
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
@@ -460,6 +462,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             }
 
             return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model, isCrossSubscriptionRestore, auxAuthHeader);
+        }
+
+        internal static int? ResolveHighAvailabilityReplicaCount(bool isParameterBound, int highAvailabilityReplicaCount)
+        {
+            return isParameterBound ? highAvailabilityReplicaCount : (int?)null;
         }
 
         /// <summary>

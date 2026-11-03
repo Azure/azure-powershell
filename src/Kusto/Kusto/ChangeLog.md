@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.0
+* Added Change Safety support.
+
 ## Version 3.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 

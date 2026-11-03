@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("TrustedServiceAccessEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).TrustedServiceAccessEnabled = (bool?) content.GetValueForProperty("TrustedServiceAccessEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).TrustedServiceAccessEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("DefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).DefaultAction, global::System.Convert.ToString);
@@ -138,6 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("TrustedServiceAccessEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).TrustedServiceAccessEnabled = (bool?) content.GetValueForProperty("TrustedServiceAccessEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).TrustedServiceAccessEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("DefaultAction"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetPropertiesInternal)this).DefaultAction, global::System.Convert.ToString);

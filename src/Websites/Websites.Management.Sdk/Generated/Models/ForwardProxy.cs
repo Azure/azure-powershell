@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.WebSites.Models
     /// <summary>
     /// The configuration settings of a forward proxy used to make the requests.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ForwardProxy : ProxyOnlyResource
+    public partial class ForwardProxy
     {
         /// <summary>
         /// Initializes a new instance of the ForwardProxy class.
@@ -25,18 +24,6 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// Initializes a new instance of the ForwardProxy class.
         /// </summary>
 
-        /// <param name="id">Resource Id.
-        /// </param>
-
-        /// <param name="name">Resource Name.
-        /// </param>
-
-        /// <param name="kind">Kind of resource.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
         /// <param name="convention">The convention used to determine the url of the request made.
         /// Possible values include: &#39;NoProxy&#39;, &#39;Standard&#39;, &#39;Custom&#39;</param>
 
@@ -45,9 +32,8 @@ namespace Microsoft.Azure.Management.WebSites.Models
 
         /// <param name="customProtoHeaderName">The name of the header containing the scheme of the request.
         /// </param>
-        public ForwardProxy(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ForwardProxyConvention? convention = default(ForwardProxyConvention?), string customHostHeaderName = default(string), string customProtoHeaderName = default(string))
+        public ForwardProxy(ForwardProxyConvention? convention = default(ForwardProxyConvention?), string customHostHeaderName = default(string), string customProtoHeaderName = default(string))
 
-        : base(id, name, kind, type)
         {
             this.Convention = convention;
             this.CustomHostHeaderName = customHostHeaderName;
@@ -64,19 +50,19 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <summary>
         /// Gets or sets the convention used to determine the url of the request made. Possible values include: &#39;NoProxy&#39;, &#39;Standard&#39;, &#39;Custom&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.convention")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "convention")]
         public ForwardProxyConvention? Convention {get; set; }
 
         /// <summary>
         /// Gets or sets the name of the header containing the host of the request.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customHostHeaderName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customHostHeaderName")]
         public string CustomHostHeaderName {get; set; }
 
         /// <summary>
         /// Gets or sets the name of the header containing the scheme of the request.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customProtoHeaderName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customProtoHeaderName")]
         public string CustomProtoHeaderName {get; set; }
     }
 }

@@ -14,7 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
 {
+    using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.DeploymentStacks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -44,6 +47,45 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             Assert.Contains("DenySettingsApplyToChildScope", aliasAttribute.AliasNames);
             Assert.NotNull(cmdletType.GetProperty("ResourcesWithoutDeleteSupport"));
             Assert.NotNull(cmdletType.GetProperty("Tag"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PreserveExistingTags_CopiesTagsWhenTagValueIsNull()
+        {
+            var parameters = new PSDeploymentStackWhatIfParameters { Tags = null };
+            var existing = new PSDeploymentStackWhatIfResult
+            {
+                Tags = new Dictionary<string, string>
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" }
+                }
+            };
+
+            DeploymentStackWhatIfCmdlet.PreserveExistingTags(parameters, existing);
+
+            Assert.Equal(2, parameters.Tags.Count);
+            Assert.Equal("value1", parameters.Tags["key1"]);
+            Assert.Equal("value2", parameters.Tags["key2"]);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void PreserveExistingTags_DoesNotMergeNonNullTags()
+        {
+            var replacementTags = new Hashtable { { "replacement", "value" } };
+            var parameters = new PSDeploymentStackWhatIfParameters { Tags = replacementTags };
+            var existing = new PSDeploymentStackWhatIfResult
+            {
+                Tags = new Dictionary<string, string> { { "existing", "value" } }
+            };
+
+            DeploymentStackWhatIfCmdlet.PreserveExistingTags(parameters, existing);
+
+            Assert.Same(replacementTags, parameters.Tags);
+            Assert.Single(parameters.Tags);
+            Assert.Equal("value", parameters.Tags["replacement"]);
         }
 
         [Fact]

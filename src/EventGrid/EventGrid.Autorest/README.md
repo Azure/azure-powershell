@@ -36,6 +36,7 @@ input-file:
 title: EventGrid
 module-version: 0.1.0
 subject-prefix: $(service-name)
+enable-change-safety: true
 
 identity-correction-for-post: true
 resourcegroup-append: true

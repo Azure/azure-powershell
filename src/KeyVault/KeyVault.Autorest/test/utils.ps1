@@ -46,8 +46,8 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     ### 1. Create a managed hsm on local first ###
     ### These tests require an activated HSM ###
-    $env.hsmName = "daniel-hsm"
-    $env.rgName = "daniel-rg"
+    $env.hsmName = "ps-kvrec-b1-64685"
+    $env.rgName = "mhsm-test"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

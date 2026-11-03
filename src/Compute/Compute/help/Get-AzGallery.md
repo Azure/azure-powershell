@@ -37,7 +37,7 @@ Get-AzGallery [-GalleryPublicName <String>] [-Location <String>] [-Community]
 ```
 
 ## DESCRIPTION
-Get or list galleries.
+Get or list galleries. Gallery output includes its soft-delete policy when configured.
 
 ## EXAMPLES
 

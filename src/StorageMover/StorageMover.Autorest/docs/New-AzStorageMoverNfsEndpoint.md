@@ -14,8 +14,9 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ```
 New-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-EndpointKind <String>]
+ [-NfsVersion <String>] [-SourceType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +49,39 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 
 This command creates a NFS endpoint for a Storage mover.
 
+### Example 2: Create an NFS source endpoint for an FSX-EFS source
+```powershell
+New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.5" -Export "/export" -SourceType FSX-EFS -EndpointKind Source
+```
+
+```output
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+IdentityUserAssignedIdentity : {
+                               }
+Name                         : myEndpoint
+Property                     : {
+                                 "endpointType": "NfsMount",
+                                 "endpointKind": "Source",
+                                 "provisioningState": "Succeeded",
+                                 "host": "10.0.0.5",
+                                 "nfsVersion": "NFSauto",
+                                 "export": "/export"
+                               }
+ResourceGroupName            : myResourceGroup
+SystemDataCreatedAt          : 10/19/2026 10:43:58 AM
+SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/19/2026 10:43:58 AM
+SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedByType : User
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command creates an NFS source endpoint for an FSX-EFS source.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -67,6 +101,22 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndpointKind
+The kind of the endpoint, either Source or Target.
+Cannot be changed after the endpoint is created.
 
 ```yaml
 Type: System.String
@@ -150,6 +200,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceType
+The source type of the NFS mount endpoint, either NfsMount or FSX-EFS.
+Defaults to NfsMount.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

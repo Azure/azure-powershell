@@ -30,28 +30,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Message = value ?? null; }
 
         /// <summary>Internal Acessors for PatchSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.PatchSetting { get => (this._patchSetting = this._patchSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettings()); set { {_patchSetting = value;} } }
 
         /// <summary>Internal Acessors for PatchSettingStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.PatchSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.PatchSettingStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StatusError</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.StatusError { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusError = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StatusHotpatchEnablementStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfigurationInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).Target = value ?? null; }
 
         /// <summary>Backing field for <see cref="PatchSetting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings _patchSetting;
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Indicates the current status of the hotpatch being enabled or disabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus = value ?? null; }
+        public string StatusHotpatchEnablementStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)PatchSetting).StatusHotpatchEnablementStatus; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]

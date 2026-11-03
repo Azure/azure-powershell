@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.Compute
         [SupportsWildcards]
         public string Version { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [ValidateSet("Properties")]
+        public string Expand { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -56,7 +60,8 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Type,
-                        filter: this.FilterExpression).GetAwaiter().GetResult();
+                        filter: this.FilterExpression,
+                        expand: this.Expand?.ToLowerInvariant()).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineExtensionImage
@@ -68,7 +73,10 @@ namespace Microsoft.Azure.Commands.Compute
                                      Version = r.Name,
                                      PublisherName = this.PublisherName,
                                      Type = this.Type,
-                                     FilterExpression = this.FilterExpression
+                                     FilterExpression = this.FilterExpression,
+                                     ReleaseCategory = r.ReleaseCategory,
+                                     UrgencyLevel = r.UrgencyLevel,
+                                     RunProfile = r.RunProfile
                                  };
 
                     WriteObject(SubResourceWildcardFilter(Version, images), true);
@@ -93,6 +101,11 @@ namespace Microsoft.Azure.Commands.Compute
                         ComputeRole = result.Body.ComputeRole,
                         SupportsMultipleExtensions = result.Body.SupportsMultipleExtensions,
                         VMScaleSetEnabled = result.Body.VmScaleSetEnabled,
+                        ReleaseNotes = result.Body.ReleaseNotes,
+                        ReleaseCategory = result.Body.ReleaseCategory,
+                        UrgencyLevel = result.Body.UrgencyLevel,
+                        RunProfile = result.Body.RunProfile,
+                        ExtensionFeatureMetadata = result.Body.ExtensionFeatureMetadata,
                         Version = result.Body.Name,
                         PublisherName = this.PublisherName,
                         Type = this.Type,

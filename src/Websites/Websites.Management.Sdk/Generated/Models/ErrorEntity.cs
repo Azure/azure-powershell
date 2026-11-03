@@ -36,18 +36,26 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// <param name="innerErrors">Inner errors.
         /// </param>
 
+        /// <param name="details">Error Details.
+        /// </param>
+
+        /// <param name="target">The error target.
+        /// </param>
+
         /// <param name="code">Basic error code.
         /// </param>
 
         /// <param name="message">Any details of the error.
         /// </param>
-        public ErrorEntity(string extendedCode = default(string), string messageTemplate = default(string), System.Collections.Generic.IList<string> parameters = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ErrorEntity> innerErrors = default(System.Collections.Generic.IList<ErrorEntity>), string code = default(string), string message = default(string))
+        public ErrorEntity(string extendedCode = default(string), string messageTemplate = default(string), System.Collections.Generic.IList<string> parameters = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ErrorEntity> innerErrors = default(System.Collections.Generic.IList<ErrorEntity>), System.Collections.Generic.IList<ErrorEntity> details = default(System.Collections.Generic.IList<ErrorEntity>), string target = default(string), string code = default(string), string message = default(string))
 
         {
             this.ExtendedCode = extendedCode;
             this.MessageTemplate = messageTemplate;
             this.Parameters = parameters;
             this.InnerErrors = innerErrors;
+            this.Details = details;
+            this.Target = target;
             this.Code = code;
             this.Message = message;
             CustomInit();
@@ -82,6 +90,18 @@ namespace Microsoft.Azure.Management.WebSites.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "innerErrors")]
         public System.Collections.Generic.IList<ErrorEntity> InnerErrors {get; set; }
+
+        /// <summary>
+        /// Gets or sets error Details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
+        public System.Collections.Generic.IList<ErrorEntity> Details {get; set; }
+
+        /// <summary>
+        /// Gets or sets the error target.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "target")]
+        public string Target {get; set; }
 
         /// <summary>
         /// Gets or sets basic error code.
