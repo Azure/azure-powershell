@@ -42,12 +42,18 @@ namespace Microsoft.Azure.Commands.Compute
         public string VMName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMSize)]
         [ValidateNotNullOrEmpty]
         public string VMSize { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The preferred VM size. Azure may deploy a compatible alternative. Cannot be used with VMSize.")]
+        [AllowEmptyString]
+        public string PreferredVMSize { get; set; }
 
         [Parameter(
             Position = 2,
@@ -259,6 +265,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.VMSize) && this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("-VMSize and -PreferredVMSize cannot be used together.");
+            }
+            if (!this.IsParameterBound(c => c.VMSize) && !this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                throw new ArgumentException("Specify either -VMSize or -PreferredVMSize.");
+            }
+
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
@@ -318,6 +333,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 vm.HardwareProfile = new HardwareProfile();
                 vm.HardwareProfile.VmSize = this.VMSize;
+            }
+
+            if (this.IsParameterBound(c => c.PreferredVMSize))
+            {
+                vm.FlexProfile = new FlexProfile(this.PreferredVMSize);
             }
 
             if (this.IsParameterBound(c => c.vCPUCountAvailable))

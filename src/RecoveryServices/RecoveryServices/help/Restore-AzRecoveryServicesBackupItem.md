@@ -412,6 +412,14 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $recoveryPoint -ResolveConfl
 
 This example restores an Azure file share using the Recovery Services vault's system-assigned managed identity. Use **-UserAssignedIdentityArmUrl** instead to select a user-assigned managed identity associated with the vault.
 
+SQL Server instance snapshot restores also support `-RestoreToSecondaryRegion`.
+Build the workload recovery configuration with `Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -UseSecondaryRegion`,
+using a secondary-region recovery point, a target instance and container in the paired region,
+and the snapshot target resource group and user-assigned managed identity. Apply any source-to-target
+volume mappings to the configuration before submitting it with `-WLRecoveryConfig`.
+See the SQL instance snapshot Cross Region Restore example in
+[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](Get-AzRecoveryServicesBackupWorkloadRecoveryConfig.md).
+
 ## PARAMETERS
 
 ### -CVMOsDiskEncryptionSetId

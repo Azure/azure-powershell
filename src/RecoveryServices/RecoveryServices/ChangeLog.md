@@ -28,7 +28,10 @@
     - `Update-AzRecoveryServicesAsrClusterProtectionDirection` rejects per-disk confidential disk encryption sets, because cluster reprotect does not support them.
     - Protected item output exposes `RecoveryConfidentialDataDiskEncryptionIdentity` and per-disk `ReplicaConfidentialDiskEncryptionSetId` and `TargetConfidentialDiskEncryptionSetId`.
     - Added PowerShell help examples for CVM enable replication, add disk, target confidential DES and identity updates, individual reprotect, and settings readback.
-* Stopped Recovery Services Backup cmdlets from overriding session-wide HTTPS certificate validation.
+
+## Version 7.16.0
+* Supported SQL instance snapshot backup features.
+* Stopped Backup cmdlets overriding session-wide HTTPS certificate validation.
 
 ## Version 7.15.0
 * Moved Instant Item Recovery (ILR) mount script retrieval to the dedicated `listInstantItemRecoveryOperationResult` action (api-version `2026-08-01`); `Get-AzRecoveryServicesBackupRPMountScript` no longer reads iSCSI CHAP connection details from the broad ILR operation-status response (MSRC-114273).

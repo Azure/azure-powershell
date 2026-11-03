@@ -574,6 +574,9 @@ Please contact Microsoft for further assistance.</value>
   <data name="AzureWorkloadAlreadyRegisteredException" xml:space="preserve">
     <value>The specified workload is already registered in the given resource ID</value>
   </data>
+  <data name="AzureWorkloadContainerNotDiscovered" xml:space="preserve">
+    <value>No unregistered workload container was discovered for resource ID {0}. Verify the resource ID, discovery subscription, and whether the workload is already registered.</value>
+  </data>
   <data name="AzureWorkloadRestoreProtectableItemException" xml:space="preserve">
     <value>Provide SQLInstance protectable item in TargetItem</value>
   </data>
@@ -606,6 +609,15 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="TargetContainerRequiredException" xml:space="preserve">
     <value>Target Container parameter is required for this operation.</value>
+  </data>
+  <data name="AzureWorkloadSQLInstanceSnapshotTargetResourceGroupRequired" xml:space="preserve">
+    <value>TargetResourceGroupName is required for SQL Instance snapshot restore.</value>
+  </data>
+  <data name="AzureWorkloadSQLInstanceSnapshotUserAssignedIdentityRequired" xml:space="preserve">
+    <value>UserAssignedIdentityId is required for SQL Instance snapshot restore.</value>
+  </data>
+  <data name="AzureWorkloadSQLInstanceSnapshotIdentityResolutionFailed" xml:space="preserve">
+    <value>Unable to resolve the clientId and principalId for the user-assigned managed identity '{0}'. Ensure the identity exists and you have access to it.</value>
   </data>
   <data name="AFSWeeklyScheduleNotAllowed" xml:space="preserve">
     <value>Weekly Backup Schedule for Azure File Share policy is not allowed. Please give Daily Schedule input instead.</value>

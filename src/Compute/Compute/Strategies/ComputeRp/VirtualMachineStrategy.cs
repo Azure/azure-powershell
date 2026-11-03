@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? addProxyAgentExtension = null,
             string scheduledEventsApiVersion = null,
             bool? enableAllInstancesDown = null,
-            bool? disableCapacityReservationAssignment = null
+            bool? disableCapacityReservationAssignment = null,
+            FlexProfile flexProfile = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -117,9 +118,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             engine.GetReference(networkInterface, networkInterfaceDeleteOption)
                             }
                         },
+                        FlexProfile = flexProfile,
                         HardwareProfile = new HardwareProfile
                         {
-                            VmSize = size,
+                            VmSize = flexProfile == null ? size : null,
                             ProcessorMode = processorMode,
                             VmSizeProperties = (vCPUsPerCore == null && vCPUsAvailable == null) ? null : new VMSizeProperties
                             {

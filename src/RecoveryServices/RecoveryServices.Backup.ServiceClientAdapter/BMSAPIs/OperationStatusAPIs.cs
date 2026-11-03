@@ -41,6 +41,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 operationId).Result;
         }
 
+        public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
+            GetScopedProtectedItemOperationStatus(
+                string containerName,
+                string protectedItemName,
+                string operationId,
+                string vaultName = null,
+                string resourceGroupName = null)
+        {
+            return BmsAdapter.Client.ProtectedItemOperationStatuses.GetWithHttpMessagesAsync(
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                vaultName ?? BmsAdapter.GetResourceName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                operationId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
+        }
+
         /// <summary>
         /// Gets status of a generic operation on the protected item using the operation ID
         /// </summary>

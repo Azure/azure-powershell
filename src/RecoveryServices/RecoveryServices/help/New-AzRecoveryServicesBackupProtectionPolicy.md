@@ -19,6 +19,7 @@ New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <W
  [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
  [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
  [-BackupSnapshotResourceGroupSuffix <String>] [-SnapshotConsistencyType <SnapshotConsistencyType>]
+ [-InstantRPRetentionRangeInDays <Int32>] [-UserAssignedIdentityId <String>]
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -199,6 +200,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstantRPRetentionRangeInDays
+Instant recovery point retention range in days for SQL (MSSQL) Instance snapshot policies.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveToArchiveTier
 Specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false
 
@@ -324,6 +340,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentityId
+ARM ID of the user-assigned managed identity used for SQL (MSSQL) Instance snapshot backup.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 ARM ID of the Recovery Services Vault.
 
@@ -349,7 +380,7 @@ Workload type of the resource. The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL
+Accepted values: AzureVM, AzureFiles, MSSQL, MSSQLInstance
 
 Required: True
 Position: 2
