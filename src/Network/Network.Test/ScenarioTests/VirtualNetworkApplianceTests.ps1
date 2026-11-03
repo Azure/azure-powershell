@@ -151,3 +151,95 @@ function Test-VirtualNetworkApplianceDualStack
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests VirtualNetworkAppliance CapacityProvider create/update scenarios
+#>
+function Test-VirtualNetworkApplianceCapacityProvider
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $providerName = Get-ResourceName
+    $consumerName = Get-ResourceName
+    $location = "eastus2euap"
+    $vnetName = Get-ResourceName
+    $provider2Name = Get-ResourceName
+    $subnetName = "VirtualNetworkApplianceSubnet"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create a virtual network with defaultOutboundAccess set to false (required by Azure Policy)
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+        # Create the "provider" VirtualNetworkAppliance which will supply capacity
+        $providerVna = New-AzVirtualNetworkAppliance -Name $providerName -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -Bandwidth 50
+        Assert-NotNull $providerVna
+        Assert-NotNull $providerVna.Id
+
+        # Create the "consumer" VirtualNetworkAppliance that references the provider as its CapacityProvider
+        $consumerVna = New-AzVirtualNetworkAppliance -Name $consumerName -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -Bandwidth 0 -CapacityProviderId $providerVna.Id
+
+        # Verify creation with CapacityProvider set
+        Assert-NotNull $consumerVna
+        Assert-AreEqual $consumerName $consumerVna.Name
+        Assert-AreEqual "Succeeded" $consumerVna.ProvisioningState
+        Assert-NotNull $consumerVna.CapacityProvider
+        Assert-AreEqual $providerVna.Id $consumerVna.CapacityProvider.Id
+
+        # Get and verify CapacityProvider is correctly persisted
+        $consumerVnaGet = Get-AzVirtualNetworkAppliance -Name $consumerName -ResourceGroupName $rgname
+        Assert-NotNull $consumerVnaGet.CapacityProvider
+        Assert-AreEqual $providerVna.Id $consumerVnaGet.CapacityProvider.Id
+        Assert-AreEqual $subnet.Id $consumerVnaGet.Subnet.Id
+
+        # Create a second, independent "provider" VirtualNetworkAppliance to re-point the consumer to,
+        # so the update below actually exercises re-pointing rather than a no-op update to the same ID
+        $provider2Vna = New-AzVirtualNetworkAppliance -Name $provider2Name -ResourceGroupName $rgname -Location $location -SubnetId $subnet.Id -Bandwidth 75
+        Assert-NotNull $provider2Vna
+        Assert-NotNull $provider2Vna.Id
+        Assert-AreNotEqual $providerVna.Id $provider2Vna.Id
+
+        # Update the consumer VNA's CapacityProvider to point to the second provider (re-pointing),
+        # while verifying other properties (Subnet, Bandwidth) remain unchanged
+        $consumerVnaUpdated = Update-AzVirtualNetworkAppliance -Name $consumerName -ResourceGroupName $rgname -CapacityProviderId $provider2Vna.Id
+        Assert-NotNull $consumerVnaUpdated
+        Assert-NotNull $consumerVnaUpdated.CapacityProvider
+        Assert-AreEqual $provider2Vna.Id $consumerVnaUpdated.CapacityProvider.Id
+        Assert-AreNotEqual $providerVna.Id $consumerVnaUpdated.CapacityProvider.Id
+        Assert-AreEqual $subnet.Id $consumerVnaUpdated.Subnet.Id
+        Assert-AreEqual $consumerVnaGet.BandwidthInGbps $consumerVnaUpdated.BandwidthInGbps
+
+        # Update only tags on the consumer VNA (no CapacityProvider specified) - verify CapacityProvider and other
+        # properties are preserved (backward-compatible UpdateTags path)
+        $consumerVnaTagUpdate = Update-AzVirtualNetworkAppliance -Name $consumerName -ResourceGroupName $rgname -Tag @{"updatedKey" = "updatedValue"}
+        Assert-NotNull $consumerVnaTagUpdate
+        Assert-AreEqual "updatedValue" $consumerVnaTagUpdate.Tag["updatedKey"]
+        Assert-NotNull $consumerVnaTagUpdate.CapacityProvider
+        Assert-AreEqual $provider2Vna.Id $consumerVnaTagUpdate.CapacityProvider.Id
+
+        # Verify the provider VNAs themselves have no CapacityProvider set (default/backward-compatible scenario)
+        $providerVnaGet = Get-AzVirtualNetworkAppliance -Name $providerName -ResourceGroupName $rgname
+        Assert-Null $providerVnaGet.CapacityProvider
+
+        # Cleanup consumer then both providers
+        $removeConsumer = Remove-AzVirtualNetworkAppliance -Name $consumerName -ResourceGroupName $rgname -Force -PassThru
+        Assert-AreEqual $true $removeConsumer
+
+        $removeProvider = Remove-AzVirtualNetworkAppliance -Name $providerName -ResourceGroupName $rgname -Force -PassThru
+        Assert-AreEqual $true $removeProvider
+
+        $removeProvider2 = Remove-AzVirtualNetworkAppliance -Name $provider2Name -ResourceGroupName $rgname -Force -PassThru
+        Assert-AreEqual $true $removeProvider2
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

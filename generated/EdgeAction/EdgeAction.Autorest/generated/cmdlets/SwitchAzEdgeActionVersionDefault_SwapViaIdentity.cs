@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.Cmdlets;
     using System;
 
-    /// <summary>A long-running resource action.</summary>
+    /// <summary>Swap the default version for the edge action.</summary>
     /// <remarks>
     /// [OpenAPI] SwapDefault=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/swapDefault"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Switch, @"AzEdgeActionVersionDefault_SwapViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"A long-running resource action.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Description(@"Swap the default version for the edge action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/swapDefault", ApiVersion = "2025-12-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/versions/{version}/swapDefault", ApiVersion = "2026-10-01")]
     public partial class SwitchAzEdgeActionVersionDefault_SwapViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.IContext

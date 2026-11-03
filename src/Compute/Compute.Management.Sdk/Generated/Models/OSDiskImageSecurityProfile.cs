@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="confidentialVMEncryptionType">confidential VM encryption types
         /// Possible values include: &#39;EncryptedVMGuestStateOnlyWithPmk&#39;,
-        /// &#39;EncryptedWithPmk&#39;, &#39;EncryptedWithCmk&#39;, &#39;NonPersistedTPM&#39;</param>
+        /// &#39;EncryptedWithPmk&#39;, &#39;EncryptedWithCmk&#39;, &#39;NonPersistedTPM&#39;,
+        /// &#39;DataDiskEncryptedWithCmk&#39;</param>
 
         /// <param name="secureVMDiskEncryptionSetId">secure VM disk encryption set id
         /// </param>
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
         /// <summary>
-        /// Gets or sets confidential VM encryption types Possible values include: &#39;EncryptedVMGuestStateOnlyWithPmk&#39;, &#39;EncryptedWithPmk&#39;, &#39;EncryptedWithCmk&#39;, &#39;NonPersistedTPM&#39;
+        /// Gets or sets confidential VM encryption types Possible values include: &#39;EncryptedVMGuestStateOnlyWithPmk&#39;, &#39;EncryptedWithPmk&#39;, &#39;EncryptedWithCmk&#39;, &#39;NonPersistedTPM&#39;, &#39;DataDiskEncryptedWithCmk&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "confidentialVMEncryptionType")]
         public string ConfidentialVMEncryptionType {get; set; }

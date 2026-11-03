@@ -183,7 +183,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             }
 
             if (!string.IsNullOrEmpty(TimeBasedImmutabilityMode) &&
-                (string.IsNullOrEmpty(TimeBasedImmutability) || TimeBasedImmutability == DatabaseBackupConstants.TimeBasedImmutabilityValues.Disabled))
+                (string.IsNullOrEmpty(TimeBasedImmutability) ||
+                string.Equals(TimeBasedImmutability, DatabaseBackupConstants.TimeBasedImmutabilityValues.Disabled, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new ArgumentException("TimeBasedImmutabilityMode can only be specified if TimeBasedImmutability is set to Enabled");
             }

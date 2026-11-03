@@ -113,9 +113,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NetworkRuleSetPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -133,13 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).DefaultAction, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("TrustedServiceAccessEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).TrustedServiceAccessEnabled = (bool?) content.GetValueForProperty("TrustedServiceAccessEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).TrustedServiceAccessEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PublicNetworkAccess"))
             {
@@ -148,22 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("IPRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules>(__y, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRulesTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializeDictionary(content);
         }
@@ -186,9 +190,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NetworkRuleSetPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("SystemData"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -206,13 +234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).DefaultAction = (string) content.GetValueForProperty("DefaultAction",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).DefaultAction, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
+            if (content.Contains("TrustedServiceAccessEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).TrustedServiceAccessEnabled = (bool?) content.GetValueForProperty("TrustedServiceAccessEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).TrustedServiceAccessEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PublicNetworkAccess"))
             {
@@ -221,22 +245,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
             if (content.Contains("IPRule"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).IPRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules>) content.GetValueForProperty("IPRule",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).IPRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INwRuleSetIPRules>(__y, Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.NwRuleSetIPRulesTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.INetworkRuleSetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializePSObject(content);
         }

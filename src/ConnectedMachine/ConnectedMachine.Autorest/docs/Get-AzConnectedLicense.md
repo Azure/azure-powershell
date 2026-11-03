@@ -12,7 +12,7 @@ Retrieves information about the view of a license.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzConnectedLicense [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Get-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-Subscription
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzConnectedLicense -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
@@ -127,7 +127,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -139,6 +139,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

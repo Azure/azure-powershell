@@ -146,6 +146,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).MaxPatchPublishDate = (global::System.DateTime?) content.GetValueForProperty("MaxPatchPublishDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).MaxPatchPublishDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("PatchNameMasksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToInclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatchNameMasksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToInclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PatchNameMasksToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToExclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatchNameMasksToExclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToExclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -182,6 +190,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("MaxPatchPublishDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).MaxPatchPublishDate = (global::System.DateTime?) content.GetValueForProperty("MaxPatchPublishDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).MaxPatchPublishDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("PatchNameMasksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToInclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatchNameMasksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToInclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PatchNameMasksToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToExclude = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatchNameMasksToExclude",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IWindowsParametersInternal)this).PatchNameMasksToExclude, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

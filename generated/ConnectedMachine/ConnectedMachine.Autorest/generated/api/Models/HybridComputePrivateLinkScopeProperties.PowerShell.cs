@@ -130,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PrivateEndpointConnectionDataModelTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ServiceExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).ServiceExtension = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>) content.GetValueForProperty("ServiceExtension",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).ServiceExtension, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceExtensionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -162,6 +166,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPrivateEndpointConnectionDataModel>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PrivateEndpointConnectionDataModelTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ServiceExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).ServiceExtension = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>) content.GetValueForProperty("ServiceExtension",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScopePropertiesInternal)this).ServiceExtension, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceExtensionTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

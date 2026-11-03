@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
-    /// <summary>The response from the list namespace operation.</summary>
+    /// <summary>The response of a RelayNamespace list operation.</summary>
     public partial class RelayNamespaceListResult
     {
 

@@ -18,7 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>The disks on the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Disk { get => this._disk; set => this._disk = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Disk { get => this._disk; }
+
+        /// <summary>Internal Acessors for Disk</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfileInternal.Disk { get => this._disk; set { {_disk = value;} } }
 
         /// <summary>Creates an new <see cref="StorageProfile" /> instance.</summary>
         public StorageProfile()
@@ -33,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The disks on the machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The disks on the machine.",
         SerializedName = @"disks",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Disk { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk> Disk { get;  }
 
     }
     /// Describes the storage configuration of the machine

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description(@"Checks that the managed hsm name is valid and is not already in use.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/checkMhsmNameAvailability", ApiVersion = "2024-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.KeyVault/checkMhsmNameAvailability", ApiVersion = "2026-02-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.NotSuggestDefaultParameterSet]
     public partial class TestAzKeyVaultManagedHsmNameAvailability_CheckViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener,
@@ -134,15 +134,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(

@@ -13,12 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal
     {
 
+        /// <summary>Internal Acessors for NetworkInterface</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkProfileInternal.NetworkInterface { get => this._networkInterface; set { {_networkInterface = value;} } }
+
         /// <summary>Backing field for <see cref="NetworkInterface" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> _networkInterface;
 
         /// <summary>The list of network interfaces.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkInterface { get => this._networkInterface; set => this._networkInterface = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkInterface { get => this._networkInterface; }
 
         /// <summary>Creates an new <see cref="NetworkProfile" /> instance.</summary>
         public NetworkProfile()
@@ -33,14 +36,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The list of network interfaces.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The list of network interfaces.",
         SerializedName = @"networkInterfaces",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkInterface { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkInterface> NetworkInterface { get;  }
 
     }
     /// Describes the network information on this machine.

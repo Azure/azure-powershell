@@ -94,9 +94,9 @@ Describe 'New-AzMonitorHealthModel' {
         $capturedRequests.Count | Should -Be 3
         (@($capturedRequests | ForEach-Object { $_.Method }) -join ',') | Should -Be 'PUT,GET,GET'
 
-        $resourceUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.CloudHealth/healthmodels/$($env.HealthModelCreateName)?api-version=2026-09-01-preview"
+        $resourceUri = "https://management.azure.com/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.CloudHealth/healthmodels/$($env.HealthModelCreateName)?api-version=2026-11-01"
         $capturedRequests[0].RequestUri | Should -Be $resourceUri
-        $capturedRequests[1].RequestUri | Should -Match '/providers/Microsoft.CloudHealth/locations/.+/operationStatuses/.+\?api-version=2026-09-01-preview'
+        $capturedRequests[1].RequestUri | Should -Match '/providers/Microsoft.CloudHealth/locations/.+/operationStatuses/.+\?api-version=2026-11-01'
         $capturedRequests[2].RequestUri | Should -Be $resourceUri
 
         $putRequest = @($capturedRequests | Where-Object { $_.Method -eq 'PUT' })

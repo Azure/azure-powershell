@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGalleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
                 }
             }
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "sharedGalleryName", "^[^_\\W][\\w-._]{0,79}(?<![-.])$");
                 }
             }
-            string apiVersion = "2025-12-03";
+            string apiVersion = "2026-03-03";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

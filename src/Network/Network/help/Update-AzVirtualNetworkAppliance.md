@@ -14,28 +14,30 @@ Updates a Virtual Network Appliance (VNA) resource.
 
 ### ResourceNameParameterSet (Default)
 ```
-Update-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>] [-AsJob]
+Update-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> [-CapacityProviderId <String>]
+ [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Update-AzVirtualNetworkAppliance -ResourceId <String> [-Tag <Hashtable>] [-AsJob]
+Update-AzVirtualNetworkAppliance -ResourceId <String> [-CapacityProviderId <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzVirtualNetworkAppliance -InputObject <PSVirtualNetworkAppliance> [-Tag <Hashtable>] [-AsJob]
+Update-AzVirtualNetworkAppliance -InputObject <PSVirtualNetworkAppliance> [-CapacityProviderId <String>]
+ [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Update-AzVirtualNetworkAppliance cmdlet updates a Virtual Network Appliance resource in Azure.
-Currently supports updating tags on the VNA resource.
+Supports updating tags, as well as the CapacityProvider property, on the VNA resource.
 
 ## EXAMPLES
 
@@ -59,6 +61,14 @@ Get-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup"
 ```
 
 Gets a Virtual Network Appliance and updates its tags using the pipeline.
+
+### Example 4: Update VNA to use another VNA as a capacity provider
+```powershell
+$provider = Get-AzVirtualNetworkAppliance -Name "myProviderVNA" -ResourceGroupName "myResourceGroup"
+Update-AzVirtualNetworkAppliance -Name "myVNA" -ResourceGroupName "myResourceGroup" -CapacityProviderId $provider.Id
+```
+
+Updates the Virtual Network Appliance named "myVNA" to source its bandwidth capacity from another Virtual Network Appliance, leaving all other properties unchanged.
 
 ## PARAMETERS
 
@@ -89,6 +99,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityProviderId
+The resource ID of another Virtual Network Appliance to use as the capacity provider for this Virtual Network Appliance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

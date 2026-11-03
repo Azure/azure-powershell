@@ -1,15 +1,15 @@
 {
-  "Test-AzKeyVaultNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2024-11-01+1": {
+  "Test-AzKeyVaultNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/f758ac53-3e63-4317-a956-0997793808d7/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2026-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2024-11-01",
-      "Content": "{\r\n  \"name\": \"bez-test-kv20230818\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/f758ac53-3e63-4317-a956-0997793808d7/providers/Microsoft.KeyVault/checkNameAvailability?api-version=2026-02-01",
+      "Content": "{\n  \"name\": \"bez-test-kv20230818\",\n  \"type\": \"Microsoft.KeyVault/vaults\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "77" ]
+        "Content-Length": [ "74" ]
       }
     },
     "Response": {
@@ -17,20 +17,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "c5a54fb9-d702-4b3b-be1c-53261d7c4f5b" ],
-        "x-ms-keyvault-service-version": [ "2.2.261.0" ],
-        "x-ms-request-id": [ "cc7d1bb2-31e6-4754-ae54-4b90c933cf6d" ],
+        "x-ms-client-request-id": [ "2c59b2c5-5d90-4f60-9533-8ad59a3ff892" ],
+        "x-ms-keyvault-service-version": [ "2.2.1192.0" ],
+        "x-ms-request-id": [ "6538d3a9-c457-4f78-a9b2-87f5535fe179" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=a217809c-9dd2-41d4-b32a-7b16e0b588bf/australiaeast/4a742db8-a4ba-4658-9f16-73bc1839ed20" ],
+        "x-ms-operation-identifier": [ "tenantId=4f00b3b6-2940-4f2c-b037-94637c180d30,objectId=bb83257d-f1d0-412f-85a2-22c2b259e928/australiaeast/769c17db-5001-4000-962e-7b89b307ff09" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "33138691-1807-48b6-9d08-1b18e2688fd5" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20250812T001244Z:33138691-1807-48b6-9d08-1b18e2688fd5" ],
+        "x-ms-correlation-request-id": [ "50ba52bf-ef69-473e-93e7-5f035353f60e" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20261013T005646Z:50ba52bf-ef69-473e-93e7-5f035353f60e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 89D014DDC70546B9834A854E664A60CD Ref B: SYD03EDGE0907 Ref C: 2025-08-12T00:12:43Z" ],
-        "Date": [ "Tue, 12 Aug 2025 00:12:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 17A0D716C129459AAD4CA4951FE7C3B4 Ref B: SYD281080705031 Ref C: 2026-10-13T00:56:45Z" ],
+        "Date": [ "Tue, 13 Oct 2026 00:56:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],

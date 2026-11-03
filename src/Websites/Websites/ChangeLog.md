@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Managed Instance support to `New-AzAppServicePlan` and `Set-AzAppServicePlan`, including managed identities, installation scripts, storage mounts, registry adapters, virtual network integration, and Remote Desktop Protocol (RDP) settings.
+* Added `Get-AzAppServicePlanManagedInstance` to list Managed Instance workers and their IP addresses and status.
+* Added `Restart-AzAppServicePlanManagedInstance` to recycle individual Managed Instance workers.
+* Added `Get-AzAppServicePlanRdpCredential` to retrieve secure Remote Desktop Protocol (RDP) credentials for Managed Instance plans.
 * Removed the unsupported identity and JSON parameter sets from `New-AzStaticWebApp`.
 
 ## Version 4.2.0

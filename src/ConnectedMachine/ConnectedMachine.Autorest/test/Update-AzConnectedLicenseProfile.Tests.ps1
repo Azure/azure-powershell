@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedLicenseProf
 
 Describe 'Update-AzConnectedLicenseProfile' {
     It 'UpdateExpanded' {
-        $productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
-        $all = @(Update-AzConnectedLicenseProfile -MachineName $env.MachineNamePaygo -ResourceGroupName $env.ResourceGroupNameProfile -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature)
+        # Update WS paygo subscription (without Hotpatch - requires VBS enabled)
+        $all = @(Update-AzConnectedLicenseProfile -MachineName "PAYGOWS2025" -ResourceGroupName "yao_test" -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled")
         $all | Should -Not -BeNullOrEmpty
     }
 

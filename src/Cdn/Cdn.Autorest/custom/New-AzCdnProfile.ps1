@@ -148,7 +148,7 @@ function New-AzCdnProfile {
         # Change Safety: forward the wrapped generated cmdlet's dynamic parameters (-AcquirePolicyToken / -ChangeReference).
         # Self-gates on enable-change-safety: the private cmdlet implements IDynamicParameters only when the module opted in.
         $dynamicParameters = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
-        $wrapped = Get-Command -Name 'Az.Cdn.private\New-AzCdnProfile_CreateExpanded' -ErrorAction Ignore
+        $wrapped = Get-Command -Name 'Az.Cdn.private\New-AzCdnClassicProfile_CreateExpanded' -ErrorAction Ignore
         if ($wrapped -and [System.Management.Automation.IDynamicParameters].IsAssignableFrom($wrapped.ImplementingType)) {
             $instance = [System.Activator]::CreateInstance($wrapped.ImplementingType)
             foreach ($entry in $instance.GetDynamicParameters().GetEnumerator()) {
@@ -161,7 +161,7 @@ function New-AzCdnProfile {
     }
     process {
         if(-Not (ISFrontDoorCdnProfile($PSBoundParameters['SkuName']))){
-            Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
+            Az.Cdn.internal\New-AzCdnClassicProfile @PSBoundParameters
         }else{
             throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use a valid AzureCDN SkuName.";
         }

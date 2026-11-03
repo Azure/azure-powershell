@@ -12,5 +12,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string UniqueId { get; set; }
         public DateTime? PublishedDate { get; set; }
         public DateTime? EndOfLifeDate { get; set; }
+        public DateTime? ConsumptionEndTime { get; set; }
+        public string ImageState { get; set; }
     }
 }

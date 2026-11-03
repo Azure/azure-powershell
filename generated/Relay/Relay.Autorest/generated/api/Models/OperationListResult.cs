@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Extensions;
 
     /// <summary>
-    /// Result of the request to list Relay operations. It contains a list of operations and a URL link to get the next set of
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
     /// results.
     /// </summary>
     public partial class OperationListResult :
@@ -25,14 +25,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation> _value;
 
-        /// <summary>List of Relay operations supported by the Microsoft.Relay resource provider.</summary>
+        /// <summary>List of operations supported by the resource provider</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Origin(Microsoft.Azure.PowerShell.Cmdlets.Relay.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation> Value { get => this._value; }
 
@@ -42,43 +42,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Relay.Models
 
         }
     }
-    /// Result of the request to list Relay operations. It contains a list of operations and a URL link to get the next set of
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
     /// results.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"URL to get the next set of operation list results if there are any.",
+        Description = @"URL to get the next set of operation list results (if there are any).",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get;  }
-        /// <summary>List of Relay operations supported by the Microsoft.Relay resource provider.</summary>
+        /// <summary>List of operations supported by the resource provider</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"List of Relay operations supported by the Microsoft.Relay resource provider.",
+        Description = @"List of operations supported by the resource provider",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation> Value { get;  }
 
     }
-    /// Result of the request to list Relay operations. It contains a list of operations and a URL link to get the next set of
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
     /// results.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results if there are any.</summary>
+        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
         string NextLink { get; set; }
-        /// <summary>List of Relay operations supported by the Microsoft.Relay resource provider.</summary>
+        /// <summary>List of operations supported by the resource provider</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IOperation> Value { get; set; }
 
     }

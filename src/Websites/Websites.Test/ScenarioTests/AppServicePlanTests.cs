@@ -74,5 +74,33 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateNewAppServicePlanInAse");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAppServicePlanManagedInstance()
+        {
+            TestRunner.RunTestScript("Test-AppServicePlanManagedInstance");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAppServicePlanManagedInstance()
+        {
+            TestRunner.RunTestScript("Test-GetAppServicePlanManagedInstance");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAppServicePlanRdpCredential()
+        {
+            TestRunner.RunTestScript("Test-GetAppServicePlanRdpCredential");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestartAppServicePlanManagedInstance()
+        {
+            TestRunner.RunTestScript("Test-RestartAppServicePlanManagedInstance");
+        }
     }
 }

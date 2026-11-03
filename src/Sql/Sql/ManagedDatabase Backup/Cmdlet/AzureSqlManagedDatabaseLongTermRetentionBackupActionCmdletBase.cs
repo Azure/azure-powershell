@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet,
+        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
@@ -102,30 +102,43 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
             {
                 ParseResourceId(ResourceId);
             }
-
-            if (string.IsNullOrWhiteSpace(ResourceGroupName))
-            {
-                throw new ArgumentException("The backup resource ID must include a resource group.", nameof(ResourceGroupName));
-            }
         }
 
         private void ParseResourceId(string resourceId)
         {
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length != 14 ||
-                !tokens[2].Equals("resourceGroups", StringComparison.OrdinalIgnoreCase) ||
-                !tokens[8].Equals("longTermRetentionManagedInstances", StringComparison.OrdinalIgnoreCase) ||
-                !tokens[10].Equals("longTermRetentionDatabases", StringComparison.OrdinalIgnoreCase) ||
-                !tokens[12].Equals("longTermRetentionManagedInstanceBackups", StringComparison.OrdinalIgnoreCase))
+            int offset;
+            if (tokens.Length == 14 &&
+                tokens[2].Equals("resourceGroups", StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceGroupName = tokens[3];
+                offset = 2;
+            }
+            else if (tokens.Length == 12)
+            {
+                ResourceGroupName = null;
+                offset = 0;
+            }
+            else
             {
                 throw new ArgumentException("Invalid parameter", nameof(ResourceId));
             }
 
-            ResourceGroupName = tokens[3];
-            Location = tokens[7];
-            InstanceName = tokens[9];
-            DatabaseName = tokens[11];
-            BackupName = tokens[13];
+            if (!tokens[0].Equals("subscriptions", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[2 + offset].Equals("providers", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[3 + offset].Equals("Microsoft.Sql", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[4 + offset].Equals("locations", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[6 + offset].Equals("longTermRetentionManagedInstances", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[8 + offset].Equals("longTermRetentionDatabases", StringComparison.OrdinalIgnoreCase) ||
+                !tokens[10 + offset].Equals("longTermRetentionManagedInstanceBackups", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException("Invalid parameter", nameof(ResourceId));
+            }
+
+            Location = tokens[5 + offset];
+            InstanceName = tokens[7 + offset];
+            DatabaseName = tokens[9 + offset];
+            BackupName = tokens[11 + offset];
         }
     }
 }

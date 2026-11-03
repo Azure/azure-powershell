@@ -14,41 +14,6 @@ namespace Microsoft.Azure.Management.TrafficManager
     public partial interface IEndpointsOperations
     {
         /// <summary>
-        /// Update a Traffic Manager endpoint.
-        /// </summary>
-        /// <remarks>
-        /// Update a Traffic Manager endpoint.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='profileName'>
-        /// The name of the Traffic Manager profile.
-        /// </param>
-        /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be updated. Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
-        /// </param>
-        /// <param name='endpointName'>
-        /// The name of the Traffic Manager endpoint to be updated.
-        /// </param>
-        /// <param name='parameters'>
-        /// The Traffic Manager endpoint parameters supplied to the Update operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets a Traffic Manager endpoint.
         /// </summary>
         /// <remarks>
@@ -61,7 +26,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint. Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
+        /// The type of the Traffic Manager endpoint.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint.
@@ -93,13 +58,14 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be created or updated. Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
+        /// The type of the Traffic Manager endpoint.
         /// </param>
         /// <param name='endpointName'>
-        /// The name of the Traffic Manager endpoint to be created or updated.
+        /// The name of the Traffic Manager endpoint.
         /// </param>
         /// <param name='parameters'>
-        /// The Traffic Manager endpoint parameters supplied to the CreateOrUpdate operation.
+        /// The Traffic Manager endpoint parameters supplied to the CreateOrUpdate
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -116,6 +82,41 @@ namespace Microsoft.Azure.Management.TrafficManager
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Update a Traffic Manager endpoint.
+        /// </summary>
+        /// <remarks>
+        /// Update a Traffic Manager endpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='profileName'>
+        /// The name of the Traffic Manager profile.
+        /// </param>
+        /// <param name='endpointType'>
+        /// The type of the Traffic Manager endpoint.
+        /// </param>
+        /// <param name='endpointName'>
+        /// The name of the Traffic Manager endpoint.
+        /// </param>
+        /// <param name='parameters'>
+        /// The Traffic Manager endpoint parameters supplied to the Update operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Deletes a Traffic Manager endpoint.
         /// </summary>
         /// <remarks>
@@ -128,10 +129,10 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be deleted. Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
+        /// The type of the Traffic Manager endpoint.
         /// </param>
         /// <param name='endpointName'>
-        /// The name of the Traffic Manager endpoint to be deleted.
+        /// The name of the Traffic Manager endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -234,9 +234,16 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
-        public static void Delete(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName)
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
+        public static void Delete(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?))
         {
-                ((IGalleryImageVersionsOperations)operations).DeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
+                ((IGalleryImageVersionsOperations)operations).DeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, bypassSoftDelete).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -257,12 +264,19 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeleteAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, bypassSoftDelete, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Create or update a gallery image version.
@@ -384,9 +398,16 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
-        public static void BeginDelete(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName)
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
+        public static void BeginDelete(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?))
         {
-                ((IGalleryImageVersionsOperations)operations).BeginDeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
+                ((IGalleryImageVersionsOperations)operations).BeginDeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, bypassSoftDelete).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -407,12 +428,19 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='galleryImageVersionName'>
         /// The name of the gallery image version to be retrieved.
         /// </param>
+        /// <param name='bypassSoftDelete'>
+        /// Specifies whether to bypass the gallery&#39;s soft-delete policy and
+        /// permanently delete the gallery image version. If true, the version is not
+        /// retained in the recycle bin and cannot be restored. If false or omitted,
+        /// the version is soft-deleted when the gallery&#39;s soft-delete policy is
+        /// enabled and permanently deleted when the policy is disabled.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IGalleryImageVersionsOperations operations, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, bool? bypassSoftDelete = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, bypassSoftDelete, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// List gallery image versions in a gallery image definition.

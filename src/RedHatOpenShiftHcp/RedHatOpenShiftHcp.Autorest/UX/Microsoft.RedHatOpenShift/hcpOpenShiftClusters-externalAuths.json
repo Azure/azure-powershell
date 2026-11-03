@@ -1,0 +1,95 @@
+{
+  "resourceType": "hcpOpenShiftClusters/externalAuths",
+  "apiVersion": "2026-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRedHatOpenShiftHcpExternalAuth",
+      "description": "Get a ExternalAuth",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}/externalAuths/{externalAuthName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp/get-azredhatopenshifthcpexternalauth"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HcpOpenShiftClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ExternalAuth",
+          "parameters": [
+            {
+              "name": "-HcpOpenShiftClusterName",
+              "value": "[Path.hcpOpenShiftClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.externalAuthName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzRedHatOpenShiftHcpExternalAuth",
+      "description": "Delete a ExternalAuth",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/hcpOpenShiftClusters/{hcpOpenShiftClusterName}/externalAuths/{externalAuthName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.redhatopenshifthcp/remove-azredhatopenshifthcpexternalauth"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HcpOpenShiftClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ExternalAuth",
+          "parameters": [
+            {
+              "name": "-HcpOpenShiftClusterName",
+              "value": "[Path.hcpOpenShiftClusterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.externalAuthName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

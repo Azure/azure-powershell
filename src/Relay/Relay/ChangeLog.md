@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2026-07-01-preview.
+* Added support for Relay dedicated clusters.
+    - Added cmdlets `Get-AzRelayCluster`, `New-AzRelayCluster`, `Set-AzRelayCluster` and `Remove-AzRelayCluster`.
+    - Added cmdlets `Get-AzRelayClusterNamespace`, `Get-AzRelayClusterSku` and `Get-AzRelayClusterAvailableClusterRegion`.
+    - `Set-AzRelayCluster` now reads the existing cluster before updating so that tags or capacity can be updated without re-specifying `-Location` and `-SkuCapacity`.
+* Added `ClusterArmId` parameter to `New-AzRelayNamespace` and `Update-AzRelayNamespace` to assign a namespace to a dedicated cluster.
+* Added `MinimumTlsVersion` parameter to `New-AzRelayNamespace` and `Update-AzRelayNamespace`.
+* Fixed `Update-AzRelayNamespace` failing with "The server responded with an unrecognized response, Status: Accepted" by handling the namespace update (PATCH) as a long-running operation.
 
 ## Version 3.0.0
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
