@@ -1,0 +1,46 @@
+{
+  "ManagementApiUpgrade.NetworkSecurityPerimeter+[NoContext]+Projects inbound service tags from the configured NSP profile+$GET+https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/networkSecurityPerimeterConfigurations?api-version=2026-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/networkSecurityPerimeterConfigurations?api-version=2026-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e6ef9caf-e22d-4a69-928e-ca8368d3c6e4" ],
+        "CommandName": [ "Get-AzStorageNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzStorageNetworkSecurityPerimeterConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.1.0", "PSVersion/v7.4.22", "Az.Storage/9.7.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "0477bc71-9c45-4205-ad1c-5bf463f26a0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=1c7c9852-cbd6-473e-9d2c-d3ce4f9955e3/eastus2euap/7cda2fd0-0184-4f5e-bbf9-bbd7b3122491" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "d12ef17a-5754-4231-a243-967ebe839f4f" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20261103T160524Z:d12ef17a-5754-4231-a243-967ebe839f4f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A13FD355F5474F0E9273CE7FCBEDEB81 Ref B: SN4AA2022301025 Ref C: 2026-11-03T16:05:23Z" ],
+        "Date": [ "Tue, 03 Nov 2026 16:05:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1150" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Storage/storageAccounts/psrec8b5d5fab2ddata/networkSecurityPerimeterConfigurations/a1d6a902-7fa7-48c8-9133-f7d4e6013995.recording-storage\",\"name\":\"a1d6a902-7fa7-48c8-9133-f7d4e6013995.recording-storage\",\"type\":\"Microsoft.Storage/storageAccounts/networkSecurityPerimeterConfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"networkSecurityPerimeter\":{\"id\":\"/subscriptions/68e5d74d-cc6b-4be6-9606-cd1c77fa55f0/resourceGroups/ps-storage-rec-eus2euap-8b5d5fab2d/providers/Microsoft.Network/networkSecurityPerimeters/recording-perimeter\",\"perimeterGuid\":\"a1d6a902-7fa7-48c8-9133-f7d4e6013995\",\"location\":\"eastus2euap\"},\"resourceAssociation\":{\"name\":\"recording-storage\",\"accessMode\":\"Learning\"},\"profile\":{\"name\":\"recording-profile\",\"accessRulesVersion\":1,\"accessRules\":[{\"name\":\"recording-monitor-inbound\",\"properties\":{\"direction\":\"Inbound\",\"addressPrefixes\":[],\"subscriptions\":[],\"fullyQualifiedDomainNames\":[],\"serviceTags\":[\"AzureMonitor\"]}}],\"diagnosticSettingsVersion\":0,\"enabledLogCategories\":[]}}}]}",
+      "isContentBase64": false
+    }
+  }
+}

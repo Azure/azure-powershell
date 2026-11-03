@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowBlobAccessPoints;
 
-        [Parameter(HelpMessage = "Enable or disable Turbo Tier on the storage account.")]
+        [Parameter(HelpMessage = "Enable or disable Turbo Tier on the storage account. When disabling, the existing target percentage is not sent.")]
         [ValidateSet("Enabled", "Disabled")]
         public string TurboTierStatus { get; set; }
 
@@ -1096,9 +1096,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (TurboTierStatus != null || turboTierTargetPercent != null)
                     {
                         var originalTurboTier = this.OriginStorageAccountProperties.TurboTier;
+                        var status = TurboTierStatus == null ? originalTurboTier?.Status : NormalizeTurboTierStatus(TurboTierStatus);
+                        // The service rejects a carried-forward target percentage when disabling Turbo Tier.
+                        var targetPercent = turboTierTargetPercent ?? (status == "Disabled" ? null : originalTurboTier?.TargetPercent);
                         updateParameters.TurboTier = new TurboTier(
-                            TurboTierStatus == null ? originalTurboTier?.Status : NormalizeTurboTierStatus(TurboTierStatus),
-                            turboTierTargetPercent ?? originalTurboTier?.TargetPercent);
+                            status, targetPercent);
                     }
 
                     if (keyExpirationPeriodInDay != null)

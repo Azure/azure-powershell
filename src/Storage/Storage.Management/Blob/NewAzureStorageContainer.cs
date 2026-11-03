@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string BlobAccessPointConfigurationName { get; set; }
 
-        [Parameter(HelpMessage = "Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.")]
+        [Parameter(HelpMessage = "Unique ID of the Blob Access Point configuration.")]
         [ValidateNotNullOrEmpty]
         public string BlobAccessPointConfigurationUniqueId { get; set; }
         
@@ -169,11 +169,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (BlobAccessPointConfigurationUniqueId != null && BlobAccessPointConfigurationName == null)
-            {
-                throw new ArgumentException("Specify -BlobAccessPointConfigurationName with -BlobAccessPointConfigurationUniqueId.");
-            }
 
             if (ShouldProcess(this.Name, "Create container"))
             {
@@ -220,7 +215,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 immutableStorageWithVersioning: this.EnableImmutableStorageWithVersioning.IsPresent ? new ImmutableStorageWithVersioning(true) : null,
                                 enableNfsV3RootSquash: enableNfsV3RootSquash,
                                 enableNfsV3AllSquash: enableNfsV3AllSquash,
-                                blobAccessPointConfiguration: BlobAccessPointConfigurationName == null ? null :
+                                blobAccessPointConfiguration: BlobAccessPointConfigurationName == null && BlobAccessPointConfigurationUniqueId == null ? null :
                                     new BlobAccessPointConfigurationConnection(BlobAccessPointConfigurationName, BlobAccessPointConfigurationUniqueId)));
 
                 container =

@@ -136,7 +136,8 @@ $configuration = Get-AzStorageBlobAccessPointConfiguration -ResourceGroupName "m
 New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -StorageAccountName "mystorageaccount" -Name "mycontainer" -BlobAccessPointConfigurationName $configuration.Name -BlobAccessPointConfigurationUniqueId $configuration.UniqueId
 ```
 
-Creates the container attached to the specified Blob Access Point configuration. The unique ID is optional, but requires the configuration name when supplied.
+Creates the container attached to the specified Blob Access Point configuration using its name and unique ID.
+The attachment cannot be added, changed, or removed after the container is created.
 
 ## PARAMETERS
 
@@ -156,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -BlobAccessPointConfigurationUniqueId
-Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.
+Unique ID of the Blob Access Point configuration.
 
 ```yaml
 Type: System.String

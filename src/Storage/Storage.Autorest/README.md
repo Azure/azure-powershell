@@ -50,6 +50,14 @@ nested-object-to-string: true
 identity-correction-for-post: true 
 
 directive:
+  # Access Point PATCH Location points to operation status, not the updated resource.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}"].patch
+    transform: $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+  # Container PATCH responses omit Location; retrieve the resource after async polling completes.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}"].patch
+    transform: $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
   # Prevent automatic singularization from truncating the context-cache noun.
   - where:
       subject: ^ContextCach$

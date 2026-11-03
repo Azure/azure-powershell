@@ -1459,6 +1459,7 @@ Accept wildcard characters: False
 
 ### -TurboTierStatus
 Enable or disable Turbo Tier on the storage account.
+When disabling, the existing target percentage is not sent.
 
 ```yaml
 Type: System.String

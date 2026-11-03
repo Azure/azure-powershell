@@ -16,7 +16,6 @@ Modifies a Storage blob container
 ```
 Update-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
- [-BlobAccessPointConfigurationName <String>] [-BlobAccessPointConfigurationUniqueId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -24,8 +23,7 @@ Update-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] 
 ### AccountObject
 ```
 Update-AzRmStorageContainer -Name <String> -StorageAccount <PSStorageAccount> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-BlobAccessPointConfigurationName <String>]
- [-BlobAccessPointConfigurationUniqueId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Metadata <Hashtable>] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -33,8 +31,7 @@ Update-AzRmStorageContainer -Name <String> -StorageAccount <PSStorageAccount> [-
 ### ContainerObject
 ```
 Update-AzRmStorageContainer -InputObject <PSContainer> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-BlobAccessPointConfigurationName <String>]
- [-BlobAccessPointConfigurationUniqueId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -82,45 +79,7 @@ False
 
 This command updates a storage container, with RootSquash property set as NoRootSquash. RootSquash only works on a storage account that enabled NfsV3.
 
-### Example 5: Attach a Blob Access Point configuration to an existing container
-```powershell
-Update-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -StorageAccountName "mystorageaccount" -Name "mycontainer" -BlobAccessPointConfigurationName "myaccesspoint"
-```
-
-Attaches the named configuration to the container. Optionally specify BlobAccessPointConfigurationUniqueId together with the name to identify a specific configuration instance.
-Omitting both parameters leaves the current attachment unchanged; this cmdlet does not provide a detach operation.
-
 ## PARAMETERS
-
-### -BlobAccessPointConfigurationName
-Name of the Blob Access Point configuration to attach. Omit to leave the existing connection unchanged.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BlobAccessPointConfigurationUniqueId
-Unique ID of the Blob Access Point configuration. Requires BlobAccessPointConfigurationName.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

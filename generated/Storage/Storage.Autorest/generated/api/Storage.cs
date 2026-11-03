@@ -4018,8 +4018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -4098,7 +4097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -4175,8 +4174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -4255,7 +4253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -18533,8 +18531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -18613,7 +18610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -18688,8 +18685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // declared final-state-via: location
-                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    // declared final-state-via: original-uri
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     var operationLocation = _response.GetFirstHeader(@"Operation-Location");
@@ -18768,7 +18764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
