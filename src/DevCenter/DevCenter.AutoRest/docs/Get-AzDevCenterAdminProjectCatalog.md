@@ -30,6 +30,12 @@ Get-AzDevCenterAdminProjectCatalog -InputObject <IDevCenterIdentity> [-DefaultPr
  [<CommonParameters>]
 ```
 
+### GetViaIdentityProject
+```
+Get-AzDevCenterAdminProjectCatalog -CatalogName <String> -ProjectInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets an associated project catalog.
 
@@ -64,7 +70,7 @@ The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -92,11 +98,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -161,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ICatalog
 
 ## NOTES
 

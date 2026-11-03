@@ -36,10 +36,6 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/commonDefinitions.json
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/devcenter.json
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2025-04-01-preview/vdi.json
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses
@@ -317,24 +313,24 @@ directive:
   - where:
       subject: Schedule
     hide: true
-# Remove body variant
+# Remove non-expanded body variants (keep Expanded, JsonFilePath, JsonString)
   - where:
       verb: Update
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: New
-      variant: ^Create$|^CreateViaIdentity$
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Invoke
       subject: ExecuteCheckNameAvailability
-      variant: ^Execute$|^ExecuteViaIdentity$
+      variant: ^(Execute)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Invoke
       subject: ExecuteCheckScopedNameAvailability
-      variant: ^Execute$|^ExecuteViaIdentity$
+      variant: ^(Execute)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 # Set required parameters    
   - where:

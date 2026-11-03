@@ -19,11 +19,24 @@ Get-AzDevCenterAdminEnvironmentDefinition -CatalogName <String> -DevCenterName <
  [<CommonParameters>]
 ```
 
+### GetViaIdentityDevcenter
+```
+Get-AzDevCenterAdminEnvironmentDefinition -CatalogName <String> -Name <String>
+ -DevcenterInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzDevCenterAdminEnvironmentDefinition -CatalogName <String> -DevCenterName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityCatalog
+```
+Get-AzDevCenterAdminEnvironmentDefinition -Name <String> -CatalogInputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -61,12 +74,27 @@ This command gets the environment definition "envDefName" using InputObject.
 
 ## PARAMETERS
 
+### -CatalogInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetViaIdentityDevcenter, Get
 Aliases:
 
 Required: True
@@ -92,6 +120,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityDevcenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
@@ -109,7 +152,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -128,7 +170,7 @@ The name of the Environment Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityDevcenter, Get, GetViaIdentityCatalog
 Aliases: EnvironmentDefinitionName
 
 Required: True
@@ -178,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IEnvironmentDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IEnvironmentDefinition
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DevCenter
-Module Guid: a99f1246-613b-410f-b91b-5331cc1595d1
+Module Guid: 549b52a2-a807-4e8c-a23e-e853e92cc371
 Download Help Link: https://learn.microsoft.com/powershell/module/az.devcenter
 Help Version: 1.0.0.0
 Locale: en-US
@@ -139,10 +139,10 @@ Creates or updates a catalog.
 Creates or updates a Dev Box definition.
 
 ### [New-AzDevCenterAdminDevCenter](New-AzDevCenterAdminDevCenter.md)
-Creates or updates a devcenter resource
+Create a devcenter resource
 
 ### [New-AzDevCenterAdminEnvironmentType](New-AzDevCenterAdminEnvironmentType.md)
-Creates or updates an environment type.
+Create an environment type.
 
 ### [New-AzDevCenterAdminGallery](New-AzDevCenterAdminGallery.md)
 Creates or updates a gallery.
@@ -163,7 +163,7 @@ Creates or updates a project catalog.
 Creates or updates a project environment type.
 
 ### [New-AzDevCenterAdminProjectPolicy](New-AzDevCenterAdminProjectPolicy.md)
-Creates or updates an project policy.
+Create an project policy.
 
 ### [New-AzDevCenterAdminSchedule](New-AzDevCenterAdminSchedule.md)
 Creates or updates a Schedule.
@@ -223,35 +223,41 @@ Syncs templates for a template source.
 ### [Sync-AzDevCenterAdminProjectCatalog](Sync-AzDevCenterAdminProjectCatalog.md)
 Syncs templates for a template source.
 
+### [Update-AzDevCenterAdminAttachedNetwork](Update-AzDevCenterAdminAttachedNetwork.md)
+Update an attached NetworkConnection.
+
 ### [Update-AzDevCenterAdminCatalog](Update-AzDevCenterAdminCatalog.md)
-Partially updates a catalog.
+Partially update a catalog.
 
 ### [Update-AzDevCenterAdminDevBoxDefinition](Update-AzDevCenterAdminDevBoxDefinition.md)
-Partially updates a Dev Box definition.
+Partially update a Dev Box definition.
 
 ### [Update-AzDevCenterAdminDevCenter](Update-AzDevCenterAdminDevCenter.md)
-Partially updates a devcenter.
+Update a devcenter resource
 
 ### [Update-AzDevCenterAdminEnvironmentType](Update-AzDevCenterAdminEnvironmentType.md)
-Partially updates an environment type.
+Partially update an environment type.
+
+### [Update-AzDevCenterAdminGallery](Update-AzDevCenterAdminGallery.md)
+Update a gallery.
 
 ### [Update-AzDevCenterAdminNetworkConnection](Update-AzDevCenterAdminNetworkConnection.md)
-Partially updates a Network Connection
+Partially update a Network Connection
 
 ### [Update-AzDevCenterAdminPool](Update-AzDevCenterAdminPool.md)
-Partially updates a machine pool
+Partially update a machine pool
 
 ### [Update-AzDevCenterAdminProject](Update-AzDevCenterAdminProject.md)
-Partially updates a project.
+Update a project.
 
 ### [Update-AzDevCenterAdminProjectCatalog](Update-AzDevCenterAdminProjectCatalog.md)
-Partially updates a project catalog.
+Partially patch a project catalog.
 
 ### [Update-AzDevCenterAdminProjectEnvironmentType](Update-AzDevCenterAdminProjectEnvironmentType.md)
-Partially updates a project environment type.
+Update a project environment type.
 
 ### [Update-AzDevCenterAdminProjectPolicy](Update-AzDevCenterAdminProjectPolicy.md)
-Partially updates an project policy.
+Partially update an project policy.
 
 ### [Update-AzDevCenterAdminSchedule](Update-AzDevCenterAdminSchedule.md)
 Partially updates a Scheduled.

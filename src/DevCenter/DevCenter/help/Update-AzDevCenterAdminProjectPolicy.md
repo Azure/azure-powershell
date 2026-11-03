@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDevCenterAdminProjectPolicy
 
 ## SYNOPSIS
-Partially updates an project policy.
+Partially update an project policy.
 
 ## SYNTAX
 
@@ -20,6 +20,27 @@ Update-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -Res
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDevCenterAdminProjectPolicy -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityDevcenterExpanded
+```
+Update-AzDevCenterAdminProjectPolicy -Name <String> -DevcenterInputObject <IDevCenterIdentity>
+ [-ResourcePolicy <IResourcePolicy[]>] [-Scope <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminProjectPolicy -InputObject <IDevCenterIdentity> [-ResourcePolicy <IResourcePolicy[]>]
@@ -28,7 +49,7 @@ Update-AzDevCenterAdminProjectPolicy -InputObject <IDevCenterIdentity> [-Resourc
 ```
 
 ## DESCRIPTION
-Partially updates an project policy.
+Partially update an project policy.
 
 ## EXAMPLES
 
@@ -98,12 +119,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevcenterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: UpdateViaIdentityDevcenterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DevCenterName
 The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -115,7 +151,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -129,12 +164,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the project policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityDevcenterExpanded
 Aliases: ProjectPolicyName
 
 Required: True
@@ -165,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -177,11 +242,10 @@ Accept wildcard characters: False
 
 ### -ResourcePolicy
 Resource policies that are a part of this project policy.
-To construct, see NOTES section for RESOURCEPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IResourcePolicy[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IResourcePolicy[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -196,7 +260,7 @@ Resources that have access to the shared resources that are a part of this proje
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDevcenterExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,7 +275,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -261,7 +325,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IProjectPolicy
 
 ## NOTES
 

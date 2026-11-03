@@ -27,7 +27,7 @@ Creates or updates a Schedule.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminschedule
 #>
 function New-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.ISchedule])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
@@ -99,9 +99,9 @@ function New-AzDevCenterAdminSchedule {
 
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')] 
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [System.String]
     # Indicates whether or not this scheduled task is enabled.
     ${State},
 

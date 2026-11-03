@@ -19,6 +19,20 @@ Build-AzDevCenterAdminProjectCatalogImageDefinitionImage -CatalogName <String> -
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BuildViaIdentityProject
+```
+Build-AzDevCenterAdminProjectCatalogImageDefinitionImage -CatalogName <String> -ImageDefinitionName <String>
+ -ProjectInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BuildViaIdentityCatalog
+```
+Build-AzDevCenterAdminProjectCatalogImageDefinitionImage -ImageDefinitionName <String>
+ -CatalogInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### BuildViaIdentity
 ```
 Build-AzDevCenterAdminProjectCatalogImageDefinitionImage -InputObject <IDevCenterIdentity>
@@ -74,12 +88,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CatalogInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: BuildViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: Build
+Parameter Sets: Build, BuildViaIdentityProject
 Aliases:
 
 Required: True
@@ -110,7 +139,7 @@ The name of the Image Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Build
+Parameter Sets: Build, BuildViaIdentityProject, BuildViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -122,7 +151,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
@@ -163,6 +191,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: BuildViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
