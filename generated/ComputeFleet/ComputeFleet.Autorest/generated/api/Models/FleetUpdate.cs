@@ -107,9 +107,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// <summary>Internal Acessors for UniqueId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal.UniqueId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).UniqueId = value ?? null; }
 
-        /// <summary>Internal Acessors for ZoneAllocationPolicy</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZoneAllocationPolicy Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal.ZoneAllocationPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicy = value ?? null /* model class */; }
-
         /// <summary>Mode of the Fleet.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
         public string Mode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).Mode = value ?? null; }
@@ -237,14 +234,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         /// <summary>List of VM sizes supported for Compute Fleet</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile> VMSizesProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMSizesProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).VMSizesProfile = value ?? null /* arrayOf */; }
-
-        /// <summary>Distribution strategy used for zone allocation policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
-        public string ZoneAllocationPolicyDistributionStrategy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicyDistributionStrategy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicyDistributionStrategy = value ?? null; }
-
-        /// <summary>Zone preferences, required when zone distribution strategy is Prioritized.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Origin(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference> ZoneAllocationPolicyZonePreference { get => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicyZonePreference; set => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetPropertiesInternal)Property).ZoneAllocationPolicyZonePreference = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="FleetUpdate" /> instance.</summary>
         public FleetUpdate()
@@ -658,29 +647,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         SerializedName = @"vmSizesProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile> VMSizesProfile { get; set; }
-        /// <summary>Distribution strategy used for zone allocation policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Distribution strategy used for zone allocation policy.",
-        SerializedName = @"distributionStrategy",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-        string ZoneAllocationPolicyDistributionStrategy { get; set; }
-        /// <summary>Zone preferences, required when zone distribution strategy is Prioritized.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Zone preferences, required when zone distribution strategy is Prioritized.",
-        SerializedName = @"zonePreferences",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference> ZoneAllocationPolicyZonePreference { get; set; }
 
     }
     /// Fleet Update Model
@@ -822,13 +788,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
         string VMNamePrefix { get; set; }
         /// <summary>List of VM sizes supported for Compute Fleet</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile> VMSizesProfile { get; set; }
-        /// <summary>Zone Allocation Policy for Fleet.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZoneAllocationPolicy ZoneAllocationPolicy { get; set; }
-        /// <summary>Distribution strategy used for zone allocation policy.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.PSArgumentCompleterAttribute("BestEffortSingleZone", "Prioritized")]
-        string ZoneAllocationPolicyDistributionStrategy { get; set; }
-        /// <summary>Zone preferences, required when zone distribution strategy is Prioritized.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference> ZoneAllocationPolicyZonePreference { get; set; }
 
     }
 }

@@ -172,10 +172,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationsProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalLocationsProfile) content.GetValueForProperty("AdditionalLocationsProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationsProfile, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.AdditionalLocationsProfileTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ZoneAllocationPolicy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZoneAllocationPolicy) content.GetValueForProperty("ZoneAllocationPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicy, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ZoneAllocationPolicyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("VMSizesProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).VMSizesProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile>) content.GetValueForProperty("VMSizesProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).VMSizesProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfileTypeConverter.ConvertFrom));
@@ -203,10 +199,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             if (content.Contains("AdditionalLocationProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile>) content.GetValueForProperty("AdditionalLocationProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.LocationProfileTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ZoneAllocationPolicyZonePreference"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyZonePreference = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>) content.GetValueForProperty("ZoneAllocationPolicyZonePreference",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyZonePreference, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ZonePreferenceTypeConverter.ConvertFrom));
             }
             if (content.Contains("SpotPriorityProfileCapacity"))
             {
@@ -255,10 +247,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             if (content.Contains("ComputeProfileBaseVirtualMachineProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ComputeProfileBaseVirtualMachineProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IBaseVirtualMachineProfile) content.GetValueForProperty("ComputeProfileBaseVirtualMachineProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ComputeProfileBaseVirtualMachineProfile, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfileTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ZoneAllocationPolicyDistributionStrategy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyDistributionStrategy = (string) content.GetValueForProperty("ZoneAllocationPolicyDistributionStrategy",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyDistributionStrategy, global::System.Convert.ToString);
             }
             if (content.Contains("AdditionalVirtualMachineCapabilityUltraSsdEnabled"))
             {
@@ -357,10 +345,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationsProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IAdditionalLocationsProfile) content.GetValueForProperty("AdditionalLocationsProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationsProfile, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.AdditionalLocationsProfileTypeConverter.ConvertFrom);
             }
-            if (content.Contains("ZoneAllocationPolicy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZoneAllocationPolicy) content.GetValueForProperty("ZoneAllocationPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicy, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ZoneAllocationPolicyTypeConverter.ConvertFrom);
-            }
             if (content.Contains("VMSizesProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).VMSizesProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile>) content.GetValueForProperty("VMSizesProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).VMSizesProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfileTypeConverter.ConvertFrom));
@@ -388,10 +372,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             if (content.Contains("AdditionalLocationProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile>) content.GetValueForProperty("AdditionalLocationProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).AdditionalLocationProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.LocationProfileTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ZoneAllocationPolicyZonePreference"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyZonePreference = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>) content.GetValueForProperty("ZoneAllocationPolicyZonePreference",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyZonePreference, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference>(__y, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ZonePreferenceTypeConverter.ConvertFrom));
             }
             if (content.Contains("SpotPriorityProfileCapacity"))
             {
@@ -440,10 +420,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models
             if (content.Contains("ComputeProfileBaseVirtualMachineProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ComputeProfileBaseVirtualMachineProfile = (Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IBaseVirtualMachineProfile) content.GetValueForProperty("ComputeProfileBaseVirtualMachineProfile",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ComputeProfileBaseVirtualMachineProfile, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfileTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ZoneAllocationPolicyDistributionStrategy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyDistributionStrategy = (string) content.GetValueForProperty("ZoneAllocationPolicyDistributionStrategy",((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateInternal)this).ZoneAllocationPolicyDistributionStrategy, global::System.Convert.ToString);
             }
             if (content.Contains("AdditionalVirtualMachineCapabilityUltraSsdEnabled"))
             {

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Extensions;
 
-    /// <summary>List of vaults</summary>
+    /// <summary>The response of a DeletedVault list operation.</summary>
     public partial class DeletedVaultListResult :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResult,
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVaultListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The URL to get the next set of deleted vaults.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> _value;
 
-        /// <summary>The list of deleted vaults.</summary>
+        /// <summary>The DeletedVault items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Origin(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
 
         }
     }
-    /// List of vaults
+    /// The response of a DeletedVault list operation.
     public partial interface IDeletedVaultListResult :
         Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IJsonSerializable
     {
-        /// <summary>The URL to get the next set of deleted vaults.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URL to get the next set of deleted vaults.",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The list of deleted vaults.</summary>
+        /// <summary>The DeletedVault items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of deleted vaults.",
+        Description = @"The DeletedVault items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> Value { get; set; }
 
     }
-    /// List of vaults
+    /// The response of a DeletedVault list operation.
     internal partial interface IDeletedVaultListResultInternal
 
     {
-        /// <summary>The URL to get the next set of deleted vaults.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of deleted vaults.</summary>
+        /// <summary>The DeletedVault items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IDeletedVault> Value { get; set; }
 
     }

@@ -53,10 +53,10 @@ Deletes the specified Compute Fleet and returns a boolean indicating success whe
 ### Example 3: Delete a fleet using its identity
 ```powershell
 $fleet = Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "myResourceGroup"
-Remove-AzComputeFleet -InputObject $fleet -PassThru
+Remove-AzComputeFleet -InputObject @{ Id = $fleet.Id } -PassThru
 ```
 
-Uses an existing fleet object to identify the fleet to delete.
+Uses an identity hash table containing the resource ID of an existing fleet to identify the fleet to delete.
 This has the same Launch mode VM-retention behavior as deleting the fleet by name.
 
 ## PARAMETERS

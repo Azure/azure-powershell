@@ -48,7 +48,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -67,7 +67,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -86,7 +86,7 @@ RULESETINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.

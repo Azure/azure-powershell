@@ -24,6 +24,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string AzureOriginId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureOrigin).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureOrigin).Id = value ?? null; }
 
+        /// <summary>Backing field for <see cref="CertificateNameCheckValidationMode" /> property.</summary>
+        private string _certificateNameCheckValidationMode;
+
+        /// <summary>
+        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string CertificateNameCheckValidationMode { get => this._certificateNameCheckValidationMode; set => this._certificateNameCheckValidationMode = value; }
+
+        /// <summary>Backing field for <see cref="CustomCertificateSubject" /> property.</summary>
+        private System.Collections.Generic.List<string> _customCertificateSubject;
+
+        /// <summary>
+        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
+        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> CustomCertificateSubject { get => this._customCertificateSubject; set => this._customCertificateSubject = value; }
+
         /// <summary>Backing field for <see cref="EnabledState" /> property.</summary>
         private string _enabledState;
 
@@ -168,6 +187,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string AzureOriginId { get; set; }
+        /// <summary>
+        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.",
+        SerializedName = @"certificateNameCheckValidationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+        string CertificateNameCheckValidationMode { get; set; }
+        /// <summary>
+        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
+        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries.",
+        SerializedName = @"customCertificateSubjects",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> CustomCertificateSubject { get; set; }
         /// <summary>
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled
         /// if there is a single enabled backend in single enabled backend pool.
@@ -355,6 +402,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureOrigin { get; set; }
         /// <summary>Resource ID.</summary>
         string AzureOriginId { get; set; }
+        /// <summary>
+        /// The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("OriginHostname", "CustomCertificateSubject", "IncomingHostHeader")]
+        string CertificateNameCheckValidationMode { get; set; }
+        /// <summary>
+        /// The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is
+        /// 'CustomCertificateSubject'. Must contain 1 or 2 entries.
+        /// </summary>
+        System.Collections.Generic.List<string> CustomCertificateSubject { get; set; }
         /// <summary>
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled
         /// if there is a single enabled backend in single enabled backend pool.

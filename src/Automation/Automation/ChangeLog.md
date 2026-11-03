@@ -18,9 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.12.1
-* Updated Automation account identity handling to explicitly use the Automation SDK `Identity` model in create/update flows.
 * Added cmdlets for Runtime Environment management
   * `Get-AzAutomationRuntimeEnvironment`
   * `New-AzAutomationRuntimeEnvironment`
@@ -31,6 +28,9 @@
   * `New-AzAutomationRuntimeEnvironmentPackage`
   * `Set-AzAutomationRuntimeEnvironmentPackage`
   * `Remove-AzAutomationRuntimeEnvironmentPackage`
+
+## Version 1.12.1
+* Updated Automation account identity handling to explicitly use the Automation SDK `Identity` model in create/update flows.
 
 ## Version 1.12.0
 * Added ChangeSafety Support

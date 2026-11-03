@@ -128,7 +128,7 @@ function Get-AzCdnProfile {
     )
 
     process {
-        $internalProfiles = Az.Cdn.internal\Get-AzCdnProfile @PSBoundParameters
+        $internalProfiles = Az.Cdn.internal\Get-AzCdnClassicProfile @PSBoundParameters
  
         if ($null -ne $internalProfiles )
         {

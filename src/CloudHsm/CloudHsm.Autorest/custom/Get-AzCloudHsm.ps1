@@ -119,8 +119,9 @@ begin {
 
         $mapping = @{
             Get = 'Az.CloudHsm.private\Get-AzCloudHsm_Get';
-            List = 'Az.CloudHsm.private\Get-AzCloudHsm_List';
-            List1 = 'Az.CloudHsm.private\Get-AzCloudHsm_List1';
+            # The generated variants are named by spec path order: _List1 is ListByResourceGroup and _List is ListBySubscription.
+            List = 'Az.CloudHsm.private\Get-AzCloudHsm_List1';
+            List1 = 'Az.CloudHsm.private\Get-AzCloudHsm_List';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

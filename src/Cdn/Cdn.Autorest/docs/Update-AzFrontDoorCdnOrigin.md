@@ -15,9 +15,10 @@ Update an existing origin within an origin group.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
- [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>]
+ [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -25,9 +26,10 @@ Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Prof
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-AzureOriginId <String>] [-EnabledState <String>]
- [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+Update-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-AzureOriginId <String>]
+ [-CertificateNameCheckValidationMode <String>] [-CustomCertificateSubject <String[]>]
+ [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
+ [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
  [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -43,9 +45,10 @@ Update-AzFrontDoorCdnOrigin -OriginGroupInputObject <ICdnIdentity> -OriginName <
 ### UpdateViaIdentityOriginGroupExpanded
 ```
 Update-AzFrontDoorCdnOrigin -OriginGroupInputObject <ICdnIdentity> -OriginName <String>
- [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
- [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-AzureOriginId <String>] [-CertificateNameCheckValidationMode <String>]
+ [-CustomCertificateSubject <String[]>] [-EnabledState <String>] [-EnforceCertificateNameCheck]
+ [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>]
+ [-Priority <Int32>] [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
  [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
  [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -61,9 +64,10 @@ Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Prof
 ### UpdateViaIdentityProfileExpanded
 ```
 Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
- [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-AzureOriginId <String>] [-CertificateNameCheckValidationMode <String>]
+ [-CustomCertificateSubject <String[]>] [-EnabledState <String>] [-EnforceCertificateNameCheck]
+ [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>]
+ [-Priority <Int32>] [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
  [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
  [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -149,6 +153,39 @@ Resource ID.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateNameCheckValidationMode
+The validation mode for certificate name check.
+Only applicable when enforceCertificateNameCheck is true.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityProfileExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomCertificateSubject
+The list of custom certificate subjects to validate against.
+Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'.
+Must contain 1 or 2 entries.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 

@@ -114,7 +114,8 @@ CmdletsToExport = 'Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity',
                'Get-AzDiskEncryptionSetAssociatedResource', 'Get-AzGallery', 
                'Get-AzGalleryImageDefinition', 'Get-AzGalleryImageVersion', 
                'Get-AzGalleryInVMAccessControlProfile', 
-               'Get-AzGalleryInVMAccessControlProfileVersion', 'Get-AzHost', 
+               'Get-AzGalleryInVMAccessControlProfileVersion',
+               'Get-AzGallerySoftDeletedImageVersion', 'Get-AzHost',
                'Get-AzHostGroup', 'Get-AzHostSize', 'Get-AzImage', 
                'Get-AzInterconnectBlock', 'Get-AzProximityPlacementGroup', 
                'Get-AzRemoteDesktopFile', 'Get-AzRestorePoint', 
@@ -188,6 +189,7 @@ CmdletsToExport = 'Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity',
                'Remove-AzVmssRunCommand', 'Remove-AzVmssSkuProfileVMSize', 
                'Remove-AzVmssVMDataDisk', 'Repair-AzVmssServiceFabricUpdateDomain', 
                'Restart-AzHost', 'Restart-AzVM', 'Restart-AzVmss', 
+               'Restore-AzGalleryImageVersion',
                'Revoke-AzDiskAccess', 'Revoke-AzSnapshotAccess', 'Save-AzVhd', 
                'Save-AzVMImage', 'Set-AzDiskDiskEncryptionKey', 
                'Set-AzDiskImageReference', 'Set-AzDiskKeyEncryptionKey', 
@@ -297,4 +299,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

@@ -242,6 +242,20 @@ The fourth through sixth commands build a RenameTo hashtable that maps each orig
 The seventh command sets the target storage account ARM ID for the alternate location restore.
 The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
 
+### Example 9: Get restore request object for alternate location item level restore for AzureCosmosDB
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "cosmosAccountName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureCosmosDB -ResourceIdentifier @("db1/col1", "db1/col2", "db2")
+$targetCosmosAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/targetCosmosAccountName"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId -ItemLevelRecovery -RestoreConfiguration $restoreConfig
+```
+
+The first and second commands fetch the backup instance and recovery points for the protected Azure Cosmos DB account.
+The third command builds the restore configuration selecting containers col1 and col2 in database db1, and the whole database db2.
+The fourth command sets the ARM ID of the target Azure Cosmos DB account.
+The last command initializes the restore request with -ItemLevelRecovery and -RestoreConfiguration, which are both required for AzureCosmosDB item level restore, to restore the selected databases and containers to an alternate location.
+
 ## PARAMETERS
 
 ### -BackupInstance
@@ -433,7 +447,8 @@ Accept wildcard characters: False
 
 ### -RestoreConfiguration
 Restore configuration for restore.
-Use this parameter to restore with AzureKubernetesService.
+Use this parameter to restore with AzureKubernetesService, AzureElasticSAN, AzureCosmosDB.
+For AzureCosmosDB, this parameter is required for item level restore and must be used together with -ItemLevelRecovery.
 
 ```yaml
 Type: System.Management.Automation.PSObject

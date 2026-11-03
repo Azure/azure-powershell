@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return;
             }
-            {_extensionTarget = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("extensionTargets"), out var __jsonExtensionTargets) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ExtensionTarget.FromJson(__jsonExtensionTargets) : _extensionTarget;}
+            {_extensionTarget = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("extensionTargets"), out var __jsonExtensionTargets) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineExtensionUpgradeExtensionTargets.FromJson(__jsonExtensionTargets) : _extensionTarget;}
             AfterFromJson(json);
         }
 
