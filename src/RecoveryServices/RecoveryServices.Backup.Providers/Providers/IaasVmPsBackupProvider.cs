@@ -841,7 +841,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // Wait for the provision LRO to reach a terminal state before fetching scripts.
             var provisionOperationStatus = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
-                opId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                opId => ServiceClientAdapter.GetScopedProtectedItemOperationStatus(
+                    containerUri,
+                    protectedItemName,
                     opId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
@@ -950,7 +952,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var response = TrackingHelpers.GetOperationStatus(
                 ilRResponse,
-                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                operationId => ServiceClientAdapter.GetScopedProtectedItemOperationStatus(
+                    containerUri,
+                    protectedItemName,
                     operationId,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName));
@@ -1257,6 +1261,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
+                    InstantAccessSnapshotEnabled = ((AzureVmPolicy)policy).InstantAccessSnapshotEnabled,
+                    InstantAccessDurationMinutes = ((AzureVmPolicy)policy).InstantAccessDurationMinutes,
                     InstantRpDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix),

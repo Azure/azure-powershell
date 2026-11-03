@@ -29,11 +29,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="dataDirectoryPaths">List of data directory paths during restore operation.
         /// </param>
-        public AzureWorkloadSQLRecoveryPointExtendedInfo(System.DateTime? dataDirectoryTimeInUtc = default(System.DateTime?), System.Collections.Generic.IList<SQLDataDirectory> dataDirectoryPaths = default(System.Collections.Generic.IList<SQLDataDirectory>))
+
+        /// <param name="includedDatabases">List of databases included in recovery point.
+        /// </param>
+
+        /// <param name="snapshotRecoveryPointInfo">Detailed info of snapshot restore point.
+        /// </param>
+        public AzureWorkloadSQLRecoveryPointExtendedInfo(System.DateTime? dataDirectoryTimeInUtc = default(System.DateTime?), System.Collections.Generic.IList<SQLDataDirectory> dataDirectoryPaths = default(System.Collections.Generic.IList<SQLDataDirectory>), System.Collections.Generic.IList<DatabaseInRP> includedDatabases = default(System.Collections.Generic.IList<DatabaseInRP>), SnapshotRecoveryPointInfo snapshotRecoveryPointInfo = default(SnapshotRecoveryPointInfo))
 
         {
             this.DataDirectoryTimeInUtc = dataDirectoryTimeInUtc;
             this.DataDirectoryPaths = dataDirectoryPaths;
+            this.IncludedDatabases = includedDatabases;
+            this.SnapshotRecoveryPointInfo = snapshotRecoveryPointInfo;
             CustomInit();
         }
 
@@ -54,5 +62,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataDirectoryPaths")]
         public System.Collections.Generic.IList<SQLDataDirectory> DataDirectoryPaths {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of databases included in recovery point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includedDatabases")]
+        public System.Collections.Generic.IList<DatabaseInRP> IncludedDatabases {get; set; }
+
+        /// <summary>
+        /// Gets or sets detailed info of snapshot restore point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotRecoveryPointInfo")]
+        public SnapshotRecoveryPointInfo SnapshotRecoveryPointInfo {get; set; }
     }
 }

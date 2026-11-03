@@ -25,11 +25,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="sourceTierType">Source tier from where RP needs to be moved
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
 
         /// <param name="targetTierType">Target tier where RP needs to be moved
-        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
-        public MoveRPAcrossTiersRequest(string objectType = default(string), RecoveryPointTierType? sourceTierType = default(RecoveryPointTierType?), RecoveryPointTierType? targetTierType = default(RecoveryPointTierType?))
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;,
+        /// &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;</param>
+        public MoveRPAcrossTiersRequest(string objectType = default(string), string sourceTierType = default(string), string targetTierType = default(string))
 
         {
             this.ObjectType = objectType;
@@ -51,15 +53,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string ObjectType {get; set; }
 
         /// <summary>
-        /// Gets or sets source tier from where RP needs to be moved Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;
+        /// Gets or sets source tier from where RP needs to be moved Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceTierType")]
-        public RecoveryPointTierType? SourceTierType {get; set; }
+        public string SourceTierType {get; set; }
 
         /// <summary>
-        /// Gets or sets target tier where RP needs to be moved Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;
+        /// Gets or sets target tier where RP needs to be moved Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;, &#39;IASnapshotRP&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetTierType")]
-        public RecoveryPointTierType? TargetTierType {get; set; }
+        public string TargetTierType {get; set; }
     }
 }

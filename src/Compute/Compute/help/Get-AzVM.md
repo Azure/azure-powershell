@@ -43,6 +43,12 @@ The model view is the user specified properties of the virtual machine.
 The instance view is the instance level status of the virtual machine.
 Specify the *Status* parameter to get the instance view of a virtual machine instead of the model view which is the default.
 
+The model view exposes `FlexProfile` as the SDK type `Microsoft.Azure.Management.Compute.Models.FlexProfile`, including `FlexProfile.PreferredVMSize`.
+Azure may deploy a compatible alternative to the preferred size; `HardwareProfile.VmSize` reports the size selected by the service.
+Both FlexProfile and the service-reported **VmSize** are preserved when passing the model to **Update-AzVM** without **PreferredVMSize**, without changing the input object.
+Instance-view-only results returned with **Status** do not expose FlexProfile.
+FlexProfile is a preview feature that requires registration of the `Microsoft.Compute/FlexProfileEnabled` subscription feature and availability in the target region; supported VM families vary by region.
+
 ## EXAMPLES
 
 ### Example 1: Get model properties of the virtual machine named VirtualMachine07
@@ -260,6 +266,19 @@ UserData          : bm90IGVuY29kZWQ=
 ```
 
 The UserData value must always be Base64 encoded. This command assumes you have already created a VM with a UserData value.
+
+### Example 8: Inspect FlexProfile and preserve it during an update
+```powershell
+$vm = Get-AzVM -ResourceGroupName "myRG" -Name "myFlexVM"
+$vm.FlexProfile.PreferredVMSize
+$vm.HardwareProfile.VmSize
+$vm.Tags = @{ workload = "batch" }
+Update-AzVM -ResourceGroupName "myRG" -VM $vm
+```
+
+This example retrieves an existing FlexProfile VM's model, inspects the preferred and service-selected sizes, and updates tags while preserving both FlexProfile and the service-reported **VmSize**.
+**Update-AzVM** leaves these properties unchanged on `$vm`.
+Do not use **Get-AzVM -Status** for this model round trip.
 
 ## PARAMETERS
 

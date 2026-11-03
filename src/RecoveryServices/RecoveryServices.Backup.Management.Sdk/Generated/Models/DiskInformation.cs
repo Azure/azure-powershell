@@ -29,11 +29,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="name">
         /// </param>
-        public DiskInformation(int? lun = default(int?), string name = default(string))
+
+        /// <param name="diskSizeInGb">Size of the disk in GB.
+        /// </param>
+
+        /// <param name="storageType">Storage type of the disk.
+        /// </param>
+        public DiskInformation(int? lun = default(int?), string name = default(string), int? diskSizeInGb = default(int?), string storageType = default(string))
 
         {
             this.Lun = lun;
             this.Name = name;
+            this.DiskSizeInGb = diskSizeInGb;
+            this.StorageType = storageType;
             CustomInit();
         }
 
@@ -54,5 +62,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
+
+        /// <summary>
+        /// Gets or sets size of the disk in GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeInGb")]
+        public int? DiskSizeInGb {get; set; }
+
+        /// <summary>
+        /// Gets or sets storage type of the disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageType")]
+        public string StorageType {get; set; }
     }
 }

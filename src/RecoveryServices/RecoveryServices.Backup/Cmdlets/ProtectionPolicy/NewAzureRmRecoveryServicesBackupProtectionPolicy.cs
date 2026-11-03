@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// List of supported WorkloadTypes for this cmdlet. Used in help text creation.
         /// </summary>
-        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
+        private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL, MSSQLInstance";
 
         /// <summary>
         /// Name of the policy to be created
@@ -124,6 +124,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SnapshotConsistencyType)]
         public SnapshotConsistencyType SnapshotConsistencyType { get; set; }
 
+        /// <summary>
+        /// Instant recovery point retention range in days for SQL (MSSQL) Instance snapshot policies.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.InstantRPRetentionRangeInDays)]
+        public int? InstantRPRetentionRangeInDays { get; set; }
+
+        /// <summary>
+        /// ARM ID of the user-assigned managed identity used for SQL (MSSQL) Instance snapshot backup.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.UserAssignedIdentityId)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -208,6 +221,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled);
                 providerParameters.Add(PolicyParams.BackupSnapshotResourceGroup, BackupSnapshotResourceGroup);
                 providerParameters.Add(PolicyParams.BackupSnapshotResourceGroupSuffix, BackupSnapshotResourceGroupSuffix);
+                providerParameters.Add(PolicyParams.InstantRPRetentionRangeInDays, InstantRPRetentionRangeInDays);
+                providerParameters.Add(PolicyParams.UserAssignedIdentityId, UserAssignedIdentityId);
                 providerParameters.Add(PolicyParams.SnapshotConsistencyType, SnapshotConsistencyType);
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(providerParameters, ServiceClientAdapter);                
