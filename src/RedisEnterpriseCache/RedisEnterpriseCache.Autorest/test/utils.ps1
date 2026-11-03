@@ -95,6 +95,50 @@ function Wait-ForMigrationResources {
 }
 
 $env = @{}
+$scenarioEnvironments = @{
+    'AzRedisEnterpriseCacheClusterLifecycle' = @{
+        Environment = 'cluster'
+        Recording = 'AzRedisEnterpriseCacheClusterLifecycle.Recording.json'
+    }
+    'AzRedisEnterpriseCacheDatabaseLifecycle' = @{
+        Environment = 'database'
+        Recording = 'AzRedisEnterpriseCacheDatabaseLifecycle.Recording.json'
+    }
+    'AzRedisEnterpriseCacheGeoReplication' = @{
+        Environment = 'geo'
+        Recording = 'AzRedisEnterpriseCacheGeoReplication.Recording.json'
+    }
+}
+
+function Get-SelectedScenarioEnvironments {
+    $selectedTestNames = @($TestName)
+    if ($null -eq $TestName) {
+        return @($scenarioEnvironments.Values)
+    }
+
+    return @(
+        $scenarioEnvironments.Keys |
+            Where-Object { $selectedTestNames -contains $_ } |
+            ForEach-Object { $scenarioEnvironments[$_] }
+    )
+}
+
+function Invoke-ScenarioRecordingSanitizer {
+    $playbackEnvironment = Get-Content (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
+    foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
+        $environmentPath = Join-Path $PSScriptRoot "env.$($scenarioEnvironment.Environment).json"
+        $recordingPath = Join-Path $PSScriptRoot $scenarioEnvironment.Recording
+        $recordingEnvironment = Get-Content $environmentPath -Raw | ConvertFrom-Json
+
+        foreach ($path in @($environmentPath, $recordingPath)) {
+            $content = Get-Content $path -Raw
+            $content = $content.Replace($recordingEnvironment.SubscriptionId, $playbackEnvironment.SubscriptionId)
+            $content = $content.Replace($recordingEnvironment.Tenant, $playbackEnvironment.Tenant)
+            Set-Content -Path $path -Value $content -NoNewline
+        }
+    }
+}
+
 function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
@@ -107,19 +151,33 @@ function setupEnv() {
     $env.Location = 'eastus2euap'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
-    $envFile = 'env.json'
+    $envFilePrefix = 'env'
     if ($TestMode -eq 'live') {
-        $envFile = 'localEnv.json'
+        $envFilePrefix = 'localEnv'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+
+    $selectedTestNames = @($TestName)
+    foreach ($scenarioEnvironment in Get-SelectedScenarioEnvironments) {
+        Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.$($scenarioEnvironment.Environment).json") -Value (ConvertTo-Json $env)
+    }
 
     $migrationTestNames = @(
         'Test-AzRedisEnterpriseCacheMigration'
         'Start-AzRedisEnterpriseCacheMigration'
         'Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint'
+        'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint'
     )
-    $selectedTestNames = @($TestName)
-    $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
+    $isMigrationTest = @($selectedTestNames | Where-Object { $migrationTestNames -contains $_ }).Count -gt 0
+    if (($null -eq $TestName) -or $isMigrationTest) {
+        Set-Content -Path (Join-Path $PSScriptRoot "$envFilePrefix.json") -Value (ConvertTo-Json $env)
+    }
+
+    $ossMigrationTestNames = @(
+        'Test-AzRedisEnterpriseCacheMigration'
+        'Start-AzRedisEnterpriseCacheMigration'
+        'Invoke-AzRedisEnterpriseCacheUnlinkMigrationMigratedEndpoint'
+    )
+    $isTargetedMigrationTest = @($selectedTestNames | Where-Object { $ossMigrationTestNames -contains $_ }).Count -gt 0
     $isClusterUnlinkTest = $selectedTestNames -contains 'Invoke-AzRedisEnterpriseCacheUnlinkClusterMigratedEndpoint'
     $needsOssCache = ($null -eq $TestName) -or $isTargetedMigrationTest
 
@@ -143,4 +201,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     Az.Resources\Remove-AzResourceGroup -Name $env.ResourceGroupName -Force -ErrorAction SilentlyContinue | Out-Null
+    if ($TestMode -eq 'record') {
+        Invoke-ScenarioRecordingSanitizer
+    }
 }
