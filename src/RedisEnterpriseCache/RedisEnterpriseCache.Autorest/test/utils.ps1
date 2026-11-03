@@ -134,6 +134,7 @@ function Invoke-ScenarioRecordingSanitizer {
             $content = Get-Content $path -Raw
             $content = $content.Replace($recordingEnvironment.SubscriptionId, $playbackEnvironment.SubscriptionId)
             $content = $content.Replace($recordingEnvironment.Tenant, $playbackEnvironment.Tenant)
+            $content = $content -replace '(\\?"(?:primaryKey|secondaryKey)\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
             Set-Content -Path $path -Value $content -NoNewline
         }
     }
