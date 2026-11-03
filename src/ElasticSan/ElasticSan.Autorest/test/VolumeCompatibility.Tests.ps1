@@ -3,7 +3,11 @@
 
 Describe 'Elastic SAN volume compatibility' {
     It 'Loads the complete parent manifest surface and private assembly from the imported module' {
-        $module = Get-Module Az.ElasticSan -ErrorAction Stop
+        $parentModules = @(Get-Module -All Az.ElasticSan -ErrorAction Stop | Where-Object {
+            $_.NestedModules | Where-Object Name -EQ 'Az.ElasticSan'
+        })
+        $parentModules.Count | Should -Be 1 -Because 'exactly one parent module must be loaded for package validation'
+        $module = $parentModules[0]
         $manifestPath = Join-Path $module.ModuleBase 'Az.ElasticSan.psd1'
         $manifest = Test-ModuleManifest -Path $manifestPath -ErrorAction Stop
         $manifest.Name | Should -Be 'Az.ElasticSan'
