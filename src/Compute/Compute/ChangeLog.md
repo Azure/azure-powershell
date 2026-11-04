@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added a preview message to `New-AzCapacityReservationGroup` indicating that the Open Capacity Reservation feature is in preview.
 
 ## Version 11.11.0
 * Added preview FlexProfile support with `PreferredVMSize` for virtual machine creation and updates, and FlexProfile details in `Get-AzVM` model output. Requires feature registration and regional availability.
