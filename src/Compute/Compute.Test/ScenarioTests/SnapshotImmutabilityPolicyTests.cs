@@ -223,6 +223,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             harness.VerifyOutput(duration, false);
         }
 
+        [Theory]
+        [InlineData("Unlocked")]
+        [InlineData("Locked")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SameTypeUpdateRetainsStartWhenPreflightExpiryIsUnknown(string type)
+        {
+            DateTime start = DateTime.UtcNow.AddHours(-1);
+            var harness = new PolicyHarness(Policy(type, 7, start, null), Policy(type, 14, start));
+
+            harness.Set(type, 14).ExecuteCmdlet();
+
+            harness.VerifyMutation(type, 14);
+            harness.VerifyOutput(14, false);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UnlockedShorteningCanImmediatelyExpirePolicy()

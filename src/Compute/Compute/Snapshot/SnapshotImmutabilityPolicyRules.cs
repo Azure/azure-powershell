@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 return false;
             }
 
-            bool previousWasActiveWithRequestedType = previous != null && previous.IsPolicyExpired == false
+            bool sameTypeAndNotExpired = previous != null && previous.IsPolicyExpired != true
                 && string.Equals(previous.Type, policyType, StringComparison.OrdinalIgnoreCase);
-            if (previousWasActiveWithRequestedType)
+            if (sameTypeAndNotExpired)
             {
                 if (!previous.PolicyStartTime.HasValue)
                 {
