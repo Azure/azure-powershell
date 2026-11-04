@@ -23,23 +23,49 @@ namespace ElasticSan
     public class CreationTestResponder
     {
         public string ExpectedPath { get; set; }
+        public string ExpectedLocation { get; set; } = "eastus";
+        public int ExpectedCreateCount { get; set; } = 1;
         public bool Pending { get; set; }
         public string RequestBody { get; private set; }
+        public string SkuResponseBody { get; set; } =
+            "{\"value\":[" +
+            "{\"resourceType\":\"elasticSans\",\"name\":\"Premium_LRS\",\"locations\":[\"eastus\"],\"capabilities\":[{\"name\":\"elasticSanMaxTotalCapacityTiB\",\"value\":\"9999\"}]}," +
+            "{\"resourceType\":\"elasticSans\",\"name\":\"ElasticSAN_LRS\",\"locations\":[\"westus\"],\"capabilities\":[{\"name\":\"elasticSanMaxTotalCapacityTiB\",\"value\":\"9999\"}]}," +
+            "{\"resourceType\":\"elasticSans\",\"name\":\"ElasticSAN_ZRS\",\"locations\":[\"eastus\"],\"capabilities\":[{\"name\":\"elasticSanMaxTotalCapacityTiB\",\"value\":\"10\"}]}," +
+            "{\"resourceType\":\"elasticSans\",\"name\":\"ElasticSAN_LRS\",\"locations\":[\"eastus\"],\"capabilities\":[{\"name\":\"elasticSanMaxSizeTiB\",\"value\":\"9999\"},{\"name\":\"elasticSanMaxTotalCapacityTiB\",\"value\":\"80\"}]}]}";
+        public HttpStatusCode SkuStatusCode { get; set; } = HttpStatusCode.OK;
         private int requestCount;
+        private int skuRequestCount;
         public int RequestCount { get { return requestCount; } }
+        public int SkuRequestCount { get { return skuRequestCount; } }
         public SendAsyncStep Step { get { return Respond; } }
 
         private async Task<HttpResponseMessage> Respond(HttpRequestMessage request, IEventListener callback, ISendAsync next)
         {
+            var skuPath = "/subscriptions/" + ExpectedPath.Split('/')[2] + "/providers/Microsoft.ElasticSan/skus";
+            if (request.RequestUri.AbsolutePath == skuPath)
+            {
+                if (Interlocked.Increment(ref skuRequestCount) > ExpectedCreateCount ||
+                    request.Method != HttpMethod.Get ||
+                    Uri.UnescapeDataString(request.RequestUri.Query) != "?api-version=2026-05-01-preview&$filter=location eq " + ExpectedLocation)
+                {
+                    throw new InvalidOperationException("Unexpected SKU request: " + request.Method + " " + request.RequestUri);
+                }
+                return new HttpResponseMessage(SkuStatusCode)
+                {
+                    RequestMessage = request,
+                    Content = new StringContent(SkuResponseBody, Encoding.UTF8, "application/json")
+                };
+            }
             var requestNumber = Interlocked.Increment(ref requestCount);
-            if (requestNumber > 3 ||
-                request.Method != (requestNumber == 1 ? HttpMethod.Put : HttpMethod.Get) ||
+            if (requestNumber > 3 * ExpectedCreateCount ||
+                request.Method != (requestNumber % 3 == 1 ? HttpMethod.Put : HttpMethod.Get) ||
                 request.RequestUri.AbsolutePath != ExpectedPath ||
                 request.RequestUri.Query != "?api-version=2026-05-01-preview")
             {
                 throw new InvalidOperationException("Unexpected creation request: " + request.Method + " " + request.RequestUri);
             }
-            if (requestNumber == 1)
+            if (requestNumber % 3 == 1)
             {
                 RequestBody = await request.Content.ReadAsStringAsync();
             }
@@ -79,10 +105,20 @@ Describe 'New-AzElasticSan creation forwarding' {
             @{ Variant = $variant; Version = $version; AsJob = $false; IopsParameter = 'TotalIops'; NoWait = $true }
             @{ Variant = $variant; Version = $version; AsJob = $true; IopsParameter = 'TotalIops' }
         }
+        foreach ($version in @('Omitted', 'V1', 'V2')) {
+            foreach ($enforcement in @('Enabled', 'Disabled', 'None')) {
+                if ($version -ne 'V2' -or $enforcement -ne 'Disabled') {
+                    @{ Variant = $variant; Version = $version; AsJob = $false; IopsParameter = 'TotalIops'; Enforcement = $enforcement }
+                }
+            }
+        }
+        foreach ($scenario in @('BelowLimit', 'AtLimit', 'Int64Max', 'ExplicitLimit', 'ExplicitAll', 'ExplicitZeros', 'Partial', 'DifferentRegion', 'DifferentSku', 'Int64RegionalLimit')) {
+            @{ Variant = $variant; Version = 'V2'; AsJob = $false; IopsParameter = 'TotalIops'; AutoScaleScenario = $scenario }
+        }
     }
 
-    It '<Variant> <Version> <IopsParameter> SkuName=<SkuName> Capacity=<Capacity> AsJob=<AsJob> NoWait=<NoWait> forwards the requested capacities and version through the public command' -TestCases $cases {
-        param($Variant, $Version, $AsJob, $IopsParameter, $SkuName = 'Premium_LRS', $Capacity, $NoWait = $false)
+    It '<Variant> <Version> <IopsParameter> SkuName=<SkuName> Capacity=<Capacity> AsJob=<AsJob> NoWait=<NoWait> Enforcement=<Enforcement> AutoScale=<AutoScaleScenario> forwards the requested capacities and version through the public command' -TestCases $cases {
+        param($Variant, $Version, $AsJob, $IopsParameter, $SkuName = 'Premium_LRS', $Capacity, $NoWait = $false, $Enforcement, $AutoScaleScenario)
 
         $responder = [ElasticSan.CreationTestResponder]::new()
         $responder.ExpectedPath = $sanId
@@ -105,7 +141,7 @@ Describe 'New-AzElasticSan creation forwarding' {
                 $parameters.SubscriptionId = $subscriptionId
             }
             'Identity' {
-                $parameters.InputObject = @{ Id = $sanId }
+                $parameters.InputObject = @{ Id = $sanId; SubscriptionId = '11111111-1111-1111-1111-111111111111' }
             }
             'IdentityComponents' {
                 $parameters.InputObject = @{
@@ -148,6 +184,39 @@ Describe 'New-AzElasticSan creation forwarding' {
         if ($NoWait) {
             $parameters.NoWait = $true
         }
+        if ($Enforcement) {
+            $parameters.AutoScalePolicyEnforcement = $Enforcement
+        }
+        switch ($AutoScaleScenario) {
+            'BelowLimit' { $parameters.TotalSizeTiB = 10 }
+            'AtLimit' { $parameters.TotalSizeTiB = 16 }
+            'Int64Max' { $parameters.TotalSizeTiB = [long]::MaxValue }
+            'ExplicitLimit' { $parameters.CapacityUnitScaleUpLimitTiB = 500 }
+            'ExplicitAll' {
+                $parameters.CapacityUnitScaleUpLimitTiB = 500
+                $parameters.IncreaseCapacityUnitByTiB = 7
+                $parameters.UnusedSizeTiB = 3
+                $parameters.AutoScalePolicyEnforcement = 'None'
+            }
+            'ExplicitZeros' {
+                $parameters.CapacityUnitScaleUpLimitTiB = 0
+                $parameters.IncreaseCapacityUnitByTiB = 0
+                $parameters.UnusedSizeTiB = 0
+            }
+            'Partial' {
+                $parameters.IncreaseCapacityUnitByTiB = 7
+                $parameters.UnusedSizeTiB = 3
+            }
+            'DifferentRegion' {
+                $parameters.Location = 'westus'
+                $responder.ExpectedLocation = 'westus'
+            }
+            'DifferentSku' { $parameters.SkuName = 'ElasticSAN_ZRS' }
+            'Int64RegionalLimit' {
+                $parameters.TotalSizeTiB = [long]::MaxValue
+                $responder.SkuResponseBody = $responder.SkuResponseBody.Replace('"value":"80"', '"value":"9223372036854775807"')
+            }
+        }
 
         if ($AsJob) {
             $job = New-AzElasticSan @parameters -AsJob
@@ -174,7 +243,27 @@ Describe 'New-AzElasticSan creation forwarding' {
         $body = $responder.RequestBody | ConvertFrom-Json
         $body.properties.sku.name | Should -Be $parameters.SkuName
         $properties = $body.properties
+        $autoscale = $properties.autoScaleProperties.scaleUpProperties
+        if ($parameters.ContainsKey('AutoScalePolicyEnforcement')) {
+            $autoscale.autoScalePolicyEnforcement | Should -Be $parameters.AutoScalePolicyEnforcement
+        }
         if ($Version -like 'V2*') {
+            $expectedEnforcement = if ($parameters.ContainsKey('AutoScalePolicyEnforcement')) { $parameters.AutoScalePolicyEnforcement } else { 'Enabled' }
+            $expectedIncrease = if ($parameters.ContainsKey('IncreaseCapacityUnitByTiB')) { $parameters.IncreaseCapacityUnitByTiB } else { 1 }
+            $expectedUnused = if ($parameters.ContainsKey('UnusedSizeTiB')) { $parameters.UnusedSizeTiB } else { 1 }
+            $regionalLimit = switch ($AutoScaleScenario) {
+                'DifferentRegion' { 9999 }
+                'DifferentSku' { 10 }
+                'Int64RegionalLimit' { [long]::MaxValue }
+                default { 80 }
+            }
+            $expectedLimit = if ($parameters.ContainsKey('CapacityUnitScaleUpLimitTiB')) { $parameters.CapacityUnitScaleUpLimitTiB } else { [Math]::Min(([decimal]$parameters.TotalSizeTiB * 5), [decimal]$regionalLimit) }
+            $expectedSkuRequests = if ($parameters.ContainsKey('CapacityUnitScaleUpLimitTiB')) { 0 } else { 1 }
+            $responder.SkuRequestCount | Should -Be $expectedSkuRequests
+            $autoscale.autoScalePolicyEnforcement | Should -Be $expectedEnforcement
+            $autoscale.increaseCapacityUnitByTiB | Should -Be $expectedIncrease
+            $autoscale.unusedSizeTiB | Should -Be $expectedUnused
+            $autoscale.capacityUnitScaleUpLimitTiB | Should -Be $expectedLimit
             $properties.version | Should -Be 'V2'
             $properties.totalSizeTiB | Should -Be $parameters.TotalSizeTiB
             $properties.totalIops | Should -Be $parameters[$IopsParameter]
@@ -188,6 +277,10 @@ Describe 'New-AzElasticSan creation forwarding' {
             }
             $properties.PSObject.Properties.Name | Should -Not -Contain 'totalIop'
         } else {
+            $responder.SkuRequestCount | Should -Be 0
+            if (-not $Enforcement) {
+                $properties.PSObject.Properties.Name | Should -Not -Contain 'autoScaleProperties'
+            }
             $expectedBase = if ($Capacity -eq 'BaseOnly') { 0 } elseif ($Version -eq 'V1ExplicitCapacity') { 3 } else { 20 }
             $expectedExtended = if ($Capacity -eq 'ExtendedOnly') { 6 } else { 0 }
             $properties.baseSizeTiB | Should -Be $expectedBase
@@ -245,6 +338,135 @@ Describe 'New-AzElasticSan creation forwarding' {
         }
         $parameters.Remove($MissingParameter)
         { New-AzElasticSan @parameters } | Should -Throw "Parameter '$MissingParameter' is required when Version is V2."
+        $responder.RequestCount | Should -Be 0
+        $responder.SkuRequestCount | Should -Be 0
+    }
+
+    $disabledCases = foreach ($variant in @('Named', 'Identity', 'IdentityComponents')) {
+        foreach ($enforcement in @('Disabled', 'dIsAbLeD')) {
+            @{ Variant = $variant; Enforcement = $enforcement }
+        }
+    }
+    It '<Variant> rejects <Enforcement> autoscale for V2 before sending a request' -TestCases $disabledCases {
+        param($Variant, $Enforcement)
+
+        $responder = [ElasticSan.CreationTestResponder]::new()
+        $responder.ExpectedPath = $sanId
+        $mock = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock]::new(
+            (Join-Path $TestDrive 'unused-disabled-v2-autoscale-recording.json')
+        )
+        $mock.SetPlayback()
+        $parameters = @{
+            Location = 'eastus'
+            SkuName = 'ElasticSAN_LRS'
+            Version = 'V2'
+            TotalSizeTiB = 20
+            TotalIops = 100000
+            TotalMBps = 4000
+            AutoScalePolicyEnforcement = $Enforcement
+            HttpPipelinePrepend = @($mock, $responder.Step)
+            Confirm = $false
+            ErrorAction = 'Stop'
+        }
+        switch ($Variant) {
+            'Named' {
+                $parameters.Name = 'san'
+                $parameters.ResourceGroupName = 'rg'
+                $parameters.SubscriptionId = $subscriptionId
+            }
+            'Identity' { $parameters.InputObject = @{ Id = $sanId } }
+            'IdentityComponents' {
+                $parameters.InputObject = @{
+                    SubscriptionId = $subscriptionId
+                    ResourceGroupName = 'rg'
+                    ElasticSanName = 'san'
+                }
+            }
+        }
+        { New-AzElasticSan @parameters } | Should -Throw 'AutoScalePolicyEnforcement cannot be Disabled when Version is V2.'
+        $responder.RequestCount | Should -Be 0
+        $responder.SkuRequestCount | Should -Be 0
+    }
+
+    It 'Resolves V2 autoscale defaults separately for each piped SAN identity' {
+        $responder = [ElasticSan.CreationTestResponder]::new()
+        $responder.ExpectedPath = $sanId
+        $responder.ExpectedCreateCount = 2
+        $mock = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock]::new(
+            (Join-Path $TestDrive 'unused-piped-v2-autoscale-recording.json')
+        )
+        $mock.SetPlayback()
+        $parameters = @{
+            Location = 'eastus'
+            SkuName = 'ElasticSAN_LRS'
+            Version = 'V2'
+            TotalSizeTiB = 20
+            TotalIops = 100000
+            TotalMBps = 4000
+            HttpPipelinePrepend = @($mock, $responder.Step)
+            Confirm = $false
+            ErrorAction = 'Stop'
+        }
+        $identities = @(
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanIdentity]@{ Id = $sanId },
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanIdentity]@{ Id = $sanId }
+        )
+        $sans = @($identities | New-AzElasticSan @parameters)
+        $sans.Count | Should -Be 2
+        $responder.SkuRequestCount | Should -Be 2
+        $responder.RequestCount | Should -Be 6
+    }
+
+    $lookupFailureCases = @(
+        @{ Scenario = 'NoSku'; Skus = @(); ExpectedMessage = 'found 0.' }
+        @{ Scenario = 'WrongSku'; Skus = @(@{ resourceType = 'elasticSans'; name = 'Premium_LRS'; locations = @('eastus') }); ExpectedMessage = 'found 0.' }
+        @{ Scenario = 'WrongRegion'; Skus = @(@{ resourceType = 'elasticSans'; name = 'ElasticSAN_LRS'; locations = @('westus') }); ExpectedMessage = 'found 0.' }
+        @{ Scenario = 'WrongResourceType'; Skus = @(@{ resourceType = 'volumes'; name = 'ElasticSAN_LRS'; locations = @('eastus') }); ExpectedMessage = 'found 0.' }
+    )
+    $matchingSku = @{ resourceType = 'elasticSans'; name = 'ElasticSAN_LRS'; locations = @('eastus') }
+    $lookupFailureCases += @{ Scenario = 'DuplicateSku'; Skus = @($matchingSku, $matchingSku); ExpectedMessage = 'found 2.' }
+    foreach ($value in @('missing', 'invalid', '0', '-1', '80.5', '9223372036854775808')) {
+        $sku = $matchingSku.Clone()
+        $sku.capabilities = if ($value -eq 'missing') { @() } else { @(@{ name = 'elasticSanMaxTotalCapacityTiB'; value = $value }) }
+        $lookupFailureCases += @{ Scenario = "Capability$value"; Skus = @($sku); ExpectedMessage = 'must provide one positive integer elasticSanMaxTotalCapacityTiB value' }
+    }
+    $duplicateCapabilitySku = $matchingSku.Clone()
+    $duplicateCapabilitySku.capabilities = @(
+        @{ name = 'elasticSanMaxTotalCapacityTiB'; value = '80' },
+        @{ name = 'elasticSanMaxTotalCapacityTiB'; value = '100' }
+    )
+    $lookupFailureCases += @{ Scenario = 'DuplicateCapability'; Skus = @($duplicateCapabilitySku); ExpectedMessage = 'must provide one positive integer elasticSanMaxTotalCapacityTiB value' }
+    $lookupFailureCases += @{ Scenario = 'Forbidden'; Skus = @(); ExpectedMessage = 'SKU lookup denied' }
+    It 'Rejects <Scenario> during the SKU lookup without creating a SAN' -TestCases $lookupFailureCases {
+        param($Scenario, $Skus, $ExpectedMessage)
+
+        $responder = [ElasticSan.CreationTestResponder]::new()
+        $responder.ExpectedPath = $sanId
+        $responder.SkuResponseBody = @{ value = @($Skus) } | ConvertTo-Json -Depth 10 -Compress
+        if ($Scenario -eq 'Forbidden') {
+            $responder.SkuStatusCode = [System.Net.HttpStatusCode]::Forbidden
+            $responder.SkuResponseBody = '{"error":{"code":"AuthorizationFailed","message":"SKU lookup denied"}}'
+        }
+        $mock = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock]::new(
+            (Join-Path $TestDrive 'unused-v2-sku-failure-recording.json')
+        )
+        $mock.SetPlayback()
+        $parameters = @{
+            Name = 'san'
+            ResourceGroupName = 'rg'
+            SubscriptionId = $subscriptionId
+            Location = 'eastus'
+            SkuName = 'ElasticSAN_LRS'
+            Version = 'V2'
+            TotalSizeTiB = 20
+            TotalIops = 100000
+            TotalMBps = 4000
+            HttpPipelinePrepend = @($mock, $responder.Step)
+            Confirm = $false
+            ErrorAction = 'Continue'
+        }
+        { New-AzElasticSan @parameters } | Should -Throw $ExpectedMessage
+        $responder.SkuRequestCount | Should -Be 1
         $responder.RequestCount | Should -Be 0
     }
 

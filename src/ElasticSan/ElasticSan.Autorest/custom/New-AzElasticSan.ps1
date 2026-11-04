@@ -19,6 +19,9 @@
 create ElasticSan.
 .Description
 create ElasticSan.
+For V2, omitted autoscale settings default to Enabled, an increase of 1 TiB and an unused-capacity threshold of 1 TiB.
+If CapacityUnitScaleUpLimitTiB is omitted, the command queries Get-AzElasticSanSkuList for the target subscription, Location and SkuName, and caps five times TotalSizeTiB at elasticSanMaxTotalCapacityTiB.
+The command fails before creating the SAN if this lookup fails or does not provide an unambiguous positive capacity limit. Explicit autoscale values are preserved, except Disabled is rejected for V2. V1 behavior is unchanged.
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
@@ -92,24 +95,29 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # Enable or Disable scale up setting on Elastic San Appliance.
+    # Defaults to Enabled for V2. Disabled is not supported when Version is V2.
     ${AutoScalePolicyEnforcement},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Maximum scale up size on Elastic San appliance in TiB.
+    # For V2, defaults to the smaller of five times TotalSizeTiB and the regional maximum total capacity for SkuName.
+    # When omitted for V2, Get-AzElasticSanSkuList is called for the target subscription and Location.
     ${CapacityUnitScaleUpLimitTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Unused size on Elastic San appliance in TiB.
+    # Defaults to 1 for V2.
     ${UnusedSizeTiB},
 
     [Parameter()]
@@ -242,22 +250,78 @@ param(
 )
 
 process {
+    $createParameters = @{} + $PSBoundParameters
     if ($Version -eq 'V2') {
+        if ($AutoScalePolicyEnforcement -eq 'Disabled') {
+            throw "AutoScalePolicyEnforcement cannot be Disabled when Version is V2."
+        }
+
         foreach ($parameterName in @('TotalSizeTiB', 'TotalIops', 'TotalMBps')) {
-            if (-not $PSBoundParameters.ContainsKey($parameterName)) {
+            if (-not $createParameters.ContainsKey($parameterName)) {
                 throw "Parameter '$parameterName' is required when Version is V2."
             }
         }
+
+        if (-not $createParameters.ContainsKey('AutoScalePolicyEnforcement')) {
+            $createParameters.AutoScalePolicyEnforcement = 'Enabled'
+        }
+        if (-not $createParameters.ContainsKey('IncreaseCapacityUnitByTiB')) {
+            $createParameters.IncreaseCapacityUnitByTiB = 1
+        }
+        if (-not $createParameters.ContainsKey('UnusedSizeTiB')) {
+            $createParameters.UnusedSizeTiB = 1
+        }
+        if (-not $createParameters.ContainsKey('CapacityUnitScaleUpLimitTiB')) {
+            $targetSubscriptionId = $SubscriptionId
+            if ($PSCmdlet.ParameterSetName -eq 'CreateViaIdentityExpanded') {
+                if ($InputObject.Id) {
+                    if ($InputObject.Id -notmatch '^/subscriptions/([^/]+)/') {
+                        throw 'Cannot determine the subscription from InputObject.Id for the V2 autoscale capacity lookup.'
+                    }
+                    $targetSubscriptionId = $Matches[1]
+                } else {
+                    $targetSubscriptionId = $InputObject.SubscriptionId
+                }
+            }
+            if ([string]::IsNullOrWhiteSpace($targetSubscriptionId)) {
+                throw 'A target subscription is required for the V2 autoscale capacity lookup.'
+            }
+
+            $skuParameters = @{
+                SubscriptionId = $targetSubscriptionId
+                Filter = "location eq $Location"
+                ErrorAction = 'Stop'
+            }
+            foreach ($parameterName in @('DefaultProfile', 'HttpPipelineAppend', 'HttpPipelinePrepend', 'Proxy', 'ProxyCredential', 'ProxyUseDefaultCredentials', 'Verbose', 'Debug')) {
+                if ($createParameters.ContainsKey($parameterName)) {
+                    $skuParameters[$parameterName] = $createParameters[$parameterName]
+                }
+            }
+            $skus = @(Az.ElasticSan\Get-AzElasticSanSkuList @skuParameters | Where-Object {
+                $_.Name -eq $SkuName -and $_.Location -contains $Location -and $_.ResourceType -eq 'elasticSans'
+            })
+            if ($skus.Count -ne 1) {
+                throw "Cannot determine the V2 autoscale capacity limit: expected one SKU '$SkuName' in location '$Location', found $($skus.Count). Supply CapacityUnitScaleUpLimitTiB explicitly."
+            }
+            $capabilities = @($skus[0].Capability | Where-Object Name -EQ 'elasticSanMaxTotalCapacityTiB')
+            $regionalLimit = [long]0
+            if ($capabilities.Count -ne 1 -or
+                -not [long]::TryParse($capabilities[0].Value, [System.Globalization.NumberStyles]::Integer, [System.Globalization.CultureInfo]::InvariantCulture, [ref]$regionalLimit) -or
+                $regionalLimit -le 0) {
+                throw "Cannot determine the V2 autoscale capacity limit: SKU '$SkuName' in location '$Location' must provide one positive integer elasticSanMaxTotalCapacityTiB value. Supply CapacityUnitScaleUpLimitTiB explicitly."
+            }
+            $createParameters.CapacityUnitScaleUpLimitTiB = [long][Math]::Min(([decimal]$TotalSizeTiB * 5), [decimal]$regionalLimit)
+        }
     } else {
-        if (-not $PSBoundParameters.ContainsKey('BaseSizeTiB')) {
-            $PSBoundParameters.BaseSizeTiB = 20
+        if (-not $createParameters.ContainsKey('BaseSizeTiB')) {
+            $createParameters.BaseSizeTiB = 20
         }
 
-        if (-not $PSBoundParameters.ContainsKey('ExtendedCapacitySizeTiB')) {
-            $PSBoundParameters.ExtendedCapacitySizeTiB = 0
+        if (-not $createParameters.ContainsKey('ExtendedCapacitySizeTiB')) {
+            $createParameters.ExtendedCapacitySizeTiB = 0
         }
     }
 
-    Az.ElasticSan.internal\New-AzElasticSan @PSBoundParameters
+    Az.ElasticSan.internal\New-AzElasticSan @createParameters
 }
 }
