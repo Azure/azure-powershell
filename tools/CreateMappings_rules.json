@@ -1031,5 +1031,9 @@
   {
     "alias": "Mission",
     "module": "Mission"
+  },
+  {
+    "module": "Resiliency",
+    "alias": "Resiliency"
   }
 ]
