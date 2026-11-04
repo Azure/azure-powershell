@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "084f5792-a867-43a4-a5e8-4826c7a85de8" ],
+        "x-ms-client-request-id": [ "c3ecab31-1a22-404a-82ec-1435a90ecead" ],
         "CommandName": [ "Get-AzDataBoundaryTenant" ],
         "FullCommandName": [ "Get-AzDataBoundaryTenant_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.5.0", "PSVersion/v7.4.5", "Az.DataBoundary/0.1.1" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.9", "Az.DataBoundary/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "2199" ],
-        "x-ms-request-id": [ "7b7ec950-c8d8-4d7e-8607-0eeec786ad16" ],
-        "x-ms-correlation-request-id": [ "7b7ec950-c8d8-4d7e-8607-0eeec786ad16" ],
-        "x-ms-routing-request-id": [ "WESTUS:20241029T163851Z:7b7ec950-c8d8-4d7e-8607-0eeec786ad16" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-request-id": [ "61eb1f99-06b2-4654-8368-193de181db02" ],
+        "x-ms-correlation-request-id": [ "61eb1f99-06b2-4654-8368-193de181db02" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20261104T031927Z:61eb1f99-06b2-4654-8368-193de181db02" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BB33C476B19643739A92372CDFF6D136 Ref B: SJC211051205053 Ref C: 2024-10-29T16:38:51Z" ],
-        "Date": [ "Tue, 29 Oct 2024 16:38:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 273525913AC343178FE78F01CBC26A28 Ref B: SYD281080709031 Ref C: 2026-11-04T03:19:27Z" ],
+        "Date": [ "Wed, 04 Nov 2026 03:19:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "208" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Resources/dataBoundaries/72f988bf-86f1-41af-91ab-2d7cd011db47\",\"name\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"properties\":{\"dataBoundary\":\"Global\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Resources/dataBoundaries/72031ed9-9b48-4bb7-804a-0d1a2a44e7be\",\"name\":\"72031ed9-9b48-4bb7-804a-0d1a2a44e7be\",\"properties\":{\"dataBoundary\":\"Global\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
