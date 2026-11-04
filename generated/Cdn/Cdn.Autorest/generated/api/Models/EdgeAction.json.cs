@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>Defines the edge action for the delivery rule.</summary>
+    /// <summary>
+    /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    /// </summary>
     public partial class EdgeAction
     {
 
@@ -65,8 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            __deliveryRuleAction = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleAction(json);
-            {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeActionParameters.FromJson(__jsonParameters) : _parameter;}
+            __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResource(json);
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeActionProperties.FromJson(__jsonProperties) : _property;}
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SkuType.FromJson(__jsonSku) : _sku;}
             AfterFromJson(json);
         }
 
@@ -99,8 +102,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            __deliveryRuleAction?.ToJson(container, serializationMode);
-            AddIf( null != this._parameter ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._parameter.ToJson(null,serializationMode) : null, "parameters" ,container.Add );
+            __trackedResource?.ToJson(container, serializationMode);
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            }
+            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
